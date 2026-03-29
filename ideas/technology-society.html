@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology & Society | Ideas | Ernesto Cisneros Cino</title>
+<meta name="description" content="Explorations in decentralized governance, asymmetric transparency, and the ethics of technological systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(8, 6, 4, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo { display: flex; flex-direction: column; gap: 2px; }
+.nav-logo img { height: 50px; width: auto; mix-blend-mode: lighten; }
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-item:hover { color: var(--gold); }
+.nav-item.active { color: var(--gold); }
+
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: rgba(13, 10, 6, 0.97);
+  border: 1px solid var(--gold-faint);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.nav-dropdown-item:last-child { border-bottom: none; }
+.nav-dropdown-item:hover { color: var(--gold); background: var(--gold-faint); }
+.nav-dropdown-item.active { color: var(--gold); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span { display: block; width: 24px; height: 1px; background: var(--gold); }
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Research Block */
+.research-block {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.research-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.research-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.research-text {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.research-text p {
+  margin-bottom: 1rem;
+}
+
+.research-text strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Section Headers */
+.section-header {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+/* Principle Block */
+.principle-block {
+  background: rgba(212, 160, 48, 0.05);
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.principle-block p {
+  margin-bottom: 0.8rem;
+}
+
+.principle-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Layer Block */
+.layer-block {
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.5rem;
+  background: rgba(13, 10, 6, 0.5);
+  border: 1px solid var(--line);
+}
+
+.layer-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.layer-block ul {
+  list-style: none;
+  margin: 0;
+}
+
+.layer-block li {
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.layer-block li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.btn-github::before {
+  content: '↗';
+  font-size: 1rem;
+}
+
+.btn-pdf::before {
+  content: '↓';
+  font-size: 1rem;
+}
+
+/* Language Buttons */
+.lang-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.lang-btn {
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--bg-dark);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem;
+    gap: 0;
+    border-left: 1px solid var(--line);
+    transition: right 0.3s ease;
+  }
+  .nav-menu.open { right: 0; }
+  .nav-item { padding: 1rem 0; width: 100%; border-bottom: 1px solid var(--line); }
+  .nav-dropdown-content { position: static; transform: none; background: transparent; border: none; padding: 0 0 0 1rem; opacity: 1; visibility: visible; }
+  .nav-toggle { display: flex; }
+  
+  .btn-group, .lang-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .research-block { padding: 1.5rem; }
+  .research-title { font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">Books</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="technology-society.html" class="nav-dropdown-item active">Technology & Society</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+  
+  <section class="hero">
+    <span class="hero-subtitle">Ideas / II</span>
+    <h1 class="hero-title">Technology & Society</h1>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+    
+    <!-- Block 1: FMD-DAO -->
+    <article class="research-block">
+      <h2 class="research-title">Finite Memory DAO (FMD-DAO)</h2>
+      <p class="research-subtitle">A governance blueprint based on the Valley of Resilience</p>
+      
+      <div class="research-text">
+        <h3 class="section-header">I. Core Purpose</h3>
+        <p>The FMD-DAO is founded on a simple but profound principle: <strong>Any system that remembers too much or too little collapses.</strong> Its purpose is not to accumulate decisions or ossify structures, but to preserve the healthy oscillation of a living community, one capable of learning, forgetting, and readapting without losing coherence.</p>
+        <p>The operational framework is the Valley of Resilience, defined by:</p>
+        <div class="principle-block">
+          <p><strong>1 &lt; R &lt; 3</strong></p>
+          <p>where R = τ × Ω (memory × oscillation frequency)</p>
+        </div>
+        <p>This narrow band represents the zone where systems remain adaptive without fragmenting, and stable without stagnation.</p>
+        
+        <h3 class="section-header">II. Guiding Principles</h3>
+        <p><strong>Finite Memory:</strong> All information, reputation, and authority decays over time.</p>
+        <p><strong>Periodic Adaptation:</strong> Rules are reviewed according to fixed cycles, not emotional impulses.</p>
+        <p><strong>Metric Transparency:</strong> The DAO publishes its resilience index (R) at regular intervals.</p>
+        <p><strong>Stabilizing Noise:</strong> Controlled variability is introduced to prevent destructive resonance and monoculture.</p>
+        <p><strong>Bicameral Governance:</strong> Two chambers, Experts and Commons, maintain cognitive and operational equilibrium.</p>
+        
+        <h3 class="section-header">III. System Architecture</h3>
+        <p>The DAO operates on three fundamental variables:</p>
+        <p><strong>τ</strong> - Memory scale<br>
+        <strong>Ω</strong> - Oscillation frequency of decision-making<br>
+        <strong>R = τ × Ω</strong> - Resilience index</p>
+        <p>Two internal chambers complement this model: <strong>C1: Chamber of Experts</strong> and <strong>C2: Chamber of Commons</strong>. These entities interact through synchronized review cycles to maintain the system within the resilience valley.</p>
+        
+        <h3 class="section-header">IV. Bicameral Structure</h3>
+        <p><strong>C1 (Chamber of Experts):</strong> Validates proposals with technical rigor. Members receive proportional incentives for transparent review.</p>
+        <p><strong>C2 (Chamber of Commons):</strong> Represents community participation, no monetary incentives, ensuring legitimacy and plurality.</p>
+        <p>The bicameral design mitigates both technical dominance and emotional volatility.</p>
+        
+        <h3 class="section-header">V. Interaction Between Chambers</h3>
+        <p>Proposals originate in C2 (Commons). They are then passed to C1 (Experts) for validation and optimization.</p>
+        <p>Every three months, a <strong>Finite Memory Ritual</strong> is executed: Outdated decisions are archived. Parameters τ and Ω are reset. The resilience index is recalculated. This cyclical cleansing prevents information overload and governance drift.</p>
+        
+        <h3 class="section-header">VI. Incentives & Ethical Balance</h3>
+        <p>C1 receives token-based incentives tied to clarity and transparency. C2 receives none, its legitimacy comes from civic participation rather than financial gain. This separation preserves both competence and trust.</p>
+        
+        <h3 class="section-header">VII. Technical Implementation</h3>
+        <p><strong>Smart contracts:</strong> Solidity + Open Zeppelin<br>
+        <strong>Identity/credentials:</strong> Git POAP, Sismo, on-chain reputation<br>
+        <strong>Dashboards:</strong> Dune Analytics, Grafana<br>
+        <strong>Global Oracle:</strong> synchronizes τ and Ω to maintain R in the optimal valley<br>
+        <strong>Decay algorithms:</strong> automatically reduce reputation and decision-weight over time.</p>
+        <p>The system is designed for adaptation, not accumulation.</p>
+        
+        <h3 class="section-header">VIII. Risks & Mitigation</h3>
+        <p><strong>Expert Capture (C1 dominates)</strong> → mitigated with rotation, decay of authority, and cross-review.</p>
+        <p><strong>Emotional Drift in Commons (C2)</strong> → mitigated with time cycles and expert validation.</p>
+        <p><strong>Desynchronization between C1 and C2</strong> → resolved through periodic recalibration of R_C1 and R_C2 via the global oracle.</p>
+        
+        <h3 class="section-header">IX. Application Example</h3>
+        <p><strong>Terranova Environmental DAO:</strong> C2 proposes reforestation projects. C1 validates models with climate data and cost projections. Both chambers adjust τ and Ω based on environmental outcome indicators (R_fin) and governance performance (R_gov).</p>
+        
+        <h3 class="section-header">X. Philosophical Epilogue</h3>
+        <div class="principle-block">
+          <p>Bicamerality is not a political ornament, it is a thermodynamic necessity.</p>
+          <p>A system without wisdom collapses under noise. A system without people collapses under rigidity.</p>
+          <p>Between both lies the Valley of Resilience: the narrow territory where technical intelligence and collective intuition breathe in unison.</p>
+          <p>There, and only there, a community can persist, without fossilizing, without fracturing.</p>
+        </div>
+      </div>
+      
+      <div class="btn-group">
+        <a href="https://github.com/cisnerosmusic/DAO_de_Memoria_Finita_-FMD-DAO-" target="_blank" rel="noopener" class="btn btn-github">View on GitHub</a>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Block 2: Transparencia Asimétrica -->
+    <article class="research-block">
+      <h2 class="research-title">Transparencia Asimétrica</h2>
+      <p class="research-subtitle">Infraestructura pública verificable con privacidad ciudadana fuerte</p>
+      
+      <div class="research-text">
+        <h3 class="section-header">Introduction</h3>
+        <p>This document deliberately oscillates between three registers: <strong>Technical</strong> (verifiable infrastructure), <strong>Philosophical-political</strong> (normative principle), and <strong>Historical</strong> (empirical precedents).</p>
+        <p>The reason is simple: Public systems cannot be reformed with code alone. Nor can they be sustained with political theory alone. And they cannot ignore available historical evidence. This proposal is synthesis, not isolated invention.</p>
+        
+        <h3 class="section-header">Abstract</h3>
+        <p>An institutional architecture is proposed based on a guiding principle of <strong>asymmetric transparency</strong>. It does not seek to eliminate corruption. It seeks to raise the cost of capturing the system and reduce the cost of detecting it.</p>
+        <p>It combines: Cryptographic verifiability, Structural privacy, Adversarial governance, Aligned economic incentives, and Cultural strategy based on historical precedents.</p>
+        <p>The system is designed to be incomplete by definition: it explicitly declares its gaps and invites the technical community to solve them.</p>
+        
+        <h3 class="section-header">Guiding Principle</h3>
+        <div class="principle-block">
+          <p><strong>Asymmetric transparency.</strong></p>
+          <p>Power acts with collective resources. Therefore, it must be collectively accountable.</p>
+          <p>The citizen acts with their private life. Therefore, the protection of their privacy is not an administrative privilege, but a structural right.</p>
+          <p>The asymmetry is not a technical decision. It is an ethical decision.</p>
+          <p>Total transparency produces panopticon. Total opacity produces impunity.</p>
+          <p>This system seeks an architecture where power is visible by design and the individual is protected by design.</p>
+        </div>
+        
+        <div class="layer-block">
+          <h4 class="layer-title">Layer 1 - Mandatory State Transparency</h4>
+          <ul>
+            <li>Verifiable record of: Budget, Public contracting, Execution, Transfers, Corporate escrows.</li>
+            <li>But state transparency without citizen privacy degenerates into surveillance.</li>
+            <li>That is why the next layer is not a complement. It is a condition of legitimacy.</li>
+          </ul>
+        </div>
+        
+        <div class="layer-block">
+          <h4 class="layer-title">Layer 2 - Strong Citizen Privacy</h4>
+          <ul>
+            <li>Decentralized identity.</li>
+            <li>Verifiable credentials.</li>
+            <li>ZK to demonstrate compliance without exposure.</li>
+            <li>Double key for openings, with public traceability.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">Without this layer, Layer 1 becomes a tool of control. But privacy without verification opens space for capture. That is why structural adversariality is required.</p>
+        </div>
+        
+        <div class="layer-block">
+          <h4 class="layer-title">Layer 3 - Adversarial Challenge</h4>
+          <ul>
+            <li>Adaptive bond based on evidence.</li>
+            <li>Reputation with decay.</li>
+            <li>Distributed micro-sponsorship.</li>
+            <li>Penalty for abuse.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">The filter is epistemic, not economic. But adversariality needs independent technical support.</p>
+        </div>
+        
+        <div class="layer-block">
+          <h4 class="layer-title">Layer 4 - Civic Technical Support Fund (FSTC)</h4>
+          <ul>
+            <li>Automatically funded by: Executed fines, Escrow interest, Slashing for violations.</li>
+            <li>The fund supports: Independent technical experts, Permanent red-team, Public verifiers, Citizen technical literacy.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">Funding does not depend on annual political allocation. But every public system interacts with private power.</p>
+        </div>
+        
+        <div class="layer-block">
+          <h4 class="layer-title">Layer 5 - Corporate Power Governance</h4>
+          <ul>
+            <li>Mandatory prior escrow to operate in critical sectors.</li>
+            <li>ZK compliance proofs.</li>
+            <li>Adversarial governance of the statistical threshold.</li>
+            <li>Three threshold levels: Constitutional floor, Sectoral adjustments, Regulated sandbox.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">The burden of proof falls on those who seek to reduce standards.</p>
+        </div>
+        
+        <h3 class="section-header">Immunological Mechanisms</h3>
+        <p>Staggered rotation. Constitutional time-lock. Diverse multisig. Permanent red-team. Public record of openings. Reputation decay. Progressive penalty for abuse.</p>
+        <p><em>The system assumes constant capture attempts.</em></p>
+        
+        <h3 class="section-header">Theory of Change</h3>
+        <p>The system is not born from the benevolence of power. It is born when prior infrastructure exists.</p>
+        <p><strong>The Constructor Body (CC):</strong> A technically competent and politically transversal coalition composed of: Security and data engineers, Institutionalist jurists, Auditors, Technical journalists, Public economists, Distributed systems designers, Actors with transversal social legitimacy.</p>
+        <p>The CC does not govern the system. It enables it. When the political window arrives, the system already exists.</p>
+        
+        <h3 class="section-header">Cultural Dimension (With Historical Basis)</h3>
+        <p>This framework is not speculative. Partial precedents exist where verifiable transparency produced measurable changes:</p>
+        <p><strong>PROZORRO (Ukraine):</strong> Open public contracting system that emerged from technical civil society during Maidan. Generated billions in verifiable savings and transformed public perception of transparency.</p>
+        <p><strong>Porto Alegre Participatory Budget:</strong> Legitimized public spending when citizens saw infrastructure built according to verifiable public decisions.</p>
+        <p><strong>Estonia's digital infrastructure:</strong> Adopted after institutional crisis, based on verifiable identity and administrative traceability.</p>
+        <p><strong>MakerDAO and Gitcoin:</strong> Real experiments in distributed governance with aligned incentives and on-chain public audit.</p>
+        <p><em>These are not analogies. They are partial precedents that prove component viability.</em></p>
+        
+        <h3 class="section-header">Explicit Limitations</h3>
+        <p>This system can: Create technical elite. Increase institutional complexity. Generate illusion of transparency. Be culturally captured. Fail in fragile institutional contexts. Be inverted toward surveillance if asymmetry is lost.</p>
+        <p><strong>Technology does not replace political virtue.</strong></p>
+        
+        <h3 class="section-header">Open Invitation</h3>
+        <div class="principle-block">
+          <p>This document is not a manifesto. It is an architecture under construction.</p>
+          <p>Developers, cryptographers, jurists, institutional economists and complex systems designers are invited to analyze, break and improve this framework.</p>
+          <p>Theory must become verifiable code.</p>
+          <p><strong>The political window is unpredictable. The infrastructure must exist before.</strong></p>
+        </div>
+      </div>
+      
+      <div class="btn-group">
+        <a href="../assets/pdf/technology/transparencia-asimetrica.pdf" target="_blank" class="btn btn-pdf">Full Document (ES)</a>
+        <a href="../assets/pdf/technology/transparencia-asimetrica-en.pdf" target="_blank" class="btn btn-pdf">Full Document (EN)</a>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Block 3: Prometheus's Silence -->
+    <article class="research-block">
+      <h2 class="research-title">Prometheus's Silence</h2>
+      
+      <div class="research-text">
+        <p><strong>Prometheus's Silence</strong> explores one of the most unsettling paradoxes of modernity: harm that does not coincide in time with its cause.</p>
+        
+        <p>Through the case of ionizing radiation and the nuclear tests of the Cold War, this essay examines how certain forms of violence operate through invisibility, latency, and the diffusion of responsibility. It is not a text about nuclear physics, but about the ethical architecture (or its absence) that allows entire generations to bear the consequences of decisions they never made.</p>
+        
+        <p>Drawing on philosophy, the history of science, and political critique, the text poses a question that transcends the nuclear realm and extends to any system where suffering becomes a statistic and justice is indefinitely postponed: <em>how much silence are we willing to normalize when the harm is slow, the victims are few, and the benefit seems strategic?</em></p>
+        
+        <p>A necessary reflection on the fire that Prometheus stole and which, once unleashed, has no Olympus to which it can return.</p>
+      </div>
+      
+      <div class="lang-buttons">
+        <a href="../assets/pdf/technology/prometheus-silence-en.pdf" target="_blank" class="lang-btn">English</a>
+        <a href="../assets/pdf/technology/prometheus-silence-es.pdf" target="_blank" class="lang-btn">Español</a>
+        <a href="../assets/pdf/technology/prometheus-silence-fr.pdf" target="_blank" class="lang-btn">Français</a>
+        <a href="../assets/pdf/technology/prometheus-silence-it.pdf" target="_blank" class="lang-btn">Italiano</a>
+        <a href="../assets/pdf/technology/prometheus-silence-de.pdf" target="_blank" class="lang-btn">Deutsch</a>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+// Mobile Menu
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-menu').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
