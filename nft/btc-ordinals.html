@@ -1,1 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTC Ordinals | Ernesto Cisneros Cino</title>
+<meta name="description" content="Ordinal Inscription #95908 - A personal and historical milestone in Bitcoin cryptoart history.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(8, 6, 4, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo { display: flex; flex-direction: column; gap: 2px; }
+
+.nav-logo img {
+  height: 50px;
+  width: auto;
+  mix-blend-mode: lighten;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-item:hover { color: var(--gold); }
+.nav-item.active { color: var(--gold); }
+
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: rgba(13, 10, 6, 0.97);
+  border: 1px solid var(--gold-faint);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.nav-dropdown-item:last-child { border-bottom: none; }
+
+.nav-dropdown-item:hover {
+  color: var(--gold);
+  background: var(--gold-faint);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ordinal Section */
+.ordinal-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.ordinal-container {
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.ordinal-image {
+  position: relative;
+}
+
+.ordinal-image img {
+  width: 100%;
+  border: 1px solid var(--gold-faint);
+  transition: border-color 0.3s;
+}
+
+.ordinal-image:hover img {
+  border-color: var(--gold-dim);
+}
+
+.ordinal-image::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  border: 1px solid var(--gold-faint);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.ordinal-content {
+  text-align: left;
+}
+
+.ordinal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.ordinal-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.ordinal-text p {
+  margin-bottom: 1.5rem;
+}
+
+.ordinal-text p:last-of-type {
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.ordinal-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ordinal-button:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--bg-dark);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem;
+    gap: 0;
+    border-left: 1px solid var(--line);
+    transition: right 0.3s ease;
+  }
+  .nav-menu.open { right: 0; }
+  .nav-item {
+    padding: 1rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-dropdown-content {
+    position: static;
+    transform: none;
+    background: transparent;
+    border: none;
+    padding: 0 0 0 1rem;
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-toggle { display: flex; }
+  
+  .ordinal-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  
+  .ordinal-content { text-align: center; }
+  
+  .ordinal-image { max-width: 400px; margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+  .ordinal-section { padding: 3rem 1.5rem; }
+  .ordinal-title { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+      
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        </div>
+      </li>
+
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item active">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="btc-ordinals.html" class="nav-dropdown-item active">BTC Ordinals</a>
+          <a href="gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+        </div>
+      </li>
+
+      <li><a href="../books.html" class="nav-item">Books</a></li>
+
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="../ideas/technology-society.html" class="nav-dropdown-item">Technology & Society</a>
+          <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
+          <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+  <section class="ordinal-section">
+    <div class="ordinal-container">
+      
+      <div class="ordinal-image">
+        <img src="../assets/nft/btc-ordinal.jpg" alt="Ordinal Inscription #95908">
+      </div>
+      
+      <div class="ordinal-content">
+        <h1 class="ordinal-title">Ordinal Inscription #95908</h1>
+        
+        <div class="ordinal-text">
+          <p>This inscription marks a personal and historical milestone.</p>
+          
+          <p>Ordinal #95908 was created during the earliest exploratory phase of Bitcoin Ordinals, before conventions, large-scale collections, or established narratives existed. At that moment, inscribing on Bitcoin was not yet a standardized practice, but an open question: could Bitcoin serve not only as a ledger of value, but also as a medium for cultural inscription?</p>
+          
+          <p>This piece is a fragment of an artwork that previously existed on the Tezos blockchain. Its inscription on Bitcoin represents neither duplication nor migration for commercial purposes, but a deliberate act of continuity across chains. It connects two moments of cryptoart history: the experimental, community-driven culture of Tezos and the emergence of Bitcoin as a space for long-term inscription.</p>
+          
+          <p>Being part of the sub-100k inscriptions situates this Ordinal within a pre-canonical period, when creators were not following rules, but actively defining them. In that sense, its relevance lies less in its appearance and more in its timing.</p>
+          
+          <p>This inscription is not for sale. Its value is not transactional, but historical and personal. It functions as a trace: a record of presence, authorship, and participation at the moment when Bitcoin first began to be explored as a cultural archive.</p>
+        </div>
+        
+        <a href="https://ordinals.com/inscription/18ae4989037def548d2ac95c10d5e59f7327640ee535909d083be9089677d0c8i0" target="_blank" rel="noopener" class="ordinal-button">
+          View on Ordinals.com
+        </a>
+      </div>
+      
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+// Mobile Menu
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-menu').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
 
