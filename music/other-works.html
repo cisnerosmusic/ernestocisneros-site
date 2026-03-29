@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Other Musical Works | Ernesto Cisneros Cino</title>
+<meta name="description" content="Film scores, television, documentary, ballet, and broadcast compositions by Ernesto Cisneros Cino.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.35);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(8, 6, 4, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo { display: flex; flex-direction: column; gap: 2px; }
+.nav-logo img { height: 50px; width: auto; mix-blend-mode: lighten; }
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-item:hover { color: var(--gold); }
+.nav-item.active { color: var(--gold); }
+
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: rgba(13, 10, 6, 0.97);
+  border: 1px solid var(--gold-faint);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.nav-dropdown-item:last-child { border-bottom: none; }
+.nav-dropdown-item:hover { color: var(--gold); background: var(--gold-faint); }
+.nav-dropdown-item.active { color: var(--gold); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span { display: block; width: 24px; height: 1px; background: var(--gold); }
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.9;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Category Block */
+.category {
+  margin-bottom: 3.5rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.category-line {
+  flex: 1;
+  height: 1px;
+  background: var(--gold-faint);
+}
+
+.category-note {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+/* Credits List */
+.credits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.credit-item {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.credit-item:last-child {
+  border-bottom: none;
+}
+
+.credit-year {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--gold-dim);
+}
+
+.credit-title {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.credit-role {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.credit-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Prose Block */
+.prose-block {
+  background: var(--bg-card);
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+}
+
+.prose-block p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--bg-dark);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem;
+    gap: 0;
+    border-left: 1px solid var(--line);
+    transition: right 0.3s ease;
+  }
+  .nav-menu.open { right: 0; }
+  .nav-item { padding: 1rem 0; width: 100%; border-bottom: 1px solid var(--line); }
+  .nav-dropdown-content { position: static; transform: none; background: transparent; border: none; padding: 0 0 0 1rem; opacity: 1; visibility: visible; }
+  .nav-toggle { display: flex; }
+}
+
+@media (max-width: 700px) {
+  .credit-item {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+  
+  .credit-year {
+    font-size: 0.75rem;
+  }
+  
+  .credit-role {
+    text-align: left;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .category-title { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item active">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="other-works.html" class="nav-dropdown-item active">Other Musical Works</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">Books</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="../ideas/technology-society.html" class="nav-dropdown-item">Technology & Society</a>
+          <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
+          <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+  
+  <section class="hero">
+    <span class="hero-subtitle">Music</span>
+    <h1 class="hero-title">Other Musical Works</h1>
+    <p class="hero-text">A selection of compositions for film, television, documentary, ballet, theater, and broadcast media, spanning over two decades of professional work.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- Film & Documentary -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Film & Documentary</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2017</span>
+          <span class="credit-title">Ex-Change <span class="credit-note">(Cuban-American documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2015</span>
+          <span class="credit-title">El Bardo Inmortal</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2012</span>
+          <span class="credit-title">A Pesar de Todo <span class="credit-note">(documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2010</span>
+          <span class="credit-title">Casa Vieja</span>
+          <span class="credit-role">Music production collaborator</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2008</span>
+          <span class="credit-title">La Ausencia</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2006</span>
+          <span class="credit-title">Coro de Ciudad <span class="credit-note">(documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">La Gracia de Volver <span class="credit-note">(documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Perfecto Amor Equivocado <span class="credit-note">(Cuban-Spanish co-production)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Caminos de Revolución <span class="credit-note">(documentary series)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Viviendo al Límite <span class="credit-note">(documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Bailando Chachachá</span>
+          <span class="credit-role">Music production collaborator</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">La Naturaleza Secreta de Cuba <span class="credit-note">(documentary series)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">Pintores Contemporáneos Cubanos <span class="credit-note">(documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">Dreaming of Julia <span class="credit-note">(American film)</span></span>
+          <span class="credit-role">Music production collaborator</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">Suite Habana <span class="credit-note">(Cuban-Spanish co-production)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2002</span>
+          <span class="credit-title">Aunque estés Lejos <span class="credit-note">(Cuban-Spanish co-production)</span></span>
+          <span class="credit-role">Music production collaborator</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2002</span>
+          <span class="credit-title">Ausencia Presente <span class="credit-note">(documentary)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2001</span>
+          <span class="credit-title">Nada</span>
+          <span class="credit-role">Musical arranger</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2000</span>
+          <span class="credit-title">Hacerse el Sueco</span>
+          <span class="credit-role">Music production collaborator</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Television Drama -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Television Drama</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <p class="category-note">Telenovelas are sometimes considered a minor genre, but they demand vast amounts of original music: themes, transitions, emotional cues, and dramatic scoring across dozens of episodes. This body of work represents a significant portion of my compositional output.</p>
+      
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2022</span>
+          <span class="credit-title">El Rostro de los Días</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2013</span>
+          <span class="credit-title">Playa Eleonora</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2011</span>
+          <span class="credit-title">Con Palabras Propias</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2007</span>
+          <span class="credit-title">Historias de Fuego</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2002</span>
+          <span class="credit-title">Salir de Noche</span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2001</span>
+          <span class="credit-title">Violetas de Agua</span>
+          <span class="credit-role">Music production collaborator</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Television Series -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Television Series & Broadcast</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2012–18</span>
+          <span class="credit-title">Hábitat <span class="credit-note">(TV series, 7 seasons)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2009</span>
+          <span class="credit-title">Flores por Patricia <span class="credit-note">(TV series)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">Breves Estaciones <span class="credit-note">(TV program)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">Páginas Compartidas <span class="credit-note">(TV program)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">Donde Va La Habana <span class="credit-note">(TV program)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2001</span>
+          <span class="credit-title">Entorno <span class="credit-note">(TV program)</span></span>
+          <span class="credit-role">Incidental music composer</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Broadcast Identity -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Broadcast Identity & Channel Music</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <p class="category-note">Original compositions created as sonic identity for television and radio channels: the music audiences hear every day as a channel's signature.</p>
+      
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2014</span>
+          <span class="credit-title">National educational television channel</span>
+          <span class="credit-role">Theme music composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2010–15</span>
+          <span class="credit-title">National news agency</span>
+          <span class="credit-role">Channel music composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">Havana metropolitan television channel</span>
+          <span class="credit-role">Theme music composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">National educational television channel (second network)</span>
+          <span class="credit-role">Theme music composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">National radio station</span>
+          <span class="credit-role">Music program composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2000</span>
+          <span class="credit-title">Ibero-American Summit in Cuba</span>
+          <span class="credit-role">Promotional spot composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1997</span>
+          <span class="credit-title">Metánica <span class="credit-note">(industrial event)</span></span>
+          <span class="credit-role">Promotional spot composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1996</span>
+          <span class="credit-title">Cuban international broadcast channel</span>
+          <span class="credit-role">Theme music composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1995</span>
+          <span class="credit-title">National radio station</span>
+          <span class="credit-role">Promotional spots composer</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Ballet & Theater -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Ballet, Theater & Live Performance</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2010</span>
+          <span class="credit-title">Bésame Mucho <span class="credit-note">(musical, Yoldance company)</span></span>
+          <span class="credit-role">Composer and arranger</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Imágenes Dalí <span class="credit-note">(ballet for the Cuban National Ballet, choreography by Rafael Prado)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">X International Festival of Electroacoustic Music</span>
+          <span class="credit-role">Participant</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1988–90</span>
+          <span class="credit-title">Various theatrical productions</span>
+          <span class="credit-role">Incidental music composer</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Multimedia -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Multimedia & Other Projects</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Patrimonio <span class="credit-note">(interactive multimedia, published by Cubarte Editions)</span></span>
+          <span class="credit-role">Composer</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2000</span>
+          <span class="credit-title">Synthesizer Programming Course <span class="credit-note">(first course of its kind in Aguascalientes, Mexico)</span></span>
+          <span class="credit-role">Instructor</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- International Touring -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">International Work</h2>
+        <span class="category-line"></span>
+      </div>
+      
+      <div class="prose-block">
+        <p>Since 1999, Ernesto has performed and worked internationally across England, Spain, Italy, Germany, France, Russia, South Korea, Argentina, Venezuela, Panama, Costa Rica, Nicaragua, Mexico, the United States, and Canada, collaborating with various artists and developing pedagogical projects alongside his compositional work.</p>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+// Mobile Menu
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-menu').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>

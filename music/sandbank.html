@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandbank | Ernesto Cisneros Cino</title>
+<meta name="description" content="Sandbank: A collaborative audiovisual project with Gino Battiston. Documentary film from the Central Desert of Mendoza, Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #0a0806;
+  --bg-dark: #12100c;
+  --bg-card: rgba(30, 25, 18, 0.5);
+  --sand: #c9a227;
+  --sand-bright: #e6c547;
+  --sand-dim: rgba(201, 162, 39, 0.5);
+  --sand-faint: rgba(201, 162, 39, 0.15);
+  --ochre: #b5651d;
+  --dust: #d4b896;
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--sand); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--sand-bright); }
+
+/* Dust Canvas */
+#dust-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 8, 6, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand-faint);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo { display: flex; flex-direction: column; gap: 2px; }
+.nav-logo img { height: 50px; width: auto; mix-blend-mode: lighten; }
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-item:hover { color: var(--sand); }
+.nav-item.active { color: var(--sand); }
+
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: rgba(13, 10, 6, 0.97);
+  border: 1px solid var(--sand-faint);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--sand-faint);
+  transition: all 0.3s;
+}
+
+.nav-dropdown-item:last-child { border-bottom: none; }
+.nav-dropdown-item:hover { color: var(--sand); background: var(--sand-faint); }
+.nav-dropdown-item.active { color: var(--sand); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span { display: block; width: 24px; height: 1px; background: var(--sand); }
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--sand);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+}
+
+.hero-location {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.hero-collaborator {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.hero-collaborator a {
+  color: var(--sand-dim);
+}
+
+/* Content */
+.content-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Divider */
+.divider {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ochre), transparent);
+  margin: 3rem auto;
+}
+
+/* Description */
+.description {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.description p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 2;
+  margin-bottom: 1rem;
+}
+
+.description em {
+  color: var(--dust);
+}
+
+/* Player */
+.player-section {
+  background: var(--bg-card);
+  border: 1px solid var(--sand-faint);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.player-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tracklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(10, 8, 6, 0.6);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.track:hover {
+  background: rgba(201, 162, 39, 0.08);
+  border-color: var(--sand-faint);
+}
+
+.track.active {
+  background: rgba(201, 162, 39, 0.12);
+  border-color: var(--sand-dim);
+}
+
+.track-number {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--ochre);
+  min-width: 30px;
+}
+
+.track-title {
+  flex: 1;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.track-duration {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.track.active .track-title {
+  color: var(--sand);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.now-playing {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--sand);
+  text-align: center;
+}
+
+.progress-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  min-width: 45px;
+}
+
+.time:last-child {
+  text-align: right;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(201, 162, 39, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ochre), var(--sand));
+  width: 0%;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--sand);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.progress-bar:hover .progress-fill::after {
+  opacity: 1;
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--sand-dim);
+  transition: all 0.3s;
+  padding: 0.5rem;
+}
+
+.control-btn:hover {
+  color: var(--sand);
+  transform: scale(1.1);
+}
+
+.control-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.play-btn {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--sand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sand);
+  transition: all 0.3s;
+}
+
+.play-btn:hover {
+  background: var(--sand-faint);
+  transform: scale(1.05);
+}
+
+.play-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  margin-left: 3px;
+}
+
+.play-btn.playing svg {
+  margin-left: 0;
+}
+
+/* Links */
+.links-section {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sand);
+  background: transparent;
+  border: 1px solid var(--sand-faint);
+  transition: all 0.3s;
+}
+
+.link-btn:hover {
+  background: var(--sand-faint);
+  border-color: var(--sand);
+  color: var(--sand-bright);
+}
+
+/* Concept */
+.concept-block {
+  background: var(--bg-card);
+  border-left: 2px solid var(--ochre);
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.concept-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 1rem;
+}
+
+.concept-block p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.concept-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--sand-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--bg-dark);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem;
+    gap: 0;
+    border-left: 1px solid var(--line);
+    transition: right 0.3s ease;
+  }
+  .nav-menu.open { right: 0; }
+  .nav-item { padding: 1rem 0; width: 100%; border-bottom: 1px solid var(--line); }
+  .nav-dropdown-content { position: static; transform: none; background: transparent; border: none; padding: 0 0 0 1rem; opacity: 1; visibility: visible; }
+  .nav-toggle { display: flex; }
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .player-section { padding: 1.5rem; }
+  .track { padding: 0.8rem 1rem; }
+  .control-buttons { gap: 1.5rem; }
+  .links-section { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="dust-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item active">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="sandbank.html" class="nav-dropdown-item active">Sandbank</a>
+          <a href="other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">Books</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="../ideas/technology-society.html" class="nav-dropdown-item">Technology & Society</a>
+          <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
+          <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+  
+  <section class="hero">
+    <span class="hero-subtitle">Collaborative Project</span>
+    <h1 class="hero-title">Sandbank</h1>
+    <p class="hero-location">Central Desert, Mendoza, Argentina</p>
+    <p class="hero-collaborator">Music: Ernesto Cisneros · Video: <a href="https://ginobattiston.com" target="_blank" rel="noopener">Gino Battiston</a></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+    
+    <div class="description">
+      <p><em>Music made independently of the video.<br>Video made independently of the music.</em></p>
+      <p>An unexpected encounter between two creative forces, disposed to occupy an author-reader role before the result of collaboration.</p>
+    </div>
+
+    <div class="player-section">
+      <p class="player-title">Documentary Film Score</p>
+      
+      <div class="tracklist">
+        <div class="track active" data-track="0">
+          <span class="track-number">I</span>
+          <span class="track-title">Sandbank I</span>
+          <span class="track-duration" id="dur-0">--:--</span>
+        </div>
+        <div class="track" data-track="1">
+          <span class="track-number">II</span>
+          <span class="track-title">Sandbank II</span>
+          <span class="track-duration" id="dur-1">--:--</span>
+        </div>
+        <div class="track" data-track="2">
+          <span class="track-number">III</span>
+          <span class="track-title">Sandbank III</span>
+          <span class="track-duration" id="dur-2">--:--</span>
+        </div>
+        <div class="track" data-track="3">
+          <span class="track-number">IV</span>
+          <span class="track-title">Sandbank IV</span>
+          <span class="track-duration" id="dur-3">--:--</span>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <p class="now-playing">Sandbank I</p>
+        
+        <div class="progress-container">
+          <span class="time" id="current-time">0:00</span>
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="time" id="total-time">--:--</span>
+        </div>
+        
+        <div class="control-buttons">
+          <button class="control-btn" id="prev-btn" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          <button class="play-btn" id="play-btn" aria-label="Play">
+            <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button class="control-btn" id="next-btn" aria-label="Next">
+            <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="links-section">
+      <a href="https://opensea.io/collection/sandbankvideo" target="_blank" rel="noopener" class="link-btn">View NFT Collection on OpenSea</a>
+      <a href="https://ginobattiston.com" target="_blank" rel="noopener" class="link-btn">Gino Battiston</a>
+    </div>
+
+    <div class="concept-block">
+      <h3 class="concept-title">The Concept</h3>
+      <p>A metamodel or bank of visual and sound images, feasible to be intervened by its collectors. Allowing the emergence of new versions, points of view, emotional, sensational, rhythmic interactions.</p>
+      <p>The acquisition of each piece of this collection unlocks access to the audio and video archive bank, containing audiovisual material belonging to all the chapters (not only of the purchased piece). Each collector will be able to re-enchain the audio-visual powers as they wish, creating their own alternative versions, with commercial or non-commercial purposes.</p>
+      <p><em>The encounter supposes an unexpected "between two", disposing its creators to occupy an author-reader role before the result of collaboration, as of the possible versions that can emerge from its collectors.</em></p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Dust Particles - Patagonian Desert Aesthetic
+(function() {
+  const canvas = document.getElementById('dust-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 100;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    const isLarge = Math.random() > 0.85;
+    return {
+      x: init ? Math.random() * canvas.width : -10,
+      y: Math.random() * canvas.height,
+      size: isLarge ? Math.random() * 3 + 2 : Math.random() * 1.5 + 0.3,
+      speedX: Math.random() * 0.8 + 0.2,
+      speedY: (Math.random() - 0.5) * 0.3,
+      opacity: isLarge ? Math.random() * 0.15 + 0.05 : Math.random() * 0.4 + 0.1,
+      drift: Math.random() * Math.PI * 2,
+      driftSpeed: Math.random() * 0.01 + 0.005,
+      color: Math.random() > 0.5 ? '201, 162, 39' : '212, 184, 150'
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach((p, i) => {
+      p.x += p.speedX;
+      p.drift += p.driftSpeed;
+      p.y += p.speedY + Math.sin(p.drift) * 0.3;
+      
+      if (p.x > canvas.width + 10) {
+        particles[i] = createParticle(false);
+      }
+      
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + p.color + ', ' + p.opacity + ')';
+      ctx.fill();
+      
+      if (p.size > 2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
+        g.addColorStop(0, 'rgba(' + p.color + ', ' + (p.opacity * 0.5) + ')');
+        g.addColorStop(1, 'rgba(' + p.color + ', 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+// Audio Player
+(function() {
+  const tracks = [
+    { title: 'Sandbank I', src: '../assets/audio/sandbank/sandbank-1.mp3' },
+    { title: 'Sandbank II', src: '../assets/audio/sandbank/sandbank-2.mp3' },
+    { title: 'Sandbank III', src: '../assets/audio/sandbank/sandbank-3.mp3' },
+    { title: 'Sandbank IV', src: '../assets/audio/sandbank/sandbank-4.mp3' }
+  ];
+  
+  let currentTrack = 0;
+  let isPlaying = false;
+  const audio = new Audio();
+  
+  const playBtn = document.getElementById('play-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const progressBar = document.getElementById('progress-bar');
+  const progressFill = document.getElementById('progress-fill');
+  const currentTimeEl = document.getElementById('current-time');
+  const totalTimeEl = document.getElementById('total-time');
+  const nowPlaying = document.querySelector('.now-playing');
+  const trackEls = document.querySelectorAll('.track');
+  
+  function formatTime(s) {
+    if (isNaN(s)) return '--:--';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+  
+  function loadTrack(index) {
+    currentTrack = index;
+    audio.src = tracks[index].src;
+    nowPlaying.textContent = tracks[index].title;
+    
+    trackEls.forEach((el, i) => {
+      el.classList.toggle('active', i === index);
+    });
+    
+    audio.addEventListener('loadedmetadata', function() {
+      totalTimeEl.textContent = formatTime(audio.duration);
+      document.getElementById('dur-' + index).textContent = formatTime(audio.duration);
+    });
+  }
+  
+  function play() {
+    audio.play();
+    isPlaying = true;
+    playBtn.querySelector('.play-icon').style.display = 'none';
+    playBtn.querySelector('.pause-icon').style.display = 'block';
+    playBtn.classList.add('playing');
+  }
+  
+  function pause() {
+    audio.pause();
+    isPlaying = false;
+    playBtn.querySelector('.play-icon').style.display = 'block';
+    playBtn.querySelector('.pause-icon').style.display = 'none';
+    playBtn.classList.remove('playing');
+  }
+  
+  playBtn.addEventListener('click', () => {
+    if (isPlaying) pause();
+    else play();
+  });
+  
+  prevBtn.addEventListener('click', () => {
+    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+    loadTrack(currentTrack);
+    if (isPlaying) play();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    loadTrack(currentTrack);
+    if (isPlaying) play();
+  });
+  
+  trackEls.forEach((el, i) => {
+    el.addEventListener('click', () => {
+      loadTrack(i);
+      play();
+    });
+  });
+  
+  audio.addEventListener('timeupdate', () => {
+    const pct = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = pct + '%';
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+  });
+  
+  audio.addEventListener('ended', () => {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    loadTrack(currentTrack);
+    play();
+  });
+  
+  progressBar.addEventListener('click', (e) => {
+    const rect = progressBar.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+  
+  // Load durations
+  tracks.forEach((t, i) => {
+    const tempAudio = new Audio(t.src);
+    tempAudio.addEventListener('loadedmetadata', () => {
+      document.getElementById('dur-' + i).textContent = formatTime(tempAudio.duration);
+    });
+  });
+  
+  loadTrack(0);
+})();
+
+// Mobile Menu
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-menu').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
