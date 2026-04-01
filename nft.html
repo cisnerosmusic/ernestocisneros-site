@@ -560,7 +560,9 @@
     <!-- The Bride of the Moon -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/bride-of-the-moon.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/bride-of-the-moon.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>The Bride of the Moon</h3>
@@ -577,7 +579,9 @@
     <!-- Canto del cello -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/canto-del-cello.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/canto-del-cello.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>Canto del cello</h3>
@@ -595,7 +599,9 @@
     <!-- The Veil -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/the-veil.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/the-veil.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>The Veil</h3>
@@ -612,7 +618,9 @@
     <!-- Mother -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/mother.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/mother.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>Mother</h3>
@@ -629,7 +637,9 @@
     <!-- Seafarers -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/seafarers.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/seafarers.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>Seafarers</h3>
@@ -646,7 +656,9 @@
     <!-- Heart Strings -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/heart-strings.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/heart-strings.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>Heart Strings</h3>
@@ -662,7 +674,9 @@
     <!-- The Sound of Our Souls -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/sound-of-our-souls.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/sound-of-our-souls.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>The Sound of Our Souls</h3>
@@ -678,7 +692,9 @@
     <!-- Seguir Viva -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/seguir-viva.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/seguir-viva.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>Seguir Viva</h3>
@@ -695,7 +711,7 @@
     <!-- Discordant -->
     <article class="nft-card">
       <div class="nft-media">
-        <img src="assets/nft/discordant.jpg" alt="Discordant - Abstract black and white line drawing">
+        <img src="assets/nft/compressed/discordant.jpg" alt="Discordant" loading="lazy">
       </div>
       <div class="nft-info">
         <h3>Discordant</h3>
@@ -711,7 +727,7 @@
     <!-- N50 -->
     <article class="nft-card">
       <div class="nft-media">
-        <img src="assets/nft/n50-betrayal-of-the-cycle.jpg" alt="N50 (The Betrayal of the Cycle) - Geometric digital artwork">
+        <img src="assets/nft/compressed/n50-betrayal-of-the-cycle.jpg" alt="N50 (The Betrayal of the Cycle)" loading="lazy">
       </div>
       <div class="nft-info">
         <h3>N50 (The Betrayal of the Cycle)</h3>
@@ -726,7 +742,9 @@
     <!-- Piano-1 -->
     <article class="nft-card">
       <div class="nft-media">
-        <video src="assets/nft/piano-1.mp4" loop muted playsinline onclick="this.paused ? this.play() : this.pause()"></video>
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="assets/nft/compressed/piano-1.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="nft-info">
         <h3>Piano-1</h3>
@@ -781,15 +799,6 @@
     const navMenu = document.querySelector('.nav-menu');
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
-    });
-
-    // Auto-play videos on hover
-    document.querySelectorAll('.nft-media video').forEach(video => {
-      video.addEventListener('mouseenter', () => video.play());
-      video.addEventListener('mouseleave', () => {
-        video.pause();
-        video.currentTime = 0;
-      });
     });
 
     // Particle animation

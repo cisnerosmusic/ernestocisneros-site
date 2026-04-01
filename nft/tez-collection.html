@@ -206,132 +206,100 @@ a:hover { color: var(--gold-bright); }
   color: var(--text-primary);
 }
 
-/* Masonry Gallery */
+/* Collection Gallery */
 .gallery {
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.masonry {
-  column-count: 4;
-  column-gap: 1.5rem;
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--gold-faint);
+  background: var(--bg-card);
+  text-align: center;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.masonry-item img {
+.card-media {
   width: 100%;
-  display: block;
-  border: 1px solid var(--gold-faint);
-  transition: all 0.4s ease;
-  filter: saturate(0.9);
+  aspect-ratio: 1;
+  overflow: hidden;
 }
 
-.masonry-item:hover img {
-  border-color: var(--gold-dim);
-  filter: saturate(1);
-  transform: scale(1.02);
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.masonry-item::after {
+.collection-card:hover .card-media img {
+  transform: scale(1.05);
+}
+
+.card-info {
+  padding: 1rem;
+}
+
+.collection-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(8, 6, 4, 0.6) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(212, 160, 48, 0.05) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
 }
 
-.masonry-item:hover::after {
+.collection-card:hover {
+  border-color: var(--gold-dim);
+  background: rgba(20, 16, 10, 0.9);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(212, 160, 48, 0.15);
+}
+
+.collection-card:hover::before {
   opacity: 1;
 }
 
-/* Lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 4, 3, 0.97);
-  z-index: 2000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.lightbox.active {
-  display: flex;
-  opacity: 1;
-}
-
-.lightbox-content {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.lightbox-content img {
-  max-width: 90vw;
-  max-height: 85vh;
-  object-fit: contain;
-  border: 1px solid var(--gold-faint);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -50px;
-  right: 0;
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 2rem;
-  cursor: pointer;
-  transition: color 0.3s;
-  padding: 0.5rem;
-}
-
-.lightbox-close:hover { color: var(--gold); }
-
-.lightbox-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(13, 10, 6, 0.8);
-  border: 1px solid var(--gold-faint);
-  color: var(--text-secondary);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 1rem 1.2rem;
-  transition: all 0.3s;
-}
-
-.lightbox-nav:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(13, 10, 6, 0.95);
-}
-
-.lightbox-prev { left: -80px; }
-.lightbox-next { right: -80px; }
-
-.lightbox-hint {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+.card-title {
   font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  opacity: 0.6;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  word-break: break-word;
+  z-index: 1;
+  position: relative;
+}
+
+.card-action {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: all 0.3s;
+  z-index: 1;
+  position: relative;
+}
+
+.collection-card:hover .card-action {
+  color: var(--gold-bright);
+  opacity: 1;
 }
 
 /* Footer */
@@ -349,12 +317,12 @@ a:hover { color: var(--gold-bright); }
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .masonry { column-count: 3; }
+  .collection-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 900px) {
-  .masonry { column-count: 2; }
-  
+  .collection-grid { grid-template-columns: repeat(2, 1fr); }
+
   .nav-menu {
     position: fixed;
     top: 0;
@@ -386,17 +354,12 @@ a:hover { color: var(--gold-bright); }
     visibility: visible;
   }
   .nav-toggle { display: flex; }
-  
-  .lightbox-prev { left: 10px; }
-  .lightbox-next { right: 10px; }
 }
 
 @media (max-width: 600px) {
-  .masonry { column-count: 1; column-gap: 0; }
-  .masonry-item { margin-bottom: 1rem; }
+  .collection-grid { grid-template-columns: 1fr; }
   .gallery { padding: 1rem; }
   .hero { padding: 3rem 1.5rem 2rem; }
-  .lightbox-nav { padding: 0.8rem 1rem; font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -479,49 +442,63 @@ a:hover { color: var(--gold-bright); }
   </section>
 
   <section class="gallery">
-    <div class="masonry">
-      <div class="masonry-item" data-index="0">
-        <img src="../assets/nft/tez-collection/archetypes.png" alt="Archetypes">
-      </div>
-      <div class="masonry-item" data-index="1">
-        <img src="../assets/nft/tez-collection/beyond.jpg" alt="Beyond">
-      </div>
-      <div class="masonry-item" data-index="2">
-        <img src="../assets/nft/tez-collection/cercanias.jpg" alt="Cercanías">
-      </div>
-      <div class="masonry-item" data-index="3">
-        <img src="../assets/nft/tez-collection/dancer-on-the-railroads.jpg" alt="Dancer on the Railroads">
-      </div>
-      <div class="masonry-item" data-index="4">
-        <img src="../assets/nft/tez-collection/dc-night-004.jpg" alt="DC Night 004">
-      </div>
-      <div class="masonry-item" data-index="5">
-        <img src="../assets/nft/tez-collection/elle-n0-cc-1.png" alt="ELLE nº0">
-      </div>
-      <div class="masonry-item" data-index="6">
-        <img src="../assets/nft/tez-collection/fly-to-the-moon.jpg" alt="Fly to the Moon">
-      </div>
-      <div class="masonry-item" data-index="7">
-        <img src="../assets/nft/tez-collection/good-memories.jpg" alt="Good Memories">
-      </div>
-      <div class="masonry-item" data-index="8">
-        <img src="../assets/nft/tez-collection/la-creacion.jpg" alt="La Creación">
-      </div>
-      <div class="masonry-item" data-index="9">
-        <img src="../assets/nft/tez-collection/lost-sea.jpg" alt="Lost Sea">
-      </div>
-      <div class="masonry-item" data-index="10">
-        <img src="../assets/nft/tez-collection/solarization-18.png" alt="Solarization #18">
-      </div>
-      <div class="masonry-item" data-index="11">
-        <img src="../assets/nft/tez-collection/the-hole-and-the-skin-5.jpg" alt="The Hole and the Skin 5">
-      </div>
-      <div class="masonry-item" data-index="12">
-        <img src="../assets/nft/tez-collection/underwater-depths-001.png" alt="Underwater Depths 001">
-      </div>
-      <div class="masonry-item" data-index="13">
-        <img src="../assets/nft/tez-collection/woman-in-sepia-i.jpg" alt="Woman in Sepia I">
-      </div>
+    <div class="collection-grid">
+      <a href="https://objkt.com/tokens/hicetnunc/150843" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/archetypes.jpg" alt="Archetypes" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Archetypes</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/KT1TveAQDnsE99vni2kmxXWPJXmH5NajpGRj/6" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/beyond.jpg" alt="Beyond" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Beyond</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/hicetnunc/809259" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/cercanias.jpg" alt="Cercanías" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Cercanías</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/hicetnunc/711795" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/dancer-on-the-railroads.jpg" alt="Dancer on the Railroads" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Dancer on the Railroads</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/kalamint/34046" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/dc-night-004.jpg" alt="DC Night 004" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">DC Night 004</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/hicetnunc/60327" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/elle-n0-cc-1.jpg" alt="ELLE nº0" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">ELLE nº0</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/@ernestocisneros" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/fly-to-the-moon.jpg" alt="Fly to the Moon" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Fly to the Moon</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/hicetnunc/409852" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/good-memories.jpg" alt="Good Memories" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Good Memories</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/KT1BXu24kCt4SJTXsrv692frdATfCLvoh5Nn/5" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/la-creacion.jpg" alt="La Creación" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">La Creación</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/hicetnunc/599662" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/lost-sea.jpg" alt="Lost Sea" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Lost Sea</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/KT1RwhJXpfjdSG341J9H25FyKwDHSm53F8mK/17" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/solarization-18.jpg" alt="Solarization #18" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Solarization #18</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/kalamint/62674" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/the-hole-and-the-skin-5.jpg" alt="The Hole and the Skin 5" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">The Hole and the Skin 5</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/KT19bVgRFeR2AochRqqPLaNSbiAxJYxyiUx1/0" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/underwater-depths-001.jpg" alt="Underwater Depths 001" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Underwater Depths 001</span><span class="card-action">View on objkt →</span></div>
+      </a>
+      <a href="https://objkt.com/tokens/KT1WDXttQsdBEr9SHxQo7y6HGKKMUWGbcWRN/0" target="_blank" rel="noopener" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/tez-collection/woman-in-sepia-i.jpg" alt="Woman in Sepia I" loading="lazy"></div>
+        <div class="card-info"><span class="card-title">Woman in Sepia I</span><span class="card-action">View on objkt →</span></div>
+      </a>
     </div>
   </section>
 </main>
@@ -529,17 +506,6 @@ a:hover { color: var(--gold-bright); }
 <footer class="footer">
   <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
 </footer>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-content">
-    <button class="lightbox-close" aria-label="Close">×</button>
-    <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-nav lightbox-next" aria-label="Next">›</button>
-    <p class="lightbox-hint">ESC to close · ← → to navigate</p>
-  </div>
-</div>
 
 <script>
 // Gold Particles
@@ -601,56 +567,6 @@ a:hover { color: var(--gold-bright); }
   resize();
   init();
   animate();
-})();
-
-// Lightbox
-(function() {
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const items = document.querySelectorAll('.masonry-item');
-  const images = Array.from(items).map(item => item.querySelector('img').src);
-  let currentIndex = 0;
-
-  function open(index) {
-    currentIndex = index;
-    lightboxImg.src = images[currentIndex];
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function close() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  function next() {
-    currentIndex = (currentIndex + 1) % images.length;
-    lightboxImg.src = images[currentIndex];
-  }
-
-  function prev() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    lightboxImg.src = images[currentIndex];
-  }
-
-  items.forEach((item, i) => {
-    item.addEventListener('click', () => open(i));
-  });
-
-  lightbox.querySelector('.lightbox-close').addEventListener('click', close);
-  lightbox.querySelector('.lightbox-next').addEventListener('click', next);
-  lightbox.querySelector('.lightbox-prev').addEventListener('click', prev);
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) close();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'ArrowLeft') prev();
-  });
 })();
 
 // Mobile Menu

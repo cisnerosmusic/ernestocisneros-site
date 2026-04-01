@@ -206,57 +206,91 @@ a:hover { color: var(--gold-bright); }
   color: var(--text-primary);
 }
 
-/* Vertical Gallery */
+/* Collection Gallery Grid */
 .gallery {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.artwork {
-  margin-bottom: 6rem;
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.collection-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.artwork-media {
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.artwork-media img,
-.artwork-media video {
-  max-width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
   border: 1px solid var(--gold-faint);
-  cursor: pointer;
-  transition: border-color 0.3s, transform 0.4s;
+  background: var(--bg-card);
+  text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.artwork-media img:hover,
-.artwork-media video:hover {
-  border-color: var(--gold-dim);
+.card-media {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
 }
 
-.artwork-media video {
-  cursor: default;
+.card-media img,
+.card-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-/* Separator between works */
-.artwork::after {
-  content: '';
+.collection-card:hover .card-media img,
+.collection-card:hover .card-media video {
+  transform: scale(1.05);
+}
+
+.card-info {
+  padding: 1.2rem;
+}
+
+.collection-card:hover {
+  border-color: var(--gold);
+  background: rgba(20, 16, 10, 0.9);
+  transform: translateY(-4px);
+}
+
+.card-title {
   display: block;
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-  margin-top: 4rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
-.artwork:last-child::after {
-  display: none;
+.card-artist {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.card-action {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.collection-card:hover .card-action {
+  color: var(--gold-bright);
 }
 
 /* Lightbox */
@@ -389,15 +423,31 @@ a:hover { color: var(--gold-bright); }
   
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
-  
-  .artwork { margin-bottom: 4rem; }
+
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 600px) {
   .gallery { padding: 1rem; }
   .hero { padding: 3rem 1.5rem 2rem; }
   .lightbox-nav { padding: 0.8rem 1rem; font-size: 1.2rem; }
-  .artwork::after { margin-top: 3rem; }
+
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .collection-card {
+    padding: 1.5rem;
+    min-height: 150px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
 }
 </style>
 </head>
@@ -480,79 +530,117 @@ a:hover { color: var(--gold-bright); }
   </section>
 
   <section class="gallery">
-    
-    <article class="artwork" data-index="0" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/flows-like-blood.jpg" alt="Flows like blood by Cinthia Ponce">
-      </div>
-    </article>
+    <div class="collection-grid">
 
-    <article class="artwork" data-index="1" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/vecchia-illusione.jpg" alt="Vecchia illusione">
-      </div>
-    </article>
+      <a href="https://foundation.app/@cinthiaponce" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/flows-like-blood.jpg" alt="Flows like blood" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Flows like blood</span>
+          <span class="card-artist">by Cinthia Ponce</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="2" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/healing-pain.jpg" alt="Healing Pain by Tuco">
-      </div>
-    </article>
+      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/vecchia-illusione.jpg" alt="Vecchia illusione" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Vecchia illusione</span>
+          <span class="card-artist">Collected</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="3" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/soul-portrait-07.jpg" alt="Soul Portrait 07 by Achtungrael">
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0x7E974cCa00a39607d16dce293b75b98dd5e1F55B/5" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/healing-pain.jpg" alt="Healing Pain" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Healing Pain</span>
+          <span class="card-artist">by Tuco</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="4" data-type="video">
-      <div class="artwork-media">
-        <video src="../assets/nft/eth-collection/white-eye.mp4" loop muted playsinline></video>
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0xd815EaCfd95443059935Aa3582BD5b8ad59057c7/1" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/soul-portrait-07.jpg" alt="Soul Portrait 07" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Soul Portrait 07</span>
+          <span class="card-artist">by Achtungrael</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="5" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/toy-garden.gif" alt="Toy Garden by Mina Power">
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405/56320" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><video autoplay muted loop playsinline><source src="../assets/nft/compressed/eth-collection/white-eye.mp4" type="video/mp4"></video></div>
+        <div class="card-info">
+          <span class="card-title">White Eye</span>
+          <span class="card-artist">by Aissa Santiso</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="6" data-type="video">
-      <div class="artwork-media">
-        <video src="../assets/nft/eth-collection/traveling-without-moving.mp4" loop muted playsinline></video>
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0xd18b48d23ae5100c069d837c7e6E4AaA0545B6b7/1" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/toy-garden.gif" alt="Toy Garden" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Toy Garden</span>
+          <span class="card-artist">by Mina Power</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="7" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/desahogo.jpg" alt="Desahogo by Solum">
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405/111528" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><video autoplay muted loop playsinline><source src="../assets/nft/compressed/eth-collection/traveling-without-moving.mp4" type="video/mp4"></video></div>
+        <div class="card-info">
+          <span class="card-title">Traveling without moving</span>
+          <span class="card-artist">by LuiscArt</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="8" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/amparuche-95.png" alt="Amparuche #95">
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0xADD06c60872A81Dd883a9d731B5da08bE3Bf9Ca6/2" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/desahogo.jpg" alt="Desahogo" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Desahogo</span>
+          <span class="card-artist">by Solum</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="9" data-type="video">
-      <div class="artwork-media">
-        <video src="../assets/nft/eth-collection/road.mp4" loop muted playsinline></video>
-      </div>
-    </article>
+      <a href="https://foundation.app/mint/eth/0x4e16D3B5B5f49060127EcF2Ad1E78D7182eDBda8/95" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/amparuche-95.jpg" alt="Amparuche #95" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Amparuche #95</span>
+          <span class="card-artist">Collected</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="10" data-type="image">
-      <div class="artwork-media">
-        <img src="../assets/nft/eth-collection/forgive-me.jpg" alt="Forgive me by Ryanny Torna">
-      </div>
-    </article>
+      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><video autoplay muted loop playsinline><source src="../assets/nft/compressed/eth-collection/road.mp4" type="video/mp4"></video></div>
+        <div class="card-info">
+          <span class="card-title">Road</span>
+          <span class="card-artist">Video Work</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
-    <article class="artwork" data-index="11" data-type="video">
-      <div class="artwork-media">
-        <video src="../assets/nft/eth-collection/zoetrope-b5.mp4" loop muted playsinline></video>
-      </div>
-    </article>
+      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><img src="../assets/nft/compressed/eth-collection/forgive-me.jpg" alt="Forgive me" loading="lazy"></div>
+        <div class="card-info">
+          <span class="card-title">Forgive me</span>
+          <span class="card-artist">by Ryanny Torna</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
 
+      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+        <div class="card-media"><video autoplay muted loop playsinline><source src="../assets/nft/compressed/eth-collection/zoetrope-b5.mp4" type="video/mp4"></video></div>
+        <div class="card-info">
+          <span class="card-title">Zoetrope B5</span>
+          <span class="card-artist">Video Work</span>
+          <span class="card-action">View on Foundation →</span>
+        </div>
+      </a>
+
+    </div>
   </section>
 </main>
 
@@ -634,82 +722,17 @@ a:hover { color: var(--gold-bright); }
   animate();
 })();
 
-// Video autoplay on scroll
-(function() {
-  const videos = document.querySelectorAll('.artwork video');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.play();
-      } else {
-        entry.target.pause();
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  videos.forEach(video => observer.observe(video));
-})();
-
-// Lightbox
+// Lightbox (not used with card-based gallery, but structure retained for compatibility)
 (function() {
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxVideo = document.getElementById('lightbox-video');
-  const artworks = document.querySelectorAll('.artwork');
-  let currentIndex = 0;
-  
-  const mediaData = Array.from(artworks).map(artwork => {
-    const type = artwork.dataset.type;
-    const media = artwork.querySelector('img, video');
-    return { type, src: media.src };
-  });
-
-  function showMedia(index) {
-    currentIndex = index;
-    const { type, src } = mediaData[currentIndex];
-    
-    if (type === 'video') {
-      lightboxImg.style.display = 'none';
-      lightboxVideo.style.display = 'block';
-      lightboxVideo.src = src;
-      lightboxVideo.play();
-    } else {
-      lightboxVideo.style.display = 'none';
-      lightboxVideo.pause();
-      lightboxImg.style.display = 'block';
-      lightboxImg.src = src;
-    }
-  }
-
-  function open(index) {
-    showMedia(index);
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
+  if (!lightbox) return;
 
   function close() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
-    lightboxVideo.pause();
   }
-
-  function next() {
-    showMedia((currentIndex + 1) % mediaData.length);
-  }
-
-  function prev() {
-    showMedia((currentIndex - 1 + mediaData.length) % mediaData.length);
-  }
-
-  artworks.forEach((artwork, i) => {
-    const media = artwork.querySelector('img, video');
-    media.addEventListener('click', () => open(i));
-  });
 
   lightbox.querySelector('.lightbox-close').addEventListener('click', close);
-  lightbox.querySelector('.lightbox-next').addEventListener('click', next);
-  lightbox.querySelector('.lightbox-prev').addEventListener('click', prev);
 
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) close();
@@ -718,8 +741,6 @@ a:hover { color: var(--gold-bright); }
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') close();
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'ArrowLeft') prev();
   });
 })();
 
