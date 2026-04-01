@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resilience Valley | Stochastic Cosmology Visualization</title>
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --gold-glow: rgba(212, 160, 48, 0.3);
+  --copper-oxide: #2a6b4f;
+  --copper-bright: #3d9970;
+  --copper-dim: rgba(61, 153, 112, 0.5);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --text-dim: rgba(180, 140, 80, 0.5);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: linear-gradient(145deg, #0d0a06 0%, #080604 50%, #050403 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px var(--gold-glow);
+}
+
+.subtitle {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.equation {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gold-dim);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: linear-gradient(135deg, rgba(20, 16, 8, 0.6) 0%, rgba(13, 10, 6, 0.8) 100%);
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.panel-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1rem;
+}
+
+canvas {
+  width: 100%;
+  height: 300px;
+  display: block;
+  background: transparent;
+}
+
+.controls {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.control-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  min-width: 80px;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: var(--line);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+
+.value-display {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--gold-bright);
+  min-width: 60px;
+  text-align: right;
+}
+
+.stats {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+.stat-value.optimal {
+  color: var(--copper-bright);
+  text-shadow: 0 0 10px var(--copper-dim);
+}
+
+.zone-indicator {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  border: 1px solid;
+  transition: all 0.3s ease;
+}
+
+.zone-chaos {
+  border-color: rgba(180, 80, 60, 0.5);
+  color: rgba(220, 120, 80, 0.9);
+  background: rgba(180, 80, 60, 0.1);
+}
+
+.zone-resilience {
+  border-color: var(--copper-dim);
+  color: var(--copper-bright);
+  background: rgba(61, 153, 112, 0.1);
+}
+
+.zone-rigid {
+  border-color: rgba(100, 100, 140, 0.5);
+  color: rgba(140, 140, 180, 0.9);
+  background: rgba(100, 100, 140, 0.1);
+}
+
+.footer-note {
+  margin-top: 2rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.formula {
+  font-family: 'Space Mono', monospace;
+  color: var(--gold-dim);
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<h1>The Resilience Valley</h1>
+<p class="subtitle">Interactive visualization of the Canonical SDE Model</p>
+<p class="equation">R = τ · Ω &nbsp;|&nbsp; Damped Harmonic Oscillator + Ornstein-Uhlenbeck Noise</p>
+
+<div class="container">
+  
+  <!-- Oscillator Panel -->
+  <div class="panel">
+    <div class="panel-title">Oscillator Dynamics</div>
+    <canvas id="oscillator-canvas"></canvas>
+    
+    <div class="controls">
+      <div class="control-row">
+        <span class="control-label">R (τ·Ω)</span>
+        <input type="range" class="slider" id="r-slider" min="0.1" max="5" step="0.1" value="1.5">
+        <span class="value-display" id="r-value">1.50</span>
+      </div>
+      <div class="control-row">
+        <span class="control-label">Ω</span>
+        <input type="range" class="slider" id="omega-slider" min="0.5" max="2" step="0.1" value="1">
+        <span class="value-display" id="omega-value">1.00</span>
+      </div>
+      <div class="control-row">
+        <span class="control-label">Noise Γ</span>
+        <input type="range" class="slider" id="gamma-slider" min="0.1" max="2" step="0.1" value="1">
+        <span class="value-display" id="gamma-value">1.00</span>
+      </div>
+    </div>
+    
+    <div class="zone-indicator" id="zone-indicator">RESILIENCE ZONE</div>
+  </div>
+  
+  <!-- Variance Chart Panel -->
+  <div class="panel">
+    <div class="panel-title">Variance vs R — Finding the Valley</div>
+    <canvas id="variance-canvas"></canvas>
+    
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-label">Current Variance</span>
+        <span class="stat-value" id="current-variance">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Optimal R</span>
+        <span class="stat-value optimal" id="optimal-r">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Memory τ</span>
+        <span class="stat-value" id="tau-value">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Min Variance</span>
+        <span class="stat-value optimal" id="min-variance">—</span>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<p class="footer-note">
+  The <span class="formula">resilience valley</span> emerges where memory (τ) and oscillation (Ω) 
+  achieve optimal coupling — neither chaotic dissolution nor rigid crystallization, 
+  but a dynamic stability where complex systems persist.
+</p>
+
+<script>
+// ============================================
+// SIMULATION PARAMETERS
+// ============================================
+let R = 1.5;
+let Omega = 1.0;
+let Gamma = 1.0;
+let tau, gamma_damp;
+
+// State variables
+let x = 0, y = 0, zeta = 0;
+const dt = 0.016; // ~60fps timestep
+const historyLength = 400;
+let xHistory = new Array(historyLength).fill(0);
+let zetaHistory = new Array(historyLength).fill(0);
+
+// Variance tracking
+let x2Sum = 0;
+let sampleCount = 0;
+let currentVariance = 0;
+const varianceData = [];
+const varianceRValues = [];
+let optimalR = 1.5;
+let minVariance = Infinity;
+
+// ============================================
+// CANVAS SETUP
+// ============================================
+const oscCanvas = document.getElementById('oscillator-canvas');
+const oscCtx = oscCanvas.getContext('2d');
+const varCanvas = document.getElementById('variance-canvas');
+const varCtx = varCanvas.getContext('2d');
+
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  
+  oscCanvas.width = oscCanvas.offsetWidth * dpr;
+  oscCanvas.height = oscCanvas.offsetHeight * dpr;
+  oscCtx.scale(dpr, dpr);
+  
+  varCanvas.width = varCanvas.offsetWidth * dpr;
+  varCanvas.height = varCanvas.offsetHeight * dpr;
+  varCtx.scale(dpr, dpr);
+}
+
+// ============================================
+// COLORS
+// ============================================
+const colors = {
+  gold: '#d4a030',
+  goldBright: '#f0c860',
+  goldDim: 'rgba(212, 160, 48, 0.5)',
+  goldFaint: 'rgba(212, 160, 48, 0.15)',
+  copper: '#3d9970',
+  copperDim: 'rgba(61, 153, 112, 0.5)',
+  copperFaint: 'rgba(61, 153, 112, 0.2)',
+  text: 'rgba(200, 175, 130, 0.7)',
+  line: 'rgba(180, 130, 60, 0.15)',
+  lineBright: 'rgba(180, 130, 60, 0.3)'
+};
+
+// ============================================
+// SIMULATION
+// ============================================
+function updateParams() {
+  tau = R / Omega;
+  gamma_damp = 1 / tau; // coupled damping
+}
+
+function simulateStep() {
+  updateParams();
+  
+  const sqrt_dt = Math.sqrt(dt);
+  const noise_scale = Math.sqrt(2 * Gamma / tau);
+  
+  // Gaussian random (Box-Muller)
+  const u1 = Math.random();
+  const u2 = Math.random();
+  const dW = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2) * sqrt_dt;
+  
+  // Ornstein-Uhlenbeck noise
+  zeta = zeta + (-zeta / tau * dt + noise_scale * dW);
+  
+  // Damped harmonic oscillator
+  y = y + (-gamma_damp * y - Omega * Omega * x + zeta) * dt;
+  x = x + y * dt;
+  
+  // Clamp for stability
+  x = Math.max(-10, Math.min(10, x));
+  y = Math.max(-10, Math.min(10, y));
+  
+  // Update history
+  xHistory.shift();
+  xHistory.push(x);
+  zetaHistory.shift();
+  zetaHistory.push(zeta);
+  
+  // Track variance
+  x2Sum += x * x;
+  sampleCount++;
+  if (sampleCount > 100) {
+    currentVariance = x2Sum / sampleCount;
+    x2Sum = 0;
+    sampleCount = 0;
+  }
+}
+
+// ============================================
+// DRAW OSCILLATOR
+// ============================================
+function drawOscillator() {
+  const w = oscCanvas.offsetWidth;
+  const h = oscCanvas.offsetHeight;
+  
+  oscCtx.clearRect(0, 0, w, h);
+  
+  // Grid
+  oscCtx.strokeStyle = colors.line;
+  oscCtx.lineWidth = 0.5;
+  const midY = h / 2;
+  oscCtx.beginPath();
+  oscCtx.moveTo(0, midY);
+  oscCtx.lineTo(w, midY);
+  oscCtx.stroke();
+  
+  // Noise trace (zeta) - copper
+  oscCtx.beginPath();
+  oscCtx.strokeStyle = colors.copperDim;
+  oscCtx.lineWidth = 1;
+  for (let i = 0; i < zetaHistory.length; i++) {
+    const px = (i / zetaHistory.length) * w;
+    const py = midY - zetaHistory[i] * 20;
+    if (i === 0) oscCtx.moveTo(px, py);
+    else oscCtx.lineTo(px, py);
+  }
+  oscCtx.stroke();
+  
+  // Position trace (x) - gold
+  oscCtx.beginPath();
+  oscCtx.strokeStyle = colors.gold;
+  oscCtx.lineWidth = 2;
+  for (let i = 0; i < xHistory.length; i++) {
+    const px = (i / xHistory.length) * w;
+    const py = midY - xHistory[i] * 25;
+    if (i === 0) oscCtx.moveTo(px, py);
+    else oscCtx.lineTo(px, py);
+  }
+  oscCtx.stroke();
+  
+  // Glow on current position
+  const currentX = w - 10;
+  const currentY = midY - x * 25;
+  
+  const glow = oscCtx.createRadialGradient(currentX, currentY, 0, currentX, currentY, 20);
+  glow.addColorStop(0, 'rgba(212, 160, 48, 0.6)');
+  glow.addColorStop(1, 'rgba(212, 160, 48, 0)');
+  oscCtx.fillStyle = glow;
+  oscCtx.beginPath();
+  oscCtx.arc(currentX, currentY, 20, 0, Math.PI * 2);
+  oscCtx.fill();
+  
+  // Current position dot
+  oscCtx.fillStyle = colors.goldBright;
+  oscCtx.beginPath();
+  oscCtx.arc(currentX, currentY, 5, 0, Math.PI * 2);
+  oscCtx.fill();
+  
+  // Labels
+  oscCtx.font = '10px Space Mono';
+  oscCtx.fillStyle = colors.goldDim;
+  oscCtx.fillText('x(t)', w - 35, 20);
+  oscCtx.fillStyle = colors.copperDim;
+  oscCtx.fillText('ζ(t)', w - 35, 35);
+}
+
+// ============================================
+// VARIANCE CHART
+// ============================================
+function computeVarianceCurve() {
+  varianceData.length = 0;
+  varianceRValues.length = 0;
+  minVariance = Infinity;
+  optimalR = 1.5;
+  
+  // Analytical approximation for visualization
+  // Actual variance depends on complex dynamics, this is illustrative
+  for (let r = 0.1; r <= 5.0; r += 0.1) {
+    const t = r / Omega;
+    const g = 1 / t;
+    
+    // Simplified variance model showing valley behavior
+    // High variance at low R (chaos), decreases to minimum, increases at high R (rigidity)
+    const chaosContrib = 2 / (r * r + 0.5);
+    const rigidContrib = 0.1 * r;
+    const variance = chaosContrib + rigidContrib + 0.2;
+    
+    varianceRValues.push(r);
+    varianceData.push(variance);
+    
+    if (variance < minVariance) {
+      minVariance = variance;
+      optimalR = r;
+    }
+  }
+}
+
+function drawVarianceChart() {
+  const w = varCanvas.offsetWidth;
+  const h = varCanvas.offsetHeight;
+  const padding = 40;
+  
+  varCtx.clearRect(0, 0, w, h);
+  
+  if (varianceData.length === 0) return;
+  
+  const maxVar = Math.max(...varianceData) * 1.1;
+  const minVar = Math.min(...varianceData) * 0.9;
+  
+  // Find current R index
+  const currentRIndex = Math.round((R - 0.1) / 0.1);
+  
+  // Highlight resilience zone (around optimal)
+  const optIdx = varianceRValues.findIndex(r => Math.abs(r - optimalR) < 0.15);
+  const zoneStart = Math.max(0, optIdx - 5);
+  const zoneEnd = Math.min(varianceData.length - 1, optIdx + 5);
+  
+  const zoneX1 = padding + (zoneStart / varianceData.length) * (w - 2 * padding);
+  const zoneX2 = padding + (zoneEnd / varianceData.length) * (w - 2 * padding);
+  
+  varCtx.fillStyle = colors.copperFaint;
+  varCtx.fillRect(zoneX1, padding, zoneX2 - zoneX1, h - 2 * padding);
+  
+  // Axes
+  varCtx.strokeStyle = colors.lineBright;
+  varCtx.lineWidth = 1;
+  varCtx.beginPath();
+  varCtx.moveTo(padding, padding);
+  varCtx.lineTo(padding, h - padding);
+  varCtx.lineTo(w - padding, h - padding);
+  varCtx.stroke();
+  
+  // Variance curve
+  varCtx.beginPath();
+  varCtx.strokeStyle = colors.gold;
+  varCtx.lineWidth = 2;
+  
+  for (let i = 0; i < varianceData.length; i++) {
+    const px = padding + (i / (varianceData.length - 1)) * (w - 2 * padding);
+    const py = h - padding - ((varianceData[i] - minVar) / (maxVar - minVar)) * (h - 2 * padding);
+    if (i === 0) varCtx.moveTo(px, py);
+    else varCtx.lineTo(px, py);
+  }
+  varCtx.stroke();
+  
+  // Current R marker
+  if (currentRIndex >= 0 && currentRIndex < varianceData.length) {
+    const px = padding + (currentRIndex / (varianceData.length - 1)) * (w - 2 * padding);
+    const py = h - padding - ((varianceData[currentRIndex] - minVar) / (maxVar - minVar)) * (h - 2 * padding);
+    
+    // Vertical line
+    varCtx.strokeStyle = colors.goldDim;
+    varCtx.lineWidth = 1;
+    varCtx.setLineDash([4, 4]);
+    varCtx.beginPath();
+    varCtx.moveTo(px, padding);
+    varCtx.lineTo(px, h - padding);
+    varCtx.stroke();
+    varCtx.setLineDash([]);
+    
+    // Glow
+    const glow = varCtx.createRadialGradient(px, py, 0, px, py, 15);
+    glow.addColorStop(0, 'rgba(212, 160, 48, 0.5)');
+    glow.addColorStop(1, 'rgba(212, 160, 48, 0)');
+    varCtx.fillStyle = glow;
+    varCtx.beginPath();
+    varCtx.arc(px, py, 15, 0, Math.PI * 2);
+    varCtx.fill();
+    
+    // Dot
+    varCtx.fillStyle = colors.goldBright;
+    varCtx.beginPath();
+    varCtx.arc(px, py, 5, 0, Math.PI * 2);
+    varCtx.fill();
+  }
+  
+  // Optimal R marker
+  const optPx = padding + ((optimalR - 0.1) / 4.9) * (w - 2 * padding);
+  const optPy = h - padding - ((minVariance - minVar) / (maxVar - minVar)) * (h - 2 * padding);
+  
+  varCtx.fillStyle = colors.copper;
+  varCtx.beginPath();
+  varCtx.arc(optPx, optPy, 6, 0, Math.PI * 2);
+  varCtx.fill();
+  
+  // Labels
+  varCtx.font = '10px Space Mono';
+  varCtx.fillStyle = colors.text;
+  varCtx.fillText('R = τΩ', w - padding - 40, h - padding + 15);
+  varCtx.save();
+  varCtx.translate(15, h / 2);
+  varCtx.rotate(-Math.PI / 2);
+  varCtx.fillText('⟨x²⟩', 0, 0);
+  varCtx.restore();
+  
+  // Zone label
+  varCtx.fillStyle = colors.copperDim;
+  varCtx.font = '9px Space Mono';
+  varCtx.fillText('VALLEY', (zoneX1 + zoneX2) / 2 - 20, padding + 15);
+}
+
+// ============================================
+// UI UPDATES
+// ============================================
+function updateUI() {
+  document.getElementById('r-value').textContent = R.toFixed(2);
+  document.getElementById('omega-value').textContent = Omega.toFixed(2);
+  document.getElementById('gamma-value').textContent = Gamma.toFixed(2);
+  
+  const tau_val = R / Omega;
+  document.getElementById('tau-value').textContent = tau_val.toFixed(2);
+  document.getElementById('current-variance').textContent = currentVariance.toFixed(3);
+  document.getElementById('optimal-r').textContent = optimalR.toFixed(2);
+  document.getElementById('min-variance').textContent = minVariance.toFixed(3);
+  
+  // Zone indicator
+  const zoneEl = document.getElementById('zone-indicator');
+  const distFromOptimal = Math.abs(R - optimalR);
+  
+  if (R < 0.8) {
+    zoneEl.textContent = 'CHAOS ZONE — Low memory, high fluctuation';
+    zoneEl.className = 'zone-indicator zone-chaos';
+  } else if (R > 3.5) {
+    zoneEl.textContent = 'RIGIDITY ZONE — Over-damped, crystallized';
+    zoneEl.className = 'zone-indicator zone-rigid';
+  } else if (distFromOptimal < 0.8) {
+    zoneEl.textContent = 'RESILIENCE VALLEY — Optimal stability';
+    zoneEl.className = 'zone-indicator zone-resilience';
+  } else if (R < optimalR) {
+    zoneEl.textContent = 'APPROACHING VALLEY — From chaos';
+    zoneEl.className = 'zone-indicator zone-chaos';
+  } else {
+    zoneEl.textContent = 'LEAVING VALLEY — Toward rigidity';
+    zoneEl.className = 'zone-indicator zone-rigid';
+  }
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+document.getElementById('r-slider').addEventListener('input', (e) => {
+  R = parseFloat(e.target.value);
+  computeVarianceCurve();
+});
+
+document.getElementById('omega-slider').addEventListener('input', (e) => {
+  Omega = parseFloat(e.target.value);
+  computeVarianceCurve();
+});
+
+document.getElementById('gamma-slider').addEventListener('input', (e) => {
+  Gamma = parseFloat(e.target.value);
+});
+
+// ============================================
+// MAIN LOOP
+// ============================================
+function animate() {
+  simulateStep();
+  drawOscillator();
+  drawVarianceChart();
+  updateUI();
+  requestAnimationFrame(animate);
+}
+
+// ============================================
+// INIT
+// ============================================
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  computeVarianceCurve();
+});
+
+resizeCanvas();
+computeVarianceCurve();
+updateParams();
+animate();
+</script>
+
+</body>
+</html>
