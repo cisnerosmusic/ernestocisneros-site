@@ -452,6 +452,18 @@ canvas{
   cursor:pointer;
 }
 
+#tracklist-mobile {
+  display: none;
+}
+
+#tracklist-mobile-title {
+  display: none;
+}
+
+#scroll-hint {
+  display: none;
+}
+
 #frame{
   position:fixed;
   inset:1.5%;
@@ -469,6 +481,8 @@ canvas{
 
 /* MOBILE */
 @media (max-width: 900px){
+
+  /* === UNLOCK SCROLL === */
   html {
     height: auto !important;
     overflow: visible !important;
@@ -476,51 +490,48 @@ canvas{
 
   body {
     height: auto !important;
-    min-height: 100%;
+    min-height: 100% !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
   }
 
-  /* Stage (planet, geometry, stars) stays fixed as background */
-  #stage {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-  }
-
-  /* UI becomes a scrollable document flow */
-  #ui{
-    position: relative;
-    inset: auto;
+  /* === FIRST SCREEN: fixed UI with title + visuals + controls === */
+  /* #ui stays position:fixed (from desktop), occupies full viewport */
+  #ui {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    grid-template-columns: none;
+    grid-template-rows: none;
     padding-top: 60px;
-    z-index: 10;
-    pointer-events: none;
   }
 
-  /* === FIRST SCREEN: title + visual space + controls === */
-  #album-info{
+  #album-info {
+    grid-column: auto;
+    grid-row: auto;
     text-align: center;
     padding: 12px 20px 0 20px;
     pointer-events: none;
     flex-shrink: 0;
   }
 
-  #album-title{
+  #album-title {
     font-size: clamp(14px, 4vw, 20px);
   }
 
-  #album-sub{
+  #album-sub {
     max-width: none;
     margin: 6px auto 0;
   }
 
-  /* Controls pinned to bottom of first viewport */
-  #controls{
+  /* Hide tracklist inside #ui — it will be cloned/moved via CSS */
+  #tracklist {
+    display: none !important;
+  }
+
+  /* Controls at the bottom of viewport */
+  #controls {
+    grid-column: auto;
+    grid-row: auto;
     order: 2;
     margin-top: auto;
     padding: 0 20px 16px 20px;
@@ -528,46 +539,75 @@ canvas{
     flex-shrink: 0;
   }
 
-  /* Tracklist after first viewport */
-  #tracklist{
-    order: 3;
-  }
-
-  #bottom-row{
+  #bottom-row {
     flex-wrap: wrap;
   }
 
-  #transport{
+  #transport {
     width: 100%;
     justify-content: center;
   }
 
-  #extras-row{
+  #extras-row {
     flex-wrap: wrap;
   }
 
-  /* === SECOND SCREEN: tracklist (scroll to see) === */
-  #tracklist{
-    pointer-events: auto;
-    padding: 24px 20px 40px 20px;
+  /* === SCROLL HINT ARROW === */
+  #scroll-hint {
+    display: block !important;
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    color: var(--gold-dim);
+    font-size: 18px;
+    animation: bounce 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+    50% { transform: translateX(-50%) translateY(-6px); opacity: 1; }
+  }
+
+  /* === SECOND SCREEN: tracklist below viewport === */
+  #tracklist-mobile {
+    display: flex !important;
+    flex-direction: column;
     align-items: center;
-    max-width: 100%;
+    position: relative;
+    z-index: 20;
+    margin-top: 100vh;
+    margin-top: 100dvh;
+    padding: 40px 20px 80px 20px;
+    pointer-events: auto;
     background: linear-gradient(to bottom,
       rgba(10,6,2,0.0) 0%,
-      rgba(10,6,2,0.92) 8%,
+      rgba(10,6,2,0.85) 6%,
       rgba(10,6,2,0.96) 100%);
   }
 
-  .track-item{
+  #tracklist-mobile-title {
+    display: block !important;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(10px, 2.5vw, 13px);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 20px;
+  }
+
+  #tracklist-mobile .track-item {
     justify-content: center;
   }
 
-  .track-name{
+  #tracklist-mobile .track-name {
     text-align: center;
     max-width: none;
   }
 
-  .track-num{
+  #tracklist-mobile .track-num {
     text-align: right;
   }
 
@@ -722,6 +762,12 @@ canvas{
 
 <div id="frame"></div>
 
+<div id="scroll-hint">▼</div>
+
+<div id="tracklist-mobile">
+  <div id="tracklist-mobile-title">Tracklist</div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 // NAVIGATION — loaded from shared nav.js
@@ -771,6 +817,8 @@ function getResponsiveCount(base){
    DOM
 ========================================================= */
 const tlEl = document.getElementById('tracklist');
+const tlMobile = document.getElementById('tracklist-mobile');
+const scrollHint = document.getElementById('scroll-hint');
 const btnPlay = document.getElementById('btn-play');
 const btnPrev = document.getElementById('btn-prev');
 const btnNext = document.getElementById('btn-next');
@@ -818,10 +866,39 @@ TRACKS.forEach((t, i) => {
   tlEl.appendChild(el);
 });
 
+/* Mobile tracklist (outside #ui, scrollable) */
+if (tlMobile) {
+  TRACKS.forEach((t, i) => {
+    const el = document.createElement('div');
+    el.className = 'track-item';
+    el.id = 'ti-m-' + i;
+    el.innerHTML = `
+      <span class="track-num">${String(t.num).padStart(2,'0')}</span>
+      <span class="track-name">${t.name}</span>
+    `;
+    el.addEventListener('click', () => loadTrack(i, true));
+    tlMobile.appendChild(el);
+  });
+}
+
+/* Hide scroll hint on scroll */
+if (scrollHint) {
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      scrollHint.style.opacity = '0';
+      scrollHint.style.transition = 'opacity 0.5s';
+    } else {
+      scrollHint.style.opacity = '';
+    }
+  }, { passive: true });
+}
+
 function updateTracklistUI(){
   TRACKS.forEach((_, i) => {
     const el = document.getElementById('ti-' + i);
     if(el) el.classList.toggle('active', i === currentIdx);
+    const elM = document.getElementById('ti-m-' + i);
+    if(elM) elM.classList.toggle('active', i === currentIdx);
   });
   nowTitle.textContent = TRACKS[currentIdx].name;
 }
