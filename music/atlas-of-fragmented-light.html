@@ -57,11 +57,27 @@
   }
 
   /* NAVIGATION */
-  
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(28,26,20,0.95) 0%, rgba(28,26,20,0) 100%);
+  }
 
-  
+  .nav.scrolled {
+    background: rgba(28, 26, 20, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(122,170,138,0.15);
+  }
 
-  
+  .nav-logo { display: flex; flex-direction: column; gap: 2px; }
 
   .nav-logo-img {
     height: 40px;
@@ -75,26 +91,76 @@
     gap: 0.5rem;
   }
 
-  
+  .nav-item {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--parchment-dark);
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
 
   .nav-item:hover { color: var(--node-bright); }
   .nav-item.active { color: var(--node-bright); }
 
-  
+  .nav-dropdown { position: relative; }
 
-  
+  .nav-dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 200px;
+    background: rgba(28, 26, 20, 0.98);
+    border: 1px solid rgba(122,170,138,0.18);
+    padding: 0.75rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
 
-  
+  .nav-dropdown:hover .nav-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
 
-  
+  .nav-dropdown-item {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--parchment-dark);
+    transition: all 0.2s ease;
+  }
 
-  
+  .nav-dropdown-item:hover {
+    color: var(--node-bright);
+    background: rgba(122,170,138,0.1);
+  }
 
   .nav-dropdown-item.active { color: var(--node-bright); }
 
-  
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
 
-  
+  .nav-toggle span {
+    width: 24px;
+    height: 1px;
+    background: var(--parchment-dark);
+    transition: all 0.3s ease;
+  }
 
   .container {
     max-width: 820px;
@@ -526,9 +592,9 @@
       transition: right 0.3s ease;
       border-left: 1px solid rgba(122,170,138,0.18);
     }
-    
-    
-    
+    .nav-menu.open { right: 0; }
+    .nav-toggle { display: flex; }
+    .nav-item { padding: 0.75rem 0; width: 100%; }
     .nav-dropdown-content {
       position: static;
       transform: none;
@@ -546,7 +612,6 @@
     .container { padding: 5rem 1rem 2rem; }
   }
 </style>
-<link rel="stylesheet" href="../assets/css/nav.css">
 </head>
 <body>
 
@@ -719,7 +784,7 @@
 <audio id="audioPlayer" preload="none"></audio>
 
 <script>
-  // NAVIGATION
+  // NAVIGATION — loaded from shared nav.js
 
   // TRACKS - Local paths
   const tracks = [
