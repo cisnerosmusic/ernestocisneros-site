@@ -481,6 +481,9 @@ img {
     padding: 1rem;
     gap: 0;
     border-bottom: 1px solid var(--gold-faint);
+    z-index: 1000;
+    max-height: calc(100vh - var(--nav-height, 70px));
+    overflow-y: auto;
   }
 
   .nav-menu.active {
