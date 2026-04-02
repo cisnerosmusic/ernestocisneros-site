@@ -200,6 +200,52 @@ a:hover { color: var(--gold-bright); }
   line-height: 1.9;
 }
 
+/* Interview Links */
+.interview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.interview-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s ease;
+}
+
+.interview-item:last-child {
+  border-bottom: none;
+}
+
+.interview-item:hover {
+  background: var(--gold-faint);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.interview-source {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-dim);
+  white-space: nowrap;
+  min-width: 110px;
+  text-transform: uppercase;
+}
+
+.interview-title {
+  font-size: 1.02rem;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.interview-item:hover .interview-title {
+  color: var(--gold);
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gold-faint);
@@ -208,10 +254,50 @@ a:hover { color: var(--gold-bright); }
   margin-top: 4rem;
 }
 
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gold-faint);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  background: var(--gold-faint);
+}
+
+.footer-social svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 .footer-text { font-size: 0.9rem; color: var(--text-secondary); }
 
 /* Responsive */
 @media (max-width: 900px) {
+  .interview-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .interview-source {
+    min-width: auto;
+    font-size: 0.6rem;
+  }
 }
 
 @media (max-width: 700px) {
@@ -618,9 +704,54 @@ a:hover { color: var(--gold-bright); }
         <h2 class="category-title">International Work</h2>
         <span class="category-line"></span>
       </div>
-      
+
       <div class="prose-block">
         <p>Since 1999, Ernesto has performed and worked internationally across England, Spain, Italy, Germany, France, Russia, South Korea, Argentina, Venezuela, Panama, Costa Rica, Nicaragua, Mexico, the United States, and Canada, collaborating with various artists and developing pedagogical projects alongside his compositional work.</p>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Interviews & Media -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">Interviews &amp; Media</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="interview-list">
+        <a href="http://artistnator.com/la-nota-perfecta-ernesto-cisneros/" target="_blank" class="interview-item">
+          <span class="interview-source">Artistnator</span>
+          <span class="interview-title">La Nota Perfecta: Ernesto Cisneros</span>
+        </a>
+        <a href="https://www.hypermediamagazine.com/arte/artes-visuales/la-revolucion-digital/ernesto-cisneros-entrevista/" target="_blank" class="interview-item">
+          <span class="interview-source">Hypermedia</span>
+          <span class="interview-title">Música NFT: la experiencia colaborativa de Ernesto Cisneros</span>
+        </a>
+        <a href="http://www.juventudrebelde.cu/cultura/2020-08-29/los-rostros-de-ernesto-cisneros" target="_blank" class="interview-item">
+          <span class="interview-source">Juventud Rebelde</span>
+          <span class="interview-title">Los rostros de Ernesto Cisneros</span>
+        </a>
+        <a href="https://nftcuba.art/artist/ernesto-cisneros/" target="_blank" class="interview-item">
+          <span class="interview-source">NFT Cuba</span>
+          <span class="interview-title">Ernesto Cisneros — Artist Profile</span>
+        </a>
+        <a href="https://medium.com/revista-alma-mater/ernesto-cisneros-supongo-que-muchos-artistas-comenzarán-su-viaje-en-el-mundo-de-los-nfts-63cfd1a4f5dd" target="_blank" class="interview-item">
+          <span class="interview-source">Alma Mater</span>
+          <span class="interview-title">Ernesto Cisneros y su viaje por el mundo de los NFTs</span>
+        </a>
+        <a href="https://medium.com/@Cubancryptoart/ernesto-cisneros-cino-cryptoart-will-improve-everything-in-cuban-society-1c9c69d51103" target="_blank" class="interview-item">
+          <span class="interview-source">Cubancryptoart</span>
+          <span class="interview-title">Entrevista a Ernesto Cisneros Cino, pianista y artista digital</span>
+        </a>
+        <a href="https://www.facebook.com/share/p/1DtDSZNzik/" target="_blank" class="interview-item">
+          <span class="interview-source">Facebook</span>
+          <span class="interview-title">Ernesto Cisneros Cino — Entrevista</span>
+        </a>
+        <a href="https://www.lajiribilla.cu/ernesto-cisneros-yo-quiero-defender-el-arte-con-todas-las-armas-posibles/" target="_blank" class="interview-item">
+          <span class="interview-source">La Jiribilla</span>
+          <span class="interview-title">Yo quiero defender el arte con todas las armas posibles</span>
+        </a>
       </div>
     </article>
 
@@ -629,6 +760,20 @@ a:hover { color: var(--gold-bright); }
 </main>
 
 <footer class="footer">
+  <div class="footer-social">
+    <a href="https://www.facebook.com/ernestocisnerosmusic/" target="_blank" title="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/ernestocisneroscino/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://x.com/CisnerosCino" target="_blank" title="X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="http://m.imdb.com/name/nm1472247" target="_blank" title="IMDB">
+      <svg viewBox="0 0 24 24"><path d="M2 3h2v18H2V3zm4.5 0H9l1.5 7.122L12 3h2.5v18H12V9.976l-1.5 5.512h-1L8 9.976V21H6.5V3zM16 3h3.077C20.14 3 21 3.86 21 4.923v14.154C21 20.14 20.14 21 19.077 21H16V3z"/></svg>
+    </a>
+  </div>
   <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
 </footer>
 
