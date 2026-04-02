@@ -469,14 +469,16 @@ canvas{
 
 /* MOBILE */
 @media (max-width: 900px){
-  html, body {
-    height: auto;
-    min-height: 100%;
-    overflow-x: hidden;
+  html {
+    height: auto !important;
+    overflow: visible !important;
   }
 
   body {
-    overflow-y: auto;
+    height: auto !important;
+    min-height: 100%;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
   }
 
   /* Stage (planet, geometry, stars) stays fixed as background */
