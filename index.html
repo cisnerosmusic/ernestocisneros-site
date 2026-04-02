@@ -408,6 +408,9 @@
         }
 
         @media (max-width: 900px) {
+            .hero {
+                padding-top: 160px;
+            }
             .hero-scroll {
                 position: relative;
                 bottom: auto;
@@ -676,7 +679,8 @@
 
                 if (p.y < -10) particles[i] = createParticle(false);
 
-                const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+                let op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+                if (window.innerWidth <= 900) op *= 0.8;
 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
