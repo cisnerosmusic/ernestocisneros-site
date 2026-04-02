@@ -48,93 +48,8 @@
       z-index: 0;
     }
 
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(8, 6, 4, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gold-faint);
-    }
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0.8rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
-    .nav-logo img {
-      height: 50px;
-      width: auto;
-      mix-blend-mode: lighten;
-    }
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-item {
-      position: relative;
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      transition: color 0.3s;
-      cursor: pointer;
-    }
-    .nav-item:hover { color: var(--gold); }
-    .nav-item.active { color: var(--gold); }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      background: rgba(13, 10, 6, 0.97);
-      border: 1px solid var(--gold-faint);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s;
-    }
-    .nav-dropdown:hover .nav-dropdown-content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .nav-dropdown-item {
-      display: block;
-      padding: 0.7rem 1.2rem;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--gold-faint);
-      transition: all 0.3s;
-    }
-    .nav-dropdown-item:last-child { border-bottom: none; }
-    .nav-dropdown-item:hover {
-      color: var(--gold);
-      background: var(--gold-faint);
-    }
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-    .nav-toggle span { display: block; width: 25px; height: 2px; background: var(--gold); transition: all 0.3s ease; }
-
-    /* Hero */
+    
+/* Hero */
     .hero {
       min-height: 40vh;
       display: flex;
@@ -610,20 +525,6 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: rgba(8, 6, 4, 0.98);
-        flex-direction: column;
-        padding: 5rem 2rem;
-        gap: 1.5rem;
-        transition: right 0.3s;
-      }
-      .nav-menu.open { right: 0; }
-      .nav-toggle { display: flex; }
       .bio-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -634,6 +535,7 @@
       .universe-instructions { display: none; }
     }
   </style>
+<link rel="stylesheet" href="assets/css/nav.css">
 </head>
 
 <body>
@@ -802,40 +704,6 @@
 
   <script>
     // Mobile menu toggle
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.nav-toggle') || document.getElementById('nav-toggle');
-    const navMenuEl = document.querySelector('.nav-menu') || document.getElementById('nav-menu');
-    if (menuBtn && navMenuEl) {
-      function updateHamburger() {
-        const isOpen = navMenuEl.classList.contains('open');
-        const spans = menuBtn.querySelectorAll('span');
-        if (spans.length >= 3) {
-          spans[0].style.transform = isOpen ? 'rotate(45deg) translateY(8px)' : '';
-          spans[1].style.opacity = isOpen ? '0' : '1';
-          spans[2].style.transform = isOpen ? 'rotate(-45deg) translateY(-8px)' : '';
-        }
-      }
-      menuBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        navMenuEl.classList.toggle('open');
-        document.body.style.overflow = navMenuEl.classList.contains('open') ? 'hidden' : '';
-        updateHamburger();
-      });
-      document.addEventListener('click', function(e) {
-        if (!menuBtn.contains(e.target) && !navMenuEl.contains(e.target)) {
-          navMenuEl.classList.remove('open');
-          document.body.style.overflow = '';
-          updateHamburger();
-        }
-      });
-      navMenuEl.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          navMenuEl.classList.remove('open');
-          document.body.style.overflow = '';
-          updateHamburger();
-        });
-      });
-    }
 
     // Particle animation (background)
     const particleCanvas = document.getElementById('particle-canvas');
@@ -1439,5 +1307,6 @@
     }, 100);
   </script>
 
+<script src="assets/js/nav.js"></script>
 </body>
 </html>

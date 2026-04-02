@@ -54,27 +54,11 @@
   }
 
   /* NAVIGATION */
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(8,13,18,0.95) 0%, rgba(8,13,18,0) 100%);
-  }
+  
 
-  .nav.scrolled {
-    background: rgba(8, 13, 18, 0.98);
-    backdrop-filter: blur(12px);
-    padding: 1rem 2rem;
-    border-bottom: 1px solid rgba(74, 122, 155, 0.2);
-  }
+  
 
-  .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+  
 
   .nav-logo-img {
     height: 40px;
@@ -88,78 +72,28 @@
     gap: 0.5rem;
   }
 
-  .nav-item {
-    position: relative;
-    padding: 0.5rem 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--glacier);
-    transition: color 0.2s ease;
-    cursor: pointer;
-  }
+  
 
   .nav-item:hover { color: var(--ice-blue); }
   .nav-item.active { color: var(--ice-white); }
 
-  .nav-dropdown { position: relative; }
+  
 
-  .nav-dropdown-content {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    min-width: 200px;
-    background: rgba(8, 13, 18, 0.98);
-    border: 1px solid rgba(74, 122, 155, 0.2);
-    padding: 0.75rem 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease;
-  }
+  
 
-  .nav-dropdown:hover .nav-dropdown-content {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-  }
+  
 
-  .nav-dropdown-item {
-    display: block;
-    padding: 0.6rem 1.25rem;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--glacier);
-    transition: all 0.2s ease;
-  }
+  
 
-  .nav-dropdown-item:hover {
-    color: var(--ice-white);
-    background: rgba(74, 122, 155, 0.15);
-  }
+  
 
   .nav-dropdown-item.active {
     color: var(--ice-white);
   }
 
-  .nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
+  
 
-  .nav-toggle span {
-    width: 24px;
-    height: 1px;
-    background: var(--glacier);
-    transition: all 0.3s ease;
-  }
+  
 
   /* CANVAS DE PARTÍCULAS */
   #canvas {
@@ -640,9 +574,9 @@
       transition: right 0.3s ease;
       border-left: 1px solid rgba(74, 122, 155, 0.2);
     }
-    .nav-menu.open { right: 0; }
-    .nav-toggle { display: flex; }
-    .nav-item { padding: 0.75rem 0; width: 100%; }
+    
+    
+    
     .nav-dropdown-content {
       position: static;
       transform: none;
@@ -660,6 +594,7 @@
     .nav { padding: 1rem; }
   }
 </style>
+<link rel="stylesheet" href="../assets/css/nav.css">
 </head>
 <body>
 
@@ -828,45 +763,6 @@
 
 <script>
 // NAVIGATION
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// Mobile menu toggle
-    const menuBtn = document.querySelector('.nav-toggle') || document.getElementById('nav-toggle');
-    const navMenuEl = document.querySelector('.nav-menu') || document.getElementById('nav-menu');
-    if (menuBtn && navMenuEl) {
-      function updateHamburger() {
-        const isOpen = navMenuEl.classList.contains('open');
-        const spans = menuBtn.querySelectorAll('span');
-        if (spans.length >= 3) {
-          spans[0].style.transform = isOpen ? 'rotate(45deg) translateY(8px)' : '';
-          spans[1].style.opacity = isOpen ? '0' : '1';
-          spans[2].style.transform = isOpen ? 'rotate(-45deg) translateY(-8px)' : '';
-        }
-      }
-      menuBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        navMenuEl.classList.toggle('open');
-        document.body.style.overflow = navMenuEl.classList.contains('open') ? 'hidden' : '';
-        updateHamburger();
-      });
-      document.addEventListener('click', function(e) {
-        if (!menuBtn.contains(e.target) && !navMenuEl.contains(e.target)) {
-          navMenuEl.classList.remove('open');
-          document.body.style.overflow = '';
-          updateHamburger();
-        }
-      });
-      navMenuEl.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          navMenuEl.classList.remove('open');
-          document.body.style.overflow = '';
-          updateHamburger();
-        });
-      });
-    }
 
 // TRACKS - Using local paths (update when you add the MP3 files)
 // For now keeping Wix URLs as fallback until local files are added
@@ -1144,5 +1040,6 @@ buildTracklist();
   animateGold();
 })();
 </script>
+<script src="../assets/js/nav.js"></script>
 </body>
 </html>
