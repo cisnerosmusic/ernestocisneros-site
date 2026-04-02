@@ -141,7 +141,7 @@ a:hover { color: var(--gold-bright); }
   padding: 0.5rem;
 }
 
-.nav-toggle span { display: block; width: 24px; height: 1px; background: var(--gold); }
+.nav-toggle span { display: block; width: 25px; height: 2px; background: var(--gold); transition: all 0.3s ease; }
 
 /* Main Content */
 .main-content {
@@ -497,9 +497,40 @@ a:hover { color: var(--gold-bright); }
 })();
 
 // Mobile Menu
-document.querySelector('.nav-toggle').addEventListener('click', function() {
-  document.querySelector('.nav-menu').classList.toggle('open');
-});
+// Mobile menu toggle
+    const menuBtn = document.querySelector('.nav-toggle') || document.getElementById('nav-toggle');
+    const navMenuEl = document.querySelector('.nav-menu') || document.getElementById('nav-menu');
+    if (menuBtn && navMenuEl) {
+      function updateHamburger() {
+        const isOpen = navMenuEl.classList.contains('open');
+        const spans = menuBtn.querySelectorAll('span');
+        if (spans.length >= 3) {
+          spans[0].style.transform = isOpen ? 'rotate(45deg) translateY(8px)' : '';
+          spans[1].style.opacity = isOpen ? '0' : '1';
+          spans[2].style.transform = isOpen ? 'rotate(-45deg) translateY(-8px)' : '';
+        }
+      }
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navMenuEl.classList.toggle('open');
+        document.body.style.overflow = navMenuEl.classList.contains('open') ? 'hidden' : '';
+        updateHamburger();
+      });
+      document.addEventListener('click', function(e) {
+        if (!menuBtn.contains(e.target) && !navMenuEl.contains(e.target)) {
+          navMenuEl.classList.remove('open');
+          document.body.style.overflow = '';
+          updateHamburger();
+        }
+      });
+      navMenuEl.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          navMenuEl.classList.remove('open');
+          document.body.style.overflow = '';
+          updateHamburger();
+        });
+      });
+    }
 </script>
 
 </body>
