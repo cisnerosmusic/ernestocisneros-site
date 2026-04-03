@@ -11,11 +11,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ernestocisneros.art/ideas/cosmology-physics.html">
-    <meta property="og:title" content="Cosmology & Physics | Ideas | Ernesto Cisneros Cino">
+    <meta property="og:title" content="Cosmology &amp; Physics | Ideas | Ernesto Cisneros Cino">
     <meta property="og:description" content="Independent research in stochastic cosmology, the Finite Memory Law, and mathematical models exploring resilience and stability in dynamical systems.">
     <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cosmology & Physics | Ideas | Ernesto Cisneros Cino">
+    <meta name="twitter:title" content="Cosmology &amp; Physics | Ideas | Ernesto Cisneros Cino">
     <meta name="twitter:description" content="Independent research in stochastic cosmology, the Finite Memory Law, and mathematical models exploring resilience and stability in dynamical systems.">
     <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -296,7 +296,7 @@ a:hover { color: var(--gold-bright); }
           <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
           <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
           <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
-                    <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
           <a href="../music/other-works.html" class="nav-dropdown-item">Other Musical Works</a>
         </div>
       </li>
@@ -358,8 +358,47 @@ a:hover { color: var(--gold-bright); }
   <section class="content-section">
     
     <!-- Interactive Visualization: Resilience Valley -->
-    <div class="viz-container" style="margin-bottom:2rem;">
-      <iframe src="resilience-valley-viz.html" style="width:100%;height:620px;border:1px solid rgba(42,107,79,0.3);border-radius:8px;background:#080604;" loading="lazy" title="Resilience Valley Interactive Visualization"></iframe>
+    <style>
+      .rv-wrapper {
+        margin-bottom: 2rem;
+        border: 1px solid rgba(42,107,79,0.3);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #080604;
+      }
+      .rv-wrapper iframe {
+        display: block;
+        width: 100%;
+        height: 1500px;
+        border: none;
+      }
+      @media (max-width: 900px) {
+        .rv-wrapper {
+          position: relative;
+          overflow: hidden;
+          height: 680px;
+        }
+        .rv-wrapper iframe {
+          width: 166.67%;
+          height: 1533px;
+          transform: scale(0.6);
+          transform-origin: top left;
+        }
+      }
+      @media (max-width: 480px) {
+        .rv-wrapper {
+          height: 580px;
+        }
+        .rv-wrapper iframe {
+          width: 200%;
+          height: 1533px;
+          transform: scale(0.5);
+          transform-origin: top left;
+        }
+      }
+    </style>
+    <div class="rv-wrapper">
+      <iframe src="resilience-valley-viz.html" loading="lazy" title="Resilience Valley Interactive Visualization"></iframe>
     </div>
 
     <!-- Block 1: Resilience Windows -->
