@@ -981,10 +981,17 @@ function updateFreqBars(b, t){
 
 audio.addEventListener('ended', () => {
   if(isLoop){
+    // Loop single track
     audio.currentTime = 0;
     audio.play().catch(console.warn);
   }else{
-    nextTrack();
+    // Auto-advance with 1 second gap, loop album
+    setTimeout(() => {
+      const next = isShuffle
+        ? (() => { let n; do { n = Math.floor(Math.random() * TRACKS.length); } while(n === currentIdx && TRACKS.length > 1); return n; })()
+        : (currentIdx + 1) % TRACKS.length;
+      loadTrack(next, true);
+    }, 1000);
   }
 });
 
