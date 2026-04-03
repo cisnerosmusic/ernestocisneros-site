@@ -430,6 +430,7 @@ a:hover { color: var(--gold-bright); }
   "about": ["NFT", "Community Art", "Portraits", "Web3 Community"]
 }
 </script>
+    <script src="../assets/js/lang-detect.js" defer></script>
 </head>
 <body>
 
@@ -479,6 +480,11 @@ a:hover { color: var(--gold-bright); }
       </li>
       <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
       <li><a href="../contact.html" class="nav-item">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="../es/nft/gift-from-community.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="gift-from-community.html" class="active-lang" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+      </li>
     </ul>
   </div>
 </nav>

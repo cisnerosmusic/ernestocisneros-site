@@ -122,6 +122,41 @@
 }
 
 /* =====================================================
+   LANGUAGE SWITCHER
+   ===================================================== */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-switcher a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0.45;
+  transition: opacity 0.3s, transform 0.3s;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.lang-switcher a:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.lang-switcher a.active-lang {
+  opacity: 1;
+}
+
+.lang-switcher .lang-sep {
+  color: var(--gold-dim);
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+/* =====================================================
    HAMBURGER TOGGLE (hidden on desktop)
    ===================================================== */
 .nav-toggle {
