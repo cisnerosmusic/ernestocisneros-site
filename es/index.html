@@ -469,8 +469,8 @@
   "name": "Ernesto Cisneros Cino",
   "url": "https://ernestocisneros.art",
   "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
-  "jobTitle": ["Composer", "Pianist", "Digital Artist", "Writer"],
-  "description": "Cuban composer, pianist, digital artist, and writer based in Miami. Connecting art, music, literature, and science.",
+  "jobTitle": ["Compositor", "Pianista", "Artista Digital", "Escritor"],
+  "description": "Compositor cubano, pianista, artista digital y escritor radicado en Miami. Conectando arte, música, literatura y ciencia.",
   "birthPlace": {
     "@type": "Place",
     "name": "Havana, Cuba"
@@ -515,8 +515,8 @@
             <li class="nav-dropdown">
                 <a href="music.html" class="nav-item">Música</a>
                 <div class="nav-dropdown-content">
-                    <a href="music/glacial-paths.html" class="nav-dropdown-item">Senderos Glaciales</a>
-                    <a href="music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas de Luz Fragmentada</a>
+                    <a href="music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+                    <a href="music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
                     <a href="music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
                     <a href="music/trash.html" class="nav-dropdown-item">Trash</a>
                     <a href="music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
@@ -564,17 +564,17 @@
             <p class="hero-greeting">Bienvenidos a</p>
             <h1 class="hero-name">Ernesto Cisneros Cino</h1>
             <p class="hero-roles">
-                Musician <span>·</span> 
-                Digital Artist <span>·</span> 
-                Writer
+                Músico <span>·</span>
+                Artista Digital <span>·</span>
+                Escritor
             </p>
             <p class="hero-philosophy">
-                Connecting art, music, literature, and science to inspire. 
-                A space where memory, sound, and thought converge; always seeking 
-                new forms of expression at the boundaries of creativity and knowledge.
+                Conectando arte, música, literatura y ciencia para inspirar.
+                Un espacio donde la memoria, el sonido y el pensamiento convergen;
+                siempre buscando nuevas formas de expresión en las fronteras de la creatividad y el conocimiento.
             </p>
             <a href="biography.html" class="hero-cta">
-                Explore My Work
+                Explora Mi Obra
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
@@ -595,7 +595,7 @@
         <div class="featured-grid">
             <a href="music/glacial-paths.html" class="featured-card">
                 <div class="featured-card-icon">🎹</div>
-                <h3 class="featured-card-title">Senderos Glaciales</h3>
+                <h3 class="featured-card-title">Glacial Paths</h3>
                 <p class="featured-card-desc">
                     Pianos y sintetizadores navegando por paisajes congelados.
                     Un álbum de piezas instrumentales contemplativas.
@@ -607,8 +607,8 @@
                 <div class="featured-card-icon">📖</div>
                 <h3 class="featured-card-title">Warranted Suspicion</h3>
                 <p class="featured-card-desc">
-                    Twelve speculative fiction stories where quantum mechanics, 
-                    AI, and political philosophy intersect.
+                    Doce relatos de ficción especulativa donde la mecánica cuántica,
+                    la IA y la filosofía política se encuentran.
                 </p>
                 <span class="featured-card-link">Leer Más →</span>
             </a>
@@ -630,7 +630,7 @@
                     Arte digital en Tezos, Ethereum y Bitcoin.
                     Un viaje a través de blockchain como infraestructura cultural.
                 </p>
-                <span class="featured-card-link">View Collection →</span>
+                <span class="featured-card-link">Ver Colección →</span>
             </a>
 
             <a href="music/mare-incognitum.html" class="featured-card">
@@ -733,14 +733,14 @@
         audioControl.addEventListener('click', () => {
             if (isPlaying) {
                 bgAudio.pause();
-                audioLabel.textContent = 'Play';
+                audioLabel.textContent = 'Reproducir';
                 audioIconPlay.style.display = '';
                 audioIconPause.style.display = 'none';
                 audioBars.forEach(bar => bar.classList.remove('playing'));
             } else {
                 bgAudio.volume = 0.3;
                 bgAudio.play();
-                audioLabel.textContent = 'Pause';
+                audioLabel.textContent = 'Pausa';
                 audioIconPlay.style.display = 'none';
                 audioIconPause.style.display = '';
                 audioBars.forEach(bar => bar.classList.add('playing'));
