@@ -11,11 +11,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ernestocisneros.art/ideas/art-poetics-philosophy.html">
-    <meta property="og:title" content="Art, Poetry & Philosophy | Ideas | Ernesto Cisneros Cino">
+    <meta property="og:title" content="Art, Poetry &amp; Philosophy | Ideas | Ernesto Cisneros Cino">
     <meta property="og:description" content="Poetry and philosophical reflections. Where intuition meets structure, and silence becomes fire.">
     <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Art, Poetry & Philosophy | Ideas | Ernesto Cisneros Cino">
+    <meta name="twitter:title" content="Art, Poetry &amp; Philosophy | Ideas | Ernesto Cisneros Cino">
     <meta name="twitter:description" content="Poetry and philosophical reflections. Where intuition meets structure, and silence becomes fire.">
     <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -225,6 +225,191 @@ a:hover { color: var(--gold-bright); }
   color: var(--gold-bright);
 }
 
+/* Essay */
+.essay-block {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  padding: 3rem 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.essay-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.essay-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.essay-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.essay-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.essay-text {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.essay-text p {
+  margin-bottom: 1.2rem;
+}
+
+.essay-text strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.essay-text em {
+  color: var(--text-primary);
+}
+
+.essay-section-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin: 2.5rem 0 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+.essay-subsection-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 2rem 0 0.8rem;
+}
+
+.essay-principle {
+  background: rgba(212, 160, 48, 0.05);
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.essay-principle p {
+  margin-bottom: 0.8rem;
+}
+
+.essay-principle p:last-child {
+  margin-bottom: 0;
+}
+
+/* SVG diagrams container */
+.essay-diagram {
+  margin: 2.5rem 0;
+}
+
+.essay-diagram svg {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Collapsible sections */
+.essay-section {
+  border-top: 1px solid var(--gold-faint);
+  margin-top: 0.5rem;
+}
+
+.essay-section-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.2rem 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.essay-section-toggle:hover {
+  color: var(--gold-bright);
+}
+
+.essay-section-toggle .toggle-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+  color: var(--gold-dim);
+}
+
+.essay-section-toggle.active .toggle-icon {
+  transform: rotate(45deg);
+}
+
+.essay-section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.essay-section-content.open {
+  max-height: none;
+}
+
+.essay-section-inner {
+  padding-bottom: 2rem;
+}
+
+/* Bibliography */
+.essay-biblio {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.essay-biblio p {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+}
+
+.essay-biblio-header {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 1.5rem 0 0.8rem;
+  font-style: normal;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .essay-block { padding: 2rem 1.5rem; }
+  .essay-section-title { font-size: 1.05rem; }
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gold-faint);
@@ -281,7 +466,7 @@ a:hover { color: var(--gold-bright); }
           <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
           <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
           <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
-                    <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
           <a href="../music/other-works.html" class="nav-dropdown-item">Other Musical Works</a>
         </div>
       </li>
@@ -499,6 +684,431 @@ a:hover { color: var(--gold-bright); }
     </div>
   </section>
 
+  <div class="divider"></div>
+
+  <!-- Philosophy Essay: The Limit of the Real -->
+  <section class="content-section" style="max-width:900px;">
+    <article class="essay-block">
+
+      <div class="essay-header">
+        <p class="essay-label">Philosophical Essay</p>
+        <h2 class="essay-title">The Limit of the Real</h2>
+        <p class="essay-subtitle">Essay on the Computable, the Thinkable, and What Escapes</p>
+      </div>
+
+      <div class="essay-text">
+
+        <!-- Abstract -->
+        <div class="essay-principle">
+          <p>Is there a limit beyond which no theory, algorithm, or language can capture the real? This essay explores four types of limits (computational, epistemological, representational, phenomenological) from six perspectives: physics and mathematics, philosophy, language, ethics and politics, psychology, and aesthetics.</p>
+          <p><strong>The central thesis:</strong> there exists an independent reality that cannot be fully formalized, but this does not lead to relativism; rather, it demands an epistemic humility that requires finer criteria for critical evaluation.</p>
+          <p>The limit of the real is not a wall that stops thought, but a mobile texture where thought transforms itself.</p>
+        </div>
+
+        <!-- SVG: Four Types of Limits -->
+        <div class="essay-diagram">
+          <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+            <rect width="700" height="340" fill="#0d0a06" rx="8"/>
+            <text x="350" y="32" fill="#d4a030" font-family="'Cinzel', serif" font-size="13" text-anchor="middle" letter-spacing="2">FOUR TYPES OF LIMITS</text>
+            <line x1="220" y1="44" x2="480" y2="44" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+
+            <!-- Limit 1: Computational -->
+            <rect x="30" y="70" width="145" height="120" rx="5" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.4)" stroke-width="1"/>
+            <text x="102" y="98" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">COMPUTATIONAL</text>
+            <line x1="55" y1="108" x2="150" y2="108" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <text x="102" y="128" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">What cannot be decided</text>
+            <text x="102" y="143" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">by any finite procedure.</text>
+            <text x="102" y="163" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">Turing, Gödel,</text>
+            <text x="102" y="176" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">NP-completeness</text>
+
+            <!-- Limit 2: Epistemological -->
+            <rect x="195" y="70" width="145" height="120" rx="5" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.4)" stroke-width="1"/>
+            <text x="267" y="98" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">EPISTEMOLOGICAL</text>
+            <line x1="220" y1="108" x2="315" y2="108" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <text x="267" y="128" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">What cannot be known,</text>
+            <text x="267" y="143" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">given a type of agent.</text>
+            <text x="267" y="163" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">Kant, cognitive biases,</text>
+            <text x="267" y="176" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">chaotic systems</text>
+
+            <!-- Limit 3: Representational -->
+            <rect x="360" y="70" width="145" height="120" rx="5" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.4)" stroke-width="1"/>
+            <text x="432" y="98" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">REPRESENTATIONAL</text>
+            <line x1="385" y1="108" x2="480" y2="108" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <text x="432" y="128" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">What no language or</text>
+            <text x="432" y="143" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">model captures fully.</text>
+            <text x="432" y="163" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">Wittgenstein, Quine,</text>
+            <text x="432" y="176" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">Davidson, metaphor</text>
+
+            <!-- Limit 4: Phenomenological -->
+            <rect x="525" y="70" width="145" height="120" rx="5" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.4)" stroke-width="1"/>
+            <text x="597" y="98" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">PHENOMENOLOGICAL</text>
+            <line x1="550" y1="108" x2="645" y2="108" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <text x="597" y="128" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">What manifests without</text>
+            <text x="597" y="143" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="9.5" text-anchor="middle">being fixed in concepts.</text>
+            <text x="597" y="163" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">Bergson, Varela,</text>
+            <text x="597" y="176" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="8.5" text-anchor="middle" font-style="italic">embodied cognition</text>
+
+            <!-- Connecting line -->
+            <line x1="175" y1="200" x2="525" y2="200" stroke="rgba(212,160,48,0.15)" stroke-width="1" stroke-dasharray="4,6"/>
+
+            <!-- Bottom: intersection statement -->
+            <rect x="120" y="225" width="460" height="56" rx="5" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <text x="350" y="250" fill="#e8dcc8" font-family="'Cormorant Garamond', serif" font-size="11" text-anchor="middle" font-style="italic">The "limit of the real" is the mobile intersection between logical,</text>
+            <text x="350" y="268" fill="#e8dcc8" font-family="'Cormorant Garamond', serif" font-size="11" text-anchor="middle" font-style="italic">physical, cognitive, and experiential limits.</text>
+
+            <!-- Vertical connectors -->
+            <line x1="102" y1="190" x2="102" y2="225" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <line x1="267" y1="190" x2="267" y2="225" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <line x1="432" y1="190" x2="432" y2="225" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <line x1="597" y1="190" x2="597" y2="225" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+
+            <!-- Footer -->
+            <text x="350" y="318" fill="rgba(200,175,130,0.4)" font-family="'Cormorant Garamond', serif" font-size="9" text-anchor="middle" font-style="italic">These four types of limits are not isolated compartments; they overlap, amplify, and transform each other.</text>
+          </svg>
+        </div>
+
+        <!-- SVG: Six Perspectives -->
+        <div class="essay-diagram">
+          <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+            <rect width="700" height="380" fill="#0d0a06" rx="8"/>
+            <text x="350" y="32" fill="#d4a030" font-family="'Cinzel', serif" font-size="13" text-anchor="middle" letter-spacing="2">SIX INTERWOVEN PERSPECTIVES</text>
+            <line x1="200" y1="44" x2="500" y2="44" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+
+            <!-- Central hexagon concept -->
+            <circle cx="350" cy="205" r="56" fill="none" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="350" cy="205" r="52" fill="rgba(20,16,10,0.9)" stroke="rgba(212,160,48,0.15)" stroke-width="1"/>
+            <text x="350" y="198" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">THE LIMIT</text>
+            <text x="350" y="214" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">OF THE REAL</text>
+
+            <!-- 1. Physics & Mathematics (top) -->
+            <line x1="350" y1="149" x2="350" y2="98" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="350" cy="98" r="3" fill="#d4a030"/>
+            <rect x="270" y="56" width="160" height="36" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <text x="350" y="72" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">PHYSICS &amp;</text>
+            <text x="350" y="85" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">MATHEMATICS</text>
+
+            <!-- 2. Philosophy (top-right) -->
+            <line x1="398" y1="173" x2="488" y2="118" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="488" cy="118" r="3" fill="#d4a030"/>
+            <rect x="458" y="92" width="120" height="36" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <text x="518" y="115" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">PHILOSOPHY</text>
+
+            <!-- 3. Language (bottom-right) -->
+            <line x1="398" y1="237" x2="488" y2="292" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="488" cy="292" r="3" fill="#d4a030"/>
+            <rect x="458" y="298" width="120" height="36" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <text x="518" y="321" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">LANGUAGE</text>
+
+            <!-- 4. Ethics & Politics (bottom) -->
+            <line x1="350" y1="261" x2="350" y2="312" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="350" cy="312" r="3" fill="#d4a030"/>
+            <rect x="270" y="318" width="160" height="36" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <text x="350" y="334" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">ETHICS &amp;</text>
+            <text x="350" y="347" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">POLITICS</text>
+
+            <!-- 5. Psychology (bottom-left) -->
+            <line x1="302" y1="237" x2="212" y2="292" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="212" cy="292" r="3" fill="#d4a030"/>
+            <rect x="122" y="298" width="120" height="36" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <text x="182" y="321" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">PSYCHOLOGY</text>
+
+            <!-- 6. Aesthetics (top-left) -->
+            <line x1="302" y1="173" x2="212" y2="118" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <circle cx="212" cy="118" r="3" fill="#d4a030"/>
+            <rect x="122" y="92" width="120" height="36" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+            <text x="182" y="115" fill="#d4a030" font-family="'Cinzel', serif" font-size="9" text-anchor="middle" letter-spacing="1">AESTHETICS</text>
+
+            <!-- Outer dashed ring -->
+            <circle cx="350" cy="205" r="145" fill="none" stroke="rgba(212,160,48,0.08)" stroke-width="1" stroke-dasharray="3,5"/>
+          </svg>
+        </div>
+
+        <!-- INTRODUCTION -->
+        <h3 class="essay-section-title">Introduction: Three Questions and Four Types of Limits</h3>
+
+        <p>Speaking of "the limit of the real" can mean very different things. To avoid confusion, it is useful to separate at least three questions: Are there absolute computational limits, problems that in principle no algorithm could solve? Are there necessary representational limits, aspects of the real that cannot be captured by any system of concepts? And are there strong ontological limits, features of reality that would be in themselves contradictory, indeterminate, or irreducible to any possible rational structure?</p>
+
+        <p>Underlying these questions is a more general one, which serves as the axis of this essay: <em>In what sense is there a "limit of the real" such that no theory, no algorithm, and no conceptual framework can exhaust it, without this implying the end of thought or the triumph of relativism?</em></p>
+
+        <div class="essay-principle">
+          <p><strong>There exists a reality independent of us that cannot be completely formalized.</strong> Far from invalidating robust local truths, this limit is precisely what makes them necessary. And far from justifying "anything goes," it demands finer criteria for critical evaluation.</p>
+        </div>
+
+      </div>
+
+      <!-- Collapsible Sections -->
+      <div id="essay-sections">
+
+        <!-- Section 1: Physical-Mathematical Perspective -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>1. Physical-Mathematical Perspective: The Computable, the Chaotic, and the Unreachable</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">1.1 Limits in Principle and Resource Limits</h4>
+              <p>Computability theory introduces a decisive distinction: there are problems that are computable in principle, though we may not be able to solve them in practice, and there are problems that are non-computable in principle, where no Turing machine could give a correct answer for all cases in a finite number of steps. Turing's halting problem is paradigmatic: there is no general algorithm that determines, for any program and any input, whether that program will halt or continue executing indefinitely.</p>
+              <p>Gödel's contribution is analogous but in the realm of formal systems: in any sufficiently expressive system (such as arithmetic), there will be true statements that are unprovable within the system. Even in the supposedly "pure" domain of mathematics, not everything that is true is provable, nor does every well-formulated problem admit a decisive algorithm.</p>
+              <p>At another scale, limits of another type appear: problems that are computable but whose calculation time or energy makes them practically unreachable. Computation is not only a logical process; it is also a physical process. Each irreversible logical operation dissipates energy, as Landauer showed. The limit of the computable is not only logical or only practical: <strong>it is also physical</strong>.</p>
+
+              <h4 class="essay-subsection-title">1.2 Is the Universe a Turing Machine?</h4>
+              <p>The strong hypothesis would be: if the universe is essentially a computable system, then its states and evolutions would be subject to limits similar to those of mathematical computability. There are proposals in that direction, from cellular automaton models to approaches that identify physical evolution with distributed computation. However, the step is not trivial. It is not proven that the universe is completely computable. Continuity, general relativity, and certain aspects of quantum mechanics leave open the possibility of phenomena not reducible to a standard discrete computation model.</p>
+              <p>Authors like Roger Penrose have argued precisely the opposite: the existence of mathematical truths not algorithmically capturable would suggest that the human mind and certain aspects of reality are not merely computational. His thesis is disputed, but it makes the point well: identifying "reality" with "algorithm" without nuance is an extrapolation that requires much more justification.</p>
+
+              <div class="essay-principle">
+                <p>Wherever a physical system behaves like a classical computational system, limits analogous to those of Turing and Gödel will appear. But that does not exhaust all of the real: the universe may contain strata not reducible to a Turing machine.</p>
+              </div>
+
+              <h4 class="essay-subsection-title">1.3 Chaos, Climate, and Types of Uncertainty</h4>
+              <p>Beyond computability, there are limits linked to available information and the type of system. In chaotic systems, such as climate, small variations in initial conditions are exponentially amplified. The equations may be deterministic, but any error in initial measurement translates into practical unpredictability in the medium term.</p>
+              <p>Two types of uncertainty should be distinguished. <strong>Aleatory uncertainty</strong> is due to lack of data or imprecise measurements and could in principle be reduced. <strong>Chaotic uncertainty</strong> is structural: even with very precise data, the structure of the system makes small imprecisions amplify until they become determinant. Adding more data does not eliminate this uncertainty; it can only delay its impact on the prediction horizon.</p>
+
+              <h4 class="essay-subsection-title">1.4 Complexity: The Computable but Physically Unexecutable</h4>
+              <p>Some problems are decidable, but calculation time grows so fast that no possible physical system could complete them before time and energy are exhausted. Certain instances of NP-complete problems, exact simulations of many-body quantum systems, and exhaustive searches in astronomical combinatorial spaces all illustrate this. A procedure that would require more years than the age of the universe is equivalent, for practical purposes, to being unrealizable.</p>
+
+              <h4 class="essay-subsection-title">1.5 Mathematics: Between the Formal and the Practice</h4>
+              <p>Mathematics occupies a peculiar place in the discussion of limits. On one hand, it seems to be the realm of the completely formalizable; on the other, actual mathematical practice reveals irreducible tensions. Mathematicians do not operate like formal machines. They use intuition, numerical experimentation, visualization, trial and error. What counts as "proof" is not completely fixed by syntactic rules; there is a component of community judgment, tradition, and changing standards.</p>
+              <p>The limit here is not only between the provable and the unprovable, but between what can be captured in a formal system and what sustains mathematical practice as a human activity: understanding, insight, and the sense of progress. Just as natural language is not reduced to formal syntax, <strong>living mathematics is not reduced to its formalizations</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Philosophical Perspective -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>2. Philosophical Perspective: Reality, Frameworks, and Plurality of Logics</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">2.1 Critical Realism: Ontological Monism, Epistemic Pluralism</h4>
+              <p>This essay adopts a position of critical realism. There exists a world independent of our minds and theories. It is not a mere product of our languages; it resists us, surprises us, corrects us. We access that world always through representational frameworks: natural languages, mathematics, physical models, artistic metaphors, social practices. There is no single privileged framework that exhausts the real. There is a plurality of partial descriptions that overlap, correct, and enrich each other.</p>
+              <p>In schematic terms: <strong>ontological monism</strong> (one real world, though inexhaustible) and <strong>epistemic pluralism</strong> (multiple legitimate ways of approaching it).</p>
+
+              <h4 class="essay-subsection-title">2.2 Robust Local Truths</h4>
+              <p>To say that there is no accessible Theory of Everything does not amount to denying solid truths. There exist locally valid and robust descriptions, justified by their explanatory and predictive power. Thermodynamics describes with great precision the macroscopic behavior of physical systems without resorting to an ultimate theory. Natural selection explains the diversity of species without needing to reduce all phenomena to molecular interactions. Propositional logic is complete and decidable in its domain without needing to "wait" for a more powerful logic.</p>
+              <p>Truth can be stratified: each level has its own laws and concepts, functional at its scale. The robustness of these truths is justified by predictive success, coherence with other fields, capacity to generate effective technology, and resistance to refutation under reasonable criticism.</p>
+
+              <h4 class="essay-subsection-title">2.3 Alternative Logics: Pragmatic Choice, Not Absolute Meta-Logic</h4>
+              <p>Beyond classical logic, there exists a range of logical systems: intuitionistic, paraconsistent, fuzzy, and modal. The key question is not "Which is the true logic?" but <em>which logic best articulates some practice or domain?</em> There is no neutral "meta-logic" from which to choose once and for all. The choice is justified pragmatically: by the internal coherence of the system, by its capacity to couple to specific scientific or argumentative practices, by its success in avoiding undesired paradoxes.</p>
+
+              <h4 class="essay-subsection-title">2.4 Epistemic Pluralism Without Relativism</h4>
+              <p>Disagreement between theories and perspectives is provisional (it can be reduced through research and dialogue), but also, to some degree, constitutive: a complex universe will probably never let itself be squeezed into a single total narrative. It does not follow that all positions are worth the same. A framework is reasonable if it recognizes robust empirical evidence, is internally coherent, is willing to revise in the face of new evidence, and does not appeal to infallible authorities immune to refutation.</p>
+
+              <div class="essay-principle">
+                <p>Philosophically, the limit of the real is not the nonexistence of truth, but the impossibility of closing the system. There will always remain unformalized aspects, tensions between frameworks, and zones of shadow that drive research and discussion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Language -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>3. Perspective of Language: Saying, Showing, and the Unsayable Remainder</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">3.1 Language and Representational Limits</h4>
+              <p>Language is the privileged medium of conceptual thought, but it is also the place where certain limits become most visible. Wittgenstein, in the <em>Tractatus</em>, recognized that there are things that show themselves without being able to be completely said: the logical structure of language, the ethical or aesthetic value of something, the relationship between language and world. In his late work, <em>Philosophical Investigations</em>, he showed that meaning is not fixed by abstract logical structures but by uses in concrete forms of life. There is no "perfect language" that captures all relevant distinctions.</p>
+
+              <h4 class="essay-subsection-title">3.2 Indeterminacy of Translation: Quine</h4>
+              <p>Quine argued that even with all possible behavioral evidence, there is no single correct translation from one language to another. Different translation schemes can be empirically equivalent but conceptually incompatible. There is no "neutral tribunal" from which to decide what the correct conceptual structure of the world is. Different languages "carve" reality in different ways, and none can claim to be the only "natural" one. The choice between conceptual schemes must be justified by pragmatic criteria: simplicity, explanatory power, coherence with scientific practices, communicative utility.</p>
+
+              <h4 class="essay-subsection-title">3.3 Davidson and the Limits of Conceptual Scheme</h4>
+              <p>Davidson criticized the idea of "incommensurable conceptual schemes." For two schemes to be truly incommensurable, we would have to be able to identify them as different schemes, which already presupposes a common basis of comparison. His position suggests a moderate pluralism: different languages and theories organize experience in different ways, but always on a shared background of minimal rationality.</p>
+
+              <h4 class="essay-subsection-title">3.4 Language and the Ineffable: Poetry, Metaphor, Ambiguity</h4>
+              <p>Metaphor is not a rhetorical ornament but a mode of understanding that operates by semantic displacement, not by definition. Ambiguity is not always a defect. In poetry, in sacred texts, in certain political or affective uses of language, ambiguity is functional: it allows multiple meanings to coexist without collapsing into one. Ricœur and Gadamer pointed out that understanding a text, a culture, or an epoch is not translating them into our language without loss, but letting oneself be transformed by the encounter with the strange.</p>
+
+              <h4 class="essay-subsection-title">3.5 Language and Temporality: What Is Lost in Fixation</h4>
+              <p>Language fixes. It converts the flow of experience into categories, names, stable propositions. But that fixation has a cost. Bergson argued that lived time (duration) is qualitative, continuous, heterogeneous. Language tends to spatialize time: it divides it into discrete units, measures it, quantifies it. Something is lost in that operation: the texture of temporal experience itself. These aspects are not ineffable in the sense that we can say nothing about them, but in the sense that <strong>every formulation leaves a remainder</strong>.</p>
+
+              <div class="essay-principle">
+                <p>The limit of language is the limit of our articulated access to the real. We cannot jump outside language to grasp "naked reality," but we can move between different languages, compare them, criticize them, enrich them. The limit is not an insurmountable barrier, but a mobile frontier where thought transforms itself.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Ethics & Politics -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>4. Ethical and Political Implications: Acting Without Final Theory</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">4.1 Epistemic Humility Without Paralysis</h4>
+              <p>Accepting that there will be no complete accessible theory and our models are partial and revisable poses two temptations: dogmatism (freezing a framework as definitive) and nihilism (concluding that without absolute certainty, all views are equivalent). The alternative is an <strong>active epistemic humility</strong>: recognize limits but continue deciding; design procedures that incorporate correction and revision; evaluate actions by their coherence with the best available information, their reversibility, and their effects on the most vulnerable.</p>
+
+              <h4 class="essay-subsection-title">4.2 Technology and AI: The Mirage of Totalization</h4>
+              <p>AI systems and massive prediction models can generate the illusion that everything relevant is quantifiable and computable. A credit risk algorithm classifies individuals according to historical variables but can ignore crucial dimensions: processes of personal resilience, recent context changes, structural discrimination, support networks. The tool produces "rational" decisions within its framework, but blinds components of reality that do not enter its variables. <strong>No model exhausts the person to whom it applies its predictions.</strong> Automating a judgment implies presupposing that the relevant part of reality fits entirely in the model, and that presupposition is rarely innocent.</p>
+
+              <h4 class="essay-subsection-title">4.3 The Ecological Case and the Precautionary Principle</h4>
+              <p>Economies, ecosystems, and societies show non-linear behaviors, feedback loops, and emergent phenomena. An intervention that seems optimal in a local model can trigger unforeseen cascades. We cannot wait to have an exact theory of the entire Earth system to act. Structural uncertainty is not an excuse for inaction; it is an argument in favor of policies that minimize irreversible risks. The recognition of the limit of the real invites us to design polycentric institutions, incorporate diversity of perspectives in democratic deliberation, and apply prudence proportional to the magnitude of possible damage.</p>
+
+              <h4 class="essay-subsection-title">4.4 Ethics of Disagreement</h4>
+              <p>In a universe without final theory, disagreement is normal. The ethical task is not to suppress it but to manage it: distinguish between disagreements between reasonable frameworks and positions that deny well-established facts; establish common rules of the game based on shared data, internal coherence, willingness to revise, and rejection of violence as a substitute for argument.</p>
+
+              <div class="essay-principle">
+                <p>The limit of the real, in ethics and politics, is not a pretext for paralysis, but an argument in favor of revisable institutions, pluralism of perspectives, and caution against all pretensions of totalization, whether technocratic, ideological, or religious.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Psychology -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>5. Psychological Perspective: Finite Minds in an Unreachable World</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">5.1 Cognitive Limits: Biases, Memory, and Processing</h4>
+              <p>Cognitive psychology has shown that our mental apparatus operates with shortcuts: confirmation biases, availability heuristics, overconfidence. These traits are not accidents; they are adaptations of a system designed to survive under pressure, not to grasp all the truth of the cosmos. Part of the "limit of the real," as we experience it, is actually a limit of what a human mind can process without saturating or fragmenting.</p>
+
+              <h4 class="essay-subsection-title">5.2 Anxiety, Dogma, and Cynicism</h4>
+              <p>Assuming that we will never have a complete picture of the world can produce existential anxiety, flight toward closed narratives (fanaticisms, conspiracies, totalizing ideologies), or cynicism. This tension requires coping tools: secular mindfulness practices that train attention to tolerate uncertain mental states; guided narrative revision through therapy; communities of practice where uncertainty is sustained collectively and the search for meaning becomes a common task.</p>
+
+              <h4 class="essay-subsection-title">5.3 Personal Narrative: Revision Within Margins</h4>
+              <p>Each person constructs a narrative about their life, selecting events, giving them order and logic. That narrative functions as a partial theory of the world. Personal narrative is not infinitely plastic. There are factual constraints and coherence constraints. Narrative revision is possible within margins: neither total self-deception that completely denies what occurred, nor arbitrary reinvention that breaks all sense of identity. The limit of the real, on this plane, takes the form of a delicate balance between fidelity to facts and the need for a structure of meaning.</p>
+
+              <h4 class="essay-subsection-title">5.4 Embodied Cognition</h4>
+              <p>Perspectives like Varela's emphasize that we are not passive receivers of a given world but co-constructors of a significant environment. Perception and action are intertwined: the organism does not "receive" the world but makes it emerge through its sensorimotor coupling. This does not deny the existence of an independent world, but it does imply that what each being can consider "world" is filtered by their body, their history, and their culture. <strong>The world-in-itself never fully coincides with the world-for-us.</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 6: Aesthetics -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>6. Aesthetic Perspective: Art as Exploration of the Non-Formalizable</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">6.1 Art as Mode of Knowledge</h4>
+              <p>Art is not a late luxury or simple ornament. It can be understood as a mode of knowledge that operates without reducing experience to propositions. While science seeks generalizable statements, art works with singular situations, explores affective, temporal, and spatial nuances that resist precise translation into concepts, and generates understanding through recognition, resonance, and transformation rather than demonstration. It is not irrational; <strong>it is another form of rationality, embodied and situated.</strong></p>
+
+              <h4 class="essay-subsection-title">6.2 Music: Bach, Algorithms, and Lived Time</h4>
+              <p>Music is a privileged laboratory for the limit between the formalizable and the lived. Certain works, like a Bach fugue, can be analyzed mathematically, even transcribed algorithmically. However, the listener's temporal experience (the tension between expectation and surprise, the recognition of thematic return, the affective charge of certain modulations) is not reduced to the algorithm that generated the piece. Not because it is "mystical," but because it involves lived temporality, affective and cultural memory, and bodily resonance. The limit is not situated between reason and irrationality, but between complete formalization and concrete lived experience.</p>
+
+              <h4 class="essay-subsection-title">6.3 Visual Arts: Guernica and Non-Propositional Truth</h4>
+              <p>Picasso's <em>Guernica</em> condenses horror, mourning, political denunciation, and fragility of bodies. It can be analyzed formally: fragmented composition, use of black and white, expressive distortion. However thorough that analysis may be, there is something that the painting does to the spectator that is not exhausted in the description. The type of truth it carries is performative, not propositional. It does not consist in stating a fact but in <strong>making one feel</strong>, in a concentrated way, a certain experience. It is not about a hidden "secret message," but about a form of truth that operates through impact, resonance, displacement.</p>
+
+              <h4 class="essay-subsection-title">6.4 Art as Training for Uncertainty</h4>
+              <p>Art fulfills a central function: it trains us to coexist with the ambiguous without demanding immediate resolution. It allows us to experience tensions, dissonances, and ambivalences in a relatively safe space. It confronts the irreducible complexity of the emotional, social, and political world in a way that does not cancel but sustains the question.</p>
+
+              <div class="essay-principle">
+                <p>The aesthetic perspective shows that the limit of the real is not only a matter of what we cannot calculate, but also of what we should not and do not want to reduce. Art does not flee from the limit: it inhabits it and makes it fertile.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 7: Counterarguments -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>7. Counterarguments and Responses</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <h4 class="essay-subsection-title">7.1 Scientistic Objection</h4>
+              <p><strong>"Limits are provisional."</strong> It is true that many historical "mysteries" have been clarified. But here we speak of limits of another type: Gödel's incompleteness and Turing's non-computability are theorems, not temporal voids. Sensitivity to chaos and computational complexity restrictions do not disappear with more computing power. The thesis is not "it's no longer worth investigating," but: <em>we investigate knowing that we will never convert the universe into a completely transparent and calculable object.</em></p>
+
+              <h4 class="essay-subsection-title">7.2 Logical Positivist Objection</h4>
+              <p><strong>"Much of this is pseudoproblem."</strong> Logical positivism helped purge certain metaphysical excesses but is too restrictive. Much of contemporary science works with entities not directly verifiable that nevertheless have explanatory and predictive power. Many crucial domains (aesthetic experience, therapeutic processes, political conflicts) do not allow themselves to be encapsulated in simple empirically verifiable propositions, and yet are scenarios where very real issues are at stake.</p>
+
+              <h4 class="essay-subsection-title">7.3 Mystical Objection</h4>
+              <p><strong>"If reason has limits, there are irrational truths."</strong> Accepting that rationality has limits does not oblige us to legitimize any claim that presents itself as "beyond reason." That science does not explain everything does not automatically make true what opposes it. Rationality, broadly understood, does not exhaust human life, but it remains our best common framework for contrasting claims about reality. Beyond it there may be valuable experiences that enrich life, but those experiences do not constitute an alternative epistemic tribunal from which to dictate truths about the shared world.</p>
+
+              <h4 class="essay-subsection-title">7.4 Radical Pragmatist Objection</h4>
+              <p><strong>"Only what works matters."</strong> Pragmatism is right to emphasize that ultimate validation passes through practice. However, the notion of "limit" has clear practical consequences: design of revisable institutions, humility before AI, ecological prudence, openness to conceptual change. If we only spoke of "what works," we would risk naturalizing current frameworks. The idea of a limit that resists our models keeps alive the suspicion that they could work better in ways not yet conceived. Science has progressed not only by refining techniques, but by recognizing that certain phenomena forced rethinking foundational concepts.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>Conclusion: Thinking at the Edge</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text">
+
+              <p>From physics and mathematics, limits of computability, accessible information, and complexity appear that no increase in hardware annuls. From philosophy, critical realism maintains that there is an independent reality, but only accessible through multiple frameworks, none definitive. From language, all conceptual articulation leaves a remainder. From ethics and politics, the limit justifies revisable institutions and caution against all pretensions of totalization. From psychology, the limit is confused with the capacities and fragilities of our minds. From aesthetics, the limit becomes a playing field: art explores what cannot be fully formalized.</p>
+
+              <div class="essay-principle">
+                <p><strong>"The limit of the real" does not appear as a wall that kills thought, but as a texture of mobile edges,</strong> where each advance opens new zones of shadow. A zone of friction where reality resists our models and forces them to transform. A permanent reminder that no theory, no algorithm, no narrative can proclaim itself the last word.</p>
+              </div>
+
+              <p>It is not about choosing between totalizing reason or irrationalism, but about learning to think at the edge: there where models touch what does not fit in them, where ethics faces what cannot be reduced to calculation, where art reveals what the proposition does not reach.</p>
+
+              <p>This essay does not seek to "resolve" the question of the limit of the real. It aspires to map some of its contours to make more precise the work that remains to be done. In quantum physics, in neuroscience of consciousness, in complex systems theory, in philosophy of mathematics, in ethics of artificial intelligence: each of these fields faces, in its own way, the tension between formalization and excess.</p>
+
+              <p><strong>The intellectual task of the 21st century does not consist in completing the map of the world once and for all or burning it as useless, but in inhabiting that limit with lucidity, without arrogance or resignation.</strong> Accepting that continuing to think is worthwhile precisely because something always escapes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bibliography -->
+        <div class="essay-section">
+          <button class="essay-section-toggle" onclick="toggleEssaySection(this)">
+            <span>Bibliography</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="essay-section-content">
+            <div class="essay-section-inner essay-text essay-biblio">
+
+              <p class="essay-biblio-header">Works Directly Cited</p>
+              <p>Bergson, Henri. <em>Time and Free Will</em> (1889).</p>
+              <p>Bergson, Henri. <em>Creative Evolution</em> (1907).</p>
+              <p>Davidson, Donald. "On the Very Idea of a Conceptual Scheme" (1974), in <em>Inquiries into Truth and Interpretation</em>. Oxford: Clarendon Press, 1984.</p>
+              <p>Gadamer, Hans-Georg. <em>Truth and Method</em>. New York: Continuum, 1960/1989.</p>
+              <p>Gödel, Kurt. "On Formally Undecidable Propositions of Principia Mathematica and Related Systems I," <em>Monatshefte für Mathematik und Physik</em> 38 (1931): 173-198.</p>
+              <p>Hersh, Reuben. <em>What Is Mathematics, Really?</em> Oxford University Press, 1997.</p>
+              <p>Kahneman, Daniel. <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux, 2011.</p>
+              <p>Kant, Immanuel. <em>Critique of Pure Reason</em> (1781/1787).</p>
+              <p>Lakatos, Imre. <em>Proofs and Refutations</em>. Cambridge University Press, 1976.</p>
+              <p>Landauer, Rolf. "Irreversibility and Heat Generation in the Computing Process," <em>IBM Journal of Research and Development</em> 5.3 (1961): 183-191.</p>
+              <p>Penrose, Roger. <em>The Emperor's New Mind</em>. Oxford University Press, 1989.</p>
+              <p>Penrose, Roger. <em>Shadows of the Mind</em>. Oxford University Press, 1994.</p>
+              <p>Quine, W. V. O. "Two Dogmas of Empiricism," <em>Philosophical Review</em> 60.1 (1951): 20-43.</p>
+              <p>Quine, W. V. O. <em>Word and Object</em>. MIT Press, 1960.</p>
+              <p>Ricœur, Paul. <em>The Rule of Metaphor</em>. University of Toronto Press, 1975/1977.</p>
+              <p>Ricœur, Paul. <em>Time and Narrative</em>, 3 vols. University of Chicago Press, 1983-1988.</p>
+              <p>Turing, Alan. "On Computable Numbers, with an Application to the Entscheidungsproblem," <em>Proc. London Mathematical Society</em> 42.1 (1936): 230-265.</p>
+              <p>Varela, F.; Thompson, E.; Rosch, E. <em>The Embodied Mind</em>. MIT Press, 1991.</p>
+              <p>Wittgenstein, Ludwig. <em>Tractatus Logico-Philosophicus</em> (1921).</p>
+              <p>Wittgenstein, Ludwig. <em>Philosophical Investigations</em> (1953).</p>
+
+              <p class="essay-biblio-header">Suggested Readings for Further Study</p>
+              <p>Carlo Rovelli, <em>Helgoland</em> (2020). David Deutsch, <em>The Fabric of Reality</em> (1997). Nancy Cartwright, <em>The Dappled World</em> (1999). Hasok Chang, <em>Is Water H₂O?</em> (2012). Michela Massimi, <em>Perspectival Realism</em> (2022). Markus Gabriel, <em>Fields of Sense</em> (2015). Bas van Fraassen, <em>The Scientific Image</em> (1980). Thomas Kuhn, <em>The Structure of Scientific Revolutions</em> (1962). Quentin Meillassoux, <em>After Finitude</em> (2006). Lee Smolin, <em>Time Reborn</em> (2013). Sabine Hossenfelder, <em>Lost in Math</em> (2018). Karen Barad, <em>Meeting the Universe Halfway</em> (2007).</p>
+
+              <p class="essay-biblio-header">Especially for Musicians and Artists</p>
+              <p>Brian Eno, <em>A Year with Swollen Appendices</em> (1995). David Toop, <em>Sinister Resonance</em> (2010). Vladimir Jankélévitch, <em>Music and the Ineffable</em> (1961). Leonard B. Meyer, <em>Emotion and Meaning in Music</em> (1956). Fred Lerdahl &amp; Ray Jackendoff, <em>A Generative Theory of Tonal Music</em> (1983). Kyle Gann, <em>The Arithmetic of Listening</em> (2019).</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end essay-sections -->
+
+    </article>
+  </section>
+
 </main>
 
 <footer class="footer">
@@ -570,5 +1180,31 @@ a:hover { color: var(--gold-bright); }
 </script>
 
 <script src="../assets/js/nav.js"></script>
+
+<script>
+// Essay collapsible sections
+function toggleEssaySection(btn) {
+  const content = btn.nextElementSibling;
+  const isOpen = content.classList.contains('open');
+
+  if (isOpen) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      content.style.maxHeight = '0';
+    });
+    content.classList.remove('open');
+    btn.classList.remove('active');
+  } else {
+    content.classList.add('open');
+    content.style.maxHeight = content.scrollHeight + 'px';
+    btn.classList.add('active');
+    setTimeout(() => {
+      if (content.classList.contains('open')) {
+        content.style.maxHeight = 'none';
+      }
+    }, 500);
+  }
+}
+</script>
 </body>
 </html>
