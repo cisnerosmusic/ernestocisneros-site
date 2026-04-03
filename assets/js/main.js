@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (navToggle && navMenu) {
     function updateHamburger() {
-      const isActive = navMenu.classList.contains('active');
+      const isActive = navMenu.classList.contains('open');
       const spans = navToggle.querySelectorAll('span');
       if (spans.length >= 3) {
         spans[0].style.transform = isActive ? 'rotate(45deg) translateY(8px)' : '';
@@ -98,15 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navToggle.addEventListener('click', function(e) {
       e.stopPropagation();
-      navMenu.classList.toggle('active');
-      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      navMenu.classList.toggle('open');
+      document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
       updateHamburger();
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
       if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove('active');
+        navMenu.classList.remove('open');
         document.body.style.overflow = '';
         updateHamburger();
       }
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close menu when clicking a nav link
     navMenu.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
+        navMenu.classList.remove('open');
         document.body.style.overflow = '';
         updateHamburger();
       });

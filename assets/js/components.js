@@ -58,12 +58,12 @@ function initMobileMenu() {
 
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
+      navMenu.classList.toggle('open');
     });
 
     document.addEventListener('click', function(e) {
       if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove('active');
+        navMenu.classList.remove('open');
       }
     });
   }
