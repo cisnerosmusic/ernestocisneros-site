@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un don de la communauté | Ernesto Cisneros Cino</title>
+<meta name="description" content="Les Ernestitos et autres portraits - Huit artistes de six pays qui m'ont portraituré sans être demandés. Un enregistrement de ce que la communauté NFT a pu accomplir à son meilleur moment.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/fr/nft/gift-from-community.html">
+    <meta property="og:title" content="Un don de la communauté | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Les Ernestitos et autres portraits - Huit artistes de six pays qui m'ont portraituré sans être demandés. Un enregistrement de ce que la communauté NFT a pu accomplir à son meilleur moment.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Un don de la communauté | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Les Ernestitos et autres portraits - Huit artistes de six pays qui m'ont portraituré sans être demandés. Un enregistrement de ce que la communauté NFT a pu accomplir à son meilleur moment.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+/* Introduction */
+.intro {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+  text-align: justify;
+}
+
+.intro p:last-child { margin-bottom: 0; }
+
+/* Section Divider */
+.divider {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 4rem auto;
+}
+
+/* Artist Block */
+.artist-block {
+  max-width: 1100px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+}
+
+.artist-content {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.artist-block:nth-child(even) .artist-content {
+  grid-template-columns: 1.3fr 1fr;
+}
+
+.artist-block:nth-child(even) .artist-image {
+  order: 2;
+}
+
+.artist-block:nth-child(even) .artist-text {
+  order: 1;
+}
+
+.artist-image {
+  position: relative;
+}
+
+.artist-image img {
+  width: 100%;
+  border: 1px solid var(--gold-faint);
+  transition: border-color 0.3s;
+}
+
+.artist-image:hover img {
+  border-color: var(--gold-dim);
+}
+
+.artist-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.artist-work-title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.artist-text p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.3rem;
+  line-height: 1.85;
+}
+
+.artist-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.artist-link {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.artist-link:hover {
+  border-color: var(--gold);
+  background: var(--gold-faint);
+}
+
+/* Ernestitos Section */
+.ernestitos-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  border-top: 1px solid var(--gold-faint);
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+.ernestitos-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.ernestitos-text {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.ernestitos-text p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.3rem;
+  text-align: justify;
+}
+
+.ernestitos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.ernestitos-grid img {
+  width: 100%;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.ernestitos-grid img:hover {
+  border-color: var(--gold);
+  transform: scale(1.02);
+}
+
+.ernestitos-artists {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.ernestitos-artists-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.ernestitos-artists-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ernestitos-note {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+}
+
+.ernestitos-note a {
+  display: inline;
+}
+
+/* Closing */
+.closing {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.closing p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+}
+
+.closing p:last-of-type {
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.closing-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 1px solid var(--gold-dim);
+  transition: all 0.3s;
+}
+
+.closing-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 4, 3, 0.97);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.lightbox.active { display: flex; opacity: 1; }
+
+.lightbox-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+.lightbox-content img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 1px solid var(--gold-faint);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.lightbox-close:hover { color: var(--gold); }
+
+.lightbox-hint {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+.artist-content,
+  .artist-block:nth-child(even) .artist-content {
+    grid-template-columns: 1fr;
+  }
+
+  .artist-block:nth-child(even) .artist-image,
+  .artist-block:nth-child(even) .artist-text {
+    order: unset;
+  }
+
+  .artist-image { max-width: 500px; margin: 0 auto 2rem; }
+
+  .ernestitos-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .intro, .artist-block, .ernestitos-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .artist-links { gap: 0.5rem; }
+  .artist-link { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "A Gift from the Community",
+  "url": "https://ernestocisneros.art/fr/nft/gift-from-community.html",
+  "description": "Les Ernestitos et autres portraits. Huit artistes de six pays qui m'ont portraituré sans être demandés.",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+  "about": ["NFT", "Community Art", "Portraits", "Web3 Community"]
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/fr/nft/gift-from-community.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/nft/gift-from-community.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/nft/gift-from-community.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/nft/gift-from-community.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/nft/gift-from-community.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="nft-gift-from-community" defer></script>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../../index.html" class="nav-item">Accueil</a></li>
+      <li><a href="../../biography.html" class="nav-item">Biographie</a></li>
+      <li class="nav-dropdown">
+        <a href="../../music.html" class="nav-item">Musique</a>
+        <div class="nav-dropdown-content">
+          <a href="../../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../../music/trash.html" class="nav-dropdown-item">Trash</a>
+              <a href="../../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../../music/other-works.html" class="nav-dropdown-item">Autres Œuvres Musicales</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../../nft.html" class="nav-item active">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">Collection ETH</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">Collection Tez</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">Marchés</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item active">Un Cadeau de la Communauté</a>
+        </div>
+      </li>
+      <li><a href="../../books.html" class="nav-item">Livres</a></li>
+      <li class="nav-dropdown">
+        <a href="../../ideas.html" class="nav-item">Idées</a>
+        <div class="nav-dropdown-content">
+          <a href="../../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmologie et Physique</a>
+          <a href="../../ideas/technology-society.html" class="nav-dropdown-item">Technologie et Société</a>
+          <a href="../../ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Mémoire et Exil</a>
+          <a href="../../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poétique et Philosophie</a>
+        </div>
+      </li>
+      <li><a href="../../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../../contact.html" class="nav-item">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="../../nft/gift-from-community.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../es/nft/gift-from-community.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+
+  <section class="hero">
+    <h1 class="hero-title">Un Cadeau de la Communauté</h1>
+    <p class="hero-subtitle">Les Ernestitos et autres portraits · 2020/2023</p>
+  </section>
+
+  <section class="intro">
+    <p>En 2020, le monde s'est fermé. La pandémie nous a tous menés vers l'intérieur, vers la peur, vers le temps libre, vers nos écrans. Et de cette quiétude improbable, quelque chose de remarquable a pris forme : des artistes du Japon, de Russie, de Chine, du monde arabe, d'Iran, de Londres, du Canada, d'Australie, d'Amérique latine se sont rencontrés les uns les autres sur la chaîne de blocs. Le terrain d'entente n'était ni géographique ni culturel. C'était humain, de la manière la plus crue que la technologie ait jamais permis.</p>
+
+    <p>La promesse allait dans plusieurs directions à la fois : la rareté comme source de valeur, la chaîne de blocs comme garantie de permanence, la communauté comme moteur de tout. Nous voulions décentraliser l'argent, le pouvoir et l'art en un seul coup. C'était ambitieux, naïf à certains égards, authentique à d'autres.</p>
+
+    <p>Il y a eu des escroqueries, des rug-pulls, des egos gonflés, du FOMO, du hype, de la friction. Le marché s'est effondré. D'innombrables projets ont promis des mondes entiers et n'ont rien livré.</p>
+
+    <p>Mais quelque chose d'autre se passait aussi, le genre de chose qui ne fait jamais la une : du temps réel passé entre des gens extraordinaires. Des Audio Spaces qui s'étendaient jusqu'aux petites heures du matin. Des artistes achetant le travail les uns des autres quand personne d'autre ne le ferait. Des conversations sur l'histoire de l'art, la politique, la technologie, la vie, entre des gens qui n'auraient jamais croisé leurs chemins autrement.</p>
+
+    <p>Mon anglais était limité à l'époque (c'est mieux maintenant), j'ai donc gravité vers la communauté hispanophone : des Cubains, des Mexicains, des Vénézuéliens, des Espagnols, des Argentins. Mais le phénomène allait bien au-delà de toute langue ou drapeau. C'était mondial, et tout le monde le savait. À un moment donné, une artiste et collectionneuse de Malaisie, Vissyarts, a acheté mon NFT musical <em>Wrath of Gaia</em>, une pièce dont la couverture s'est retrouvée projetée sur les écrans de Times Square via Pixelstar. Je n'aurais jamais imaginé que quelqu'un à Kuala Lumpur se connecterait avec mon travail de cette façon. C'est arrivé parce que l'infrastructure était décentralisée : pas d'intermédiaires, pas de gardiens, pas d'institution ni de frontière pour demander la permission.</p>
+
+    <p>Tout ne s'est pas maintenu ensemble. OpenSea a bloqué mon portefeuille et supprimé mon profil parce que mon passeport était cubain, le même sort que de nombreux autres artistes cubains de la communauté ont affronté, dont la plupart s'opposaient activement au même système que ces sanctions prétendaient cibler. L'ironie ne pouvait pas être plus aiguë : une plateforme construite sur la promesse de liberté économique appliquant la même exclusion géographique que le régime que nous essayions de quitter. Je comprends la logique réglementaire ; diriger une plateforme de cette envergure sans soutien institutionnel est presque impossible, et c'est là qu'entrent les compromis. Mais la contradiction est réelle, et elle mérite d'être nommée. Mon travail sur Tezos reste intact. La chaîne de blocs ne peut pas m'effacer. OpenSea pouvait, et l'a fait.</p>
+
+    <p>Quelque part dans cet écosystème, avec toutes ses contradictions, ses promesses, ses fractures, quelque chose s'est produit que je n'avais jamais demandé ni organisé : plusieurs artistes m'ont portraituré. Il n'y avait pas d'appel ouvert. Chacun a décidé par lui-même, à partir de son propre langage visuel, de son propre élan. Photographie, aquarelle sur papier, collage numérique, illustration, images générées par IA, peinture expressionniste. Huit pièces, huit perspectives, six pays.</p>
+
+    <p>Je les partage ici non pas parce qu'elles parlent de moi. Elles parlent de ce moment, de ce qui est devenu possible quand des esprits curieux de partout dans le monde ont choisi de construire quelque chose ensemble, peu importe à quel point c'était imparfait, peu importe à quel point c'était éphémère, peu importe à quel point le marché s'avérait être destiné à échouer.</p>
+
+    <p>Ces œuvres sont l'enregistrement le plus honnête que j'ai de ce que cette communauté a pu être à son meilleur moment.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Artist 1: David Ulloa -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/omelet.jpg" loading="lazy" alt="Omelet par David Ulloa" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">David Ulloa</h2>
+        <p class="artist-work-title">La cuisine de La Havane</p>
+        <p>David Ulloa est photographe et professeur de mathématiques à l'Université d'Orient à Cuba, actuellement en doctorat au Mexique. Un jour, en visite à La Havane, il est passé chez moi, et pendant que je faisais une omelette dans la cuisine, il a levé son appareil.</p>
+        <p>La photo capture le moment exact où l'omelette est en l'air. Contre-jour de la fenêtre, silhouette à peine dessinée, la poêle dans une main et la fourchette dans l'autre. Pas de pose, pas de studio, aucune intention de monument. Un homme dans sa cuisine un jour ordinaire.</p>
+        <p>Il l'a frappée sur Tezos avec cette description : « Celebra de nuevo, un retrato de un gran artista. Celebremos la amistad. Es como un gran corazón con barba y gafas. » Prise à 1/800, f/2.8, ISO 200, 50mm, avec le nombre d'or 1:1,618. Un mathématicien qui photographie consciemment avec Fibonacci.</p>
+        <p>Dans un écosystème où la plupart des gens se protégeaient derrière un PFP anonyme, quelqu'un est entré dans ma cuisine et l'a frappé sur la blockchain. Ça aussi, c'était la communauté.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/KT1C6Y6FSfZVLAMevmVkjg1yE2Z54ebDUFAw/1" target="_blank" class="artist-link">Voir sur objkt</a>
+          <a href="https://twitter.com/DavidUlloaCuba" target="_blank" class="artist-link">@DavidUlloaCuba</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 2: Katiana Maruve -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/the-girl-and-the-mellotron.jpg" loading="lazy" alt="The Girl and the Mellotron par Katiana Maruve" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Katiana Maruve</h2>
+        <p class="artist-work-title">La fille qui peignait depuis la blessure</p>
+        <p>Katiana Maruve est architecte et artiste visuelle de La Havane, pionnière du NFT à Cuba. Son travail explore le corps féminin depuis une perspective confrontationnelle et viscérale. Elle a exposé à New York sur Times Square, et dans des expositions collectives à La Havane dont Beyond the Body et Clits and Tits. Deux artistes de La Havane, de la même communauté NFT, tous deux exposés à Times Square. Aucun de nous ne l'avait prévu.</p>
+        <p>Son langage visuel habituel était la blessure : figures féminines en tension érotique, épées, sang, sadomasochisme sans excuses. Elle peignait depuis un lieu très réel et sombre.</p>
+        <p>Un jour de décembre 2021, elle a fait quelque chose de différent. Elle a créé The Girl and the Mellotron : une figure féminine allongée sur un Mellotron enveloppé d'un ruban rouge, des chaussettes de Noël avec des flocons de neige, des boules colorées. L'une de ses œuvres les plus lumineuses. Et elle me l'a offerte.</p>
+        <p>La mélancolie apparaît malgré tout. Le ruban rouge a une texture de lave. Katiana était incapable de faire quelque chose de complètement joyeux. Mais elle a essayé, et cette tentative est le cadeau.</p>
+        <p>Elle l'a frappée sur kalamint, un marché qui n'existe plus, sur Tezos. À un moment, elle s'est éloignée de l'écosystème NFT, mais a continué à créer. Aujourd'hui, son travail continue de grandir et se retrouve sur Foundation.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/kalamint/67061" target="_blank" class="artist-link">Voir sur objkt</a>
+          <a href="https://twitter.com/KMaruve" target="_blank" class="artist-link">@KMaruve</a>
+          <a href="https://foundation.app/@KMaruve" target="_blank" class="artist-link">Foundation</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 3: Frank Achon -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/ernesto-cisneros-achon.jpg" loading="lazy" alt="Ernesto Cisneros par Frank Achon" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Frank Achon</h2>
+        <p class="artist-work-title">Portrait depuis le bruit</p>
+        <p>Frank Achon est un artiste numérique cubain dont le langage est la saturation et la collision : collage construit à partir de fragments de journaux, de typographie, d'éclaboussures de vert lime sur noir et blanc. Son travail avait une forte dimension politique, et il fut un membre actif de la communauté NFT cubaine de 2021 à 2023.</p>
+        <p>Son portrait de moi émerge du chaos du texte et de l'image comme s'il s'assemblait en temps réel. Les lunettes, la barbe, l'expression — reconnaissable, mais construit depuis le bruit. Le texte qui apparaît, « Mañana », fragments de manuels techniques, chiffres — c'est presque un portrait de l'écosystème lui-même à ce moment.</p>
+        <p>Achon n'a réalisé que trois portraits dans ce style : le mien, un de Xelda Jara, l'une des initiatrices du mouvement crypto-art latino-américain, et un de Grey, un poète cubain qu'il avait introduit dans les NFT. Il choisissait ses sujets avec discernement. Aujourd'hui, je ne trouve plus son profil vérifié sur aucun réseau. Une autre absence dans cette histoire.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/hicetnunc/643439" target="_blank" class="artist-link">Voir sur objkt</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 4: Randilandia -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/ernesto-randilandia.jpg" loading="lazy" alt="Ernesto par Randilandia" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Randilandia</h2>
+        <p class="artist-work-title">Le piano en flammes</p>
+        <p>Randilandia est une artiste cubaine qui a rejoint la communauté vers fin 2022.</p>
+        <p>Son œuvre n'est pas un portrait physique. C'est une représentation : un pianiste tombant inversé depuis le ciel numérique vers un piano en flammes, entouré d'oreilles flottantes, soutenu par une main qui émerge d'en bas. Écrit à la main sur l'image : « Desde el lugar donde viene mi inspiración, del cual no tengo coordenadas exactas, la historia de un piano ardiendo en fuego hizo mellas en mi alma. »</p>
+        <p>Elle avait lu l'histoire du piano brûlé dans un garage de La Havane qui apparaît dans Sombras, Datos y Relámpagos et a répondu par une image. Elle ne m'a pas portraituré physiquement. Elle m'a portraituré comme expérience. Les oreilles flottantes sont le détail le plus précis : il n'y a pas d'yeux dans l'image, seulement des oreilles. Parce que le monde autour de moi écoute.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/rarible/64578" target="_blank" class="artist-link">Voir sur objkt</a>
+          <a href="https://twitter.com/randilandia" target="_blank" class="artist-link">@randilandia</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 5: Buda Studio -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/ernesto-cisneros-buda.jpg" loading="lazy" alt="Ernesto Cisneros par Buda Studio" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Buda Studio</h2>
+        <p class="artist-work-title">Aquarelle depuis le Brésil</p>
+        <p>Buda Studio, c'est Leonardo M. Scarcia, un artiste argentin basé à Garopaba, au Brésil. Une carrière qui commence à la Biennale d'Art Jeune de Buenos Aires en 1994, des galeries à Recoleta et à l'Alliance Française, et qui a trouvé dans l'écosystème NFT un nouveau territoire pour des décennies de travail numérique. Il a exposé à NFT NYC, au Japon, en Italie, au Mexique et en Argentine entre 2021 et 2025.</p>
+        <p>Il a fait quelque chose que personne d'autre n'a fait : il a utilisé l'aquarelle et l'encre sur papier, technique traditionnelle, puis l'a frappé. Ce fut un acte manuel avant de devenir numérique.</p>
+        <p>Son portrait est le plus intime et le plus sérieux de tous. Le visage à moitié éclairé, à moitié dans l'ombre, les yeux regardant directement avec une intensité qu'aucun des autres n'a. Pas un hommage festif. De la contemplation.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/hicetnunc/799677" target="_blank" class="artist-link">Voir sur objkt</a>
+          <a href="https://twitter.com/budastudio_nft" target="_blank" class="artist-link">@budastudio_nft</a>
+          <a href="https://budastudiomkt.wixsite.com/budastudio" target="_blank" class="artist-link">Web</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 6: Tuco -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/el-pianista.jpg" loading="lazy" alt="El Pianista par Tuco" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Tuco</h2>
+        <p class="artist-work-title">L'hommage par l'IA</p>
+        <p>Tuco_drcc_art est un artiste américain d'origine colombienne, membre de Crazy Friends. Il travaillait avec l'IA et Photoshop et était ouvertement fier de ces outils à une époque où beaucoup dans la communauté les regardaient avec suspicion.</p>
+        <p>Son œuvre El Pianista n'est pas un portrait littéral mais un archétype : la figure d'un musicien concentré, les mains illuminées sur les touches comme si la lumière venait de l'intérieur de l'instrument, le fond une accumulation de textures et de couches d'histoire visuelle.</p>
+        <p>Il a écrit : « Esta obra es mi forma de decir gracias. Del fondo de mi corazón, muchas gracias por tu generosidad amigo. » Il a ajouté que c'était sa meilleure pièce d'IA à cette date. Il l'a dédiée à son meilleur moment créatif. C'est ce qui compte.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/KT1FoxLe2oE1pPfHVm9NwxU5bgTJbVoMRfXv/44" target="_blank" class="artist-link">Voir sur objkt</a>
+          <a href="https://twitter.com/drcc_art" target="_blank" class="artist-link">@drcc_art</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 7: Banshee -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/crypto-ernesto.jpg" loading="lazy" alt="Crypto Ernesto par Banshee" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Banshee</h2>
+        <p class="artist-work-title">Crypto Ernesto</p>
+        <p>Banshee est une jeune artiste numérique mexicaine, également membre de Crazy Friends. Nerd autoproclamée : elle et deux amis ont construit un métavers, et elle travaillait avec la réalité augmentée et virtuelle. L'une de ces personnes dans l'écosystème qui ne faisait pas seulement de l'art, mais poussait la technologie de l'intérieur.</p>
+        <p>Son portrait est le plus décontracté de tous : lunettes rouges, une cigarette à la bouche, un sourire en coin, trois yeux flottants sur un fond de graffiti turquoise et violet. Sa description inclut : « Amor de todas las chicas en el ecosistema crypto. »</p>
+        <p>Pas de révérence. De la complicité. La manière dont on portraiture quelqu'un qu'on aime et qu'on trouve aussi authentiquement cool. Il y avait de la place pour cela dans la communauté aussi.</p>
+        <div class="artist-links">
+          <a href="https://objkt.com/tokens/KT1957mUz4wU2U6uQRabSU4rDrtFg6hugVJz/5" target="_blank" class="artist-link">Voir sur objkt</a>
+          <a href="https://twitter.com/bybanshee_" target="_blank" class="artist-link">@bybanshee_</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Artist 8: Mavi Prado -->
+  <article class="artist-block">
+    <div class="artist-content">
+      <div class="artist-image">
+        <img src="../../assets/nft/compressed/gift-from-community/ernesto-mavi.jpg" alt="Ernesto par Mavi Prado" class="lightbox-trigger">
+      </div>
+      <div class="artist-text">
+        <h2 class="artist-name">Mavi Prado</h2>
+        <p class="artist-work-title">Explosion vénézuélienne</p>
+        <p>Mavi Prado est une artiste vénézuélienne basée à Barcelone dont le langage est la saturation chromatique absolue. Elle a portraituré plusieurs artistes de la communauté dans ce style.</p>
+        <p>Son portrait montre mon visage reconnaissable, les yeux, la barbe, émergeant d'une explosion de couleur avec des touches de piano dans le coin, des cercles, des cœurs, des triangles, le tout à intensité maximale.</p>
+        <p>C'est le contraste exact avec Buda Studio : deux portraits de la même année, l'un en aquarelle presque silencieuse, l'autre en couleur absolue et bruit visuel. Les deux capturent quelque chose de vrai depuis des extrêmes opposés. Cela dit aussi quelque chose sur la diversité de cette communauté.</p>
+        <p>Cette œuvre est arrivée directement, sans frappe confirmée. Elle existe comme fichier, la plus éphémère de la collection, et paradoxalement l'une des plus intenses visuellement.</p>
+        <div class="artist-links">
+          <a href="https://twitter.com/MaviPradoArte" target="_blank" class="artist-link">@MaviPradoArte</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- The Ernestitos Section -->
+  <section class="ernestitos-section">
+    <h2 class="ernestitos-title">Los Ernestitos</h2>
+
+    <div class="ernestitos-text">
+      <p>Fin 2022, trois artistes de la communauté ont décidé de faire quelque chose sans précédent dans cet écosystème : créer une collection faite à la main, non générative, construite en secret, dédiée à une seule personne.</p>
+
+      <p><strong>Gastón Stones</strong>, un artiste de street art argentin basé en France, avait créé le premier Ernestito en 2021 comme un simple cadeau. Cette image est devenue la base. Il en a ensuite parlé avec <strong>Bocagrandi</strong>, une artiste vénézuélienne basée au Mexique, et avec <strong>Mina Power</strong>, une designer espagnole. Les trois ont travaillé en secret pendant des mois, chacun créant plus de quarante versions à partir de l'original de Gastón, chacun injectant son propre univers visuel dans le même point de départ.</p>
+
+      <p>Un jour, lors d'un Twitter Space, ils m'ont dit qu'ils avaient quelque chose pour moi. Ils ont présenté la collection : environ 150 pièces faites à la main, toutes à mon nom, toutes réalisées avec du temps, du talent et de l'affection par trois artistes que j'aime.</p>
+
+      <p>L'intention était claire : la collection était un cadeau pour que je la vende si je le souhaitais, sans obligation de les compenser. J'ai décidé autrement. J'en ai frappé quelques-unes sur Tezos et les ai transférées dans leurs portefeuilles, parce que ces œuvres leur appartiennent même si elles portent mon nom. Le reste, je le garde sur un disque dur, pour ce qu'elles sont : un souvenir.</p>
+    </div>
+
+    <div class="ernestitos-grid">
+      <img src="../../assets/nft/compressed/gift-from-community/ernestitos-1.png" alt="Ernestitos Collection 1" class="lightbox-trigger">
+      <img src="../../assets/nft/compressed/gift-from-community/ernestitos-2.png" alt="Ernestitos Collection 2" class="lightbox-trigger">
+      <img src="../../assets/nft/compressed/gift-from-community/ernestitos-3.png" alt="Ernestitos Collection 3" class="lightbox-trigger">
+    </div>
+
+    <p style="text-align: center; color: var(--text-secondary); font-style: italic; margin: 1.5rem 0;">Une sélection de 30 sur environ 150 pièces.</p>
+
+    <div class="ernestitos-artists">
+      <p class="ernestitos-artists-title">Créé par</p>
+      <div class="ernestitos-artists-links">
+        <a href="https://x.com/GastonStones_Tw" target="_blank">Gastón Stones</a>
+        <a href="https://x.com/bocagrandiart" target="_blank">Bocagrandi</a>
+        <a href="https://x.com/minapower_tw" target="_blank">Mina Power</a>
+      </div>
+    </div>
+
+    <div class="ernestitos-note">
+      Un petit nombre de pièces est disponible sur la blockchain.<br>
+      Six Ernestitos frappés sur Tezos sont disponibles sur <a href="https://objkt.com/collections/KT1JYDgcG2azyzU5yQq5uSewTLsFmh9aFSB5" target="_blank">objkt.com</a>, et six autres sur Solana sur <a href="https://exchange.art/series/Ernestitos%20in%20Solana/nfts" target="_blank">exchange.art</a>.
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="closing">
+    <p>Huit artistes. Cuba, Argentine, Brésil, Colombie, Mexique, Venezuela, Espagne. Aucun d'entre eux n'a été sollicité. Chacun a décidé seul.</p>
+
+    <p>C'était la communauté NFT dans ce qu'elle avait de meilleur : des gens extraordinaires qui ont utilisé leur talent pour dire merci, pour documenter un instant, pour laisser une trace que quelque chose de réel s'était passé entre des personnes que le monde d'avant n'aurait jamais connectées.</p>
+
+    <p>Ces œuvres sont ce témoignage.</p>
+
+    <a href="https://twitter.com/CrazyFriends_OG" target="_blank" class="closing-link">Crazy Friends · @CrazyFriends_OG</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <img id="lightbox-img" src="" alt="">
+    <p class="lightbox-hint">ESC para cerrar</p>
+  </div>
+</div>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+// Lightbox
+(function() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const triggers = document.querySelectorAll('.lightbox-trigger');
+
+  function open(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(img => {
+    img.addEventListener('click', () => open(img.src));
+  });
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
+</script>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

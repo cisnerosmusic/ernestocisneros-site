@@ -38,7 +38,13 @@
     'contact.html',
     'music/glacial-paths.html',
     'music/atlas-of-fragmented-light.html',
-    'music/mare-incognitum.html'
+    'music/mare-incognitum.html',
+    'nft.html',
+    'nft/eth-collection.html',
+    'nft/tez-collection.html',
+    'nft/marketplaces.html',
+    'nft/btc-ordinals.html',
+    'nft/gift-from-community.html'
   ];
 
   // ── Detect current context ─────────────────────────────────

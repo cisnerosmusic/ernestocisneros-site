@@ -345,6 +345,44 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- FR: NFT Section -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/eth-collection.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/tez-collection.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/marketplaces.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/btc-ordinals.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/gift-from-community.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- FR: Music Section -->
   <url>
     <loc>https://ernestocisneros.art/fr/music.html</loc>
@@ -398,6 +436,44 @@
   </url>
   <url>
     <loc>https://ernestocisneros.art/ja/contact.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- JA: NFT Section -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/eth-collection.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/tez-collection.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/marketplaces.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/btc-ordinals.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/gift-from-community.html</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
