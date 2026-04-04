@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ernesto Cisneros Cino | Compositeur, Artiste Numérique et Écrivain</title>
-    <meta name="description" content="Ernesto Cisneros Cino — Compositeur, pianiste, artiste numérique et écrivain cubain à Miami. Musique, livres, art NFT, cosmologie stochastique et essais à l'intersection de l'art et de la science.">
+    <title>Ernesto Cisneros Cino | Композитор, цифровой художник и писатель</title>
+    <meta name="description" content="Ernesto Cisneros Cino — композитор, пианист, цифровой художник и писатель кубинского происхождения в Майами. Музыка, книги, цифровое искусство, стохастическая космология и эссе на пересечении искусства и науки.">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ernestocisneros.art/fr/">
-    <meta property="og:title" content="Ernesto Cisneros Cino | Compositeur, Artiste Numérique et Écrivain">
-    <meta property="og:description" content="Ernesto Cisneros Cino — Compositeur, pianiste, artiste numérique et écrivain cubain à Miami. Musique, livres, art NFT, cosmologie stochastique et essais à l'intersection de l'art et de la science.">
+    <meta property="og:url" content="https://ernestocisneros.art/ru/">
+    <meta property="og:title" content="Ernesto Cisneros Cino | Композитор, цифровой художник и писатель">
+    <meta property="og:description" content="Ernesto Cisneros Cino — композитор, пианист, цифровой художник и писатель кубинского происхождения в Майами. Музыка, книги, цифровое искусство, стохастическая космология и эссе на пересечении искусства и науки.">
     <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ernesto Cisneros Cino | Compositeur, Artiste Numérique et Écrivain">
-    <meta name="twitter:description" content="Ernesto Cisneros Cino — Compositeur, pianiste, artiste numérique et écrivain cubain à Miami. Musique, livres, art NFT, cosmologie stochastique et essais à l'intersection de l'art et de la science.">
+    <meta name="twitter:title" content="Ernesto Cisneros Cino | Композитор, цифровой художник и писатель">
+    <meta name="twitter:description" content="Ernesto Cisneros Cino — композитор, пианист, цифровой художник и писатель кубинского происхождения в Майами. Музыка, книги, цифровое искусство, стохастическая космология и эссе на пересечении искусства и науки.">
     <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,11 +70,11 @@
             pointer-events: none;
         }
 
-        
 
-        
 
-        
+
+
+
 
         .nav-logo-img {
             height: 50px;
@@ -82,21 +82,21 @@
             mix-blend-mode: lighten;
         }
 
-        
 
-        
 
-        
 
-        
 
-        
 
-        
 
-        
 
-        
+
+
+
+
+
+
+
+
 
         .audio-control {
             position: fixed;
@@ -298,15 +298,16 @@
             letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--gold-dim);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-title {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
             font-weight: 400;
-            letter-spacing: 0.1em;
-            color: var(--text-primary);
+            letter-spacing: 0.05em;
+            color: var(--gold);
+            text-shadow: 0 0 40px var(--gold-glow);
         }
 
         .featured-grid {
@@ -318,39 +319,41 @@
         }
 
         .featured-card {
-            position: relative;
-            display: block;
-            padding: 2.5rem 2rem;
-            background: linear-gradient(135deg, rgba(20, 16, 8, 0.6) 0%, rgba(13, 10, 6, 0.8) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 2rem;
             border: 1px solid var(--line);
+            background: linear-gradient(135deg, rgba(13,10,6,0.5), rgba(20,16,8,0.3));
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .featured-card:hover {
-            border-color: var(--line-bright);
-            transform: translateY(-4px);
+            border-color: var(--gold-dim);
+            background: linear-gradient(135deg, rgba(13,10,6,0.8), rgba(30,24,12,0.5));
+            box-shadow: 0 0 30px var(--gold-faint);
         }
 
         .featured-card-icon {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            line-height: 1;
         }
 
         .featured-card-title {
             font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            color: var(--gold);
-            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: 0.03em;
         }
 
         .featured-card-desc {
             font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
         }
 
         .featured-card-link {
@@ -359,6 +362,8 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--gold-dim);
+            transition: color 0.3s ease;
+            margin-top: 0.5rem;
         }
 
         .featured-card:hover .featured-card-link {
@@ -368,24 +373,25 @@
         .footer {
             position: relative;
             z-index: 10;
-            padding: 4rem 2rem 2rem;
+            padding: 3rem 2rem;
             border-top: 1px solid var(--line);
+            background: var(--bg-dark);
         }
 
         .footer-inner {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 2rem;
         }
 
         .footer-copyright {
             font-family: var(--font-mono);
-            font-size: 0.6rem;
-            letter-spacing: 0.15em;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
             color: var(--text-dim);
         }
 
@@ -395,8 +401,6 @@
         }
 
         .footer-social {
-            width: 36px;
-            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -493,7 +497,7 @@
   "@type": "WebSite",
   "name": "Ernesto Cisneros Cino",
   "url": "https://ernestocisneros.art",
-  "description": "Ernesto Cisneros Cino est un compositeur cubain, pianiste, artiste numérique et écrivain basé à Miami.",
+  "description": "Ernesto Cisneros Cino — композитор, пианист, цифровой художник и писатель кубинского происхождения, проживающий в Майами.",
   "author": {
     "@type": "Person",
     "name": "Ernesto Cisneros Cino"
@@ -512,8 +516,8 @@
   "name": "Ernesto Cisneros Cino",
   "url": "https://ernestocisneros.art",
   "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
-  "jobTitle": ["Compositeur", "Pianiste", "Artiste numérique", "Écrivain"],
-  "description": "Compositeur cubain, pianiste, artiste numérique et écrivain basé à Miami. Reliant art, musique, littérature et science.",
+  "jobTitle": ["Композитор", "Пианист", "Цифровой художник", "Писатель"],
+  "description": "Композитор кубинского происхождения, пианист, цифровой художник и писатель, проживающий в Майами. Объединяет искусство, музыку, литературу и науку.",
   "birthPlace": {
     "@type": "Place",
     "name": "Havana, Cuba"
@@ -536,7 +540,7 @@
 </script>
     <script src="../assets/js/lang-detect.js"></script>
 <!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
-<link rel="canonical" href="https://ernestocisneros.art/fr/">
+<link rel="canonical" href="https://ernestocisneros.art/ru/">
 <link rel="alternate" hreflang="en" href="https://ernestocisneros.art/">
 <link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/">
 <link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/">
@@ -564,47 +568,47 @@
         </button>
 
         <ul class="nav-menu" id="nav-menu">
-            <li><a href="index.html" class="nav-item active">Accueil</a></li>
-            <li><a href="biography.html" class="nav-item">Biographie</a></li>
-            
+            <li><a href="index.html" class="nav-item active">Главная</a></li>
+            <li><a href="biography.html" class="nav-item">Биография</a></li>
+
             <li class="nav-dropdown">
-                <a href="music.html" class="nav-item">Musique</a>
+                <a href="music.html" class="nav-item">Музыка</a>
                 <div class="nav-dropdown-content">
                     <a href="music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
                     <a href="music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
                     <a href="music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
                     <a href="music/trash.html" class="nav-dropdown-item">Trash</a>
                     <a href="music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
-                    <a href="music/other-works.html" class="nav-dropdown-item">Autres œuvres musicales</a>
+                    <a href="music/other-works.html" class="nav-dropdown-item">Другие музыкальные произведения</a>
                 </div>
             </li>
 
             <li class="nav-dropdown">
                 <a href="nft.html" class="nav-item">NFT</a>
                 <div class="nav-dropdown-content">
-                    <a href="nft/eth-collection.html" class="nav-dropdown-item">Collection ETH</a>
-                    <a href="nft/tez-collection.html" class="nav-dropdown-item">Collection Tez</a>
-                    <a href="nft/marketplaces.html" class="nav-dropdown-item">Marchés</a>
-                    <a href="nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
-                    <a href="nft/gift-from-community.html" class="nav-dropdown-item">Un don de la communauté</a>
+                    <a href="nft/eth-collection.html" class="nav-dropdown-item">Коллекция ETH</a>
+                    <a href="nft/tez-collection.html" class="nav-dropdown-item">Коллекция Tez</a>
+                    <a href="nft/marketplaces.html" class="nav-dropdown-item">Рынки</a>
+                    <a href="nft/btc-ordinals.html" class="nav-dropdown-item">Ординалы BTC</a>
+                    <a href="nft/gift-from-community.html" class="nav-dropdown-item">Дар от сообщества</a>
                 </div>
             </li>
 
-            <li><a href="books.html" class="nav-item">Livres</a></li>
+            <li><a href="books.html" class="nav-item">Книги</a></li>
 
             <li class="nav-dropdown">
-                <a href="ideas.html" class="nav-item">Idées</a>
+                <a href="ideas.html" class="nav-item">Идеи</a>
                 <div class="nav-dropdown-content">
-                    <a href="ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmologie et physique</a>
-                    <a href="ideas/technology-society.html" class="nav-dropdown-item">Technologie et société</a>
-                    <a href="ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, mémoire et exil</a>
-                    <a href="ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, poétique et philosophie</a>
+                    <a href="ideas/cosmology-physics.html" class="nav-dropdown-item">Космология и физика</a>
+                    <a href="ideas/technology-society.html" class="nav-dropdown-item">Технология и общество</a>
+                    <a href="ideas/culture-memory-exile.html" class="nav-dropdown-item">Культура, память и изгнание</a>
+                    <a href="ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Искусство, поэтика и философия</a>
                 </div>
             </li>
 
             <li><a href="impulses-art.html" class="nav-item">Impulses.art</a></li>
-            <li><a href="contact.html" class="nav-item">Contact</a></li>
-        
+            <li><a href="contact.html" class="nav-item">Контакт</a></li>
+
             <li class="lang-switcher">
                 <a href="../index.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
                 <span class="lang-sep">|</span>
@@ -615,26 +619,26 @@
     </nav>
 
     <a href="../artemis-ii.html" class="artemis-banner">
-      <span class="artemis-banner-text">🚀 <span class="artemis-highlight">Artemis II en vol</span> — L'humanité retourne sur la Lune · Suivez la mission en direct</span>
+      <span class="artemis-banner-text">🚀 <span class="artemis-highlight">Artemis II в полёте</span> — человечество возвращается на Луну · следите за миссией вживую</span>
       <span class="artemis-banner-arrow">→</span>
     </a>
 
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-greeting">Bienvenue dans l'univers de</p>
+            <p class="hero-greeting">Добро пожаловать во вселенную</p>
             <h1 class="hero-name">Ernesto Cisneros Cino</h1>
             <p class="hero-roles">
-                Musicien <span>·</span>
-                Artiste numérique <span>·</span>
-                Écrivain
+                Музыкант <span>·</span>
+                Цифровой художник <span>·</span>
+                Писатель
             </p>
             <p class="hero-philosophy">
-                Relier l'art, la musique, la littérature et la science pour inspirer.
-                Un espace où la mémoire, le son et la pensée convergent ;
-                toujours en quête de nouvelles formes d'expression aux frontières de la créativité et de la connaissance.
+                Соединение искусства, музыки, литературы и науки для вдохновения.
+                Пространство, где память, звук и мысль сходятся;
+                вечный поиск новых форм выражения на границах творчества и знания.
             </p>
             <a href="biography.html" class="hero-cta">
-                Découvrir mon œuvre
+                Откройте моё творчество
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
@@ -642,14 +646,14 @@
         </div>
 
         <div class="hero-scroll">
-            <span class="hero-scroll-text">Défiler</span>
+            <span class="hero-scroll-text">Прокрутка</span>
             <div class="hero-scroll-line"></div>
         </div>
     </section>
 
     <section class="featured">
         <div class="section-header">
-            <h2 class="section-title">Territoires récents</h2>
+            <h2 class="section-title">Новые территории</h2>
         </div>
 
         <div class="featured-grid">
@@ -657,80 +661,80 @@
                 <div class="featured-card-icon">🎹</div>
                 <h3 class="featured-card-title">Glacial Paths</h3>
                 <p class="featured-card-desc">
-                    Piano et synthétiseurs naviguant à travers des paysages glacés.
-                    Un album de pièces instrumentales contemplatives.
+                    Фортепиано и синтезаторы, путешествующие через ледяные пейзажи.
+                    Альбом созерцательных инструментальных произведений.
                 </p>
-                <span class="featured-card-link">Écouter →</span>
+                <span class="featured-card-link">Слушать →</span>
             </a>
 
             <a href="books.html" class="featured-card">
                 <div class="featured-card-icon">📖</div>
                 <h3 class="featured-card-title">La Sospecha Razonable</h3>
                 <p class="featured-card-desc">
-                    Douze récits de fiction spéculative où la mécanique quantique,
-                    l'IA et la philosophie politique se rencontrent.
+                    Двенадцать рассказов спекулятивной фантастики, где квантовая механика,
+                    искусственный интеллект и политическая философия встречаются.
                 </p>
-                <span class="featured-card-link">En savoir plus →</span>
+                <span class="featured-card-link">Подробнее →</span>
             </a>
 
             <a href="ideas/cosmology-physics.html" class="featured-card">
                 <div class="featured-card-icon">🌌</div>
-                <h3 class="featured-card-title">Cosmologie stochastique</h3>
+                <h3 class="featured-card-title">Стохастическая космология</h3>
                 <p class="featured-card-desc">
-                    Explorer les modèles à mémoire finie, la stabilité oscillatoire
-                    et les structures mathématiques de l'univers.
+                    Исследование моделей с конечной памятью, осцилляторной устойчивости
+                    и математических структур вселенной.
                 </p>
-                <span class="featured-card-link">Explorer →</span>
+                <span class="featured-card-link">Исследовать →</span>
             </a>
 
             <a href="nft.html" class="featured-card">
                 <div class="featured-card-icon">🔷</div>
-                <h3 class="featured-card-title">NFT et Web3</h3>
+                <h3 class="featured-card-title">NFT и Web3</h3>
                 <p class="featured-card-desc">
-                    Art numérique sur Tezos, Ethereum et Bitcoin.
-                    Un voyage à travers la blockchain comme infrastructure culturelle.
+                    Цифровое искусство на Tezos, Ethereum и Bitcoin.
+                    Путешествие через блокчейн как культурную инфраструктуру.
                 </p>
-                <span class="featured-card-link">Voir la collection →</span>
+                <span class="featured-card-link">Смотреть коллекцию →</span>
             </a>
 
             <a href="music/mare-incognitum.html" class="featured-card">
                 <div class="featured-card-icon">🌊</div>
                 <h3 class="featured-card-title">Mare Incognitum</h3>
                 <p class="featured-card-desc">
-                    Un manifeste sonore de cartographie instable.
-                    Dix pistes explorant les territoires inconnus du son.
+                    Звуковой манифест нестабильной картографии.
+                    Десять треков, исследующих неизведанные территории звука.
                 </p>
-                <span class="featured-card-link">Écouter →</span>
+                <span class="featured-card-link">Слушать →</span>
             </a>
 
             <a href="ideas/technology-society.html" class="featured-card">
                 <div class="featured-card-icon">⚖️</div>
-                <h3 class="featured-card-title">Gouvernance décentralisée</h3>
+                <h3 class="featured-card-title">Децентрализованное управление</h3>
                 <p class="featured-card-desc">
-                    FMD-DAO, transparence asymétrique et IA vérifiable.
-                    Concevoir des systèmes qui résistent à la concentration du pouvoir.
+                    FMD-DAO, асимметричная прозрачность и проверяемый искусственный интеллект.
+                    Разработка систем, противостоящих концентрации власти.
                 </p>
-                <span class="featured-card-link">Explorer →</span>
+                <span class="featured-card-link">Исследовать →</span>
             </a>
 
             <a href="ideas/art-poetics-philosophy.html" class="featured-card">
                 <div class="featured-card-icon">∞</div>
-                <h3 class="featured-card-title">La limite du réel</h3>
+                <h3 class="featured-card-title">Границы реальности</h3>
                 <p class="featured-card-desc">
-                    Un cadre philosophique où les mathématiques, l'esthétique,
-                    l'éthique et le langage convergent aux frontières de la connaissance.
+                    Философская система, где математика, эстетика,
+                    этика и язык сходятся на границах знания.
                 </p>
-                <span class="featured-card-link">Lire →</span>
+                <span class="featured-card-link">Читать →</span>
             </a>
 
             <a href="impulses-art.html" class="featured-card">
                 <div class="featured-card-icon">💡</div>
                 <h3 class="featured-card-title">Impulses.art</h3>
                 <p class="featured-card-desc">
-                    La musique comme lien, guérison et lumière. Apporter la musicothérapie
-                    aux réfugiés, aux familles et aux communautés vulnérables.
+                    Музыка как связь, исцеление и свет. Принесение музыкотерапии
+                    беженцам, семьям и уязвимым сообществам.
                 </p>
-                <span class="featured-card-link">Découvrir →</span>
+                <span class="featured-card-link">Открыть →</span>
             </a>
         </div>
     </section>
@@ -738,7 +742,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <p class="footer-copyright">© 2020–2026 Ernesto Cisneros Cino</p>
-            
+
             <div class="footer-socials">
                 <a href="https://x.com/ErnestCisneros1" target="_blank" class="footer-social" title="X" aria-label="X (Twitter)">
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -766,7 +770,7 @@
             <div class="audio-bar"></div>
             <div class="audio-bar"></div>
         </div>
-        <span class="audio-label" id="audio-label">Lecture</span>
+        <span class="audio-label" id="audio-label">Воспроизвести</span>
         <svg class="audio-icon" id="audio-icon-play" fill="currentColor" viewBox="0 0 24 24">
             <polygon points="5 3 19 12 5 21 5 3"/>
         </svg>
@@ -793,14 +797,14 @@
         audioControl.addEventListener('click', () => {
             if (isPlaying) {
                 bgAudio.pause();
-                audioLabel.textContent = 'Lecture';
+                audioLabel.textContent = 'Воспроизвести';
                 audioIconPlay.style.display = '';
                 audioIconPause.style.display = 'none';
                 audioBars.forEach(bar => bar.classList.remove('playing'));
             } else {
                 bgAudio.volume = 0.3;
                 bgAudio.play();
-                audioLabel.textContent = 'Pause';
+                audioLabel.textContent = 'Пауза';
                 audioIconPlay.style.display = 'none';
                 audioIconPause.style.display = '';
                 audioBars.forEach(bar => bar.classList.add('playing'));
@@ -879,4 +883,3 @@
 <script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
-

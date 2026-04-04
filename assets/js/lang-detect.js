@@ -21,7 +21,10 @@
   var SUPPORTED_LANGS = [
     { code: 'es', path: '/es/' },
     { code: 'fr', path: '/fr/' },
-    { code: 'ja', path: '/ja/' }
+    { code: 'ja', path: '/ja/' },
+    { code: 'ru', path: '/ru/' },
+    { code: 'it', path: '/it/' },
+    { code: 'ko', path: '/ko/' }
   ];
 
   // If user has manually chosen a language, respect that choice

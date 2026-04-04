@@ -18,7 +18,10 @@
   // Languages available beyond header (EN/ES are in the header)
   var EXTRA_LANGUAGES = [
     { code: 'fr', label: 'Français', dir: '/fr/' },
-    { code: 'ja', label: '日本語',    dir: '/ja/' }
+    { code: 'ja', label: '日本語',    dir: '/ja/' },
+    { code: 'ru', label: 'Русский',  dir: '/ru/' },
+    { code: 'it', label: 'Italiano', dir: '/it/' },
+    { code: 'ko', label: '한국어',    dir: '/ko/' }
   ];
 
   // All languages including header ones (for rendering full row)
@@ -26,7 +29,10 @@
     { code: 'en', label: 'English',   dir: '/' },
     { code: 'es', label: 'Español',   dir: '/es/' },
     { code: 'fr', label: 'Français',  dir: '/fr/' },
-    { code: 'ja', label: '日本語',     dir: '/ja/' }
+    { code: 'ja', label: '日本語',     dir: '/ja/' },
+    { code: 'ru', label: 'Русский',   dir: '/ru/' },
+    { code: 'it', label: 'Italiano',  dir: '/it/' },
+    { code: 'ko', label: '한국어',     dir: '/ko/' }
   ];
 
   // Pages that have FR/JA translations (normalized base paths)
@@ -68,6 +74,15 @@
   } else if (path.indexOf('/ja/') === 0) {
     currentLang = 'ja';
     basePath = path.replace(/^\/ja\//, '/');
+  } else if (path.indexOf('/ru/') === 0) {
+    currentLang = 'ru';
+    basePath = path.replace(/^\/ru\//, '/');
+  } else if (path.indexOf('/it/') === 0) {
+    currentLang = 'it';
+    basePath = path.replace(/^\/it\//, '/');
+  } else if (path.indexOf('/ko/') === 0) {
+    currentLang = 'ko';
+    basePath = path.replace(/^\/ko\//, '/');
   }
 
   // Normalize: "/" → "index.html", "/biography.html" → "biography.html"
@@ -99,6 +114,9 @@
   label.textContent = currentLang === 'es' ? 'También disponible en: '
                      : currentLang === 'fr' ? 'Aussi disponible en : '
                      : currentLang === 'ja' ? '他の言語: '
+                     : currentLang === 'ru' ? 'Также доступно на: '
+                     : currentLang === 'it' ? 'Disponibile anche in: '
+                     : currentLang === 'ko' ? '다른 언어: '
                      : 'Also available in: ';
   container.appendChild(label);
 
