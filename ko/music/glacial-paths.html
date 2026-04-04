@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Glacial Paths | Ernesto Cisneros Cino</title>
-<meta name="description" content="Glacial Paths - An instrumental album for piano and synthesizers by Ernesto Cisneros Cino. Ten pieces composed in the space between silence and sound.">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+<meta name="description" content="Glacial Paths - 에르네스토 시스네로스 치노의 피아노와 신디사이저를 위한 기악 앨범. 침묵과 소리 사이의 공간에서 작곡된 열 곡.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ernestocisneros.art/music/glacial-paths.html">
+    <meta property="og:url" content="https://ernestocisneros.art/ko/music/glacial-paths.html">
     <meta property="og:title" content="Glacial Paths | Ernesto Cisneros Cino">
-    <meta property="og:description" content="Glacial Paths - An instrumental album for piano and synthesizers by Ernesto Cisneros Cino. Ten pieces composed in the space between silence and sound.">
+    <meta property="og:description" content="Glacial Paths - 에르네스토 시스네로스 치노의 피아노와 신디사이저를 위한 기악 앨범. 침묵과 소리 사이의 공간에서 작곡된 열 곡.">
     <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Glacial Paths | Ernesto Cisneros Cino">
-    <meta name="twitter:description" content="Glacial Paths - An instrumental album for piano and synthesizers by Ernesto Cisneros Cino. Ten pieces composed in the space between silence and sound.">
+    <meta name="twitter:description" content="Glacial Paths - 에르네스토 시스네로스 치노의 피아노와 신디사이저를 위한 기악 앨범. 침묵과 소리 사이의 공간에서 작곡된 열 곡.">
     <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -33,7 +33,7 @@
     --glow: #c8e0f0;
     --dark: #080d12;
     --particle: rgba(180, 220, 255, 0.6);
-    
+
     --gold: #d4a030;
     --gold-dim: rgba(212, 160, 48, 0.5);
     --gold-faint: rgba(212, 160, 48, 0.15);
@@ -55,7 +55,7 @@
 
   a { color: inherit; text-decoration: none; }
 
-  /* Gold Particles */
+  /* 금색 입자 */
   #gold-particles {
     position: fixed;
     top: 0;
@@ -66,7 +66,7 @@
     z-index: 1;
   }
 
-  /* NAVIGATION */
+  /* 네비게이션 */
   .nav {
     position: fixed;
     top: 0;
@@ -174,7 +174,7 @@
     transition: all 0.3s ease;
   }
 
-  /* CANVAS DE PARTÍCULAS */
+  /* 입자 캔버스 */
   #canvas {
     position: fixed;
     inset: 0;
@@ -182,7 +182,7 @@
     pointer-events: none;
   }
 
-  /* PORTADA DE FONDO */
+  /* 배경 이미지 */
   #bg {
     position: fixed;
     inset: 0;
@@ -194,7 +194,7 @@
     filter: blur(2px);
   }
 
-  /* GRADIENTE SOBRE EL FONDO */
+  /* 배경 그래디언트 */
   #vignette {
     position: fixed;
     inset: 0;
@@ -204,7 +204,7 @@
       radial-gradient(ellipse at center bottom, rgba(8,13,18,0.95) 0%, transparent 60%);
   }
 
-  /* CONTENEDOR PRINCIPAL */
+  /* 메인 컨테이너 */
   #app {
     position: relative;
     z-index: 10;
@@ -218,7 +218,7 @@
     gap: 0;
   }
 
-  /* HEADER */
+  /* 헤더 */
   #header {
     text-align: center;
     margin-bottom: 2rem;
@@ -247,7 +247,7 @@
     opacity: 0.7;
   }
 
-  /* CONSTELACIÓN DE TRACKS */
+  /* 별자리 트랙 배열 */
   #constellation {
     position: relative;
     width: min(680px, 90vw);
@@ -322,7 +322,7 @@
     color: var(--ice-white);
   }
 
-  /* LÍNEAS DE CONSTELACIÓN */
+  /* 별자리 선 */
   #constellation svg {
     position: absolute;
     inset: 0;
@@ -331,7 +331,7 @@
     pointer-events: none;
   }
 
-  /* PLAYER */
+  /* 플레이어 */
   #player {
     margin-top: 2.5rem;
     width: min(480px, 85vw);
@@ -369,7 +369,7 @@
     text-transform: uppercase;
   }
 
-  /* BARRA DE PROGRESO */
+  /* 진행 바 */
   #progress-container {
     width: 100%;
     display: flex;
@@ -421,7 +421,7 @@
     pointer-events: none;
   }
 
-  /* CONTROLES */
+  /* 컨트롤 버튼 */
   #controls {
     display: flex;
     align-items: center;
@@ -463,7 +463,7 @@
     transform: scale(1.05) !important;
   }
 
-  /* VOLUMEN */
+  /* 볼륨 조절 */
   #volume-container {
     display: flex;
     align-items: center;
@@ -493,7 +493,7 @@
     background: var(--glow);
   }
 
-  /* LISTA TRACK como texto tenue */
+  /* 트랙 리스트 텍스트 */
   #tracklist {
     position: fixed;
     right: 2rem;
@@ -527,7 +527,7 @@
     color: var(--ice-white);
   }
 
-  /* ALBUM INFO */
+  /* 앨범 정보 */
   .album-info {
     max-width: min(600px, 85vw);
     text-align: center;
@@ -554,7 +554,7 @@
     margin-top: 1.5rem;
   }
 
-  /* FOOTER */
+  /* 푸터 */
   .footer {
     position: relative;
     z-index: 20;
@@ -617,7 +617,7 @@
     to   { opacity: 1; }
   }
 
-  /* HINT */
+  /* 힌트 */
   #hint {
     position: fixed;
     bottom: 3.5rem;
@@ -637,7 +637,7 @@
     to { opacity: 0; }
   }
 
-  /* MOBILE */
+  /* 모바일 */
   @media (max-width: 768px) {
     .nav-menu {
       position: fixed;
@@ -676,7 +676,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MusicAlbum",
+  "@type": "MusiqueAlbum",
   "name": "Glacial Paths",
   "url": "https://ernestocisneros.art/music/glacial-paths.html",
   "description": "An instrumental album for piano and synthesizers. Ten pieces composed in the space between silence and sound.",
@@ -688,33 +688,30 @@
     "@type": "ItemList",
     "numberOfItems": 10,
     "itemListElement": [
-      {"@type": "ListItem", "position": 1, "item": {"@type": "MusicRecording", "name": "Chromed Horizons"}},
-      {"@type": "ListItem", "position": 2, "item": {"@type": "MusicRecording", "name": "Circuit Dream"}},
-      {"@type": "ListItem", "position": 3, "item": {"@type": "MusicRecording", "name": "Fractured Tides"}},
-      {"@type": "ListItem", "position": 4, "item": {"@type": "MusicRecording", "name": "Galactic Watch"}},
-      {"@type": "ListItem", "position": 5, "item": {"@type": "MusicRecording", "name": "Glacial Breathing Room"}},
-      {"@type": "ListItem", "position": 6, "item": {"@type": "MusicRecording", "name": "Glass Clock Memory"}},
-      {"@type": "ListItem", "position": 7, "item": {"@type": "MusicRecording", "name": "Kinetic Glass"}},
-      {"@type": "ListItem", "position": 8, "item": {"@type": "MusicRecording", "name": "Light"}},
-      {"@type": "ListItem", "position": 9, "item": {"@type": "MusicRecording", "name": "Luminous Tides"}},
-      {"@type": "ListItem", "position": 10, "item": {"@type": "MusicRecording", "name": "Translucent Harmonic Bloom"}}
+      {"@type": "ListItem", "position": 1, "item": {"@type": "MusiqueRecording", "name": "Chromed Horizons"}},
+      {"@type": "ListItem", "position": 2, "item": {"@type": "MusiqueRecording", "name": "Circuit Dream"}},
+      {"@type": "ListItem", "position": 3, "item": {"@type": "MusiqueRecording", "name": "Fractured Tides"}},
+      {"@type": "ListItem", "position": 4, "item": {"@type": "MusiqueRecording", "name": "Galactic Watch"}},
+      {"@type": "ListItem", "position": 5, "item": {"@type": "MusiqueRecording", "name": "Glacial Breathing Room"}},
+      {"@type": "ListItem", "position": 6, "item": {"@type": "MusiqueRecording", "name": "Glass Clock Memory"}},
+      {"@type": "ListItem", "position": 7, "item": {"@type": "MusiqueRecording", "name": "Kinetic Glass"}},
+      {"@type": "ListItem", "position": 8, "item": {"@type": "MusiqueRecording", "name": "Light"}},
+      {"@type": "ListItem", "position": 9, "item": {"@type": "MusiqueRecording", "name": "Luminous Tides"}},
+      {"@type": "ListItem", "position": 10, "item": {"@type": "MusiqueRecording", "name": "Translucent Harmonic Bloom"}}
     ]
   }
 }
 </script>
-    <script src="../assets/js/lang-detect.js" defer></script>
-<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
-<link rel="canonical" href="https://ernestocisneros.art/music/glacial-paths.html">
+<!-- SEO 필수: Canonical + hreflang — 제거 금지 -->
+<link rel="canonical" href="https://ernestocisneros.art/ko/music/glacial-paths.html">
 <link rel="alternate" hreflang="en" href="https://ernestocisneros.art/music/glacial-paths.html">
 <link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/music/glacial-paths.html">
 <link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/music/glacial-paths.html">
 <link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/music/glacial-paths.html">
-<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/music/glacial-paths.html">
-<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/music/glacial-paths.html">
 <link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/music/glacial-paths.html">
 <link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/music/glacial-paths.html">
-<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
-<script src="../assets/js/schema-loader.js" data-schema="music-glacial-paths" defer></script>
+<!-- SEO/GEO 필수: Schema loader — 제거 금지 -->
+<script src="../../assets/js/schema-loader.js" data-schema="music-glacial-paths" defer></script>
 </head>
 <body>
 
@@ -725,56 +722,53 @@
 
 <nav class="nav" id="nav">
   <a href="../index.html" class="nav-logo">
-    <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino" class="nav-logo-img">
+    <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" class="nav-logo-img">
   </a>
 
   <div class="nav-menu" id="nav-menu">
-    <a href="../index.html" class="nav-item">Home</a>
-    <a href="../biography.html" class="nav-item">Biography</a>
-    
+    <a href="../index.html" class="nav-item">홈</a>
+    <a href="../biography.html" class="nav-item">전기</a>
+
     <div class="nav-dropdown">
-      <a href="../music.html" class="nav-item active">Music</a>
+      <a href="../music.html" class="nav-item active">음악</a>
       <div class="nav-dropdown-content">
         <a href="glacial-paths.html" class="nav-dropdown-item active">Glacial Paths</a>
         <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
         <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
         <a href="trash.html" class="nav-dropdown-item">Trash</a>
         <a href="sandbank.html" class="nav-dropdown-item">Sandbank</a>
-        <a href="other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        <a href="other-works.html" class="nav-dropdown-item">기타 음악 작품</a>
       </div>
     </div>
 
     <div class="nav-dropdown">
       <a href="../nft.html" class="nav-item">NFT</a>
       <div class="nav-dropdown-content">
-        <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
-        <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
-        <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
-        <a href="../nft/btc-ordinal.html" class="nav-dropdown-item">BTC Ordinal</a>
-        <a href="../nft/gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+        <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH 컬렉션</a>
+        <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez 컬렉션</a>
+        <a href="../nft/marketplaces.html" class="nav-dropdown-item">마켓플레이스</a>
+        <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC 오디널스</a>
+        <a href="../nft/gift-from-community.html" class="nav-dropdown-item">커뮤니티의 선물</a>
       </div>
     </div>
 
-    <a href="../books.html" class="nav-item">Books</a>
+    <a href="../books.html" class="nav-item">책</a>
 
     <div class="nav-dropdown">
-      <a href="../ideas.html" class="nav-item">Ideas</a>
+      <a href="../ideas.html" class="nav-item">아이디어</a>
       <div class="nav-dropdown-content">
-        <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
-        <a href="../ideas/technology-society.html" class="nav-dropdown-item">Technology & Society</a>
-        <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
-        <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">우주론과 물리학</a>
+        <a href="../ideas/technology-society.html" class="nav-dropdown-item">기술과 사회</a>
+        <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">문화 기억과 망명</a>
+        <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">예술 시학과 철학</a>
       </div>
     </div>
 
-    <a href="../impulses.html" class="nav-item">Impulses.art</a>
-    <a href="../contact.html" class="nav-item">Contact</a>
-    <span class="lang-sep" style="margin:0 0.5rem;">|</span>
-    <a href="../es/music/glacial-paths.html" title="Español" onclick="localStorage.setItem('lang','es')" class="nav-item">🇪🇸</a>
-    <a href="glacial-paths.html" class="active-lang nav-item" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+    <a href="../impulses-art.html" class="nav-item">Impulses.art</a>
+    <a href="../contact.html" class="nav-item">연락처</a>
   </div>
 
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+  <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 전환">
     <span></span>
     <span></span>
     <span></span>
@@ -784,7 +778,7 @@
 <div id="app">
   <div id="header">
     <h1>Glacial Paths</h1>
-    <p>Ernesto Cisneros &nbsp;·&nbsp; Piano & Synthesizers</p>
+    <p>Ernesto Cisneros &nbsp;·&nbsp; 피아노와 신디사이저</p>
   </div>
 
   <div id="constellation">
@@ -793,7 +787,7 @@
 
   <div id="player">
     <div id="now-playing">
-      <div id="track-name">– select a path –</div>
+      <div id="track-name">– 경로를 선택하세요 –</div>
       <div id="track-number"></div>
     </div>
 
@@ -807,12 +801,12 @@
     </div>
 
     <div id="controls">
-      <button class="ctrl-btn" id="btn-prev" title="Previous">
+      <button class="ctrl-btn" id="btn-prev" title="이전">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <polyline points="19 20 9 12 19 4"/><line x1="5" y1="4" x2="5" y2="20"/>
         </svg>
       </button>
-      <button class="ctrl-btn" id="btn-play" title="Play / Pause">
+      <button class="ctrl-btn" id="btn-play" title="재생 / 일시정지">
         <svg id="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <polygon points="5 3 19 12 5 21 5 3"/>
         </svg>
@@ -820,7 +814,7 @@
           <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
         </svg>
       </button>
-      <button class="ctrl-btn" id="btn-next" title="Next">
+      <button class="ctrl-btn" id="btn-next" title="다음">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <polyline points="5 4 15 12 5 20"/><line x1="19" y1="4" x2="19" y2="20"/>
         </svg>
@@ -838,27 +832,27 @@
 
   <div class="album-info">
     <p>
-      Some music is not made to be heard. It is made to be remembered.
-      Glacial Paths is an instrumental album for piano and synthesizers; 
-      ten pieces composed in the space between silence and sound, 
-      between presence and absence. The piano, processed until it breathes like ice, 
-      moves slowly through landscapes that have no name but feel familiar: 
-      the kind of places we return to when we need to be alone with something we cannot say.
+      음악이 하나 있다. 들으려고 만들어진 것이 아니다. 기억하기 위해 만들어진 것이다.
+      Glacial Paths는 피아노와 신디사이저를 위한 기악 앨범이다.
+      침묵과 소리 사이의 공간, 현재와 부재 사이의 공간에서 작곡된 열 곡이다.
+      얼음처럼 호흡하도록 다루어진 피아노는 이름 없지만 친숙해 보이는 풍경들을 천천히 지나간다.
+      우리가 말할 수 없는 무언가와 함께 혼자여야 할 필요가 있을 때 돌아오는 장소들이다.
     </p>
     <p>
-      This is not background music. It is companionship for the moments when words fail, 
-      for introspection, for the quiet of looking at the sea, for grief that has learned to sit still.
+      이것은 배경음악이 아니다. 말이 실패할 때의 동반자이고,
+      자기 성찰을 위한 것이고, 바다를 보며 조용히 있을 때를 위한 것이고,
+      조용함을 배운 애도를 위한 것이다.
     </p>
     <p>
-      Ten paths. Each one a different way of arriving at the same place.
+      열 개의 경로. 각각은 같은 장소에 도달하는 서로 다른 방식이다.
     </p>
-    <div class="album-dedication">For Leonor.</div>
+    <div class="album-dedication">레오노르에게.</div>
   </div>
 
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-copyright">© 2020–2026 Ernesto Cisneros Cino</p>
-      
+
       <div class="footer-socials">
         <a href="https://x.com/ErnestCisneros1" target="_blank" class="footer-social" title="X" aria-label="X (Twitter)">
           <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -881,29 +875,29 @@
 </div>
 
 <div id="tracklist"></div>
-<div id="hint">hover the stars · click to play</div>
+<div id="hint">별을 가리켜 · 클릭하여 재생</div>
 
 <audio id="audio"></audio>
 
 <script>
-// NAVIGATION — loaded from shared nav.js
+// 네비게이션 — nav.js에서 로드
 
-// TRACKS - Using local paths (update when you add the MP3 files)
-// For now keeping Wix URLs as fallback until local files are added
+// 트랙 - 로컬 경로 사용 (MP3 파일 추가 시 업데이트)
+// 현재는 로컬 파일이 추가될 때까지 Wix URL을 폴백으로 유지
 const tracks = [
-  { id: 0,  title: "Chromed Horizons",          file: "../assets/audio/glacial-paths/01-chromed-horizons.mp3" },
-  { id: 1,  title: "Circuit Dream",              file: "../assets/audio/glacial-paths/02-circuit-dream.mp3" },
-  { id: 2,  title: "Fractured Tides",            file: "../assets/audio/glacial-paths/03-fractured-tides.mp3" },
-  { id: 3,  title: "Galactic Watch",             file: "../assets/audio/glacial-paths/04-galactic-watch.mp3" },
-  { id: 4,  title: "Glacial Breathing Room",     file: "../assets/audio/glacial-paths/05-glacial-breathing-room.mp3" },
-  { id: 5,  title: "Glass Clock Memory",         file: "../assets/audio/glacial-paths/06-glass-clock-memory.mp3" },
-  { id: 6,  title: "Kinetic Glass",              file: "../assets/audio/glacial-paths/07-kinetic-glass.mp3" },
-  { id: 7,  title: "Light",                      file: "../assets/audio/glacial-paths/08-light.mp3" },
-  { id: 8,  title: "Luminous Tides",             file: "../assets/audio/glacial-paths/09-luminous-tides.mp3" },
-  { id: 9,  title: "Translucent Harmonic Bloom", file: "../assets/audio/glacial-paths/10-translucent-harmonic-bloom.mp3" },
+  { id: 0,  title: "Chromed Horizons",          file: "../../assets/audio/glacial-paths/01-chromed-horizons.mp3" },
+  { id: 1,  title: "Circuit Dream",              file: "../../assets/audio/glacial-paths/02-circuit-dream.mp3" },
+  { id: 2,  title: "Fractured Tides",            file: "../../assets/audio/glacial-paths/03-fractured-tides.mp3" },
+  { id: 3,  title: "Galactic Watch",             file: "../../assets/audio/glacial-paths/04-galactic-watch.mp3" },
+  { id: 4,  title: "Glacial Breathing Room",     file: "../../assets/audio/glacial-paths/05-glacial-breathing-room.mp3" },
+  { id: 5,  title: "Glass Clock Memory",         file: "../../assets/audio/glacial-paths/06-glass-clock-memory.mp3" },
+  { id: 6,  title: "Kinetic Glass",              file: "../../assets/audio/glacial-paths/07-kinetic-glass.mp3" },
+  { id: 7,  title: "Light",                      file: "../../assets/audio/glacial-paths/08-light.mp3" },
+  { id: 8,  title: "Luminous Tides",             file: "../../assets/audio/glacial-paths/09-luminous-tides.mp3" },
+  { id: 9,  title: "Translucent Harmonic Bloom", file: "../../assets/audio/glacial-paths/10-translucent-harmonic-bloom.mp3" },
 ];
 
-// Posiciones de constelación (% del contenedor)
+// 별자리 위치 (컨테이너 기준 %)
 const positions = [
   { x: 12, y: 28 }, { x: 28, y: 58 }, { x: 22, y: 75 },
   { x: 45, y: 18 }, { x: 50, y: 50 }, { x: 42, y: 82 },
@@ -911,16 +905,16 @@ const positions = [
   { x: 88, y: 55 },
 ];
 
-// Líneas de constelación (pares de índices)
+// 별자리 선 (인덱스 쌍)
 const lines = [
   [0,1],[1,2],[1,4],[3,4],[4,5],[3,6],[4,6],[6,7],[6,8],[8,9],[7,9],[4,7]
 ];
 
 let currentTrack = -1;
-let isPlaying = false;
+let isReproduciring = false;
 const audio = document.getElementById('audio');
 
-// --- CONSTELACIÓN ---
+// --- 별자리 ---
 const constellation = document.getElementById('constellation');
 const svgEl = document.getElementById('lines');
 
@@ -928,7 +922,7 @@ function buildConstellation() {
   const W = constellation.offsetWidth;
   const H = constellation.offsetHeight;
 
-  // Líneas SVG
+  // SVG 선
   svgEl.innerHTML = '';
   lines.forEach(([a, b]) => {
     const pa = positions[a], pb = positions[b];
@@ -942,7 +936,7 @@ function buildConstellation() {
     svgEl.appendChild(line);
   });
 
-  // Nodos
+  // 노드
   constellation.querySelectorAll('.track-node').forEach(e => e.remove());
   tracks.forEach((t, i) => {
     const pos = positions[i];
@@ -959,7 +953,7 @@ function buildConstellation() {
   });
 }
 
-// --- TRACKLIST LATERAL ---
+// --- 측면 트랙 리스트 ---
 function buildTracklist() {
   const tl = document.getElementById('tracklist');
   tl.innerHTML = '';
@@ -977,7 +971,7 @@ function loadTrack(index, autoplay = false) {
   currentTrack = index;
   const t = tracks[index];
 
-  // UI nodos
+  // UI 노드
   document.querySelectorAll('.track-node').forEach((n, i) => {
     n.classList.toggle('active', i === index);
   });
@@ -986,7 +980,7 @@ function loadTrack(index, autoplay = false) {
   });
 
   document.getElementById('track-name').textContent = t.title;
-  document.getElementById('track-number').textContent = `Track ${index + 1} of ${tracks.length}`;
+  document.getElementById('track-number').textContent = `트랙 ${index + 1}/${tracks.length}`;
 
   audio.src = t.file;
   audio.volume = parseFloat(document.getElementById('volume-slider').value);
@@ -994,15 +988,15 @@ function loadTrack(index, autoplay = false) {
 
   if (autoplay) {
     audio.play();
-    isPlaying = true;
+    isReproduciring = true;
     showPause();
   } else {
-    isPlaying = false;
-    showPlay();
+    isReproduciring = false;
+    showReproducir();
   }
 }
 
-function showPlay()  { document.getElementById('icon-play').style.display=''; document.getElementById('icon-pause').style.display='none'; }
+function showReproducir()  { document.getElementById('icon-play').style.display=''; document.getElementById('icon-pause').style.display='none'; }
 function showPause() { document.getElementById('icon-play').style.display='none'; document.getElementById('icon-pause').style.display=''; }
 
 function formatTime(s) {
@@ -1012,21 +1006,21 @@ function formatTime(s) {
   return `${m}:${sec.toString().padStart(2,'0')}`;
 }
 
-// Controles
+// 컨트롤
 document.getElementById('btn-play').addEventListener('click', () => {
   if (currentTrack === -1) { loadTrack(0, true); return; }
-  if (isPlaying) { audio.pause(); isPlaying = false; showPlay(); }
-  else { audio.play(); isPlaying = true; showPause(); }
+  if (isReproduciring) { audio.pause(); isReproduciring = false; showReproducir(); }
+  else { audio.play(); isReproduciring = true; showPause(); }
 });
 
 document.getElementById('btn-prev').addEventListener('click', () => {
   const idx = currentTrack <= 0 ? tracks.length - 1 : currentTrack - 1;
-  loadTrack(idx, isPlaying);
+  loadTrack(idx, isReproduciring);
 });
 
 document.getElementById('btn-next').addEventListener('click', () => {
   const idx = (currentTrack + 1) % tracks.length;
-  loadTrack(idx, isPlaying);
+  loadTrack(idx, isReproduciring);
 });
 
 audio.addEventListener('ended', () => {
@@ -1052,7 +1046,7 @@ document.getElementById('volume-slider').addEventListener('input', e => {
   audio.volume = parseFloat(e.target.value);
 });
 
-// --- PARTÍCULAS ---
+// --- 입자 ---
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -1111,7 +1105,7 @@ animateParticles();
 buildConstellation();
 buildTracklist();
 
-// Gold Particles
+// 금색 입자
 (function() {
   const gCanvas = document.getElementById('gold-particles');
   const gCtx = gCanvas.getContext('2d');
@@ -1164,8 +1158,8 @@ buildTracklist();
   animateGold();
 })();
 </script>
-<script src="../assets/js/nav.js"></script>
-<script src="../assets/js/footer-lang.js" defer></script>
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
 <script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

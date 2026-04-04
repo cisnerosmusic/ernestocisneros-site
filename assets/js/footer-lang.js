@@ -51,9 +51,9 @@
     es: FULL_SET,
     fr: FULL_SET,
     ja: FULL_SET,
-    ru: ['index.html','biography.html'],
-    it: ['index.html','biography.html'],
-    ko: ['index.html','biography.html']
+    ru: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html'],
+    it: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html'],
+    ko: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html']
   };
 
   // Union of all multilingual pages (to decide if footer should render at all)
