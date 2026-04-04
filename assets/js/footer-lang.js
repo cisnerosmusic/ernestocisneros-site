@@ -35,29 +35,29 @@
     { code: 'ko', label: '한국어',     dir: '/ko/' }
   ];
 
-  // Pages that have FR/JA translations (normalized base paths)
-  var MULTILINGUAL_PAGES = [
-    'index.html',
-    'biography.html',
-    'music.html',
-    'books.html',
-    'contact.html',
-    'music/glacial-paths.html',
-    'music/atlas-of-fragmented-light.html',
-    'music/mare-incognitum.html',
-    'nft.html',
-    'nft/eth-collection.html',
-    'nft/tez-collection.html',
-    'nft/marketplaces.html',
-    'nft/btc-ordinals.html',
-    'nft/gift-from-community.html',
-    'impulses-art.html',
-    'ideas.html',
-    'ideas/cosmology-physics.html',
-    'ideas/technology-society.html',
-    'ideas/culture-memory-exile.html',
-    'ideas/art-poetics-philosophy.html'
+  // Pages available per language (normalized base paths)
+  // EN and ES have all pages by default (header handles them)
+  var FULL_SET = [
+    'index.html','biography.html','music.html','books.html','contact.html',
+    'music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html',
+    'nft.html','nft/eth-collection.html','nft/tez-collection.html',
+    'nft/marketplaces.html','nft/btc-ordinals.html','nft/gift-from-community.html',
+    'impulses-art.html','ideas.html','ideas/cosmology-physics.html',
+    'ideas/technology-society.html','ideas/culture-memory-exile.html','ideas/art-poetics-philosophy.html'
   ];
+
+  var PAGES_BY_LANG = {
+    en: FULL_SET,
+    es: FULL_SET,
+    fr: FULL_SET,
+    ja: FULL_SET,
+    ru: ['index.html','biography.html'],
+    it: ['index.html','biography.html'],
+    ko: ['index.html','biography.html']
+  };
+
+  // Union of all multilingual pages (to decide if footer should render at all)
+  var MULTILINGUAL_PAGES = FULL_SET;
 
   // ── Detect current context ─────────────────────────────────
   var path = window.location.pathname;
@@ -124,6 +124,14 @@
   for (var j = 0; j < ALL_LANGUAGES.length; j++) {
     var lang = ALL_LANGUAGES[j];
     if (lang.code === currentLang) continue; // skip current
+
+    // Check if this page exists in the target language
+    var langPages = PAGES_BY_LANG[lang.code] || [];
+    var pageExists = false;
+    for (var p = 0; p < langPages.length; p++) {
+      if (langPages[p] === normalizedBase) { pageExists = true; break; }
+    }
+    if (!pageExists) continue;
 
     var targetPath = lang.dir;
     if (normalizedBase !== 'index.html') {
