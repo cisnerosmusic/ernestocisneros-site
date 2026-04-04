@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technologie et Société | Idées | Ernesto Cisneros Cino</title>
+<meta name="description" content="Explorations sur la gouvernance décentralisée, la transparence asymétrique et l'éthique des systèmes technologiques.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/fr/ideas/technology-society.html">
+    <meta property="og:title" content="Technologie et Société | Idées | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Explorations sur la gouvernance décentralisée, la transparence asymétrique et l'éthique des systèmes technologiques.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Technologie et Société | Idées | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Explorations sur la gouvernance décentralisée, la transparence asymétrique et l'éthique des systèmes technologiques.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Research Block */
+.research-block {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.research-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.research-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.research-text {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.research-text p {
+  margin-bottom: 1rem;
+}
+
+.research-text strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Section Headers */
+.section-header {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+/* Principle Block */
+.principle-block {
+  background: rgba(212, 160, 48, 0.05);
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.principle-block p {
+  margin-bottom: 0.8rem;
+}
+
+.principle-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Layer Block */
+.layer-block {
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.5rem;
+  background: rgba(13, 10, 6, 0.5);
+  border: 1px solid var(--line);
+}
+
+.layer-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.layer-block ul {
+  list-style: none;
+  margin: 0;
+}
+
+.layer-block li {
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.layer-block li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.btn-github::before {
+  content: '↗';
+  font-size: 1rem;
+}
+
+.btn-pdf::before {
+  content: '↓';
+  font-size: 1rem;
+}
+
+/* Language Buttons */
+.lang-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.lang-btn {
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+.btn-group, .lang-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .research-block { padding: 1.5rem; }
+  .research-title { font-size: 1.2rem; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "DAO à Mémoire Finie (FMD-DAO)",
+    "url": "https://ernestocisneros.art/fr/ideas/technology-society.html",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "description": "Un cadre de gouvernance où toute autorité, réputation et mémoire décroissent au fil du temps, prévenant la concentration du pouvoir tout en maintenant le savoir institutionnel.",
+    "about": ["Gouvernance Décentralisée", "DAOs", "Mémoire Finie", "Blockchain"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "IA Vérifiable Décentralisée + DAO à Mémoire Finie v2.0",
+    "url": "https://ernestocisneros.art/fr/ideas/technology-society.html",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "description": "Une architecture complète pour l'inférence d'IA sans confiance et la gouvernance auto-régulatrice, combinant la vérification cryptographique avec la prise de décision bicamérale.",
+    "about": ["IA Vérifiable", "Gouvernance Décentralisée", "Attestation Cryptographique", "Systèmes Immunitaires"]
+  }
+]
+</script>
+    <script src="../../assets/js/lang-detect.js" defer></script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/fr/ideas/technology-society.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/technology-society.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/technology-society.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/technology-society.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/technology-society.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/technology-society.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-technology-society" defer></script>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../../index.html" class="nav-item">Accueil</a></li>
+      <li><a href="../../biography.html" class="nav-item">Biographie</a></li>
+      <li class="nav-dropdown">
+        <a href="../../music.html" class="nav-item">Musique</a>
+        <div class="nav-dropdown-content">
+          <a href="../../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../../music/other-works.html" class="nav-dropdown-item">Autres œuvres musicales</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../../nft/eth-collection.html" class="nav-dropdown-item">Collection ETH</a>
+          <a href="../../nft/tez-collection.html" class="nav-dropdown-item">Collection Tez</a>
+          <a href="../../nft/marketplaces.html" class="nav-dropdown-item">Marchés</a>
+          <a href="../../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">Un don de la communauté</a>
+        </div>
+      </li>
+      <li><a href="../../books.html" class="nav-item">Livres</a></li>
+      <li class="nav-dropdown">
+        <a href="../../ideas.html" class="nav-item active">Idées</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">Cosmologie et Physique</a>
+          <a href="technology-society.html" class="nav-dropdown-item active">Technologie et Société</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">Culture, Mémoire et Exil</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poétique et Philosophie</a>
+        </div>
+      </li>
+      <li><a href="../../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../../contact.html" class="nav-item">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/technology-society.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../es/ideas/technology-society.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="technology-society.html" class="active-lang" title="Français" onclick="localStorage.setItem('lang','fr')">🇫🇷</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+
+  <section class="hero">
+    <span class="hero-subtitle">Idées / II</span>
+    <h1 class="hero-title">Technologie et Société</h1>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- Block 1: FMD-DAO -->
+    <article class="research-block">
+      <h2 class="research-title">DAO à Mémoire Finie (FMD-DAO)</h2>
+      <p class="research-subtitle">Un modèle de gouvernance fondé sur la Vallée de la Résilience</p>
+
+      <div class="research-text">
+        <h3 class="section-header">I. Objectif Fondamental</h3>
+        <p>Le FMD-DAO repose sur un principe simple mais profond : <strong>Tout système qui se souvient trop ou trop peu s'effondre.</strong> Son objectif n'est pas d'accumuler des décisions ou d'ossifier les structures, mais de préserver l'oscillation saine d'une communauté vivante, capable d'apprendre, d'oublier et de se réadapter sans perdre sa cohérence.</p>
+        <p>Le cadre opérationnel est la Vallée de la Résilience, définie par :</p>
+        <div class="principle-block">
+          <p><strong>1 &lt; R &lt; 3</strong></p>
+          <p>où R = τ × Ω (mémoire × fréquence d'oscillation)</p>
+        </div>
+        <p>Cette bande étroite représente la zone où les systèmes restent adaptatifs sans se fragmenter, et stables sans stagnation.</p>
+
+        <h3 class="section-header">II. Principes Directeurs</h3>
+        <p><strong>Mémoire Finie :</strong> Tous les informations, la réputation et l'autorité se désintègrent au fil du temps.</p>
+        <p><strong>Adaptation Périodique :</strong> Les règles sont examinées selon des cycles fixes, pas selon des impulsions émotionnelles.</p>
+        <p><strong>Transparence Métrique :</strong> Le DAO publie son indice de résilience (R) à intervalles réguliers.</p>
+        <p><strong>Bruit Stabilisant :</strong> La variabilité contrôlée est introduite pour prévenir la résonance destructrice et la monoculture.</p>
+        <p><strong>Gouvernance Bicamérale :</strong> Deux chambres, Experts et Commons, maintiennent l'équilibre cognitif et opérationnel.</p>
+
+        <h3 class="section-header">III. Architecture du Système</h3>
+        <p>Le DAO opère sur trois variables fondamentales :</p>
+        <p><strong>τ</strong> - Échelle mémoire<br>
+        <strong>Ω</strong> - Fréquence d'oscillation de la prise de décision<br>
+        <strong>R = τ × Ω</strong> - Indice de résilience</p>
+        <p>Deux chambres internes complètent ce modèle : <strong>C1 : Chambre des Experts</strong> et <strong>C2 : Chambre des Commons</strong>. Ces entités interagissent par des cycles d'examen synchronisés pour maintenir le système dans la vallée de résilience.</p>
+
+        <h3 class="section-header">IV. Structure Bicamérale</h3>
+        <p><strong>C1 (Chambre des Experts) :</strong> Valide les propositions avec une rigueur technique. Les membres reçoivent des incitations proportionnelles pour un examen transparent.</p>
+        <p><strong>C2 (Chambre des Commons) :</strong> Représente la participation communautaire, sans incitations monétaires, assurant la légitimité et la pluralité.</p>
+        <p>La conception bicamérale atténue à la fois la dominance technique et la volatilité émotionnelle.</p>
+
+        <h3 class="section-header">V. Interaction Entre les Chambres</h3>
+        <p>Les propositions proviennent de C2 (Commons). Elles sont ensuite transmises à C1 (Experts) pour validation et optimisation.</p>
+        <p>Tous les trois mois, un <strong>Rituel de Mémoire Finie</strong> est exécuté : Les décisions obsolètes sont archivées. Les paramètres τ et Ω sont réinitialisés. L'indice de résilience est recalculé. Ce nettoyage cyclique prévient la surcharge informationnelle et la dérive gouvernementale.</p>
+
+        <h3 class="section-header">VI. Incitations et Équilibre Éthique</h3>
+        <p>C1 reçoit des incitations basées sur les jetons liées à la clarté et la transparence. C2 n'en reçoit pas, sa légitimité provient de la participation civique plutôt que du gain financier. Cette séparation préserve à la fois la compétence et la confiance.</p>
+
+        <h3 class="section-header">VII. Mise en Œuvre Technique</h3>
+        <p><strong>Contrats intelligents :</strong> Solidity + Open Zeppelin<br>
+        <strong>Identité/Accréditations :</strong> Git POAP, Sismo, réputation on-chain<br>
+        <strong>Tableaux de bord :</strong> Dune Analytics, Grafana<br>
+        <strong>Oracle Global :</strong> synchronise τ et Ω pour maintenir R dans la vallée optimale<br>
+        <strong>Algorithmes de désintégration :</strong> réduisent automatiquement la réputation et le poids de la décision au fil du temps.</p>
+        <p>Le système est conçu pour l'adaptation, non l'accumulation.</p>
+
+        <h3 class="section-header">VIII. Risques et Atténuation</h3>
+        <p><strong>Capture Experte (C1 domine)</strong> → atténuée par la rotation, la décroissance de l'autorité et l'examen croisé.</p>
+        <p><strong>Dérive Émotionnelle dans Commons (C2)</strong> → atténuée par des cycles temporels et la validation experte.</p>
+        <p><strong>Désynchronisation entre C1 et C2</strong> → résolue par la recalibration périodique de R_C1 et R_C2 via l'oracle global.</p>
+
+        <h3 class="section-header">IX. Exemple d'Application</h3>
+        <p><strong>Terranova Environmental DAO :</strong> C2 propose des projets de reboisement. C1 valide les modèles avec des données climatiques et des projections de coûts. Les deux chambres ajustent τ et Ω en fonction des indicateurs de résultats environnementaux (R_fin) et de performance de gouvernance (R_gov).</p>
+
+        <h3 class="section-header">X. Épilogue Philosophique</h3>
+        <div class="principle-block">
+          <p>La bicaméralité n'est pas un ornement politique, c'est une nécessité thermodynamique.</p>
+          <p>Un système sans sagesse s'effondre sous le bruit. Un système sans peuple s'effondre sous la rigidité.</p>
+          <p>Entre les deux se trouve la Vallée de la Résilience : le territoire étroit où l'intelligence technique et l'intuition collective respirent en unisson.</p>
+          <p>Là, et seulement là, une communauté peut persister, sans se fossiliser, sans se fragmenter.</p>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <a href="https://github.com/cisnerosmusic/DAO_de_Memoria_Finita_-FMD-DAO-" target="_blank" rel="noopener" class="btn btn-github">Voir sur GitHub</a>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Block 1b: Decentralized Verifiable AI + FMD-DAO v2.0 -->
+    <article class="research-block">
+      <h2 class="research-title">IA Vérifiable Décentralisée + DAO à Mémoire Finie v2.0</h2>
+      <p class="research-subtitle">Une architecture complète pour l'inférence d'IA sans confiance et la gouvernance auto-régulatrice</p>
+
+      <div class="research-text">
+        <p>Ce projet est une extension naturelle du <strong>DAO à Mémoire Finie (FMD-DAO)</strong> présenté ci-dessus. Tandis que le FMD-DAO original a établi le cadre théorique pour la gouvernance basée sur la mémoire finie et la Vallée de la Résilience, cette deuxième version élargit l'architecture dans un système technique complètement spécifié qui aborde une question critique de notre époque : <em>comment pouvons-nous faire confiance à la sortie d'un système d'IA que nous ne pouvons pas observer directement ?</em></p>
+
+        <p>Le document propose une infrastructure décentralisée où les opérateurs d'inférence d'IA doivent attester cryptographiquement la correction de leurs sorties, en engageant des garanties économiques qui peuvent être réduites en cas de fraude détectée. Ce n'est pas un produit ; c'est un <strong>modèle d'infrastructure ouvert</strong>, conçu pour être lent, vérifiable et réversible, traitant la gouvernance de l'IA comme un service public plutôt qu'un service commercial.</p>
+
+        <h3 class="section-header">Axiome Fondamental</h3>
+        <div class="principle-block">
+          <p><strong>La mémoire infinie est la mort. L'amnésie totale est le chaos.</strong></p>
+          <p>Chaque système qui persiste doit apprendre à oublier avec discipline et se souvenir avec intention. La bande étroite où cet équilibre se maintient est la Vallée de la Résilience, définie par <strong>R = τ × Ω</strong>, où τ est l'échelle mémoire et Ω est la fréquence d'oscillation de la prise de décision. La zone viable se situe entre <strong>1 &lt; R &lt; 3</strong>.</p>
+        </div>
+
+        <h3 class="section-header">Aperçu Architectural</h3>
+        <p>Le système est organisé en quatorze parties interdépendantes, couvrant la mécanique de l'IA vérifiable, la gouvernance décentralisée, la défense immunologique et les métriques mathématiques. À son cœur, il combine trois couches de confiance : la vérification cryptographique des sorties d'IA par l'attestation et les jeux de litige ; la gouvernance bicamérale (une Chambre des Experts et une Chambre des Commons) qui équilibre la rigueur technique avec la légitimité démocratique ; et un système immunitaire modélisé sur les principes biologiques, capable de détecter les menaces et d'escalader les réponses proportionnellement.</p>
+
+        <p>Les opérateurs d'IA exécutent des tâches d'inférence et soumettent des attestations cryptographiques soutenues par des garanties économiques. Tout participant peut contester une attestation en envoyant une garantie et en déclenchant un jeu de litige où sept vérificateurs sélectionnés aléatoirement réexécutent l'inférence. Si la majorité confirme la fraude, l'opérateur est réduit selon des niveaux de gravité progressifs. Si le challenger se trompe, sa garantie est partiellement brûlée et partiellement accordée à l'opérateur. Cette conception économique assure que l'honnêteté est toujours plus rentable que la tromperie.</p>
+
+        <!-- SVG Diagram -->
+        <div style="margin: 2.5rem 0;">
+          <svg viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto;">
+            <!-- Background -->
+            <rect width="700" height="520" fill="#0d0a06" rx="8"/>
+
+            <!-- Title -->
+            <text x="350" y="36" fill="#d4a030" font-family="'Cinzel', serif" font-size="15" text-anchor="middle" letter-spacing="2">CINQ PRINCIPES DIRECTEURS</text>
+            <line x1="200" y1="48" x2="500" y2="48" stroke="rgba(212,160,48,0.3)" stroke-width="1"/>
+
+            <!-- Central circle: Core Purpose -->
+            <circle cx="350" cy="270" r="72" fill="none" stroke="rgba(212,160,48,0.5)" stroke-width="1.5"/>
+            <circle cx="350" cy="270" r="68" fill="rgba(20,16,10,0.9)" stroke="rgba(212,160,48,0.2)" stroke-width="1"/>
+            <text x="350" y="255" fill="#d4a030" font-family="'Cinzel', serif" font-size="11" text-anchor="middle" letter-spacing="1">OBJECTIF FONDAMENTAL</text>
+            <text x="350" y="273" fill="#e8dcc8" font-family="'Cormorant Garamond', serif" font-size="10.5" text-anchor="middle">Inférence d'IA Sans Confiance</text>
+            <text x="350" y="288" fill="#e8dcc8" font-family="'Cormorant Garamond', serif" font-size="10.5" text-anchor="middle">dans la Vallée de</text>
+            <text x="350" y="303" fill="#d4a030" font-family="'Cormorant Garamond', serif" font-size="12" text-anchor="middle" font-weight="600">Résilience (1 &lt; R &lt; 3)</text>
+
+            <!-- Principle 1: Finite Memory (top) -->
+            <line x1="350" y1="198" x2="350" y2="130" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <circle cx="350" cy="130" r="4" fill="#d4a030"/>
+            <rect x="245" y="72" width="210" height="50" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <text x="350" y="92" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">MÉMOIRE FINIE</text>
+            <text x="350" y="110" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">Tous les données, réputation</text>
+            <text x="350" y="122" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">et autorité décroissent</text>
+
+            <!-- Principle 2: Bicameral Governance (top-right) -->
+            <line x1="415" y1="218" x2="520" y2="148" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <circle cx="520" cy="148" r="4" fill="#d4a030"/>
+            <rect x="470" y="90" width="210" height="50" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <text x="575" y="110" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">GOUVERNANCE BICAMÉRALE</text>
+            <text x="575" y="128" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">C1 (Experts) + C2 (Commons)</text>
+            <text x="575" y="140" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">équilibrent rigueur et légitimité</text>
+
+            <!-- Principle 3: Cryptographic Verifiability (bottom-right) -->
+            <line x1="415" y1="318" x2="530" y2="390" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <circle cx="530" cy="390" r="4" fill="#d4a030"/>
+            <rect x="470" y="398" width="210" height="50" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <text x="575" y="418" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">INFÉRENCE VÉRIFIABLE</text>
+            <text x="575" y="436" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">Attestation + garantie + jeux de litige</text>
+            <text x="575" y="448" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">assurent des sorties honnêtes</text>
+
+            <!-- Principle 4: Immune System (bottom-left) -->
+            <line x1="285" y1="318" x2="170" y2="390" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <circle cx="170" cy="390" r="4" fill="#d4a030"/>
+            <rect x="20" y="398" width="210" height="50" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <text x="125" y="418" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">SYSTÈME IMMUNITAIRE</text>
+            <text x="125" y="436" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">Réponse aux menaces proportionnée</text>
+            <text x="125" y="448" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">avec garanties anti-dictature</text>
+
+            <!-- Principle 5: Stabilizing Noise (top-left) -->
+            <line x1="285" y1="218" x2="180" y2="148" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <circle cx="180" cy="148" r="4" fill="#d4a030"/>
+            <rect x="20" y="90" width="210" height="50" rx="4" fill="rgba(20,16,10,0.8)" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+            <text x="125" y="110" fill="#d4a030" font-family="'Cinzel', serif" font-size="10" text-anchor="middle" letter-spacing="1">BRUIT STABILISANT</text>
+            <text x="125" y="128" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">La variabilité contrôlée prévient</text>
+            <text x="125" y="140" fill="rgba(200,175,130,0.7)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle">la résonance et la monoculture</text>
+
+            <!-- Outer ring of connection (subtle) -->
+            <ellipse cx="350" cy="270" rx="260" ry="200" fill="none" stroke="rgba(212,160,48,0.1)" stroke-width="1" stroke-dasharray="4,6"/>
+
+            <!-- Bottom label -->
+            <text x="350" y="500" fill="rgba(200,175,130,0.5)" font-family="'Cormorant Garamond', serif" font-size="10" text-anchor="middle" font-style="italic">R = τ × Ω — où mémoire et oscillation définissent la zone de persistance adaptative</text>
+          </svg>
+        </div>
+
+        <h3 class="section-header">IA Vérifiable : Attestation et Résolution de Litige</h3>
+        <p>La couche d'IA vérifiable opère par un cycle engager-contester-vérifier. Lorsqu'un opérateur exécute un modèle d'IA, il génère un hash d'engagement cryptographique qui lie ensemble la version du modèle, l'invite d'entrée, la graine aléatoire et l'environnement d'exécution. Cet engagement est signé et enregistré on-chain aux côtés d'une garantie économique (minimum 10 ETH sur mainnet). Une fenêtre de conteste s'ouvre ensuite pendant laquelle quiconque peut contester la sortie en envoyant sa propre garantie et en prétendant à un résultat correct différent.</p>
+
+        <p>Les litiges sont résolus par un jeu de recalcul k-of-n : sept vérificateurs sont sélectionnés pseudoaléatoirement (en utilisant le mélange Fisher-Yates ensemencé par l'ID du litige et l'aléa de bloc) pour réexécuter indépendamment l'inférence. Si cinq ou plus sont d'accord avec le challenger, la fraude est confirmée et l'opérateur est réduit. La réduction suit trois niveaux de gravité : la divergence mineure coûte 10 % de la garantie, la divergence majeure coûte 50 % avec un délai d'attente de 180 jours, et les violations critiques (échange de modèle, violation de règles) entraînent une réduction de 100 % et une interdiction permanente. Le montant réduit est distribué 60 % au challenger et 40 % au trésor.</p>
+
+        <p>Le système aborde également le problème inhérent du déterminisme dans l'inférence d'IA : différents matériels produisent des résultats en virgule flottante légèrement différents. Plutôt que d'exiger un accord parfait au niveau du bit, l'architecture introduit un seuil de tolérance epsilon. Les sorties dans epsilon sont considérées comme identiques ; celles dans la zone grise entre epsilon et 2-epsilon sont escaladées à la Chambre des Experts (C1) pour arbitrage humain.</p>
+
+        <h3 class="section-header">Système Immunitaire et Détection de Menace</h3>
+        <p>Empruntant à l'immunologie biologique, le système implémente une réponse aux menaces proportionnée. Six métriques précises sont continuellement surveillées on-chain : l'effondrement de la participation (mesuré par rapport aux médianes historiques), la fragmentation du consensus (en utilisant l'entropie Shannon plutôt que les coefficients de Gini), la vélocité de drainage du trésor, la concentration de la réputation (via l'Indice de Herfindahl-Hirschman), la déviation de l'oracle (en utilisant les z-scores robustes avec l'Écart Absolu Médian) et les défaillances techniques. Chaque métrique contribue à un score de menace composite sur une échelle de 0 à 14, mappé à quatre niveaux de gravité : VERT (normal), JAUNE (élevé), ORANGE (haut) et ROUGE (critique).</p>
+
+        <p>Lorsque les niveaux de menace s'escaladent, le système active automatiquement les contre-mesures proportionnées : fréquence d'examen augmentée, votes restreints, ajustements de paramètres d'urgence, et dans les cas extrêmes, une pause du système complet. De manière cruciale, le système immunitaire inclut des garanties anti-dictature : aucun acteur ou chambre seul ne peut saisir le contrôle de manière permanente, car toute autorité décroît au fil du temps et les pouvoirs d'urgence nécessitent une autorisation multi-parties avec un examen post-mortem obligatoire.</p>
+
+        <h3 class="section-header">Résistance Sybil : Une Feuille de Route Tripartite</h3>
+        <p>L'architecture reconnaît que la résistance Sybil est le point où la plupart des DAOs échouent, et propose une approche progressive tripartite plutôt qu'une solution unique. Phase 0 (mois 0-6) utilise un modèle garantie-plus-décroissance-plus-caps pour le déploiement rapide et les tests. Phase 1 (mois 6-12) introduit le vote quadratique pondéré par les niveaux de vérification d'identité (GitHub, Proof of Humanity, multi-preuve), où avoir 100 fois plus de jetons ne produit qu'environ 2 fois plus de pouvoir de vote. Phase 2 (mois 12-24) vise une voix-par-humain-une-voix dans la chambre Commons par l'intégration avec World ID, BrightID et Proof of Humanity, tandis que la chambre Experts reste pondérée par garantie pour préserver les incitations de compétence technique.</p>
+
+        <h3 class="section-header">Gestion des Biais et Politique de Mise à Jour</h3>
+        <p>Le système traite le biais non pas comme un bug à éliminer mais comme une variable à gérer dans les fenêtres de tolérance. Lorsque les métriques de biais dérivent en dehors des plages acceptables, un mécanisme de purge pseudoexponentielle est activé, et les protocoles de migration d'oracle permettent au système de passer à des sources de données mises à jour sans perturber les opérations en cours. Toutes les mises à jour de paramètres suivent une politique stricte de qualité d'infrastructure : propositions verrouillées dans le temps (7 à 60 jours selon le niveau d'impact), approbation bicamérale obligatoire, déploiements canaris et capacité de roulement garantie. Le système se positionne explicitement comme une infrastructure, non un produit, ce qui signifie que les mises à jour doivent être lentes, vérifiables et réversibles.</p>
+
+        <h3 class="section-header">Épilogue Philosophique</h3>
+        <div class="principle-block">
+          <p>Ce n'est pas un manifeste pour l'utopie algorithmique. C'est une architecture technique qui assume le pire de la nature humaine tout en concevant les meilleurs résultats possibles.</p>
+          <p>Entre la tyrannie de la mémoire parfaite et le chaos de l'oubli total, entre la rigidité de la règle experte et la volatilité du populisme sans frein, se trouve une vallée étroite où les systèmes adaptatifs peuvent persister sans se fossiliser et sans se fragmenter.</p>
+          <p>La Vallée de la Résilience n'est pas une destination. C'est une pratique de recalibration continue, une discipline d'oubli structuré, et un acte de foi dans la possibilité que l'intelligence décentralisée puisse se gouverner elle-même avec intégrité.</p>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <a href="../../assets/pdf/IA%20Descentralizada%20y%20Verificable%20%2B%20DAO%20de%20Memoria%20Finita%202.0.pdf" target="_blank" class="btn btn-pdf">Document Complet v2.0 (Español)</a>
+        <a href="https://github.com/cisnerosmusic/DAO_de_Memoria_Finita_-FMD-DAO-" target="_blank" rel="noopener" class="btn btn-github">FMD-DAO sur GitHub</a>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Block 2: Transparencia Asimétrica -->
+    <article class="research-block">
+      <h2 class="research-title">Transparence Asymétrique</h2>
+      <p class="research-subtitle">Infrastructure publique vérifiable avec forte vie privée citoyenne</p>
+
+      <div class="research-text">
+        <h3 class="section-header">Introduction</h3>
+        <p>Ce document oscille délibérément entre trois registres : <strong>Technique</strong> (infrastructure vérifiable), <strong>Philosophico-politique</strong> (principe normatif), et <strong>Historique</strong> (preuves empiriques).</p>
+        <p>La raison est simple : Les systèmes publics ne peuvent pas être réformés avec du code seul. Ils ne peuvent pas être soutenus avec de la théorie politique seule. Et ils ne peuvent pas ignorer les preuves historiques disponibles. Cette proposition est une synthèse, pas une invention isolée.</p>
+
+        <h3 class="section-header">Résumé</h3>
+        <p>Une architecture institutionnelle est proposée sur la base d'un principe directeur de <strong>transparence asymétrique</strong>. Elle ne cherche pas à éliminer la corruption. Elle cherche à augmenter le coût de capturer le système et à réduire le coût de le détecter.</p>
+        <p>Elle combine : Vérifiabilité cryptographique, Vie privée structurelle, Gouvernance adversariale, Incitations économiques alignées, et Stratégie culturelle basée sur des précédents historiques.</p>
+        <p>Le système est conçu pour être incomplet par définition : il déclare explicitement ses lacunes et invite la communauté technique à les résoudre.</p>
+
+        <h3 class="section-header">Principe Directeur</h3>
+        <div class="principle-block">
+          <p><strong>Transparence asymétrique.</strong></p>
+          <p>Le pouvoir agit avec des ressources collectives. Par conséquent, il doit être collectivement redevable.</p>
+          <p>Le citoyen agit avec sa vie privée. Par conséquent, la protection de sa vie privée n'est pas un privilège administratif, mais un droit structurel.</p>
+          <p>L'asymétrie n'est pas une décision technique. C'est une décision éthique.</p>
+          <p>La transparence totale produit le panoptique. L'opacité totale produit l'impunité.</p>
+          <p>Ce système recherche une architecture où le pouvoir est visible par conception et l'individu est protégé par conception.</p>
+        </div>
+
+        <div class="layer-block">
+          <h4 class="layer-title">Couche 1 - Transparence d'État Obligatoire</h4>
+          <ul>
+            <li>Registre vérifiable de : Budget, Marchés publics, Exécution, Transferts, Dépôts de garantie des entreprises.</li>
+            <li>Mais la transparence d'État sans vie privée citoyenne dégénère en surveillance.</li>
+            <li>C'est pourquoi la couche suivante n'est pas un complément. C'est une condition de légitimité.</li>
+          </ul>
+        </div>
+
+        <div class="layer-block">
+          <h4 class="layer-title">Couche 2 - Forte Vie Privée Citoyenne</h4>
+          <ul>
+            <li>Identité décentralisée.</li>
+            <li>Accréditations vérifiables.</li>
+            <li>ZK pour démontrer la conformité sans exposition.</li>
+            <li>Double clé pour les ouvertures, avec traçabilité publique.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">Sans cette couche, la Couche 1 devient un outil de contrôle. Mais la vie privée sans vérification ouvre l'espace à la capture. C'est pourquoi l'adversarialité structurelle est requise.</p>
+        </div>
+
+        <div class="layer-block">
+          <h4 class="layer-title">Couche 3 - Défi Adversarial</h4>
+          <ul>
+            <li>Garantie adaptative basée sur les preuves.</li>
+            <li>Réputation avec décroissance.</li>
+            <li>Micro-parrainage distribué.</li>
+            <li>Pénalité pour abus.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">Le filtre est épistémique, non économique. Mais l'adversarialité a besoin d'un soutien technique indépendant.</p>
+        </div>
+
+        <div class="layer-block">
+          <h4 class="layer-title">Couche 4 - Fonds de Support Technique Civique (FSTC)</h4>
+          <ul>
+            <li>Automatiquement financé par : Amendes exécutées, Intérêts de dépôt, Réductions pour violations.</li>
+            <li>Le fonds supporte : Experts techniques indépendants, Équipe rouge permanente, Vérificateurs publics, Littératie technique citoyenne.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">Le financement ne dépend pas de l'allocation politique annuelle. Mais chaque système public interagit avec le pouvoir privé.</p>
+        </div>
+
+        <div class="layer-block">
+          <h4 class="layer-title">Couche 5 - Gouvernance du Pouvoir Corporatif</h4>
+          <ul>
+            <li>Dépôt de garantie obligatoire préalable pour opérer dans les secteurs critiques.</li>
+            <li>Preuves de conformité ZK.</li>
+            <li>Gouvernance adversariale du seuil statistique.</li>
+            <li>Trois niveaux de seuil : Plancher constitutionnel, Ajustements sectoriels, Bac à sable réglementé.</li>
+          </ul>
+          <p style="margin-top: 0.8rem; font-size: 0.9rem;">La charge de la preuve incombe à ceux qui cherchent à réduire les normes.</p>
+        </div>
+
+        <h3 class="section-header">Mécanismes Immunologiques</h3>
+        <p>Rotation décalée. Verrouillage temporel constitutionnel. Multisig diversifiée. Équipe rouge permanente. Registre public des ouvertures. Décroissance de la réputation. Pénalité progressive pour abus.</p>
+        <p><em>Le système assume les tentatives de capture constantes.</em></p>
+
+        <h3 class="section-header">Théorie du Changement</h3>
+        <p>Le système ne naît pas de la bienveillance du pouvoir. Il naît quand l'infrastructure préalable existe.</p>
+        <p><strong>Le Corps Constructeur (CC) :</strong> Une coalition techniquement compétente et politiquement transversale composée de : Ingénieurs en sécurité et données, Juristes institutionnalistes, Auditeurs, Journalistes techniques, Économistes publics, Concepteurs de systèmes distribués, Acteurs avec légitimité sociale transversale.</p>
+        <p>Le CC ne gouverne pas le système. Il l'active. Lorsque la fenêtre politique arrive, le système existe déjà.</p>
+
+        <h3 class="section-header">Dimension Culturelle (Avec Fondement Historique)</h3>
+        <p>Ce cadre n'est pas spéculatif. Des précédents partiels existent où la transparence vérifiable a produit des changements mesurables :</p>
+        <p><strong>PROZORRO (Ukraine) :</strong> Système ouvert de marchés publics qui a émergé de la société civile technique pendant Maidan. A généré des milliards d'économies vérifiables et transformé la perception publique de la transparence.</p>
+        <p><strong>Budget Participatif de Porto Alegre :</strong> A légitimé les dépenses publiques lorsque les citoyens ont vu les infrastructures construites selon les décisions publiques vérifiables.</p>
+        <p><strong>Infrastructure numérique d'Estonie :</strong> Adoptée après une crise institutionnelle, basée sur l'identité vérifiable et la traçabilité administrative.</p>
+        <p><strong>MakerDAO et Gitcoin :</strong> Véritables expériences de gouvernance distribuée avec incitations alignées et audit public on-chain.</p>
+        <p><em>Ce ne sont pas des analogies. Ce sont des précédents partiels qui prouvent la viabilité des composants.</em></p>
+
+        <h3 class="section-header">Limitations Explicites</h3>
+        <p>Ce système peut : Créer une élite technique. Augmenter la complexité institutionnelle. Générer l'illusion de transparence. Être capturé culturellement. Échouer dans les contextes institutionnels fragiles. Être inverti vers la surveillance si l'asymétrie est perdue.</p>
+        <p><strong>La technologie ne remplace pas la vertu politique.</strong></p>
+
+        <h3 class="section-header">Invitation Ouverte</h3>
+        <div class="principle-block">
+          <p>Ce document n'est pas un manifeste. C'est une architecture en construction.</p>
+          <p>Développeurs, cryptographes, juristes, économistes institutionnels et concepteurs de systèmes complexes sont invités à analyser, casser et améliorer ce cadre.</p>
+          <p>La théorie doit devenir du code vérifiable.</p>
+          <p><strong>La fenêtre politique est imprévisible. L'infrastructure doit exister avant.</strong></p>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <a href="../../assets/pdf/technology/transparencia-asimetrica.pdf" target="_blank" class="btn btn-pdf">Document Complet (ES)</a>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Block 3: Prometheus's Silence -->
+    <article class="research-block">
+      <h2 class="research-title">Le Silence de Prométhée</h2>
+
+      <div class="research-text">
+        <p><strong>Le Silence de Prométhée</strong> explore l'un des paradoxes les plus troublants de la modernité : le préjudice qui ne coïncide pas dans le temps avec sa cause.</p>
+
+        <p>Par l'étude de cas des radiations ionisantes et des essais nucléaires de la Guerre froide, cet essai examine comment certaines formes de violence opèrent par l'invisibilité, la latence et la diffusion de la responsabilité. Ce n'est pas un texte sur la physique nucléaire, mais sur l'architecture éthique (ou son absence) qui permet à des générations entières de supporter les conséquences de décisions qu'elles n'ont jamais prises.</p>
+
+        <p>S'appuyant sur la philosophie, l'histoire de la science et la critique politique, le texte pose une question qui transcende le domaine nucléaire et s'étend à tout système où la souffrance devient une statistique et la justice est indéfiniment reportée : <em>combien de silence sommes-nous disposés à normaliser lorsque le préjudice est lent, les victimes peu nombreuses, et le bénéfice semble stratégique ?</em></p>
+
+        <p>Une réflexion nécessaire sur le feu que Prométhée a volé et qui, une fois déchaîné, n'a pas d'Olympe auquel il peut retourner.</p>
+      </div>
+
+      <div class="lang-buttons">
+        <a href="../../assets/pdf/technology/prometheus-silence-en.pdf" target="_blank" class="lang-btn">English</a>
+        <a href="../../assets/pdf/technology/prometheus-silence-es.pdf" target="_blank" class="lang-btn">Español</a>
+        <a href="../../assets/pdf/technology/prometheus-silence-fr.pdf" target="_blank" class="lang-btn">Français</a>
+        <a href="../../assets/pdf/technology/prometheus-silence-it.pdf" target="_blank" class="lang-btn">Italiano</a>
+        <a href="../../assets/pdf/technology/prometheus-silence-de.pdf" target="_blank" class="lang-btn">Deutsch</a>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

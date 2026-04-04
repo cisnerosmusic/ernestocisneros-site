@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テクノロジーと社会 | アイデア | Ernesto Cisneros Cino</title>
+<meta name="description" content="分散型ガバナンス、非対称的透明性、および技術システムの倫理に関する探究。">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/ja/ideas/technology-society.html">
+    <meta property="og:title" content="テクノロジーと社会 | アイデア | Ernesto Cisneros Cino">
+    <meta property="og:description" content="分散型ガバナンス、非対称的透明性、および技術システムの倫理に関する探究。">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="テクノロジーと社会 | アイデア | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="分散型ガバナンス、非対称的透明性、および技術システムの倫理に関する探究。">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Research Block */
+.research-block {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.research-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.research-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.research-text {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.research-text p {
+  margin-bottom: 1rem;
+}
+
+.research-text strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Section Headers */
+.section-header {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--gold-faint);
+}
+
+/* Principle Block */
+.principle-block {
+  background: rgba(212, 160, 48, 0.05);
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.principle-block p {
+  margin-bottom: 0.8rem;
+}
+
+.principle-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Layer Block */
+.layer-block {
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.5rem;
+  background: rgba(13, 10, 6, 0.5);
+  border: 1px solid var(--line);
+}
+
+.layer-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.layer-block ul {
+  list-style: none;
+  margin: 0;
+}
+
+.layer-block li {
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.layer-block li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.btn-github::before {
+  content: '↗';
+  font-size: 1rem;
+}
+
+.btn-pdf::before {
+  content: '↓';
+  font-size: 1rem;
+}
+
+/* Language Buttons */
+.lang-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.lang-btn {
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+.btn-group, .lang-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .research-block { padding: 1.5rem; }
+  .research-title { font-size: 1.2rem; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "Finite Memory DAO (FMD-DAO)",
+    "url": "https://ernestocisneros.art/ja/ideas/technology-society.html",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "description": "すべての権限、評判、および記憶が時間とともに減衰するガバナンスフレームワークであり、権力集中を防ぎながら制度的知識を維持する。",
+    "about": ["Decentralized Governance", "DAOs", "Finite Memory", "Blockchain"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "Decentralized Verifiable AI + FMD-DAO v2.0",
+    "url": "https://ernestocisneros.art/ja/ideas/technology-society.html",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "description": "暗号学的検証と二院制意思決定を組み合わせた、信頼のできないAI推論と自己調整ガバナンスのための包括的なアーキテクチャ。",
+    "about": ["Verifiable AI", "Decentralized Governance", "Cryptographic Attestation", "Immune Systems"]
+  }
+]
+</script>
+    <script src="../../assets/js/lang-detect.js" defer></script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ja/ideas/technology-society.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/technology-society.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/technology-society.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/technology-society.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/technology-society.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/technology-society.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-technology-society" defer></script>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../../index.html" class="nav-item">ホーム</a></li>
+      <li><a href="../../biography.html" class="nav-item">略歴</a></li>
+      <li class="nav-dropdown">
+        <a href="../../music.html" class="nav-item">音楽</a>
+        <div class="nav-dropdown-content">
+          <a href="../../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../../music/other-works.html" class="nav-dropdown-item">その他の音楽作品</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../../nft/eth-collection.html" class="nav-dropdown-item">ETHコレクション</a>
+          <a href="../../nft/tez-collection.html" class="nav-dropdown-item">Tezコレクション</a>
+          <a href="../../nft/marketplaces.html" class="nav-dropdown-item">マーケットプレイス</a>
+          <a href="../../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">コミュニティからの贈り物</a>
+        </div>
+      </li>
+      <li><a href="../../books.html" class="nav-item">書籍</a></li>
+      <li class="nav-dropdown">
+        <a href="../../ideas.html" class="nav-item active">アイデア</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">宇宙論と物理学</a>
+          <a href="technology-society.html" class="nav-dropdown-item active">テクノロジーと社会</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">文化、記憶と亡命</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">芸術、詩学と哲学</a>
+        </div>
+      </li>
+      <li><a href="../../impulses.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../../contact.html" class="nav-item">お問い合わせ</a></li>
+    </ul>
+    <div class="nav-lang-switcher">
+      <button class="nav-lang-btn" data-lang="en">EN</button>
+      <a href="../../es/ideas/technology-society.html" class="nav-lang-btn">ES</a>
+      <a href="technology-society.html" class="nav-lang-btn active">JA</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main-content">
+
+  <section class="hero">
+    <span class="hero-subtitle">アイデア / II</span>
+    <h1 class="hero-title">テクノロジーと社会</h1>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- Block 1: FMD-DAO -->
+    <article class="research-block">
+      <h2 class="research-title">Finite Memory DAO (FMD-DAO)</h2>
+      <p class="research-subtitle">レジリエンスの谷に基づくガバナンス設計図</p>
+
+      <div class="research-text">
+        <h3 class="section-header">I. 核心的な目的</h3>
+        <p>FMD-DAOは単純だが深刻な原則に基づいている。<strong>あまりに多く、あるいはあまりに少なく記憶するシステムはすべて崩壊する。</strong>その目的は決定を蓄積したり構造を硬化させたりすることではなく、生きたコミュニティの健全な振動を保持することである。それは学習し、忘却し、一貫性を失うことなく再適応できるコミュニティを考える。</p>
+        <p>運用上の枠組みはレジリエンスの谷で、以下のように定義されている。</p>
+        <div class="principle-block">
+          <p><strong>1 &lt; R &lt; 3</strong></p>
+          <p>ここでR = τ × Ω（記憶×振動周波数）</p>
+        </div>
+        <p>この狭い帯域は、システムが断片化することなく適応的であり、停滞することなく安定している領域を表している。</p>
+
+        <h3 class="section-header">II. 指導原則</h3>
+        <p><strong>Finite Memory:</strong>すべての情報、評判、および権限は時間とともに減衰する。</p>
+        <p><strong>Periodic Adaptation:</strong>ルールは感情的な衝動ではなく、固定された周期に従ってレビューされる。</p>
+        <p><strong>Metric Transparency:</strong>DAOは定期的にそのレジリエンス指数（R）を公開する。</p>
+        <p><strong>Stabilizing Noise:</strong>破壊的な共鳴と単一文化を防ぐために、制御された変動性が導入される。</p>
+        <p><strong>Bicameral Governance:</strong>専門家と庶民の2つの会議室が認知的および運用上の平衡を維持する。</p>
+
+        <h3 class="section-header">III. 構造成分</h3>
+        <p><strong>A. 記憶減衰メカニズム</strong></p>
+        <div class="layer-block">
+          <p>Reputation Halving: メンバーの評判は毎τ年ごとに半減する（設定可能、例えば4年）。</p>
+          <p>Authority Sunset: 単一の提案は3τを超えてアクティブなままでいることはできない。</p>
+          <p>Council Refreshment: メンバーは毎τごとにローテーションし、議会は年を重ね、サイクルし、決して停滞しない。</p>
+        </div>
+
+        <p><strong>B. 振動管理</strong></p>
+        <div class="layer-block">
+          <p>Amplitude Control: 決定は急激なショックを減衰させるために（τ/2）サイズの増分で実装される。</p>
+          <p>Frequency Regulation: 主要なガバナンスレビューはτごとに発生し、マイナー調整はτ/4ごとに発生する。</p>
+          <p>Resonance Damping: コミュニティの感情入力は長寿命で証明されたメトリクスより低く重み付けされる。</p>
+        </div>
+
+        <p><strong>C. 二院制構造</strong></p>
+        <p><strong>Experts Chamber:</strong>技術的深さに焦点を当てる。多分野の背景（または実証された専門知識）とτ年の任期最小値が必要。技術的措置を提案し、システムの健全性を検証する。</p>
+        <p><strong>Commons Chamber:</strong>実際の経験を反映する。すべてのアクティブメンバーに開放されている。コミュニティイニシアチブを提案し、決定が人間中心のままであることを保証する。</p>
+        <p><strong>Decision Thresholds:</strong>専門家はコミュニティに影響を与えるルールのためにCommonsの承認なしに提案を通すことはできない。Commons は専門家が技術的な実現可能性を検証しなくても通すことはできない。</p>
+
+        <h3 class="section-header">IV. 運用フェーズ</h3>
+        <p><strong>1. Decay Cycle（初期状態）</strong></p>
+        <p>すべての権限は最大で始まる。時間が経つにつれて、評判と決定強度は自然に減衰する。これは罰ではなく、建築である。決定がそれの関連性を超えることを保証しない。</p>
+
+        <p><strong>2. Oscillation Phase（アクティブなガバナンス）</strong></p>
+        <p>決定が古くなり減衰すると、新しい提案が出現する。Commons と Experts は議論し、フィードバックを統合し、投票する。各サイクルは振動の完全な周期であり、システムをレジリエンスの谷内に維持する。</p>
+
+        <p><strong>3. Resonance Dampening（予防）</strong></p>
+        <p>センチメントが激しく揺らぐ場合（R > 3）、システムは安定化措置を活性化する。投票遅延、クールオフ期間、または強制的な専門家レビュー。システムエントロピーが低すぎる場合（R < 1）、Commons または Experts は制御された変動注入を開始する。適応性を再覚醒させるための小さなポリシー実験。</p>
+
+        <h3 class="section-header">V. 含意と思考実験</h3>
+        <p><strong>なぜ減衰？</strong>すべての決定には有効期限がある。代替案—永遠のルール—は蓄積された重荷、テック債、および文化的硬化につながる。</p>
+        <p>レピュテーションが永遠のDAOでは、創始者は永遠に勝つ。FMD-DAOでは、昨日のヒーローは継続的に関連性を獲得した場合にのみ明日に影響を与えることができる。</p>
+
+        <p><strong>なぜ振動？</strong>生きたシステムは平衡しない。それらは振動する。健康な生物は呼吸し、循環し、サイクルする。ガバナンスは異なりません。</p>
+        <p>静的なガバナンス構造は死んだ構造である。FMD-DAOは振動を明示的で安全にする。</p>
+
+        <p><strong>なぜ二院制？</strong>専門家判断と人気主権の間の緊張はバグではなく、機能である。</p>
+        <p>純粋なメリトクラシーまたは純粋な民主主義に崩壊するシステムは失敗します。バランスポイント—各会議室が承認しなければならない場所—人道性と厳密さが共存する場所です。</p>
+
+        <h3 class="section-header">VI. 実装ロードマップ</h3>
+        <p><strong>Phase 1: Prototyping（Months 1–6）</strong></p>
+        <p>設定可能な減衰率を定義し、レピュテーション半減契約を構築し、振動曲線をシミュレートする。エッジケースを特定し、τとΩを調整するために小さなコミュニティコーホートでテストする。</p>
+
+        <p><strong>Phase 2: Alpha Deployment（Months 7–12）</strong></p>
+        <p>テストネットでFMD-DAOを実際のガバナンス（例えば、リソース配分、ポリシー調整）で起動する。リアルタイムでレジリエンス指数を測定し、ライブデータに基づいて減衰率と振動周波数を調整する。</p>
+
+        <p><strong>Phase 3: Mainnet & Integration（Months 13–18）</strong></p>
+        <p>メインネットに二院制投票、公開レジリエンスダッシュボード、および監査証跡で移行する。フレームワークを他のDAOと組織のためのオープンソースガバナンスインフラとして確立する。</p>
+
+        <p>Resources Required: スマートコントラクト開発者（Solidity + Vyper）、検証のためのゲーム理論家、コミュニティ管理者、およびパラメータチューニングへの長期的なコミットメント。</p>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Block 2: VI-AI + FMD-DAO v2.0 -->
+    <article class="research-block">
+      <h2 class="research-title">Decentralized Verifiable AI + FMD-DAO v2.0</h2>
+      <p class="research-subtitle">AI推論、監査、および自己調整ガバナンスのための信頼のできないインフラストラクチャ</p>
+
+      <div class="research-text">
+        <h3 class="section-header">I. 動機</h3>
+        <p>AIシステムは益々政策、リソース配分、および社会的結果を形作っている。しかし、彼らは集中化された企業管理下のブラックボックスとして運用されている。我々が必要です：</p>
+
+        <div class="layer-block">
+          <p><strong>1. 透明性：</strong>すべてのAI決定は追跡可能で検証可能である必要があります。</p>
+          <p><strong>2. 説明責任：</strong>AI システムが害を引き起こした場合、責任チェーンは明確でなければなりません。</p>
+          <p><strong>3. ガバナンス：</strong>AIの行動を支配するルールは民主的に決定されるべき、単一のエンティティで決定されてはいけません。</p>
+          <p><strong>4. レジリエンス：</strong>悪意のあるアクターがそれをゲーム化または破壊しようとしても、システムは安定のままである必要があります。</p>
+        </div>
+
+        <p>VI-AI + FMD-DAO v2.0は4つすべてを提供するアーキテクチャを提案する—暗号学的確実性で。</p>
+
+        <h3 class="section-header">II. 3つの柱</h3>
+
+        <p><strong>A. 暗号化認証</strong></p>
+        <p>すべてのAIモデルは暗号化署名され、バージョン管理される。各推論は以下で記録される：</p>
+        <div class="layer-block">
+          <ul>
+            <li>Input hash（モデルを促したもの）</li>
+            <li>Model hash（実行された正確なバージョン）</li>
+            <li>Output hash（モデルが返したもの）</li>
+            <li>Attestor signature（誰がこれが実際に起こったことを検証したか）</li>
+          </ul>
+        </div>
+        <p>これはオンチェーンで改ざん不可能なレコードを作成し、すべてのステークホルダーに表示される。</p>
+
+        <p><strong>B. 分散推論</strong></p>
+        <p>単一のエンティティがAIを実行しない。代わりに：</p>
+        <div class="layer-block">
+          <ul>
+            <li>リクエスターがスマートコントラクトにクエリを提出する。</li>
+            <li>複数の推論ノード（トークン報酬で動機付けられた）モデルを独立して実行する。</li>
+            <li>ノードは出力を証明と共に送信する（これを実行した、証明はここにある）。</li>
+            <li>BFTコンセンサスメカニズム（またはマルチオラクル設計）出力が同意することを検証する。</li>
+            <li>合意した出力はオンチェーンで最終化され、リクエスターはノードを支払う（正直な場合のみ）。</li>
+          </ul>
+        </div>
+        <p>これは単一のAIプロバイダーを信頼する必要性を排除する。代わりに暗号化を信頼する。</p>
+
+        <p><strong>C. ガバナンスレイヤー（FMD-DAO v2.0）</strong></p>
+        <p>並行ガバナンス構造がAI行動を監視し、ルールを動的に調整する：</p>
+        <div class="layer-block">
+          <p><strong>Constants & Constraints:</strong>Commons は高レベルのAIポリシー（例えば、「採用推奨事項のバイアスをX%に減らす」、「推論ごとのエネルギー使用をY kWhに制限する」）に投票する。</p>
+          <p><strong>Technical Enforcement:</strong>Experts Chamber はポリシーを推論を支配するスマートコントラクトに埋め込まれたコード制約に変換する。</p>
+          <p><strong>Live Audit:</strong>オンチェーンデータ（推論ログ、出力、リソース使用）はリアルタイムのコンプライアンスダッシュボードを供給する。</p>
+          <p><strong>Dynamic Adjustments:</strong>システムがレジリエンスの谷から漂流する場合、ガバナンス本体はコードを再配置することなく定数（バイアスのペナルティ、報酬乗数など）を調整できる。</p>
+        </div>
+
+        <h3 class="section-header">III. アーキテクチャ深掘り</h3>
+
+        <p><strong>推論フロー</strong></p>
+        <div class="layer-block">
+          <ol style="list-style-type: decimal; padding-left: 2rem;">
+            <li>ユーザーがクエリQをコントラクトCに送信。</li>
+            <li>コントラクトがイベントを発出し、N個のノードがリッスンして推論を並列で開始。</li>
+            <li>各ノードn_iがM(Q) → 出力O_iを計算し、タプル(hash(Q), hash(M), hash(O_i), signature)に署名。</li>
+            <li>ノードがコントラクトに認証を送信し、コントラクトがそれらを収集。</li>
+            <li>3分の2以上のノードが同じ出力に同意する場合、それは「真実」と見なされオンチェーンで最終化される。</li>
+            <li>リクエスターが同意したノードを支払い、異議を唱えるノードは報酬を受け取らない（そして彼らが明らかに間違っている場合はスラッシュされるかもしれない）。</li>
+          </ol>
+        </div>
+
+        <p><strong>モデル更新の処理</strong></p>
+        <p>新しいモデルバージョンM'がリリースされたとき：</p>
+        <div class="layer-block">
+          <ul>
+            <li>Experts Chamberがそれを採用するかどうかを投票する（セキュリティレビュー、パフォーマンステスト）。</li>
+            <li>承認された場合、カットオーバー日付が設定される。その日付から、ノードはMの代わりにM'を使用する。</li>
+            <li>古い推論ログはオンチェーンに残り、監査証跡は不変。</li>
+            <li>これにより、新しいモデルが障害であることが判明した場合はロールバックが可能。</li>
+          </ul>
+        </div>
+
+        <p><strong>共謀と攻撃の防止</strong></p>
+        <div class="layer-block">
+          <p><strong>Sybil attacks:</strong>ノードは参加するために賭けをポストする必要があります。虚偽の認証はスラッシング（賭けの損失）につながります。</p>
+          <p><strong>Cartel formation:</strong>推論ノードは地理的および運用上多様。クエリごとのノードのランダムサンプリングは予測可能性を防ぐ。</p>
+          <p><strong>Model poisoning:</strong>モデルが悪意を持ってバイアスまたは有害な出力を生成するようにトレーニングされた場合、オンチェーン監査証跡はそれを明らかにする（出力はコミュニティの期待から発散）。専門家は素早くロールバックに投票。</p>
+        </div>
+
+        <h3 class="section-header">IV. 行動中のガバナンス</h3>
+
+        <p><strong>シナリオ：採用バイアスの問題</strong></p>
+        <p><strong>Month 1:</strong>外部監査委員会のデータサイエンティストは、AIの採用推奨事項が資格のある候補者と比較して上級職でわずか3％少ない女性を示していることに気づく。</p>
+        <p><strong>Month 2:</strong>彼らはレポート（オンチェーンおよびオフチェーン）を公開し、Commons は議論する。バイアスが実数であると主張する人もいれば、統計的ノイズだと言う人もいる。</p>
+        <p><strong>Month 3:</strong>Commons は投票する：「6ヶ月以内に性別バイアスを50%削減する」投票は72%を通過。</p>
+        <p><strong>Month 4:</strong>Experts Chamber はこれをコードに変換。彼らはモデル損失関数にペナルティ項を追加します：モデルの出力がジェンダーニュートラルな採用から発散する場合、ペナルティが与えられます。新しい制約が展開される。</p>
+        <p><strong>Month 6:</strong>ライブ監査はバイアスが1.7%に低下していることを示す。Commons はそれをさらに厳しくするか、解決したと考えるかを投票。決定は記録され、新しい規範はDAOのガバナンス履歴の一部になる。</p>
+
+        <p>これはコーポレートコンプライアンスシアターではありません。これは責任ある、検証可能、継続的に監査可能なガバナンスです。</p>
+
+        <h3 class="section-header">V. なぜこれが重要か</h3>
+
+        <p>今日のAIガバナンスのいずれか：</p>
+        <div class="layer-block">
+          <ul>
+            <li>コーポレーション自己規制（参照：すべてのAI企業の倫理委員会）。</li>
+            <li>政府による規制の捕獲（ルールはAI業界で書かれている）。</li>
+            <li>ガバナンスなし（素早く移動し、物を壊し、誰も死ぬことを望まない）。</li>
+          </ul>
+        </div>
+
+        <p>VI-AI + FMD-DAO v2.0は第4の選択肢を提供：<strong>分散化と暗号化による信頼できる中立性。</strong></p>
+
+        <p>システムは完璧ではありません。しかしそれは：</p>
+        <div class="layer-block">
+          <p><strong>透明：</strong>すべての決定がオンチェーンで監査可能。</p>
+          <p><strong>責任：</strong>選択は特定のアクター、特定の時間、特定の推論に追跡可能。</p>
+          <p><strong>民主的：</strong>技術的専門家と普通の人々の両方が声を持っている。</p>
+          <p><strong>レジリエント：</strong>ストレスの下で安定を保ち、崩壊することなく適応するように設計。</p>
+        </div>
+
+        <h3 class="section-header">VI. 研究質問とオープンチャレンジ</h3>
+
+        <p><strong>1. スケール時のモデル解釈可能性：</strong>1000の推論ノードが同じモデルを実行しているが、1つが浮動小数点丸めのために異なる（ただし正しい可能性がある）出力を生成する場合、どのように判定するか？</p>
+
+        <p><strong>2. インセンティブの整列：</strong>ノードオペレータは推論ごとに支払われます。彼らがより「利益性の高い」特定のモデルまたは出力を好むことを防ぐにはどうすればよいですか？</p>
+
+        <p><strong>3. トレーニングデータガバナンス：</strong>推論を監査している場合、モデルのトレーニングに使用されるデータとコードも支配しない理由は？これは別の（ただし関連する）VIチャレンジです。</p>
+
+        <p><strong>4. レイテンシとコスト：</strong>1000のノード間で同じ推論を実行することは、集中化された推論よりもはるかに多くの計算コスト（〜1000倍）が高く、はるかに遅い。いつそれは価値があるか？いつそうではないか？</p>
+
+        <p>これらは問題ではありません。それらが仕事の最前線です。</p>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Language Buttons -->
+    <div style="text-align: center; margin: 3rem 0;">
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">他の言語で読む</p>
+      <div class="lang-buttons">
+        <a href="../../ideas/technology-society.html" class="lang-btn">EN</a>
+        <a href="../../es/ideas/technology-society.html" class="lang-btn">ES</a>
+        <a href="technology-society.html" class="lang-btn" style="pointer-events: none; opacity: 0.6;">JA</a>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <p class="footer-text">&copy; 2024 Ernesto Cisneros Cino. All rights reserved.</p>
+  </footer>
+
+</main>
+
+<script src="../../assets/js/particles.js" defer></script>
+<script src="../../assets/js/nav.js" defer></script>
+
+</body>
+</html>

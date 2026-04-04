@@ -45,7 +45,12 @@
     'nft/marketplaces.html',
     'nft/btc-ordinals.html',
     'nft/gift-from-community.html',
-    'impulses-art.html'
+    'impulses-art.html',
+    'ideas.html',
+    'ideas/cosmology-physics.html',
+    'ideas/technology-society.html',
+    'ideas/culture-memory-exile.html',
+    'ideas/art-poetics-philosophy.html'
   ];
 
   // ── Detect current context ─────────────────────────────────
