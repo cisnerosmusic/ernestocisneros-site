@@ -1,0 +1,17 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/nft/tez-collection.html",
+    "name": "Tezos Collection | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/nft/tez-collection.html",
+    "description": "Collected works on Tezos — a memory of a living community in the Web3 art ecosystem. Digital art curated and created by Ernesto Cisneros Cino on objkt.",
+    "about": {
+      "@type": "VisualArtwork",
+      "artMedium": "Digital Art / NFT (Tezos)",
+      "creator": { "@id": "https://ernestocisneros.art/#person" }
+    },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

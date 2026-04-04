@@ -1,0 +1,13 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/music/other-works.html",
+    "name": "Other Musical Works | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music/other-works.html",
+    "description": "Film scores, television, documentary, ballet, and broadcast compositions by Ernesto Cisneros Cino. A catalog of works for visual media and performing arts.",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

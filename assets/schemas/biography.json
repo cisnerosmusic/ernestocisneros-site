@@ -1,0 +1,13 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://ernestocisneros.art/biography.html",
+    "name": "Biography | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/biography.html",
+    "description": "Biography of Ernesto Cisneros Cino, Cuban composer, pianist, digital artist, and writer based in Miami.",
+    "mainEntity": { "@id": "https://ernestocisneros.art/#person" },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

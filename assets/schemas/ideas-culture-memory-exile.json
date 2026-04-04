@@ -1,0 +1,14 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://ernestocisneros.art/ideas/culture-memory-exile.html#article",
+    "name": "Culture, Memory & Exile",
+    "url": "https://ernestocisneros.art/ideas/culture-memory-exile.html",
+    "description": "Reflections on displacement, identity, and the cultural memory that refuses to die. Essays on exile as creative engine by Ernesto Cisneros Cino.",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "about": ["Exile", "Cultural Memory", "Identity", "Cuban Diaspora", "Displacement"],
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

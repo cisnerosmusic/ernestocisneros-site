@@ -1,0 +1,26 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://ernestocisneros.art/music/sandbank.html#album",
+    "name": "Sandbank",
+    "url": "https://ernestocisneros.art/music/sandbank.html",
+    "description": "A collaborative audiovisual project. Music by Ernesto Cisneros, video by Gino Battiston. Documentary score from the Central Desert of Mendoza, Argentina. Four ambient pieces that function as a metamodel — a bank of visual and sound images.",
+    "byArtist": [
+      { "@id": "https://ernestocisneros.art/#person" },
+      { "@type": "Person", "name": "Gino Battiston", "url": "https://ginobattiston.com" }
+    ],
+    "genre": ["Ambient", "Documentary Score", "Audiovisual Art"],
+    "numTracks": 4,
+    "albumProductionType": "https://schema.org/StudioAlbum",
+    "inLanguage": "en"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sandbank | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music/sandbank.html",
+    "description": "Sandbank: A collaborative audiovisual project with Gino Battiston. Documentary film from the Central Desert of Mendoza, Argentina.",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" }
+  }
+]

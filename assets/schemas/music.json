@@ -1,0 +1,19 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/music.html",
+    "name": "Music | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music.html",
+    "description": "Music is the origin of everything. Explore the musical universe of Ernesto Cisneros Cino — albums, film scores, and experimental compositions.",
+    "about": {
+      "@type": "MusicGroup",
+      "name": "Ernesto Cisneros Cino",
+      "description": "Solo composer and performer working across ambient, experimental, algorithmic, and film score genres.",
+      "member": { "@id": "https://ernestocisneros.art/#person" },
+      "genre": ["Ambient", "Experimental", "Algorithmic", "Film Score", "Piano"]
+    },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

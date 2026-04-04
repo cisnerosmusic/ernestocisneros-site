@@ -1,0 +1,17 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/nft/eth-collection.html",
+    "name": "Ethereum Collection | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/nft/eth-collection.html",
+    "description": "Collected digital artworks on Ethereum. A dialogue between creators, a network of ideas and emotions curated by Ernesto Cisneros Cino on Foundation.",
+    "about": {
+      "@type": "VisualArtwork",
+      "artMedium": "Digital Art / NFT (Ethereum)",
+      "creator": { "@id": "https://ernestocisneros.art/#person" }
+    },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

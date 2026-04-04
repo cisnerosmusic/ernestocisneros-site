@@ -1,0 +1,15 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Project",
+    "@id": "https://ernestocisneros.art/impulses-art.html",
+    "name": "Impulses.art",
+    "url": "https://ernestocisneros.art/impulses-art.html",
+    "description": "Music as connection, healing, and light. A project bringing music therapy to refugees, families, and vulnerable communities.",
+    "founder": { "@id": "https://ernestocisneros.art/#person" },
+    "keywords": ["Music Therapy", "Community Healing", "Refugee Support", "Social Impact", "Art as Connection"],
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "sameAs": "https://impulses.online",
+    "inLanguage": "en"
+  }
+]

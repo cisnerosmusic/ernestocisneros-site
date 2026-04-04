@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://ernestocisneros.art/#person",
+  "name": "Ernesto Cisneros Cino",
+  "alternateName": "Ernesto Cisneros",
+  "url": "https://ernestocisneros.art",
+  "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
+  "description": "Cuban composer, pianist, digital artist, and writer based in Miami. His interdisciplinary work spans music composition, blockchain art (NFT/Web3), independent research in stochastic cosmology, and social impact through music therapy.",
+  "jobTitle": "Composer, Digital Artist & Writer",
+  "birthPlace": {
+    "@type": "Place",
+    "name": "Cuba"
+  },
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Miami, Florida, USA"
+  },
+  "knowsAbout": [
+    "Music Composition",
+    "Piano Performance",
+    "Ambient Music",
+    "Experimental Music",
+    "Film Scoring",
+    "NFT Art",
+    "Web3",
+    "Blockchain Art",
+    "Stochastic Cosmology",
+    "Decentralized Governance",
+    "Music Therapy",
+    "Digital Art",
+    "Speculative Fiction",
+    "Philosophy of Art"
+  ],
+  "sameAs": [
+    "https://x.com/ErnestCisneros1",
+    "https://www.instagram.com/ernestocisnerosmusic",
+    "https://www.linkedin.com/in/ernesto-cisneros-cino-58125644",
+    "https://youtube.com/@ernestocisnerosmusic",
+    "https://github.com/cisnerosmusic",
+    "https://medium.com/@ernestocisnerosmusic",
+    "https://orcid.org/0009-0002-2833-1787",
+    "https://loop.frontiersin.org/people/3187525/overview",
+    "https://foundation.app/@cisnerosmusic",
+    "https://objkt.com/@ernestocisneros",
+    "https://audius.co/ernestcisneros1",
+    "https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN"
+  ],
+  "email": "ernest@ernestocisneros.art"
+}

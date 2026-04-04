@@ -1,0 +1,18 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/nft/gift-from-community.html",
+    "name": "A Gift from the Community | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/nft/gift-from-community.html",
+    "description": "The Ernestitos and other portraits — eight artists from six countries who portrayed Ernesto Cisneros Cino without being asked. A record of what the NFT community was capable of at its best.",
+    "about": {
+      "@type": "VisualArtwork",
+      "name": "The Ernestitos",
+      "artMedium": "Digital Portraiture / NFT",
+      "description": "Community-created portrait collection on Tezos and Solana"
+    },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

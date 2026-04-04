@@ -1,0 +1,20 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/ideas.html",
+    "name": "Ideas | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/ideas.html",
+    "description": "Explorations in cosmology, physics, technology, culture, art, and philosophy by Ernesto Cisneros Cino.",
+    "about": [
+      "Stochastic Cosmology",
+      "Decentralized Governance",
+      "Philosophy of Art",
+      "Cultural Memory",
+      "Exile"
+    ],
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

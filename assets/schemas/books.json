@@ -1,0 +1,99 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/books.html",
+    "name": "Books | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/books.html",
+    "description": "Books by Ernesto Cisneros Cino: Sombras, Datos y Relámpagos; La Sospecha Razonable; and the upcoming Huella. Available on Amazon.",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": "https://ernestocisneros.art/books.html#sombras",
+    "name": "Sombras, Datos y Relámpagos",
+    "alternateName": "Shadows, Data & Lightning",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "url": "https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ",
+    "description": "A hybrid work structured in three movements — stories exploring power (Sombras), philosophical essays on data and truth (Datos), and poems that illuminate like lightning (Relámpagos). A journey from shadow to clarity.",
+    "inLanguage": "es",
+    "bookFormat": "https://schema.org/EBook",
+    "image": "https://ernestocisneros.art/assets/images/books/sombras.jpg",
+    "genre": ["Fiction", "Essay", "Poetry", "Philosophy"],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Amazon Kindle Direct Publishing"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Amazon"
+      }
+    },
+    "isPartOf": {
+      "@type": "BookSeries",
+      "name": "The Power Trilogy",
+      "description": "A trilogy exploring power, memory, knowledge, and the unknown through fiction, essay, and poetry."
+    },
+    "position": "1"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": "https://ernestocisneros.art/books.html#sospecha",
+    "name": "La Sospecha Razonable",
+    "alternateName": "Reasonable Suspicion: Speculative Tales of Power, Memory, and the Unknown",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "url": "https://www.amazon.com/dp/B0FZ3BCBXR",
+    "description": "Twelve speculative tales where science, philosophy, and fiction intersect. Book II of the Power Trilogy — stories that question the boundaries between what we know and what we suspect.",
+    "inLanguage": "es",
+    "bookFormat": "https://schema.org/EBook",
+    "image": "https://ernestocisneros.art/assets/images/books/la-sospecha.jpg",
+    "genre": ["Speculative Fiction", "Science Fiction", "Philosophy"],
+    "numberOfPages": 12,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Amazon Kindle Direct Publishing"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.amazon.com/dp/B0FZ3BCBXR",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Amazon"
+      }
+    },
+    "isPartOf": {
+      "@type": "BookSeries",
+      "name": "The Power Trilogy",
+      "description": "A trilogy exploring power, memory, knowledge, and the unknown through fiction, essay, and poetry."
+    },
+    "position": "2"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": "https://ernestocisneros.art/books.html#huella",
+    "name": "Huella",
+    "alternateName": "Footprint",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "url": "https://ernestocisneros.art/books.html",
+    "description": "A journey through the history of human knowledge, from the first marks on stone to the frontiers of modern science. Forthcoming.",
+    "inLanguage": "es",
+    "bookFormat": "https://schema.org/EBook",
+    "image": "https://ernestocisneros.art/assets/images/books/huella.png",
+    "genre": ["Non-fiction", "History of Science", "Philosophy"],
+    "isPartOf": {
+      "@type": "BookSeries",
+      "name": "The Power Trilogy",
+      "description": "A trilogy exploring power, memory, knowledge, and the unknown through fiction, essay, and poetry."
+    },
+    "position": "3"
+  }
+]

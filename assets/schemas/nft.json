@@ -1,0 +1,17 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/nft.html",
+    "name": "NFT | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/nft.html",
+    "description": "NFT artworks by Ernesto Cisneros Cino. Digital art on Ethereum, Tezos, and Bitcoin blockchains. Pioneer in the intersection of music, visual art, and Web3.",
+    "about": {
+      "@type": "VisualArtwork",
+      "artMedium": "Digital Art / NFT",
+      "creator": { "@id": "https://ernestocisneros.art/#person" }
+    },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

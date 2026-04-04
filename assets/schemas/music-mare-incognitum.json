@@ -1,0 +1,24 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://ernestocisneros.art/music/mare-incognitum.html#album",
+    "name": "Mare Incognitum",
+    "url": "https://ernestocisneros.art/music/mare-incognitum.html",
+    "description": "A sound manifesto of an unstable cartography. Instrumental album by Ernesto Cisneros Cino exploring uncharted sonic territories between electronic textures and organic sound.",
+    "byArtist": { "@id": "https://ernestocisneros.art/#person" },
+    "genre": ["Experimental", "Ambient", "Electronic", "Sound Art"],
+    "albumProductionType": "https://schema.org/StudioAlbum",
+    "image": "https://ernestocisneros.art/assets/images/albums/mare-incognitum.jpg",
+    "inLanguage": "es"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Mare Incognitum | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music/mare-incognitum.html",
+    "description": "Mare Incognitum - Un manifiesto sonoro de una cartografía inestable. Álbum instrumental por Ernesto Cisneros Cino.",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "mainEntity": { "@id": "https://ernestocisneros.art/music/mare-incognitum.html#album" }
+  }
+]

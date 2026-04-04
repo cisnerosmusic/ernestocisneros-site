@@ -1,0 +1,28 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://ernestocisneros.art/#website",
+    "name": "Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art",
+    "description": "Official website of Ernesto Cisneros Cino — Cuban composer, pianist, digital artist, and writer based in Miami.",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "inLanguage": ["en", "es"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://ernestocisneros.art/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://ernestocisneros.art/",
+    "name": "Ernesto Cisneros Cino | Composer, Digital Artist & Writer",
+    "url": "https://ernestocisneros.art/",
+    "description": "Ernesto Cisneros Cino is a Cuban composer, pianist, digital artist, and writer based in Miami.",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "about": { "@id": "https://ernestocisneros.art/#person" },
+    "inLanguage": "en"
+  }
+]

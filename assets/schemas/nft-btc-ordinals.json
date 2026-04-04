@@ -1,0 +1,15 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    "@id": "https://ernestocisneros.art/nft/btc-ordinals.html#ordinal",
+    "name": "Ordinal Inscription #95908",
+    "url": "https://ernestocisneros.art/nft/btc-ordinals.html",
+    "description": "A personal and historical milestone in Bitcoin cryptoart history. Sub-100k Ordinal inscription by Ernesto Cisneros Cino — part of the pre-canonical period of Bitcoin-native digital art.",
+    "artMedium": "Digital Art / Bitcoin Ordinal",
+    "creator": { "@id": "https://ernestocisneros.art/#person" },
+    "sameAs": "https://ordinals.com/inscription/18ae4989037def548d2ac95c10d5e59f7327640ee535909d083be9089677d0c8i0",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

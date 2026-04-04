@@ -1,0 +1,13 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://ernestocisneros.art/contact.html",
+    "name": "Contact | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/contact.html",
+    "description": "Get in touch with Ernesto Cisneros Cino for collaborations, commissions, and inspiring conversations.",
+    "mainEntity": { "@id": "https://ernestocisneros.art/#person" },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

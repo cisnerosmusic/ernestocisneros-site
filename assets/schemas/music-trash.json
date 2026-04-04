@@ -1,0 +1,23 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://ernestocisneros.art/music/trash.html#album",
+    "name": "Trash",
+    "url": "https://ernestocisneros.art/music/trash.html",
+    "description": "An album of NFT music made from scrap works inherited from film projects that never reached the screen. Seven pieces, seven colors. Available as NFT collection on the Tezos network.",
+    "byArtist": { "@id": "https://ernestocisneros.art/#person" },
+    "genre": ["Electronic", "Experimental", "Film Score", "NFT Music"],
+    "numTracks": 7,
+    "albumProductionType": "https://schema.org/StudioAlbum",
+    "inLanguage": "en"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Trash | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music/trash.html",
+    "description": "Trash - An album of NFT music made from scrap works, inherited from film music that was never used. Seven pieces, seven colors.",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" }
+  }
+]

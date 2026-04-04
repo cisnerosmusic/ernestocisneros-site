@@ -1,0 +1,25 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://ernestocisneros.art/music/glacial-paths.html#album",
+    "name": "Glacial Paths",
+    "url": "https://ernestocisneros.art/music/glacial-paths.html",
+    "description": "An instrumental album for piano and synthesizers by Ernesto Cisneros Cino. Ten pieces composed in the space between silence and sound, exploring glacial landscapes through algorithmic and stochastic processes.",
+    "byArtist": { "@id": "https://ernestocisneros.art/#person" },
+    "genre": ["Ambient", "Experimental", "Algorithmic", "Piano"],
+    "numTracks": 10,
+    "albumProductionType": "https://schema.org/StudioAlbum",
+    "image": "https://ernestocisneros.art/assets/images/albums/glacial-paths.jpg",
+    "inLanguage": "en"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Glacial Paths | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music/glacial-paths.html",
+    "description": "Glacial Paths - An instrumental album for piano and synthesizers by Ernesto Cisneros Cino. Ten pieces composed in the space between silence and sound.",
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "mainEntity": { "@id": "https://ernestocisneros.art/music/glacial-paths.html#album" }
+  }
+]

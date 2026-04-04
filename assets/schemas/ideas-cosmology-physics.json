@@ -1,0 +1,28 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "@id": "https://ernestocisneros.art/ideas/cosmology-physics.html#article",
+    "name": "Cosmology & Physics — Independent Research",
+    "url": "https://ernestocisneros.art/ideas/cosmology-physics.html",
+    "description": "Independent research in stochastic cosmology, the Finite Memory Law, and mathematical models exploring resilience and stability in dynamical systems.",
+    "author": { "@id": "https://ernestocisneros.art/#person" },
+    "about": [
+      "Stochastic Cosmology",
+      "Dark Energy",
+      "Finite Memory Law",
+      "Hilbert Space",
+      "Log-oscillatory Models",
+      "ΛCDM Alternative",
+      "Dynamical Systems"
+    ],
+    "citation": {
+      "@type": "ScholarlyArticle",
+      "name": "The Finite Memory Law",
+      "url": "https://doi.org/10.5281/zenodo.17686852",
+      "sameAs": "https://doi.org/10.5281/zenodo.17686852"
+    },
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "inLanguage": "en"
+  }
+]

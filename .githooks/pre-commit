@@ -1,0 +1,75 @@
+#!/bin/bash
+# ============================================================
+# PRE-COMMIT HOOK — Schema & Analytics Protection
+# ernestocisneros.art
+# ============================================================
+# This hook prevents commits that accidentally remove:
+#   1. Schema loader references from HTML pages
+#   2. GoatCounter analytics from HTML pages
+#   3. Critical schema JSON files
+#   4. The schema-loader.js script itself
+# ============================================================
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+ERRORS=0
+
+echo "🔍 Running schema & analytics protection checks..."
+
+# ── Check 1: schema-loader.js must exist ──
+if git diff --cached --name-only --diff-filter=D | grep -q "assets/js/schema-loader.js"; then
+    echo -e "${RED}✗ BLOCKED: assets/js/schema-loader.js is being deleted!${NC}"
+    echo "  This file is critical SEO/GEO infrastructure."
+    ERRORS=$((ERRORS + 1))
+fi
+
+# ── Check 2: No schema JSON files should be deleted ──
+DELETED_SCHEMAS=$(git diff --cached --name-only --diff-filter=D | grep "assets/schemas/.*\.json" || true)
+if [ -n "$DELETED_SCHEMAS" ]; then
+    echo -e "${RED}✗ BLOCKED: Schema files are being deleted:${NC}"
+    echo "$DELETED_SCHEMAS" | while read f; do echo "  - $f"; done
+    ERRORS=$((ERRORS + 1))
+fi
+
+# ── Check 3: Modified HTML files must still contain schema-loader ──
+MODIFIED_HTML=$(git diff --cached --name-only --diff-filter=M | grep "\.html$" | grep -v "components/" || true)
+for file in $MODIFIED_HTML; do
+    if [ -f "$file" ]; then
+        if ! grep -q "schema-loader" "$file"; then
+            echo -e "${RED}✗ BLOCKED: $file lost its schema-loader reference!${NC}"
+            ERRORS=$((ERRORS + 1))
+        fi
+        if ! grep -q "goatcounter" "$file"; then
+            echo -e "${YELLOW}⚠ WARNING: $file lost its GoatCounter analytics tag!${NC}"
+            ERRORS=$((ERRORS + 1))
+        fi
+    fi
+done
+
+# ── Check 4: global-person.json must exist ──
+if git diff --cached --name-only --diff-filter=D | grep -q "assets/schemas/global-person.json"; then
+    echo -e "${RED}✗ BLOCKED: global-person.json (core identity schema) is being deleted!${NC}"
+    ERRORS=$((ERRORS + 1))
+fi
+
+# ── Check 5: AGENTS.md must not be deleted ──
+if git diff --cached --name-only --diff-filter=D | grep -q "AGENTS.md"; then
+    echo -e "${RED}✗ BLOCKED: AGENTS.md is being deleted!${NC}"
+    echo "  This file protects the repository from destructive AI agent operations."
+    ERRORS=$((ERRORS + 1))
+fi
+
+# ── Result ──
+if [ $ERRORS -gt 0 ]; then
+    echo ""
+    echo -e "${RED}✗ Commit blocked: $ERRORS critical issue(s) found.${NC}"
+    echo "  If you are SURE you want to proceed, use: git commit --no-verify"
+    echo "  But please read AGENTS.md first."
+    exit 1
+fi
+
+echo -e "${GREEN}✓ All schema & analytics checks passed.${NC}"
+exit 0
