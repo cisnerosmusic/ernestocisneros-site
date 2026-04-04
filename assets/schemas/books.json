@@ -30,6 +30,8 @@
       "@type": "Offer",
       "url": "https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ",
       "availability": "https://schema.org/InStock",
+      "priceCurrency": "USD",
+      "price": "9.99",
       "seller": {
         "@type": "Organization",
         "name": "Amazon"
@@ -64,6 +66,8 @@
       "@type": "Offer",
       "url": "https://www.amazon.com/dp/B0FZ3BCBXR",
       "availability": "https://schema.org/InStock",
+      "priceCurrency": "USD",
+      "price": "9.99",
       "seller": {
         "@type": "Organization",
         "name": "Amazon"

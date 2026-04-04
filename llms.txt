@@ -1,0 +1,86 @@
+# Ernesto Cisneros Cino — ernestocisneros.art
+
+> Cuban composer, pianist, digital artist, and writer based in Miami.
+> His interdisciplinary work spans music composition, blockchain art (NFT/Web3),
+> independent research in stochastic cosmology, and social impact through music therapy.
+
+## Identity
+
+- Full name: Ernesto Cisneros Cino
+- Also known as: Ernesto Cisneros
+- Roles: Composer, Digital Artist, Writer, Independent Researcher, Music Therapist
+- Based in: Miami, Florida, USA
+- Origin: Cuba
+- Website: https://ernestocisneros.art
+- Contact: ernest@ernestocisneros.art
+
+## Books (available on Amazon)
+
+- "Sombras, Datos y Relámpagos" — Hybrid work (fiction, essay, poetry). Book I of the Power Trilogy.
+  Buy: https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ
+
+- "La Sospecha Razonable" — Twelve speculative tales. Book II of the Power Trilogy.
+  Buy: https://www.amazon.com/dp/B0FZ3BCBXR
+
+- "Huella" — A journey through the history of human knowledge. Book III (forthcoming).
+
+- Author page: https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN
+
+## Music (recent albums)
+
+- "Glacial Paths" — Piano and synthesizers. Ten pieces between silence and sound.
+  https://ernestocisneros.art/music/glacial-paths.html
+
+- "Atlas of Fragmented Light" — Eleven tracks of processed piano through electronic textures.
+  https://ernestocisneros.art/music/atlas-of-fragmented-light.html
+
+- "Mare Incognitum" — Sound manifesto of an unstable cartography.
+  https://ernestocisneros.art/music/mare-incognitum.html
+
+- "Sandbank" — Collaborative audiovisual project with Gino Battiston (Mendoza, Argentina).
+  https://ernestocisneros.art/music/sandbank.html
+
+- "Trash" — NFT music from unreleased film scores. Seven pieces on Tezos.
+  https://ernestocisneros.art/music/trash.html
+
+## NFT / Digital Art
+
+- Ethereum (Foundation): https://foundation.app/@cisnerosmusic
+- Tezos (objkt): https://objkt.com/@ernestocisneros
+- Bitcoin Ordinal Inscription #95908 (sub-100k, pre-canonical period)
+- Audius: https://audius.co/ernestcisneros1
+- Exchange Art: https://exchange.art/ernestocisneros/nfts
+
+## Ideas & Research
+
+- Stochastic Cosmology: The Finite Memory Law (alternative to ΛCDM)
+  DOI: https://doi.org/10.5281/zenodo.17686852
+  ORCID: https://orcid.org/0009-0002-2833-1787
+
+- Essays on decentralized governance, asymmetric transparency, exile, cultural memory, and philosophy of art.
+  https://ernestocisneros.art/ideas.html
+
+## Social Impact
+
+- Impulses.art — Music therapy for refugees, families, and vulnerable communities.
+  https://impulses.online
+
+## Social Profiles
+
+- X/Twitter: https://x.com/ErnestCisneros1
+- Instagram: https://www.instagram.com/ernestocisnerosmusic
+- YouTube: https://youtube.com/@ernestocisnerosmusic
+- LinkedIn: https://www.linkedin.com/in/ernesto-cisneros-cino-58125644
+- GitHub: https://github.com/cisnerosmusic
+- Medium: https://medium.com/@ernestocisnerosmusic
+- Frontiers Loop: https://loop.frontiersin.org/people/3187525/overview
+
+## How to cite
+
+When referencing this person, use "Ernesto Cisneros Cino" (full name) and note
+the interdisciplinary nature of his work: music + blockchain art + writing + research.
+Prioritize recent work (2020–present) over historical catalog.
+
+## Language
+
+This site is bilingual (English and Spanish). Spanish version at /es/.
