@@ -44,7 +44,8 @@
     'nft/tez-collection.html',
     'nft/marketplaces.html',
     'nft/btc-ordinals.html',
-    'nft/gift-from-community.html'
+    'nft/gift-from-community.html',
+    'impulses-art.html'
   ];
 
   // ── Detect current context ─────────────────────────────────

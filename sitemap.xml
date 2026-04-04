@@ -313,6 +313,22 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- FR: Impulses.art -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/impulses-art.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- JA: Impulses.art -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/impulses-art.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ES: Artemis II -->
   <url>
     <loc>https://ernestocisneros.art/es/artemis-ii.html</loc>
