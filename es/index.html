@@ -442,6 +442,49 @@
             .audio-control { bottom: 1rem; right: 1rem; }
             .audio-label { display: none; }
         }
+
+        /* Artemis II Banner */
+        .artemis-banner {
+            position: relative;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(90deg, rgba(20,16,10,0.95), rgba(30,24,14,0.95), rgba(20,16,10,0.95));
+            border-bottom: 1px solid rgba(212,160,48,0.3);
+            text-align: center;
+            animation: artemis-glow 3s ease-in-out infinite;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .artemis-banner:hover {
+            border-bottom-color: rgba(212,160,48,0.6);
+        }
+        .artemis-banner-text {
+            font-family: var(--font-body, 'Cormorant Garamond', serif);
+            font-size: 0.95rem;
+            color: rgba(232,220,200,0.85);
+            letter-spacing: 0.02em;
+        }
+        .artemis-banner-text .artemis-highlight {
+            color: #f0c860;
+            font-weight: 500;
+        }
+        .artemis-banner-arrow {
+            color: #d4a030;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+        .artemis-banner:hover .artemis-banner-arrow {
+            transform: translateX(4px);
+        }
+        @keyframes artemis-glow {
+            0%, 100% { box-shadow: 0 2px 20px rgba(212,160,48,0.05); }
+            50% { box-shadow: 0 2px 30px rgba(212,160,48,0.15); }
+        }
     </style>
 <link rel="stylesheet" href="../assets/css/nav.css">
 <script type="application/ld+json">
@@ -558,6 +601,11 @@
         </ul>
       </div>
     </nav>
+
+    <a href="../artemis-ii.html" class="artemis-banner">
+      <span class="artemis-banner-text">🚀 <span class="artemis-highlight">Artemis II está en vuelo</span> — La humanidad regresa a la Luna · Sigue la misión en vivo</span>
+      <span class="artemis-banner-arrow">→</span>
+    </a>
 
     <section class="hero">
         <div class="hero-content">
