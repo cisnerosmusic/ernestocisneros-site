@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas of Fragmented Light | Ernesto Cisneros Cino</title>
+<meta name="description" content="Atlas of Fragmented Light - ピアノと電子音響の器楽アルバム。木漏れ日（こもれび）と陰翳礼讃（いんえいらいさん）。断片化された光と影の美学。">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/ja/music/atlas-of-fragmented-light.html">
+    <meta property="og:title" content="Atlas of Fragmented Light | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Atlas of Fragmented Light - ピアノと電子音響。木漏れ日（こもれび）と陰翳礼讃（いんえいらいさん）の美学。断片化された光の探索。">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Atlas of Fragmented Light | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Atlas of Fragmented Light - ピアノと電子音響。木漏れ日（こもれび）と陰翳礼讃（いんえいらいさん）。光と影の美学。">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #c8b89a;
+    --parchment-dark: #9e8a72;
+    --ink: #1c1a14;
+    --node: #7aaa8a;
+    --node-bright: #aaddbb;
+    --glow: rgba(122,170,138,0.4);
+    
+    --font-display: 'Cinzel', serif;
+    --font-body: 'IM Fell English', serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Gold Particles */
+  #gold-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.55;
+  }
+
+  /* NAVIGATION */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(28,26,20,0.95) 0%, rgba(28,26,20,0) 100%);
+  }
+
+  .nav.scrolled {
+    background: rgba(28, 26, 20, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(122,170,138,0.15);
+  }
+
+  .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+
+  .nav-logo-img {
+    height: 40px;
+    width: auto;
+    mix-blend-mode: lighten;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--parchment-dark);
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .nav-item:hover { color: var(--node-bright); }
+  .nav-item.active { color: var(--node-bright); }
+
+  .nav-dropdown { position: relative; }
+
+  .nav-dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 200px;
+    background: rgba(28, 26, 20, 0.98);
+    border: 1px solid rgba(122,170,138,0.18);
+    padding: 0.75rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-dropdown-item {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--parchment-dark);
+    transition: all 0.2s ease;
+  }
+
+  .nav-dropdown-item:hover {
+    color: var(--node-bright);
+    background: rgba(122,170,138,0.1);
+  }
+
+  .nav-dropdown-item.active { color: var(--node-bright); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    width: 24px;
+    height: 1px;
+    background: var(--parchment-dark);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    position: relative;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px; height: 3rem;
+    background: linear-gradient(to bottom, transparent, var(--node));
+  }
+  .header-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.45em;
+    color: var(--node);
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    opacity: 0.65;
+  }
+  .title {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--parchment);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .title em { font-style: italic; color: var(--node-bright); }
+  .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--parchment-dark);
+    margin-top: 0.4rem;
+    letter-spacing: 0.08em;
+  }
+  .author {
+    font-size: 0.52rem;
+    letter-spacing: 0.38em;
+    color: var(--node);
+    opacity: 0.6;
+    margin-top: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  /* FRAME */
+  .border-frame {
+    position: relative;
+    border: 1px solid rgba(122,170,138,0.18);
+    padding: 2rem 2rem 1.5rem;
+    margin: 2rem 0;
+    background:
+      linear-gradient(rgba(28,26,20,0.87), rgba(28,26,20,0.87)),
+      url('https://static.wixstatic.com/media/54a086_1124025658a94fa3bd139ff1f6627b8c~mv2.png') center/cover no-repeat;
+  }
+  .border-frame::before, .border-frame::after,
+  .border-frame .corner-br, .border-frame .corner-bl {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    border-color: var(--node);
+    border-style: solid;
+  }
+  .border-frame::before  { top:-1px;    left:-1px;  border-width: 2px 0 0 2px; }
+  .border-frame::after   { top:-1px;    right:-1px; border-width: 2px 2px 0 0; }
+  .border-frame .corner-br { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
+  .border-frame .corner-bl { bottom:-1px; left:-1px;  border-width: 0 0 2px 2px; }
+
+  /* NOW PLAYING */
+  .now-playing { text-align: center; padding: 0.5rem 0 1rem; }
+  .track-number {
+    font-size: 0.52rem;
+    letter-spacing: 0.48em;
+    color: var(--node);
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .track-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.4rem;
+    color: var(--parchment);
+    min-height: 2rem;
+    transition: opacity 0.38s ease;
+  }
+  .track-title.changing { opacity: 0; }
+
+  /* VISUALIZER */
+  .visualizer {
+    height: 64px;
+    margin: 1.4rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+  .bar {
+    width: 2px;
+    background: var(--node);
+    border-radius: 1px;
+    opacity: 0.4;
+    animation: barPulse 2s ease-in-out infinite;
+    animation-play-state: paused;
+    transform-origin: bottom;
+  }
+  .bar.playing { animation-play-state: running; }
+  @keyframes barPulse {
+    0%, 100% { transform: scaleY(0.22); opacity: 0.22; }
+    50%       { transform: scaleY(1);   opacity: 0.88; }
+  }
+  .bar:nth-child(odd)  { animation-duration: 1.3s; }
+  .bar:nth-child(3n)   { animation-duration: 1.9s; }
+  .bar:nth-child(5n)   { animation-duration: 1.1s; }
+  .bar:nth-child(7n)   { animation-duration: 1.6s; }
+
+  /* PROGRESS */
+  .progress-container {
+    height: 2px;
+    background: rgba(122,170,138,0.12);
+    cursor: pointer;
+    position: relative;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--node), var(--node-bright));
+    width: 0%;
+    transition: width 0.22s linear;
+    position: relative;
+  }
+  .progress-bar::after {
+    content: '';
+    position: absolute;
+    right: -4px; top: -3px;
+    width: 8px; height: 8px;
+    background: var(--node-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--glow);
+  }
+  .time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.52rem;
+    color: var(--parchment-dark);
+    letter-spacing: 0.15em;
+    margin-top: 0.4rem;
+    opacity: 0.5;
+  }
+
+  /* CONTROLS */
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    margin: 1.4rem 0;
+  }
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--parchment-dark);
+    transition: color 0.2s, transform 0.1s;
+    padding: 0.4rem 0.6rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .btn:hover { color: var(--node-bright); }
+  .btn:active { transform: scale(0.95); }
+  .btn-play {
+    width: 50px; height: 50px;
+    border: 1px solid var(--node) !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--node-bright) !important;
+    transition: box-shadow 0.3s, background 0.3s;
+  }
+  .btn-play::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px solid rgba(122,170,138,0.18);
+  }
+  .btn-play:hover {
+    box-shadow: 0 0 22px var(--glow);
+    background: rgba(122,170,138,0.06);
+  }
+  .btn-play svg { width: 20px; height: 20px; }
+
+  /* VOLUME */
+  .volume-area {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    justify-content: center;
+    margin: 0.2rem 0 1.2rem;
+  }
+  .volume-label { font-size: 0.48rem; letter-spacing: 0.32em; color: var(--parchment-dark); opacity: 0.4; }
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 90px; height: 1px;
+    background: rgba(122,170,138,0.25);
+    cursor: pointer;
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--node);
+    box-shadow: 0 0 6px var(--glow);
+  }
+
+  /* TRACK LIST */
+  .tracklist { margin-top: 1.5rem; border-top: 1px solid rgba(122,170,138,0.1); }
+  .tracklist-header {
+    font-size: 0.48rem;
+    letter-spacing: 0.5em;
+    color: var(--node);
+    opacity: 0.42;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.9rem 0 0.4rem;
+  }
+  .track-item {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr auto;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.62rem 0.4rem;
+    border-bottom: 1px solid rgba(122,170,138,0.05);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .track-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: rgba(122,170,138,0.04);
+    transition: width 0.3s;
+    z-index: 0;
+  }
+  .track-item:hover::before { width: 100%; }
+  .track-item:hover .track-item-name { color: var(--node-bright); }
+  .track-item.active .track-item-num  { color: var(--node-bright); }
+  .track-item.active .track-item-name { color: var(--node-bright); font-style: italic; }
+  .track-item.active::after {
+    content: '◆';
+    position: absolute;
+    left: 0.25rem;
+    font-size: 0.3rem;
+    color: var(--node-bright);
+    animation: blink 1.3s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+  }
+  .track-item-num {
+    font-size: 0.52rem;
+    color: var(--parchment-dark);
+    opacity: 0.42;
+    text-align: right;
+    position: relative; z-index: 1;
+  }
+  .track-item-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.9rem;
+    color: var(--parchment);
+    transition: color 0.2s;
+    position: relative; z-index: 1;
+  }
+  .track-item-dur {
+    font-size: 0.48rem;
+    color: var(--parchment-dark);
+    opacity: 0.36;
+    letter-spacing: 0.1em;
+    position: relative; z-index: 1;
+  }
+
+  /* NARRATIVE */
+  .narrative {
+    margin-top: 2.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.8rem;
+    border-left: 1px solid rgba(122,170,138,0.18);
+    position: relative;
+  }
+  .narrative::before {
+    content: 'MARE INCOGNITUM';
+    position: absolute;
+    top: -0.6rem; left: 1rem;
+    font-size: 0.44rem;
+    letter-spacing: 0.42em;
+    color: var(--node);
+    background: var(--ink);
+    padding: 0 0.5rem;
+    opacity: 0.45;
+  }
+  .narrative p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    color: var(--parchment-dark);
+    opacity: 0.62;
+  }
+
+  /* Circuit side decoration */
+  .circuit-deco {
+    position: fixed;
+    right: 0; top: 0; bottom: 0;
+    width: 160px;
+    pointer-events: none;
+    opacity: 0.055;
+    z-index: 0;
+  }
+
+  /* Glow node */
+  .node-indicator {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--node-bright);
+    box-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow);
+    margin-right: 0.5rem;
+    animation: nodeGlow 2.2s ease-in-out infinite;
+  }
+  @keyframes nodeGlow {
+    0%, 100% { box-shadow: 0 0 6px var(--glow); opacity: 0.7; }
+    50%       { box-shadow: 0 0 22px var(--glow), 0 0 44px rgba(122,170,138,0.18); opacity: 1; }
+  }
+  .coord {
+    font-size: 0.44rem;
+    letter-spacing: 0.22em;
+    color: var(--node);
+    opacity: 0.28;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    position: relative;
+    z-index: 50;
+    padding: 3rem 2rem 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(122,170,138,0.12);
+  }
+
+  .footer-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-copyright {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--parchment-dark);
+    text-transform: uppercase;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-social {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--parchment-dark);
+    transition: all 0.3s ease;
+  }
+
+  .footer-social:hover {
+    color: var(--node-bright);
+    transform: translateY(-2px);
+  }
+
+  .footer-social svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--node); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(28, 26, 20, 0.98);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem 2rem 2rem;
+      gap: 0;
+      transition: right 0.3s ease;
+      border-left: 1px solid rgba(122,170,138,0.18);
+    }
+    .nav-menu.open { right: 0; }
+    .nav-toggle { display: flex; }
+    .nav-item { padding: 0.75rem 0; width: 100%; }
+    .nav-dropdown-content {
+      position: static;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      padding-left: 1rem;
+      background: transparent;
+      border: none;
+    }
+    .circuit-deco { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .nav { padding: 1rem; }
+    .container { padding: 5rem 1rem 2rem; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "音楽Album",
+  "name": "Atlas of Fragmented Light",
+  "url": "https://ernestocisneros.art/music/atlas-of-fragmented-light.html",
+  "description": "Eleven tracks of processed piano through immersive electronic textures.",
+  "byArtist": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+  "genre": ["Ambient", "Electronic", "Instrumental"],
+  "numTracks": 11,
+  "albumProductionType": "https://schema.org/StudioAlbum",
+  "track": {
+    "@type": "ItemList",
+    "numberOfItems": 11,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "item": {"@type": "音楽Recording", "name": "The Blue Breath of the Immutable"}},
+      {"@type": "ListItem", "position": 2, "item": {"@type": "音楽Recording", "name": "The Tremor of Time"}},
+      {"@type": "ListItem", "position": 3, "item": {"@type": "音楽Recording", "name": "Transparent Dance"}},
+      {"@type": "ListItem", "position": 4, "item": {"@type": "音楽Recording", "name": "Night Swell"}},
+      {"@type": "ListItem", "position": 5, "item": {"@type": "音楽Recording", "name": "The First Word"}},
+      {"@type": "ListItem", "position": 6, "item": {"@type": "音楽Recording", "name": "The Memory of His Wounds"}},
+      {"@type": "ListItem", "position": 7, "item": {"@type": "音楽Recording", "name": "The Endless Shine"}},
+      {"@type": "ListItem", "position": 8, "item": {"@type": "音楽Recording", "name": "Inert Time"}},
+      {"@type": "ListItem", "position": 9, "item": {"@type": "音楽Recording", "name": "Noisy Horizon"}},
+      {"@type": "ListItem", "position": 10, "item": {"@type": "音楽Recording", "name": "Memory"}},
+      {"@type": "ListItem", "position": 11, "item": {"@type": "音楽Recording", "name": "Transparency"}}
+    ]
+  }
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ja/music/atlas-of-fragmented-light.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/music/atlas-of-fragmented-light.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/music/atlas-of-fragmented-light.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/music/atlas-of-fragmented-light.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/music/atlas-of-fragmented-light.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/music/atlas-of-fragmented-light.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="music-atlas-of-fragmented-light" defer></script>
+</head>
+<body>
+
+<canvas id="gold-particles"></canvas>
+<svg class="circuit-deco" viewBox="0 0 160 900" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#7aaa8a" stroke-width="1" fill="none">
+    <path d="M160,60 L125,60 L125,140 L90,140 L90,220 L120,220 L120,310 L80,310"/>
+    <path d="M160,170 L140,170 L140,260 L100,260 L100,360 L135,360 L135,440 L105,440 L105,530"/>
+    <path d="M160,320 L145,320 L145,410 L110,410 L110,490 L148,490 L148,590 L118,590"/>
+    <path d="M160,520 L130,520 L130,630 L160,630 L160,740"/>
+    <circle cx="125" cy="60"  r="3" fill="#7aaa8a"/>
+    <circle cx="90"  cy="220" r="3" fill="#7aaa8a"/>
+    <circle cx="80"  cy="310" r="3" fill="#7aaa8a"/>
+    <circle cx="140" cy="260" r="3" fill="#7aaa8a"/>
+    <circle cx="105" cy="530" r="3" fill="#7aaa8a"/>
+    <circle cx="118" cy="590" r="3" fill="#7aaa8a"/>
+    <circle cx="148" cy="490" r="5" fill="none" stroke="#aaddbb"/>
+    <circle cx="100" cy="360" r="5" fill="none" stroke="#aaddbb"/>
+    <circle cx="135" cy="440" r="4" fill="none" stroke="#7aaa8a"/>
+  </g>
+</svg>
+
+<nav class="nav" id="nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" class="nav-logo-img">
+  </a>
+
+  <div class="nav-menu" id="nav-menu">
+    <a href="../index.html" class="nav-item">ホーム</a>
+    <a href="../biography.html" class="nav-item">プロフィール</a>
+    
+    <div class="nav-dropdown">
+      <a href="../music.html" class="nav-item active">音楽</a>
+      <div class="nav-dropdown-content">
+        <a href="glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+        <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item active">Atlas of Fragmented Light</a>
+        <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+        <a href="trash.html" class="nav-dropdown-item">Trash</a>
+        <a href="sandbank.html" class="nav-dropdown-item">Sandbank</a>
+        <a href="other-works.html" class="nav-dropdown-item">その他の音楽作品</a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <a href="../nft.html" class="nav-item">NFT</a>
+      <div class="nav-dropdown-content">
+        <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tezosコレクション</a>
+        <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETHコレクション</a>
+        <a href="../nft/marketplaces.html" class="nav-dropdown-item">マーケットプレイス</a>
+        <a href="../nft/btc-ordinal.html" class="nav-dropdown-item">BTC Ordinal</a>
+        <a href="../nft/gift-from-community.html" class="nav-dropdown-item">コミュニティからの贈り物</a>
+      </div>
+    </div>
+
+    <a href="../books.html" class="nav-item">著作</a>
+
+    <div class="nav-dropdown">
+      <a href="../ideas.html" class="nav-item">考え</a>
+      <div class="nav-dropdown-content">
+        <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">宇宙論と物理学</a>
+        <a href="../ideas/technology-society.html" class="nav-dropdown-item">テクノロジーと社会</a>
+        <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">文化・記憶・亡命</a>
+        <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">芸術・詩学・哲学</a>
+      </div>
+    </div>
+
+    <a href="../impulses.html" class="nav-item">Impulses.art</a>
+    <a href="../contact.html" class="nav-item">お問い合わせ</a>
+  </div>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Alternar menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="container">
+
+  <header class="header">
+    <div class="header-label">Cartography of Sound · 2025</div>
+    <h1 class="title"><em>Atlas</em> of Fragmented Light</h1>
+    <div class="subtitle">Eleven regions · instrumental</div>
+    <div class="author">Ernesto Cisneros Cino</div>
+  </header>
+
+  <div class="border-frame">
+    <div class="corner-br"></div>
+    <div class="corner-bl"></div>
+
+    <div class="now-playing">
+      <div class="track-number" id="trackNum">region · 01</div>
+      <div class="track-title" id="trackTitle">The blue breath of the immutable</div>
+    </div>
+
+    <div class="visualizer" id="visualizer"></div>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="time-display">
+      <span id="currentTime">0:00</span>
+      <span id="totalDuration">—</span>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prevBtn">← prev</button>
+      <button class="btn btn-play" id="playBtn">
+        <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+      <button class="btn" id="nextBtn">next →</button>
+    </div>
+
+    <div class="volume-area">
+      <span class="volume-label">volume</span>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+    </div>
+
+    <div class="tracklist">
+      <div class="tracklist-header">Index · Regions</div>
+      <div id="trackList"></div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>
+      かつて存在しなかった世界。そこでは地図は領界を引くのではなく、むしろ溶け去る。
+      確実さと謎の揺らぎによって描かれた大地が在る。その海岸は疑問でできており、その山々は震える記憶でできている。
+      あらゆる川は<em>未知の海</em>と名付けられた海へ流れ込む。
+      そこで知識は光に砕かれ、地平線は決して到達しない約束のように後退する。
+      この地図帳は導かない。むしろ、迷うことへの招待だ。
+      各楽曲は一つの地域。透光の舞い、息づき、光を流す記憶。木漏れ日の中で光と影が交わる、そのかなたへ。
+    </p>
+  </div>
+
+  <div class="coord">
+    <span class="node-indicator"></span>
+    φ 41°24′N · λ 2°10′E · DATUM INCOGNITUS
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-copyright">© 2020–2026 Ernesto Cisneros Cino</p>
+    
+    <div class="footer-socials">
+      <a href="https://x.com/ErnestCisneros1" target="_blank" class="footer-social" title="X">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" class="footer-social" title="Instagram">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://github.com/cisnerosmusic" target="_blank" class="footer-social" title="GitHub">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" class="footer-social" title="YouTube">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" class="footer-social" title="LinkedIn">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<audio id="audioReproducirer" preload="none"></audio>
+
+<script>
+  // NAVIGATION — loaded from shared nav.js
+
+  // TRACKS - Local paths
+  const tracks = [
+    { title: "The blue breath of the immutable", src: "../../assets/audio/atlas-of-fragmented-light/01-the-blue-breath-of-the-immutable.mp3" },
+    { title: "The tremor of time",               src: "../../assets/audio/atlas-of-fragmented-light/02-the-tremor-of-time.mp3" },
+    { title: "Transparent Dance",                src: "../../assets/audio/atlas-of-fragmented-light/03-transparent-dance.mp3" },
+    { title: "Night swell",                      src: "../../assets/audio/atlas-of-fragmented-light/04-night-swell.mp3" },
+    { title: "The First Word",                   src: "../../assets/audio/atlas-of-fragmented-light/05-the-first-word.mp3" },
+    { title: "The Memory of His Wounds",         src: "../../assets/audio/atlas-of-fragmented-light/06-the-memory-of-his-wounds.mp3" },
+    { title: "The Endless Shine",                src: "../../assets/audio/atlas-of-fragmented-light/07-the-endless-shine.mp3" },
+    { title: "Inert Time",                       src: "../../assets/audio/atlas-of-fragmented-light/08-inert-time.mp3" },
+    { title: "Noisy horizon",                    src: "../../assets/audio/atlas-of-fragmented-light/09-noisy-horizon.mp3" },
+    { title: "Memory",                           src: "../../assets/audio/atlas-of-fragmented-light/10-memory.mp3" },
+    { title: "Transparency",                     src: "../../assets/audio/atlas-of-fragmented-light/11-transparency.mp3" },
+  ];
+
+  let current = 0;
+  let isReproduciring = false;
+  const durations = new Array(tracks.length).fill(null);
+
+  const audio          = document.getElementById('audioReproducirer');
+  const playBtn        = document.getElementById('playBtn');
+  const playIcon       = document.getElementById('playIcon');
+  const trackTitleEl   = document.getElementById('trackTitle');
+  const trackNumEl     = document.getElementById('trackNum');
+  const progressBar    = document.getElementById('progressBar');
+  const currentTimeEl  = document.getElementById('currentTime');
+  const totalDurationEl = document.getElementById('totalDuration');
+  const visualizer     = document.getElementById('visualizer');
+
+  // Build visualizer bars
+  const barH = [4,8,14,22,30,38,46,42,34,24,16,10,7,11,20,33,46,54,50,38,26,16,10,7,
+                 10,18,30,42,52,58,52,44,34,22,14,9,7,12,24,38,50,55,46,34,20,12,7,4];
+  for (let i = 0; i < 48; i++) {
+    const b = document.createElement('div');
+    b.className = 'bar';
+    b.style.height = (barH[i] || 8) + 'px';
+    b.style.animationDelay = (i * 0.042) + 's';
+    visualizer.appendChild(b);
+  }
+
+  // Build track list
+  const listEl = document.getElementById('trackList');
+  tracks.forEach((t, i) => {
+    const item = document.createElement('div');
+    item.className = 'track-item' + (i === 0 ? ' active' : '');
+    item.innerHTML =
+      `<span class="track-item-num">${String(i+1).padStart(2,'0')}</span>` +
+      `<span class="track-item-name">${t.title}</span>` +
+      `<span class="track-item-dur" id="dur-${i}">—</span>`;
+    item.addEventListener('click', () => loadTrack(i, true));
+    listEl.appendChild(item);
+  });
+
+  function loadTrack(idx, autoplay) {
+    current = idx;
+    trackTitleEl.classList.add('changing');
+    setTimeout(() => {
+      trackTitleEl.textContent = tracks[idx].title;
+      trackTitleEl.classList.remove('changing');
+    }, 380);
+    trackNumEl.textContent = 'region · ' + String(idx+1).padStart(2,'0');
+    document.querySelectorAll('.track-item').forEach((el, i) =>
+      el.classList.toggle('active', i === idx));
+    audio.src = tracks[idx].src;
+    audio.load();
+    progressBar.style.width = '0%';
+    currentTimeEl.textContent = '0:00';
+    totalDurationEl.textContent = durations[idx] ? fmt(durations[idx]) : '—';
+    if (autoplay) {
+      audio.play().then(() => setReproduciring(true)).catch(e => console.warn(e));
+    }
+  }
+
+  function setReproduciring(state) {
+    isReproduciring = state;
+    playIcon.innerHTML = state
+      ? '<path d="M6 19h4V5H6zm8-14v14h4V5z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    document.querySelectorAll('.bar').forEach(b =>
+      b.classList.toggle('playing', state));
+  }
+
+  function toggleReproducir() {
+    if (!audio.src || audio.src === window.location.href) {
+      loadTrack(current, true); return;
+    }
+    if (isReproduciring) { audio.pause(); setReproduciring(false); }
+    else { audio.play().then(() => setReproduciring(true)).catch(e => console.warn(e)); }
+  }
+
+  playBtn.addEventListener('click', toggleReproducir);
+  document.getElementById('prevBtn').addEventListener('click', () =>
+    loadTrack((current - 1 + tracks.length) % tracks.length, isReproduciring));
+  document.getElementById('nextBtn').addEventListener('click', () =>
+    loadTrack((current + 1) % tracks.length, isReproduciring));
+
+  document.getElementById('volumeSlider').addEventListener('input', e =>
+    { audio.volume = e.target.value; });
+  audio.volume = 0.8;
+
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration && !isNaN(audio.duration)) {
+      progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      currentTimeEl.textContent = fmt(audio.currentTime);
+    }
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    durations[current] = audio.duration;
+    totalDurationEl.textContent = fmt(audio.duration);
+    const d = document.getElementById('dur-' + current);
+    if (d) d.textContent = fmt(audio.duration);
+  });
+
+  audio.addEventListener('ended', () =>
+    loadTrack((current + 1) % tracks.length, true));
+
+  document.getElementById('progressContainer').addEventListener('click', e => {
+    if (audio.duration) {
+      const r = e.currentTarget.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space')      { e.preventDefault(); toggleReproducir(); }
+    if (e.code === 'ArrowRight') loadTrack((current + 1) % tracks.length, isReproduciring);
+    if (e.code === 'ArrowLeft')  loadTrack((current - 1 + tracks.length) % tracks.length, isReproduciring);
+  });
+
+  function fmt(s) {
+    return Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+  }
+
+  loadTrack(0, false);
+
+  // Gold Particles
+  (function() {
+    const gCanvas = document.getElementById('gold-particles');
+    const gCtx = gCanvas.getContext('2d');
+    let goldParticles = [];
+
+    function gResize() {
+      gCanvas.width = window.innerWidth;
+      gCanvas.height = window.innerHeight;
+    }
+
+    function createGoldParticle(init) {
+      return {
+        x: Math.random() * gCanvas.width,
+        y: init ? Math.random() * gCanvas.height : gCanvas.height + 10,
+        size: Math.random() * 2 + 0.5,
+        speedY: -(Math.random() * 0.4 + 0.1),
+        speedX: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.6 + 0.2,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.02 + 0.01
+      };
+    }
+
+    function initGold() {
+      goldParticles = [];
+      for (let i = 0; i < 40; i++) {
+        goldParticles.push(createGoldParticle(true));
+      }
+    }
+
+    function animateGold() {
+      gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+      goldParticles.forEach((p, i) => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        p.pulse += p.pulseSpeed;
+        if (p.y < -10) goldParticles[i] = createGoldParticle(false);
+        const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+        gCtx.beginPath();
+        gCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        gCtx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+        gCtx.fill();
+      });
+      requestAnimationFrame(animateGold);
+    }
+
+    window.addEventListener('resize', gResize);
+    gResize();
+    initGold();
+    animateGold();
+  })();
+</script>
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Glacial Paths | Ernesto Cisneros Cino</title>
+<meta name="description" content="Glacial Paths - Un album instrumental pour piano et synthétiseurs par Ernesto Cisneros Cino. Dix pièces composées dans l'espace entre le silence et le son.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/fr/music/glacial-paths.html">
+    <meta property="og:title" content="Glacial Paths | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Glacial Paths - Un album instrumental pour piano et synthétiseurs par Ernesto Cisneros Cino. Dix pièces composées dans l'espace entre le silence et le son.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glacial Paths | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Glacial Paths - Un album instrumental pour piano et synthétiseurs par Ernesto Cisneros Cino. Dix pièces composées dans l'espace entre le silence et le son.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant:wght@300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet"/>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ice-white: #e8f0f7;
+    --ice-blue: #a8c8e8;
+    --deep-blue: #1a2a3a;
+    --glacier: #4a7a9b;
+    --glow: #c8e0f0;
+    --dark: #080d12;
+    --particle: rgba(180, 220, 255, 0.6);
+    
+    --gold: #d4a030;
+    --gold-dim: rgba(212, 160, 48, 0.5);
+    --gold-faint: rgba(212, 160, 48, 0.15);
+    --text-secondary: rgba(200, 175, 130, 0.7);
+    --line: rgba(180, 130, 60, 0.15);
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--dark);
+    color: var(--ice-white);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Gold Particles */
+  #gold-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* NAVIGATION */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(8,13,18,0.95) 0%, rgba(8,13,18,0) 100%);
+  }
+
+  .nav.scrolled {
+    background: rgba(8, 13, 18, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(74, 122, 155, 0.2);
+  }
+
+  .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+
+  .nav-logo-img {
+    height: 40px;
+    width: auto;
+    mix-blend-mode: lighten;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--glacier);
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .nav-item:hover { color: var(--ice-blue); }
+  .nav-item.active { color: var(--ice-white); }
+
+  .nav-dropdown { position: relative; }
+
+  .nav-dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 200px;
+    background: rgba(8, 13, 18, 0.98);
+    border: 1px solid rgba(74, 122, 155, 0.2);
+    padding: 0.75rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-dropdown-item {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--glacier);
+    transition: all 0.2s ease;
+  }
+
+  .nav-dropdown-item:hover {
+    color: var(--ice-white);
+    background: rgba(74, 122, 155, 0.15);
+  }
+
+  .nav-dropdown-item.active {
+    color: var(--ice-white);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    width: 24px;
+    height: 1px;
+    background: var(--glacier);
+    transition: all 0.3s ease;
+  }
+
+  /* CANVAS DE PARTÍCULAS */
+  #canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* PORTADA DE FONDO */
+  #bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background-image: url('https://static.wixstatic.com/media/54a086_54b9ab24676b461abe65af9d7650010a~mv2.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    filter: blur(2px);
+  }
+
+  /* GRADIENTE SOBRE EL FONDO */
+  #vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background:
+      radial-gradient(ellipse at center top, rgba(8,13,18,0.3) 0%, rgba(8,13,18,0.85) 70%),
+      radial-gradient(ellipse at center bottom, rgba(8,13,18,0.95) 0%, transparent 60%);
+  }
+
+  /* CONTENEDOR PRINCIPAL */
+  #app {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    gap: 0;
+  }
+
+  /* HEADER */
+  #header {
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 2s ease forwards 0.5s;
+  }
+
+  #header h1 {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ice-white);
+    text-shadow: 0 0 40px rgba(168, 200, 232, 0.4);
+  }
+
+  #header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ice-blue);
+    margin-top: 0.5rem;
+    opacity: 0.7;
+  }
+
+  /* CONSTELACIÓN DE TRACKS */
+  #constellation {
+    position: relative;
+    width: min(680px, 90vw);
+    height: min(320px, 40vh);
+    opacity: 0;
+    animation: fadeUp 2s ease forwards 1s;
+  }
+
+  .track-node {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .track-node:hover .node-dot,
+  .track-node.active .node-dot {
+    transform: scale(2.5);
+    box-shadow:
+      0 0 0 6px rgba(168, 200, 232, 0.15),
+      0 0 20px rgba(168, 200, 232, 0.6),
+      0 0 40px rgba(168, 200, 232, 0.3);
+  }
+
+  .track-node.active .node-dot {
+    background: var(--ice-white);
+    box-shadow:
+      0 0 0 8px rgba(200, 224, 240, 0.2),
+      0 0 30px rgba(200, 224, 240, 0.8),
+      0 0 60px rgba(168, 200, 232, 0.4);
+    animation: pulse-node 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-node {
+    0%, 100% { box-shadow: 0 0 0 8px rgba(200,224,240,0.2), 0 0 30px rgba(200,224,240,0.8), 0 0 60px rgba(168,200,232,0.4); }
+    50%       { box-shadow: 0 0 0 12px rgba(200,224,240,0.1), 0 0 50px rgba(200,224,240,1), 0 0 90px rgba(168,200,232,0.6); }
+  }
+
+  .node-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ice-blue);
+    box-shadow: 0 0 8px rgba(168, 200, 232, 0.5), 0 0 16px rgba(168, 200, 232, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .node-label {
+    position: absolute;
+    top: 16px;
+    white-space: nowrap;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--ice-blue);
+    opacity: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .track-node:hover .node-label,
+  .track-node.active .node-label {
+    opacity: 1;
+  }
+
+  .track-node.active .node-label {
+    color: var(--ice-white);
+  }
+
+  /* LÍNEAS DE CONSTELACIÓN */
+  #constellation svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* PLAYER */
+  #player {
+    margin-top: 2.5rem;
+    width: min(480px, 85vw);
+    opacity: 0;
+    animation: fadeUp 2s ease forwards 1.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #now-playing {
+    text-align: center;
+    min-height: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  #track-name {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    letter-spacing: 0.15em;
+    color: var(--ice-white);
+    min-height: 1.6rem;
+    transition: opacity 0.5s ease;
+  }
+
+  #track-number {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--glacier);
+    text-transform: uppercase;
+  }
+
+  /* BARRA DE PROGRESO */
+  #progress-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #time-current, #time-total {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--glacier);
+    min-width: 2.5rem;
+    text-align: center;
+  }
+
+  #progress-bar {
+    flex: 1;
+    height: 1px;
+    background: rgba(74, 122, 155, 0.3);
+    position: relative;
+    cursor: pointer;
+    transition: height 0.2s ease;
+  }
+
+  #progress-bar:hover {
+    height: 2px;
+  }
+
+  #progress-fill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--glacier), var(--glow));
+    width: 0%;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  #progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--glow);
+    box-shadow: 0 0 8px var(--glow);
+    left: 0%;
+    transition: left 0.1s linear;
+    pointer-events: none;
+  }
+
+  /* CONTROLES */
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .ctrl-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--glacier);
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.3rem;
+  }
+
+  .ctrl-btn:hover {
+    color: var(--ice-white);
+    transform: scale(1.1);
+  }
+
+  #btn-play {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(168, 200, 232, 0.3) !important;
+    background: rgba(168, 200, 232, 0.05) !important;
+    color: var(--ice-white) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  #btn-play:hover {
+    border-color: rgba(168, 200, 232, 0.8) !important;
+    background: rgba(168, 200, 232, 0.15) !important;
+    box-shadow: 0 0 20px rgba(168, 200, 232, 0.2);
+    transform: scale(1.05) !important;
+  }
+
+  /* VOLUMEN */
+  #volume-container {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  #volume-slider {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 1px;
+    background: rgba(74, 122, 155, 0.4);
+    outline: none;
+    cursor: pointer;
+  }
+
+  #volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--glacier);
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  #volume-slider:hover::-webkit-slider-thumb {
+    background: var(--glow);
+  }
+
+  /* LISTA TRACK como texto tenue */
+  #tracklist {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards 2s;
+  }
+
+  .tl-item {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(74, 122, 155, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: right;
+    padding: 0.15rem 0;
+    text-transform: uppercase;
+  }
+
+  .tl-item:hover, .tl-item.active {
+    color: var(--ice-blue);
+    letter-spacing: 0.25em;
+  }
+
+  .tl-item.active {
+    color: var(--ice-white);
+  }
+
+  /* ALBUM INFO */
+  .album-info {
+    max-width: min(600px, 85vw);
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    opacity: 0;
+    animation: fadeUp 2s ease forwards 2s;
+  }
+
+  .album-info p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(168, 200, 232, 0.6);
+    margin-bottom: 1rem;
+  }
+
+  .album-dedication {
+    font-family: 'Cormorant', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--ice-blue);
+    margin-top: 1.5rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    position: relative;
+    z-index: 20;
+    padding: 3rem 2rem 2rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(74, 122, 155, 0.15);
+    width: 100%;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-copyright {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--glacier);
+    text-transform: uppercase;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-social {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--glacier);
+    transition: all 0.3s ease;
+  }
+
+  .footer-social:hover {
+    color: var(--ice-white);
+    transform: translateY(-2px);
+  }
+
+  .footer-social svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* HINT */
+  #hint {
+    position: fixed;
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(168, 200, 232, 0.3);
+    text-transform: uppercase;
+    z-index: 20;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards 3s, fadeOut 2s ease forwards 7s;
+    white-space: nowrap;
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(8, 13, 18, 0.98);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem 2rem 2rem;
+      gap: 0;
+      transition: right 0.3s ease;
+      border-left: 1px solid rgba(74, 122, 155, 0.2);
+    }
+    .nav-menu.open { right: 0; }
+    .nav-toggle { display: flex; }
+    .nav-item { padding: 0.75rem 0; width: 100%; }
+    .nav-dropdown-content {
+      position: static;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      padding-left: 1rem;
+      background: transparent;
+      border: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #tracklist { display: none; }
+    #constellation { height: min(280px, 38vh); }
+    .nav { padding: 1rem; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusiqueAlbum",
+  "name": "Glacial Paths",
+  "url": "https://ernestocisneros.art/music/glacial-paths.html",
+  "description": "An instrumental album for piano and synthesizers. Ten pieces composed in the space between silence and sound.",
+  "byArtist": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+  "genre": ["Ambient", "Electronic", "Instrumental"],
+  "numTracks": 10,
+  "albumProductionType": "https://schema.org/StudioAlbum",
+  "track": {
+    "@type": "ItemList",
+    "numberOfItems": 10,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "item": {"@type": "MusiqueRecording", "name": "Chromed Horizons"}},
+      {"@type": "ListItem", "position": 2, "item": {"@type": "MusiqueRecording", "name": "Circuit Dream"}},
+      {"@type": "ListItem", "position": 3, "item": {"@type": "MusiqueRecording", "name": "Fractured Tides"}},
+      {"@type": "ListItem", "position": 4, "item": {"@type": "MusiqueRecording", "name": "Galactic Watch"}},
+      {"@type": "ListItem", "position": 5, "item": {"@type": "MusiqueRecording", "name": "Glacial Breathing Room"}},
+      {"@type": "ListItem", "position": 6, "item": {"@type": "MusiqueRecording", "name": "Glass Clock Memory"}},
+      {"@type": "ListItem", "position": 7, "item": {"@type": "MusiqueRecording", "name": "Kinetic Glass"}},
+      {"@type": "ListItem", "position": 8, "item": {"@type": "MusiqueRecording", "name": "Light"}},
+      {"@type": "ListItem", "position": 9, "item": {"@type": "MusiqueRecording", "name": "Luminous Tides"}},
+      {"@type": "ListItem", "position": 10, "item": {"@type": "MusiqueRecording", "name": "Translucent Harmonic Bloom"}}
+    ]
+  }
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/fr/music/glacial-paths.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/music/glacial-paths.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/music/glacial-paths.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/music/glacial-paths.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/music/glacial-paths.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/music/glacial-paths.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="music-glacial-paths" defer></script>
+</head>
+<body>
+
+<canvas id="gold-particles"></canvas>
+<canvas id="canvas"></canvas>
+<div id="bg"></div>
+<div id="vignette"></div>
+
+<nav class="nav" id="nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" class="nav-logo-img">
+  </a>
+
+  <div class="nav-menu" id="nav-menu">
+    <a href="../index.html" class="nav-item">Accueil</a>
+    <a href="../biography.html" class="nav-item">Biographie</a>
+    
+    <div class="nav-dropdown">
+      <a href="../music.html" class="nav-item active">Musique</a>
+      <div class="nav-dropdown-content">
+        <a href="glacial-paths.html" class="nav-dropdown-item active">Glacial Paths</a>
+        <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+        <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+        <a href="trash.html" class="nav-dropdown-item">Trash</a>
+        <a href="sandbank.html" class="nav-dropdown-item">Sandbank</a>
+        <a href="other-works.html" class="nav-dropdown-item">Otras Obras Musicales</a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <a href="../nft.html" class="nav-item">NFT</a>
+      <div class="nav-dropdown-content">
+        <a href="../nft/tez-collection.html" class="nav-dropdown-item">Colección Tez</a>
+        <a href="../nft/eth-collection.html" class="nav-dropdown-item">Colección ETH</a>
+        <a href="../nft/marketplaces.html" class="nav-dropdown-item">Mercados</a>
+        <a href="../nft/btc-ordinal.html" class="nav-dropdown-item">BTC Ordinal</a>
+        <a href="../nft/gift-from-community.html" class="nav-dropdown-item">Un Regalo de la Comunidad</a>
+      </div>
+    </div>
+
+    <a href="../books.html" class="nav-item">Livres</a>
+
+    <div class="nav-dropdown">
+      <a href="../ideas.html" class="nav-item">Idées</a>
+      <div class="nav-dropdown-content">
+        <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmología y Física</a>
+        <a href="../ideas/technology-society.html" class="nav-dropdown-item">Tecnología y Sociedad</a>
+        <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">Cultura, Memoria y Exilio</a>
+        <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Arte, Poética y Filosofía</a>
+      </div>
+    </div>
+
+    <a href="../impulses.html" class="nav-item">Impulses.art</a>
+    <a href="../contact.html" class="nav-item">Contact</a>
+  </div>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Alternar menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div id="app">
+  <div id="header">
+    <h1>Glacial Paths</h1>
+    <p>Ernesto Cisneros &nbsp;·&nbsp; Piano y Sintetizadores</p>
+  </div>
+
+  <div id="constellation">
+    <svg id="lines"></svg>
+  </div>
+
+  <div id="player">
+    <div id="now-playing">
+      <div id="track-name">– selecciona una ruta –</div>
+      <div id="track-number"></div>
+    </div>
+
+    <div id="progress-container">
+      <span id="time-current">0:00</span>
+      <div id="progress-bar">
+        <div id="progress-fill"></div>
+        <div id="progress-thumb"></div>
+      </div>
+      <span id="time-total">0:00</span>
+    </div>
+
+    <div id="controls">
+      <button class="ctrl-btn" id="btn-prev" title="Anterior">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="19 20 9 12 19 4"/><line x1="5" y1="4" x2="5" y2="20"/>
+        </svg>
+      </button>
+      <button class="ctrl-btn" id="btn-play" title="Reproducir / Pause">
+        <svg id="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+        <svg id="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+          <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+        </svg>
+      </button>
+      <button class="ctrl-btn" id="btn-next" title="Siguiente">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="5 4 15 12 5 20"/><line x1="19" y1="4" x2="19" y2="20"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="volume-container">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(74,122,155,0.6)" stroke-width="1.5">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      </svg>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8"/>
+    </div>
+  </div>
+
+  <div class="album-info">
+    <p>
+      Il y a une musique qui n'est pas faite pour être écoutée. Elle est faite pour être se souvenir.
+      Glacial Paths es un álbum instrumental para piano y sintetizadores;
+      diez piezas composées dans l'espace entre le silence et le son,
+      entre la présence et l'absence. El piano, procesado hasta respirar como hielo,
+      se déplace lentement à travers des paysages qui n'ont pas de nom mais qui semblent familiers:
+      ces lieux auxquels nous revenons quand nous avons besoin d'être seuls avec quelque chose que nous ne pouvons pas dire.
+    </p>
+    <p>
+      Esto no es música de fondo. Es compañía para los momentos en que las palabras fallan,
+      pour l'introspection, pour la quiétude de regarder la mer, pour le deuil qui a appris à rester tranquille.
+    </p>
+    <p>
+      Dix sentiers. Chacun, une façon distincte d'arriver au même endroit.
+    </p>
+    <div class="album-dedication">Pour Leonor.</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-copyright">© 2020–2026 Ernesto Cisneros Cino</p>
+      
+      <div class="footer-socials">
+        <a href="https://x.com/ErnestCisneros1" target="_blank" class="footer-social" title="X">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" class="footer-social" title="Instagram">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://github.com/cisnerosmusic" target="_blank" class="footer-social" title="GitHub">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" class="footer-social" title="YouTube">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" class="footer-social" title="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div id="tracklist"></div>
+<div id="hint">hover the stars · click to play</div>
+
+<audio id="audio"></audio>
+
+<script>
+// NAVIGATION — loaded from shared nav.js
+
+// TRACKS - Using local paths (update when you add the MP3 files)
+// For now keeping Wix URLs as fallback until local files are added
+const tracks = [
+  { id: 0,  title: "Chromed Horizons",          file: "../../assets/audio/glacial-paths/01-chromed-horizons.mp3" },
+  { id: 1,  title: "Circuit Dream",              file: "../../assets/audio/glacial-paths/02-circuit-dream.mp3" },
+  { id: 2,  title: "Fractured Tides",            file: "../../assets/audio/glacial-paths/03-fractured-tides.mp3" },
+  { id: 3,  title: "Galactic Watch",             file: "../../assets/audio/glacial-paths/04-galactic-watch.mp3" },
+  { id: 4,  title: "Glacial Breathing Room",     file: "../../assets/audio/glacial-paths/05-glacial-breathing-room.mp3" },
+  { id: 5,  title: "Glass Clock Memory",         file: "../../assets/audio/glacial-paths/06-glass-clock-memory.mp3" },
+  { id: 6,  title: "Kinetic Glass",              file: "../../assets/audio/glacial-paths/07-kinetic-glass.mp3" },
+  { id: 7,  title: "Light",                      file: "../../assets/audio/glacial-paths/08-light.mp3" },
+  { id: 8,  title: "Luminous Tides",             file: "../../assets/audio/glacial-paths/09-luminous-tides.mp3" },
+  { id: 9,  title: "Translucent Harmonic Bloom", file: "../../assets/audio/glacial-paths/10-translucent-harmonic-bloom.mp3" },
+];
+
+// Posiciones de constelación (% del contenedor)
+const positions = [
+  { x: 12, y: 28 }, { x: 28, y: 58 }, { x: 22, y: 75 },
+  { x: 45, y: 18 }, { x: 50, y: 50 }, { x: 42, y: 82 },
+  { x: 65, y: 30 }, { x: 72, y: 65 }, { x: 82, y: 22 },
+  { x: 88, y: 55 },
+];
+
+// Líneas de constelación (pares de índices)
+const lines = [
+  [0,1],[1,2],[1,4],[3,4],[4,5],[3,6],[4,6],[6,7],[6,8],[8,9],[7,9],[4,7]
+];
+
+let currentTrack = -1;
+let isReproduciring = false;
+const audio = document.getElementById('audio');
+
+// --- CONSTELACIÓN ---
+const constellation = document.getElementById('constellation');
+const svgEl = document.getElementById('lines');
+
+function buildConstellation() {
+  const W = constellation.offsetWidth;
+  const H = constellation.offsetHeight;
+
+  // Líneas SVG
+  svgEl.innerHTML = '';
+  lines.forEach(([a, b]) => {
+    const pa = positions[a], pb = positions[b];
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', pa.x * W / 100);
+    line.setAttribute('y1', pa.y * H / 100);
+    line.setAttribute('x2', pb.x * W / 100);
+    line.setAttribute('y2', pb.y * H / 100);
+    line.setAttribute('stroke', 'rgba(74,122,155,0.2)');
+    line.setAttribute('stroke-width', '0.5');
+    svgEl.appendChild(line);
+  });
+
+  // Nodos
+  constellation.querySelectorAll('.track-node').forEach(e => e.remove());
+  tracks.forEach((t, i) => {
+    const pos = positions[i];
+    const node = document.createElement('div');
+    node.className = 'track-node';
+    node.style.left = pos.x + '%';
+    node.style.top  = pos.y + '%';
+    node.innerHTML = `
+      <div class="node-dot"></div>
+      <div class="node-label">${t.title}</div>
+    `;
+    node.addEventListener('click', () => loadTrack(i, true));
+    constellation.appendChild(node);
+  });
+}
+
+// --- TRACKLIST LATERAL ---
+function buildTracklist() {
+  const tl = document.getElementById('tracklist');
+  tl.innerHTML = '';
+  tracks.forEach((t, i) => {
+    const item = document.createElement('div');
+    item.className = 'tl-item';
+    item.id = `tl-${i}`;
+    item.textContent = t.title;
+    item.addEventListener('click', () => loadTrack(i, true));
+    tl.appendChild(item);
+  });
+}
+
+function loadTrack(index, autoplay = false) {
+  currentTrack = index;
+  const t = tracks[index];
+
+  // UI nodos
+  document.querySelectorAll('.track-node').forEach((n, i) => {
+    n.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.tl-item').forEach((n, i) => {
+    n.classList.toggle('active', i === index);
+  });
+
+  document.getElementById('track-name').textContent = t.title;
+  document.getElementById('track-number').textContent = `Track ${index + 1} of ${tracks.length}`;
+
+  audio.src = t.file;
+  audio.volume = parseFloat(document.getElementById('volume-slider').value);
+  audio.load();
+
+  if (autoplay) {
+    audio.play();
+    isReproduciring = true;
+    showPause();
+  } else {
+    isReproduciring = false;
+    showReproducir();
+  }
+}
+
+function showReproducir()  { document.getElementById('icon-play').style.display=''; document.getElementById('icon-pause').style.display='none'; }
+function showPause() { document.getElementById('icon-play').style.display='none'; document.getElementById('icon-pause').style.display=''; }
+
+function formatTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2,'0')}`;
+}
+
+// Controles
+document.getElementById('btn-play').addEventListener('click', () => {
+  if (currentTrack === -1) { loadTrack(0, true); return; }
+  if (isReproduciring) { audio.pause(); isReproduciring = false; showReproducir(); }
+  else { audio.play(); isReproduciring = true; showPause(); }
+});
+
+document.getElementById('btn-prev').addEventListener('click', () => {
+  const idx = currentTrack <= 0 ? tracks.length - 1 : currentTrack - 1;
+  loadTrack(idx, isReproduciring);
+});
+
+document.getElementById('btn-next').addEventListener('click', () => {
+  const idx = (currentTrack + 1) % tracks.length;
+  loadTrack(idx, isReproduciring);
+});
+
+audio.addEventListener('ended', () => {
+  const idx = (currentTrack + 1) % tracks.length;
+  loadTrack(idx, true);
+});
+
+audio.addEventListener('timeupdate', () => {
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-thumb').style.left = pct + '%';
+  document.getElementById('time-current').textContent = formatTime(audio.currentTime);
+  document.getElementById('time-total').textContent = formatTime(audio.duration);
+});
+
+document.getElementById('progress-bar').addEventListener('click', e => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  if (audio.duration) audio.currentTime = pct * audio.duration;
+});
+
+document.getElementById('volume-slider').addEventListener('input', e => {
+  audio.volume = parseFloat(e.target.value);
+});
+
+// --- PARTÍCULAS ---
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+const NUM_PARTICLES = 120;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < NUM_PARTICLES; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.3,
+      alpha: Math.random() * 0.5 + 0.1,
+      vx: (Math.random() - 0.5) * 0.08,
+      vy: (Math.random() - 0.5) * 0.05 - 0.02,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.005 + 0.002,
+    });
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.pulse += p.pulseSpeed;
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+
+    const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(168, 210, 245, ${a})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  initParticles();
+  buildConstellation();
+});
+
+resizeCanvas();
+initParticles();
+animateParticles();
+buildConstellation();
+buildTracklist();
+
+// Gold Particles
+(function() {
+  const gCanvas = document.getElementById('gold-particles');
+  const gCtx = gCanvas.getContext('2d');
+  let goldParticles = [];
+
+  function gResize() {
+    gCanvas.width = window.innerWidth;
+    gCanvas.height = window.innerHeight;
+  }
+
+  function createGoldParticle(init) {
+    return {
+      x: Math.random() * gCanvas.width,
+      y: init ? Math.random() * gCanvas.height : gCanvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function initGold() {
+    goldParticles = [];
+    for (let i = 0; i < 40; i++) {
+      goldParticles.push(createGoldParticle(true));
+    }
+  }
+
+  function animateGold() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    goldParticles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) goldParticles[i] = createGoldParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      gCtx.beginPath();
+      gCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      gCtx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      gCtx.fill();
+    });
+    requestAnimationFrame(animateGold);
+  }
+
+  window.addEventListener('resize', gResize);
+  gResize();
+  initGold();
+  animateGold();
+})();
+</script>
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

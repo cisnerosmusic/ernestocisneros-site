@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biographie | Ernesto Cisneros Cino</title>
+  <meta name="description" content="Biographie de Ernesto Cisneros Cino, compositor cubano, pianista, artista digital y escritor radicado en Miami.">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/fr/biography.html">
+    <meta property="og:title" content="Biographie | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Biographie de Ernesto Cisneros Cino, compositor cubano, pianista, artista digital y escritor radicado en Miami.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Biographie | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Biographie de Ernesto Cisneros Cino, compositor cubano, pianista, artista digital y escritor radicado en Miami.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #080604;
+      --bg-dark: #0d0a06;
+      --bg-card: rgba(20, 16, 10, 0.6);
+      --gold: #d4a030;
+      --gold-bright: #f0c860;
+      --gold-dim: rgba(212, 160, 48, 0.5);
+      --gold-faint: rgba(212, 160, 48, 0.15);
+      --gold-muted: #b8922a;
+      --ochre: #c9a227;
+      --amber: #e6c547;
+      --text-primary: #e8dcc8;
+      --text-secondary: rgba(200, 175, 130, 0.7);
+      --font-display: 'Cinzel', serif;
+      --font-body: 'Cormorant Garamond', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 18px;
+      min-height: 100vh;
+    }
+    a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--gold-bright); }
+
+    /* Particle Canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    
+/* Hero */
+    .hero {
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10rem 2rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Bio Layout */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    .bio-portrait img {
+      width: 100%;
+      border-radius: 4px;
+      filter: grayscale(20%) contrast(1.05);
+      border: 1px solid var(--gold-faint);
+    }
+    .bio-text { font-size: 1.1rem; }
+    .bio-text p { margin-bottom: 1.5rem; }
+    .bio-text strong { color: var(--gold); font-weight: 500; }
+    .bio-wikipedia {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--gold-dim);
+      border-radius: 3px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: all 0.3s;
+    }
+    .bio-wikipedia:hover {
+      background: var(--gold-faint);
+      border-color: var(--gold);
+    }
+    .bio-wikipedia svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Collaborations */
+    .collaborations { margin-top: 3rem; }
+    .collab-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .collab-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .collab-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .collab-link {
+      padding: 0.5rem 1rem;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-faint);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      transition: all 0.3s;
+    }
+    .collab-link:hover {
+      background: rgba(212, 160, 48, 0.25);
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* Universe Invitation Section */
+    .universe-invitation {
+      margin-top: 6rem;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .invitation-text {
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+    .invitation-line {
+      width: 80px;
+      height: 1px;
+      margin: 0 auto;
+      background: var(--gold);
+      animation: slowPulse 6s ease-in-out infinite;
+    }
+    @keyframes slowPulse {
+      0%, 100% { opacity: 0.2; width: 60px; }
+      50% { opacity: 0.8; width: 100px; }
+    }
+    .invitation-hint {
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* Universe Container */
+    .universe-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #1a1408 0%, var(--bg-deep) 100%);
+      border-top: 1px solid var(--gold-faint);
+    }
+    .universe-container .star {
+      position: absolute;
+      width: 1.5px;
+      height: 1.5px;
+      background: var(--gold-dim);
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 4s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 0.6; }
+    }
+    .universe-container canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* Nodes */
+    .node {
+      position: absolute;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transform: translate(-50%, -50%);
+    }
+    .node.primary {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 12px var(--gold-dim);
+    }
+    .node.medium {
+      width: 8px;
+      height: 8px;
+      background: var(--amber);
+      border: 1px solid var(--amber);
+      box-shadow: 0 0 8px rgba(230, 197, 71, 0.4);
+    }
+    .node.special {
+      width: 11px;
+      height: 11px;
+      background: var(--gold-bright);
+      border: 1px solid var(--gold-bright);
+      box-shadow: 0 0 15px var(--gold-dim);
+    }
+    .node.secondary {
+      width: 6px;
+      height: 6px;
+      background: var(--gold-muted);
+      border: 1px solid var(--gold-muted);
+      box-shadow: 0 0 6px rgba(184, 146, 42, 0.3);
+    }
+    .node.audiovisual {
+      width: 5px;
+      height: 5px;
+      background: var(--ochre);
+      border: 1px solid var(--ochre);
+      box-shadow: 0 0 5px rgba(201, 162, 39, 0.3);
+    }
+    .node:hover {
+      transform: translate(-50%, -50%) scale(1.6);
+      box-shadow: 0 0 20px var(--gold-dim);
+    }
+    .node.active {
+      transform: translate(-50%, -50%) scale(2);
+      z-index: 100;
+      box-shadow: 0 0 30px var(--gold);
+      animation: breathe-active 4s ease-in-out infinite;
+    }
+    .node.connected {
+      transform: translate(-50%, -50%) scale(1.4);
+      z-index: 50;
+      box-shadow: 0 0 20px var(--gold-dim);
+      animation: breathe-connected 5s ease-in-out infinite;
+    }
+    .node.dimmed {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0.2;
+      box-shadow: none;
+      animation: pulse-dim 6s ease-in-out infinite;
+    }
+    @keyframes breathe-active {
+      0%, 100% { transform: translate(-50%, -50%) scale(2); }
+      50% { transform: translate(-50%, -50%) scale(1.6); }
+    }
+    @keyframes breathe-connected {
+      0%, 100% { transform: translate(-50%, -50%) scale(1.4); }
+      50% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+    @keyframes pulse-dim {
+      0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.5); }
+      50% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.6); }
+    }
+    .node-tooltip {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -28px);
+      background: rgba(8, 6, 4, 0.95);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.25s;
+      border: 1px solid var(--gold-faint);
+      color: var(--gold);
+    }
+    .node:hover .node-tooltip { opacity: 1; }
+
+    /* Universe Instructions */
+    .universe-instructions {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(8, 6, 4, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--gold-faint);
+      font-size: 12px;
+      max-width: 220px;
+    }
+    .universe-instructions h3 {
+      font-family: var(--font-display);
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .universe-instructions p {
+      margin: 4px 0;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      font-size: 11px;
+    }
+    .universe-instructions strong { color: var(--text-primary); }
+
+    /* Side Panel */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: -480px;
+      width: 460px;
+      height: 100vh;
+      z-index: 2000;
+      background: rgba(8, 6, 4, 0.97);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--gold-faint);
+      padding: 40px;
+      overflow-y: auto;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .side-panel.open { right: 0; }
+    .side-panel::-webkit-scrollbar { width: 6px; }
+    .side-panel::-webkit-scrollbar-track { background: rgba(212, 160, 48, 0.05); }
+    .side-panel::-webkit-scrollbar-thumb { background: var(--gold-faint); border-radius: 3px; }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--gold-faint);
+      background: transparent;
+      color: var(--gold-dim);
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+    }
+    .close-btn:hover {
+      background: var(--gold-faint);
+      color: var(--gold);
+      transform: rotate(90deg);
+    }
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+      color: var(--gold);
+    }
+    .panel-description {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .panel-section { margin: 20px 0; }
+    .panel-section h3 {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .panel-section ul { list-style: none; padding: 0; }
+    .panel-section li {
+      margin: 6px 0;
+      padding-left: 12px;
+      position: relative;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    .panel-section li:before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+    }
+    .panel-link {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.25s;
+      border-bottom: 1px solid transparent;
+    }
+    .panel-link:hover {
+      color: var(--gold-bright);
+      border-bottom-color: var(--gold-dim);
+    }
+    .connection-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 15px 0;
+    }
+    .connection-tag {
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-faint);
+      color: var(--gold-dim);
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 10px;
+      font-family: var(--font-display);
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .connection-tag:hover {
+      background: rgba(212, 160, 48, 0.25);
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+    .cta-button {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      padding: 10px 25px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 3px;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 15px;
+      transition: all 0.25s;
+    }
+    .cta-button:hover {
+      background: var(--gold-faint);
+      border-color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-deep);
+      border-top: 1px solid var(--gold-faint);
+      position: relative;
+      z-index: 1;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold-faint);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      background: var(--gold-faint);
+      border-color: var(--gold);
+    }
+    .social-links svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold-dim);
+      transition: fill 0.3s;
+    }
+    .social-links a:hover svg { fill: var(--gold); }
+    .copyright {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .bio-portrait { max-width: 300px; margin: 0 auto; }
+      .side-panel { width: 100%; right: -100%; }
+      .side-panel.open { right: 0; }
+      .universe-instructions { display: none; }
+    }
+  </style>
+<link rel="stylesheet" href="../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ernesto Cisneros Cino",
+  "url": "https://ernestocisneros.art/biography.html",
+  "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
+  "jobTitle": ["Compositor", "Pianista", "Guitarrista", "Escritor", "Artista Digital"],
+  "description": "Compositor, pianista, guitarrista, escritor y artista digital cubano nacido en La Habana, actualmente radicado en Miami. Su obra vive en la intersección del sonido, el arte, la memoria y el pensamiento sistémico.",
+  "birthPlace": {
+    "@type": "Place",
+    "name": "Havana, Cuba"
+  },
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Miami, Florida, USA"
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Enrique José Varona Higher Pedagogical Institute, Havana"
+  },
+  "sameAs": [
+    "https://x.com/ErnestCisneros1",
+    "https://www.instagram.com/ernestocisnerosmusic",
+    "https://github.com/cisnerosmusic",
+    "https://youtube.com/@ernestocisnerosmusic",
+    "https://www.linkedin.com/in/ernesto-cisneros-cino-58125644",
+    "https://soundcloud.com/user-891445743-534278806",
+    "https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN"
+  ],
+  "knowsAbout": ["Music Composition", "Piano", "Guitar", "Digital Art", "NFT", "Web3", "Stochastic Cosmology", "Decentralized Governance", "Mathematics", "Philosophy", "Film Scoring"],
+  "memberOf": [
+    {
+      "@type": "MusicGroup",
+      "name": "Paisaje con Río",
+      "description": "Havana pop-rock band known for socially charged lyrics"
+    }
+  ],
+  "colleague": [
+    {"@type": "Person", "name": "Polito Ibáñez", "url": "https://en.wikipedia.org/wiki/Polito_Iba%C3%B1ez"},
+    {"@type": "Person", "name": "Carlos Varela", "url": "https://en.wikipedia.org/wiki/Carlos_Varela_(singer)"},
+    {"@type": "Person", "name": "Edesio Alejandro", "url": "https://en.wikipedia.org/wiki/Edesio_Alejandro"},
+    {"@type": "Person", "name": "Gino Battiston", "url": "https://ginobattiston.com/"},
+    {"@type": "Person", "name": "Luis Leonel León", "url": "https://es.wikipedia.org/wiki/Luis_Leonel_Le%C3%B3n"}
+  ]
+}
+</script>
+    <script src="../assets/js/lang-detect.js"></script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/fr/biography.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/biography.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/biography.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/biography.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/biography.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/biography.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../assets/js/schema-loader.js" data-schema="biography" defer></script>
+</head>
+
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Ernesto Cisneros">
+      </a>
+      <button class="nav-toggle menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-item">Accueil</a></li>
+        <li><a href="biography.html" class="nav-item active">Biographie</a></li>
+        <li class="nav-dropdown">
+          <a href="music.html" class="nav-item">Musique ▾</a>
+          <div class="nav-dropdown-content">
+            <a href="music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+            <a href="music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+            <a href="music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+            <a href="music/trash.html" class="nav-dropdown-item">Trash</a>
+            <a href="music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+            <a href="music/other-works.html" class="nav-dropdown-item">Other Works</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <a href="nft.html" class="nav-item">NFT ▾</a>
+          <div class="nav-dropdown-content">
+            <a href="nft/eth-collection.html" class="nav-dropdown-item">Collection Ethereum</a>
+            <a href="nft/tez-collection.html" class="nav-dropdown-item">Collection Tezos</a>
+            <a href="nft/btc-ordinals.html" class="nav-dropdown-item">Bitcoin Ordinals</a>
+            <a href="nft/marketplaces.html" class="nav-dropdown-item">Marchés</a>
+            <a href="nft/gift-from-community.html" class="nav-dropdown-item">Cadeau de la Communauté</a>
+          </div>
+        </li>
+        <li><a href="books.html" class="nav-item">Livres</a></li>
+        <li class="nav-dropdown">
+          <a href="ideas.html" class="nav-item">Idées ▾</a>
+          <div class="nav-dropdown-content">
+            <a href="ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmologie et Physique</a>
+            <a href="ideas/technology-society.html" class="nav-dropdown-item">Technologie et Société</a>
+            <a href="ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Mémoire et Exil</a>
+            <a href="ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poétique et Philosophie</a>
+          </div>
+        </li>
+
+        <li><a href="impulses-art.html" class="nav-item">Impulses.art</a></li>
+        <li><a href="contact.html" class="nav-item">Contact</a></li>
+      
+            <li class="lang-switcher">
+                <a href="../biography.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+                <span class="lang-sep">|</span>
+                <a href="biography.html" class="active-lang" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Biographie</h1>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="bio-grid">
+      <div class="bio-portrait">
+        <img src="../assets/images/portrait.jpg" alt="Ernesto Cisneros Cino at the piano">
+      </div>
+      
+      <div class="bio-text">
+        <p>
+          <strong>Ernesto Cisneros Cino</strong> est un <a href="music.html">compositeur</a>, pianiste, guitariste, <a href="books.html">écrivain</a> et <a href="nft.html">artiste numérique</a> cubain, né à La Havane et actuellement basé à Miami. Il a commencé ses études de piano classique à l'âge de six ans, mais à onze ans, il avait épuisé sa relation avec l'instrument et a déplacé son intérêt vers la guitare. À l'adolescence, il a intégré plusieurs groupes de jeunes, explorant la musique populaire tout en continuant à étudier de manière indépendante.
+        </p>
+        
+        <p>
+          À l'école, il s'est fortement dirigé vers les sciences (mathématiques, physique, biologie et chimie), une curiosité précoce qui façonnerait plus tard son intérêt pour la technologie, les réseaux et les <a href="ideas/cosmology-physics.html">sistemas complejos</a>. En 1987, il a rejoint Paisaje con Río, un groupe havanais de pop-rock connu pour ses paroles à forte charge sociale. Dans les années suivantes, il a collaboré avec une large gamme d'artistes cubains, travaillant dans la musique populaire, l'électroacoustique et la production en studio.
+        </p>
+        
+        <p>
+          Dans les années 90, il a étudié l'éducation primaire à l'Institut Pédagogique Supérieur Enrique José Varona de La Habana. En 1999, il a quitté Cuba pour la première fois afin de vivre au Mexique, où il a passé un an immergé dans l'art et la pédagogie. Tras regresar a La Habana en 2000, comenzó a trabajar en <a href="music/other-works.html">cine</a> junto a compositores consagrados, y su <a href="music.html">música</a> sont bientôt apparus dans des séries télévisées, des feuilletons, des documentaires et des émissions culturelles. Une partie significative de son catalogue a été écrite pour le cinéma et la télévision, tandis qu'il a maintenu une carrière constante dans la composition, la production musicale et la performance en direct depuis le début des années 2000.
+        </p>
+        
+        <p>
+          A partir de 2020, Ernesto se involucró activamente en las comunidades emergentes de <a href="nft.html">NFT</a> y Web3, convencido de que la blockchain ofrecía un espacio fértil para el arte en diálogo con la tecnología. En 2024 se mudó a <a href="impulses-art.html">Miami</a> con su familia, donde continúa un intenso ritmo creativo en <a href="music.html">música</a>, video, <a href="books.html">literatura</a> y <a href="nft.html">arte digital</a>, integrando frecuentemente las últimas herramientas tecnológicas y <a href="ideas/cosmology-physics.html">marcos conceptuales</a> en su proceso.
+        </p>
+        
+        <p>
+          Hoy su obra vive en la intersección del sonido, el arte, la memoria y el pensamiento sistémico; un campo multidisciplinario donde la <a href="music.html">música</a>, la <a href="nft.html">creación digital</a>, la <a href="books.html">narrativa</a> y las <a href="ideas/cosmology-physics.html">ideas complejas</a> convergen.
+        </p>
+
+        <a href="https://es.wikipedia.org/wiki/Ernesto_Cisneros_Cino" target="_blank" class="bio-wikipedia">
+          Wikipedia
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Collaborations -->
+    <section class="collaborations">
+      <h2 class="collab-title">Collaborations</h2>
+      <p class="collab-subtitle">Una selección de artistas e instituciones con los que ha trabajado</p>
+      <div class="collab-grid">
+        <a href="https://www.instagram.com/dayanilozanomusic/" target="_blank" class="collab-link">Dayani Lozano</a>
+        <a href="https://en.wikipedia.org/wiki/Polito_Iba%C3%B1ez" target="_blank" class="collab-link">Polito Ibáñez</a>
+        <a href="https://en.wikipedia.org/wiki/Carlos_Varela_(singer)" target="_blank" class="collab-link">Carlos Varela</a>
+        <a href="https://en.wikipedia.org/wiki/Edesio_Alejandro" target="_blank" class="collab-link">Edesio Alejandro</a>
+        <a href="https://estrujamentes.com/" target="_blank" class="collab-link">Maria Páramo</a>
+        <a href="https://www.instagram.com/camiela_11/" target="_blank" class="collab-link">Camiela</a>
+        <a href="https://ginobattiston.com/" target="_blank" class="collab-link">Gino Battiston</a>
+        <a href="https://es.wikipedia.org/wiki/Luis_Leonel_Le%C3%B3n" target="_blank" class="collab-link">Luis Leonel León</a>
+      </div>
+    </section>
+
+    <!-- Universe Invitation -->
+    <section class="universe-invitation">
+      <p class="invitation-text">
+        Tout est connecté. Musique, livres, personnes, idées, lieux.
+        Abajo yace un mapa de esas conexiones: una constelación viva
+        que creció a lo largo de treinta años.
+      </p>
+      <div class="invitation-line"></div>
+      <p class="invitation-hint">explora las conexiones</p>
+    </section>
+  </main>
+
+  <!-- Universe of Nodes -->
+  <div class="universe-container" id="universe">
+    <canvas id="connections"></canvas>
+    
+    <div class="universe-instructions">
+      <h3>Navegación</h3>
+      <p><strong>Pasar el cursor:</strong> Ver nombre</p>
+      <p><strong>Clic:</strong> Explorar nodo</p>
+      <p><strong>Arrastrar:</strong> Mover nodos</p>
+      <p><strong>Escape:</strong> Cerrar panel</p>
+    </div>
+  </div>
+
+  <!-- Side Panel -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" onclick="closePanel()">×</button>
+    <div id="panelContent"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© 2020 – 2026 Ernesto Cisneros Cino</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+
+    // Particle animation (background)
+    const particleCanvas = document.getElementById('particle-canvas');
+    const particleCtx = particleCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeParticles() {
+      particleCanvas.width = window.innerWidth;
+      particleCanvas.height = window.innerHeight;
+    }
+
+    function createParticle(init) {
+      return {
+        x: Math.random() * particleCanvas.width,
+        y: init ? Math.random() * particleCanvas.height : particleCanvas.height + 10,
+        size: Math.random() * 2 + 0.5,
+        speedY: -(Math.random() * 0.4 + 0.1),
+        speedX: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.6 + 0.2,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.02 + 0.01
+      };
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 60; i++) {
+        particles.push(createParticle(true));
+      }
+    }
+
+    function animateParticles() {
+      particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+
+      particles.forEach((p, i) => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        p.pulse += p.pulseSpeed;
+
+        if (p.y < -10) particles[i] = createParticle(false);
+
+        const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+
+        particleCtx.beginPath();
+        particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        particleCtx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+        particleCtx.fill();
+
+        if (p.size > 1.2) {
+          const g = particleCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+          g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+          g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+          particleCtx.beginPath();
+          particleCtx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+          particleCtx.fillStyle = g;
+          particleCtx.fill();
+        }
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener('resize', resizeParticles);
+    resizeParticles();
+    initParticles();
+    animateParticles();
+
+    // ============================================
+    // UNIVERSE OF NODES
+    // ============================================
+
+    const nodes = [
+      { id:'biography', name:'Ernesto', type:'primary', x:50, y:50, tags:['hub'] },
+      { id:'music', name:'Music', type:'primary', x:25, y:30, tags:['art','audio'] },
+      { id:'books', name:'Books', type:'primary', x:75, y:30, tags:['text','art'] },
+      { id:'nft', name:'NFT / Web3', type:'primary', x:20, y:60, tags:['web3','art','tech'] },
+      { id:'cosmology', name:'Cosmologie et Physique', type:'primary', x:80, y:60, tags:['science','math','tech'] },
+      { id:'technology', name:'Technologie et Société', type:'primary', x:30, y:75, tags:['tech','society'] },
+      { id:'culture', name:'Culture, Mémoire et Exil', type:'primary', x:70, y:75, tags:['memory','society','art'] },
+      { id:'art', name:'Art, Poétique et Philosophie', type:'primary', x:50, y:85, tags:['art','philosophy'] },
+      { id:'impulses', name:'Impulses.art', type:'special', x:15, y:45, tags:['community','music','healing'] },
+      { id:'sombras', name:'Sombras, Datos y Relámpagos', type:'medium', x:35, y:20, tags:['books','tech','power','culture'] },
+      { id:'sospecha', name:'La Sospecha Razonable', type:'medium', x:65, y:20, tags:['books','science','tech','ethics'] },
+      { id:'huella', name:'HUELLA', type:'medium', x:85, y:40, tags:['books','culture','future','memory'] },
+      { id:'limite', name:'El límite que se aleja', type:'medium', x:45, y:15, tags:['essay','music','science','memory'] },
+      { id:'dao', name:'DAO de Memoria Finita', type:'medium', x:55, y:15, tags:['essay','tech','governance','memory'] },
+      { id:'lnme', name:'LNME', type:'medium', x:40, y:35, tags:['music','science','concept'] },
+      { id:'cine', name:'Cine', type:'medium', x:25, y:50, tags:['audiovisual','music','culture'] },
+      { id:'television', name:'Televisión', type:'medium', x:30, y:55, tags:['audiovisual','music','culture'] },
+      { id:'glacial_paths', name:'Glacial Paths', type:'medium', x:15, y:12, tags:['music','album','art','cosmology'] },
+      { id:'atlas_fragmented', name:'Atlas of Fragmented Light', type:'medium', x:35, y:10, tags:['music','album','art','cosmology'] },
+      { id:'mare_incognitum', name:'Mare Incognitum', type:'medium', x:12, y:18, tags:['music','album','art','cosmology'] },
+      { id:'trash', name:'Trash', type:'medium', x:8, y:25, tags:['music','album','nft','tezos'] },
+      { id:'sandbank', name:'Sandbank', type:'medium', x:10, y:32, tags:['music','nft','collab','gino'] },
+      { id:'impulses-cuba', name:'Impulsos Cuba', type:'secondary', x:10, y:38, tags:['impulses','culture','education'] },
+      { id:'impulses-web3', name:'Impulses Web3', type:'secondary', x:8, y:48, tags:['impulses','web3','community'] },
+      { id:'impulses-miami', name:'Impulses Miami', type:'secondary', x:12, y:52, tags:['impulses','community','healing'] },
+      { id:'edesio', name:'Edesio Alejandro', type:'secondary', x:22, y:42, tags:['collab','music','audiovisual'] },
+      { id:'luis', name:'Luis Leonel León', type:'secondary', x:28, y:45, tags:['collab','audiovisual'] },
+      { id:'dayani', name:'Dayani Lozano', type:'secondary', x:20, y:35, tags:['collab','music'] },
+      { id:'paisaje', name:'Paisaje con Río', type:'secondary', x:18, y:28, tags:['band','music'] },
+      { id:'polito', name:'Polito Ibáñez', type:'secondary', x:32, y:25, tags:['collab','music'] },
+      { id:'varela', name:'Carlos Varela', type:'secondary', x:28, y:32, tags:['collab','music'] },
+      { id:'camiela', name:'Camiela', type:'secondary', x:35, y:28, tags:['collab','music'] },
+      { id:'yadira', name:'Yadira López Struch', type:'secondary', x:25, y:58, tags:['collab','tv'] },
+      { id:'lester', name:'Lester Hamlet', type:'secondary', x:30, y:48, tags:['collab','cine'] },
+      { id:'gino', name:'Gino Battiston', type:'secondary', x:15, y:68, tags:['collab','web3'] },
+      { id:'estrujamentes', name:'Estrujamentes', type:'secondary', x:23, y:70, tags:['collab','web3'] },
+      { id:'ultrakelevra', name:'Ultrakelevra', type:'secondary', x:12, y:58, tags:['collab','web3'] },
+      { id:'irenilla', name:'Irenilla', type:'secondary', x:10, y:63, tags:['collab','web3'] },
+      { id:'sphynx', name:'SPHYNX', type:'secondary', x:17, y:73, tags:['collab','web3'] },
+      { id:'ojovivo', name:'OjoVivo', type:'secondary', x:24, y:65, tags:['collab','web3'] },
+      { id:'xelda', name:'Xelda Jara', type:'secondary', x:18, y:78, tags:['collab','web3'] },
+      { id:'miretratito', name:'MiRetratito', type:'secondary', x:22, y:78, tags:['collab','web3'] },
+      { id:'josue', name:'Josué Moreno', type:'secondary', x:14, y:75, tags:['collab','web3'] },
+      { id:'mariana', name:'Mariana Blatnik', type:'secondary', x:26, y:72, tags:['collab','web3'] },
+      { id:'tony', name:'Tony', type:'secondary', x:78, y:22, tags:['books','art'] },
+      { id:'litay', name:'Litay Luna', type:'secondary', x:72, y:15, tags:['books'] },
+      { id:'mario', name:'Mario Travieso', type:'secondary', x:82, y:28, tags:['books','art'] },
+      { id:'ramon', name:'Ramón Haití', type:'secondary', x:88, y:35, tags:['art'] },
+      { id:'romero', name:'Ernesto Romero', type:'secondary', x:16, y:32, tags:['music','band'] },
+      { id:'nurart', name:'NurArt', type:'secondary', x:19, y:70, tags:['collab','web3','impulses'] },
+      { id:'camila', name:'Camila de León', type:'secondary', x:16, y:72, tags:['collab','web3','impulses'] },
+      { id:'jass', name:'Jass Barbier', type:'secondary', x:20, y:74, tags:['collab','web3','impulses'] },
+      { id:'kevin', name:'Kevin Oramas', type:'secondary', x:13, y:70, tags:['collab','web3','impulses'] },
+      { id:'jota', name:'Jota Surreal', type:'secondary', x:17, y:76, tags:['collab','web3','impulses'] },
+      { id:'katerine', name:'Katerine Escobar', type:'secondary', x:21, y:77, tags:['collab','web3','impulses','crazyfriends'] },
+      { id:'mariela', name:'Mariela Di Nardo', type:'secondary', x:15, y:77, tags:['collab','web3','impulses'] },
+      { id:'crazyfriends', name:'Crazy Friends', type:'medium', x:25, y:68, tags:['community','web3','tezos'] },
+      { id:'artistsonchain', name:'Artists On The Chain', type:'medium', x:18, y:67, tags:['community','web3','global'] },
+      { id:'gaston', name:'Gaston Stones', type:'secondary', x:28, y:66, tags:['collab','web3','crazyfriends','streetart'] },
+      { id:'bocagrandi', name:'BocaGrandi', type:'secondary', x:30, y:68, tags:['collab','web3','crazyfriends'] },
+      { id:'minapower', name:'Mina Power', type:'secondary', x:27, y:70, tags:['collab','web3','crazyfriends'] },
+      { id:'tuco', name:'Tuco', type:'secondary', x:29, y:72, tags:['collab','web3','crazyfriends'] },
+      { id:'poison', name:'Poison', type:'secondary', x:26, y:74, tags:['collab','web3','crazyfriends'] },
+      { id:'banshee', name:'BANSHEE', type:'secondary', x:24, y:73, tags:['collab','web3','crazyfriends'] },
+      { id:'caperucita', name:'Caperucita la más roja', type:'secondary', x:28, y:75, tags:['collab','web3','crazyfriends'] },
+      { id:'limbo', name:'Limbo Mask', type:'secondary', x:25, y:76, tags:['collab','web3','crazyfriends'] },
+      { id:'cotama', name:'Cotama', type:'secondary', x:27, y:77, tags:['collab','web3','crazyfriends'] },
+      { id:'bobbi', name:'Bobbi Bicker', type:'secondary', x:16, y:65, tags:['collab','web3','founder'] },
+      { id:'fede', name:'Fede Bianchi', type:'secondary', x:32, y:62, tags:['collab','web3','miami'] },
+      { id:'anamaria', name:'Ana María Caballero', type:'secondary', x:34, y:64, tags:['collab','web3','poet'] },
+      { id:'luciana', name:'Luciana Guerra', type:'secondary', x:30, y:60, tags:['collab','web3','art'] },
+      { id:'vespertino', name:'Vespertino', type:'secondary', x:33, y:66, tags:['collab','web3','digital'] },
+      { id:'claudia', name:'Claudia Padrón', type:'secondary', x:31, y:63, tags:['collab','web3','photo'] },
+      { id:'cinthia', name:'Cinthia Ponce', type:'secondary', x:35, y:61, tags:['collab','web3','painter'] },
+      { id:'strokedriven', name:'StrokeDriven', type:'secondary', x:29, y:65, tags:['collab','web3','community','tezos'] },
+      { id:'rey', name:'Rey', type:'secondary', x:36, y:63, tags:['collab','web3','painter','mexico'] },
+      { id:'thecreep', name:'The Creep', type:'secondary', x:32, y:67, tags:['collab','web3','digital'] },
+      { id:'angrylatina', name:'AngryLatina', type:'secondary', x:34, y:69, tags:['collab','web3','photo'] },
+      { id:'andre', name:'André Di Mauro', type:'secondary', x:30, y:66, tags:['collab','web3','actor'] },
+      { id:'yaxx', name:'Yaxx Castillo', type:'secondary', x:33, y:70, tags:['collab','web3','music'] },
+      { id:'arregium', name:'ARREGIUM', type:'secondary', x:35, y:67, tags:['collab','web3','art','poet'] },
+      { id:'layla', name:'Layla Pizarro', type:'secondary', x:31, y:69, tags:['collab','web3','photo'] },
+      { id:'solum', name:'Solum', type:'secondary', x:29, y:67, tags:['collab','web3','art','cine'] },
+      { id:'annacondo', name:'Anna Condo', type:'secondary', x:36, y:65, tags:['collab','web3','art'] },
+      { id:'laurence', name:'Laurence Fuller', type:'secondary', x:34, y:71, tags:['collab','web3','actor','poet'] },
+      { id:'bobbydl', name:'Bobby', type:'secondary', x:32, y:72, tags:['collab','web3','music','art'] },
+      { id:'tipi', name:'NFTipi', type:'secondary', x:30, y:71, tags:['collab','web3','og','community'] },
+      { id:'grey', name:'Grey González', type:'secondary', x:28, y:69, tags:['collab','web3','poet'] },
+      { id:'adrian', name:'Adrián Berazaín', type:'secondary', x:33, y:29, tags:['collab','music','impulses','tv'] },
+      { id:'giordano', name:'Giordano Guerra', type:'secondary', x:31, y:31, tags:['collab','music','impulses','tv','art'] },
+      { id:'abel', name:'Abel Gerones', type:'secondary', x:29, y:29, tags:['collab','music','impulses','tv'] },
+      { id:'iris', name:'Dúo Iris', type:'secondary', x:36, y:30, tags:['collab','music','impulses','tv'] },
+      { id:'javier', name:'Javier Milanés', type:'secondary', x:34, y:32, tags:['collab','music','impulses','tv'] },
+      { id:'buena_fe', name:'Buena Fe', type:'secondary', x:18, y:26, tags:['music','band','cuba'] },
+      { id:'miami', name:'Miami', type:'secondary', x:60, y:70, tags:['place','life'] },
+      { id:'suite', name:'Suite Habana', type:'audiovisual', x:21, y:44, tags:['work','cine','key'] },
+      { id:'perfecto', name:'Perfecto Amor Equivocado', type:'audiovisual', x:23, y:46, tags:['work','cine','key'] },
+      { id:'ausencia', name:'La Ausencia', type:'audiovisual', x:27, y:48, tags:['work','cine','key'] },
+      { id:'rostro', name:'El Rostro de los Días', type:'audiovisual', x:29, y:50, tags:['work','tv','key'] },
+    ];
+
+    const connections = [
+      ['biography','music'],['biography','books'],['biography','nft'],
+      ['biography','cosmology'],['biography','technology'],['biography','culture'],
+      ['biography','art'],['biography','impulses'],
+      ['sombras','books'],['sospecha','books'],['huella','books'],
+      ['sospecha','cosmology'],['sospecha','dao'],['dao','technology'],
+      ['dao','nft'],['sombras','technology'],['huella','cosmology'],
+      ['limite','music'],['limite','cosmology'],['limite','lnme'],
+      ['lnme','music'],['lnme','cosmology'],['lnme','biography'],
+      ['music','nft'],['music','art'],['books','art'],['books','culture'],
+      ['culture','art'],['technology','culture'],['technology','art'],
+      ['cosmology','technology'],['cosmology','art'],['nft','art'],
+      ['nft','culture'],['impulses','music'],['cine','culture'],
+      ['cine','art'],['television','culture'],['television','art'],
+      ['impulses','culture'],['impulses','impulses-cuba'],['impulses','impulses-web3'],['impulses','impulses-miami'],
+      ['impulses-web3','nft'],['impulses-cuba','television'],['impulses-cuba','rostro'],
+      ['cine','music'],['cine','luis'],['cine','edesio'],
+      ['television','music'],['television','cine'],
+      ['suite','cine'],['perfecto','cine'],['ausencia','cine'],['rostro','television'],
+      ['edesio','music'],['luis','music'],['dayani','music'],
+      ['paisaje','music'],['paisaje','romero'],['polito','music'],['varela','music'],
+      ['camiela','music'],['camiela','impulses-cuba'],['camiela','rostro'],
+      ['gino','nft'],['gino','sandbank'],['sandbank','music'],['sandbank','nft'],
+      ['estrujamentes','nft'],['ultrakelevra','nft'],['ultrakelevra','impulses-web3'],
+      ['irenilla','nft'],['sphynx','nft'],['ojovivo','nft'],['xelda','nft'],
+      ['miretratito','nft'],['josue','nft'],['mariana','nft'],
+      ['nurart','nft'],['camila','nft'],['jass','nft'],['kevin','nft'],
+      ['jota','nft'],['katerine','nft'],['mariela','nft'],
+      ['crazyfriends','nft'],['artistsonchain','nft'],
+      ['gaston','crazyfriends'],['bocagrandi','crazyfriends'],['minapower','crazyfriends'],
+      ['tuco','crazyfriends'],['poison','crazyfriends'],['banshee','crazyfriends'],
+      ['caperucita','crazyfriends'],['limbo','crazyfriends'],['cotama','crazyfriends'],
+      ['bobbi','artistsonchain'],
+      ['fede','nft'],['anamaria','nft'],['luciana','nft'],['vespertino','nft'],
+      ['claudia','nft'],['cinthia','nft'],['strokedriven','nft'],['rey','nft'],
+      ['thecreep','nft'],['angrylatina','nft'],['andre','nft'],['yaxx','nft'],
+      ['arregium','nft'],['layla','nft'],['solum','nft'],['annacondo','nft'],
+      ['laurence','nft'],['bobbydl','nft'],['tipi','nft'],['grey','nft'],
+      ['adrian','impulses-cuba'],['giordano','impulses-cuba'],['abel','impulses-cuba'],
+      ['iris','impulses-cuba'],['javier','impulses-cuba'],
+      ['adrian','rostro'],['giordano','rostro'],['abel','rostro'],['iris','rostro'],['javier','rostro'],
+      ['tony','books'],['litay','books'],['mario','books'],['ramon','art'],
+      ['buena_fe','music'],['miami','culture'],['miami','impulses-miami'],
+      ['glacial_paths','music'],['glacial_paths','art'],['glacial_paths','lnme'],
+      ['atlas_fragmented','music'],['atlas_fragmented','art'],
+      ['mare_incognitum','music'],['mare_incognitum','cosmology'],
+      ['trash','music'],['trash','nft'],
+    ].map(([from,to]) => ({from,to}));
+
+    const adjacency = new Map();
+    function adjAdd(a,b){
+      if (!adjacency.has(a)) adjacency.set(a,new Set());
+      adjacency.get(a).add(b);
+    }
+    connections.forEach(({from,to})=>{ adjAdd(from,to); adjAdd(to,from); });
+
+    const panelContent = {
+      biography: {
+        title: 'Ernesto',
+        description: 'Músico, compositor, pianista, arreglista. Más de 30 años de carrera. Artista NFT pionero, autor de 3 libros. Emigró Cuba→Miami (2024).',
+        sections: [{title:'Profiles',items:[
+          '<a href="https://x.com/ErnestCisneros1" class="panel-link" target="_blank">@ErnestCisneros1 on X</a>',
+          '<a href="https://medium.com/@ernestocisnerosmusic" class="panel-link" target="_blank">Medium</a>',
+          '<a href="https://orcid.org/0009-0002-2833-1787" class="panel-link" target="_blank">ORCID</a>',
+          '<a href="https://github.com/cisnerosmusic" class="panel-link" target="_blank">GitHub</a>',
+          '<a href="https://www.imdb.com/name/nm1472247/" class="panel-link" target="_blank">IMDb</a>'
+        ]}],
+        connections:['music','books','nft','cosmology','technology','culture','art','impulses'],
+        cta:null
+      },
+      music:{
+        title:'Music',
+        description:'Más de 30 años componiendo para cine, TV y concierto. Premios Cubadisco (Suite Habana). Jazz, electroacústica, sinfónica, rock, música étnica.',
+        sections:[{title:'Albums',items:[
+          '<a href="music/glacial-paths.html" class="panel-link">Glacial Paths</a>',
+          '<a href="music/atlas-of-fragmented-light.html" class="panel-link">Atlas of Fragmented Light</a>',
+          '<a href="music/mare-incognitum.html" class="panel-link">Mare Incognitum</a>',
+          '<a href="music/trash.html" class="panel-link">Trash (NFT Collection)</a>',
+          '<a href="music/sandbank.html" class="panel-link">Sandbank (with Gino Battiston)</a>'
+        ]}],
+        connections:['cine','television','lnme','limite','nft','art','culture','glacial_paths','atlas_fragmented','mare_incognitum','trash','sandbank'],
+        cta:{text:'Explorar música →',url:'music.html'}
+      },
+      glacial_paths: {
+        title: 'Glacial Paths',
+        description: 'Piano y sintetizadores. Un viaje desde la superficie reflexiva del mundo tecnológico hacia una forma de luz interior.',
+        connections: ['music','art','lnme','cosmology','atlas_fragmented'],
+        cta: { text: 'Écouter →', url: 'music/glacial-paths.html' }
+      },
+      atlas_fragmented: {
+        title: 'Atlas of Fragmented Light',
+        description: 'En un mundo que nunca fue, donde los mapas no delimitan sino que disuelven. Una geografía trazada por la oscilación entre certeza y misterio.',
+        connections: ['music','art','cosmology','glacial_paths'],
+        cta: { text: 'Écouter →', url: 'music/atlas-of-fragmented-light.html' }
+      },
+      mare_incognitum: {
+        title: 'Mare Incognitum',
+        description: 'Un manifiesto sónico de cartografía inestable, explorando territorios desconocidos del sonido y el cosmos.',
+        connections: ['music','art','cosmology'],
+        cta: { text: 'Écouter →', url: 'music/mare-incognitum.html' }
+      },
+      trash: {
+        title: 'Trash',
+        description: 'Siete piezas nacidas del cine que nunca llegó a la pantalla. Ahora una colección NFT en Tezos.',
+        connections: ['music','nft','cine'],
+        cta: { text: 'Écouter →', url: 'music/trash.html' }
+      },
+      sandbank: {
+        title: 'Sandbank',
+        description: 'Proyecto NFT colaborativo con Gino Battiston. Documental desde el desierto patagónico de Mendoza, Argentina.',
+        connections: ['music','nft','gino'],
+        cta: { text: 'Écouter →', url: 'music/sandbank.html' }
+      },
+      books:{
+        title:'Books',
+        description:'3 libros publicados que exploran el poder, la tecnología, la ciencia ficción y la memoria histórica.',
+        sections:[{title:'Works',items:[
+          '<strong>Sombras, Datos y Relámpagos</strong> (2023) - Power and surveillance',
+          '<strong>La Sospecha Razonable</strong> (2025) - 12 sci-fi stories',
+          '<strong>HUELLA</strong> (in progress, 2026) - History of science'
+        ]}],
+        connections:['sombras','sospecha','huella','tony','litay','mario','culture','art'],
+        cta:{text:'Leer más →',url:'books.html'}
+      },
+      nft:{
+        title:'NFT / Web3',
+        description:'Artista y coleccionista NFT pionero. La música abrió las puertas al web3. Collaborations con más de 20 artistas en todo el mundo. Obras en Foundation y Objkt.',
+        sections:[{title:'Marchés',items:[
+          '<a href="https://foundation.app/@cisnerosmusic" class="panel-link" target="_blank">Foundation</a>',
+          '<a href="https://objkt.com/profile/ernestocisneros" class="panel-link" target="_blank">Objkt (Tezos)</a>',
+          '<a href="https://exchange.art/ernestocisneros" class="panel-link" target="_blank">Exchange Art</a>'
+        ]}],
+        connections:['music','impulses-web3','technology','art','culture','trash','sandbank'],
+        cta:{text:'Ver colección →',url:'nft.html'}
+      },
+      cosmology:{
+        title:'Cosmología y Física',
+        description:'Exploración de conexiones entre música, física cuántica y cosmología. Investigación en Cosmología Estocástica.',
+        sections:[{title:'Investigación',items:[
+          '<strong>Stochastic Cosmology</strong> - DOI: 10.5281/zenodo.17686852',
+          '<strong>The Finite Memory Law</strong>',
+          '<strong>Resilience Windows</strong>'
+        ]}],
+        connections:['sospecha','huella','lnme','limite','technology','art','mare_incognitum'],
+        cta:{text:'Explorar →',url:'ideas/cosmology-physics.html'}
+      },
+      technology:{
+        title:'Tecnología y Sociedad',
+        description:'Gobernanza descentralizada, DAOs, web3, transparencia asimétrica.',
+        sections:[{title:'Publicaciones',items:[
+          '<strong>DAO de Memoria Finita</strong> (FMD-DAO)',
+          '<strong>Asymmetric Transparency</strong>',
+          '<strong>Sombras, Datos y Relámpagos</strong>'
+        ]}],
+        connections:['dao','sombras','nft','impulses-web3','cosmology','culture'],
+        cta:{text:'Leer más →',url:'ideas/technology-society.html'}
+      },
+      culture:{
+        title:'Cultura, Memoria y Exilio',
+        description:'Inmigración, identidad, memoria cultural. Cuba→Miami (2024). Proyecto Impulses Miami.',
+        connections:['impulses','impulses-miami','books','art','technology','miami'],
+        cta:{text:'Explorar →',url:'ideas/culture-memory-exile.html'}
+      },
+      art:{
+        title:'Arte, Poética y Filosofía',
+        description:'Pensamiento estético y filosófico. Intersecciones entre arte, ciencia y poesía.',
+        connections:['books','music','nft','tony','mario','ramon','culture'],
+        cta:{text:'Explorar →',url:'ideas/art-poetics-philosophy.html'}
+      },
+      impulses:{
+        title:'Impulses.art',
+        description:'Proyecto de más de 20 años. Cuba (2000s): nutriendo carreras jóvenes. Web3 (2020-2023): 20 artistas NFT. Miami (2024): musicoterapia para refugiados.',
+        sections:[{title:'Tres etapas',items:[
+          '<strong>Impulses Cuba</strong> - El Rostro de los Días (2007)',
+          '<strong>Impulses Web3</strong> - 20 artistas NFT, galerías europeas',
+          '<strong>Impulses Miami</strong> - Piano para comunidades migrantes'
+        ]}],
+        connections:['impulses-cuba','impulses-web3','impulses-miami','culture','music'],
+        cta:{text:'Visitar proyecto →',url:'https://impulses.online'}
+      },
+      gino:{
+        title:'Gino Battiston',
+        description:'Fotógrafo y cineasta argentino. Como un hermano para Ernesto. Sandbank: 4 microfilms NFT.',
+        connections:['nft','sandbank'],
+        cta:{text:'Ver Sandbank →',url:'music/sandbank.html'}
+      },
+      suite:{
+        title:'Suite Habana (2003)',
+        description:'Largometraje documental. 4 premios: Cubadisco 2005, Coral de Musique, Caracol (UNEAC), Gonzalo Roig.',
+        connections:['cine','luis','music','culture'],
+        cta:null
+      },
+      rostro:{
+        title:'El Rostro de los Días (2019)',
+        description:'Telenovela cubana. La más exitosa por su música innovadora. Proyecto Impulses Cuba con 7 jóvenes compositores.',
+        connections:['television','impulses-cuba','camiela','adrian','giordano','abel','iris','javier','music','culture'],
+        cta:null
+      },
+      crazyfriends:{
+        title:'Crazy Friends',
+        description:'Comunidad NFT en Tezos. Artistas hispanos internacionales.',
+        connections:['nft','culture','gaston','bocagrandi','minapower','tuco'],
+        cta:{text:'Ver comunidad →',url:'https://x.com/CrazyFriends_OG'}
+      },
+      artistsonchain:{
+        title:'Artists On The Chain',
+        description:'Comunidad global fundada por Bobbi Bicker. 213k+ artistas.',
+        connections:['nft','culture','art','bobbi'],
+        cta:{text:'Explorar →',url:'https://x.com/BobbiBicker'}
+      },
+    };
+
+    const nodeById = new Map(nodes.map(n => [n.id, n]));
+    const nameById = (id) => (nodeById.get(id)?.name || id);
+
+    const universe = document.getElementById('universe');
+    const canvas = document.getElementById('connections');
+    const ctx = canvas.getContext('2d');
+
+    // Create stars
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      star.style.animationDuration = (3 + Math.random() * 3) + 's';
+      universe.appendChild(star);
+    }
+
+    let draggedNode = null, dragOffset = {x:0, y:0}, didDrag = false, dragStart = {x:0, y:0};
+
+    nodes.forEach(node => {
+      const el = document.createElement('div');
+      el.className = `node ${node.type}`;
+      el.id = 'node-' + node.id;
+      el.style.left = node.x + '%';
+      el.style.top = node.y + '%';
+      
+      const tooltip = document.createElement('div');
+      tooltip.className = 'node-tooltip';
+      tooltip.textContent = node.name;
+      el.appendChild(tooltip);
+      
+      el.addEventListener('click', () => { if (!didDrag) openPanel(node.id); didDrag = false; });
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        draggedNode = node;
+        didDrag = false;
+        dragStart = {x: e.clientX, y: e.clientY};
+        const rect = el.getBoundingClientRect();
+        dragOffset.x = e.clientX - rect.left;
+        dragOffset.y = e.clientY - rect.top;
+        el.style.cursor = 'grabbing';
+      });
+      
+      universe.appendChild(el);
+    });
+
+    function resizeCanvas() {
+      const rect = universe.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      requestDraw();
+    }
+
+    function getNodePosition(id) {
+      const el = document.getElementById('node-' + id);
+      if (!el) return {x: 0, y: 0};
+      const rect = el.getBoundingClientRect();
+      const universeRect = universe.getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2 - universeRect.left,
+        y: rect.top + rect.height / 2 - universeRect.top
+      };
+    }
+
+    let activeNode = null, needsDraw = false;
+    
+    function requestDraw() {
+      if (needsDraw) return;
+      needsDraw = true;
+      requestAnimationFrame(() => { needsDraw = false; drawConnections(); });
+    }
+
+    function drawConnections() {
+      const rect = universe.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      
+      const relevant = activeNode 
+        ? connections.filter(c => c.from === activeNode || c.to === activeNode)
+        : connections.filter(c => {
+            const n1 = nodeById.get(c.from);
+            const n2 = nodeById.get(c.to);
+            return (n1?.type === 'primary' || n1?.type === 'special') && 
+                   (n2?.type === 'primary' || n2?.type === 'special');
+          });
+      
+      relevant.forEach(conn => {
+        const from = getNodePosition(conn.from);
+        const to = getNodePosition(conn.to);
+        
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.strokeStyle = activeNode ? 'rgba(212, 160, 48, 0.3)' : 'rgba(212, 160, 48, 0.1)';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      });
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      if (!draggedNode) return;
+      const universeRect = universe.getBoundingClientRect();
+      const dist = Math.hypot(e.clientX - dragStart.x, e.clientY - dragStart.y);
+      if (dist > 4) didDrag = true;
+      const el = document.getElementById('node-' + draggedNode.id);
+      draggedNode.x = Math.max(1, Math.min(99, ((e.clientX - universeRect.left - dragOffset.x) / universeRect.width) * 100));
+      draggedNode.y = Math.max(1, Math.min(99, ((e.clientY - universeRect.top - dragOffset.y) / universeRect.height) * 100));
+      el.style.left = draggedNode.x + '%';
+      el.style.top = draggedNode.y + '%';
+      requestDraw();
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (draggedNode) {
+        document.getElementById('node-' + draggedNode.id).style.cursor = 'pointer';
+        draggedNode = null;
+      }
+    });
+
+    function openPanel(nodeId) {
+      const panel = document.getElementById('sidePanel');
+      const content = document.getElementById('panelContent');
+      activeNode = nodeId;
+      
+      nodes.forEach(n => {
+        const el = document.getElementById('node-' + n.id);
+        el.classList.remove('active', 'connected', 'dimmed');
+        if (n.id === nodeId) {
+          el.classList.add('active');
+          return;
+        }
+        const isConnected = connections.some(c => 
+          (c.from === nodeId && c.to === n.id) || (c.to === nodeId && c.from === n.id)
+        );
+        el.classList.add(isConnected ? 'connected' : 'dimmed');
+      });
+      
+      requestDraw();
+      
+      const data = panelContent[nodeId] || {
+        title: nodeById.get(nodeId)?.name || nodeId,
+        description: 'Node in the creative universe.',
+        connections: Array.from(adjacency.get(nodeId) || []),
+        cta: null
+      };
+      
+      let html = `<div class="panel-title">${data.title}</div>
+                  <div class="panel-description">${data.description || ''}</div>`;
+      
+      if (data.sections) {
+        data.sections.forEach(section => {
+          html += `<div class="panel-section">
+                     <h3>${section.title}</h3>
+                     <ul>${(section.items || []).map(item => `<li>${item}</li>`).join('')}</ul>
+                   </div>`;
+        });
+      }
+      
+      if (data.connections && data.connections.length) {
+        html += `<div class="connection-tags">` +
+          data.connections.filter(id => nodeById.has(id))
+            .map(id => `<span class="connection-tag" data-node="${id}">${nameById(id)}</span>`)
+            .join('') + `</div>`;
+      }
+      
+      if (data.cta) {
+        html += `<a href="${data.cta.url}" class="cta-button" target="${data.cta.url.startsWith('http') ? '_blank' : '_self'}">${data.cta.text}</a>`;
+      }
+      
+      content.innerHTML = html;
+      
+      content.querySelectorAll('.connection-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          const target = tag.getAttribute('data-node');
+          if (target) openPanel(target);
+        });
+      });
+      
+      panel.classList.add('open');
+    }
+
+    function closePanel() {
+      document.getElementById('sidePanel').classList.remove('open');
+      activeNode = null;
+      nodes.forEach(n => {
+        const el = document.getElementById('node-' + n.id);
+        el.classList.remove('active', 'connected', 'dimmed');
+      });
+      requestDraw();
+    }
+
+    window.closePanel = closePanel;
+    window.addEventListener('resize', resizeCanvas);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+    
+    // Initialize universe when visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          resizeCanvas();
+          requestDraw();
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    observer.observe(universe);
+    
+    // Initial draw
+    setTimeout(() => {
+      resizeCanvas();
+      requestDraw();
+    }, 100);
+  </script>
+
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
+

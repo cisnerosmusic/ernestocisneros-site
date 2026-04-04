@@ -321,4 +321,120 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- ============================================ -->
+  <!-- French Version (/fr/) -->
+  <!-- ============================================ -->
+
+  <!-- FR: Core Pages -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/biography.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/contact.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- FR: Music Section -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/music.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/music/glacial-paths.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/music/atlas-of-fragmented-light.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/fr/music/mare-incognitum.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FR: Books -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/books.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- Japanese Version (/ja/) -->
+  <!-- ============================================ -->
+
+  <!-- JA: Core Pages -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/biography.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/contact.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- JA: Music Section -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/music.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/music/glacial-paths.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/music/atlas-of-fragmented-light.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ja/music/mare-incognitum.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- JA: Books -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/books.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

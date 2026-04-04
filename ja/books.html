@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>著作 | Ernesto Cisneros Cino</title>
+<meta name="description" content="著作 de Ernesto Cisneros Cino - Sombras, Datos y Relámpagos, La Sospecha Razonable, y Huella.">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/ja/books.html">
+    <meta property="og:title" content="著作 | Ernesto Cisneros Cino">
+    <meta property="og:description" content="著作 de Ernesto Cisneros Cino - Sombras, Datos y Relámpagos, La Sospecha Razonable, y Huella.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/books/sombras.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="著作 | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="著作 de Ernesto Cisneros Cino - Sombras, Datos y Relámpagos, La Sospecha Razonable, y Huella.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/books/sombras.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.hero-text {
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+.hero-text p {
+  margin-bottom: 1rem;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 4rem auto;
+}
+
+/* Book Block */
+.book-block {
+  max-width: 1100px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+}
+
+.book-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.book-cover {
+  position: relative;
+}
+
+.book-cover img {
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 160, 48, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.book-cover:hover img {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 160, 48, 0.15);
+}
+
+.book-info {
+  padding-top: 0.5rem;
+}
+
+.book-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.book-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.language-note {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.book-description {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.book-description p {
+  margin-bottom: 1.3rem;
+}
+
+.book-description strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.book-description h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin: 2rem 0 1rem;
+  font-weight: 400;
+}
+
+.book-description ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.book-description li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+
+.book-description li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 6px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.buy-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buy-button:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Upcoming Book */
+.book-upcoming .book-cover img {
+  opacity: 0.85;
+}
+
+.upcoming-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--gold-faint);
+  border: 1px solid var(--gold-dim);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+/* Closing Section */
+.closing {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  border-top: 1px solid var(--gold-faint);
+}
+
+.closing-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.closing-text p {
+  margin-bottom: 1.3rem;
+}
+
+.author-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1.2rem 3rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  transition: all 0.3s;
+}
+
+.author-button:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+.book-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .book-cover {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero, .book-block, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .book-title { font-size: 1.5rem; }
+}
+</style>
+<link rel="stylesheet" href="../assets/css/nav.css">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Sombras, Datos y Relámpagos",
+    "url": "https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "inLanguage": "es",
+    "bookFormat": "https://schema.org/EBook",
+    "image": "https://ernestocisneros.art/assets/images/books/sombras.jpg",
+    "genre": ["Fiction", "Essay", "Poetry"],
+    "description": "三つの楽章で構成された混成作品：影（権力の物語）、データ（見えないインフラへの哲学的考察）、稲妻（直感の閃光としての詩）。"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "La Sospecha Razonable",
+    "url": "https://www.amazon.com/dp/B0FZ3BCBXR",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "inLanguage": "es",
+    "bookFormat": "https://schema.org/EBook",
+    "image": "https://ernestocisneros.art/assets/images/books/la-sospecha.jpg",
+    "genre": ["Speculative Fiction", "Science Fiction", "Philosophy"],
+    "description": "十二の思弁的物語。科学、哲学、フィクションが交差し、古代エジプトから後人類のエコシステムまで、様々な風景を通じて権力を探究する"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Huella",
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "inLanguage": "es",
+    "image": "https://ernestocisneros.art/assets/images/books/huella.png",
+    "description": "人間の知識の歴史を巡る旅。石の最初の刻印から現代科学の極限まで",
+    "workExample": {"@type": "Book", "bookEdition": "近日公開"}
+  }
+]
+</script>
+    <script src="../assets/js/lang-detect.js"></script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ja/books.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/books.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/books.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/books.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../assets/js/schema-loader.js" data-schema="books" defer></script>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-item">ホーム</a></li>
+      <li><a href="biography.html" class="nav-item">プロフィール</a></li>
+      <li class="nav-dropdown">
+        <a href="music.html" class="nav-item">音楽</a>
+        <div class="nav-dropdown-content">
+          <a href="music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="music/other-works.html" class="nav-dropdown-item">その他の音楽作品</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="nft/gift-from-community.html" class="nav-dropdown-item">コミュニティからの贈り物</a>
+        </div>
+      </li>
+      <li><a href="books.html" class="nav-item active">著作</a></li>
+      <li class="nav-dropdown">
+        <a href="ideas.html" class="nav-item">考え</a>
+        <div class="nav-dropdown-content">
+          <a href="ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="ideas/technology-society.html" class="nav-dropdown-item">Technology & Society</a>
+          <a href="ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
+          <a href="ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+      <li><a href="impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="contact.html" class="nav-item">お問い合わせ</a></li>
+    
+            <li class="lang-switcher">
+                <a href="../books.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+                <span class="lang-sep">|</span>
+                <a href="books.html" class="active-lang" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+            </li>
+        </ul>
+  </div>
+</nav>
+
+<main class="main-content">
+  
+  <section class="hero">
+    <h1 class="hero-title">著作</h1>
+    <div class="hero-text">
+      <p>私の作品は音楽に根ざしているが、執筆は私を動かす問い、感情、考えを探究するための別の方法へと変わった。</p>
+      <p>ある物語は沈黙を要求し、他の物語は音を要求する。そして少数の物語は言葉となることを主張する。</p>
+      <p>これらの書は私の創造的世界の延長であり、音楽、記憶、内省が異なる形態をとる場所である。</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Book 1: Sombras, Datos y Relámpagos -->
+  <article class="book-block">
+    <div class="book-content">
+      <div class="book-cover">
+        <img src="../assets/images/books/sombras.jpg" alt="Sombras, Datos y Relámpagos">
+      </div>
+      <div class="book-info">
+        <h2 class="book-title">Sombras, Datos y Relámpagos</h2>
+
+        <p class="book-subtitle">このミュージシャンが母国語のスペイン語で書いた作品。その声を形作った調子、リズム、感情的な質感を保ち続けている。</p>
+        
+        <div class="book-description">
+          <p>私の最初の著作。フィクション、エッセイ、詩が織り交ぜられた混成作品。単一の問いを中心に構成されている——権力とは何か、そしてそれはいかにして私たちの生を貫くのか？</p>
+
+          <h3>この書は三つの楽章で構成される：</h3>
+
+          <ul>
+            <li><strong>影（Sombras）</strong> — 権力が記憶、幻影、暴力、運命、機械、または沈黙の姿で現れる物語の連続。ハバナのガレージで燃える楽器から、失われた指輪の力でのみ通過できる扉まで、やがて政治と化する不気味なサーカスの論理まで。</li>
+            <li><strong>データ（Datos）</strong> — 支配の見えない基盤についての哲学的・歴史的エッセイ：政治的習慣、技術システム、従順さの建築、自然の力、シミュレーションの誘惑、社会を結合させあるいは引き裂く神話</li>
+            <li><strong>稲妻（Relámpagos）</strong> — 電光のように書かれた詩編：簡潔で鋭く、内臓的。本の感情的な脈動、語る傷痕、燃え上がる記憶、突然の嵐として現れる直感</li>
+          </ul>
+
+          <p>この書は深い転換の時期に執筆された。国から国へ、人生から人生へ、アイデンティティから別のアイデンティティへと移動する中で。幼少時代の思い出、亡命、音楽、哲学、科学、政治体制の影を織り交ぜながら。</p>
+
+          <p>これは直線的な書ではない。それは楽譜である——暗黒、分析、啓蒙からなる作曲。</p>
+
+          <p><em>その意図は答えを与えることではなく、共鳴を生むことである。</em></p>
+        </div>
+        
+        <a href="https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ?ref_=ast_author_dp&th=1&psc=1" target="_blank" rel="noopener" class="buy-button">Amazonで購入</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="divider"></div>
+
+  <!-- Book 2: La Sospecha Razonable -->
+  <article class="book-block">
+    <div class="book-content">
+      <div class="book-cover">
+        <img src="../assets/images/books/la-sospecha.jpg" alt="La Sospecha Razonable">
+      </div>
+      <div class="book-info">
+        <h2 class="book-title">La Sospecha Razonable</h2>
+        <p class="book-subtitle">権力、記憶、そして未知についての思弁的物語<br>権力三部作 第二巻</p>
+        
+        <div class="book-description">
+          <p>『妥当な疑念』は、科学、哲学、フィクションが交差する十二の思弁的物語の集成である。各物語は一つの中心的主題を探究する：権力である。権力がいかに出現し、変異し、欺き、つながり、そして最終的に我々が誰であるかを明かすのか。三部作の第二巻。</p>
+
+          <p>物語は根本的に異なる風景を移動する：古代エジプト、火星のスーパーマーケット、量子ラボラトリー、容赦ない監視下にあるデジタル都市、後人類のエコシステム、およびアルゴリズム、パラドックス、脆い思想形態に支配される近い未来の文明。</p>
+
+          <p>これらの変動にもかかわらず、本は一つの脈動を保つ：世界は私たちの確実性が許すものより遥かに奇妙であるという執拗な疑念。</p>
+
+          <h3>本の起源</h3>
+
+          <p>この著作はSF文学だけでなく、分散化されたコミュニティ（DAO・NFTエコシステム）で過ごした歳月によって形作られた。これらの空間は、輝かしく、混沌とし、ヴィジョン的で、自己破壊的だったが、統治、葛藤、協力、疲弊のラボラトリーへと変貌した。</p>
+
+          <p>この本は同時に、量子物理学、宇宙論、意識ある機械、人間の記憶の限界への迷いと結びついている。これらの物語はその交差点から生まれた：NFTスペースでの未明の会話、物理学論文の読書、3I/ATLASという恒星間天体の到着のような実在する天文現象、そして音が沈黙と同じ重みを持つことを学んだミュージシャンとしての私自身の経験から。</p>
+        </div>
+        
+        <a href="https://www.amazon.com/dp/B0FZ3BCBXR" target="_blank" rel="noopener" class="buy-button">Amazonで購入</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="divider"></div>
+
+  <!-- Book 3: Huella -->
+  <article class="book-block book-upcoming">
+    <div class="book-content">
+      <div class="book-cover">
+        <img src="../assets/images/books/huella.png" alt="Huella">
+      </div>
+      <div class="book-info">
+        <span class="upcoming-badge">近日公開</span>
+        <h2 class="book-title">Huella</h2>
+        
+        <div class="book-description">
+          <p>人間の知識の歴史を巡る旅。石に刻まれた最初の印から現代科学の最前線まで。</p>
+          <p>記憶、創造性、そして世界を理解しようとする人類の長き営みを編み込む物語。</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Closing -->
+  <section class="closing">
+    <h2 class="closing-title">最後に</h2>
+
+    <div class="closing-text">
+      <p>執筆は計画された道ではなかった。それは私が創造するすべてのものの自然な延長へと変わった。音楽、ビジュアルアート、ビデオ、文学——これらは同じ問いを探究するための単なる異なる形態である。</p>
+
+      <p>これらの書は、私が継続するつもりでいる旅の始まりを記す。</p>
+
+      <p>私は書き続けるだろう（時にはスペイン語で、時には英語で）。なぜなら、私の作品は今、グローバルコミュニティへと語りかけているからだ。多様で国境なきNFT世界は、この衝動の決定的な一部となってきた——会話、協働、新しい芸術領域への扉を開きながら。</p>
+
+      <p>前方にはさらに多くの物語がある。探究する問いがさらにある。そして現れることができる言語がさらにある。</p>
+
+      <p><em>読んでくれたこと、聴いてくれたこと、そしてこの創造的宇宙が拡張を続ける間、側にいてくれたことに感謝する。</em></p>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=e0987e68-bb5a-4cc3-b442-35e0b6cf50c5" target="_blank" rel="noopener" class="author-button">Amazonの著者ページを見る</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
+
