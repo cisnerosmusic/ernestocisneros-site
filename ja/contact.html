@@ -203,6 +203,11 @@ a:hover { color: var(--gold-bright); }
   border-color: var(--gold-dim);
   background: rgba(13, 10, 6, 0.8);
 }
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+  outline: 2px solid var(--gold, #d4a030);
+  outline-offset: 2px;
+}
 
 .form-group textarea {
   min-height: 150px;
