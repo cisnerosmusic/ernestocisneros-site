@@ -1208,6 +1208,42 @@ volSlider.addEventListener('input', function(){
 
 loadTrack(0, false);
 
+/* --- KEYBOARD ACCESSIBILITY --- */
+(function() {
+  // Make track items keyboard-accessible (desktop + mobile)
+  document.querySelectorAll('#tracklist .track-item, #tracklist-mobile .track-item').forEach(function(el, i) {
+    var idx = i % TRACKS.length; // mobile items repeat after desktop
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        loadTrack(idx, true);
+      }
+    });
+  });
+  // Progress bar: arrow keys to seek
+  if (progressWrap) {
+    progressWrap.setAttribute('tabindex', '0');
+    progressWrap.setAttribute('role', 'slider');
+    progressWrap.setAttribute('aria-label', 'Track progress');
+    progressWrap.addEventListener('keydown', function(e) {
+      if (!audio.duration || !isFinite(audio.duration)) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); audio.currentTime = Math.max(0, audio.currentTime - 5); }
+    });
+  }
+  // Global: Space to toggle play (only when body focused)
+  document.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.code === 'Space' && e.target === document.body) {
+      e.preventDefault();
+      btnPlay.click();
+    }
+  });
+})();
+
+
 /* =========================================================
    2D CANVASES
 ========================================================= */

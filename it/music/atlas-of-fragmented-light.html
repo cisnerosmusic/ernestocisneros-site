@@ -1018,6 +1018,30 @@ input:focus-visible,
 
   loadTrack(0, false);
 
+  // --- KEYBOARD ACCESSIBILITY (track items + progress bar) ---
+  document.querySelectorAll('.track-item').forEach(function(el, i) {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        loadTrack(i, true);
+      }
+    });
+  });
+  var progContainer = document.getElementById('progressContainer');
+  if (progContainer) {
+    progContainer.setAttribute('tabindex', '0');
+    progContainer.setAttribute('role', 'slider');
+    progContainer.setAttribute('aria-label', 'Track progress');
+    progContainer.addEventListener('keydown', function(e) {
+      if (!audio.duration) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); audio.currentTime = Math.max(0, audio.currentTime - 5); }
+    });
+  }
+
+
   // Gold Particles
   (function() {
     const gCanvas = document.getElementById('gold-particles');

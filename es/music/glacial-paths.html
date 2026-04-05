@@ -1141,6 +1141,53 @@ animateParticles();
 buildConstellation();
 buildTracklist();
 
+// --- KEYBOARD ACCESSIBILITY ---
+// Make track nodes and tracklist items keyboard-accessible
+function addTrackKeyboard() {
+  document.querySelectorAll('.track-node').forEach((node, i) => {
+    node.setAttribute('tabindex', '0');
+    node.setAttribute('role', 'button');
+    node.setAttribute('aria-label', tracks[i].title);
+    node.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        loadTrack(i, true);
+      }
+    });
+  });
+  document.querySelectorAll('.tl-item').forEach((item, i) => {
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        loadTrack(i, true);
+      }
+    });
+  });
+}
+addTrackKeyboard();
+
+// Progress bar: arrow keys to seek ±5 seconds
+const progressBarEl = document.getElementById('progress-bar');
+progressBarEl.setAttribute('tabindex', '0');
+progressBarEl.setAttribute('role', 'slider');
+progressBarEl.setAttribute('aria-label', 'Track progress');
+progressBarEl.addEventListener('keydown', (e) => {
+  if (!audio.duration) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); }
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); audio.currentTime = Math.max(0, audio.currentTime - 5); }
+});
+
+// Global keyboard shortcuts (when no input is focused)
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.code === 'Space' && e.target === document.body) {
+    e.preventDefault();
+    document.getElementById('btn-play').click();
+  }
+});
+
 // Gold Particles
 (function() {
   const gCanvas = document.getElementById('gold-particles');
