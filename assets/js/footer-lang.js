@@ -51,9 +51,9 @@
     es: FULL_SET,
     fr: FULL_SET,
     ja: FULL_SET,
-    ru: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html','contact.html','books.html','impulses-art.html'],
-    it: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html','contact.html','books.html','impulses-art.html'],
-    ko: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html','contact.html','books.html','impulses-art.html']
+    ru: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html','contact.html','books.html','impulses-art.html','nft.html','nft/eth-collection.html','nft/tez-collection.html','nft/marketplaces.html','nft/btc-ordinals.html','nft/gift-from-community.html'],
+    it: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html','contact.html','books.html','impulses-art.html','nft.html','nft/eth-collection.html','nft/tez-collection.html','nft/marketplaces.html','nft/btc-ordinals.html','nft/gift-from-community.html'],
+    ko: ['index.html','biography.html','music.html','music/glacial-paths.html','music/atlas-of-fragmented-light.html','music/mare-incognitum.html','contact.html','books.html','impulses-art.html','nft.html','nft/eth-collection.html','nft/tez-collection.html','nft/marketplaces.html','nft/btc-ordinals.html','nft/gift-from-community.html']
   };
 
   // Union of all multilingual pages (to decide if footer should render at all)
