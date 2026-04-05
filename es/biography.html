@@ -612,7 +612,10 @@
 </head>
 
 <body>
-  <canvas id="particle-canvas"></canvas>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
   <!-- Navigation -->
   <nav class="nav">
@@ -620,7 +623,7 @@
       <a href="index.html" class="nav-logo">
         <img src="../assets/images/logo.png" alt="Ernesto Cisneros">
       </a>
-      <button class="nav-toggle menu-toggle" aria-label="Menu">
+      <button class="nav-toggle menu-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu">
@@ -676,7 +679,7 @@
   </section>
 
   <!-- Main Content -->
-  <main class="main-content">
+  <main class="main-content" id="main-content">
     <div class="bio-grid">
       <div class="bio-portrait">
         <img src="../assets/images/portrait.jpg" alt="Ernesto Cisneros Cino at the piano" loading="eager">
@@ -742,7 +745,7 @@
 
   <!-- Universe of Nodes -->
   <div class="universe-container" id="universe">
-    <canvas id="connections"></canvas>
+    <canvas id="connections" aria-hidden="true"></canvas>
     
     <div class="universe-instructions">
       <h3>Navegación</h3>

@@ -326,8 +326,10 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
+
   <!-- Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
   <!-- Navigation -->
   <nav class="nav">
@@ -335,7 +337,7 @@
       <a href="../index.html" class="nav-logo">
         <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino">
       </a>
-      <button class="nav-toggle" aria-label="Toggle menu">
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -400,7 +402,7 @@
   </section>
 
   <!-- Intro Content -->
-  <main class="main-content">
+  <main class="main-content" id="main-content">
 
     <section class="intro-section">
       <h2>1. 背景：グローバルコラプス中のWeb3への参入</h2>
@@ -481,8 +483,9 @@
     <!-- The Bride of the Moon -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="The Bride of the Moon - animated NFT artwork">
           <source src="../assets/nft/compressed/bride-of-the-moon.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -500,8 +503,9 @@
     <!-- Canto del cello -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="Canto del Cello - animated NFT artwork">
           <source src="../assets/nft/compressed/canto-del-cello.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -520,8 +524,9 @@
     <!-- The Veil -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="The Veil - animated NFT artwork">
           <source src="../assets/nft/compressed/the-veil.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -539,8 +544,9 @@
     <!-- Mother -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="Mother - animated NFT artwork">
           <source src="../assets/nft/compressed/mother.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -558,8 +564,9 @@
     <!-- Seafarers -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="Seafarers - animated NFT artwork">
           <source src="../assets/nft/compressed/seafarers.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -577,8 +584,9 @@
     <!-- Heart Strings -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="Heart Strings - animated NFT artwork">
           <source src="../assets/nft/compressed/heart-strings.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -595,8 +603,9 @@
     <!-- The Sound of Our Souls -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="Sound of Our Souls - animated NFT artwork">
           <source src="../assets/nft/compressed/sound-of-our-souls.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">
@@ -613,8 +622,9 @@
     <!-- Seguir Viva -->
     <article class="nft-card">
       <div class="nft-media">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted loop playsinline loading="lazy" aria-label="Seguir Viva - animated NFT artwork">
           <source src="../assets/nft/compressed/seguir-viva.mp4" type="video/mp4">
+          Your browser does not support video.
         </video>
       </div>
       <div class="nft-info">

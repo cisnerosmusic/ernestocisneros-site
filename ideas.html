@@ -238,22 +238,22 @@ a:hover { color: var(--gold-bright); }
 <link rel="canonical" href="https://ernestocisneros.art/ideas.html">
 <link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas.html">
 <link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas.html">
-<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas.html">
-<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas.html">
 <link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas.html">
 <!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
 <script src="assets/js/schema-loader.js" data-schema="ideas" defer></script>
 </head>
 <body>
 
-<canvas id="particle-canvas"></canvas>
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
 
 <nav class="nav">
   <div class="nav-container">
     <a href="index.html" class="nav-logo">
       <img src="assets/images/logo.png" alt="Ernesto Cisneros Cino">
     </a>
-    <button class="nav-toggle" aria-label="Toggle menu">
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-menu">
@@ -301,8 +301,8 @@ a:hover { color: var(--gold-bright); }
   </div>
 </nav>
 
-<main class="main-content">
-  
+<main class="main-content" id="main-content">
+
   <section class="hero">
     <h1 class="hero-title">Ideas</h1>
     <p class="hero-text">This is the territory where music does not disappear but transforms into something else. Where the experience of crypto-art crystallizes into ideas that have kept me awake. Here, the spirits of ancient and hidden knowledge reveal themselves, from my love of mathematics to the adventurous soul, passing through rebellion and the desire for a better world. If before I asked questions, here I attempt to answer them. Between mathematical formalizations and imaginable structures, this is the place where the dreams of art take incredibly exact forms, and yet remain suspended from intuition.</p>

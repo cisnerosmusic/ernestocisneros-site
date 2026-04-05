@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.stopPropagation();
     navMenuEl.classList.toggle('open');
     document.body.style.overflow = navMenuEl.classList.contains('open') ? 'hidden' : '';
+    menuBtn.setAttribute('aria-expanded', menuBtn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
     updateHamburger();
   });
 
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!menuBtn.contains(e.target) && !navMenuEl.contains(e.target)) {
       navMenuEl.classList.remove('open');
       document.body.style.overflow = '';
+      menuBtn.setAttribute('aria-expanded', 'false');
       updateHamburger();
     }
   });
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function() {
       navMenuEl.classList.remove('open');
       document.body.style.overflow = '';
+      menuBtn.setAttribute('aria-expanded', 'false');
       updateHamburger();
     });
   });
