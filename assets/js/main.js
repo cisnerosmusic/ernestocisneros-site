@@ -80,51 +80,9 @@
 
 /* =====================================================
    MOBILE MENU TOGGLE
+   Handled by nav.js — removed duplicate here to avoid
+   double-toggle conflict on pages that load both scripts.
    ===================================================== */
-document.addEventListener('DOMContentLoaded', function() {
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-
-  if (navToggle && navMenu) {
-    function updateHamburger() {
-      const isActive = navMenu.classList.contains('open');
-      const spans = navToggle.querySelectorAll('span');
-      if (spans.length >= 3) {
-        spans[0].style.transform = isActive ? 'rotate(45deg) translateY(8px)' : '';
-        spans[1].style.opacity = isActive ? '0' : '1';
-        spans[2].style.transform = isActive ? 'rotate(-45deg) translateY(-8px)' : '';
-      }
-    }
-
-    navToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      navMenu.classList.toggle('open');
-      document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
-      navToggle.setAttribute('aria-expanded', navMenu.classList.contains('open') ? 'true' : 'false');
-      updateHamburger();
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove('open');
-        document.body.style.overflow = '';
-        navToggle.setAttribute('aria-expanded', 'false');
-        updateHamburger();
-      }
-    });
-
-    // Close menu when clicking a nav link
-    navMenu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('open');
-        document.body.style.overflow = '';
-        navToggle.setAttribute('aria-expanded', 'false');
-        updateHamburger();
-      });
-    });
-  }
-});
 
 /* =====================================================
    AUDIO CONTROL (for pages with background music)
