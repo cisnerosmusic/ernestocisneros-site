@@ -7,6 +7,10 @@ Allow: /
 # Sitemap location
 Sitemap: https://ernestocisneros.art/sitemap.xml
 
+# Humans & LLM discovery
+# https://ernestocisneros.art/humans.txt
+# https://ernestocisneros.art/llms.txt
+
 # Specific AI crawlers - welcome
 User-agent: GPTBot
 Allow: /

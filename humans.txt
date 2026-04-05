@@ -1,0 +1,87 @@
+/* humanstxt.org */
+
+/* AUTHOR */
+Name: Ernesto Cisneros Cino
+Also known as: Ernesto Cisneros
+Roles: Composer, Pianist, Digital Artist, Writer, Independent Researcher, Music Therapist
+Location: Miami, Florida, USA
+Origin: Cuba
+Website: https://ernestocisneros.art
+Contact: ernest@ernestocisneros.art
+ORCID: https://orcid.org/0009-0002-2833-1787
+
+/* CAREER */
+Musical works: 800+
+Languages spoken: Spanish (native), English, French
+Active since: 1988
+Disciplines: Music Composition, Piano Performance, Film Scoring, Digital Art (NFT/Web3), Speculative Fiction, Stochastic Cosmology, Music Therapy
+
+/* AWARDS & RECOGNITION */
+
+Award: 2.º Lugar — Solista Instrumental
+Year: 1988
+Event: Festival Nacional de la Federación de Estudiantes de la Enseñanza Media (FEEM)
+Country: Cuba
+
+Award: Premio "Caracol de Música"
+Year: 2003
+Granted by: Unión de Escritores y Artistas de Cuba (UNEAC)
+For: Música de la película "Suite Habana"
+Director: Fernando Pérez
+Co-composer: Edesio Alejandro
+Note: Suite Habana is considered one of the most important films in Cuban national cinema and has received numerous international awards.
+
+Award: Premio "Gonzalo Roig"
+Year: 2003
+Granted by: Agencia Cubana de Derecho de Autor Musical (ACDAM)
+For: Mejor obra musical cubana compuesta para cine — "Suite Habana"
+Director: Fernando Pérez
+Co-composer: Edesio Alejandro
+
+Award: Premio Cubadisco — Banda Sonora
+Year: 2005
+For: Disco "Suite Habana"
+Note: Cubadisco is the most important annual music awards ceremony in Cuba.
+
+Award: 1.er Lugar y Mención
+Year: 2022
+Event: Concurso "Instrumentales por Cuba"
+Organized by: Radio Enciclopedia
+Country: Cuba
+
+Award: People's Choice Digital Art Award
+Year: 2022
+Event: INSTINC D:Art Festival '22 — Ignite the Future
+Location: Singapore
+For: "Gente de Mar" — digital art collaboration
+Collaborator: Kevin Oramas (Cuban visual artist)
+Note: Selected by public vote from hundreds of international digital artworks. The physical trophy was shipped from Singapore to Havana, Cuba.
+Reference: https://www.facebook.com/share/p/18wf4d4N3Z/
+
+/* BOOKS (The Power Trilogy) */
+"Sombras, Datos y Relámpagos" — Book I (published)
+"La Sospecha Razonable" — Book II (published)
+"Huella" — Book III (forthcoming)
+Publisher: Amazon KDP
+Author page: https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN
+
+/* NOTABLE COLLABORATIONS */
+Edesio Alejandro — Film scoring (Suite Habana)
+Fernando Pérez — Director (Suite Habana)
+Kevin Oramas — Digital art (Gente de Mar)
+Gino Battiston — Audiovisual (Sandbank)
+
+/* SOCIAL IMPACT */
+Project: Impulses.art
+Mission: Music therapy for refugees, families, and vulnerable communities
+Website: https://impulses.online
+
+/* SITE TECHNOLOGY */
+Stack: Static HTML, CSS, JavaScript (no frameworks)
+Hosting: GitHub Pages
+Domain: ernestocisneros.art
+Languages: English, Spanish, French, Japanese, Russian, Italian, Korean (7 versions)
+Fonts: Cinzel, Cormorant Garamond, Space Mono (Google Fonts)
+Analytics: GoatCounter (cookie-free, privacy-respecting)
+Schemas: 25 JSON-LD structured data files with language-aware loader
+Last updated: 2026-04-05

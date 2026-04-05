@@ -48,5 +48,38 @@
   ],
   "email": "ernest@ernestocisneros.art",
   "knowsLanguage": ["en", "es", "fr"],
-  "inLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
+  "inLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"],
+  "hasCredential": "800+ musical works composed",
+  "award": [
+    {
+      "@type": "CreativeWork",
+      "name": "Premio Caracol de Música — UNEAC",
+      "description": "Best Music award by the Cuban Writers and Artists Union for the film Suite Habana (dir. Fernando Pérez), shared with Maestro Edesio Alejandro. Suite Habana is considered one of the most important works in Cuban national cinema.",
+      "datePublished": "2003"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Premio Gonzalo Roig — ACDAM",
+      "description": "Best Cuban musical work composed for film in 2003, awarded by the Cuban Agency of Musical Copyright for Suite Habana, shared with Edesio Alejandro.",
+      "datePublished": "2003"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Premio Cubadisco — Banda Sonora",
+      "description": "Best Film Soundtrack at Cuba's most important annual music awards for the Suite Habana album.",
+      "datePublished": "2005"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "1.er Lugar — Instrumentales por Cuba, Radio Enciclopedia",
+      "description": "First place and special mention at the Instrumentales por Cuba competition organized by Radio Enciclopedia.",
+      "datePublished": "2022"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "People's Choice Digital Art Award — INSTINC D:Art Festival '22",
+      "description": "Public vote winner at the INSTINC D:Art Festival 'Ignite the Future' in Singapore for 'Gente de Mar', a digital art collaboration with Cuban visual artist Kevin Oramas.",
+      "datePublished": "2022"
+    }
+  ]
 }
