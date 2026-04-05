@@ -661,12 +661,12 @@ canvas{
   .nav { padding: 1rem; }
 }
 
-  /* FOOTER */
+  /* FOOTER — pointer-events:none so it doesn't block #controls beneath */
   .footer {
     grid-column: 1 / -1;
     grid-row: 3;
     align-self: end;
-    pointer-events: auto;
+    pointer-events: none;
     position: relative;
     z-index: 20;
     padding: 3rem 2rem 2rem;
@@ -682,6 +682,7 @@ canvas{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    pointer-events: auto;
     gap: 2rem;
   }
 
