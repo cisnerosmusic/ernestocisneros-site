@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
       e.stopPropagation();
       navMenu.classList.toggle('open');
       document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+      navToggle.setAttribute('aria-expanded', navMenu.classList.contains('open') ? 'true' : 'false');
       updateHamburger();
     });
 
@@ -108,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('open');
         document.body.style.overflow = '';
+        navToggle.setAttribute('aria-expanded', 'false');
         updateHamburger();
       }
     });
@@ -117,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', function() {
         navMenu.classList.remove('open');
         document.body.style.overflow = '';
+        navToggle.setAttribute('aria-expanded', 'false');
         updateHamburger();
       });
     });
