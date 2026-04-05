@@ -6,7 +6,7 @@ working on this repository. Read this file FIRST before making any changes.
 ## Repository Overview
 
 This is the personal website of **Ernesto Cisneros Cino** — composer, digital artist, and writer.
-Hosted on GitHub Pages at **ernestocisneros.art**. Static HTML/CSS/JS, bilingual (EN + ES).
+Hosted on GitHub Pages at **ernestocisneros.art**. Static HTML/CSS/JS, multilingual (7 languages: EN, ES, FR, JA, RU, IT, KO).
 
 ## CRITICAL: Protected Files — DO NOT REMOVE OR MODIFY
 
@@ -16,10 +16,11 @@ The site uses an **external schema architecture** to prevent accidental deletion
 
 **NEVER delete, move, or rename these:**
 
-- `assets/js/schema-loader.js` — Loads JSON-LD schemas into pages at runtime
+- `assets/js/schema-loader.js` (v2.0.0) — Loads JSON-LD schemas into pages at runtime with language detection
 - `assets/schemas/*.json` — All 25 structured data files (Person, Book, MusicAlbum, etc.)
 - Any `<script>` tag containing `data-schema` or referencing `schema-loader.js` in HTML files
 - Any HTML comment containing `CRITICAL SEO/GEO`
+- `assets/js/footer-lang.js` — Footer language system for multilingual support
 
 **Why this matters:** These schemas make the site visible to Google, Perplexity, ChatGPT, Grok,
 and all generative AI engines. Removing them makes the site invisible to modern search.
@@ -32,6 +33,7 @@ and all generative AI engines. Removing them makes the site invisible to modern 
 
 - `assets/js/nav.js` — Site navigation
 - `assets/js/lang-detect.js` — Language detection and switching
+- `assets/js/footer-lang.js` — Footer language system for multilingual support
 - `assets/css/nav.css` — Navigation styles including language switcher
 
 ### 4. Meta Tags
@@ -42,15 +44,27 @@ Every page has OpenGraph and Twitter Card meta tags in `<head>`. Do NOT remove t
 
 1. **Schemas are EXTERNAL.** JSON-LD lives in `/assets/schemas/`, NOT inline in HTML.
    If you need to update a schema, edit the `.json` file — never add inline `<script type="application/ld+json">`.
+   Schema Loader v2.0.0 includes automatic language detection.
 
-2. **Spanish pages mirror English.** The `/es/` folder mirrors root structure exactly.
-   Any change to an EN page likely needs the same change in its ES counterpart.
+2. **Multilingual structure.** The site supports 7 languages with language-specific directories:
+   `/es/` (Spanish), `/fr/` (French), `/ja/` (Japanese), `/ru/` (Russian), `/it/` (Italian), `/ko/` (Korean).
+   Each language folder mirrors the root structure exactly.
+   Any change to a page likely needs the same change across all language versions.
 
-3. **CSS variables are standardized.** Colors use `--bg-deep`, `--gold`, `--gold-bright`,
+3. **hreflang implementation.** Every page includes hreflang links for all 7 languages plus x-default.
+   These are critical for SEO and must be maintained on every page.
+
+4. **CSS variables are standardized.** Colors use `--bg-deep`, `--gold`, `--gold-bright`,
    `--text-primary`, `--text-secondary`. Fonts use `--font-display` (Cinzel),
    `--font-body` (Cormorant Garamond), `--font-mono` (Space Mono).
 
-4. **Footer social links** appear on most pages. Keep them consistent.
+5. **Footer language system** uses `assets/js/footer-lang.js` to manage language switching
+   and localization across all pages.
+
+6. **Footer social links** appear on most pages. Keep them consistent.
+
+7. **Mare Incognitum overlay.** The Mare Incognitum page uses `pointer-events: none` fix
+   for the overlay to prevent interaction conflicts. Preserve this styling.
 
 ## Before Committing
 
@@ -73,8 +87,10 @@ find . -name "*.html" -not -path "./.git/*" -not -path "./components/*" | \
 
 ## File Inventory (as of April 2026)
 
-- **50+ HTML pages** (EN + ES)
+- **140+ HTML pages** (7 languages: EN, ES, FR, JA, RU, IT, KO)
 - **25 JSON-LD schema files** in `assets/schemas/`
-- **1 schema loader** at `assets/js/schema-loader.js`
+- **1 schema loader** at `assets/js/schema-loader.js` (v2.0.0 with language detection)
+- **1 footer language system** at `assets/js/footer-lang.js`
 - **1 analytics script** (GoatCounter, inline in every page)
-- **Key JS:** nav.js, lang-detect.js, schema-loader.js
+- **hreflang links** on all pages (7 languages + x-default)
+- **Key JS:** nav.js, lang-detect.js, schema-loader.js, footer-lang.js

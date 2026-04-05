@@ -20,6 +20,7 @@
     "url": "https://ernestocisneros.art/music/atlas-of-fragmented-light.html",
     "description": "Atlas of Fragmented Light - An instrumental ambient album by Ernesto Cisneros Cino. Eleven tracks of processed piano through immersive electronic textures.",
     "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
-    "mainEntity": { "@id": "https://ernestocisneros.art/music/atlas-of-fragmented-light.html#album" }
+    "mainEntity": { "@id": "https://ernestocisneros.art/music/atlas-of-fragmented-light.html#album" },
+    "availableLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
   }
 ]

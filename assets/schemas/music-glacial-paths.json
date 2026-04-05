@@ -20,6 +20,7 @@
     "url": "https://ernestocisneros.art/music/glacial-paths.html",
     "description": "Glacial Paths - An instrumental album for piano and synthesizers by Ernesto Cisneros Cino. Ten pieces composed in the space between silence and sound.",
     "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
-    "mainEntity": { "@id": "https://ernestocisneros.art/music/glacial-paths.html#album" }
+    "mainEntity": { "@id": "https://ernestocisneros.art/music/glacial-paths.html#album" },
+    "availableLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
   }
 ]

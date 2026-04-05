@@ -19,6 +19,7 @@
     "url": "https://ernestocisneros.art/music/mare-incognitum.html",
     "description": "Mare Incognitum - Un manifiesto sonoro de una cartografía inestable. Álbum instrumental por Ernesto Cisneros Cino.",
     "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
-    "mainEntity": { "@id": "https://ernestocisneros.art/music/mare-incognitum.html#album" }
+    "mainEntity": { "@id": "https://ernestocisneros.art/music/mare-incognitum.html#album" },
+    "availableLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
   }
 ]

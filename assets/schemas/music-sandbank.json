@@ -21,6 +21,7 @@
     "name": "Sandbank | Ernesto Cisneros Cino",
     "url": "https://ernestocisneros.art/music/sandbank.html",
     "description": "Sandbank: A collaborative audiovisual project with Gino Battiston. Documentary film from the Central Desert of Mendoza, Argentina.",
-    "isPartOf": { "@id": "https://ernestocisneros.art/#website" }
+    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
+    "availableLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
   }
 ]

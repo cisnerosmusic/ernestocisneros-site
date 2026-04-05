@@ -4,7 +4,7 @@
 
 Personal website of Ernesto Cisneros Cino — a Cuban composer, pianist, visual artist, mathematician, and writer based in Miami. This site serves as the central hub for his music, digital art (NFTs), published writings, theoretical research, and social impact projects.
 
-Live at **[ernestocisneros.art](https://ernestocisneros.art)**
+Live at **[ernestocisneros.art](https://ernestocisneros.art)** — Available in 7 languages (EN, ES, FR, JA, RU, IT, KO)
 
 ---
 
@@ -18,9 +18,18 @@ Live at **[ernestocisneros.art](https://ernestocisneros.art)**
 - **Biography** — Background and trajectory.
 - **Contact** — Collaborations, commissions, and conversations.
 
-## Bilingual
+## Multilingual (7 Languages)
 
-Full site available in English and Spanish (`/es/`). Automatic language detection via `lang-detect.js` with manual switcher in navigation.
+Full site available in 7 languages:
+- English (EN) — Root domain
+- Spanish (ES) — `/es/`
+- French (FR) — `/fr/`
+- Japanese (JA) — `/ja/`
+- Russian (RU) — `/ru/`
+- Italian (IT) — `/it/`
+- Korean (KO) — `/ko/`
+
+Automatic language detection via `lang-detect.js` with manual switcher in navigation and footer. hreflang links on all pages for proper language negotiation.
 
 ## Tech Stack
 
@@ -37,12 +46,13 @@ Static site built with vanilla HTML, CSS, and JavaScript. No frameworks, no buil
 The site uses an external JSON-LD schema architecture for search engine and generative AI optimization:
 
 - **25 schema files** in `assets/schemas/` (Person, Book, MusicAlbum, Article, VisualArtwork, Project, etc.)
-- **`schema-loader.js`** fetches and injects schemas at runtime via `data-schema` attributes
+- **`schema-loader.js` (v2.0.0)** fetches and injects schemas at runtime via `data-schema` attributes with language detection
+- **`footer-lang.js`** manages multilingual language switching in the footer
 - **`llms.txt`** — LLM discovery file following the emerging 2026 standard
 - **`AGENTS.md`** — Protection instructions for AI agents working on this repository
 - **Pre-commit hook** (`.githooks/pre-commit`) blocks accidental deletion of schemas, analytics, or agent instructions
-- **Canonical + hreflang** on all 51 pages (EN + ES + x-default)
-- **`sitemap.xml`** with 47 URLs covering both languages
+- **hreflang + canonical** on all 140+ pages (7 languages + x-default)
+- **`sitemap.xml`** with 140+ URLs covering all languages
 - **`robots.txt`** with explicit permissions for AI crawlers (GPTBot, anthropic-ai, Claude-Web, Google-Extended)
 
 ## Project Structure
@@ -60,12 +70,18 @@ music/                    Album pages with players
 nft.html                  NFT selected works
 nft/                      Collections (ETH, Tezos, BTC, gifts, marketplaces)
 artemis-ii.html           Artemis II live mission tracker
-es/                       Full Spanish mirror of all pages
+en/                       English pages (alternative routing)
+es/                       Spanish pages (full mirror of root structure)
+fr/                       French pages (full mirror of root structure)
+ja/                       Japanese pages (full mirror of root structure)
+ru/                       Russian pages (full mirror of root structure)
+it/                       Italian pages (full mirror of root structure)
+ko/                       Korean pages (full mirror of root structure)
 assets/
   audio/                  MP3 files (5 albums)
   css/                    Shared stylesheets (main.css, nav.css)
   images/                 Portraits, logos, book covers
-  js/                     nav.js, lang-detect.js, schema-loader.js
+  js/                     nav.js, lang-detect.js, schema-loader.js (v2.0.0), footer-lang.js
   nft/compressed/         Optimized images and videos for NFT sections
   pdf/                    Research papers (cosmology, technology)
   schemas/                25 JSON-LD structured data files
@@ -74,7 +90,7 @@ llms.txt                  LLM discovery file
 AGENTS.md                 AI agent protection instructions
 .githooks/pre-commit      Schema/analytics protection hook
 robots.txt                Search engine + AI crawler directives
-sitemap.xml               Full bilingual sitemap (47 URLs)
+sitemap.xml               Full multilingual sitemap (140+ URLs)
 404.html                  Custom error page
 ```
 
@@ -86,6 +102,9 @@ This repository includes a multi-layer defense system to prevent AI agents from 
 2. **AGENTS.md** — Read-first instructions for any AI agent working on the code
 3. **Pre-commit hook** — Blocks commits that remove schemas, GoatCounter, or AGENTS.md
 4. **HTML comments** — `<!-- CRITICAL SEO/GEO -->` markers on protected elements
+5. **Multilingual safeguards** — Changes to pages require updates across all 7 language versions
+
+The site contains 140+ protected pages across 7 languages. Always verify that schema, hreflang, and analytics changes are propagated to all language versions.
 
 To activate the pre-commit hook after cloning:
 

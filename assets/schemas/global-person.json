@@ -46,5 +46,7 @@
     "https://audius.co/ernestcisneros1",
     "https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN"
   ],
-  "email": "ernest@ernestocisneros.art"
+  "email": "ernest@ernestocisneros.art",
+  "knowsLanguage": ["en", "es", "fr"],
+  "inLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
 }

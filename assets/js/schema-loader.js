@@ -21,12 +21,57 @@
  * For pages that only need the global Person schema:
  *   <script src="/assets/js/schema-loader.js" data-schema="none" defer></script>
  *
- * @version 1.0.0
+ * @version 2.0.0
  * @author Ernesto Cisneros Cino
  */
 
 (function () {
   'use strict';
+
+  // Get current page language from document root element
+  function getCurrentLanguage() {
+    return document.documentElement.lang || 'en';
+  }
+
+  // Patch language-dependent fields in schema data
+  function patchLanguage(data, lang) {
+    if (!data) return data;
+
+    // Handle arrays
+    if (Array.isArray(data)) {
+      data.forEach(function (item) { patchLanguage(item, lang); });
+      return data;
+    }
+
+    // Handle objects
+    if (typeof data === 'object') {
+      // Only patch WebPage schemas, not Person, WebSite, Book, MusicAlbum, etc.
+      if (data['@type'] === 'WebPage') {
+        // Set inLanguage to current page language
+        if (data.hasOwnProperty('inLanguage')) {
+          data.inLanguage = lang;
+        }
+
+        // Adjust URL to include language prefix for non-English pages
+        if (lang !== 'en' && data.url && typeof data.url === 'string') {
+          if (data.url.startsWith('https://ernestocisneros.art/')) {
+            var urlWithoutDomain = data.url.replace('https://ernestocisneros.art/', '');
+            data.url = 'https://ernestocisneros.art/' + lang + '/' + urlWithoutDomain;
+          }
+        }
+
+        // Adjust @id similarly
+        if (lang !== 'en' && data['@id'] && typeof data['@id'] === 'string') {
+          if (data['@id'].startsWith('https://ernestocisneros.art/')) {
+            var idWithoutDomain = data['@id'].replace('https://ernestocisneros.art/', '');
+            data['@id'] = 'https://ernestocisneros.art/' + lang + '/' + idWithoutDomain;
+          }
+        }
+      }
+    }
+
+    return data;
+  }
 
   // Determine base path relative to current page depth
   function getBasePath() {
@@ -42,9 +87,11 @@
 
   function injectSchema(data) {
     if (!data) return;
+    var lang = getCurrentLanguage();
+    var patchedData = patchLanguage(data, lang);
     var script = document.createElement('script');
     script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(data);
+    script.textContent = JSON.stringify(patchedData);
     document.head.appendChild(script);
   }
 

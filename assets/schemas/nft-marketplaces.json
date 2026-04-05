@@ -8,6 +8,7 @@
     "description": "Find Ernesto Cisneros Cino's NFT collections and profiles across Foundation, objkt, Audius, HUG, and Exchange Art.",
     "about": { "@id": "https://ernestocisneros.art/#person" },
     "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
-    "inLanguage": "en"
+    "inLanguage": "en",
+    "availableLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
   }
 ]
