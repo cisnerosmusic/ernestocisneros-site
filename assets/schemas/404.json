@@ -5,8 +5,9 @@
     "@id": "https://ernestocisneros.art/404.html",
     "name": "Page Not Found | Ernesto Cisneros Cino",
     "url": "https://ernestocisneros.art/404.html",
-    "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
-    "inLanguage": "en",
-    "availableLanguage": ["en", "es", "fr", "ja", "ru", "it", "ko"]
+    "isPartOf": {
+      "@id": "https://ernestocisneros.art/#website"
+    },
+    "inLanguage": "en"
   }
 ]
