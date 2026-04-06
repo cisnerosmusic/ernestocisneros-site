@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>전기 | Ernesto Cisneros Cino</title>
@@ -712,7 +716,7 @@
   <nav class="nav">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <img src="../assets/images/logo.png" alt="Ernesto Cisneros">
+        <img src="../assets/images/logo.png" alt="Ernesto Cisneros" loading="lazy">
       </a>
       <button class="nav-toggle menu-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -770,7 +774,10 @@
   <main class="main-content" id="main-content">
     <div class="bio-grid">
       <div class="bio-portrait">
-        <img src="../assets/images/portrait.jpg" alt="피아노에서의 Ernesto Cisneros Cino" loading="eager">
+        <picture>
+    <source srcset="../assets/images/portrait.webp" type="image/webp">
+    <img src="../assets/images/portrait.jpg" alt="피아노에서의 Ernesto Cisneros Cino" loading="eager">
+  </picture>
       </div>
 
       <div class="bio-text">
