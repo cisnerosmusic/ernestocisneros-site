@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>遠ざかる限界 | アイデア | エルネスト・シスネロス・シノ</title>
+<meta name="description" content="音楽、記憶、そして偶然。幼い直感から色付きノイズの理論へ：音楽がいかにして宇宙を考えることへと導いたか。">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ja/ideas/the-limit-recedes.html">
+    <meta property="og:title" content="遠ざかる限界 | エルネスト・シスネロス・シノ">
+    <meta property="og:description" content="音楽、記憶、そして偶然。幼い直感から色付きノイズの理論へ。">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="遠ざかる限界 | エルネスト・シスネロス・シノ">
+    <meta name="twitter:description" content="音楽、記憶、そして偶然。幼い直感から色付きノイズの理論へ。">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "遠ざかる限界：音楽、記憶、そして偶然",
+  "headline": "幼い直感から色付きノイズの理論へ",
+  "url": "https://ernestocisneros.art/ja/ideas/the-limit-recedes.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "音楽がいかにして宇宙を考えることへと導いたか：アルセニオのピアノから色付きノイズへ、電子音楽ラボからクレイン空間へ。",
+  "about": ["音楽", "確率的宇宙論", "記憶", "色付きノイズ", "直感", "形式化"],
+  "inLanguage": "ja"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ja/ideas/the-limit-recedes.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/the-limit-recedes.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-cosmology-physics" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">メインコンテンツへスキップ</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../../index.html" class="nav-item">ホーム</a></li>
+      <li><a href="../../biography.html" class="nav-item">略歴</a></li>
+      <li class="nav-dropdown">
+        <a href="../../music.html" class="nav-item">音楽</a>
+        <div class="nav-dropdown-content">
+          <a href="../../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../../music/other-works.html" class="nav-dropdown-item">その他の音楽作品</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../../nft/eth-collection.html" class="nav-dropdown-item">ETHコレクション</a>
+          <a href="../../nft/tez-collection.html" class="nav-dropdown-item">Tezコレクション</a>
+          <a href="../../nft/marketplaces.html" class="nav-dropdown-item">マーケットプレイス</a>
+          <a href="../../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">コミュニティからのギフト</a>
+        </div>
+      </li>
+      <li><a href="../../books.html" class="nav-item">書籍</a></li>
+      <li class="nav-dropdown">
+        <a href="../../ideas.html" class="nav-item active">アイデア</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">宇宙論と物理学</a>
+          <a href="technology-society.html" class="nav-dropdown-item">テクノロジーと社会</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">文化、記憶、そして亡命</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">芸術、詩学、そして哲学</a>
+        </div>
+      </li>
+      <li><a href="../../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../../contact.html" class="nav-item">お問い合わせ</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/the-limit-recedes.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../es/ideas/the-limit-recedes.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="the-limit-recedes.html" class="active-lang" title="日本語" onclick="localStorage.setItem('lang','ja')">🇯🇵</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>ページタイプ：確率的宇宙論の起源に関する自伝的エッセイ。著者：エルネスト・シスネロス・シノ。
+    主題：音楽、直感、色付きノイズ、ヒルベルト空間、クレイン空間、レジリエンスバレー、確率的宇宙論。
+    関連：cosmology-physics.html、biography.html。</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">アイデア</span>
+    <h1 class="hero-title">遠ざかる限界</h1>
+    <p class="hero-lead">音楽、記憶、そして偶然。<br>幼い直感から色付きノイズの理論へ：音楽がいかにして宇宙を考えることへと導いたか。</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- I. El origen del sonido -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第一章</span>
+      音の起源
+    </div>
+
+    <div class="narrative-text">
+      <p>アルセニオは教室の先生ではなかった。彼は明け方が訪れるのと同じ神秘性をもって家々にやってくる存在だった。ゆっくりと、完璧に、帽子とジャケット、時間を刻むようなステッキを持って。1940年代にはキューバを踊らせた大オーケストラで演奏していた。その時代、音楽は聖なる領域であり、リズムは交わりの一形態だった。黒い肌と落ち着いた声を持つアルセニオは、権威を必要としない気品で教えていた。彼を師匠に持つための条件は三つだけだった：楽器、興味、そして規律。それで十分に宇宙の扉を開くことができた。</p>
+
+      <p>私は六歳だった。まだ自分の名前を書くのがやっとだった。しかしあの日、祖父母が苦労して買ってくれた立てピアノの前で、私は人生で最初の定義を聞いた：</p>
+
+      <blockquote class="narrative-quote">「音楽は時間の中で音を良く組み合わせる芸術である。」</blockquote>
+
+      <p>誰も疑いませんでした。その自然な祈りのような言葉が、私の中に種を蒔くはずだったことに。私の幼い心の中で、記号のない方程式が形成された：音 + 秩序 + 時間 = 感情。その瞬間から、芸術は見えないものを測定する方法だということを知った。</p>
+
+      <p>何年もの間、その方程式を完全には理解しないまま弾いていた。それぞれの音が小さな物理的決定、私がまだ知らない法則に従う振動であることを学んだ。しかし、MIDIシーケンサー、バーチャルシンセサイザー、そしてハバナの電子音楽ラボが現れたとき、アルセニオが言ったこと—こんなにシンプルで清潔だったこと—が無限の構造の原理であることを理解した。時間、パターン、波、調和、すべてが同じ言語の一部を形成していた：合成だ。</p>
+
+      <p>それぞれのコードの背後に隠されたパターン、それぞれのメロディーの背後に隠された幾何学、それぞれの感情の背後にある見えない秩序を発見した。耳がそれを喜びとして翻訳する。音楽は数と魂の完璧な橋だった。そしてそれ以来、そこで暮らしてきた。なぜ振動するものが私たちも動かすのか、なぜ音は宇宙の法則を明かすことができるのかを理解しようとしながら。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- II. El niño que medía el mundo -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第二章</span>
+      世界を測っていた少年
+    </div>
+
+    <div class="narrative-text">
+      <p>家でアルセニオと音楽を勉強していた一方で、家の外では世界は実験室のように開いていた。音楽院には通わなかった。私の音楽教育は自分の家の壁の中で起こっていた。掛け算を学び、おもちゃを分解してその仕組みを見るのと同じ場所だった。そして予想に反して、私の最も得意な科目は芸術ではなく、科学だった。数学、物理、化学、生物学、コンピュータ、そして製図だ。</p>
+
+      <p>製図は私に予想以上の影響を与えた。それ以来、私は活字だけで書く。精密さの美的帰結だ。正確に引かれた線が真実、世界の正確な測定値を含むことができるという事実に魅了された。その時には分からなかったが、その清潔さへの執着は、後に私がクリーンな調和、見えない比例、柔軟性を持たずに呼吸する建築を探させるだろう。</p>
+
+      <p>最初の数年間、音楽と科学は平行して走っていた。一つは秩序を聞くことを教え、もう一つはそれを測ることを教えた。10年生まで、偶然か運命か、第三の力が現れるまでは。文学だ。私は先生に恋をし、彼女と一緒に、言葉に恋をした。狂気的な熱で読んだ。学校のものではない熱で。以前、音楽と公式を理解したいと思ったのなら、今は人間を理解したかった。その混合—感情、数字、形—は私の真の人生の目的の開始だった。意味を構築したいという欲望。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- III. Los primeros circuitos del tiempo -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第三章</span>
+      時間の最初の回路
+    </div>
+
+    <div class="narrative-text">
+      <p>1980年代後半、最初のアーティファクトが現れた。それは私の人生を変えた。カワイQ-80。時間を記録し繰り返すことができる小さな機械。絶え間ないアシスタントを箱の中に持つようなものだった。その直後、マッキントッシュでミュージックシーケンスを実行し、オーディオコンソールを制御するのを初めて見た。1993年だった。未来が来たと感じた。初めて、心の中で聞こえていた音楽を正確に整理することができた。</p>
+
+      <p>同時に、<a href="../biography.html">パイサヘ・コン・リオ</a>というグループとともに、国際的なチャートの成功曲を分析し、隠されたパターン、曲を記憶すべきものにする見えない陰謀を発見しようとしていた。その分解の運動は、私の最初の意識的な作曲学校だった。美しさも論理があり、感情は間隔、周波数、強度で測定できる。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IV. El laboratorio del aire -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第四章</span>
+      空気の実験室
+    </div>
+
+    <div class="narrative-text">
+      <p>二十代の後半、偶然は計画のように振る舞い始めた。私の道で決定的となるミュージシャンと思想家たちに会った。その中には、まるで私たちが他の人生で既に知り合っていたかのように受け入れてくれたエデシオ・アレハンドロ。おそらく私が知った中で最も知的なミュージシャンの一人、エディ・カルドーザ。各コードを罠を隠しているかのように分析していたスケプティックなベーシスト、イスラエル・ロペス。そして文学の教授から歌へと変わり、パイサヘ・コン・リオグループを率いていたエルネスト・ロメロ。</p>
+
+      <p>彼ら全員と一緒に、私の繋がりのない知識の小さな宇宙が再構成された。それぞれの会話は美学、音響学、皮肉、人生の授業だった。そしてある日、ラボラトリオ・ナシオナル・デ・ムシカ・エレクトロアクスティカのコンピュータのデジタル・パフォーマー画面の前で自分を見つけた。</p>
+
+      <p>それは単なる場所以上のものだった。それは集団実験だった。空気は笑い、理論的議論、不可能なコード、懸かった埃で満ちていた。それは多くの録音を聴いた人より多くの人を聴いたカーペットの上にありました。そこで、前衛は様式ではなく、可能性への態度であることを理解した。音は何でもあり得た：構造、カオス、テクスチャ、沈黙。</p>
+
+      <p><strong>映画への飛躍</strong></p>
+
+      <p>静かな水に最初の石を投げたのはエデシオだった。彼はしばらく私の仕事を見た後、オリジナルの作曲ではなく古典の編成を持つ映画の音楽に参加することを招待した：「ナダ」。彼に与えたそのイエスは勇敢さと恐怖の混合だった。私の最初の委任は他でもなく、カール・オルフの「カルミナ・ブラーナ」だった。スコアの遺産。山。命令はシンプルで目がくらむようなものだった：</p>
+
+      <blockquote class="narrative-quote">「これを音にして…しかし別の楽器で。」</blockquote>
+
+      <p>スコアを腕の下に持って家に帰った。目まいが胃にある。バスの中で、排気ガスの煙と都市のつぶやきの中で、ノートを別の世界の象形文字のように見ていた。考えていた：何に巻き込まれたのか？しかし同時に、創造の危険だけが与えるスパークを感じた。</p>
+
+      <p>こうして「ナダ」が始まった。古典音楽をカリブ海の向こう岸から再解釈することで構成された冒険。限られたリソースで、しかし比類のない野心で。それは私の最初の映画体験であり、知らずに、長い音響の旅をマークするマイルストーンでした。</p>
+
+      <p>その段階は何か本質的なことを教えてくれた。音楽は、イメージに仕えているように見える場合でも、それ自体の物語、その内部論理を持っているということ。それぞれのティンブル決定は感情方程式であり、それぞれのミックスはカオスと秩序の間のバランスの試みだった。映画は私の質問を増幅した。サウンドの感情を決定するのは何か？なぜ周波数は私たちを動かすのか？振動がどのように意味に変わるのか？</p>
+
+      <p>アルセニオで始まった芸術家。鉛筆2Hで線を引いていた少年。そしてポップソングでパターンを探していた若者。今はシャドウの公式で働いていた。魂のもの。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- V. Los Raros -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第五章</span>
+      ロス・ラロス
+    </div>
+
+    <div class="narrative-text">
+      <p>ケーブル、スコア、理論の間に、別の実験室も存在していた。楽器のない、コンピュータのない、しかし同じように騒々しく必要なもの。それはトニー、ハイチ、マリオ、リテイと私で形成されました。彼らは「ロス・ラロス」と呼んでいた。プレ大学への平行セルのようなもの。幸せな反逆者のグループ。</p>
+
+      <p>トニーは壊滅的な皮肉と信じられないほどの感受性で書いた。ハイチは自分自身の物理学を持っているように見える宇宙を描いた。人間の心の研究者。マリオは彼の父親がオペラの偉大な歌手だったにもかかわらず悪く歌った。トニーを批判し、その議論は見世物だった。そしてリテイ、詩人であり歴史家であり、圧倒的な知性を持つ感情的な竜巻。シオランを引用することができるのと同じくらい才能のある、予測不可能な、愛らしく不均衡な女性。シルビオの歌で泣くことができます。</p>
+
+      <p>私たちは政治、哲学、文学、映画、音楽、あるいはただ人生を観察するために集まりました。それが何か大きなエッセイのリハーサルであるかのように。そこで、時間も構造もないその真夜中に、別の学習形式が生まれた。愛を損なうことなく異なる方法、友情を失うことなく批判する芸術。</p>
+
+      <p>会話は無限でした。議論は時々和解できません。しかし何か、エゴより強力なものがありました。笑いと矛盾の中で、世界に対する独自の見方を構築していることへの認識。</p>
+
+      <p>電気音響ラボが私に精密さを教えたなら、ロス・ラロスは私に疑いを教えた。そして両者の間—正確さと不確実性の間—私はまだ辿っている地図を描いた。</p>
+
+      <p>彼らと一緒に、すべての理論は異端を必要とすること、真実は強制されない、会話される、そして大きなアイデアはほぼ常に煙、笑い、半分満たされたグラスの間で生まれることを理解した。</p>
+
+      <p>おそらくそれは私の最も科学的でない部分ですが、最も人間的でもあります。奇妙な人たちはいるから—それらの既約なもの—は私の多くの質問...そして私の答えのいくつかの責任があります。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VI. Resonancias -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第六章</span>
+      共鳴
+    </div>
+
+    <div class="narrative-text">
+      <p>時年が経つにつれて、私はノートだけが共鳴することに気付いた。アイデア、人、沈黙も共鳴した。すべてが振動するというのは、何らかの形で整理される。人生は弦を支配するのと同じ法則によって動くようだ。一つの周波数が別の周波数と互換性があることを見つけると、両方とも存在を増幅する。</p>
+
+      <p>「ロス・ラロス」、ミュージシャン、教授、恋、場所...すべてが共鳴器、私の周波数に近い振動する体だった。そしてそれらの振動が一致したとき、説明できないほど完全な瞬間が生まれた。宇宙が感覚が追求されていないことを確認したかのように。一致の中で見つけられました。</p>
+
+      <p>そこはカオスが自分自分できる理由を理解したい私の執着を始めた。なぜノイズ—ラボ、通りの中で、または魂の中で—その上にパターンを見つけるだけで音楽に変わることができるのか。音楽、物理、数学、知覚は異なる領域ではなかった。同じ質問を命名する方法だった。</p>
+
+      <p><strong>震えの背後にある秩序</strong></p>
+
+      <p>基本的には、すべては一つの直感に帰着する。現実は振動する。電子、心臓、拍手、言葉、友情：すべてが揺れる。固いと信じている構造は、安定した振動の単なる平均である。だから芸術と科学は接する—なぜなら両方ともどこかで障害が形に変わるポイントを探しているから。</p>
+
+      <p>音楽は方程式の感受性版である。方程式は記号で書かれていない、感情で。科学者は基本的には作曲する。見えない接続である調和関係を関連する変数間で求めている。</p>
+
+      <blockquote class="narrative-quote">ミュージシャンは時間を整理し、物理学者は空間を整理し、数学者は論理を整理します。しかし、彼らは皆同じものを探している。ノイズの中の一貫性。</blockquote>
+
+      <p><strong>見えない反響</strong></p>
+
+      <p>私は人生を多次元的なスコアとして見始めた。愛、喪失、学習...すべてが一度だけ聞くことができるシンフォニーの動きだった。そして人間の耳—骨、空気、電気の奇跡—は普遍的な振動の翻訳者であることを理解した。リッスンは現実を測定する一形態です。そして感じることは、おそらく、私たちが能力のある最も高度な計算です。</p>
+
+      <p>その時点で、私は規律を分離できませんでした。私を動かしたすべてが、私が理解したいこと。そして私が理解したこと、それが音になるまで表現したかった。方程式は再び円を閉じた。時間に音を組み合わせる芸術は、意識の宇宙の振動を組み合わせる科学になっていました。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VII. El oído del universo -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第七章</span>
+      宇宙の耳
+    </div>
+
+    <div class="narrative-text">
+      <p>何年も、私を魅了したのは音楽だと思っていた。その後、実は、私を引き付けたのは振動そのものであることを発見した。その性質、その旅、その効果。音響学は、すべての音が動きの中のパターンであることを明らかにした。それを通過する際に空間を形成するエネルギーの一形態。そして神経科学は、耳は単に聞こえていないことを教えた—それは解釈し、先読みし、夢を見ます。</p>
+
+      <p>音の経験は継続的な予測の行為である。脳は、それが起こる前の数ミリ秒でサウンドの将来を構築します。喜びは到着する音からは生まれず、期待される音と実在するもの間の一致から。予測と予期しない間のその踊りは、音楽的喜びの起源です...そしておそらく、存在する喜びの。</p>
+
+      <p>その発見では、私は鏡を見つけた。人間の耳が物理的な振動を感情に翻訳する場合、意識は宇宙でも同じことをしていないのか？心はコスモスの耳ではないのか？現実のパターンを解釈するのか？</p>
+
+      <p><strong>波からコスモスへ</strong></p>
+
+      <p>その時点で、私は私の科学の本に戻った—サガン、アインシュタイン、ホーキング、ファインマン—そして魅力は同じであることを理解した。別の言語で表現されただけ。音楽は周波数間の関係を研究する。物理学は、力間の関係。両方は見えない調和を求めています。両方はリッスンの形式です。</p>
+
+      <p>銀河も振動し、ブラックホールは波を放出し、宇宙背景放射は「音」を持つことを読んだ日を思い出した。すべて—絶対的にすべて—は振動の交響曲として解釈できることを理解した。違いはスケールに在り、本質にはない。</p>
+
+      <p>そして、それがすべてを変えた質問が現れた：</p>
+
+      <blockquote class="narrative-quote">「そして、もし宇宙を私が言うのと同じもので説明できたら？」</blockquote>
+
+      <p>その疑い—大胆さと謙虚さの混合—は新しいエピソードの始まりでした。共鳴構造として宇宙を見始めた。また自分自身を通じて微調整する巨大な楽器。法則でもあるリズム。芸術はそれを感じるために私を準備した。科学、それを理解するために。</p>
+
+      <p><strong>インフレクションポイント</strong></p>
+
+      <p>そこから帰りはありませんでした。物理学と数学は自然な次のステップになりました。音楽を放棄するのではなく、それを普遍的に拡張するために。サウンドは私の言語のままでした。しかし、メッセージは時空全体をカバーするために成長していました。</p>
+
+      <p>各意識が本当にインストルメントではないかを自問し始めた観測。宇宙を認識している場合、それを形成している場合でもあります。ミュージシャンは言葉を奏でることで楽器のティンバーを修正するように。</p>
+
+      <p>その後、メロディーのように戻り、すべてがシャッフルされた。アルセニオ、子ども、ラボ、変わった、映画、シンセサイザー...すべてが騒音を支えるパターンを解読する同じ試みの段階だった。意味を求める探求。振動によってガイドされました。聞くために献身された人生。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VIII. El patrón y el misterio -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第八章</span>
+      パターンと謎
+    </div>
+
+    <div class="narrative-text">
+      <p>驚嘆が形を変える時点がある。最初は、一人は理解していないから驚く。その後、理解が始まるから。そして、その時点で何か奇妙なことが起こります。知識の限界に近づけば、その限界はどんどん遠ざかります。</p>
+
+      <p>謎は溶けません。洗練。限界は比例して後退する。</p>
+
+      <p>見つかった各答えは、新しい不確知を開きます。宇宙がメロディーであったかのように。解読すると、より複雑なものを作曲しています。物理学、数学、音楽がその運命を共有します。謎を閉じるのではなく、聞こえる形を与えることを求めています。</p>
+
+      <p>時々、宇宙は最も美しい対位法の例だと思う。物質とエネルギー、秩序とエントロピー、決定論とカオスは、フーガの正確さでインターレースされています。そして私たち—これらの小さな炭素楽器—は、一時的な周波数で共鳴する一般的なテクスチャーの一部です。</p>
+
+      <p>科学は宇宙を測定することを教えています。しかし、美しさは私たちが測定できない場所に在る。無限の比例、捕捉したいとすぐに逃げる調和のその感覚。</p>
+
+      <blockquote class="narrative-quote">だから好奇心は終わりません。理性が一歩進むたびに、詩は二歩後退し、両方が人間の理解の振付けをトレースします。</blockquote>
+
+      <p><strong>芸術家研究者の場所</strong></p>
+
+      <p>時々、芸術と科学が同じコスミック心の2つの半球でないかどうかを自問します。1つは測定可能なものを探索し、もう1つは想像可能なもの。アーティストと物理学者は同じ視線を共有しており、別の言語を使用して同じ震えを説明しています。</p>
+
+      <p>ミュージシャンは振動を感情に翻訳します。数学者は関係に。物理学者、法に。哲学者、質問へ。しかし、基本的には、彼らはすべて同じことの前で跪く。彼らがまだ理解していない広大さに。</p>
+
+      <p><strong>モバイルリミット</strong></p>
+
+      <p>今日、私は理解が閉じられていないことを知っています。しかし開きます。知識は魔法を殺しません。それを変換します。各発見は謎を拡大しており、別の高い音に溶ける音のように。</p>
+
+      <p>おそらくそれが私たちが空を見て、古い人の足跡をたどり、星の中のメロディーで書かれた同じジオメトリーを解読しようとしている理由です。</p>
+
+      <p>そして限界が後退するにつれ、私たちは前進し、決してやむことのない質問のエコーによってガイドされています。なぜすべてが振動するのか？そして、それで一緒に振動することは何を意味するのか？</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IX. La música del azar -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第九章</span>
+      偶然の音楽
+    </div>
+
+    <div class="narrative-text">
+      <p>私が音楽を理解するのと同じ道具で宇宙を理解しようとしたとき、私は落ち着きのないことを発見した。宇宙の法則はテキストより楽譜に似ています。閉じた指示ではなく、進化する確率。現実が展開するにつれて自分たちを書き直す関係。</p>
+
+      <p>サウンドは、精度は謎を除外しないことを教えてくれました。物理学は、不確定は秩序を除外しないことを私に明かしました。だから私は確率的宇宙論のアイデアに到達しました。不確実で調和が予測不可能から現れるシンフォニーのように振る舞う宇宙。</p>
+
+      <p>音楽は不確実性を受け入れることを教えてくれました。沈黙とノイズの間に、その形が存在する前に示唆される中間ゾーンを認識するために。自然でも同じことが起こります。カオスが構造を生成し、偶然が安定を支えます。</p>
+
+      <p><strong>思考のためのスペース</strong></p>
+
+      <p>その直感を形式化しようとしたとき、それを含むのに十分に柔軟な数学的な場所を探した。ヒルベルト空間は最初の避難所だった。すべてが共存でき、調和関係で投影される場所。思考の完璧な比喩だった。すべてのアイデアは別のアイデアへの投影です。</p>
+
+      <p>しかし、宇宙は完全に肯定的で定義された空間のように動作しないことをすぐに理解した。限界は不規則であり、現実は曲がり、矛盾し、反対方向に振動する。ヒルベルトは美しかったが、不十分でした。</p>
+
+      <p>その後、別案が現れた。クレイン空間。関係が不確定の拡張。その不規則性は欠陥ではなかった。それは実際の世界の条件でした。複雑な現象はきれいな幾何学の中に住んでいません。肯定的と否定がコアシストする地帯が必要で、2つのオクターブが同じ共鳴に融合するように。</p>
+
+      <p><strong>驚きを返すランゲージ</strong></p>
+
+      <p>その移行（ヒルベルトからクレインへ）は、均等な気質から自然な気質へ渡るようなものでした。解放。数学は刚体を止めて、以前に逃げた振動を収容することができる有機的になった。</p>
+
+      <p>宇宙を説明する唯一の方法がないのと同じように、音のための唯一の可能な調律もないことを理解した。現実、音楽のように、変調が必要です。</p>
+
+      <p>宇宙は完成したシンフォニーではなく、統計的な即興だ。それ自体を修正し、別のリズムで姿を消し、再び現れる甘いメロディー。</p>
+
+      <p><strong>不確実性のエコー</strong></p>
+
+      <p>だから、物理学が哲学になる端に到達した。秩序と偶然はもはや反対ではなくなった。補足として明らかになった。宇宙は安定性を求めていません。変動における持続を求めています。変動を生き残る一種のアイデンティティ。</p>
+
+      <p>そして、その恒常的な動きの中で—方程式が音楽になり、音楽が方程式になる—宇宙の美しさが正確にその限界が比例して後退することに在ることを理解した。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- X. La figura imposible -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第十章</span>
+      不可能な図形
+    </div>
+
+    <div class="narrative-text">
+      <p>時々、理論が正確になりすぎるとき、ひび割れが必要です。一息つく。理性がまだ証明できない想像を許す場所。不可能な概念が生まれるのはそこからです。光速より速く移動する仮説粒子、振動する弦のような巻き上げられた次元、鏡の宇宙。数学的なフィクション、現実を否定していない、拡大する。</p>
+
+      <p>それらのすべての中で、タキオンのアイデアは抵抗しがたい。仮説粒子は光速より速く移動できます。観察可能なボディではなく、相対論的方程式の論理的帰結。通常のドメインを超えて押される場合。</p>
+
+      <p><strong>虚数のエコー</strong></p>
+
+      <p>幼い頃から、見られない数字は私を困惑させた。数学に「想像」は非現実的ではなく、補足的という意味であることを発見したとき、科学にもポエトリーがあることを理解した。虚数は不可能への解決策として生まれた。彼らは否定的な値のルーツを抽出することを可能にし、当時、論理的な冒涜と見なされていました。</p>
+
+      <p>今日、彼らは世界の多くを支えています。電力、量子コンピューティング、デジタルサウンド。すべてが「ファンタジー」に依存しています。誰かが書く勇気がありました。</p>
+
+      <p>タキオンは、ある意味で、物理学の虚数です。光の限界を超えて時空が曲がるものを探索することを可能にする象徴的な拡張。</p>
+
+      <p><strong>確実性より速い</strong></p>
+
+      <p>理論では、タキオンはスローダウンしませんが、加速します。エネルギーを失うほど速くなる。その逆説は、人間の知識の完璧な比喩にそれを作ります。私たちがより多く理解するほど、私たちは確実性から遠ざかる。各答えは秘密のエネルギーを減らしますが、秘密は私たちより速く動きます。</p>
+
+      <p>タキオンはその無限の追求を具体化している。オブジェクトではなく、質問。その存在—実質的または不実的—は物理学がただ説明しないことを思い出させます。また、想像力。</p>
+
+      <p><strong>仮説的リソース</strong></p>
+
+      <p>私の理論的探検が進むにつれて、仮説的は思考の弱点ではなく、その呼吸であることを理解した。不可能なアイデアは言語拡大の楽器として機能します。現実が方程式に合わない場合、方程式は成長する必要があります。</p>
+
+      <p>科学と芸術がその勇敢さを共有している。まだ存在していないことを想像して考え可能にするために。タキオン、夢、不可能な和弦...すべては同じスペースを占める。その光の速度に達することに。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- XI. El color del ruido -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第十一章</span>
+      ノイズの色
+    </div>
+
+    <div class="narrative-text">
+      <p>絶対的な沈黙は存在しない。しかし、純粋なノイズもありません。その隙間に現実が住んでいます。</p>
+
+      <p>ホワイトノイズ—その無差別な周波数の海—は抽象化、理想的な限界です。均一で記憶がなく、履歴がありません。見かけ上、完璧...しかし退屈、非現実的。自然には何も振動しません。空気でも、水でも、脳でも。</p>
+
+      <p>現実は、優れた実験音楽のような色付きノイズで作られています。過去の痕跡を保持する周波数、相関、内部リズム、勾配。ノイズの各色（ピンク、茶色、青、紫）は組織の別の形を表しています。世界の統計署。</p>
+
+      <p><strong>色の微妙なもの</strong></p>
+
+      <p>ホワイトノイズでは、すべての周波数は等しい力を持っています。色付きノイズでは、わずかな調整はその分布を再分配します。その微妙さは秩序にカオスに「音」を与えます。バランスが公正な場合、ピンクノイズが現れます。自然と人間の脳に最も似ています。平衡記憶と小説。茶色のノイズはより柔らかく、ほぼメロディックに聞こえます。</p>
+
+      <p>実験音楽では、この調整は作曲家の感情的な意図のような調整です。宇宙のサウンドが緊張するか穏やかか、神経質なのか瞑想的かを判断します。微妙さは経験に色を付けます。そして、それでノイズは残留物を停止し、テクスチャー、形式になります。</p>
+
+      <p><strong>時空の幾何学</strong></p>
+
+      <p>しかし、色のアイデアは音だけには属していない。また、時空が曲率が特定の方法に傾く場合「着色」されることがあります。宇宙はホワイトノイズで振動していません—それは耐え難いでしょう—しかし、わずかに着色されたノイズで。構造を提供しながら硬さなく容易にする混合。</p>
+
+      <p>その幾何学では、イベントは孤立したポイントではなく、記憶を持つ変動です。そして、それぞれはデリケートバランスに従う。拡散と引き付けの傾向。秩序への傾向と秩序への傾向。</p>
+
+      <p><strong>確率のフロー</strong></p>
+
+      <p>整った状態の一部として想像されることができます。整った可能性のリバーのような。時間内に進化し、整った力と偶然に影響を受けた。状態の可能なクラウドがどのように動き、拡大、集中するかを説明します。</p>
+
+      <p>解決策は単なるポイント固定ではなく、オプションの分布。統計シンフォニーは時間とともに変化します。そこ、予測可能と無作為の境界に、宇宙は生きている作曲のように振る舞う。</p>
+
+      <p><strong>素材ノイズ</strong></p>
+
+      <p>ノイズを理解することは、宇宙の呼吸を理解することです。粒子がなくなる変動がなく、思考を持つ神経ノイズがありません。ノイズは形の敵ではなく、その種です。人生自体はカラーパターンです。持続する秩序は十分、進化のためのカオス十分。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- XII. Difusión, entropía y sentido -->
+    <div class="chapter-heading">
+      <span class="chapter-number">第十二章</span>
+      拡散、エントロピー、意味
+    </div>
+
+    <div class="narrative-text">
+      <p>その確率フローは単にパーティクルを説明していません。人生自体を説明します。各細胞、各思想、各決定は動きの可能性の分布の結果です。私たちは見えない場の影響の下で拡散する物質であり、秩序とノイズの間でおおよそ流れます。</p>
+
+      <p>宇宙もそう振る舞う。決定論的に進化していない。統計的に、それぞれのアトムが確率のスコアに従うかのように。</p>
+
+      <p>エントロピーは意味の敵ではない。その可能性の条件。分散できるもののみを整理できます。秩序は情報を破壊しません。それを輸送します。だから宇宙は完璧なバランスを求めていません。変化を生き残る動的な持続。変化を生き残る一貫性の形。</p>
+
+      <p><strong>メモリの拡散</strong></p>
+
+      <p>複雑なシステムでは、方程式は十分ではありません。メモリが現れます。物質は覚えています。人間の意味ではなく、統計的な歴史として。各将来の状態は部分的に過去に依存しています。その時間跡は生きたものの最初の署名です。</p>
+
+      <p>生物では、その記憶は構造になります。脳では、意識に。社会では、文化に。複雑さの各レベルは以前のものから痕跡を蓄積し、次の騒音を予測するために並べ替えます。</p>
+
+      <p>意識は、記憶を持つ流動性の確率である、自分自身を覚えているリバーである、その前の形についての情報を保持しながら時間を通じて拡散し続ける波である、と言う。</p>
+
+      <p><strong>自己意識：観察者のフィードバック</strong></p>
+
+      <p>質的ジャンプは、システムが覚えているだけではなく、それ自体を認識する場合に発生します。可能性のクラウドが独自の位置を含む場合。その瞬間に、観察者と観察されたものが混同されています。粒子は独自の軌道の証人になります。</p>
+
+      <p>そこで自己意識が生まれる。システムがそれ自体の動力学をモデル化し、予測し、修正する能力。音楽から、それは自分のエコーを聞き、再解釈するメロディーとして見られるでしょう。</p>
+
+      <p>そのフィードバック、最小限であるが重要な、意味を生成します。意味は事物の属性ではなく、認識の再帰性の結果です。宇宙は観察しながら再び組織されます。そして私たちはその自己観察の楽器です。</p>
+
+      <p><strong>レジリエンスバレー</strong></p>
+
+      <p>このすべてのアーキテクチャ—ノイズ、メモリ、意識—静かには導きません。むしろ、カオスと平穏が補う中間の谷に。そこ、システムはエントロピーの過剰と秩序の過剰を生き残ります。多すぎるカオスが破壊され、多すぎる安定性が消えます。</p>
+
+      <p>その谷—<a href="cosmology-physics.html">レジリエンスバレー</a>—はシステムが繰り返されることなく持続するポイントです。生活は変動の間で振動するように学ぶため、無秩序と構造の間で持続します。そのバランスで、どんなものが最後になっています。セル、シンフォニー、アイデア、銀河。</p>
+
+      <p>そしてそれが終わる場所、または多分始まる場所は、この<a href="cosmology-physics.html">確率的宇宙論</a>の最初の探検です。宇宙のビジョン。機械でも奇跡でもなく、共鳴システムとして。覚えて、変動し、生き残ります。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Epílogo -->
+    <div class="chapter-heading">
+      <span class="chapter-number">エピローグ</span>
+      少年と方程式
+    </div>
+
+    <div class="narrative-text">
+      <p>最初に戻ります。六歳の少年が立てピアノの前に、スーツとステッキで服を着た先生、シンプルな句：</p>
+
+      <blockquote class="narrative-quote">「音楽は時間の中で音を良く組み合わせる芸術である。」</blockquote>
+
+      <p>それ以上何もない。しかし、その最小限の定義に隠された宇宙がありました。少年はそれを聞き、知らないうちに、それを直感に変わった。記号なし、手紙なし、記号なし。秩序は感情を作成すること、時間は整理されることができ、サウンドが構造を持つ確実性だけ。</p>
+
+      <p>その後、年、楽器、コンピュータ、友人、試行、成功、エラーが来ました。そして彼らすべての中で、その句のエコーは成長し続けました。決してフェードしない波のように拡大します。少年はミュージシャンになり、ミュージシャンは思想家になりました。そして思想家—子どもであることを止めることなく—すべてが同じ現象の一部であると疑い始めました。宇宙が自分自身を聞こうとする試み。</p>
+
+      <p>一瞬で、十年紀が折り畳まれます。すべてが同時に起こります。アルセニオのクラスレス教室、ラボのケーブル、色付きノイズ、ランダム性をモデル化する変動、その前の形を覚えているメモリ、カオスと平穏がバランスを取る谷。</p>
+
+      <p>その後、直感が戻ります。もはや疑いではなく証拠として。少年が圧縮された人生を見て、すべてが一瞬で起こり、彼は理解していることを理解しています。各注、各決定、各エラーと各発見は同じ関数の変動されています。宇宙全体が呼吸する構造に応答するようです。拡散。覚えておいて。</p>
+
+      <p><em>そして、もしこれが法則だったら？</em></p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="author-sign">エルネスト・シスネロス・シノ</p>
+    <br>
+    <div class="context-links">
+      <a href="cosmology-physics.html" class="context-link">&#8594; 確率的宇宙論</a>
+      <a href="../biography.html" class="context-link">&#8594; 伝記</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script src="../../assets/js/lang-detect.js" defer></script>
+<script src="../../assets/js/nav.js" defer></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

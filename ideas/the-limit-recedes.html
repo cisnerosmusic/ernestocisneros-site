@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Limit Recedes | Ideas | Ernesto Cisneros Cino</title>
+<meta name="description" content="Music, memory, and chance. From childhood intuition to a theory of colored noise: how music led me to think the cosmos.">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ideas/the-limit-recedes.html">
+    <meta property="og:title" content="The Limit Recedes | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Music, memory, and chance. From childhood intuition to a theory of colored noise.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Limit Recedes | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Music, memory, and chance. From childhood intuition to a theory of colored noise.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "The Limit Recedes: music, memory, and chance",
+  "headline": "From childhood intuition to a theory of colored noise",
+  "url": "https://ernestocisneros.art/ideas/the-limit-recedes.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "How music led me to think the cosmos: from Arsenio's piano to colored noise, from the National Electroacoustic Music Laboratory to Krein space.",
+  "about": ["Music", "Stochastic Cosmology", "Memory", "Colored Noise", "Intuition", "Formalization"],
+  "inLanguage": "en"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ideas/the-limit-recedes.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/the-limit-recedes.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/the-limit-recedes.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-cosmology-physics" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../books.html" class="nav-item">Books</a>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">Cosmology &amp; Physics</a>
+          <a href="technology-society.html" class="nav-dropdown-item">Technology &amp; Society</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory &amp; Exile</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics &amp; Philosophy</a>
+        </div>
+      </li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="the-limit-recedes.html" class="active-lang" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../es/ideas/the-limit-recedes.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>Page type: Autobiographical essay on the origins of Stochastic Cosmology. Author: Ernesto Cisneros Cino.
+    Topics: Music, intuition, colored noise, Hilbert space, Krein space, Resilience Valley, stochastic cosmology.
+    Related: cosmology-physics.html, biography.html.</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">Ideas</span>
+    <h1 class="hero-title">The Limit Recedes</h1>
+    <p class="hero-lead">Music, memory, and chance.<br>From childhood intuition to a theory of colored noise: how music led me to think the cosmos.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- I. The Origin of Sound -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter I</span>
+      The Origin of Sound
+    </div>
+
+    <div class="narrative-text">
+      <p>Arsenio was not a classroom teacher. He was a figure who arrived at houses with the same mystery that dawn arrives: slowly, impeccably, with his hat, his jacket, and a cane that seemed to mark the measure of time. He had played in the great orchestras that made Cuba dance in the forties, when music was sacred territory and rhythm was a form of communion. Dark-skinned and soft-spoken, Arsenio taught with an elegance that needed no authority. There were only three conditions for having him as a master: an instrument, interest, and discipline. That was enough to open the door to the universe.</p>
+
+      <p>I was six years old, barely able to write my name. But that day, facing the upright piano my grandparents had bought with sacrifice, I heard the first definition of my life:</p>
+
+      <blockquote class="narrative-quote">"Music is the art of well combining sounds in time."</blockquote>
+
+      <p>Nothing more. But in that phrase, said with the naturalness of a prayer, a seed was planted in me. In my child's mind, an equation without symbols formed: sound + order + time = emotion. And from that instant, I knew that art was a way of measuring the invisible.</p>
+
+      <p>For years I played without fully understanding that equation. I learned that each note was a small physical decision, a vibration obeying laws I didn't yet know. But when the MIDI sequencers came, the virtual synthesizers and the National Electroacoustic Music Laboratory in Havana, I understood that what Arsenio had said—so simple, so clean—was the beginning of an infinite structure. Time, patterns, waves, harmony, all formed part of the same language: synthesis.</p>
+
+      <p>I discovered that behind every chord lay a pattern; behind every melody, a geometry; behind every emotion, an invisible order that the ear translates into pleasure. Music was the perfect bridge between number and soul. And in that bridge I have lived ever since, trying to understand why what vibrates also moves us, why what sounds can reveal the laws of the universe.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- II. The Boy Who Measured the World -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter II</span>
+      The Boy Who Measured the World
+    </div>
+
+    <div class="narrative-text">
+      <p>While I studied music with Arsenio at home, outside the world opened like a laboratory. I didn't attend a conservatory: my musical education happened within the walls of my home, in the same space where I learned to multiply and took apart toys to see how they worked. And, against all odds, my favorite subjects were not artistic but scientific: mathematics, physics, chemistry, biology, computing... and technical drawing.</p>
+
+      <p>Technical drawing marked me more than I suspected. Since then I write only in print letters—an aesthetic consequence of precision. I was fascinated by the fact that a well-drawn line could contain a truth, an exact measure of the world. I didn't know it then, but that obsession with clean strokes was the same that would lead me, years later, to seek clean harmonies, invisible proportions, architectures that breathe without seeming rigid.</p>
+
+      <p>During the early years, music and science ran in parallel. One taught me to hear order; the other, to measure it. Not until tenth grade did chance—or destiny—introduce a third force: literature. I fell in love with my teacher, and with her, with words. I read with a fever that had nothing scholastic about it. If before I had wanted to understand music and formulas, now I wanted to understand people. That mixture—emotion, number, and form—was the true beginning of my vocation: the desire to construct meaning.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- III. The First Circuits of Time -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter III</span>
+      The First Circuits of Time
+    </div>
+
+    <div class="narrative-text">
+      <p>In the late eighties, the first device that changed my life appeared: the Kawai Q-80, a small machine capable of recording and repeating time. It was like having a tireless apprentice inside a box. Shortly after, I saw for the first time a Macintosh running musical sequences and controlling an audio console: it was 1993, and I felt the future had arrived. For the first time, the music I heard in my mind could be organized with precision.</p>
+
+      <p>Meanwhile, with the band <a href="../biography.html">Paisaje con Río</a>, we analyzed hits from international charts trying to discover hidden patterns, the invisible threads that made a song memorable. That exercise in dissection was my first school of conscious composition: beauty also has logic and emotion can be measured in intervals, frequencies, and intensities.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IV. The Laboratory of Air -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter IV</span>
+      The Laboratory of Air
+    </div>
+
+    <div class="narrative-text">
+      <p>In my twenties, chance began to behave like a plan. I met musicians and thinkers who would be decisive on my path. Among them, Edesio Alejandro, who received me as if we had already known each other in another life; Eddy Cardoza, probably one of the most intelligent musicians I've known; Israel López, the skeptical bassist who analyzed each chord as if it hid a trap; and Ernesto Romero, a former literature teacher who had traded lessons for songs and directed the band Paisaje con Río.</p>
+
+      <p>Among all of them, my small universe of disconnected knowledge reorganized itself. Each conversation was a class in aesthetics, acoustics, irony, life. And one day I found myself in front of the Digital Performer screen, at a computer in the National Electroacoustic Music Laboratory.</p>
+
+      <p>That was more than a place: it was a collective experiment. The air was full of laughter, theoretical arguments, impossible chords, and dust suspended over a carpet that had heard more recordings than people. There I understood that the avant-garde was not a style but an attitude toward possibility. Sound could be everything: structure, chaos, texture, silence.</p>
+
+      <p><strong>The Jump to Film</strong></p>
+
+      <p>It was Edesio who cast the first stone into still water. After watching me work for a while, he invited me to participate in the music of a film that had no original composition, just arrangements of classics: <em>Nothing</em>. That "yes" I gave him was a mixture of boldness and fear. My first assignment was nothing less than <em>Carmina Burana</em> by Carl Orff. A legacy of scores, a mountain. The instruction was simple and dizzying:</p>
+
+      <blockquote class="narrative-quote">"Make this sound... but with other instruments."</blockquote>
+
+      <p>I went home with the scores under my arm and vertigo in my stomach. On the bus, amid the smoke of exhaust and the murmur of the city, I looked at the notes as if they were hieroglyphics from another world. I thought: what have I gotten myself into? But at the same time I felt that spark that only the danger of creating gives.</p>
+
+      <p>So <em>Nothing</em> began: an adventure that consisted of reinterpreting the classics of universal music from the edge of the Caribbean, with limited resources but unmeasured ambition. It was my first film experience and, unknowingly, a milestone that would mark the beginning of a long sonorous journey.</p>
+
+      <p>That period taught me something essential: that music, even when it seems to serve an image, has its own story, its inner logic. Each timbral decision was an emotional equation; each mix, an attempt at balance between chaos and order. Film amplified my questions: what determines emotion in a sound? Why does a frequency move us? How does vibration become meaning?</p>
+
+      <p>The artist who had begun with Arsenio, the boy who drew lines with a 2H pencil, and the young man who sought patterns in pop songs, now worked with invisible formulas: those of the soul.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- V. The Odd Ones -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter V</span>
+      The Odd Ones
+    </div>
+
+    <div class="narrative-text">
+      <p>Between cables, scores, and theories, there was also another laboratory: one without instruments, without computers, but equally noisy and necessary. It was formed by Tony, Haití, Mario, Litay, and me. They called us "Los Raros"—a kind of parallel cell to the preparatory school, a group of happy dissidents.</p>
+
+      <p>Tony wrote with devastating irony and incredible sensitivity. Haití painted universes that seemed to have their own physics, a student of the human mind expressed through image. Mario sang badly despite being the son of a great opera singer; he criticized Tony and their quarrels were a spectacle. And Litay, poet and historian, was an emotional whirlwind with overflowing intelligence. A woman so brilliant as she was unpredictable, adorably unbalanced, capable of citing Cioran and, in the same conversation, crying over a song by Silvio.</p>
+
+      <p>We gathered to talk about everything: politics, philosophy, literature, film, music, or simply to observe life as if it were a rehearsal of something greater. There, in those hours without time or structure, another form of learning was born: the art of disagreeing without breaking affection, of criticizing without losing friendship.</p>
+
+      <p>The conversations were infinite. The disagreements, sometimes irreconcilable. But there was something stronger than ego: the awareness of building, amid laughter and contradictions, our own perspective on the world.</p>
+
+      <p>If the electroacoustic laboratory taught me precision, Los Raros taught me doubt. And between both—exactitude and uncertainty—the map I still follow was drawn.</p>
+
+      <p>With them I understood that every theory needs a heresy, that truth is not imposed but conversed, and that great ideas are born, almost always, amid smoke, laughter, and a half-full glass.</p>
+
+      <p>Maybe that's my least scientific part, but also the most human. Because the odd ones—those irreducibles—are responsible for many of my questions... and for some of my answers.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VI. Resonances -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter VI</span>
+      Resonances
+    </div>
+
+    <div class="narrative-text">
+      <p>Over the years I understood that not only notes resonate. Ideas, people, silences also do. Everything that vibrates, in some way, organizes itself. Life seems to move by the same law that governs strings: when one frequency finds another compatible, both amplify their existence.</p>
+
+      <p>Los Raros, the musicians, the teachers, the loves, the places... all were resonators, bodies that vibrated near my frequency. And when those vibrations coincided, inexplicably full moments were born, as if the universe confirmed that meaning is not sought: it is found in coincidence.</p>
+
+      <p>That's where my obsession began to understand why chaos could organize itself. Why noise—in the laboratory, in the street, or in the soul—could be transformed into music with just finding its pattern. Music, physics, mathematics, and perception were not different territories: they were ways of naming the same question.</p>
+
+      <p><strong>Order Behind the Tremor</strong></p>
+
+      <p>Fundamentally, it all comes down to one intuition: reality vibrates. The electron, the heart, the applause, the word, friendship: everything oscillates. The structures we believe solid are merely averages of stable oscillations. That's why art and science touch—because both seek the exact point where disorder becomes form.</p>
+
+      <p>Music is the sensible version of an equation: an equation that is not written with symbols but with emotions. The scientist, at bottom, composes: seeks harmonic relations between variables that seem unconnected.</p>
+
+      <blockquote class="narrative-quote">The musician orders time; the physicist, space; the mathematician, logic. But all seek the same thing: coherence amid noise.</blockquote>
+
+      <p><strong>The Invisible Echo</strong></p>
+
+      <p>I began to see life as a multidimensional score: love, loss, learning... all were movements of a symphony that can only be heard once. And I understood that the human ear—that miracle of bone, air, and electricity—is nothing more than a translator of universal vibrations. Listening is a way of measuring reality. And feeling, perhaps, is the most advanced calculation we are capable of.</p>
+
+      <p>At that point in my life I could no longer separate the disciplines. Everything that moved me was also what I wanted to understand. And everything I understood, I wanted to express until it sounded. The equation circled back again: the art of combining sounds in time had become the science of combining the universe's vibrations in consciousness.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VII. The Ear of the Universe -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter VII</span>
+      The Ear of the Universe
+    </div>
+
+    <div class="narrative-text">
+      <p>For years I believed what fascinated me was music. Then I discovered that what actually attracted me was vibration itself: its nature, its journey, its effect. Acoustics revealed to me that every sound is a pattern in motion, a form of energy that shapes space as it crosses it. And neuroscience taught me that the ear not only hears—it interprets, anticipates, dreams.</p>
+
+      <p>The sonic experience is an act of constant prediction: the brain constructs the sound's future milliseconds before it happens. Pleasure doesn't come from the sound that arrives but from the coincidence between the expected and the real. That dance between the foreseen and the unexpected is the origin of musical joy... and perhaps, of the joy of existing.</p>
+
+      <p>In that discovery I found a mirror: if the human ear translates physical vibrations into emotions, isn't consciousness doing the same with the universe? Isn't the mind a cosmic ear interpreting patterns of reality?</p>
+
+      <p><strong>From Wave to Cosmos</strong></p>
+
+      <p>That's when I returned to my science books—Sagan, Einstein, Hawking, Feynman—and understood that the fascination was the same, only expressed in another language. Music studies relations between frequencies; physics, relations between forces. Both seek invisible harmonies. Both are forms of listening.</p>
+
+      <p>The day I read that galaxies also vibrate, that black holes emit waves, that the cosmic background radiation has a "tone," I understood that everything—absolutely everything—can be interpreted as a symphony of fluctuations. The difference is in scale, not essence.</p>
+
+      <p>And then the question appeared that changed everything:</p>
+
+      <blockquote class="narrative-quote">"What if the cosmos could be explained with what I do?"</blockquote>
+
+      <p>That doubt—a mixture of boldness and humility—was the beginning of a new episode. I began to look at the universe as a resonant structure, a gigantic instrument that self-tunes through laws that are also rhythms. Art had prepared me to feel it; science, to understand it.</p>
+
+      <p><strong>The Point of Inflection</strong></p>
+
+      <p>From there, there was no turning back. Physics and mathematics became the natural next step, not to abandon music but to expand it toward the universal. Sound remained my language, but the message had grown to embrace the totality of spacetime.</p>
+
+      <p>I began to wonder if each consciousness wasn't, in fact, an instrument of observation, if in perceiving the universe we were also modeling it, like a musician who modifies the timbre of their instrument by playing it.</p>
+
+      <p>And then, like a melody returning, everything fit again: Arsenio, the boy, the laboratory, Los Raros, the cinema, the synthesizers... all were stages of the same attempt to decipher the pattern that sustains the noise. A search for meaning, guided by vibrations. A life dedicated to listening.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VIII. The Pattern and the Mystery -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter VIII</span>
+      The Pattern and the Mystery
+    </div>
+
+    <div class="narrative-text">
+      <p>There comes a moment when wonder changes form. At first one marvels because one doesn't understand; later, because one understands too much. And at that point something strange happens: the closer one gets to the limit of knowledge, the further that limit recedes.</p>
+
+      <p>Mystery doesn't dissolve: it refines. The limit recedes proportionally.</p>
+
+      <p>Each answer found opens a new mystery, as if the universe were an infinite melody that, when deciphered, composes another more complex. Physics, mathematics, and music share that fate: they don't seek to close mystery but to give it audible form.</p>
+
+      <p>Sometimes I think the universe is the most beautiful example of counterpoint: matter and energy, order and entropy, determinism and chaos interweave with the precision of a fugue. And we—these small instruments of carbon—are merely part of the overall texture, resonating at a passing frequency.</p>
+
+      <p>Science teaches us to measure the cosmos, but beauty lies in what we cannot measure: that sense of infinite proportion, of harmony that escapes the moment we believe we've captured it.</p>
+
+      <blockquote class="narrative-quote">That's why curiosity never ends. Each time reason advances a step, poetry retreats two, and between them both they trace the choreography of human understanding.</blockquote>
+
+      <p><strong>The Place of the Artist-Investigator</strong></p>
+
+      <p>Sometimes I wonder if art and science aren't, in reality, the two hemispheres of the same cosmic mind. One explores the measurable, the other the imaginable. The artist and the physicist share the same gaze, only use different languages to describe the same tremor.</p>
+
+      <p>The musician translates vibration into emotion. The mathematician, into relation. The physicist, into law. The philosopher, into question. And all, at bottom, kneel before the same thing: the immensity of what they still don't understand.</p>
+
+      <p><strong>The Mobile Limit</strong></p>
+
+      <p>Today I know that understanding is not closing but opening. That knowledge doesn't kill magic: it transforms it. Each discovery expands the mystery, like a note that expands until it dissolves into another higher one.</p>
+
+      <p>Maybe that's why we keep looking at the sky, following the traces of the ancients, trying to decipher in the stars the same geometry that dwells in a well-written melody.</p>
+
+      <p>And as the limit recedes, we advance, guided by the echo of a question that never ceases: why does everything vibrate? And what does it mean that we vibrate with it?</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IX. The Music of Chance -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter IX</span>
+      The Music of Chance
+    </div>
+
+    <div class="narrative-text">
+      <p>When I tried to understand the universe with the same tools I used to understand music, I discovered something disconcerting: the laws of the cosmos resemble a score more than a text. They are not closed instructions but evolving probabilities, relations that rewrite themselves as reality unfolds.</p>
+
+      <p>Sound had taught me that precision doesn't exclude mystery; physics revealed that indeterminacy doesn't exclude order. So I arrived at the idea of a stochastic cosmology: a universe that behaves like a symphony of fluctuations, where harmony emerges from the unpredictable.</p>
+
+      <p>Music had prepared me to accept uncertainty, to recognize that between silence and noise there are intermediate zones where form is intimated before it exists. In nature the same occurs: chaos generates structure, chance sustains stability.</p>
+
+      <p><strong>The Space for Thought</strong></p>
+
+      <p>As I tried to formalize that intuition, I sought a mathematical place flexible enough to contain it. Hilbert space was my first refuge: a place where everything can coexist, projecting into harmonic relations. It was the perfect metaphor for thought: every idea is a projection upon another.</p>
+
+      <p>But soon I understood that the universe doesn't behave like a perfectly positive and defined space. Boundaries are irregular, reality curves, contradicts itself, vibrates in opposite directions. Hilbert was beautiful but insufficient.</p>
+
+      <p>Then the alternative appeared: Krein space, an extension where relations can be indefinite. That irregularity was not a defect: it was the condition of the real world. Complex phenomena don't inhabit clean geometries; they need zones where the positive and negative coexist, like two octaves that merge into one resonance.</p>
+
+      <p><strong>The Language That Returns Wonder</strong></p>
+
+      <p>That transition, from Hilbert to Krein, was like moving from equal temperament to natural temperament: a liberation. Mathematics ceased to be rigid and became organic, capable of housing the fluctuations that previously escaped.</p>
+
+      <p>I understood that there is not one single way to describe the cosmos, just as there is not one single possible tuning for sound. Reality, like music, requires modulation.</p>
+
+      <p>The universe is not a finished symphony but a statistical improvisation: a melody that corrects itself, a pattern that dissolves and reappears with another rhythm.</p>
+
+      <p><strong>The Echo of Uncertainty</strong></p>
+
+      <p>Thus I reached the edge where physics becomes philosophy. Order and chance ceased to be opposites: they revealed themselves as complementary. The cosmos doesn't seek stability: it seeks persistence through variation, a form of identity that survives fluctuation.</p>
+
+      <p>And in that ceaseless movement—where equations become music and music becomes equation—I understood that the universe's beauty resides, precisely, in the fact that its limit recedes proportionally.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- X. The Impossible Figure -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter X</span>
+      The Impossible Figure
+    </div>
+
+    <div class="narrative-text">
+      <p>Sometimes, when theory becomes too exact, it needs a crack. A breath. A space where reason allows itself to imagine what it cannot yet prove. Thus impossible concepts are born: hypothetical particles that travel faster than light, dimensions rolled like vibrating strings, mirror universes. Mathematical fictions that don't deny reality but expand it.</p>
+
+      <p>Among them all, the idea of the tachyon seemed irresistible to me. A hypothetical particle capable of traveling faster than light. Not an observable body, but a logical consequence of relativistic equations when pushed beyond their usual domains.</p>
+
+      <p><strong>The Echo of Imaginary Numbers</strong></p>
+
+      <p>Since childhood I was intrigued by numbers that couldn't be seen. When I discovered that "imaginary" in mathematics doesn't mean unreal but complementary, I understood that science too has its poetry. Imaginary numbers arose as a solution to the impossible: they allowed us to extract roots of negative values, and in their day were viewed as logical sacrilege.</p>
+
+      <p>Today they sustain much of the world: electricity, quantum computing, digital sound—everything depends on that "fantasy" someone once dared to write.</p>
+
+      <p>The tachyon is, in a sense, the imaginary number of physics: a symbolic extension that allows exploration of what happens if spacetime curves beyond the speed of light.</p>
+
+      <p><strong>Faster Than Certainty</strong></p>
+
+      <p>In theory, a tachyon doesn't decelerate; it accelerates. The more energy it loses, the faster it becomes. That paradox makes it the perfect metaphor for human knowledge: the more we understand, the further we move from certainty. Each answer reduces the energy of mystery, but mystery moves faster than we do.</p>
+
+      <p>The tachyon embodies that infinite pursuit. It's not an object but a question. Its existence—real or not—reminds us that physics not only describes: it also imagines.</p>
+
+      <p><strong>The Hypothetical Resource</strong></p>
+
+      <p>As my theoretical explorations advanced, I understood that the hypothetical is not a weakness of thought but its breath. Impossible ideas function as instruments of language expansion. If reality doesn't fit in our equations, then the equations must grow.</p>
+
+      <p>Science and art share that courage: imagining what doesn't yet exist to make it thinkable. Tachyons, dreams, impossible chords... all inhabit the same space: that where the mind defies the speed of light to reach what has no name yet.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- XI. The Color of Noise -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter XI</span>
+      The Color of Noise
+    </div>
+
+    <div class="narrative-text">
+      <p>Absolute silence doesn't exist, but pure noise doesn't either. In that interstice reality dwells.</p>
+
+      <p>White noise—that undifferentiated sea of frequencies—is an abstraction, an ideal limit. Uniform, without memory, without history. Apparently perfect... but boring, unreal. Nothing in nature vibrates that way. Neither air, nor water, nor the brain.</p>
+
+      <p>Reality, like good experimental music, is made of colored noise: frequencies that retain traces of the past, correlations, internal rhythms, slopes. Each color of noise (pink, brown, blue, violet) represents a different form of organization: a statistical signature of the world.</p>
+
+      <p><strong>The Tint That Colors</strong></p>
+
+      <p>In white noise, all frequencies have equal power. In colored noise, a small adjustment redistributes that energy. That tint gives "tone" to chaos. When the balance is just right, pink noise appears, most similar to nature and the human brain: balance between memory and novelty. Brown noise sounds softer, almost melodic.</p>
+
+      <p>In experimental music, this adjustment is like the emotional intention of the composer: it determines whether the sonic universe will be tense or relaxed, nervous or contemplative. The tint colors the experience. And with it, noise ceases to be a residue: it becomes texture, form.</p>
+
+      <p><strong>The Geometry of Spacetime</strong></p>
+
+      <p>But the idea of color belongs not only to sound. Spacetime itself can be "colored" if its curvature leans a certain way. The cosmos doesn't vibrate with white noise—it would be unbearable—but with softly colored noise, a mixture that allows structure without rigidity, movement without rupture.</p>
+
+      <p>In that geometry, events are not isolated points but fluctuations with memory. And each obeys a delicate balance between diffusion and attraction: the tendency toward disorder and the tendency toward order, simultaneously.</p>
+
+      <p><strong>The Flow of Probabilities</strong></p>
+
+      <p>It can be imagined as a river of possibilities that evolves in time, influenced by ordered currents and by chance. It describes how a cloud of possible states moves, expanding or concentrating according to invisible forces.</p>
+
+      <p>The solution is not a fixed point but a distribution of options: a statistical symphony that changes over time. There, on that border between the foreseeable and the random, the universe behaves like a living composition.</p>
+
+      <p><strong>Noise as Raw Material</strong></p>
+
+      <p>To understand noise is to understand the cosmos's breathing. There is no particle without fluctuation, no thought without neuronal noise. Noise is not the enemy of form but its seed. Life itself is a colored pattern: order enough to persist, chaos enough to evolve.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- XII. Diffusion, Entropy, and Meaning -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Chapter XII</span>
+      Diffusion, Entropy, and Meaning
+    </div>
+
+    <div class="narrative-text">
+      <p>That flow of probabilities describes not just particles: it describes life itself. Each cell, each thought, each decision we make is the result of a distribution of possibilities in motion. We are matter that diffuses under the influence of an invisible field, flowing between order and noise.</p>
+
+      <p>The universe behaves the same way: it doesn't evolve deterministically but statistically, as if each atom obeyed a score of probability.</p>
+
+      <p>Entropy is not the enemy of meaning; it is its condition of possibility. Only what can disperse can organize. Disorder doesn't destroy information: it transports it. That's why the universe doesn't seek perfect equilibrium but dynamic persistence, a form of coherence that survives change.</p>
+
+      <p><strong>Diffusion of Memory</strong></p>
+
+      <p>In complex systems, equations alone are not enough: memory appears. Matter remembers. Not in the human sense but as statistical history: each future state depends, partially, on the past. That temporal trace is the first sign of the living.</p>
+
+      <p>In organisms, that memory becomes structure; in brains, consciousness; in society, culture. Each level of complexity accumulates traces of what came before and reorders them to anticipate the next noise.</p>
+
+      <p>We could say consciousness is a flow of probability with memory, a river that remembers itself, a wave that retains information about its previous form while continuing to diffuse through time.</p>
+
+      <p><strong>Self-Consciousness: The Feedback of the Observer</strong></p>
+
+      <p>The qualitative leap occurs when the system not only remembers but perceives itself. When the cloud of possibilities includes its own position. In that instant, observer and observed blur: the particle becomes witness to its own trajectory.</p>
+
+      <p>There self-consciousness is born: the capacity of a system to model its own dynamics, to anticipate and correct itself. From music, it could be seen as a melody that hears its own echo and reinterprets itself.</p>
+
+      <p>That feedback, minimal but crucial, generates meaning. Meaning is not an attribute of things but a consequence of the recursivity of perception. The universe, observing itself, reorganizes. And we are the instrument of that self-observation.</p>
+
+      <p><strong>The Valley of Resilience</strong></p>
+
+      <p>All this architecture—noise, memory, consciousness—doesn't lead to quietude but to the intermediate valley where chaos and calm compensate. There, systems survive excess entropy and excess order. Too much chaos destroys; too much stability extinguishes.</p>
+
+      <p>That valley—the <a href="cosmology-physics.html">Resilience Valley</a>—is the point where the universe preserves itself without repeating, where life persists because it learns to vibrate between disorder and structure. In that balance everything that lasts is formed: a cell, a symphony, an idea, a galaxy.</p>
+
+      <p>And it's there where this first exploration of <a href="cosmology-physics.html">Stochastic Cosmology</a> ends, or perhaps begins: a vision of the cosmos not as machine or miracle, but as a resonant system that remembers, fluctuates, and survives.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Epilogue -->
+    <div class="chapter-heading">
+      <span class="chapter-number">Epilogue</span>
+      The Boy and the Equation
+    </div>
+
+    <div class="narrative-text">
+      <p>I return to the beginning. A six-year-old boy facing an upright piano, a teacher in a suit and cane, a simple phrase:</p>
+
+      <blockquote class="narrative-quote">"Music is the art of well combining sounds in time."</blockquote>
+
+      <p>Nothing more. But in that minimal definition lay a hidden universe. The boy heard it and, unknowingly, transformed it into intuition. An intuition without signs, without letters, without notation: only the certainty that order produces emotion, that time can be organized, that sound has structure.</p>
+
+      <p>Then came the years, the instruments, the computers, the friends, the rehearsals, the successes, the failures. And amid all of them, the echo of that phrase kept growing, expanding like a wave that never dies. The boy became a musician, the musician became a thinker, and the thinker—without ceasing to be a boy—began to suspect that it all formed part of the same phenomenon: the universe's attempt to listen to itself.</p>
+
+      <p>For an instant, the decades fold. Everything happens at once: Arsenio's classroom without walls, the laboratory's cables, the colored noise, the fluctuations that model chance, the memory that remembers its own form, the valley where chaos and calm balance.</p>
+
+      <p>And then intuition returns, not as suspicion but as evidence. The boy looks at his life compressed in an instant and understands: each note, each decision, each error and each discovery have been variations of the same function. The entire universe seems to respond to a structure that breathes, diffuses, remembers.</p>
+
+      <p><em>What if this is a law?</em></p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="author-sign">Ernesto Cisneros Cino</p>
+    <br>
+    <div class="context-links">
+      <a href="cosmology-physics.html" class="context-link">→ Stochastic Cosmology</a>
+      <a href="../biography.html" class="context-link">→ Biography</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
