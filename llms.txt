@@ -79,7 +79,7 @@ Ideas page: https://ernestocisneros.art/ideas.html
 - Art & Poetics (art-poetics-philosophy#article) — Essays on philosophy of art, creativity, and aesthetic expression.
 
 - Cosmology & Physics (cosmology-physics#article) — Stochastic Cosmology: The Finite Memory Law (alternative to ΛCDM)
-  DOI: https://doi.org/10.5281/zenodo.17686852
+  DOI: 10.5281/zenodo.17686852 (in revision — link not yet active)
   ORCID: https://orcid.org/0009-0002-2833-1787
 
 - Culture & Memory (culture-memory-exile#article) — Essays on exile, cultural memory, and collective identity.

@@ -18,9 +18,7 @@
     ],
     "citation": {
       "@type": "ScholarlyArticle",
-      "name": "The Finite Memory Law",
-      "url": "https://doi.org/10.5281/zenodo.17686852",
-      "sameAs": "https://doi.org/10.5281/zenodo.17686852"
+      "name": "The Finite Memory Law"
     },
     "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
     "inLanguage": "en"
