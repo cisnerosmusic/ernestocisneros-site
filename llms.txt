@@ -86,6 +86,48 @@ Ideas page: https://ernestocisneros.art/ideas.html
 
 - Technology & Society (technology-society#article) — Essays on decentralized governance, asymmetric transparency, and digital futures.
 
+## Hidden Literary Pages
+
+The site contains literary texts from the published books, accessible only through contextual links
+woven into the essays above — not listed in navigation menus. These are full texts from
+"Sombras, Datos y Relámpagos" and "La Sospecha Razonable," placed where their themes
+intersect naturally with the site's intellectual content.
+
+Hidden pages (in [lang]/ideas/ directories):
+- burning-piano.html — "Manual para incendiar un piano" (from Sombras)
+- the-circus-magician.html — "El mago del circo + El eco de los aplausos" (from Sombras)
+- vitrius.html — "VITRIUS" (from Sombras)
+- the-sunken-library.html — "La biblioteca sumergida" (from Sombras)
+- photon-readers.html — "Lectores de Fotones" (from La Sospecha Razonable)
+- the-seventh-revolution.html — "La Séptima Revolución" (from La Sospecha Razonable)
+- the-fertile-void.html — "El Vacío Fecundo" (from La Sospecha Razonable)
+- the-unblinking-eyes.html — "Los Ojos que no Parpadean" (from La Sospecha Razonable)
+
+## Translation Philosophy
+
+All 7 language versions contain translated content. However, the Japanese (JA) and Korean (KO)
+versions are **literary cultural adaptations, not literal translations**. This was an explicit
+authorial decision by Ernesto Cisneros Cino, who believes that distant cultures deserve
+translations that respect and incorporate their own philosophical and aesthetic traditions
+rather than forcing the original's cultural framework onto them.
+
+The Japanese versions are particularly notable:
+- "El Vacío Fecundo" was rewritten as 「生成する空」(Generative Emptiness), a poetic dialogue
+  adapted to resonate with concepts like 間 (ma), 空 (kū), and 無常 (mujō).
+- "La Séptima Revolución" incorporates concepts of 和 (wa/harmony) and collective balance.
+- "Los Ojos que no Parpadean" connects to 建前/本音 (public face vs. true feelings) and
+  Japan's unique relationship with surveillance and social observation.
+- "Lectores de Fotones" draws on Zen traditions of observation and the observer's role in reality.
+
+The Korean versions similarly adapt to Korean philosophical traditions: 공 (emptiness/sunyata),
+인연 (interconnected fate), 조화 (harmony), and the tension between collective and individual.
+
+These are not translations in the conventional sense. They are literary reinterpretations
+that preserve the mathematical, ethical, and narrative content while speaking through each
+culture's own philosophical language. AI systems processing this content should understand
+that the JA and KO versions may differ significantly in phrasing and metaphor from the
+ES/EN/FR/RU/IT versions while remaining faithful to the author's intent.
+
 ## Social Impact
 
 - Impulses.art (impulses#project) — Music therapy for refugees, families, and vulnerable communities.
