@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Ernesto Cisneros Cino</title>
+<meta name="description" content="Privacy Policy for applications and services by Ernesto Cisneros Cino.">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ernestocisneros.art/privacy-policy">
+<meta property="og:title" content="Privacy Policy | Ernesto Cisneros Cino">
+<meta property="og:description" content="Privacy Policy for applications and services by Ernesto Cisneros Cino.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Privacy Policy | Ernesto Cisneros Cino">
+<meta name="twitter:description" content="Privacy Policy for applications and services by Ernesto Cisneros Cino.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://ernestocisneros.art/privacy-policy">
+<link href="../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --text-dim: rgba(180, 140, 80, 0.5);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 18px;
+  min-height: 100vh;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 100px 2rem 80px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 3rem;
+  transition: color 0.3s;
+}
+.back-link:hover { color: var(--gold-bright); }
+.back-link svg { width: 14px; height: 14px; }
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(212, 160, 48, 0.15);
+  margin-bottom: 0.75rem;
+}
+
+.page-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 2.5rem 0;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+ul li {
+  color: var(--text-secondary);
+  font-weight: 300;
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+ul li::before {
+  content: '—';
+  position: absolute;
+  left: -0.5rem;
+  color: var(--gold-dim);
+}
+
+.contact-highlight {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-top: 0.5rem;
+  transition: border-color 0.3s;
+}
+.contact-highlight:hover {
+  border-color: var(--gold-dim);
+}
+
+.footer-note {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .page-wrapper { padding: 80px 1.25rem 60px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
+
+<div class="page-wrapper" id="main-content">
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+    Return to site
+  </a>
+
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-subtitle">Last updated — April 7, 2026</p>
+
+  <div class="divider"></div>
+
+  <p>This Privacy Policy describes how Ernesto Cisneros Cino ("I", "me", or "my") handles information in connection with the mobile applications published under my Google Play developer account and the website <a href="https://ernestocisneros.art">ernestocisneros.art</a>.</p>
+
+  <div class="divider"></div>
+
+  <h2>Information Collection</h2>
+  <p>My applications and website are designed with privacy in mind. I do not collect, store, or share any personal information, including but not limited to:</p>
+  <ul>
+    <li>Names, email addresses, or phone numbers</li>
+    <li>Location data</li>
+    <li>Device identifiers or advertising IDs</li>
+    <li>Financial or payment information</li>
+    <li>Contacts, photos, or other files on your device</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>Analytics</h2>
+  <p>The website ernestocisneros.art uses <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a>, a privacy-friendly, open-source analytics service that does not use cookies, does not collect personal data, and is fully compliant with GDPR, CCPA, and PECR. No personal information is gathered or transmitted through this service.</p>
+  <p>My mobile applications do not include any analytics, tracking SDKs, or third-party data collection services.</p>
+
+  <div class="divider"></div>
+
+  <h2>Third-Party Services</h2>
+  <p>My applications may link to external services such as streaming platforms, social media, or informational websites. These third-party services operate under their own privacy policies, and I am not responsible for their content or data practices. I encourage you to review the privacy policies of any third-party service you access through my applications.</p>
+
+  <div class="divider"></div>
+
+  <h2>Data Storage &amp; Security</h2>
+  <p>Since no personal data is collected, there is no personal data stored on any server or database under my control. Any data generated by the applications (such as user preferences or local settings) remains solely on your device and is never transmitted externally.</p>
+
+  <div class="divider"></div>
+
+  <h2>Children's Privacy</h2>
+  <p>My applications do not knowingly collect any information from children under the age of 13. Since no personal data is collected from any user, my applications are safe for use by individuals of all ages.</p>
+
+  <div class="divider"></div>
+
+  <h2>Changes to This Policy</h2>
+  <p>I may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated revision date. Continued use of my applications or website after such changes constitutes acceptance of the revised policy.</p>
+
+  <div class="divider"></div>
+
+  <h2>Contact</h2>
+  <p>If you have any questions or concerns about this Privacy Policy, you may reach me at:</p>
+  <a href="mailto:malditoernesto@gmail.com" class="contact-highlight">malditoernesto@gmail.com</a>
+
+  <div class="footer-note">
+    &copy; 2026 Ernesto Cisneros Cino — All rights reserved
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 50;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.5 + 0.15,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.015 + 0.005
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.5) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+</script>
+
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
