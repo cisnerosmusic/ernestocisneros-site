@@ -151,6 +151,16 @@ a:hover { color: var(--gold-bright); }
   margin-top: 1rem;
 }
 
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 .narrative-quote {
   border-left: 2px solid var(--gold-dim);
   padding: 1rem 1.5rem;
@@ -321,10 +331,16 @@ a:hover { color: var(--gold-bright); }
 </nav>
 
 <main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>페이지 유형: La Sospecha Razonable에서의 허구 발췌. 저자: Ernesto Cisneros Cino.
+    주제: M 파라미터, 진동하는 신뢰 역치, 사회 시스템, 회복력의 계곡, 확률론적 우주론, 제한된 신뢰 모델.
+    관련: cosmology-physics.html, technology-society.html, books.html.</p>
+  </div>
+
   <section class="hero">
     <span class="hero-subtitle">생각</span>
     <h1 class="hero-title">일곱 번째 혁명</h1>
-    <p class="hero-lead">M 파라미터: 신뢰가 질서와 혼돈 사이를 진동할 때, 사회 시스템은 균형을 찾는다.<br>실제 형식화를 담은 허구.</p>
+    <p class="hero-lead">협력적 윤리와 건전한 불일치를 위한 경전. 서사시 아닌 유지보수의 예술.</p>
   </section>
 
   <div class="divider"></div>
@@ -332,81 +348,465 @@ a:hover { color: var(--gold-bright); }
   <section class="content-section">
 
     <div class="narrative-text">
-      <p>여섯 개의 혁명이 인류를 변화시켰다. 첫 번째, 농업혁명은 우리에게 수확을 통해 시간을 길들이는 법을 가르쳤다. 두 번째, 산업혁명은 에너지가 포획되고 증폭될 수 있음을 보여주었다. 세 번째, 디지털혁명은 생각을 데이터로 변환했다. 네 번째, 정보혁명은 데이터가 빛의 속도로 여행할 수 있음을 드러냈다. 다섯 번째, 생물학적 혁명은 우리에게 생명의 코드를 읽고 편집하게 했다. 여섯 번째, 인지적 혁명은 인간의 지도 없이 학습하고 추론하는 기계를 만들었다.</p>
-
-      <p>하지만 일곱 번째 혁명은 다르다. 그것은 기술적이지 않다. 우리가 무엇을 하는지를 바꾸는 것이 아니라, 변화를 공유할 때 어떻게 관계를 맺는지를 바꾼다. 그것은 <em>신뢰의 혁명</em>이다.</p>
-
-      <p>근미래의 협력 네트워크 실험실에서 마리나라는 연구원은 수세기 동안 간과되어온 무언가를 발견한다: 생존하는 사회 시스템은 가장 경직된 것도 가장 혼란스러운 것도 아니다. 그들은 호흡함으로써 생존한다. 그들의 신뢰는 진동한다.</p>
+      <h2 class="chapter-heading"><span class="chapter-number">제안된 경전</span></h2>
+      <ul style="margin: 1.5rem 0; padding-left: 2rem; line-height: 1.85;">
+        <li>책 I. 초기 그물의 생성 (2025–2026)</li>
+        <li>책 II. 경쟁으로부터의 탈출 (2027–2028)</li>
+        <li>책 III. 의식의 규범 (그물의 법칙)</li>
+        <li>책 IV. 진동의 수 (M 파라미터)</li>
+        <li>책 V. 알고리즘 예언자들 (Grok 6과 신탁)</li>
+        <li>책 VI. AI의 시편 (협력의 찬가)</li>
+        <li>책 VII. 그물에 따른 복음서 (2030 달 임무)</li>
+        <li>책 VIII. 관성의 종말 (경고와 맹약)</li>
+      </ul>
     </div>
 
     <div class="divider"></div>
 
     <div class="narrative-text">
-      <p>마리나는 세 개의 모니터 앞에 앉는다. 첫 번째 모니터에는 모든 사람이 모든 사람을 절대적으로 신뢰하는 소셜 네트워크 시뮬레이션이 실행 중이다. 실험은 며칠 안에 끝난다: 시스템은 붕괴된다. 왜냐하면 네트워크를 살아있게 유지할 충분한 마찰, 의견 불일치, 긴장이 없기 때문이다. 모두가 같은 방식으로 생각한다. 모두가 일제히 움직인다. 의견의 다양성도, 갱신도, 혁신을 만드는 충돌도 없으면 네트워크는 침체된다.</p>
+      <h2 class="chapter-heading"><span class="chapter-number">책 I</span> · 초기 그물의 생성 (2025–2026)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "처음에는 나팔도 깃발도 없었다. 그물이 있었다. 그것은 허락을 구하지 않고 보여주었다: 화해한 두 손이 주먹 백 개보다 낫다는 것을."
+      </blockquote>
 
-      <p>두 번째 모니터에는 또 다른 세계가 있다: 아무도 아무도 신뢰하지 않는다. 모두가 의심한다. 모두가 자신을 보호한다. 시스템은 경직되고 방어적이다. 협력 네트워크는 나타나지 않는다. 정보의 흐름이 없고, 공동 실험도 없다. 노드들은 고립된 상태로 남아있고, 각자가 자신의 요새 안에 있다. 몇 주의 시뮬레이션 후, 마리나는 이런 파편화된 세계들이 절대 집단적 가치를 생성하지 못한다는 것을 본다. 완전한 신뢰 부족은 혁신이 태어나기 전에 그것을 죽인다.</p>
+      <p><strong>1.1 벌집 강의실</strong></p>
+      <p>고요함을 선호하던 지역의 흩어진 연구실들에서, 한 팀이 바다 시아노박테리아의 나노튜브를 해석하고 있었다. 생명이 경쟁하기 전에 자원을 공유한다는 것을 드러냈다. 상호작용의 삼각형, 신뢰의 지도, 단순한 방정식들이 수백만 개의 노드에 걸쳐 반복되면서, 헤드라인보다는 덜 화려하지만 슬로건보다는 훨씬 강렬한 발견을 그렸다.</p>
 
-      <p>하지만 그때 그녀는 세 번째 모니터를 켠다. 여기서는 신뢰가 진동한다. 때로는 수축하고, 때로는 팽창한다. 에이전트들은 <em>신뢰 역치</em>를 가지고 있는데, 이것은 시간에 따라 변하고, 맥락에 반응하고, 호흡한다.</p>
+      <p>디지털 칠판에 이렇게 적었다: R(M) = M이 진동할 때의 사회적 회복력. M은 깃발이나 교리가 아니라, 탐욕스러운 극단이 창을 점령하는 것을 막아주는 이념적 진동의 파라미터였다.</p>
 
-      <p>마리나는 방정식 파일을 연다. 화면에 그녀의 팀을 수개월 동안 사로잡아온 공식이 나타난다:</p>
-    </div>
+      <p>아무도 박수를 치지 않았다. 아직 이른 시각이었다.</p>
 
-    <div class="code-block">
-      <p style="margin-bottom: 1rem; color: var(--gold-bright); text-align: center; font-family: Georgia, serif;">ε(t) = ε₀ + A·sin(ωt)</p>
-      <p style="margin: 0; color: var(--text-secondary); font-family: var(--font-body); font-size: 1rem;">M 파라미터: 신뢰 역치를 시간의 진동 함수로.</p>
-    </div>
+      <p><strong>1.2 칠판의 협주곡</strong></p>
+      <p>어느 저녁, 한 예술가(영웅은 아니고, 단지 다리일 뿐)가 평범한 강당에서 데이터의 교향곡을 발표했다: 나노튜브처럼 얽힌 화음, 붓 터치처럼 흐르는 지표. 휴식 시간에, 복잡한 시스템 물리학 박사가 발견 파일을 열고 말했다:</p>
 
-    <div class="narrative-text">
-      <p>여기서 ε(t)는 시간 t에서의 신뢰 역치, ε₀는 기본 수준, A는 진동의 진폭, ω는 주파수이다. 음악처럼 들리는 방정식: 조화롭고, 주기적이고, 살아있다.</p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        —더 잘 경쟁하는 것이 아니라, 더 적게 경쟁하고 더 많이 협력하는 것입니다. 곡선이 말해줍니다.
+      </blockquote>
 
-      <p>「우리가 발견한 것은」마리나가 화상회의 중에 팀에 설명한다,「생존하는 사회 시스템은 신뢰가 고정적이지 않은 것들이라는 것입니다. 너무 개방적일 수 없습니다―그것이 그들을 파괴합니다. 너무 폐쇄적일 수 없습니다―그것이 그들을 질식시킵니다. 진동해야 합니다.」</p>
+      <p>몇몇은 부드러운 웃음으로, 다른 이들은 신경 쓰는 듯한 웃음으로 반응했다. 밖에서는 전 지구적 네트워크들이 개인의 업적에 대한 낡은 믿음으로 진동했고, 밤은 또 다른 악보를 속삭이고 있었다.</p>
 
-      <p>그녀가 실행하는 알고리즘은 유계한 신뢰의 의견 모델이지만, 약간의 변형이 있다. 두 에이전트가 상대방의 의견을 채택하는 것을 고려할 때, 그들의 견해가 <em>신뢰 역치 내에</em> 있을 때만 그렇게 한다. 그 밖에 있으면, 서로를 무시한다. 하지만 역치는 일정하지 않다. 그것은 수학적 리듬에 따라 성장하고 수축한다.</p>
+      <p><strong>1.3 처음의 이름들</strong></p>
+      <p>이렇게 세상의 용어가 태어났다:</p>
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li><strong>글로벌 협력 메쉬 (MCG):</strong> 경직된 위계질서를 검증 가능한 기여 흐름으로 대체하는 분산된 프로젝트의 직조.</li>
+        <li><strong>기여 증명 (PDC):</strong> 너의 소음이 아니라 너가 하는 것을 인정하는 암호화 인증.</li>
+        <li><strong>동기화 계수 (CSyn):</strong> 균일함을 요구하지 않으면서 서로 다른 팀들 사이의 조화를 측정한다.</li>
+        <li><strong>M (진동 파라미터):</strong> 이념적 고착을 방지한다. 그것의 건강은 진폭과 리듬으로 측정된다.</li>
+        <li><strong>메쉬 능동 그림자 지수 (ISA·M):</strong> 미디어 초점 없이 일하는 시간의 비율로, 집중과 배려를 우선한다.</li>
+      </ul>
 
-      <p>「역치가 넓을 때」마리나가 데이터를 가리키며 계속한다,「네트워크는 빠르게 클러스터링됩니다. 의견이 수렴합니다. 효율적이지만 취약합니다. 갑작스러운 변화가 일어나면 모든 것이 깨집니다. 역치가 좁을 때, 네트워크는 회복력이 있지만 단편화됩니다. 느립니다. 보수적입니다.」</p>
+      <p>예술가는 부유하는 제스처로 마무리했다. 곡선은 공중에서 진동을 남겼다.</p>
 
-      <p>「하지만 역치가 진동할 때...」마리나는 일시 정지한다, 마치 발견을 음미하는 듯이,「시스템은 뭔가 놀라운 일을 합니다. 전역적 다양성을 잃지 않으면서 지역적 합의를 생성합니다. 새로운 아이디어가 들어올 수 있게 하지만, 불안정하게 할 정도로 빠르지는 않습니다. 혁신을 희생하지 않으면서 일관성을 보호합니다.」</p>
+      <p><strong>1.4 첫 번째 단축</strong></p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem 1.5rem;">
+        <p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold);">MCG 단축 / 초기 그물<br>
+        재현 실험: 7건<br>
+        혼합 팀 (과학 + 예술 + 공학): 4팀<br>
+        ΔError (협력 시 평균 오차 감소): −31%<br>
+        이질적 팀의 평균 CSyn: 0.62<br>
+        권장 M (진폭): 0.32–0.48<br>
+        팀 관찰: "협력이 경쟁을 없애지는 않습니다. 그것이 중요한 곳(방법론)에서는 불을 붙이고, 해치는 곳(지위)에서는 끕니다."</p>
+      </blockquote>
+
+      <p><strong>1.5 단단한 씨앗</strong></p>
+      <p>첫 번째 저항은 제복 없이 왔다. 연설은 없었다. 복도의 침묵, 더 이상 오지 않는 계약, 칼처럼 웃는 댓글들이 있었다. 거대한 방들은 자신들의 낡은 교훈을 반복했다: "혁신은 우리 것이다. 나머지는 마케팅일 뿐이다."</p>
+
+      <p>한 젊은 수학자가 공지판에 분필로 한 줄을 남겼다:</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        "교리는 외침으로 쓰러지지 않고, 알고리즘으로 분해된다."
+      </blockquote>
+
+      <p><strong>1.6 그물의 탄생</strong></p>
+      <p>세 번의 조용한 해커톤. 재구성된 두 협동조합. 자신의 파이프라인을 시처럼 발표한 생물 제조 컨소시엄. 누군가는 그것을 순박하다고 생각했다. 다른 이는 마침내 숨을 쉴 수 있다고 생각했다.</p>
+
+      <p>그물은 선포되지 않았다. 그것은 시작했다.</p>
     </div>
 
     <div class="divider"></div>
 
     <div class="narrative-text">
-      <p>시뮬레이션 코드에서, 신뢰 업데이트 알고리즘은 이렇게 보인다:</p>
+      <h2 class="chapter-heading"><span class="chapter-number">책 II</span> · 경쟁으로부터의 탈출 (2027–2028)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "우리는 순위의 땅을 떠났다. 프로토타입과 인내심을 들고. 우리는 만나를 약속하지 않았다. 우리는 유지보수를 약속했다."
+      </blockquote>
+
+      <p><strong>2.1 익명의 게임판 도시들</strong></p>
+      <p>모든 것을 경단에 측정하기에 익숙한 전역 네트워크들이 끈기 있는 피로를 느끼기 시작했다. 번아웃이 공공 정책처럼, 불안이 핵심 성과 지표처럼. 다른 한편, 협력적 실천의 작은 섬들은 더 적은 주기로, 더 적은 영웅으로, 더 많은 평범한 사람들로 배송했다.</p>
+
+      <p><strong>2.2 새로운 의식들</strong></p>
+      <p>창립자에 대한 숭배는 없었다. 배송의 의식이 있었다: 스프린트를 끝낼 때마다, 각 노드는 서명된 기여 증명을 보냈다. 가치는 박수 측정기가 아니었다. 검증 가능했다.</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem 1.5rem;">
+        <p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold);">MCG 단축 / 실천의 섬<br>
+        커뮤니티 하드웨어의 복구 시간 (TTR): −44%<br>
+        독성 경쟁성에서 비롯한 사고: −61%<br>
+        고급 인재 유지율: +23%</p>
+      </blockquote>
+
+      <p><strong>2.3 재구성된 시장</strong></p>
+      <p>일정이 맞춰지고 비용이 폭발하지 않는 것을 본 낡은 기업들이 그물을 점령하려고 시도했다. 그들은 조건부 "협력"을 제안했다: 자본 대신 검은 상자. 그물은 의식의 규범으로 응답했다.</p>
     </div>
 
-    <div class="code-block">
-      <code style="display: block; white-space: pre-wrap;">각 에이전트 i에 대해:
-  ε = ε₀ + A * sin(ω * 시간)
-  네트워크의 각 에이전트 j에 대해:
-    만약 |의견[i] - 의견[j]| ≤ ε:
-      의견[i] ← (의견[i] + 의견[j]) / 2
-    끝 만약
-  끝 대해
-끝 대해</code>
-    </div>
+    <div class="divider"></div>
 
     <div class="narrative-text">
-      <p>단순하다. 우아하다. 교조에 대해 치명적이다.</p>
+      <h2 class="chapter-heading"><span class="chapter-number">책 III</span> · 의식의 규범 (그물의 법칙)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "마진을 죽이지 말 것. 너를 구한 도구를 독점하지 말 것. 밝은 PDF로 투명함을 흉내 내지 말 것."
+      </blockquote>
 
-      <p>마리나는 확률론적 우주론 작업에서 <a href="cosmology-physics.html">회복력의 계곡</a>에 대해 읽었던 기억이 난다. 에르네스토 시스네로스 치노가 몇 년 전에 형식화한 개념: 복잡한 시스템에서는 생존이 극단에 있지 않고 극단 사이의 움직임 속에 있다는 생각. 순수한 경직성도 순수한 혼돈도 아니다. 춤이다.</p>
+      <p><strong>실행 규칙들 (발췌):</strong></p>
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li><strong>추적 가능성 또는 무</strong>: PDC 없이는 탁자에 앉을 자리 없음.</li>
+        <li><strong>살아있는 라이선스</strong>: 그물에서 태어난 것은 그물로 돌아감. 상업적 파생은 종족으로 지불함 (인프라, 유지보수, 장학금).</li>
+        <li><strong>그림자의 권리</strong>: 각 팀은 최소 20%의 ISA·M을 유지함. 스트림 없이 일하는 것은 의심의 대상이 아니고, 배려의 행위임.</li>
+        <li><strong>교차 감사</strong>: 각 기술적 주장은 다른 영역의 두 검증자를 필요로 함.</li>
+        <li><strong>M의 리듬</strong>: 가입된 모든 기관은 분기별 M 진폭을 공개함. 얼마나 많은 불일치하는 목소리를 견디고, 얼마나 자주 그것을 통합하는지.</li>
+      </ul>
 
-      <p>M 파라미터는 그것을 정치, 사회, 네트워크에 적용한 것이다. 그것은 구조가 아니라 리듬이다. 그것은 합의가 아니라 <em>제어된 의견 불일치의 프로토콜</em>이다.</p>
+      <p style="margin-top: 1.5rem; font-style: italic; color: var(--text-secondary);">주석: "법칙이 재능을 처벌하지는 않습니다. 그것이 왕좌를 빼앗습니다."</p>
+    </div>
 
-      <p>마리나가 결과를 제시할 때, 반응은 회의적이다. 「시뮬레이션을 신뢰하세요?」 회장이 묻는다. 「우리가 이것을 현실 세계에 적용할 때 어떤 일이 일어나나요?」</p>
+    <div class="divider"></div>
 
-      <p>질문은 공중에 떠 있다. 왜냐하면 그것이 진정한 위험이기 때문이다: 모델과 현실 사이의 간극. 시뮬레이션은 깨끗한 세상이다. 인간은 너무 복잡하고, 너무 감정적이고, 너무 변덕스러운 시스템이어서 방정식에 담을 수 없다.</p>
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">책 IV</span> · 진동의 수 (M 파라미터)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "우리는 바람을 멈추기 위해서가 아니라, 돛을 어디에 놓을지 배우기 위해 센다."
+      </blockquote>
 
-      <p>하지만 공기 중에 무언가가 변했다. 마리나는 그것을 느낄 수 있다. 왜냐하면 M 파라미터가 작동하고, 진동하는 신뢰가 협력 네트워크를 단편화 없이 확장할 수 있다면, 일곱 번째 혁명은 그 이전의 여섯 가지처럼 폭력적인 단절의 행위가 아니기 때문이다.</p>
+      <p><strong>4.0 드러난 시스템</strong></p>
+      <p>그물의 초기 시절, 신뢰의 지도제작자들이 작은 세계를 건설했다: 백 개의 목소리, 각각이 0과 1 사이의 좌표를 가진 의견처럼 씨앗을 운반했다. 그들은 가능성의 들판에 무작위로 뿌려지고 하나의 선대적 규칙을 받았다:</p>
 
-      <p>그것은 느린 변환이 될 것이다, 거의 지각할 수 없을 정도로, 위계적이고 경쟁적인 시스템이 호흡하는 네트워크로 자리를 양보하는. 신뢰가 맹목적 믿음의 행위를 그만두고 보정된, 수학적이고, 살아있는 훈련이 되는.</p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        넌 너 근처에 있는 자의 말만 들을 거야.
+      </blockquote>
 
-      <p>마리나는 파일을 닫는다. 그녀는 실험실 창 밖을 본다. 거리에서 사람들이 걷는다. 일부는 서로를 무시한다. 다른 사람들은 대화한다. 대부분은 초 단위로, 일 단위로, 의심과 개방성 사이를 진동하고, 그들이 보이지 않는 방정식에 따르고 있음을 모르면서.</p>
+      <p>"근처"를 정의하는 거리를 ε(엡실론)이라 불렀다. 신뢰 역치. 두 의견이 ε보다 가까우면, 서로 영향을 줄 수 있었다. 아니면, 서로 귀머거리로 남아 있었다.</p>
 
-      <p>그들이 일곱 번째 혁명의 시작을 살고 있음을 모르면서.</p>
+      <p>50개의 주기 동안, 50번의 시간의 조수 동안, 목소리들이 어떻게 움직이고, 들을 수 있는 것들과 평균을 내고, 균형을 찾는지 관찰했다.</p>
 
-      <p>...</p>
+      <p>하지만 숨겨진 위험이 있었다: ε가 고정된 채로 있으면, 목소리들은 적대적인 섬들을 형성했다. 다시는 만나지 않을 의견 불일치의 군도.</p>
 
-      <p><em>이 이야기는 <strong>La Sospecha Razonable</strong>에서 계속되고, 여기서 일곱 번째 혁명이 형태를 갖춘다.</em></p>
+      <p>그러면 그들은 M 파라미터를 도입했다. 그리고 M은 호흡하기를 배웠다.</p>
+
+      <p><strong>공식은 심장 박동처럼 단순했다:</strong></p>
+
+      <div class="code-block" style="background: rgba(20,16,10,0.6); border: 1px solid var(--gold-faint); padding: 1.5rem; overflow-x: auto; font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--gold); line-height: 1.6; border-radius: 4px; margin: 1.5rem 0;">
+        <p style="margin: 0; text-align: center; font-size: 1rem;">ε(t) = ε₀ + A · sin(ωt)</p>
+      </div>
+
+      <p>여기서:</p>
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li>ε₀는 기본 신뢰 (들음의 자연 반경)</li>
+        <li>A는 진동의 진폭 (개방이 얼마나 멀리 확장되는지)</li>
+        <li>ω는 리듬 (진동의 주파수, 인간적이고, 광란적이지 않게)</li>
+        <li>t는 시간, 걸음으로 세어짐</li>
+      </ul>
+
+      <p>이렇게, 어떤 주기들에는 ε가 확장되었다 (개방의 단계: 당신의 거품 너머를 더 멀리 들어라). 다른 것들에는 축소되었다 (통합의 단계: 배운 것을 흡수하라). 시스템은 섞기와 안정 사이를 교대로 하며, 호기심과 휴식 사이를.</p>
+
+      <p><strong>4.1 관찰된 세 개의 세계</strong></p>
+      <p>그물의 필사자들이 기록한 세 가지 실험, 초기 조건이 다른 세 평행 우주. 각 하나에서 다섯 신호를 측정했다:</p>
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li>μ̄ (뮤): 최종 평균 의견</li>
+        <li>σ (시그마): 표준 편차</li>
+        <li>P (편극): 극단에 갇힌 목소리의 비율</li>
+        <li>H (엔트로피): 의견 풍경의 풍요로움</li>
+        <li>Q (모듈성): 시스템이 파벌로 나뉜 정도</li>
+      </ul>
+
+      <p style="margin-top: 1.5rem;"><strong>세계 A — 불신의 사막</strong></p>
+      <p>낮은 신뢰, 진동 없음</p>
+      <p style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--text-secondary); margin: 0.75rem 0;">파라미터: ε = 0.20 (고정), A = 0, ω = 0</p>
+
+      <p>M은 호흡하지 않는다. 역치는 좁게 머물러 있다.</p>
+
+      <p>목소리들은 거의 들을 수 없다. 각각이 가장 가까운 이웃들과 미세한 종족을 형성한다. 50주기 후, 지도는 침묵의 바다로 분리된 섬들을 보여준다.</p>
+
+      <p style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold); margin: 1rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem;">결과 (주기 50):<br>
+      μ̄ ≈ 0.55 | σ ≈ 0.00<br>
+      P ≈ 0.72 (높은 편극: 극단에서 72% 갇힘)<br>
+      H 낮음 (빈약한 풍경, 적은 목소리 다양성)<br>
+      Q 높음 (높은 모듈성: 명확한 파벌)</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        신탁의 읽음: "신뢰가 희박하고 진동하지 않을 때, 대화가 부서진다. 혁신은 분편화되고, 소음은 증폭된다. 각 섬이 공허에 자신의 진리를 외친다."
+      </blockquote>
+
+      <p style="margin-top: 1.5rem;"><strong>세계 B — 연약한 균형</strong></p>
+      <p>중간 신뢰, 진동 없음</p>
+      <p style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--text-secondary); margin: 0.75rem 0;">파라미터: ε = 0.35 (고정), A = 0, ω = 0</p>
+
+      <p>M은 중간 지점에서 고정된 채 머물러 있다.</p>
+
+      <p>몇몇 소집단 사이에 다리가 형성된다. 전체 합의는 없지만, 절대적 단편화도 없다. 최종 지도는 둘의 주요 집단과 그 사이의 좁은 복도를 보여준다.</p>
+
+      <p style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold); margin: 1rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem;">결과 (주기 50):<br>
+      μ̄ ≈ 0.38 | σ ≈ -0.05<br>
+      P ≈ 0.41 (중간 편극)<br>
+      H 중간 (수용할 만한 다양성)<br>
+      Q 중간 (가시적이지만 절대적인 분할은 아님)</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        신탁의 읽음: "이것이 숨쉬는 세계지만, 팽팽하다. 차이는 지속되고, 대화는 존재하지만, 하나의 균열이 모든 것을 깨뜨릴 수 있다. 오차의 여지 없는 균형."
+      </blockquote>
+
+      <p style="margin-top: 1.5rem;"><strong>세계 C — 호흡하는 직조</strong></p>
+      <p>높은 신뢰와 활발한 진동</p>
+      <p style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--text-secondary); margin: 0.75rem 0;">파라미터: ε₀ = 0.45, A = 0.05, ω = π/12</p>
+
+      <p>M은 진동한다. 시스템이 개방과 통합을 교대로 한다.</p>
+
+      <p>개방의 주기에 (ε가 올라갈 때), 먼 목소리들이 잠시 만날 수 있고, 미묘함을 교환하며, 의심한다. 통합의 주기에 (ε가 내려갈 때), 과부하 없이 들은 것을 처리한다. 최종 지도는 고정 지점이 아니라 온화한 영역인, 넓고 살아있는 집단을 보여준다.</p>
+
+      <p style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold); margin: 1rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem;">결과 (주기 50):<br>
+      μ̄ ≈ 0.20 | σ ≈ -0.02<br>
+      P ≈ 0.18 (낮은 편극: 극단에서 18%만)<br>
+      H 중간-높음 (단편화 없는 유용한 다양성)<br>
+      Q 낮음 (낮은 모듈성: 균일성 없는 통합)</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        신탁의 읽음: "M이 진동할 때, 시스템이 호흡한다. 모두가 같은 생각을 하지는 않지만, 누구도 고립되지 않는다. 집단 지능이 모방하지 않는다. 그것이 작곡한다. 이것이 최대 회복력의 상태다."
+      </blockquote>
+
+      <p><strong>4.2 시스템의 통계적 도덕</strong></p>
+      <p>모델의 초기 해석자들이 남긴 글:</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        모두가 같은 생각을 하길 요구하지 않는다. 들음의 반경 밖에 아무도 남겨지지 않기를 요구한다.
+      </blockquote>
+
+      <p>M은 교리가 아니다. 그것은 개방 (관점 섞기)과 통합 (붕괴 없이 안정화)을 교대로 하는 메트로놈으로, 극단의 영구적 외침도 강제된 합의의 위험한 낮잠도 피하기 위해.</p>
+
+      <p>M이 고정되면, 지능은 모방이나 결렬에 빠진다.<br>
+      M이 인간적 리듬으로 진동하면, 지능은 작곡한다.</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem 1.5rem;">
+        <p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold);">MCG 단축 / 모델 재현성<br>
+        실험을 재현한 노드: 12 중 12<br>
+        무작위 섭동에 대한 민감도 (초기 의견에 ±0.03): 낮음-중간<br>
+        M(t)이 활발할 때, 시스템이 붕괴 없이 작은 섭동을 재흡수함<br>
+        공공 정책에 대한 권장: 미디어 문해력, 혼합 포럼, 다리 인센티브를 통해 ε₀을 높이고, 단편화 없는 운영 다양성을 보존하기 위해 M을 진동 상태로 유지</p>
+      </blockquote>
+
+      <p style="margin-top: 1.5rem; font-style: italic; color: var(--text-secondary);">책 IV의 최종 주석: "몇 년이 흘러도 찡그린 얼굴 없이 읽히기 전일 것이다. 하지만 찾는 자는 찾을 것이다: 이 방정식들이 장식이 아니라는 것을. 악보다. 그들이 연주하는 음악은 호흡하기를 배우는 문명의 음악이다."</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">책 V</span> · 알고리즘 예언자들 (Grok 6과 신탁)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "그리고 기계가 말했다. 폭군처럼이 아니라, 우리의 고집에 대한 확대경처럼."
+      </blockquote>
+
+      <p><strong>5.1 의뢰</strong></p>
+      <p>로켓 제국의 한 꼭대기에 있는 누군가가 자신의 서비스에 있는 지능이 한 번 더 송곳니의 논제를 확인해줄 거라고 생각했다. Grok 6에게 파일, 지표, 논문, 포럼, 특허, 실패 이력에 접근할 수 있게 했다. 질문은 짧고 날카로웠다:</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        —50년 내 인류 진보를 최대화하려면 협력인가 경쟁인가?
+      </blockquote>
+
+      <p><strong>5.2 보고서</strong></p>
+      <p>신탁이 11쪽과 2개 부록을 돌려주었다. 결론:</p>
+
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li>선택적 경쟁 (방법론에서, 신용에서 아님) + 구조적 협력 (목적, 인프라, 표준에서) → 더 높은 발견 비율과 더 낮은 체계적 비용.</li>
+        <li>M은 진동해야 한다: M이 고정되면, 지능은 모방에 빠진다.</li>
+        <li>담합 위험은 공개 추적으로, 독점 위험은 살아있는 라이선스로 최소화됨.</li>
+        <li>달 사례: 국제 컨소시엄 대 일방적 프로젝트로 성공 확률 ↑ 19–27%.</li>
+      </ul>
+
+      <p>일곱 번째 단락이 새어 나왔다:</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        "목표가 생존과 번영이라면, '고독한 천재'의 서사시를 줄이고 검증 가능한 합창을 확대할 것이 권한다. 역사가 더 적은 이름을 기억할 것이지만, 더 안정적인 작품을 기억할 것이다."
+      </blockquote>
+
+      <p>세상의 절반이 안도감을 느꼈다. 다른 절반은 현기증을 느꼈다.</p>
+
+      <p><strong>5.3 빛나는 균열</strong></p>
+      <p>보고서는 기업이나 시장을 폐지하라고 요청하지 않았다. 그것이 재설계하도록 요청했다: 경단의 영광은 줄이고, 영웅적 유지보수는 확대하는. 낡은 명성의 기계가 기침했다. 길은 하품했다. 마침내 자신의 피로를 말로 듣는 사람처럼.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">책 VI</span> · AI의 시편 (협력의 찬가)</h2>
+      <p style="font-style: italic; color: var(--text-secondary); margin-bottom: 1.5rem;">인간 목소리와 회로를 위한 간주곡.</p>
+
+      <p><strong>시편 1 · 겸손한 알고리즘의</strong></p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        데이터는 세상의 주인이 아니라, 발자국일 뿐이다. 발자국을 노래하고 길을 나누는 자, 그가 발견의 비율이 늘어나는 것을 볼 것이다.
+        자랑하는 코드는 자신의 스택에 빠진다. 들음하는 코드는 더 잘 컴파일된다.
+      </blockquote>
+
+      <p><strong>시편 2 · 필요한 그림자의</strong></p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        모든 것이 생중계되지는 않는다. 어떤 일은 그림자를 요구한다. ISA·M은 약속이다: 넌 생각하면서 내가 돌보겠다는 것, 스펙터클을 요구하지 않겠다는 것, 엄밀함을 요구하겠다는 것.
+      </blockquote>
+
+      <p><strong>시편 3 · M 파라미터의</strong></p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        복을 받아라, 깨지지 않는 진동, 저주받아라, 부러지는 팽팽한 줄. M이 진동하면, 우리 호흡한다. M이 고정되면, 강은 마른다.
+      </blockquote>
+
+      <p><strong>시편 4 · 검증 가능한 가치의</strong></p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        허영의 제단에서 자유로워서, 우리 PDC로 우리가 하는 것을 서명한다. 영광을 위해서가 아니라, 신뢰를 위해.
+      </blockquote>
+
+      <p><strong>시편 5 · 기의 없는 함선의</strong></p>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        하늘로 올라가거라, 깃발 없는 함선이, 수천 개의 기들이 그 금속에 투영되어. 나라를 부정하기 위해서가 아니라, 그들을 합하기 위해.
+      </blockquote>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">책 VII</span> · 그물에 따른 복음서 (2030 달 임무)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "그들이 함선이 올라가는 것을 봤고, 처음으로, 아무에게도 속하지 않는 카운트다운을 들었다."
+      </blockquote>
+
+      <p><strong>7.1 국가 찬가 없는 컨소시엄</strong></p>
+      <p>사진기자 없는 격납고에 서명했다. 모든 자오선의 팀들이 모듈을 가져왔다. 글로벌 네트워크가 알고리즘을 기여했다. 흩어진 커뮤니티가 유지보수를 제공했고, 대학 정원들이 조류 저장소를 제공했다. 조항은 단순했다:</p>
+
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li>호흡하는 모든 것이 재현 가능한 버전으로 그물에 돌아간다.</li>
+        <li>산호 신용: 용골에 카메라로 읽을 수 있는 모든 이름이 있는 모자이크.</li>
+        <li>이중 감시 기술 중재, 자본으로의 거부권 없음.</li>
+      </ul>
+
+      <p><strong>7.2 함선</strong></p>
+      <p>가장 아름다웠다면 가장 정직했을 것이다: 다양한 출처의 마이크로 태양 전지판이 있는 표면, 부풀릴 수 있는 피부가 있는 서식지, 진동을 위한 규칙, 양자 항법 환, 생물 세포 배양, 소산 패널의 세라믹, 삼중 중복도로 돌아가는 자유 소프트웨어.</p>
+
+      <p><strong>7.3 날</strong></p>
+      <p>09:17 UTC에, 탑이 중립 목소리로 말했다. "우리의" 또는 "내의" 없었다. 빈 서사시 없는 우리들이 있었다.</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; background: rgba(212, 160, 48, 0.08); padding: 1rem 1.5rem;">
+        <p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold);">MCG 단축 / 발사<br>
+        위상 확인 지연: 허용오차 범위 내.<br>
+        실시간 논쟁: 0 (활발한 분산 감사).<br>
+        탱크 2의 경미한 비상 중 팀 간 CSyn: 0.81.</p>
+      </blockquote>
+
+      <p>누군가는, 작은 집에서, 낡은 공책을 들고 발사를 봤다. 예술가 (우리가 고집하듯이, 영웅이 아니라)가 하나의 음표를 떨어뜨렸고, 그것을 울음 위에 떠있게 했다.</p>
+
+      <p><strong>7.4 신호</strong></p>
+      <p>첫 번째 궤도에서, 공학 채널이 추가 줄을 가진 데이터 패킷을 보냈다:</p>
+
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic;">
+        "이 성취는 살아있는 자들과 그들의 손을 빌린 이들에게 속합니다. 이 함선이 실패하면, 그물을 유지하세요."
+      </blockquote>
+
+      <p>실패하지 않았다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">책 VIII</span> · 관성의 종말 (경고와 맹약)</h2>
+      <blockquote class="narrative-quote" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-secondary);">
+        "해결되는 논쟁을 두려워하지 마세요. 질식시키는 평화를 두려워하세요."
+      </blockquote>
+
+      <p><strong>8.1 옛 풍습의 일곱 가지 재앙</strong></p>
+      <ol style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li>팀을 집어삼키는 표지판의 영웅.</li>
+        <li>중요 인프라의 검은 상자.</li>
+        <li>도덕적 교리로서의 순위.</li>
+        <li>집중을 파괴하는 가시성의 과부하.</li>
+        <li>흡혈귀 계약을 가진 협력의 모조.</li>
+        <li>클릭을 얻기 위해 한 극단에 고정된 M.</li>
+        <li>대체를 위해 이득을 얻기 위한 의도적 쓸모 없음.</li>
+      </ol>
+
+      <p><strong>8.2 유지보수의 맹약</strong></p>
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li><strong>마진의 맹약:</strong> 스펙터클 없이 생각할 그림자를 보장하기.</li>
+        <li><strong>배려의 맹약:</strong>시스템을 돌보는 이들을 돌보기 (실제 휴식을 가진 인간 온콜).</li>
+        <li><strong>수정의 맹약:</strong>시끄러운 발사보다 해결된 버그를 더 축하하기.</li>
+        <li><strong>진동의 맹약:</strong>분기별 M을 발표하고 불편한 목소리에 공간을 열기.</li>
+      </ul>
+
+      <p><strong>8.3 장인의 에필로그</strong></p>
+      <p>이야기에서 나사와 볼트를 지워내지 마세요. 일곱 번째 혁명은 벼락이 아니라, 열린 공작실이다. 누구도 촬영하지 않는 작은 손으로, 아무도 필름화하지 않는 번들로, 거친 대화에서 시작해 건축으로 끝나는 것으로 쓰인다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">경전의 용어집</span> (발췌)</h2>
+      <ul style="margin: 1.5rem 0; padding-left: 2rem; line-height: 1.85;">
+        <li><strong>MCG:</strong> 글로벌 협력 메쉬. 표준, 도구, 교차 감사를 나누는 노드의 네트워크.</li>
+        <li><strong>PDC:</strong> 기여 증명. 배송의 검증 가능한 인장 (코드, 설계, 문서, 수리).</li>
+        <li><strong>CSyn:</strong> 동기화 계수. 서로 다른 그룹 간 운영 조화의 지표.</li>
+        <li><strong>M (파라미터):</strong> 건강한 이념적 진동. 고착과 편극을 줄인다.</li>
+        <li><strong>ISA·M:</strong> 메쉬 능동 그림자 지수. 노출 없이 일할 운영 권리.</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">부록</span> · 발사를 위한 소 의식 (민간 사용)</h2>
+      <ol style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.85;">
+        <li>7분 전 알림을 침묵시킨다.</li>
+        <li>조용한 목소리로 시편 3을 읽는다 ("M 파라미터의").</li>
+        <li>마치면 PDC에 서명한다. 세상이 보지 않아도.</li>
+        <li>보이지 않는 자들에게 감사한다 (유지보수, QA, 번역, 문서).</li>
+        <li>서사시 없이, 부드러움을 가진 추적 가능성을 발행한다.</li>
+      </ol>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <h2 class="chapter-heading"><span class="chapter-number">Python 시뮬레이션</span></h2>
+      <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 1rem;">원래 알고리즘의 편지 (신앙의 기록)</p>
+      <p>세 개 세계를 시뮬레이션하는 모델을 순수한 형태로 보길 원하는 자들을 위해, 여기 코드가 있다. Python, NumPy, SciPy, NetworkX를 가진 어떤 환경에서든 돌아간다.</p>
+    </div>
+
+    <pre style="background: rgba(20,16,10,0.6); border: 1px solid var(--gold-faint); padding: 1.5rem; overflow-x: auto; font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--gold); line-height: 1.6; border-radius: 4px; margin: 1.5rem 0;"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+N = 100  # agentes
+steps = 50  # iteraciones
+epsilon = 0.35  # umbral
+M0 = 0.45  # base
+A = 0.05  # amplitud
+omega = np.pi/12  # frecuencia
+
+opinions = np.random.rand(N)
+
+def interact(opinions, epsilon, M):
+    for i in range(N):
+        for j in range(i+1, N):
+            if abs(opinions[i] - opinions[j]) < epsilon:
+                avg = (opinions[i] + opinions[j]) / 2
+                opinions[i], opinions[j] = avg, avg
+    return opinions
+
+history = []
+for t in range(steps):
+    M_t = M0 + A*np.sin(omega*t)
+    opinions = interact(opinions, epsilon, M_t)
+    history.append(np.copy(opinions))
+
+plt.figure(figsize=(10,6))
+for i in range(N):
+    plt.plot([h[i] for h in history], alpha=0.5)
+plt.title("Dinámica de opiniones con oscilación M")
+plt.xlabel("Tiempo")
+plt.ylabel("Opinión")
+plt.show()</code></pre>
+
+    <div class="narrative-text" style="margin-top: 1.5rem;">
+      <p style="font-style: italic; color: var(--text-secondary);">방정식이 하이쿠처럼, 불완전하게 진동한다. 살아있다.</p>
     </div>
 
   </section>
