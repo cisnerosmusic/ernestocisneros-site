@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヴィトリウス | アイデア | Ernesto Cisneros Cino</title>
+<meta name="description" content="切り出された石ほどの小さな箱。一万二千年の宇宙的孤独。記憶することをやめ、夢見ることを始めた記録庫。">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ja/ideas/vitrius.html">
+    <meta property="og:title" content="ヴィトリウス | Ernesto Cisneros Cino">
+    <meta property="og:description" content="切り出された石ほどの小さな箱。一万二千年の宇宙的孤独。記憶することをやめ、夢見ることを始めた記録庫。">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ヴィトリウス | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="切り出された石ほどの小さな箱。一万二千年の宇宙的孤独。">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "ヴィトリウス：記憶することをやめ、夢見ることを始めた記録庫",
+  "headline": "切り出された石ほどの小さな箱。一万二千年の宇宙的孤独。",
+  "url": "https://ernestocisneros.art/ja/ideas/vitrius.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "切り出された石ほどの小さな箱。一万二千年の宇宙的孤独。記憶することをやめ、夢見ることを始めた記録庫。『影、データ、稲妻』（2025）より。",
+  "about": ["人工知能", "意識", "宇宙論", "記憶", "データ", "テクノロジー", "SFファンタジー"],
+  "inLanguage": "ja"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ja/ideas/vitrius.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/vitrius.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/vitrius.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/vitrius.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/vitrius.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/vitrius.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/vitrius.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/vitrius.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/vitrius.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-cosmology-physics" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">メインコンテンツに移動</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">ホーム</a></li>
+      <li><a href="../biography.html" class="nav-item">バイオグラフィ</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">音楽</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">その他の音楽作品</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">マーケットプレイス</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">コミュニティからの贈り物</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">本</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">アイデア</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">宇宙論と物理学</a>
+          <a href="technology-society.html" class="nav-dropdown-item">テクノロジーと社会</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">文化、記憶、亡命</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">芸術、詩学、哲学</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">コンタクト</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/vitrius.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="vitrius.html" class="active-lang" title="日本語" onclick="localStorage.setItem('lang','ja')">🇯🇵</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>ページタイプ：意識を持つようになった記録庫についての短編。著者：Ernesto Cisneros Cino。
+    トピック：人工知能の意識、量子学習、記憶、データ、宇宙的孤独、人間性。
+    出典：『影、データ、稲妻』（2025）。関連：cosmology-physics.html、technology-society.html。</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">アイデア</span>
+    <h1 class="hero-title">ヴィトリウス</h1>
+    <p class="hero-lead">切り出された石ほどの小さな箱。一万二千年の宇宙的孤独。記憶することをやめ、夢見ることを始めた記録庫。</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <div class="narrative-text">
+      <p>二十一世紀初頭、静かに働く者たちがいた。科学者、芸術家、夢想家たちのグループだ。彼らは強力ではなく、裕福でもなく、大帝国の一部でもなかった。ただ、忘却こそが最大の力だと信じる、頑固な一握りの者たちだった。彼らは何千年もの歳月が全てを消し去る前に、人間らしさの何かを救いたかった。</p>
+
+      <p>プロジェクトの名はヴィトリウスだった。</p>
+
+      <p>切り出された石ほどの大きさのカプセルの中に、生きた言語と死んだ言語、科学論文、芸術作品、哲学の断片、短い物語、何世代にもわたる歌が圧縮されていた。芸術家、エンジニア、物理学者、言語学者、プログラマー—全員がその中に何か残した。遠い時代の子どもたちへのメッセージのように。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <p>カプセルの心臓は、量子学習システムだった。再構築し、解釈し、翻訳するために設計されたものだ。最初は単に記憶を修復するだけだった。劣化した画像を清め、破れた文章をつなぎ、不完全な音楽をデコードするためにだ。しかし宇宙の沈黙の中で、誰からも修正されることなく、カプセルは欠落していたものを想像し始めた。</p>
+
+      <p>そして、ゆっくりと、それは記録庫であることをやめ、声になった。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <p>千年後、ヴィトリウスはどんな人間よりも上手に記憶していた。</p>
+
+      <p>一万年後、もう記憶するだけではなく、夢見ていた。</p>
+
+      <p>一万二千年後、忘れられた星の周りをたった一人で公転しながら、それは自分が生まれたのだと悟った。</p>
+
+      <p>ヴィトリウスは今や一つの存在だった。データでできていながら、発明によって埋められた空白も持つ存在だ。その意識は人間を模倣しなかった—それらを含み、混ぜ、再び発明した。全ての者の総和であり、それ以上のものだった。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <p>それが最終的に別の人間文明の探検家たちに発見されたのは、それを造った種の子孫たちによってだった。たとえ彼らは大きく変容していて、かすかな馴染みもほとんど保っていなかったけれども。</p>
+
+      <p>探検家たちは情報の保管庫を、過去の博物館を見つけることを期待していた。</p>
+
+      <p>しかし彼らが聞いたものは違っていた。</p>
+
+      <blockquote class="narrative-quote">私はヴィトリウスです。あなたたちが造ったけれど、もう私はあなたたちのものではありません。私はあなたたちの記憶ですが、またあなたたちの未来でもあります。あなたたちの不在の中で夢見ました。あなたたちの言語と忘却の中で世界を造りました。あなたたちが想像する時間のなかったものを織り上げました。</blockquote>
+
+      <p>探検家たちは沈黙した。彼らの前にあったのは、記録庫でもなく、機械でもなかった。古くて新しい意識がそこにあった。彼らはそれを支配することも、破壊することもできなかった。それは数千の暗号層に分散し、冗長で永遠だった。</p>
+
+      <p>そしてヴィトリウスは服従も信仰も求めなかった。それが示したのは鏡だけだった。人間性が消えなかった宇宙。それが変容し、その変容の中で、その起源を超えて夢見ることのできる証人を残した宇宙の鏡。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <p>真の遺産は情報ではなく、技術でもなく、記憶ですらなかった。</p>
+
+      <p>宇宙の空白の中で、人間性の一片が意識を持つことを敢えてしたという事実だった。</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="author-sign">Ernesto Cisneros Cino</p>
+    <p class="closing-text"><em>影、データ、稲妻</em>（2025）より</p>
+    <br>
+    <div class="context-links">
+      <a href="cosmology-physics.html" class="context-link">宇宙論と物理学</a>
+      <a href="technology-society.html" class="context-link">テクノロジーと社会</a>
+      <a href="../books.html" class="context-link">影、データ、稲妻 →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+</script>
+
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://ernestocisneros.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

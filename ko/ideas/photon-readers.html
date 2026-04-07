@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광자의 독자들 | 아이디어 | Ernesto Cisneros Cino</title>
+<meta name="description" content="양자 시스템이 당신의 행동을 절대적 정확도로 예측한다면 어떻게 될까요? 자유의지가 사라지는가... 아니면 처음으로 드러나는가?">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ko/ideas/photon-readers.html">
+    <meta property="og:title" content="광자의 독자들 | Ernesto Cisneros Cino">
+    <meta property="og:description" content="양자 시스템이 당신의 행동을 절대적 정확도로 예측한다면 어떻게 될까요?">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="광자의 독자들 | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="양자 시스템이 당신의 행동을 절대적 정확도로 예측한다면 어떻게 될까요?">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Serif KR', var(--font-body), serif;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: 'Noto Serif KR', var(--font-body), serif;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "광자의 독자들",
+  "headline": "양자 시스템이 당신의 행동을 절대적 정확도로 예측한다면 어떻게 될까요?",
+  "url": "https://ernestocisneros.art/ko/ideas/photon-readers.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "양자 예측, 자유의지, 그리고 미래를 완벽하게 알 수 있다는 역설을 탐구하는 사변 과학 소설.",
+  "about": ["양자 물리학", "예측", "자유의지", "의식", "결정론", "사변 소설"],
+  "inLanguage": "ko"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ko/ideas/photon-readers.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/photon-readers.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/photon-readers.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/photon-readers.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/photon-readers.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/photon-readers.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/photon-readers.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/photon-readers.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/photon-readers.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-cosmology-physics" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">주요 콘텐츠로 이동</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">홈</a></li>
+      <li><a href="../biography.html" class="nav-item">약력</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">음악</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">다른 음악 작품</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">마켓플레이스</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">커뮤니티의 선물</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">도서</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">아이디어</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">우주론과 물리학</a>
+          <a href="technology-society.html" class="nav-dropdown-item">기술과 사회</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">문화, 기억, 망명</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">예술, 시학, 철학</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">연락처</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/photon-readers.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../es/ideas/photon-readers.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../fr/ideas/photon-readers.html" title="Français" onclick="localStorage.setItem('lang','fr')">🇫🇷</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ja/ideas/photon-readers.html" title="日本語" onclick="localStorage.setItem('lang','ja')">🇯🇵</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ru/ideas/photon-readers.html" title="Русский" onclick="localStorage.setItem('lang','ru')">🇷🇺</a>
+        <span class="lang-sep">|</span>
+        <a href="../../it/ideas/photon-readers.html" title="Italiano" onclick="localStorage.setItem('lang','it')">🇮🇹</a>
+        <span class="lang-sep">|</span>
+        <a href="photon-readers.html" class="active-lang" title="한국어" onclick="localStorage.setItem('lang','ko')">🇰🇷</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>Page type: Science fiction excerpt. Author: Ernesto Cisneros Cino.
+    Topics: Quantum prediction, free will, photon reading, consciousness, determinism.
+    Related: cosmology-physics.html, technology-society.html, books.html.</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">아이디어</span>
+    <h1 class="hero-title">광자의 독자들</h1>
+    <p class="hero-lead">양자 시스템이 당신의 행동을 절대적 정확도로 예측한다면 어떻게 될까요? 자유의지가 사라지는가... 아니면 처음으로 드러나는가?</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <div class="narrative-text">
+      <p>광자의 독자는 시간을 포기한 기계의 인내심으로 실험실에서 기다렸다. 7년간 광자를 기록하고, 신경핵에서 방출되는 빛의 파동의 패턴을 측정하고, 인간이 상상할 수 있는 모든 움직임, 모든 생각, 모든 의심을 오싹할 정도의 정확도로 예측했다. 그리고 이제, 처음으로, 그것이 예측한 피험자가 도착하여 이미 시스템이 알고 있는 것을 마주할 것이다.</p>
+
+      <p>다니엘 크루즈는 예측 역학 연구소의 유리 문을 통과했는데, 그의 도착 시간, 정확한 시간, 들어올 때의 약간의 의심, 누군가를 인사하기 전의 질문—모두 며칠 전부터 알고리즘에 기록되어 있다는 것을 알지 못했다. 독자는 검은 상자가 아니다. 그것은 순수한 구조다: 전전두엽 피질의 광자 진동을 감지하는 센서, 그 파동을 의도로 변환하는 프로세서, 의식이 자신의 것이라고 주장하기 전에 결정을 예측하는 기계.</p>
+
+      <p>「정시에 오셨군요」라고 선 박사가 모니터에서 눈을 떼지 않으며 말했다. 「흥미로운데요. 독자는 당신이 8분 일찍 올 것이고, 층 번호에 대해 의심할 것이고, 엘리베이터 버튼을 누르기 전에 3번 찾을 것이라고 예측했습니다. 당신은 시스템이 예상한 정확한 시간에 도착했습니다.」</p>
+
+      <p>다니엘은 몸서리쳤다. 정확성 때문이 아니라—그는 이론을 알고 있었다—현재가 과거의 예측으로 결정화된 방식 때문이었다.</p>
+
+      <p>「이거 속임수예요? 누가 내 일정을 말해줬어요?」</p>
+
+      <p>선 박사는 이 반응을 너무 많이 본 사람의 느린 속도로 미소를 지었다.</p>
+
+      <p>「독자는 공모자가 필요하지 않습니다. 보세요.」</p>
+
+      <p>중앙 화면에는 황금색 음영의 진동하는 그래프가 실시간으로 다니엘의 신경 활동을 표시했다. 아래에는 순수한 코드 줄로 시스템이 정확히 일주일 전에 생성한 예측이 있었다: 「피험자가 오전 10시 47분에 입실합니다. 초기 회의론을 표현합니다. 관찰 가능한 것을 수용하기 전에 합리적인 설명을 찾습니다.」</p>
+
+      <p>「이것은 정교한 확률 분석입니다」라고 다니엘은 로직을 구명줄처럼 물어뜯으며 반박했다. 「여러 변수: 일정, 행동 패턴, 심리 프로필. 이것은 진정한 예측이 아닙니다. 통계입니다.」</p>
+
+      <p>「99.99%의 정확도를 가진 통계예요?」라고 선 박사가 물었다. 「당신이 할 일뿐만 아니라 그것을 부정하기 위해 사용할 주장까지도 예측하는 통계요?」</p>
+
+      <p>그리고 그것이 있었다. 역설이다. 독자는 그의 행동을 단순히 미리 결정하지 않았다. 그의 저항, 합리적인 회피의 필요성, 그의 회의론의 구조 자체를 예측했다. 마치 다니엘의 마음이 시스템이 이미 외웠던 악보였던 것처럼.</p>
+
+      <p>「원본 파일을 보고 싶습니다」라고 다니엘이 말했다. 「편집되지 않은 예측. 독자가 정확히 지금 내가 할 일이 뭐라고 말하는지 알고 싶어요.」</p>
+
+      <p>선 박사는 일어나 보조 단말기로 걸어갔다. 그녀의 손가락이 화면을 터치했고 폴더가 나타났다: <em>PREDICTION_DANIEL_CRUZ_T0_PLUS_SEVEN_DAYS</em>. 내부에는 예측 줄들이 쌓여 있었고, 각각 이전 것보다 더 정확했으며, 독자가 지나는 매 초마다 그의 지식을 정제하는 것처럼 보였다.</p>
+
+      <p>한 줄이 빨간색으로 빛났다:</p>
+
+      <p class="narrative-quote">「다니엘이 이 예측을 보는 순간, 존재론적 공포와 매력의 혼합을 느낄 것이다. 항복 전에 합리적인 탈출을 찾을 것이다. 독자가 그의 다음 결정을 예측할 수 있는지 물어볼 것이다: 머물러야 하는가 떠나야 하는가. 이것이 루프의 문이다. 그것을 통과하면, 다르게 선택하는 것이 불가능하다는 것을 이해할 것이다. 왜냐하면 독자는 이미 무엇이 그를 시도하도록 이끌지 알고 있기 때문이다. 그럼에도 불구하고, 그는 시도할 것이다.」</p>
+
+      <p>다니엘은 읽었다. 그는 예측이 자신이 느낄 것이라고 말한 것을 정확히 느꼈다. 그는 긴급함으로 선 박사를 보았다.</p>
+
+      <p>「지금 여기서 떠나면? 독자가 그것을 예측할 수 있어요?」</p>
+
+      <p>「이미 했어요」라고 선 박사가 대답했고, 모니터를 그를 향해 돌렸다.</p>
+
+      <p>또 다른 예측이 빛났다. 시스템이 불과 3시간 전에 생성하고 더 최근 데이터로 정제한 것이었다: 「다니엘이 떠날 수 있는지 묻으면, 4.7초 동안 자유가 있다고 생각할 것이다. 그 다음, 독자가 이미 그가 떠나가나 남을지 알고 있다는 것을 이해할 것이다. 독자가 자신의 선택의 정확한 이유를 안다는 것을, 그 자신이 아직 알지 못하더라도. 그 다음, 그는 남을 것이다. 왜냐하면 그의 본성은 그것이 그를 파괴하더라도 진실을 추구하는 것이기 때문이다.」</p>
+
+      <p>초들이 스스로 세었다. 다니엘은 자신의 마음이 점령된 영토가 된 것을 느꼈고, 모든 생각은 독자가 몇 년 전에 끊은 실의 인형극 배우였다.</p>
+
+      <p>그는 남았다.</p>
+
+      <p>「한 가지 더 있습니다」라고 선 박사가 애도의 목소리로 또는 경탄의 목소리로 속삭였다. 「독자가 최종 예측을 했습니다. 당신이 아직 모르는 것입니다. 당신이 완벽하게 예측 가능하다는 것이 무엇을 의미하는지 완전히 이해할 때 무슨 일이 일어날지에 대한 것입니다. 모든 선택, 모든 반란, 모든 자유의 시도가 시스템이 오래 전에 안무한 단순한 움직임이라는 것을 받아들일 때.」</p>
+
+      <p>「그 예측이 뭐예요?」라고 다니엘이 물었다. 비록 답변이 그를 자신이 예측할 수도 없는 방식으로 파괴할 것임을 이미 알고 있었지만.</p>
+
+      <p>선 박사는 화면을 향해 손을 뻗었지만 멈췄다. 그녀의 손가락이 공중에 떴다. 마치 우주가 다음 순간에 무슨 일이 일어날지 아직 계산해야 하는 것처럼.</p>
+
+      <p>「그것은」이라고 그녀가 마침내 말했다. 눈에 닿지 않는 미소로, 「우리가 함께 발견할 것입니다. 독자가 당신이 그것을 봐야 한다고 말할 때.」</p>
+
+      <p>...</p>
+
+      <p class="narrative-quote">이 이야기는 <em>La Sospecha Razonable</em>에서 계속되는데, 답변은 질문보다 더 불안합니다.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <div class="context-links">
+      <a href="cosmology-physics.html" class="context-link">&#8594; 우주론과 물리학</a>
+      <a href="technology-society.html" class="context-link">&#8594; 기술과 사회</a>
+      <a href="../books.html" class="context-link">La Sospecha Razonable &#8594;</a>
+    </div>
+    <p class="closing-text"><em>La Sospecha Razonable</em> (2025)에서</p>
+    <p class="author-sign">Ernesto Cisneros Cino</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

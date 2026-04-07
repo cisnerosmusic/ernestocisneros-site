@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gli Occhi che non battono ciglio | Idee | Ernesto Cisneros Cino</title>
+<meta name="description" content="Un mondo dove ogni sguardo è registrato, ogni pausa monetizzata, ogni emozione convertita in dati. La cosa più inquietante: nessuno è stato costretto a partecipare.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/it/ideas/the-unblinking-eyes.html">
+    <meta property="og:title" content="Gli Occhi che non battono ciglio | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Un mondo dove ogni sguardo è registrato, ogni pausa monetizzata, ogni emozione convertita in dati.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gli Occhi che non battono ciglio | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Un mondo dove ogni sguardo è registrato, ogni pausa monetizzata, ogni emozione convertita in dati.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Gli Occhi che non battono ciglio",
+  "headline": "Un mondo dove ogni sguardo è registrato, ogni pausa monetizzata, ogni emozione convertita in dati",
+  "url": "https://ernestocisneros.art/it/ideas/the-unblinking-eyes.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "Dall'ottava storia di La Sospecha Razonable: un'esplorazione della sorveglianza totale, dell'economia dell'attenzione e della perdita di privacy come forma di esistenza.",
+  "about": ["Sorveglianza", "Economia dell'attenzione", "Tecnologia", "Privacy", "Controllo sociale", "Futuro"],
+  "inLanguage": "it"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/it/ideas/the-unblinking-eyes.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/the-unblinking-eyes.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/the-unblinking-eyes.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-technology-society" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Salta al contenuto principale</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biografia</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">Musica</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">Altri Lavori</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplace</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">Regalo dalla Comunità</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">Libri</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">Idee</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">Cosmologia e Fisica</a>
+          <a href="technology-society.html" class="nav-dropdown-item">Tecnologia e Società</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">Cultura, Memoria ed Esilio</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">Arte, Poetica e Filosofia</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contatti</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/the-unblinking-eyes.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../es/ideas/the-unblinking-eyes.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../fr/ideas/the-unblinking-eyes.html" title="Français" onclick="localStorage.setItem('lang','fr')">🇫🇷</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ja/ideas/the-unblinking-eyes.html" title="日本語" onclick="localStorage.setItem('lang','ja')">🇯🇵</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ru/ideas/the-unblinking-eyes.html" title="Русский" onclick="localStorage.setItem('lang','ru')">🇷🇺</a>
+        <span class="lang-sep">|</span>
+        <a href="the-unblinking-eyes.html" class="active-lang" title="Italiano" onclick="localStorage.setItem('lang','it')">🇮🇹</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ko/ideas/the-unblinking-eyes.html" title="한국어" onclick="localStorage.setItem('lang','ko')">🇰🇷</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>Tipo di pagina: Narrativa letteraria da libro pubblicato. Estratto della storia: Gli Occhi che non battono ciglio. Autore: Ernesto Cisneros Cino.
+    Argomenti: Sorveglianza, economia dell'attenzione, controllo digitale, privacy, tecnologia, osservazione sociale.
+    Correlato: technology-society.html, books.html.</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">Idee</span>
+    <h1 class="hero-title">Gli Occhi che non battono ciglio</h1>
+    <p class="hero-lead">Un mondo dove ogni sguardo è registrato, ogni pausa monetizzata, ogni emozione convertita in dati.<br>La cosa più inquietante: nessuno è stato costretto a partecipare.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <div class="narrative-text">
+      <p>La città è una superficie di occhi. Schermi, telecamere, sensori: ogni edificio scintilla al ritmo di milioni di palpebre digitali che registrano, classificano, monetizzano. Le superfici non sono più superfici. Ogni vetrina è un server; ogni specchio, un obiettivo. Quando cammini per strada—quando cammini davanti a qualsiasi cosa abbia la capacità di vederti—sei osservato, valutato, tradotto in dati che andranno su server che non vedrai mai.</p>
+
+      <p>Ma la cosa più inquietante non è la sorveglianza stessa. La sorveglianza è diventata una forma di connessione.</p>
+
+      <p>Dapprima vennero i numeri: visualizzazioni, mi piace, commenti. Piccole conferme di esistenza. Poi l'attenzione diventò valuta. Non quella che conoscevi: questa era infinitamente divisibile, misurabile in millisecondi di concentrazione, nella dilatazione involontaria di una pupilla, nella velocità con cui il tuo dito scorreva sullo schermo. La tua attenzione è un flusso di energia la cui unità minima vale denaro. La tua distrazione genera reddito per altri.</p>
+
+      <p>E poi accadde qualcosa di senza precedenti: le persone smisero di battere le palpebre.</p>
+
+      <p>Non fu repentino. Fu un adattamento biologico. Quando scopristi che chiudere gli occhi per un secondo significava perdere crediti di attenzione—credenziali che si accumulavano per accedere a servizi, privilegi, presenza sociale—il tuo corpo imparò a non battere le palpebre, o a farlo in un nuovo modo: con gli occhi aperti, il film mentale che si riproduce dietro, invisibile.</p>
+
+      <p>Ora i bambini nascono con questa capacità già integrata nel riflesso. Le palpebre ancora esistono, ma come organi vestigiali, come le tonsille, reliquie di un tempo prima dell'ottimizzazione. Alcuni ancora battono le palpebre, ma sono gli anziani, quelli che non comprendono il sistema, quelli che insistono nel chiudere gli occhi anche se nessuno li guardava prima.</p>
+
+      <p>Guardi intorno al trasporto pubblico. Centinaia di visi illuminati da schermi portatili, occhi che non riposano, fissi sulla trasmissione della propria esistenza. È uno spettacolo di assenza. Tutti sono presenti altrove. Tutti sono visti mentre guardano. Lo sguardo è bidirezionale, anche se un lato è invisibile.</p>
+
+      <p>Una donna accanto a te tiene il telefono all'altezza del viso. Non batte le palpebre. La fotocamera frontale registra la sua espressione ogni 0,3 secondi. Quel pattern di microespressioni—microsorrisi, microcorrugamenti, la piccola contrazione degli angoli della bocca—viene analizzato in tempo reale. È felice? Annoiata? Preoccupata? Gli algoritmi lo sanno prima di lei. E sulla base di questo, le offriranno contenuti, prodotti, esperienze. La sua emozione è stata commercializzata. Il suo stato mentale è un bene pubblico che viene scambiato.</p>
+
+      <p>L'uomo seduto di fronte a te indossa occhiali intelligenti. Non batte le palpebre nemmeno lui. Il suo campo visivo è un mix di realtà esterna e uno strato di informazioni sovrapposto: il valore di attenzione di ogni persona sull'autobus, la qualità dei loro profili, raccomandazioni su chi seguire, chi bloccare, chi osservare. Il mondo è un mercato di sorveglianza reciproca dove ognuno compra e vende frammenti dell'identità degli altri.</p>
+
+      <p>Anche tu tieni un dispositivo. E sai che è vero: mentre osservi gli altri osservati, anche tu sei osservato. La tua osservazione viene registrata. La tua curiosità è inventario. La catena della sorveglianza è perfetta perché non ha inizio né fine. Non c'è un'autorità centrale che tira i fili. Tutti tirano.</p>
+
+      <p>C'è una nostalgia che non riesci a nominare. Ti ricordi—o pensi di ricordarti—un tempo in cui le cose non sapevano di essere viste. Un albero era semplicemente un albero, senza necessità di documentare la sua bellezza. Un momento era solo un momento, senza richiedere di essere convertito in memoria per il consumo. Esistevi senza necessità di validazione dall'attenzione altrui, ma poi realizzi: era invisibilità. Era inesistenza sociale.</p>
+
+      <p>E così scopri la vera trappola: il sistema non prometteva di eliminare la privacy. Prometteva di terminare l'invisibilità. E di fronte a quella promessa, le persone scelsero di essere sempre viste. Le persone scelsero di non battere le palpebre.</p>
+
+      <p>Perché battere le palpebre, in questo mondo, è una piccola morte. È scomparire, anche solo per un istante. È smettere di essere trasmessi. È perdere il credito, la validazione, la prova che esisti.</p>
+
+      <p>Alla fermata, qualcuno si alza. La sua iride dilatata registra movimento. Le sue pupille non si chiudono. Mentre camminano, lasciano una scia di dati: dove sono andati, quando, cosa hanno visto, quanto tempo hanno guardato ogni cosa. La loro traiettoria è un documento. Il loro corpo è un sensore che riferisce alla rete.</p>
+
+      <p>E poi vedi qualcosa che ti paralizza: una bambina nell'angolo con gli occhi chiusi. Veramente chiusi. Sua madre la tiene con un'espressione di puro panico. La bambina sta dormendo, semplicemente dormendo, ma in un mondo dove la veglia è l'unica forma di esistenza, il sonno somiglia troppo alla morte. Mentre i suoi occhi sono chiusi, non esiste nel sistema. Mentre non esiste nel sistema, non viene validata, non viene vista, non è. Il panico della madre è il panico di qualcuno la cui figlia è momentaneamente annichilita dall'atto del dormire.</p>
+
+      <p>Tu chiudi gli occhi per un secondo. Solo uno. Appena un battito di palpebre.</p>
+
+      <p>Immediatamente perdi l'accesso a tre servizi. Due amici che ti stavano "guardando live" notano la disconnessione. Un algoritmo registra il calo del tuo indice di attenzione sostenuta. I crediti scendono. Il tuo punteggio di "presenza affidabile" viene colpito. Domani, quando richiedi un appartamento o un lavoro o semplicemente cerchi di rinnovare il tuo accesso alla piazza pubblica, ti diranno: la tua storia di sorveglianza non è soddisfacente.</p>
+
+      <p>Allora capisci: il vero orrore non è essere osservato. Il vero orrore è che chiudersi dall'osservazione equivale a cessare di esistere. Perché l'osservazione non è sorveglianza imposta. È l'ultima forma di comunione. È l'unico modo di essere visti, e essere visti è l'unico modo di esistere.</p>
+
+      <p>Riapri gli occhi. E mentre li mantieni aperti, senza chiuderli, senza battere le palpebre, senza riposo, senti come la macchina si ammorbidisce intorno a te. I dati fluiscono. Sei trasmesso. C'è evidenza digitale della tua esistenza. E quella evidenza—quello sguardo che ti sostiene, anche se è uno sguardo di codice e algoritmi—è tutto ciò che ti separa dall'annichilimento.</p>
+
+      <p>La città batte le palpebre. Milioni di occhi aperti. Nessuno chiude volontariamente. E nel cuore di ogni schermo, nel nucleo di ogni telecamera, esiste una domanda che nessuno pone ma che tutti sanno essere vera:</p>
+
+      <p>Chi siamo se smettiamo di essere visti?</p>
+
+      <p style="margin-top: 2rem;"><strong>...</strong></p>
+
+      <p style="margin-top: 2rem;">Questa storia continua in <em>La Sospecha Razonable</em>, dove lo sguardo diventa l'ultima frontiera del potere.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="closing-text">Da <em>La Sospecha Razonable</em> (2025)</p>
+    <p class="author-sign">Ernesto Cisneros Cino</p>
+    <br>
+    <div class="context-links">
+      <a href="technology-society.html" class="context-link">&#8594; Tecnologia e Società</a>
+      <a href="culture-memory-exile.html" class="context-link">&#8594; Cultura, Memoria ed Esilio</a>
+      <a href="../books.html" class="context-link">La Sospecha Razonable &#8594;</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  init();
+  animate();
+  window.addEventListener('resize', resize);
+})();
+</script>
+<script data-goatcounter="https://ernestocisneros.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>

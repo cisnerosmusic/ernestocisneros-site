@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서커스의 마술사 | 아이디어 | Ernesto Cisneros Cino</title>
+<meta name="description" content="잊혀진 마을에 예고 없이 서커스가 찾아왔다. 마술사는 구경거리를 통치로 바꿨다. 악몽은 구호와 함께 끝난다.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ko/ideas/the-circus-magician.html">
+    <meta property="og:title" content="서커스의 마술사 | Ernesto Cisneros Cino">
+    <meta property="og:description" content="잊혀진 마을에 예고 없이 서커스가 찾아왔다. 마술사는 구경거리를 통치로 바꿨다.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="서커스의 마술사 | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="잊혀진 마을에 예고 없이 서커스가 찾아왔다. 마술사는 구경거리를 통치로 바꿨다.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "서커스의 마술사",
+  "headline": "잊혀진 마을에 예고 없이 서커스가 찾아왔다. 마술사는 구경거리를 통치로 바꿨다.",
+  "url": "https://ernestocisneros.art/ko/ideas/the-circus-magician.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "스펙터클의 권력, 습관의 교육학, 그리고 박수를 통해 지배가 어떻게 자체적으로 지속되는지에 관한 서사.",
+  "about": ["정치", "권력", "지배", "스펙터클", "권위", "저항"],
+  "inLanguage": "ko"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ko/ideas/the-circus-magician.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/the-circus-magician.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/the-circus-magician.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-culture-memory-exile" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">본 내용으로 건너뛰기</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">홈</a></li>
+      <li><a href="../biography.html" class="nav-item">약력</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">음악</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">기타 음악 작품</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">마켓플레이스</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">커뮤니티의 선물</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">책</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">아이디어</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">우주론과 물리학</a>
+          <a href="technology-society.html" class="nav-dropdown-item">기술과 사회</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">문화, 기억과 망명</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">예술, 시학과 철학</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">문의</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/the-circus-magician.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="the-circus-magician.html" class="active-lang" title="한국어" onclick="localStorage.setItem('lang','ko')">🇰🇷</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>Page type: 권력, 스펙터클, 지배에 관한 서사적 에세이. 저자: Ernesto Cisneros Cino.
+    주제: 정치권력, 권위주의, 스펙터클, 선전, 일상적 순종, 저항.
+    책에서: 그림자, 데이터 그리고 번개 (2025).
+    관련: culture-memory-exile.html, biography.html.</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">아이디어</span>
+    <h1 class="hero-title">서커스의 마술사</h1>
+    <p class="hero-lead">잊혀진 마을에 예고 없이 서커스가 찾아왔다. 마술사는 구경거리를 통치로 바꿨다. 악몽은 구호와 함께 끝난다.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <div class="narrative-text">
+      <p>옛날 옛적에, 잊혀진 마을에 예고 없이 서커스가 나타났다. 코끼리도 나팔도 없이, 검은 모자를 쓴 마른 남자가 몇 개의 가방만을 들고 나타난 것이었다. 누구도 그가 어디에서 왔는지 알 수 없었다. 사막에서 왔다고 말하는 자도 있었고, 바다에서 왔다고 말하는 자도 있었다. 하지만 나는 조용히 그가 지옥 자체에서 온 것 같다고 의심했다.</p>
+
+      <p>처음에는 단순한 공연에 불과했다. 연기, 거울, 어디서나 나타나는 토끼, 그 자체로 힘을 가진 것처럼 보이는 말들. 일상의 작은 비참함으로 짓눌린 마을 주민들은 그것을 밀폐된 방에서 빛의 틈을 발견한 자처럼 바라봤다. 진실에 맞서는 것보다 속는 것이 더 쉬웠기 때문이다.</p>
+
+      <p>마술사는 곧 깨달았다. 그가 받은 것은 박수만이 아니었다. 신앙이었던 것이다. 그리고 어느 날 밤, 겸손함을 가장하며 그는 말했다.</p>
+
+      <p style="text-align: center; font-style: italic; margin: 1.5rem 0;">—나는 민중의 부름을 거절할 수 없다. 내가 지도자가 되길 원한다면, 그렇게 되겠다.</p>
+
+      <p>이렇게 서커스는 오락을 그만두고 통치가 되었다. 천막이 삶의 중심을 차지했고, 매일이 공연이 되었다. 박수를 치지 않는 자는 적으로 낙인찍혔다. 떠나가는 자들을 "벌레"라고 부르는 것이 일상화되었다. 거의 아무도 눈여겨 보지 않았지만, 그 중에는 의사도, 은행가도, 교사도, 그리고 꿈꾸는 자들도 포함되어 있었다.</p>
+
+      <p>마술사는 반복했다.</p>
+
+      <p style="text-align: center; font-style: italic; margin: 1.5rem 0;">—우리는 그들을 원하지 않는다. 필요하지도 않다.</p>
+
+      <p>그리고 군중의 메아리가 그것을 확인했다.</p>
+
+      <p>그러면 목록이 나타났다. 누구도 그것이 법인지, 조언인지, 아니면 변덕인지 알 수 없었지만, 모두가 마치 신의 명령인 것처럼 따랐다.</p>
+    </div>
+
+    <blockquote class="narrative-quote">
+      <p>네 눈이 다른 것을 보더라도 스피커가 말하는 것을 믿어라.</p>
+      <p>항상 박수를 쳐라. 침묵은 의심스럽기 때문이다.</p>
+      <p>빵이 없으면 저항에 감사하라.</p>
+      <p>이웃을 의심하라. 불신은 충성이다.</p>
+      <p>적들이 있다... 밖에. 밖에는 모두가 적이다.</p>
+      <p>자신의 배보다 나라를 더 사랑하라.</p>
+      <p>내일을 기다려라. 내일은 항상 더 나을 테니까.</p>
+    </blockquote>
+
+    <div class="narrative-text">
+      <p>오락으로 태어난 서커스는 사원으로 변신했다. 마술은 더 이상 놀라움을 주지 않았지만, 모두를 천막 안에 묶어두었다. 많은 자들이 그것이 속임이라는 것을 알았지만, 침묵하기로 선택했다. 게임을 따르는 것이 밖의 추위에 혼자 남겨지는 것보다 더 안전했기 때문이다.</p>
+
+      <p>시간이 지나면서 마술사는 손놀림의 기술마저 잊어버렸다. 더 이상 토끼도 비둘기도 필요 없었다. 그의 진정한 마술은 전체 마을을 천막 안에서 사는 것이 유일한 삶이라고 확신시킨 것이었다.</p>
+
+      <p>십 년이 또 십 년이 지나면서 천막은 낡아갔다. 불빛이 완전히 꺼지지는 않았다. 눈을 감기를 거부하는 피곤한 눈처럼 깜박였다. 한때 먼지투성이던 땅은 진부한 습기의 진흙이 되었다. 항상 넘쳐나는 쓰레기통에서 나오는 냄새는 썩은 박람회의 악취였다. 부족함은 침묵의 폭력이 되었다. 사람들은 배고픈 짐승처럼 남은 음식을 놓고 싸웠고, 억지 미소를 지으면서 침묵 속에서 치아를 부러뜨렸다.</p>
+
+      <p>마술사의 희귀한 신문에서는 모든 것이 잘 되고 있었다. 텔레비전 뉴스의 미소는 시내버스 정류장에서 결코 오지 않는 버스를 기다리는 수백 명의 슬픈 표정과 대비를 이루었다. 라디오는 정전을 날씨의 일부인 것처럼 발표했다. 그렇다, 사람들은 비에 대해 불평할 수 있었지만, 서커스 자체에서 나온 폭풍에 대해서는 불평할 수 없었다.</p>
+
+      <p>그리고도 마술사는 그곳에 있었다. 그려진 미소로, 같은 낡은 트릭들을 반복하고 있었다. 가장 불안한 것은 박수가 여전히 울려 퍼진다는 것이었다. 어떤 것은 진심이었고, 어떤 것은 거짓이었다. 그리고 가장 명민한 자들은 연기를 통해 보는 것을 배웠고, 마침내 이해했다. 이제 이 트릭은 더 이상 환상이 아니라 습관이라는 것을.</p>
+
+      <p>나는 벌떡 깼다. 무슨 악몽인가! 햇빛을 찾으면서, 여전히 기억의 숙취에 취해, 창밖을 내다봤다. 그리고 거기, 건너편 회색 건물에, 어두붕고 바래진 거대한 포스터가 있었다.</p>
+
+      <p style="text-align: center; font-size: 1.3rem; font-weight: bold; margin: 2rem 0; color: var(--gold);">VENCEREMOS!</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="chapter-heading">박수의 메아리</div>
+
+    <div class="narrative-text">
+      <p>모든 지배 체제는 알고 있다. 폭력은 값비싸고 약하다는 것을. 무기보다 훨씬 더 효과적인 것은 습관의 교육학이다. 자신이 복종하고 있다는 것을 알아차리지 못하게 복종하도록 가르치는 것이다.</p>
+
+      <p>모든 자유의 제스처를 금지할 필요는 없다. 규범을 충분히 반복해서 마치 기후처럼 보이도록 하면 된다. 가장 효과적인 거짓은 강요되는 것이 아니라 풍경이 되는 것이다.</p>
+
+      <p>군중은 빠르게 자신을 모방하는 것을 배운다. 박수를 치는 것은 믿기 때문이 아니라 침묵이 너무 눈에 띄기 때문이다. 반대는 더 이상 의견이 아니라 위험이 된다. 따라서 정치권력은 모든 모서리를 감시할 필요가 없다. 모든 개인의 마음에 다른 모든 사람이 자신을 감시한다는 의심을 심는 데 성공했기 때문이다.</p>
+
+      <p>그리고 한 시점에 도달한다. 담론과 수사는 더 이상 중요하지 않다. 체제를 버티고 있는 것은 관성이다. 반복은 확신보다 강하고, 습관은 두려움보다 강하다.</p>
+
+      <p>여기에는 마술이 없다. 계산이다. 권력은 자신을 유지한다. 군중이 자신의 정지를 충성으로 혼동하게 하는 데 성공했기 때문이다.</p>
+
+      <p>가장 명확한 예는 역사책이나 철학 논문에서 찾을 수 없다. 그것은 천막 아래 갇힌 전체 민족이 이미 자신의 트릭을 잊어버린 마술사에게 박수를 보내는 이미지에 있다.</p>
+
+      <p>그 마술사는 이름이나 얼굴을 바꿀 수 있다. 하지만 선택은 항상 같다.</p>
+
+      <p>권력은 우리가 박수를 계속하는 한 지속된다.</p>
+
+      <p>끝 (그리고 시작)은 너—오직 너—에게 달려있다. 박수를 그만두는 것에 말이다. 아무도 너 대신 할 수 없다.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="author-sign">Ernesto Cisneros Cino</p>
+    <div class="closing-text"><em>그림자, 데이터 그리고 번개</em>에서 (2025)</div>
+    <br>
+    <div class="context-links">
+      <a href="culture-memory-exile.html" class="context-link">↪ 문화, 기억과 망명</a>
+      <a href="../biography.html" class="context-link">↪ 약력</a>
+      <a href="../books.html" class="context-link">그림자, 데이터 그리고 번개 →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

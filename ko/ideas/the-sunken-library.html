@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가라앉은 도서관 | 아이디어 | 에르네스토 시스네로스 치노</title>
+<meta name="description" content="기억을 바다에 맡긴 문명. 문화와 심연의 계약.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ko/ideas/the-sunken-library.html">
+    <meta property="og:title" content="가라앉은 도서관 | 에르네스토 시스네로스 치노">
+    <meta property="og:description" content="기억을 바다에 맡긴 문명. 문화와 심연의 계약.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="가라앉은 도서관 | 에르네스토 시스네로스 치노">
+    <meta name="twitter:description" content="기억을 바다에 맡긴 문명. 문화와 심연의 계약.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-body);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* Chapter Headings */
+.chapter-heading {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chapter-number {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Context Links */
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Closing */
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "가라앉은 도서관",
+  "headline": "기억을 바다에 맡긴 문명. 문화와 심연의 계약.",
+  "url": "https://ernestocisneros.art/ko/ideas/the-sunken-library.html",
+  "author": {"@type": "Person", "name": "에르네스토 시스네로스 치노", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "datePublished": "2025",
+  "description": "도서관은 타오르고, 무너지고, 가라앉을 수 있다. 그러나 언제나 깊은 곳에서 숨 쉬는 법을 찾아낸다.",
+  "about": ["기억", "문화", "유배", "문명", "보존", "신성한 계약"],
+  "inLanguage": "ko"
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ko/ideas/the-sunken-library.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/the-sunken-library.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/the-sunken-library.html">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-culture-memory-exile" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">본 내용으로 이동</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="에르네스토 시스네로스 치노" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">홈</a></li>
+      <li><a href="../biography.html" class="nav-item">이력</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">음악</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">기타 음악 작품</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">마켓플레이스</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">커뮤니티의 선물</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">도서</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">아이디어</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">우주론과 물리학</a>
+          <a href="technology-society.html" class="nav-dropdown-item">기술과 사회</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">문화, 기억과 유배</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">예술, 시학과 철학</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">연락처</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/the-sunken-library.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../es/ideas/the-sunken-library.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="../../fr/ideas/the-sunken-library.html" title="Français" onclick="localStorage.setItem('lang','fr')">🇫🇷</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ja/ideas/the-sunken-library.html" title="日本語" onclick="localStorage.setItem('lang','ja')">🇯🇵</a>
+        <span class="lang-sep">|</span>
+        <a href="../../ru/ideas/the-sunken-library.html" title="Русский" onclick="localStorage.setItem('lang','ru')">🇷🇺</a>
+        <span class="lang-sep">|</span>
+        <a href="../../it/ideas/the-sunken-library.html" title="Italiano" onclick="localStorage.setItem('lang','it')">🇮🇹</a>
+        <span class="lang-sep">|</span>
+        <a href="the-sunken-library.html" class="active-lang" title="한국어" onclick="localStorage.setItem('lang','ko')">🇰🇷</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>Page type: Narrative essay on cultural memory and civilization. Author: Ernesto Cisneros Cino.
+    Topics: Memory, Culture, Exile, Civilization, Libraries, Underwater Preservation, Sacred Pacts.
+    Related: culture-memory-exile.html, art-poetics-philosophy.html.</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">아이디어</span>
+    <h1 class="hero-title">가라앉은 도서관</h1>
+    <p class="hero-lead">기억을 바다에 맡긴 문명. 문화와 심연의 계약. 도서관은 타오르고, 무너지고, 가라앉을 수 있다. 그러나 언제나 깊은 곳에서 숨 쉬는 법을 찾아낸다.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- I. 결정 -->
+    <div class="chapter-heading">
+      <span class="chapter-number">섹션 I</span>
+      결정
+    </div>
+
+    <div class="narrative-text">
+      <p>오래전, 이제 더 이상 그 이름을 발음할 수 없는 어느 나라에 한 문명이 있었습니다. 그 문명은 자신의 기억을 바다에 맡기기로 결정했습니다. 이것은 태만도 아니었고 사고도 아니었습니다. 그것은 의도적인 행위였고, 제사만큼이나 엄숙한 의식이었습니다.</p>
+
+      <p>그 문화는 사원을 세웠고, 동상을 조각했고, 하늘을 측량하기 위한 기구를 고안했습니다. 하지만 가장 소중히 가꾼 것은 도서관이었습니다. 도시 안의 도시, 선반의 숲. 목재는 송진 냄새를 풍기고, 양피지는 살아있는 잎처럼 스르르거렸습니다. 그곳에는 이야기들, 공식들, 노래들, 지도들이 잠들어 있었습니다. 그곳에는 그 세계의 맥박이 있었습니다.</p>
+
+      <p>침략의 위협이 현실로 다가왔을 때, 장로들은 모두를 부두로 소집했습니다. 아무도 거부하지 않았습니다. 적의 힘은 무기에 있지 않고 기억을 빼앗으려는 의지에 있다는 것을 알았기 때문입니다. 그들은 결정했습니다. 그 기억은 적에게 넘기지 않겠다고.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- II. 행렬 -->
+    <div class="chapter-heading">
+      <span class="chapter-number">섹션 II</span>
+      행렬
+    </div>
+
+    <div class="narrative-text">
+      <p>7일 7밤 동안 도시는 행렬이 되었습니다. 필사관들은 떨리는 손으로 필사본으로 가득 찬 상자들, 그리고 테이블들, 의자들, 코덱스로 가득한 온전한 선반들을 운반했습니다. 목수들은 완전한 도서관들을 해체하여 바다로 끌어갔습니다. 어린이들은 자신들보다 큰 책들을 운반하는 부모들을 바라봤습니다. 어머니들은 진흙 태블릿들을 천으로 싸서 마치 신생아인 것처럼 다루었습니다.</p>
+
+      <p>부두에 도착하면, 각 그룹은 짐을 바지선에 싣고 차례로 먼 곳으로 끌려가는 바지선들에 올렸습니다. 울음은 없었습니다. 단지 장례식 노래 같은 엄숙한 중얼거림만 있을 뿐. 각 배가 가라앉는 순간, 장로들은 다른 누구도 이해할 수 없는 말들을 읊조렸습니다. 마치 이 유일한 의식을 위해 언어 그 자체가 고안된 것처럼.
+
+      <p>상자들은 물과 접촉하면 열렸고, 몇 초간 양피지와 판들이 표면에 떠다녔습니다. 마치 사라지는 것에 저항하는 듯이. 그 다음 바다는 폭력 없이 그것들을 삼켰습니다. 위임받은 것을 받아들이는 것처럼. 마지막으로 가라앉은 것은 검은 돌의 큰 책상이었습니다. 주 강당의 제단으로 사용되었던 그 책상은 물에 닿으며 반짝이는 듯했고, 마침내 제 자리를 찾은 것처럼 파도 사이에서 사라졌습니다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- III. 세기 -->
+    <div class="chapter-heading">
+      <span class="chapter-number">섹션 III</span>
+      세기
+    </div>
+
+    <div class="narrative-text">
+      <p>세기가 흘렀습니다. 도시는 폐허가 되었고, 발음할 수 없는 그 이름은 모래 속에서 잃어버렸습니다. 하지만 바다는 그 비밀을 지켜냈습니다.</p>
+
+      <p>어부들이 가장 먼저 이야기를 말했습니다. 그들은 맹세했습니다. 고요한 밤에는 표면 아래서 문자들이 떠다니는 것을 볼 수 있다고. 빛에서 도망치는 물고기 떼처럼. 어떤 사람들은 머리를 물에 잠글 때 이상한 음성을 들었다고 주장했습니다. 그것은 대양의 포효가 아니라 넘어가는 페이지들의 소리였습니다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IV. 발견 -->
+    <div class="chapter-heading">
+      <span class="chapter-number">섹션 IV</span>
+      발견
+    </div>
+
+    <div class="narrative-text">
+      <p>훨씬 나중에, 이 전설들에 사로잡힌 한 젊은 사람이 수정 종 모양의 것을 만들어 바닥으로 내려갔습니다. 그가 가져간 것은 겨우 충분한 빛을 내는 등불뿐이었습니다. 그는 날카로운 바위들 사이로 내려갔습니다. 마치 보물을 지키려는 이빨처럼. 그것은 깊고, 접근할 수 없는 동굴이었습니다. 그토록 거대한 공간이 저렇게 아래에 존재할 수 있다는 것은 불가능해 보였습니다.</p>
+
+      <p>그리고 그가 그것을 찾았습니다.</p>
+
+      <p>그 해저 어둠 속에서 도서관의 잔해가 서 있었습니다. 여전히 서 있는 선반들은 산호로 덮여 있었습니다. 테이블들은 산호초로 변했습니다. 열려있는 상자들에서는 새로운 글씨처럼 해초들이 나고 있었습니다. 바다는 보호자가 되었고, 또한 필사관이 되었습니다. 덮고, 보호했으며, 동시에 모든 것을 변환했습니다.</p>
+
+      <p>젊은 사람은 열린 책에 다가갔습니다. 물에 부풀어 오른 페이지들은 맥박치는 듯했습니다. 등불의 불빛으로 그는 불완전하지만 여전히 읽을 수 있는 텍스트를 구분했습니다. 그것은 적의 약탈품이 되기보다는 자신의 유산을 가라앉히기로 선택한 한 민족에 대해 말하고 있었습니다. 그때 그는 깨달았습니다. 이것은 손실이 아니라 계약이었다는 것을.</p>
+
+      <p>바다는 인간이 더 이상 지킬 수 없었던 것을 지키겠다는 것을 받아들였던 것입니다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- V. 귀환 -->
+    <div class="chapter-heading">
+      <span class="chapter-number">섹션 V</span>
+      귀환
+    </div>
+
+    <div class="narrative-text">
+      <p>수면으로 돌아온 후, 그는 본 것을 말하려 했습니다. 하지만 아무도 믿지 않았습니다. 그가 산호초를 책장과 혼동했다고, 해초를 양피지와, 기포를 말씀과 혼동했다고 말했습니다. 그를 또 다른 몽상가처럼 대했습니다.</p>
+
+      <p>그러나 그는 한 비밀을 지키고 있었습니다. 매 밤 눈을 감을 때마다, 그의 피부 아래서 물고기처럼 움직이는 페이지들의 소리가 들렸습니다. 그리고 그는 깨달았습니다. 도서관은 죽지 않았다는 것을. 살아있었고, 잠재해 있었으며, 다음으로 내려올 사람을 기다리고 있었습니다.</p>
+
+      <p>왜냐하면 도서관은 타오르고, 무너지고, 가라앉을 수 있습니다. 하지만 깊은 곳에서 숨 쉬는 법을, 항상 찾아냅니다.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="closing-text"><em>『그림자, 데이터, 그리고 번개』</em>에서 (2025)</p>
+    <p class="author-sign">에르네스토 시스네로스 치노</p>
+    <br>
+    <div class="context-links">
+      <a href="culture-memory-exile.html" class="context-link">&#8594; 문화, 기억과 유배</a>
+      <a href="art-poetics-philosophy.html" class="context-link">&#8594; 예술, 시학과 철학</a>
+      <a href="../books.html" class="context-link">&#8594; 그림자, 데이터, 그리고 번개</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 에르네스토 시스네로스 치노</p>
+</footer>
+
+<script src="../../assets/js/components.js" defer></script>
+<script src="../../assets/js/main.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

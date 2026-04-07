@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Седьмая революция | Идеи | Ernesto Cisneros Cino</title>
+<meta name="description" content="М-параметр: когда доверие колеблется между порядком и хаосом, социальные системы находят равновесие. Вымысел, содержащий реальную формализацию.">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ru/ideas/the-seventh-revolution.html">
+    <meta property="og:title" content="Седьмая революция | Ernesto Cisneros Cino">
+    <meta property="og:description" content="М-параметр: когда доверие колеблется между порядком и хаосом, социальные системы находят равновесие.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Седьмая революция | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="М-параметр: когда доверие колеблется между порядком и хаосом, социальные системы находят равновесие.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #080604;
+  --bg-dark: #0d0a06;
+  --bg-card: rgba(20, 16, 10, 0.4);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #e8dcc8;
+  --text-secondary: rgba(200, 175, 130, 0.7);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-text p {
+  margin-bottom: 1.5rem;
+}
+
+.code-block {
+  background: rgba(0, 0, 0, 0.5);
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  color: var(--gold-bright);
+  line-height: 1.6;
+}
+
+.code-block code {
+  color: var(--gold-bright);
+}
+
+.chapter-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.narrative-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.closing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+
+.closing-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.author-sign {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+}
+
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+@media (max-width: 600px) {
+  .hero, .content-section, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .chapter-heading { font-size: 1.2rem; }
+  .context-links { flex-direction: column; align-items: center; }
+  .code-block { font-size: 0.85rem; padding: 1rem; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Седьмая революция: М-параметр",
+  "headline": "М-параметр: когда доверие колеблется между порядком и хаосом",
+  "url": "https://ernestocisneros.art/ru/ideas/the-seventh-revolution.html",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "description": "Из La Sospecha Razonable: седьмая революция как релационная трансформация. История, содержащая реальную формализацию: М-параметр и Долина устойчивости.",
+  "about": ["М-параметр", "Колеблющееся доверие", "Социальные системы", "Долина устойчивости", "Стохастическая космология", "Сотрудничество"],
+  "inLanguage": "ru"
+}
+</script>
+<link rel="canonical" href="https://ernestocisneros.art/ru/ideas/the-seventh-revolution.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/ideas/the-seventh-revolution.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/the-seventh-revolution.html">
+<script src="../../assets/js/schema-loader.js" data-schema="ideas-technology-society" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Перейти к основному содержанию</a>
+
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Главная</a></li>
+      <li><a href="../biography.html" class="nav-item">Биография</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">Музыка</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">Другие произведения</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Торговые площадки</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">Подарок от сообщества</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">Книги</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">Идеи</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">Космология и физика</a>
+          <a href="technology-society.html" class="nav-dropdown-item">Технология и общество</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item">Культура, память, изгнание</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">Искусство, поэтика, философия</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Контакты</a></li>
+      <li class="lang-switcher">
+        <a href="../../ideas/the-seventh-revolution.html" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="the-seventh-revolution.html" class="active-lang" title="Русский" onclick="localStorage.setItem('lang','ru')">🇷🇺</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+  <section class="hero">
+    <span class="hero-subtitle">Идеи</span>
+    <h1 class="hero-title">Седьмая революция</h1>
+    <p class="hero-lead">М-параметр: когда доверие колеблется между порядком и хаосом, социальные системы находят равновесие.<br>Вымысел, содержащий реальную формализацию.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <div class="narrative-text">
+      <p>Шесть революций преобразили человечество. Первая, аграрная, научила нас приручить время через урожаи. Вторая, промышленная, показала, что энергию можно захватить и усилить. Третья, цифровая, превратила мысль в данные. Четвёртая, информационная, раскрыла, что данные могут путешествовать со скоростью света. Пятая, биологическая, позволила нам читать и редактировать код жизни. Шестая, когнитивная, создала машины, которые учились и рассуждали без человеческого руководства.</p>
+
+      <p>Но седьмая революция иная. Она не технологична. Она не меняет то, что мы делаем, а как мы относимся друг к другу, когда делимся изменениями. Это революция <em>доверия</em>.</p>
+
+      <p>В лаборатории сотрудничества в Близком Будущем исследовательница по имени Марина обнаруживает то, что оставалось незамеченным столетия: социальные системы, которые выживают, не являются ни самыми жёсткими, ни самыми хаотичными. Они выживают благодаря дыханию. Их доверие колеблется.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <p>Марина сидит перед тремя мониторами. На первом запускается симуляция социальной сети, где все абсолютно доверяют всем. Эксперимент заканчивается через дни: система коллапсирует, так как недостаточно трения, разногласия, напряжения, чтобы сеть осталась живой. Все думают одинаково. Все движутся в унисон. Без разнообразия мнений, без обновления, без столкновения, порождающего инновацию, сеть стагнирует.</p>
+
+      <p>На втором мониторе другой мир: никто никому не доверяет. Все подозревают. Все защищаются. Система жёсткая, оборонительная. Никакая сотруднической сети не возникает. Нет потока информации, нет совместных экспериментов. Узлы остаются изолированными, каждый в своей крепости. После недель симуляции Марина наблюдает: эти раздробленные миры никогда не создают коллективную ценность. Полное недоверие убивает инновацию прежде, чем она рождается.</p>
+
+      <p>Но тогда она активирует третий монитор. Здесь доверие колеблется. Оно то сжимается, то расширяется. Агенты имеют <em>пороговое значение доверия</em>, которое меняется во времени, отвечает контексту, дышит.</p>
+
+      <p>Марина открывает файл уравнений. На экране появляется формула, которая одержима её командой месяцы:</p>
+    </div>
+
+    <div class="code-block">
+      <p style="margin-bottom: 1rem; color: var(--gold-bright); text-align: center; font-family: Georgia, serif;">ε(t) = ε₀ + A·sin(ωt)</p>
+      <p style="margin: 0; color: var(--text-secondary); font-family: var(--font-body); font-size: 1rem;">М-параметр: пороговое значение доверия как колеблющаяся функция времени.</p>
+    </div>
+
+    <div class="narrative-text">
+      <p>Где ε(t) — пороговое значение доверия в момент времени t, ε₀ — базовый уровень, A — амплитуда колебания, ω — частота. Уравнение, звучащее как музыка: гармоничное, периодичное, живое.</p>
+
+      <p>«То, что мы открыли», объясняет Марина своей команде на видеоконференции, «это то, что социальные системы, которые выживают, — это те, чьё доверие не фиксировано. Они не могут быть слишком открыты — это их разрушает. Они не могут быть слишком закрыты — это их задушает. Они должны колебаться.»</p>
+
+      <p>Алгоритм, который она запускает, — это модель мнений с ограниченной уверенностью, но с поворотом. Когда два агента рассматривают принятие мнения друг друга, они делают это только если их взгляды находятся <em>в пределах порога доверия</em>. Если они за пределами, они игнорируют друг друга. Но порог не постоянен. Он растёт и сжимается в соответствии с математическим ритмом.</p>
+
+      <p>«Когда пороговое значение широко», продолжает Марина, указывая на данные, «сеть быстро кластеризуется. Мнения сходятся. Это эффективно, но хрупко. Одно внезапное изменение — и всё рушится. Когда пороговое значение узко, сеть устойчива, но фрагментирована. Медленна. Консервативна.»</p>
+
+      <p>«Но когда пороговое значение колеблется...» Марина делает паузу, как будто смакуя открытие, «система делает что-то экстраординарное. Она генерирует локальные консенсусы без потери глобального разнообразия. Она позволяет новым идеям входить, но не настолько быстро, чтобы дестабилизировать. Она защищает согласованность без жертвования инновацией.»</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="narrative-text">
+      <p>В коде симуляции алгоритм обновления доверия выглядит так:</p>
+    </div>
+
+    <div class="code-block">
+      <code style="display: block; white-space: pre-wrap;">для каждого агента i:
+  ε = ε₀ + A * sin(ω * время)
+  для каждого агента j в сети:
+    если |мнение[i] - мнение[j]| ≤ ε:
+      мнение[i] ← (мнение[i] + мнение[j]) / 2
+    конец если
+  конец для
+конец для</code>
+    </div>
+
+    <div class="narrative-text">
+      <p>Просто. Элегантно. Смертельно для догм.</p>
+
+      <p>Марина вспоминает, как читала о <a href="cosmology-physics.html">Долине устойчивости</a> в трудах стохастической космологии. Концепцию, которую Эрнесто Сисдеро Чино формализовал годы назад: идею, что в сложных системах выживание находится не в крайностях, а в движении между крайностями. Ни чистая жесткость, ни чистый хаос. Танец.</p>
+
+      <p>М-параметр — это применение этого к политике, обществу, сетям. Это не структура; это ритм. Это не соглашение; это <em>протокол контролируемого разногласия</em>.</p>
+
+      <p>Когда Марина представляет результаты, реакция скептична. «Вы доверяете симуляциям?» спрашивает директор. «Что произойдёт, когда мы применим это в реальном мире?»</p>
+
+      <p>Вопрос повисает в воздухе. Потому что это истинный риск: разрыв между моделью и реальностью. Симуляции — чистые миры. Люди — системы слишком сложные, слишком эмоциональные, слишком капризные, чтобы быть сдержаны уравнением.</p>
+
+      <p>Но что-то изменилось в воздухе. Марина может это почувствовать. Потому что, если М-параметр работает, если колеблющееся доверие действительно позволяет сотрудничеством сетям масштабироваться без фрагментации, тогда седьмая революция не будет актом насильственного разрыва, как шесть предыдущих.</p>
+
+      <p>Это будет медленная трансформация, почти незаметная, где иерархичные и конкурентные системы уступают место сетям, которые дышат. Где доверие перестаёт быть актом слепой веры и становится калиброванной, математичной, живой дисциплиной.</p>
+
+      <p>Марина закрывает файл. Она смотрит в окно лаборатории. На улице люди ходят. Некоторые игнорируют друг друга. Другие разговаривают. Большинство колеблется между недоверием и открытостью, секунда за секундой, день за днём, не зная, что повинуются невидимому уравнению.</p>
+
+      <p>Не зная, что живут началом седьмой революции.</p>
+
+      <p>...</p>
+
+      <p><em>Эта история продолжается в <strong>La Sospecha Razonable</strong>, где седьмая революция принимает форму.</em></p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <p class="author-sign">Ernesto Cisneros Cino</p>
+    <br>
+    <p class="closing-text">Из <em>La Sospecha Razonable</em> (2025)</p>
+    <br>
+    <div class="context-links">
+      <a href="technology-society.html" class="context-link">&#8594; Технология и общество</a>
+      <a href="cosmology-physics.html" class="context-link">&#8594; Космология и физика</a>
+      <a href="../books.html" class="context-link">&#8594; La Sospecha Razonable</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="footer-text">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<script>
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < COUNT; i++) {
+      particles.push(createParticle(true));
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      p.pulse += p.pulseSpeed;
+      p.opacity = Math.max(0.1, 0.5 + 0.3 * Math.sin(p.pulse));
+      if (p.y < -10) particles[i] = createParticle(false);
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
+      g.addColorStop(0, `rgba(240, 200, 96, ${p.opacity})`);
+      g.addColorStop(1, `rgba(212, 160, 48, 0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+</script>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
