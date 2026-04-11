@@ -157,14 +157,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Artemis II -->
-  <url>
-    <loc>https://ernestocisneros.art/artemis-ii.html</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
   <!-- ============================================ -->
   <!-- Spanish Version (/es/) -->
   <!-- ============================================ -->
@@ -339,14 +331,6 @@
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- ES: Artemis II -->
-  <url>
-    <loc>https://ernestocisneros.art/es/artemis-ii.html</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
   </url>
 
   <!-- ============================================ -->
