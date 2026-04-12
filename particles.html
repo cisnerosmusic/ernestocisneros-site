@@ -389,7 +389,7 @@ const bandSmooth = [0, 0, 0, 0, 0, 0];
 
 // ─── Audio element for playback ───
 const audioEl = document.createElement('audio');
-audioEl.crossOrigin = 'anonymous';
+// crossOrigin omitted — same domain, no CORS needed
 audioEl.preload = 'auto';
 document.body.appendChild(audioEl);
 let mediaSource = null; // MediaElementSourceNode (created once)
