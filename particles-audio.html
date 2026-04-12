@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partículas Reactivas al Audio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a12;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+  canvas#canvas { display: block; cursor: crosshair; }
+  /* ─── Double-line frame ─── */
+  #frame-outer {
+    position: fixed;
+    inset: 8px;
+    border: 1px solid rgba(100, 110, 200, 0.08);
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  #frame-inner {
+    position: fixed;
+    inset: 12px;
+    border: 1px solid rgba(100, 110, 200, 0.05);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  #controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(15, 15, 30, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(120, 130, 255, 0.2);
+  }
+  .ctrl-btn {
+    background: none;
+    border: none;
+    color: rgba(160, 175, 255, 0.6);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    line-height: 1;
+  }
+  .ctrl-btn:hover { color: #fff; background: rgba(100, 120, 255, 0.15); }
+  .ctrl-btn.active { color: rgba(180, 140, 255, 0.95); }
+  #trackName {
+    color: rgba(180, 190, 255, 0.55);
+    font-size: 11px;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+  #freqBars {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 60px;
+    z-index: 10;
+  }
+  .freq-bar {
+    width: 10px;
+    background: linear-gradient(to top, #4a5aff, #b44aff);
+    border-radius: 3px;
+    transition: height 0.08s;
+    min-height: 3px;
+    opacity: 0.7;
+  }
+  .freq-label {
+    position: fixed;
+    top: 80px;
+    right: 16px;
+    color: rgba(150, 160, 255, 0.4);
+    font-size: 10px;
+    z-index: 10;
+  }
+  /* ─── EQ Panel — top-left horizontal ─── */
+  #eqPanel {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    background: rgba(12, 12, 25, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 10px 14px 8px;
+    border-radius: 14px;
+    border: 1px solid rgba(100, 110, 200, 0.12);
+    align-items: flex-end;
+    opacity: 0.7;
+    transition: opacity 0.4s;
+  }
+  #eqPanel:hover { opacity: 1; }
+  .eq-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .eq-group label {
+    color: rgba(160, 170, 220, 0.5);
+    font-size: 7px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .eq-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 4px;
+    height: 50px;
+    background: rgba(80, 90, 160, 0.2);
+    border-radius: 2px;
+    outline: none;
+    writing-mode: vertical-lr;
+    direction: rtl;
+  }
+  .eq-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(130, 140, 255, 0.6);
+    cursor: pointer;
+  }
+  .eq-val {
+    color: rgba(140, 150, 220, 0.4);
+    font-size: 7px;
+    min-width: 18px;
+    text-align: center;
+  }
+  /* ─── Volume ─── */
+  #volGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #volGroup label {
+    color: rgba(160, 170, 220, 0.5);
+    font-size: 10px;
+  }
+  #volSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 3px;
+    background: rgba(80, 90, 160, 0.25);
+    border-radius: 2px;
+    outline: none;
+  }
+  #volSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(130, 140, 255, 0.6);
+    cursor: pointer;
+  }
+  /* ─── Progress Bar ─── */
+  #progressWrap {
+    position: fixed;
+    bottom: 100px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  #progressBase {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 0;
+    background: rgba(70, 90, 180, 0.15);
+    border-radius: 1px;
+  }
+  #progressFill {
+    position: absolute;
+    height: 1px;
+    top: 0;
+    left: 0;
+    width: 0%;
+    background: rgba(90, 110, 200, 0.25);
+    border-radius: 1px;
+  }
+  #progressCanvas {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    width: 100%;
+    height: 46px;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="frame-outer"></div>
+<div id="frame-inner"></div>
+<canvas id="canvas"></canvas>
+
+<div id="freqBars">
+  <div class="freq-bar" id="bar0"></div>
+  <div class="freq-bar" id="bar1"></div>
+  <div class="freq-bar" id="bar2"></div>
+  <div class="freq-bar" id="bar3"></div>
+  <div class="freq-bar" id="bar4"></div>
+  <div class="freq-bar" id="bar5"></div>
+</div>
+<div class="freq-label">Freq Bands</div>
+
+<!-- EQ Panel -->
+<div id="eqPanel">
+  <div class="eq-group"><label>Sub</label><input type="range" class="eq-slider" id="eq0" min="0" max="200" value="100"><span class="eq-val">100</span></div>
+  <div class="eq-group"><label>Low</label><input type="range" class="eq-slider" id="eq1" min="0" max="200" value="100"><span class="eq-val">100</span></div>
+  <div class="eq-group"><label>Mid</label><input type="range" class="eq-slider" id="eq2" min="0" max="200" value="100"><span class="eq-val">100</span></div>
+  <div class="eq-group"><label>HiMd</label><input type="range" class="eq-slider" id="eq3" min="0" max="200" value="100"><span class="eq-val">100</span></div>
+  <div class="eq-group"><label>High</label><input type="range" class="eq-slider" id="eq4" min="0" max="200" value="100"><span class="eq-val">100</span></div>
+  <div class="eq-group"><label>Air</label><input type="range" class="eq-slider" id="eq5" min="0" max="200" value="100"><span class="eq-val">100</span></div>
+</div>
+
+<!-- Progress Bar -->
+<div id="progressWrap">
+  <div id="progressBase"></div>
+  <div id="progressFill"></div>
+  <canvas id="progressCanvas"></canvas>
+</div>
+
+<!-- Controls -->
+<div id="controls">
+  <button class="ctrl-btn" id="btnPrev" title="Anterior">&#9664;&#9664;</button>
+  <button class="ctrl-btn" id="btnPlay" title="Play / Pause">&#9654;</button>
+  <button class="ctrl-btn" id="btnNext" title="Siguiente">&#9654;&#9654;</button>
+  <button class="ctrl-btn" id="btnShuffle" title="Aleatorio">&#8645;</button>
+  <button class="ctrl-btn" id="btnLoop" title="Loop tema">&#8634;</button>
+  <span id="trackName">Selecciona Play</span>
+  <div id="volGroup">
+    <label>Vol</label>
+    <input type="range" id="volSlider" min="0" max="100" value="80">
+  </div>
+</div>
+
+<script>
+// ─── Canvas Setup ───
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ─── Playlist ───
+const AUDIO_BASE = "https://cisnerosmusic.github.io/ernestocisneros-site/assets/audio/";
+const playlist = [
+  // Atlas of Fragmented Light
+  { file: "atlas-of-fragmented-light/01-the-blue-breath-of-the-immutable.mp3", title: "The Blue Breath of the Immutable" },
+  { file: "atlas-of-fragmented-light/02-the-tremor-of-time.mp3", title: "The Tremor of Time" },
+  { file: "atlas-of-fragmented-light/03-transparent-dance.mp3", title: "Transparent Dance" },
+  { file: "atlas-of-fragmented-light/04-night-swell.mp3", title: "Night Swell" },
+  { file: "atlas-of-fragmented-light/05-the-first-word.mp3", title: "The First Word" },
+  { file: "atlas-of-fragmented-light/06-the-memory-of-his-wounds.mp3", title: "The Memory of His Wounds" },
+  { file: "atlas-of-fragmented-light/07-the-endless-shine.mp3", title: "The Endless Shine" },
+  { file: "atlas-of-fragmented-light/08-inert-time.mp3", title: "Inert Time" },
+  { file: "atlas-of-fragmented-light/09-noisy-horizon.mp3", title: "Noisy Horizon" },
+  { file: "atlas-of-fragmented-light/10-memory.mp3", title: "Memory" },
+  { file: "atlas-of-fragmented-light/11-transparency.mp3", title: "Transparency" },
+  // Glacial Paths
+  { file: "glacial-paths/01-chromed-horizons.mp3", title: "Chromed Horizons" },
+  { file: "glacial-paths/02-circuit-dream.mp3", title: "Circuit Dream" },
+  { file: "glacial-paths/03-fractured-tides.mp3", title: "Fractured Tides" },
+  { file: "glacial-paths/04-galactic-watch.mp3", title: "Galactic Watch" },
+  { file: "glacial-paths/05-glacial-breathing-room.mp3", title: "Glacial Breathing Room" },
+  { file: "glacial-paths/06-glass-clock-memory.mp3", title: "Glass Clock Memory" },
+  { file: "glacial-paths/07-kinetic-glass.mp3", title: "Kinetic Glass" },
+  { file: "glacial-paths/08-light.mp3", title: "Light" },
+  { file: "glacial-paths/09-luminous-tides.mp3", title: "Luminous Tides" },
+  { file: "glacial-paths/10-translucent-harmonic-bloom.mp3", title: "Translucent Harmonic Bloom" },
+  // Mare Incognitum
+  { file: "mare-incognitum/01-mare-incognitum.mp3", title: "Mare Incognitum" },
+  { file: "mare-incognitum/02-glacial-choirs-incognitus-truncate.mp3", title: "Glacial Choirs Incognitus Truncate" },
+  { file: "mare-incognitum/03-glacial-bloom.mp3", title: "Glacial Bloom" },
+  { file: "mare-incognitum/04-infinite-impossible.mp3", title: "Infinite Impossible" },
+  { file: "mare-incognitum/05-sound-tides.mp3", title: "Sound Tides" },
+  { file: "mare-incognitum/06-reconstruction.mp3", title: "Reconstruction" },
+  { file: "mare-incognitum/07-glacial-breathing-room.mp3", title: "Glacial Breathing Room" },
+  { file: "mare-incognitum/08-fertile-void.mp3", title: "Fertile Void" },
+  { file: "mare-incognitum/09-noise-of-tidal-glass.mp3", title: "Noise of Tidal Glass" },
+  { file: "mare-incognitum/10-hybrid-intimacy.mp3", title: "Hybrid Intimacy" },
+];
+let currentIndex = 0;
+let shuffleMode = false;
+let loopTrack = false;
+let isPlaying = false;
+let shuffledOrder = [];
+
+function buildShuffleOrder() {
+  shuffledOrder = [...Array(playlist.length).keys()];
+  for (let i = shuffledOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledOrder[i], shuffledOrder[j]] = [shuffledOrder[j], shuffledOrder[i]];
+  }
+}
+buildShuffleOrder();
+
+function getTrackIndex() {
+  return shuffleMode ? shuffledOrder[currentIndex % playlist.length] : currentIndex % playlist.length;
+}
+
+function getTrackDisplayName(idx) {
+  return playlist[idx].title;
+}
+
+// ─── Audio Setup ───
+let audioCtx, analyser, source, freqData, gainNode;
+let audioReady = false;
+let trackDuration = 0;
+let trackStartTime = 0;
+
+// EQ: gains for visualization, BiquadFilters for audio output
+const eqGains = [1, 1, 1, 1, 1, 1];
+const eqFilters = [];
+const EQ_FREQS = [60, 200, 650, 2200, 5500, 14000];
+
+// Wire up EQ sliders
+for (let i = 0; i < 6; i++) {
+  const slider = document.getElementById('eq' + i);
+  const valSpan = slider.parentElement.querySelector('.eq-val');
+  function applyEQ(idx, val) {
+    eqGains[idx] = val / 100;
+    document.getElementById('eq' + idx).value = val;
+    document.getElementById('eq' + idx).parentElement.querySelector('.eq-val').textContent = val;
+    if (eqFilters[idx]) {
+      const dB = (val / 100) <= 0.01 ? -40 : 20 * Math.log10(val / 100);
+      eqFilters[idx].gain.setValueAtTime(Math.max(-40, Math.min(12, dB)), audioCtx.currentTime);
+    }
+  }
+  slider.addEventListener('input', () => applyEQ(i, Number(slider.value)));
+  // Double-click resets band to 100 (neutral)
+  slider.addEventListener('dblclick', (e) => { e.preventDefault(); applyEQ(i, 100); });
+}
+
+// Wire up volume slider
+document.getElementById('volSlider').addEventListener('input', (e) => {
+  if (gainNode) gainNode.gain.value = e.target.value / 100;
+});
+
+// Progress canvas setup
+const progCanvas = document.getElementById('progressCanvas');
+const progCtx = progCanvas.getContext('2d');
+function resizeProgCanvas() {
+  const wrap = document.getElementById('progressWrap');
+  progCanvas.width = wrap.offsetWidth;
+  progCanvas.height = 46;
+}
+resizeProgCanvas();
+window.addEventListener('resize', resizeProgCanvas);
+
+const BAND_RANGES = [
+  [20, 100], [101, 300], [301, 1000],
+  [1001, 3500], [3501, 8000], [8001, 20000]
+];
+const bandValues = [0, 0, 0, 0, 0, 0];
+const bandSmooth = [0, 0, 0, 0, 0, 0];
+
+// ─── Audio element for playback ───
+const audioEl = document.createElement('audio');
+audioEl.crossOrigin = 'anonymous';
+audioEl.preload = 'auto';
+document.body.appendChild(audioEl);
+let mediaSource = null; // MediaElementSourceNode (created once)
+
+// ─── Load & play a track by index ───
+function loadTrack(idx) {
+  currentIndex = ((idx % playlist.length) + playlist.length) % playlist.length;
+  const ti = getTrackIndex();
+  const track = playlist[ti];
+  document.getElementById('trackName').textContent = track.title;
+
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+
+  // Set audio source from remote repo
+  audioEl.src = AUDIO_BASE + track.file;
+  audioEl.loop = loopTrack;
+  audioEl.play().catch(() => {});
+
+  // Create Web Audio nodes (only once, reconnect EQ each load for safety)
+  if (!mediaSource) {
+    mediaSource = audioCtx.createMediaElementSource(audioEl);
+  }
+
+  if (!analyser) {
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 4096;
+    analyser.smoothingTimeConstant = 0.85;
+    freqData = new Uint8Array(analyser.frequencyBinCount);
+  }
+
+  if (!gainNode) {
+    gainNode = audioCtx.createGain();
+    gainNode.gain.value = document.getElementById('volSlider').value / 100;
+  }
+
+  // Build EQ chain if not yet built
+  if (eqFilters.length === 0) {
+    const bandQ = [0.7, 1.0, 1.0, 1.2, 1.0, 0.7];
+    for (let i = 0; i < 6; i++) {
+      const filter = audioCtx.createBiquadFilter();
+      if (i === 0) filter.type = 'lowshelf';
+      else if (i === 5) filter.type = 'highshelf';
+      else filter.type = 'peaking';
+      filter.frequency.value = EQ_FREQS[i];
+      filter.Q.value = bandQ[i];
+      filter.gain.value = 0;
+      eqFilters.push(filter);
+    }
+
+    // Wire chain once: mediaSource → analyser → EQ[0-5] → gain → destination
+    mediaSource.connect(analyser);
+    analyser.connect(eqFilters[0]);
+    for (let i = 0; i < eqFilters.length - 1; i++) eqFilters[i].connect(eqFilters[i + 1]);
+    eqFilters[eqFilters.length - 1].connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // Apply current EQ positions
+    for (let i = 0; i < 6; i++) {
+      const val = eqGains[i];
+      const dB = val <= 0.01 ? -40 : 20 * Math.log10(val);
+      eqFilters[i].gain.setValueAtTime(Math.max(-40, Math.min(12, dB)), audioCtx.currentTime);
+    }
+  }
+
+  audioReady = true;
+  isPlaying = true;
+  document.getElementById('btnPlay').innerHTML = '&#9646;&#9646;';
+}
+
+// Track duration and position from audio element
+function getTrackProgress() {
+  if (!audioEl.duration || isNaN(audioEl.duration)) return { elapsed: 0, duration: 0, pct: 0 };
+  return { elapsed: audioEl.currentTime, duration: audioEl.duration, pct: audioEl.currentTime / audioEl.duration };
+}
+
+// When track ends naturally
+audioEl.addEventListener('ended', () => {
+  if (!isPlaying) return;
+  if (loopTrack) {
+    audioEl.currentTime = 0;
+    audioEl.play();
+  } else {
+    loadTrack(currentIndex + 1);
+  }
+});
+
+// ─── Player controls ───
+document.getElementById('btnPlay').addEventListener('click', () => {
+  if (!audioReady) {
+    loadTrack(0);
+    return;
+  }
+  if (isPlaying) {
+    audioEl.pause();
+    isPlaying = false;
+    document.getElementById('btnPlay').innerHTML = '&#9654;';
+  } else {
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    audioEl.play();
+    isPlaying = true;
+    document.getElementById('btnPlay').innerHTML = '&#9646;&#9646;';
+  }
+});
+
+document.getElementById('btnNext').addEventListener('click', () => {
+  loadTrack(currentIndex + 1);
+});
+
+document.getElementById('btnPrev').addEventListener('click', () => {
+  loadTrack(currentIndex <= 0 ? playlist.length - 1 : currentIndex - 1);
+});
+
+document.getElementById('btnShuffle').addEventListener('click', () => {
+  shuffleMode = !shuffleMode;
+  document.getElementById('btnShuffle').classList.toggle('active', shuffleMode);
+  if (shuffleMode) buildShuffleOrder();
+});
+
+document.getElementById('btnLoop').addEventListener('click', () => {
+  loopTrack = !loopTrack;
+  audioEl.loop = loopTrack;
+  document.getElementById('btnLoop').classList.toggle('active', loopTrack);
+});
+
+function getFreqBands() {
+  if (!audioReady) return;
+  analyser.getByteFrequencyData(freqData);
+  const nyquist = audioCtx.sampleRate / 2;
+  const binSize = nyquist / analyser.frequencyBinCount;
+
+  for (let b = 0; b < 6; b++) {
+    const [lo, hi] = BAND_RANGES[b];
+    const startBin = Math.floor(lo / binSize);
+    const endBin = Math.min(Math.floor(hi / binSize), freqData.length - 1);
+    let sum = 0, count = 0;
+    for (let i = startBin; i <= endBin; i++) {
+      sum += freqData[i];
+      count++;
+    }
+    bandValues[b] = count > 0 ? (sum / count) / 255 : 0;
+    // Apply EQ gain before smoothing
+    bandValues[b] *= eqGains[b];
+    bandSmooth[b] += (bandValues[b] - bandSmooth[b]) * 0.12;
+  }
+
+  // Update visual bars
+  for (let i = 0; i < 6; i++) {
+    document.getElementById('bar' + i).style.height = (3 + bandSmooth[i] * 55) + 'px';
+  }
+}
+
+// ─── Mouse ───
+let mouse = { x: W / 2, y: H / 2, active: false };
+let clicking = false;
+let clickTime = 0;
+const CLICK_DURATION = 1500;
+
+canvas.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  mouse.active = true;
+});
+canvas.addEventListener('mouseleave', () => { mouse.active = false; });
+canvas.addEventListener('mousedown', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  clicking = true;
+  clickTime = performance.now();
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+});
+
+// ─── Attractors & Tensors ───
+const attractors = [
+  { x: W * 0.25, y: H * 0.3, strength: 0.4, radius: 300 },
+  { x: W * 0.75, y: H * 0.7, strength: 0.35, radius: 280 },
+  { x: W * 0.5, y: H * 0.5, strength: 0.25, radius: 350 },
+];
+const tensors = [
+  { x: W * 0.15, y: H * 0.8, strength: -0.3, radius: 200 },
+  { x: W * 0.85, y: H * 0.2, strength: -0.25, radius: 220 },
+];
+
+function updateFieldPositions() {
+  attractors[0].x = W * 0.25 + Math.sin(performance.now() * 0.0003) * 80;
+  attractors[0].y = H * 0.3 + Math.cos(performance.now() * 0.0004) * 60;
+  attractors[1].x = W * 0.75 + Math.cos(performance.now() * 0.00025) * 70;
+  attractors[1].y = H * 0.7 + Math.sin(performance.now() * 0.00035) * 50;
+  attractors[2].x = W * 0.5 + Math.sin(performance.now() * 0.0002) * 100;
+  attractors[2].y = H * 0.5 + Math.cos(performance.now() * 0.0003) * 80;
+  tensors[0].x = W * 0.15 + Math.cos(performance.now() * 0.0002) * 60;
+  tensors[0].y = H * 0.8 + Math.sin(performance.now() * 0.00025) * 50;
+  tensors[1].x = W * 0.85 + Math.sin(performance.now() * 0.00015) * 50;
+  tensors[1].y = H * 0.2 + Math.cos(performance.now() * 0.0002) * 40;
+}
+
+// ─── Particles ───
+const NUM = 20;
+const particles = [];
+
+class Particle {
+  constructor(i) {
+    this.id = i;
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.homeX = this.x;
+    this.homeY = this.y;
+    this.vx = (Math.random() - 0.5) * 1.2;
+    this.vy = (Math.random() - 0.5) * 1.2;
+
+    // Size with 10% variation: base 3-5px
+    const baseSize = 3 + Math.random() * 2;
+    this.radius = baseSize * (0.9 + Math.random() * 0.2);
+
+    // Halo properties — unique per particle
+    this.haloRadius = 15 + Math.random() * 40;
+    this.haloOpacity = 0.08 + Math.random() * 0.15;
+    this.haloLayers = 2 + Math.floor(Math.random() * 3); // 2-4 layers
+    this.haloSpread = 0.6 + Math.random() * 0.8;
+
+    // Frequency band assignment (0-5), distribute across bands
+    this.freqBand = i % 6;
+    // Higher bands (3=medios altos, 4=altas, 5=altísimos) get much more sensitivity
+    const bandBoost = [1.0, 1.0, 1.2, 2.2, 3.0, 3.5];
+    this.freqSensitivity = (0.5 + Math.random() * 0.5) * bandBoost[this.freqBand];
+
+    // Color state (original: sky blue / light violet)
+    this.baseHue = 200 + Math.random() * 80; // 200 (sky blue) to 280 (violet)
+    this.baseSat = 60 + Math.random() * 30;
+    this.baseLightness = 65 + Math.random() * 15;
+    this.hue = this.baseHue;
+    this.sat = this.baseSat;
+    this.lightness = this.baseLightness;
+    this.targetHue = this.baseHue;
+    this.targetSat = this.baseSat;
+    this.targetLightness = this.baseLightness;
+
+    // Phase offset for organic motion
+    this.phase = Math.random() * Math.PI * 2;
+    this.speed = 0.3 + Math.random() * 0.4;
+
+    // Halo glow multiplier
+    this.glowMult = 1;
+    this.targetGlow = 1;
+  }
+
+  update(dt) {
+    const now = performance.now();
+
+    // Check click state
+    const isClicking = clicking && (now - clickTime < CLICK_DURATION);
+    const clickProgress = isClicking ? (now - clickTime) / CLICK_DURATION : 1;
+
+    // Color transition
+    if (isClicking) {
+      this.targetHue = 0;       // Red
+      this.targetSat = 90;
+      this.targetLightness = 50;
+      this.targetGlow = 2.5;
+    } else {
+      this.targetHue = this.baseHue;
+      this.targetSat = this.baseSat;
+      this.targetLightness = this.baseLightness;
+      this.targetGlow = 1;
+    }
+
+    this.hue += (this.targetHue - this.hue) * 0.06;
+    this.sat += (this.targetSat - this.sat) * 0.06;
+    this.lightness += (this.targetLightness - this.lightness) * 0.06;
+    this.glowMult += (this.targetGlow - this.glowMult) * 0.06;
+
+    // Frequency response — high bands react much stronger
+    const bandVal = Math.min(bandSmooth[this.freqBand] * this.freqSensitivity, 1.5);
+    const highBandMult = this.freqBand >= 3 ? 2.5 : 1.0;
+    const freqForce = bandVal * 3 * highBandMult;
+
+    // Organic wandering — slowed for contemplative pace
+    this.phase += this.speed * 0.006;
+    let fx = Math.sin(this.phase + this.id) * 0.15;
+    let fy = Math.cos(this.phase * 0.7 + this.id * 1.3) * 0.15;
+
+    // Audio-driven orbital dance
+    // Bands 0-1 (bajos): inner ring, 2-3 (medios): middle ring, 4-5 (altos): outer ring
+    if (audioReady) {
+      const cx = W / 2, cy = H / 2;
+      const minDim = Math.min(W, H);
+      // Target orbit radius per band tier
+      const orbitRadii = [
+        minDim * 0.08,  // band 0 - bajos: very center
+        minDim * 0.12,  // band 1 - medios bajos: near center
+        minDim * 0.20,  // band 2 - medios: middle
+        minDim * 0.28,  // band 3 - medios altos: mid-outer
+        minDim * 0.36,  // band 4 - altas: outer
+        minDim * 0.44,  // band 5 - altísimos: outermost
+      ];
+      const baseOrbit = orbitRadii[this.freqBand];
+      // Orbit expands with audio intensity
+      const targetRadius = baseOrbit * (0.6 + bandVal * 1.4);
+
+      // Orbital angle: rotates over time, each particle offset by id
+      const orbitSpeed = [0.00018, 0.00015, 0.00024, 0.0003, 0.00039, 0.00048];
+      const direction = this.id % 2 === 0 ? 1 : -1; // alternate rotation
+      const angle = performance.now() * orbitSpeed[this.freqBand] * direction + (this.id / NUM) * Math.PI * 2;
+
+      // Target position on orbit
+      const targetX = cx + Math.cos(angle) * targetRadius;
+      const targetY = cy + Math.sin(angle) * targetRadius;
+
+      // Pull toward orbit position — strength scales with audio
+      const pullStrength = 0.04 + bandVal * 0.12;
+      fx += (targetX - this.x) * pullStrength;
+      fy += (targetY - this.y) * pullStrength;
+
+      // Add tangential nudge for fluid motion
+      const dxc = this.x - cx, dyc = this.y - cy;
+      const distC = Math.sqrt(dxc * dxc + dyc * dyc) || 1;
+      const tangentForce = bandVal * 0.4;
+      fx += (-dyc / distC) * tangentForce * direction;
+      fy += (dxc / distC) * tangentForce * direction;
+    }
+
+    // Attractors
+    for (const a of attractors) {
+      const dx = a.x - this.x, dy = a.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      if (dist < a.radius) {
+        const strength = a.strength * (1 - dist / a.radius);
+        fx += (dx / dist) * strength;
+        fy += (dy / dist) * strength;
+      }
+    }
+
+    // Tensors (repulsors)
+    for (const t of tensors) {
+      const dx = t.x - this.x, dy = t.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      if (dist < t.radius) {
+        const strength = t.strength * (1 - dist / t.radius);
+        fx += (dx / dist) * strength;
+        fy += (dy / dist) * strength;
+      }
+    }
+
+    // Mouse hover — discrete attraction
+    if (mouse.active && !isClicking) {
+      const dx = mouse.x - this.x, dy = mouse.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      if (dist < 300) {
+        const pull = 0.3 * (1 - dist / 300);
+        fx += (dx / dist) * pull;
+        fy += (dy / dist) * pull;
+      }
+    }
+
+    // Click — aggressive grouping
+    if (isClicking) {
+      const dx = mouse.x - this.x, dy = mouse.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const aggression = 4.0 * (1 - clickProgress * 0.3);
+      fx += (dx / dist) * aggression;
+      fy += (dy / dist) * aggression;
+    }
+
+    // Post-click dispersion
+    if (clicking && !isClicking) {
+      clicking = false;
+      // Apply burst away from click point
+      for (const p of particles) {
+        const dx = p.x - mouse.x, dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        p.vx += (dx / dist) * 6;
+        p.vy += (dy / dist) * 6;
+      }
+    }
+
+    // Damping + force — 30% speed for contemplative feel
+    const motionScale = 0.3;
+    this.vx += fx * dt * motionScale;
+    this.vy += fy * dt * motionScale;
+    this.vx *= 0.97;
+    this.vy *= 0.97;
+
+    // Speed limit (reduced)
+    const maxSpd = 2.5;
+    const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    if (spd > maxSpd) {
+      this.vx = (this.vx / spd) * maxSpd;
+      this.vy = (this.vy / spd) * maxSpd;
+    }
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Soft boundary containment — keep 50%+ visible
+    const pad = 40;
+    const pushStrength = 0.4;
+    if (this.x < pad) { this.vx += pushStrength * (1 - this.x / pad); }
+    if (this.x > W - pad) { this.vx -= pushStrength * (1 - (W - this.x) / pad); }
+    if (this.y < pad) { this.vy += pushStrength * (1 - this.y / pad); }
+    if (this.y > H - pad) { this.vy -= pushStrength * (1 - (H - this.y) / pad); }
+    // Hard clamp — never fully escape
+    const hardMargin = 20;
+    this.x = Math.max(-hardMargin, Math.min(W + hardMargin, this.x));
+    this.y = Math.max(-hardMargin, Math.min(H + hardMargin, this.y));
+  }
+
+  draw() {
+    const rawBand = audioReady ? bandSmooth[this.freqBand] * this.freqSensitivity : 0.1;
+    const bandVal = Math.min(rawBand, 1.5);
+    const glow = this.glowMult * (1 + (this.freqBand >= 3 ? bandVal * 0.8 : 0));
+    const color = `hsl(${this.hue}, ${this.sat}%, ${this.lightness}%)`;
+
+    // Draw halo layers (unique per particle)
+    for (let l = this.haloLayers; l >= 1; l--) {
+      const layerRadius = this.haloRadius * (l / this.haloLayers) * this.haloSpread * (1 + bandVal * 1.5) * glow;
+      const layerOpacity = this.haloOpacity * (1 / l) * glow * (0.5 + bandVal * 0.8);
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, layerRadius);
+      grad.addColorStop(0, `hsla(${this.hue}, ${this.sat}%, ${this.lightness + 10}%, ${layerOpacity})`);
+      grad.addColorStop(0.4, `hsla(${this.hue}, ${this.sat}%, ${this.lightness}%, ${layerOpacity * 0.5})`);
+      grad.addColorStop(1, `hsla(${this.hue}, ${this.sat}%, ${this.lightness}%, 0)`);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, layerRadius, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Core particle
+    const coreSize = this.radius * (1 + bandVal * 0.6);
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, coreSize, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 8 * glow + bandVal * 12;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Bright center
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, coreSize * 0.4, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${this.hue}, ${this.sat - 10}%, ${Math.min(this.lightness + 30, 95)}%, ${0.6 + bandVal * 0.3})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < NUM; i++) {
+  particles.push(new Particle(i));
+}
+
+// ─── Background Stars Layer ───
+const NUM_STARS = 200;
+const STAR_LIFETIME = 10000; // 10 seconds in ms
+const stars = [];
+
+class Star {
+  constructor() { this.reset(); }
+
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    // Very slow drift — barely perceptible
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 0.01 + Math.random() * 0.03;
+    this.vx = Math.cos(angle) * speed;
+    this.vy = Math.sin(angle) * speed;
+    // Size: tiny points 0.5-1.8px
+    this.radius = 0.5 + Math.random() * 1.3;
+    // Color: white or cool blue
+    this.isBlue = Math.random() < 0.4;
+    this.hue = this.isBlue ? 210 + Math.random() * 30 : 0;
+    this.sat = this.isBlue ? 40 + Math.random() * 30 : 0;
+    this.lightness = this.isBlue ? 75 + Math.random() * 15 : 90 + Math.random() * 10;
+    // Random intensity per star (0.2 to 1.0) — not all shine the same
+    this.intensity = 0.2 + Math.random() * 0.8;
+    // Independent lifetime
+    this.age = Math.random() * STAR_LIFETIME; // stagger births
+    this.lifetime = STAR_LIFETIME * (0.8 + Math.random() * 0.4); // 8-12s variation
+  }
+
+  update(dtMs) {
+    this.age += dtMs;
+    if (this.age >= this.lifetime) {
+      this.reset();
+      this.age = 0;
+    }
+    this.x += this.vx;
+    this.y += this.vy;
+    // Wrap softly
+    if (this.x < 0) this.x = W;
+    if (this.x > W) this.x = 0;
+    if (this.y < 0) this.y = H;
+    if (this.y > H) this.y = 0;
+  }
+
+  draw() {
+    // Brightness curve: peaks at midpoint of life
+    const t = this.age / this.lifetime; // 0 → 1
+    // Smooth bell: sin curve peaks at 0.5
+    const bell = Math.sin(t * Math.PI);
+    // Base opacity: 40% less visible overall, modulated by per-star intensity
+    const baseAlpha = 0.035;
+    const peakAlpha = 0.33;
+    const alpha = (baseAlpha + bell * (peakAlpha - baseAlpha)) * this.intensity;
+
+    // Tiny glow at peak life
+    const glowSize = this.radius + bell * 2.5;
+
+    // Soft glow halo
+    if (bell > 0.3) {
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowSize * 2);
+      grad.addColorStop(0, `hsla(${this.hue}, ${this.sat}%, ${this.lightness}%, ${alpha * 0.3})`);
+      grad.addColorStop(1, `hsla(${this.hue}, ${this.sat}%, ${this.lightness}%, 0)`);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, glowSize * 2, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Core dot
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${this.hue}, ${this.sat}%, ${this.lightness}%, ${alpha})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < NUM_STARS; i++) {
+  stars.push(new Star());
+}
+
+function drawStars(dtMs) {
+  for (const s of stars) {
+    s.update(dtMs);
+    s.draw();
+  }
+}
+
+// ─── Connection Lines ───
+function drawConnections() {
+  const maxDist = 160;
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const a = particles[i], b = particles[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < maxDist) {
+        const alpha = (1 - dist / maxDist) * 0.12;
+        const avgHue = (a.hue + b.hue) / 2;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `hsla(${avgHue}, 50%, 60%, ${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+// ─── Main Loop ───
+let lastTime = performance.now();
+
+function loop() {
+  const now = performance.now();
+  const dt = Math.min((now - lastTime) / 16.667, 3);
+  lastTime = now;
+
+  // Update audio
+  getFreqBands();
+  updateFieldPositions();
+
+  // Clear with trail effect
+  ctx.fillStyle = 'rgba(10, 10, 18, 0.15)';
+  ctx.fillRect(0, 0, W, H);
+
+  // Background stars (behind everything)
+  drawStars(dt * 16.667);
+
+  drawConnections();
+
+  for (const p of particles) {
+    p.update(dt);
+    p.draw();
+  }
+
+  // ─── Progress bar + Mirrored Gaussian bell ───
+  const prog = getTrackProgress();
+  if (audioReady && prog.duration > 0) {
+    document.getElementById('progressFill').style.width = (prog.pct * 100) + '%';
+
+    const pw = progCanvas.width, ph = progCanvas.height;
+    progCtx.clearRect(0, 0, pw, ph);
+    const cx = prog.pct * pw;
+    const cy = ph / 2; // center line of canvas (where the progress line sits)
+    const gap = 5;     // px separation from line
+    const breath = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(performance.now() * 0.0015));
+    const sigma = 12 + breath * 6;
+    const peakH = 7 + breath * 4;
+    const steps = 60;
+    const range = sigma * 3;
+
+    // Halo glow centered on position
+    const haloGrad = progCtx.createRadialGradient(cx, cy, 0, cx, cy, sigma * 2.5);
+    haloGrad.addColorStop(0, `rgba(140, 170, 255, ${0.10 * breath})`);
+    haloGrad.addColorStop(0.5, `rgba(120, 150, 255, ${0.04 * breath})`);
+    haloGrad.addColorStop(1, 'rgba(120, 150, 255, 0)');
+    progCtx.beginPath();
+    progCtx.arc(cx, cy, sigma * 2.5, 0, Math.PI * 2);
+    progCtx.fillStyle = haloGrad;
+    progCtx.fill();
+
+    // Upper bell (above line, 5px gap)
+    progCtx.beginPath();
+    for (let s = 0; s <= steps; s++) {
+      const xOff = -range + (2 * range * s / steps);
+      const g = Math.exp(-(xOff * xOff) / (2 * sigma * sigma));
+      const px = cx + xOff;
+      const py = cy - gap - g * peakH;
+      if (s === 0) progCtx.moveTo(px, py); else progCtx.lineTo(px, py);
+    }
+    progCtx.lineTo(cx + range, cy - gap);
+    progCtx.lineTo(cx - range, cy - gap);
+    progCtx.closePath();
+    const bellUp = progCtx.createLinearGradient(cx, cy - gap - peakH, cx, cy - gap);
+    bellUp.addColorStop(0, `rgba(160, 190, 255, ${0.55 * breath})`);
+    bellUp.addColorStop(1, `rgba(100, 130, 255, ${0.03 * breath})`);
+    progCtx.fillStyle = bellUp;
+    progCtx.fill();
+
+    // Lower bell (below line, 5px gap) — mirrored
+    progCtx.beginPath();
+    for (let s = 0; s <= steps; s++) {
+      const xOff = -range + (2 * range * s / steps);
+      const g = Math.exp(-(xOff * xOff) / (2 * sigma * sigma));
+      const px = cx + xOff;
+      const py = cy + gap + g * peakH;
+      if (s === 0) progCtx.moveTo(px, py); else progCtx.lineTo(px, py);
+    }
+    progCtx.lineTo(cx + range, cy + gap);
+    progCtx.lineTo(cx - range, cy + gap);
+    progCtx.closePath();
+    const bellDown = progCtx.createLinearGradient(cx, cy + gap + peakH, cx, cy + gap);
+    bellDown.addColorStop(0, `rgba(160, 190, 255, ${0.55 * breath})`);
+    bellDown.addColorStop(1, `rgba(100, 130, 255, ${0.03 * breath})`);
+    progCtx.fillStyle = bellDown;
+    progCtx.fill();
+
+    // Single bright dot on the line
+    const dg = progCtx.createRadialGradient(cx, cy, 0, cx, cy, 4);
+    dg.addColorStop(0, `rgba(210, 225, 255, ${0.85 * breath})`);
+    dg.addColorStop(0.5, `rgba(150, 180, 255, ${0.3 * breath})`);
+    dg.addColorStop(1, 'rgba(140, 170, 255, 0)');
+    progCtx.beginPath();
+    progCtx.arc(cx, cy, 4, 0, Math.PI * 2);
+    progCtx.fillStyle = dg;
+    progCtx.fill();
+  }
+
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
