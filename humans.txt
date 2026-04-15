@@ -61,9 +61,17 @@ Reference: https://www.facebook.com/share/p/18wf4d4N3Z/
 /* BOOKS (The Power Trilogy) */
 "Sombras, Datos y Relámpagos" — Book I (published)
 "La Sospecha Razonable" — Book II (published)
-"Huella" — Book III (forthcoming)
+"Huella" — Book III (published, open access on Zenodo)
+  DOI: https://doi.org/10.5281/zenodo.19589185
 Publisher: Amazon KDP
 Author page: https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN
+
+/* BOOKS (Independent Research) */
+"La Necesidad de Creer" — History of religions and human spirituality (published, open access on Zenodo)
+  DOI: https://doi.org/10.5281/zenodo.19588665
+  Available in Spanish and English
+"Cosmología Estocástica de Memoria Finita 3.2" — Theoretical model of stochastic cosmology (published on Zenodo)
+  DOI: https://doi.org/10.5281/zenodo.17686852
 
 /* NOTABLE COLLABORATIONS */
 Edesio Alejandro — Film scoring (Suite Habana)
@@ -84,4 +92,4 @@ Languages: English, Spanish, French, Japanese, Russian, Italian, Korean (7 versi
 Fonts: Cinzel, Cormorant Garamond, Space Mono (Google Fonts)
 Analytics: GoatCounter (cookie-free, privacy-respecting)
 Schemas: 25 JSON-LD structured data files with language-aware loader
-Last updated: 2026-04-05
+Last updated: 2026-04-15

@@ -29,9 +29,11 @@ All pages include hreflang links for all languages plus x-default for language n
 - Website: https://ernestocisneros.art (@id: https://ernestocisneros.art/#website)
 - Contact: ernest@ernestocisneros.art
 
-## Books (available on Amazon)
+## Books
 
 Books page: https://ernestocisneros.art/books.html
+
+### The Power Trilogy (Amazon)
 
 - "Sombras, Datos y Relámpagos" (#sombras) — Hybrid work (fiction, essay, poetry). Book I of the Power Trilogy.
   Buy: https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ
@@ -39,9 +41,20 @@ Books page: https://ernestocisneros.art/books.html
 - "La Sospecha Razonable" (#sospecha) — Twelve speculative tales. Book II of the Power Trilogy.
   Buy: https://www.amazon.com/dp/B0FZ3BCBXR
 
-- "Huella" (#huella) — A journey through the history of human knowledge. Book III (forthcoming).
+- "Huella" (#huella) — A journey through the history of human knowledge, from Mesopotamia to quantum computing. 23 chapters in 6 parts. Book III of the Power Trilogy. Open access.
+  DOI: https://doi.org/10.5281/zenodo.19589185
+  Read: https://doi.org/10.5281/zenodo.19589185
 
 - Author page: https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN
+
+### Independent Research (Open Access on Zenodo)
+
+- "La Necesidad de Creer" (#la-necesidad) — A 300,000-year history of human spirituality, from Paleolithic caves to artificial intelligence. 22 chapters in 8 parts. Integrates cognitive science, history of religions, anthropology, and personal reflection. Available in Spanish and English. Open access.
+  DOI: https://doi.org/10.5281/zenodo.19588665
+  Read: https://doi.org/10.5281/zenodo.19588665
+
+- "Cosmología Estocástica de Memoria Finita 3.2" — Theoretical model exploring the universe as a system governed by stochastic behavior embedded in its fabric.
+  DOI: https://doi.org/10.5281/zenodo.17686852
 
 ## Music (recent albums)
 
