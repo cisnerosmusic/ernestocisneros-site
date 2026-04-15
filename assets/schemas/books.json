@@ -5,7 +5,7 @@
     "@id": "https://ernestocisneros.art/books.html",
     "name": "Books | Ernesto Cisneros Cino",
     "url": "https://ernestocisneros.art/books.html",
-    "description": "Books by Ernesto Cisneros Cino: Sombras, Datos y Relámpagos; La Sospecha Razonable; and the upcoming Huella. Available on Amazon.",
+    "description": "Books by Ernesto Cisneros Cino: The Power Trilogy (Sombras, Datos y Relámpagos; La Sospecha Razonable; Huella) and independent research (La Necesidad de Creer, Cosmología Estocástica).",
     "isPartOf": { "@id": "https://ernestocisneros.art/#website" },
     "inLanguage": "en"
   },
@@ -87,17 +87,64 @@
     "name": "Huella",
     "alternateName": "Footprint",
     "author": { "@id": "https://ernestocisneros.art/#person" },
-    "url": "https://ernestocisneros.art/books.html",
-    "description": "A journey through the history of human knowledge, from the first marks on stone to the frontiers of modern science. Forthcoming.",
+    "url": "https://doi.org/10.5281/zenodo.19589185",
+    "description": "A journey through the history of human knowledge, from Mesopotamia to quantum computing. 23 chapters in 6 parts. Book III of the Power Trilogy. Open access on Zenodo.",
     "inLanguage": "es",
     "bookFormat": "https://schema.org/EBook",
     "image": "https://ernestocisneros.art/assets/images/books/huella.png",
-    "genre": ["Non-fiction", "History of Science", "Philosophy"],
+    "genre": ["Non-fiction", "History of Science", "History of Knowledge", "Philosophy"],
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "sameAs": "https://doi.org/10.5281/zenodo.19589185",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19589185"
+    },
+    "copyrightHolder": { "@id": "https://ernestocisneros.art/#person" },
+    "copyrightYear": "2026",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
     "isPartOf": {
       "@type": "BookSeries",
       "name": "The Power Trilogy",
       "description": "A trilogy exploring power, memory, knowledge, and the unknown through fiction, essay, and poetry."
     },
     "position": "3"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": "https://ernestocisneros.art/books.html#la-necesidad",
+    "name": "La Necesidad de Creer",
+    "alternateName": "The Need to Believe",
+    "author": {
+      "@id": "https://ernestocisneros.art/#person",
+      "sameAs": "https://orcid.org/0009-0002-2833-1787"
+    },
+    "url": "https://doi.org/10.5281/zenodo.19588665",
+    "description": "A 300,000-year history of human spirituality, from Paleolithic caves to artificial intelligence. 22 chapters in 8 parts. Integrates cognitive science, history of religions, anthropology, and personal reflection. Available in Spanish and English.",
+    "inLanguage": ["es", "en"],
+    "bookFormat": "https://schema.org/EBook",
+    "image": "https://ernestocisneros.art/assets/images/books/la-necesidad.jpg",
+    "genre": ["Non-fiction", "History of Religions", "Cognitive Science", "Anthropology", "Philosophy"],
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "sameAs": "https://doi.org/10.5281/zenodo.19588665",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19588665"
+    },
+    "copyrightHolder": { "@id": "https://ernestocisneros.art/#person" },
+    "copyrightYear": "2026",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    }
   }
 ]
