@@ -362,11 +362,16 @@ a:hover { color: var(--gold-bright); }
     "@context": "https://schema.org",
     "@type": "Book",
     "name": "Huella",
-    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art", "identifier": "https://orcid.org/0009-0002-2833-1787"},
     "inLanguage": "es",
+    "url": "https://doi.org/10.5281/zenodo.19589185",
     "image": "https://ernestocisneros.art/assets/images/books/huella.png",
-    "description": "A journey through the history of human knowledge, from the first marks on stone to the frontiers of modern science.",
-    "workExample": {"@type": "Book", "bookEdition": "Coming Soon"}
+    "description": "A journey through the history of human knowledge, from the first clay tablets of Mesopotamia to the frontiers of quantum computing.",
+    "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.19589185"},
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "datePublished": "2026-04-15",
+    "publisher": {"@type": "Organization", "name": "Zenodo"}
   },
   {
     "@type": "Book",
@@ -546,19 +551,28 @@ a:hover { color: var(--gold-bright); }
   <div class="divider"></div>
 
   <!-- Book 3: Huella -->
-  <article class="book-block book-upcoming">
+  <article class="book-block">
     <div class="book-content">
       <div class="book-cover">
         <img src="assets/images/books/huella.png" alt="Huella" loading="lazy">
       </div>
       <div class="book-info">
-        <span class="upcoming-badge">Coming Soon</span>
+        <span class="upcoming-badge" style="background:rgba(48,160,80,0.15);border-color:rgba(48,160,80,0.5);color:#6abf6a;">Open Access</span>
         <h2 class="book-title">Huella</h2>
-        
+
+        <div class="language-note">Language Note: Spanish Only</div>
+
         <div class="book-description">
-          <p>A journey through the history of human knowledge, from the first marks on stone to the frontiers of modern science.</p>
-          <p>A narrative that weaves memory, creativity, and the long human effort to understand the world.</p>
+          <p>A journey through the history of human knowledge, from the first clay tablets of Mesopotamia to the frontiers of quantum computing. Across 23 chapters organized in 6 parts, the book traces how humanity learned to measure, calculate, record, transmit, and transform what it knows.</p>
+
+          <p>It integrates mathematics, astronomy, philosophy, technology, and art into a narrative that searches for the invisible connections between disciplines that academia usually keeps apart. From Babylonian astronomers and Greek geometers to the Scientific Revolution, the birth of computing, and the open questions of modern physics.</p>
+
+          <p><em>This book is freely available as an open-access publication on Zenodo.</em></p>
         </div>
+
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:1rem;">DOI: <a href="https://doi.org/10.5281/zenodo.19589185">10.5281/zenodo.19589185</a></p>
+
+        <a href="https://doi.org/10.5281/zenodo.19589185" target="_blank" rel="noopener" class="buy-button">Read on Zenodo</a>
       </div>
     </div>
   </article>
