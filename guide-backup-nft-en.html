@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to back up your NFTs before Foundation shuts down</title>
+<meta name="description" content="Step-by-step English guide to back up NFT artworks minted on Foundation before the platform closes. By Ernesto Cisneros Cino.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f4f1ea;
+  --bg-card: #ffffff;
+  --bg-code: #1c1a17;
+  --ink: #1c1a17;
+  --ink-soft: #4a4540;
+  --ink-muted: #8a837a;
+  --accent: #a84d2a;
+  --accent-dark: #7d3a20;
+  --gold: #b08d4c;
+  --line: #d8d0c0;
+  --ok: #4a6b3a;
+  --warn: #a84d2a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  padding: 0;
+  margin: 0;
+}
+
+/* LANGUAGE TOGGLE */
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: rgba(28, 26, 23, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border: 1px solid rgba(176, 141, 76, 0.3);
+}
+
+.lang-toggle a {
+  color: var(--gold);
+  border-bottom: none;
+  margin: 0 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.lang-toggle a:hover { opacity: 1; }
+.lang-toggle a.active { opacity: 1; font-weight: 600; }
+
+/* HEADER */
+.hero {
+  background: linear-gradient(180deg, #1c1a17 0%, #2a2520 100%);
+  color: #f4f1ea;
+  padding: 80px 24px 70px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px double var(--gold);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(176, 141, 76, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(168, 77, 42, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "";
+  height: 1px;
+  background: var(--gold);
+  flex: 1;
+  opacity: 0.4;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #d8d0c0;
+  font-style: italic;
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.hero-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(216, 208, 192, 0.2);
+  padding-top: 20px;
+  max-width: 640px;
+}
+
+.hero-author strong {
+  color: #d8d0c0;
+  font-weight: 500;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 24px 120px;
+}
+
+/* INTRO */
+.intro {
+  padding: 36px 40px;
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 70px;
+  box-shadow: 0 2px 20px rgba(28, 26, 23, 0.04);
+}
+
+.intro p {
+  margin-bottom: 16px;
+}
+
+.intro p:last-child { margin-bottom: 0; }
+
+.intro strong {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+/* SECTION / STEP */
+.section {
+  margin-bottom: 72px;
+  scroll-margin-top: 20px;
+}
+
+.section-number {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.section-intro {
+  font-size: 20px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 36px;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.section p {
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+
+.section ul, .section ol {
+  margin-left: 24px;
+  margin-bottom: 22px;
+}
+
+.section li {
+  margin-bottom: 10px;
+}
+
+.section strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.section em {
+  font-style: italic;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 77, 42, 0.3);
+  transition: all 0.2s;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent-dark);
+}
+
+/* CODE BLOCKS */
+pre, code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+code {
+  background: #ebe4d4;
+  color: var(--accent-dark);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.code-block {
+  background: var(--bg-code);
+  color: #d8d0c0;
+  padding: 22px 26px;
+  border-radius: 4px;
+  margin: 22px 0;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  position: relative;
+  border-left: 3px solid var(--gold);
+}
+
+.code-block code {
+  background: transparent;
+  color: #d8d0c0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.code-label {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* CALLOUTS */
+.callout {
+  padding: 22px 28px;
+  margin: 26px 0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.callout-label {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.callout-warn {
+  background: #fdf4ed;
+  border-left: 3px solid var(--warn);
+}
+
+.callout-warn .callout-label {
+  color: var(--warn);
+}
+
+.callout-ok {
+  background: #f0f2ea;
+  border-left: 3px solid var(--ok);
+}
+
+.callout-ok .callout-label {
+  color: var(--ok);
+}
+
+.callout-info {
+  background: #ede4d0;
+  border-left: 3px solid var(--gold);
+}
+
+.callout-info .callout-label {
+  color: var(--accent-dark);
+}
+
+.callout p {
+  margin-bottom: 10px;
+}
+
+.callout p:last-child { margin-bottom: 0; }
+
+/* BIG LINK BUTTON */
+.cta-link {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #f4f1ea !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-bottom: 2px solid var(--accent-dark);
+  margin: 8px 0;
+  transition: all 0.2s;
+}
+
+.cta-link:hover {
+  background: var(--accent-dark);
+  color: #fff !important;
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-card);
+  padding: 32px 36px;
+  margin-bottom: 60px;
+  border-top: 3px solid var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.toc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.toc ol {
+  list-style: none;
+  margin-left: 0;
+  counter-reset: toc-counter;
+}
+
+.toc li {
+  counter-increment: toc-counter;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc li::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  min-width: 30px;
+}
+
+.toc a {
+  border-bottom: none;
+  color: var(--ink);
+  font-size: 18px;
+  flex: 1;
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+/* FOOTER */
+footer {
+  background: #1c1a17;
+  color: #d8d0c0;
+  padding: 60px 24px;
+  text-align: center;
+  border-top: 3px double var(--gold);
+}
+
+footer p {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+footer .signature {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 24px;
+}
+
+footer a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(176, 141, 76, 0.4);
+}
+
+/* SECTION DIVIDER */
+.divider {
+  text-align: center;
+  margin: 60px 0;
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 0.5em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .hero { padding: 60px 20px 50px; }
+  .container { padding: 40px 20px 80px; }
+  .intro { padding: 24px 26px; }
+  .toc { padding: 24px 24px; }
+  .code-block { padding: 18px 20px; font-size: 12px; }
+  .section ul, .section ol { margin-left: 18px; }
+  .lang-toggle { top: 12px; right: 12px; padding: 6px 12px; font-size: 10px; }
+}
+
+/* PRINT */
+@media print {
+  body { background: white; font-size: 11pt; }
+  .hero { background: white; color: black; padding: 30px 0; border-bottom: 2px solid black; }
+  .hero h1 em { color: black; }
+  .hero-subtitle, .hero-author { color: black; }
+  footer { background: white; color: black; }
+  .code-block { background: #f0f0f0; color: black; border: 1px solid #ccc; }
+  a { color: black; text-decoration: underline; }
+  .section { page-break-inside: avoid; }
+  .lang-toggle { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <a href="guia-backup-nft.html">ES</a>
+  <span style="opacity: 0.3;">·</span>
+  <a href="#" class="active">EN</a>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Decentralized archive · 2026</div>
+    <h1>How to back up your <em>NFTs</em> before Foundation shuts down</h1>
+    <p class="hero-subtitle">A step-by-step guide so your work doesn't vanish with the marketplace. The blockchain remembers, but the files need someone to hold them.</p>
+    <p class="hero-author"><strong>By Ernesto Cisneros Cino</strong> · Composer, crypto artist, founder of Impulses.art · April 2026</p>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="intro">
+  <p><strong>Foundation is closing.</strong> The tokens will remain on the blockchain forever, but the files that make them up (images, videos, metadata) live on IPFS, pinned by Foundation's nodes that will eventually go offline. When that happens, the links will stop resolving and the artworks will become visually orphaned tokens, even though everything on-chain will still be there.</p>
+  <p>This guide walks you through <strong>backing up your entire corpus</strong> on an independent, decentralized pinning service, without paying a cent. By the end, your work will be protected by infrastructure you control, not by a company that can shut down tomorrow.</p>
+  <p>It takes between 30 minutes and 2 hours depending on how many pieces you have. Every minute is worth it.</p>
+</section>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li><a href="#what-youll-do">What you'll do exactly</a></li>
+    <li><a href="#why-filebase">Why Filebase and not Pinata</a></li>
+    <li><a href="#create-account">Create your free Filebase account</a></li>
+    <li><a href="#create-bucket">Create your archive bucket</a></li>
+    <li><a href="#get-cids">Get the CIDs for each piece</a></li>
+    <li><a href="#pin-cids">Pin your CIDs on Filebase</a></li>
+    <li><a href="#verify">Verify everything worked</a></li>
+    <li><a href="#update-website">Update the links on your website</a></li>
+    <li><a href="#arweave-case">If your pieces are on Arweave (no need)</a></li>
+    <li><a href="#final-steps">Before Foundation shuts down completely</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="what-youll-do" class="section">
+  <span class="section-number">Step 01</span>
+  <h2>What you'll do exactly</h2>
+  <p class="section-intro">Understanding the problem and the solution before starting will save you confusion later.</p>
+
+  <h3>The problem</h3>
+  <p>When you minted a piece on Foundation, the smart contract stored a reference on Ethereum (a <strong>CID</strong>, Content Identifier) pointing to your JSON metadata file on IPFS. That JSON holds the title, description, and in turn points with another CID to the actual image or video file.</p>
+  <p>The token is permanent. But CID files <strong>only exist while some IPFS node keeps them pinned</strong>. Foundation had them pinned on its own nodes. When they turn those nodes off, if no one else is pinning those files, they vanish from the network.</p>
+
+  <h3>The solution</h3>
+  <p>You'll pin the same CIDs on your own node (actually, on a free service acting as your node). This isn't copying the files somewhere else, it's <strong>reinforcing their existence within the same IPFS network</strong>. The CID stays the same, the piece stays the same, but now it has redundancy: it lives on Foundation's nodes <em>and</em> on yours.</p>
+  <p>When Foundation shuts down its nodes, yours remain active. The IPFS links keep working. Your work survives the closing of the marketplace.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Important</span>
+    <p>The Ethereum token (your ownership, history, sales) is never at risk. What's at risk is the visual and descriptive layer. This backs up that layer.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="why-filebase" class="section">
+  <span class="section-number">Step 02</span>
+  <h2>Why Filebase and not Pinata</h2>
+  <p class="section-intro">Pinata was a pioneer but its free tier no longer works for this specific case. Filebase is the honest alternative.</p>
+
+  <p>Pinata charges for the exact feature we need (<em>Import from IPFS</em>, pinning existing CIDs). On the free tier you can only upload new files from your computer, not pin CIDs that already exist on the network.</p>
+  <p>Filebase offers <strong>5 GB of storage, up to 1,000 files, a dedicated gateway, and the <em>Import CID</em> feature, all included in the free tier without a credit card</strong>. That's five times more space than Pinata, and the key function is unrestricted.</p>
+  <p>Filebase also uses <strong>3x redundancy across geographically distinct locations</strong>, which is real redundancy, not marketing language.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">A philosophical note</span>
+    <p>Pinata isn't a bad service. It's that your case (pinning already minted work) is exactly what their current business model pushes to paid plans. Filebase treats that case as legitimate free usage.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="create-account" class="section">
+  <span class="section-number">Step 03</span>
+  <h2>Create your free Filebase account</h2>
+  <p class="section-intro">Five minutes, no credit card.</p>
+
+  <ol>
+    <li>Go to <a href="https://filebase.com" target="_blank" rel="noopener">filebase.com</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong>.</li>
+    <li>Enter your email and create a strong password. No card required, no billing info.</li>
+    <li>Confirm your email via the link they send.</li>
+    <li>Log in to the dashboard with your username and password.</li>
+  </ol>
+
+  <p>You'll see your empty workspace. The interface is clean, English-only, but the flow is simple.</p>
+
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="https://filebase.com" target="_blank" rel="noopener" class="cta-link">Go to Filebase →</a>
+  </p>
+</section>
+
+<!-- 4 -->
+<section id="create-bucket" class="section">
+  <span class="section-number">Step 04</span>
+  <h2>Create your archive bucket</h2>
+  <p class="section-intro">A bucket is like a folder where your pins will live.</p>
+
+  <ol>
+    <li>In the dashboard, click <strong>Buckets</strong> in the side navigation.</li>
+    <li>Click <strong>Create Bucket</strong>.</li>
+    <li>Give it a unique name, for example <code>your-name-nft-archive</code>. Bucket names are global, so if yours is taken you'll need another.</li>
+    <li>Under <strong>Network</strong>, select <strong>IPFS</strong>. Don't pick Sia or any other network, you need IPFS for your Foundation NFTs.</li>
+    <li>Confirm with <strong>Create</strong>.</li>
+  </ol>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">About S3 Private vs Public</span>
+    <p>Filebase will show you a notice saying public buckets require a paid plan. <strong>Ignore it, keep it on S3 Private</strong>. That notice refers to S3 access (Amazon's protocol), which isn't used by NFTs. Your files will still be publicly accessible by CID from any IPFS gateway: <code>ipfs.io</code>, <code>dweb.link</code>, <code>cloudflare-ipfs.com</code>. The private bucket setting doesn't restrict that.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="get-cids" class="section">
+  <span class="section-number">Step 05</span>
+  <h2>Get the CIDs for each piece</h2>
+  <p class="section-intro">Each piece has two CIDs you need to identify: one for the JSON metadata, another for the image or video file.</p>
+
+  <h3>Method 1: From Foundation (while it's still up)</h3>
+  <ol>
+    <li>Go to your Foundation profile and open one of your pieces.</li>
+    <li>Under the <strong>Details</strong> or <strong>Token Details</strong> tab you'll find an <strong>IPFS</strong> or <strong>Metadata</strong> link.</li>
+    <li>It looks like <code>https://ipfs.io/ipfs/QmXX.../metadata.json</code>. Save it.</li>
+    <li>The metadata CID is the part between <code>/ipfs/</code> and <code>/metadata.json</code>: <code>QmXX...</code></li>
+  </ol>
+
+  <h3>Method 2: Open the JSON and pull the media CID</h3>
+  <p>Open the JSON in your browser. You'll see something like this:</p>
+
+  <div class="code-block">
+    <span class="code-label">JSON metadata</span>
+<code>{
+  "name": "Your piece",
+  "description": "...",
+  "image": "ipfs://QmYY.../nft.mp4"
+}</code>
+  </div>
+
+  <p>The <code>image</code> field value (or sometimes <code>animation_url</code>) starts with <code>ipfs://</code> followed by another CID. That's the media CID. Save it as well.</p>
+
+  <h3>Build a simple inventory table</h3>
+  <p>For each piece, record:</p>
+  <ul>
+    <li><strong>Title</strong> of the piece</li>
+    <li><strong>Metadata JSON CID</strong></li>
+    <li><strong>Media file CID</strong> (video or image)</li>
+    <li><strong>Contract address</strong> and <strong>TokenID</strong> (to look it up later on Etherscan)</li>
+  </ul>
+
+  <p>A simple spreadsheet is enough. Do this while Foundation is still accessible. If you wait, pulling the data out could be significantly harder later.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Tip</span>
+    <p>If you have an easy-to-copy inventory on your Foundation profile, grab it in bulk. You can also look up your tokens directly on Etherscan by searching your wallet and filtering for NFTs.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="pin-cids" class="section">
+  <span class="section-number">Step 06</span>
+  <h2>Pin your CIDs on Filebase</h2>
+  <p class="section-intro">This is where the magic happens. Filebase finds your files on the IPFS network and copies them onto its nodes.</p>
+
+  <h3>Process for each piece</h3>
+  <ol>
+    <li>Open the bucket you created by clicking its name.</li>
+    <li>You'll see three options: <strong>Import CID</strong>, <strong>New Folder</strong>, <strong>Upload</strong>. Click <strong>Import CID</strong>.</li>
+    <li>A form opens. Paste the <strong>metadata JSON CID</strong> for the first piece.</li>
+    <li>Give it a descriptive name, for example <code>my-piece-metadata.json</code>.</li>
+    <li>Confirm with <strong>Search and Pin</strong>.</li>
+  </ol>
+
+  <p>Filebase will look up the CID on the IPFS network (this takes a few seconds) and pin it on its nodes. The status will go from <strong>Pinning</strong> (in progress, orange icon) to <strong>Pinned</strong> (confirmed, green icon).</p>
+
+  <p>Repeat for the <strong>media file CID</strong>:</p>
+  <ol>
+    <li><strong>Import CID</strong> again.</li>
+    <li>Paste the video or image CID.</li>
+    <li>Name: <code>my-piece-media.mp4</code> (or the correct extension).</li>
+    <li>Confirm.</li>
+  </ol>
+
+  <h3>Recommended naming convention</h3>
+  <p>Use consistent names so your bucket is easy to browse later. Suggestion:</p>
+  <ul>
+    <li><strong>Solo works</strong>: <code>piece-title-metadata.json</code> and <code>piece-title-media.mp4</code></li>
+    <li><strong>Collaborations</strong>: <code>split-collaborator-lastname-title-metadata.json</code></li>
+    <li><strong>Numbered series</strong>: <code>series-01-title-metadata.json</code>, <code>series-02-...</code> (use leading zeros if you have more than 9)</li>
+  </ul>
+
+  <p>Names should be lowercase, with hyphens instead of spaces, no accents or special characters. This avoids problems with URLs and filesystems.</p>
+
+  <h3>Estimated time</h3>
+  <p>Each pin takes from a few seconds (for small JSONs) to a couple of minutes (for heavy videos). For a corpus of 10-15 pieces, plan on 40 minutes to 1 hour of manual work.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Nice detail</span>
+    <p>If you pin a CID that Filebase already has pinned elsewhere (because another artist pinned the same file), it pins almost instantly. IPFS doesn't duplicate files, it reinforces their presence.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="verify" class="section">
+  <span class="section-number">Step 07</span>
+  <h2>Verify everything worked</h2>
+  <p class="section-intro">Before calling the backup done, verify the files are actually accessible from the public network.</p>
+
+  <h3>Check 1: Everything marked Pinned</h3>
+  <p>Look at the <strong>Status</strong> column in your bucket. All files should have a green icon and <strong>Pinned</strong> label. If any is still <strong>Pinning</strong> (orange) after several minutes, wait longer or refresh.</p>
+
+  <h3>Check 2: Accessible from a public gateway</h3>
+  <p>Copy one of your CIDs and paste it into this URL, replacing <code>[CID]</code>:</p>
+
+  <div class="code-block">
+    <span class="code-label">Test CID</span>
+<code>https://dweb.link/ipfs/[CID]</code>
+  </div>
+
+  <p>If you can see the content (the JSON or the video), your pin is live on the decentralized network, accessible from any gateway, without needing Foundation or Filebase.</p>
+
+  <h3>Check 3: Reasonable storage use</h3>
+  <p>Look at your bucket's <strong>Storage</strong> indicator. A typical NFT video weighs between 10 and 80 MB. If you have 15 pieces with video, you'll be around 500-800 MB. Far from the 5 GB free tier limit.</p>
+  <p>If you're close to the limit (because you have more pieces or very heavy videos), consider pinning only metadata for less critical pieces and leaving their videos without extra backup (they'll still live on other public IPFS nodes for a while).</p>
+</section>
+
+<!-- 8 -->
+<section id="update-website" class="section">
+  <span class="section-number">Step 08</span>
+  <h2>Update the links on your website</h2>
+  <p class="section-intro">If you have a personal website or portfolio linking to your NFTs, those links need to change. The ones pointing at Foundation will die.</p>
+
+  <h3>What to replace</h3>
+  <p>Look for links on your site like these:</p>
+
+  <div class="code-block">
+<code>https://foundation.app/mint/eth/0x...../tokenID
+
+https://fnd-collections.mypinata.cloud/ipfs/QmXX.../metadata.json
+
+https://fnd-collections4.mypinata.cloud/ipfs/...</code>
+  </div>
+
+  <p>All of those will stop working. They should be replaced with stable IPFS gateway links.</p>
+
+  <h3>Which links to use</h3>
+  <p>I recommend three kinds of link per piece:</p>
+
+  <p><strong>1. Metadata (technical record of the piece):</strong></p>
+  <div class="code-block">
+<code>https://dweb.link/ipfs/[METADATA_CID]/metadata.json</code>
+  </div>
+
+  <p><strong>2. Media (the video or image):</strong></p>
+  <div class="code-block">
+<code>https://dweb.link/ipfs/[MEDIA_CID]/nft.mp4</code>
+  </div>
+
+  <p><strong>3. Etherscan (on-chain ownership verification):</strong></p>
+  <div class="code-block">
+<code>https://etherscan.io/token/[CONTRACT]?a=[TOKEN_ID]</code>
+  </div>
+
+  <p>This third link replaces the Foundation link. Where you used to point at the marketplace, you now point at the public Ethereum registry, which never shuts down.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">About gateways</span>
+    <p>I use <code>dweb.link</code> because it's run by Protocol Labs (foundation, not a for-profit company), relatively fast, and neutral. Valid alternatives: <code>ipfs.io</code> (same provider, sometimes slower), <code>cloudflare-ipfs.com</code> (fast but depends on a centralized company). Any of them works; the CID is what matters.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="arweave-case" class="section">
+  <span class="section-number">Step 09</span>
+  <h2>If your pieces are on Arweave (no backup needed)</h2>
+  <p class="section-intro">Some Foundation pieces use Arweave instead of IPFS. They have built-in permanence.</p>
+
+  <p>If when you open your piece's metadata you see URLs ending in <code>arweave.net</code> or starting with a hash followed by <code>.arweave.net</code>, your piece lives on <strong>Arweave</strong>, not IPFS.</p>
+
+  <p>Arweave is a different decentralized storage network, with a philosophically different model: you pay once at mint time, and storage is guaranteed for two hundred years via an endowment fund that keeps paying nodes indefinitely.</p>
+
+  <p><strong>Practical conclusion:</strong> if one of your pieces is on Arweave, no need to back it up. Its permanence is structural. Just note it in your inventory and move on to the others.</p>
+</section>
+
+<!-- 10 -->
+<section id="final-steps" class="section">
+  <span class="section-number">Step 10</span>
+  <h2>Before Foundation shuts down completely</h2>
+  <p class="section-intro">Final actions before lights out.</p>
+
+  <h3>Delist unsold pieces</h3>
+  <p>If you have pieces listed for sale on Foundation that still don't have a buyer, consider delisting them before the shutdown. This releases the token from Foundation's escrow contract and returns it to your wallet (or the minter's). Costs a bit of gas but saves complications later.</p>
+
+  <h3>Document collaborators</h3>
+  <p>If you have pieces with on-chain split, remind your collaborators to do this backup from their side as well. The split stays active while the contract exists, but the files need multiple nodes backing them to survive.</p>
+
+  <h3>Export curatorial information</h3>
+  <p>Foundation holds information that doesn't live on-chain: sales history with collector names, editorial descriptions, exact auction dates, bids, followers. <strong>All of that disappears when Foundation does.</strong> Screenshot or export whatever you can before the shutdown.</p>
+
+  <h3>Tell your story</h3>
+  <p>If you've been in the crypto art space for years, you're a witness to a chapter of cultural history few lived from the inside. Write down what you remember. Event photos, community names, platforms that fell, bans that hit artists from embargoed countries. That narrative archive matters as much as the CIDs.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">When you're done</span>
+    <p>Once you've pinned every piece, verified public access, and updated your website links, your corpus will survive Foundation's closing. The work remains. The story continues.</p>
+  </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+<section class="section">
+  <h2 style="font-size: 28px; text-align: center; margin-bottom: 30px;">Need help?</h2>
+  <p style="text-align: center; font-size: 19px; font-style: italic; color: var(--ink-soft);">If you have specific questions, reaching out directly is fastest. Several of us in the community are doing this work these weeks, and the sooner you back up, the better.</p>
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="https://ernestocisneros.art" target="_blank" rel="noopener" class="cta-link">ernestocisneros.art →</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p>This guide is continued pedagogy from the Impulses.art Web3 model. If it helped you, share it with other artists. Decentralization only works if we keep it alive together.</p>
+  <p style="margin-top: 24px;">English document for the international crypto art community. Free license to share, adapt, translate.</p>
+  <div class="signature">Ernesto Cisneros Cino · Miami 2026</div>
+  <p style="margin-top: 20px; font-size: 14px;">
+    <a href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a>
+  </p>
+</footer>
+
+</body>
+</html>
