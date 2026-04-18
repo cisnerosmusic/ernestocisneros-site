@@ -184,7 +184,7 @@
   border-top: 1px solid var(--gold-faint);
   padding: 3rem 2rem;
   text-align: center;
-  background: var(--bg-deep, #060504);
+  background: var(--bg-deep, #000000);
   position: relative;
   z-index: 10;
 }
