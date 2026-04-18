@@ -96,7 +96,7 @@ img {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(6, 5, 4, 0.92);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gold-faint);
 }
@@ -476,7 +476,7 @@ img {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(6, 5, 4, 0.98);
+    background: rgba(0, 0, 0, 0.99);
     flex-direction: column;
     padding: 1rem 1rem 4rem;
     gap: 0;
