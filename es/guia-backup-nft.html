@@ -741,6 +741,7 @@ footer a {
     <li><a href="#cerrar">Antes de que Foundation cierre del todo</a></li>
     <li><a href="#permanencia">Y si Filebase cierra algún día, ¿qué pasa?</a></li>
     <li><a href="#faq">Preguntas frecuentes</a></li>
+    <li><a href="#nodo-propio">Ampliación técnica: tu propio nodo IPFS</a></li>
   </ol>
 </nav>
 
@@ -1100,6 +1101,103 @@ https://fnd-collections4.mypinata.cloud/ipfs/...</code>
 
   <h3>¿Puedo pinnear NFTs de otros artistas como coleccionista?</h3>
   <p>Sí, y se recomienda. Los CIDs son públicos por diseño. Pinnear NFTs que coleccionaste protege tu colección del fallo de los nodos originales. Considera avisar al artista como cortesía, especialmente si tienes contacto directo.</p>
+</section>
+
+<!-- NODO PROPIO: PARA ARTISTAS TÉCNICOS -->
+<section id="nodo-propio" class="section">
+  <span class="section-number">Ampliación técnica</span>
+  <h2>Cómo correr tu propio nodo IPFS</h2>
+  <p class="section-intro">Esta sección es para artistas que ya tienen cierta soltura técnica y quieren el siguiente nivel de autonomía. No es necesaria para respaldar tus obras (Filebase es suficiente), pero si te atrae la idea de no depender de ningún proveedor, aquí está el camino.</p>
+
+  <h3>Qué significa tener tu propio nodo</h3>
+  <p>Un nodo IPFS es una computadora que participa en la red como uno más del enjambre. Cuando instalas el software, tu máquina puede pinnear archivos, servirlos al mundo, y mantenerlos vivos sin depender de ningún servicio comercial. Pasas de <strong>cliente de un proveedor</strong> a <strong>participante pleno de la red</strong>. Es el equivalente digital a tener tu propia imprenta en vez de depender de una editorial.</p>
+  <p>La diferencia clave con Filebase: con Filebase le pides a una empresa que pinnee tus archivos en sus servidores. Con tu propio nodo, <strong>tú eres el servidor</strong>.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Trade-off importante</span>
+    <p>Tu nodo solo sirve archivos mientras tu computadora esté encendida y conectada a internet. Si apagas la máquina, tus archivos siguen existiendo en otros nodos de la red (Filebase, gateways públicos, otros pinning services), pero tú dejas de contribuir. Para respaldo permanente real, tu nodo necesita estar casi siempre activo.</p>
+  </div>
+
+  <h3>Dos rutas reales, según cuánto control quieras</h3>
+
+  <p><strong>Ruta A: IPFS Desktop</strong> (la más accesible)</p>
+  <p>Aplicación gráfica que instalas como cualquier otro programa en macOS, Windows o Linux. Setup en 5 minutos, interfaz visual, sin línea de comandos. Ideal para experimentar y aprender.</p>
+  <p><em>A favor:</em> instalación simple, interfaz visual, puedes cerrar la app cuando no la necesitas.<br>
+  <em>En contra:</em> consume RAM mientras corre (200-400 MB), depende de que no cierres accidentalmente la app, y si apagas la computadora pierdes disponibilidad.</p>
+
+  <p><strong>Ruta B: Raspberry Pi dedicada</strong> (la más seria)</p>
+  <p>Compras una Raspberry Pi (unos 75-120 USD con carcasa, fuente y tarjeta SD), instalas IPFS en ella, y la dejas encendida 24/7 en tu casa conectada al router. Nodo permanente dedicado con consumo eléctrico de una bombilla LED (5-10 watts, unos 2-3 USD mensuales).</p>
+  <p><em>A favor:</em> nodo permanente real, no ocupa recursos de tu computadora principal, autonomía técnica total.<br>
+  <em>En contra:</em> requiere compra inicial, instalación técnica más compleja (línea de comandos), configurar el router para accesibilidad externa.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Recomendación</span>
+    <p>Empieza con IPFS Desktop. Aprende el concepto sin compromiso económico. Si después de unas semanas sientes que lo usas de verdad y quieres permanencia real, entonces evalúas invertir en Raspberry Pi dedicada.</p>
+  </div>
+
+  <h3>Paso a paso con IPFS Desktop</h3>
+
+  <p><strong>Paso 1: Descargar el instalador</strong></p>
+  <p>Entra a <a href="https://ipfs.tech/install/ipfs-desktop/" target="_blank" rel="noopener">ipfs.tech/install/ipfs-desktop/</a> (dominio oficial del proyecto). Elige el instalador de tu sistema operativo: macOS, Windows o Linux.</p>
+
+  <p><strong>Paso 2: Instalar</strong></p>
+  <p>En macOS abres el <code>.dmg</code> y arrastras el icono a Aplicaciones. En Windows ejecutas el <code>.exe</code>. En Linux generalmente es un <code>.AppImage</code>. En macOS la primera vez el sistema puede advertir sobre desarrollador no verificado: vas a Preferencias del Sistema → Seguridad y das permiso manual. Es normal, no implica que el software sea inseguro.</p>
+
+  <p><strong>Paso 3: Primera ejecución</strong></p>
+  <p>Al abrir la aplicación por primera vez hace tres cosas automáticamente. Primera, crea una identidad criptográfica única para tu nodo (como el DNI permanente de tu nodo en la red). Segunda, se conecta a la red IPFS global y en pocos segundos verás decenas o cientos de <em>peers</em> conectados (otros nodos). Tercera, abre una interfaz con cinco pestañas: <strong>Status</strong>, <strong>Files</strong>, <strong>Explore</strong>, <strong>Peers</strong>, <strong>Settings</strong>.</p>
+
+  <p><strong>Paso 4: Pinnear tu primer CID</strong></p>
+  <p>Vas a la pestaña <strong>Files</strong>. Arriba hay un botón <strong>Import</strong>. Al hacer clic se despliega un menú con opciones. Elige <strong>From IPFS</strong> (a veces aparece como <em>Add by CID</em> o <em>Import from IPFS</em>). Pega uno de tus CIDs y confirma.</p>
+  <p>Tu nodo empezará a descargar el archivo desde otros nodos que lo tienen (Filebase, gateways públicos, cualquier fuente activa). En segundos o minutos (según tamaño) el archivo queda pinneado localmente. En ese momento <strong>tu computadora es una de las abejas</strong> que sostiene ese CID.</p>
+
+  <p><strong>Paso 5: Verificar que funciona</strong></p>
+  <p>Dos comprobaciones simples. Una, en <em>Files</em> deberías ver el CID con icono de alfiler y el tamaño descargado. Dos, abres en tu navegador:</p>
+
+  <div class="code-block">
+    <span class="code-label">Gateway local</span>
+<code>http://localhost:8080/ipfs/[tu-CID]</code>
+  </div>
+
+  <p>Ese <code>localhost:8080</code> es el <strong>gateway local</strong> que tu propio nodo levanta. Si ves el contenido, tu nodo está sirviendo activamente el archivo. Eso es autonomía técnica real.</p>
+
+  <p><strong>Paso 6: Pinnear el resto de tu corpus</strong></p>
+  <p>Repite el proceso con todos los CIDs de tu inventario. Para un corpus de 10-15 obras, calcula entre 30 minutos y 2 horas dependiendo de tu conexión.</p>
+
+  <h3>Consideraciones prácticas del uso diario</h3>
+
+  <p><strong>Consumo de recursos:</strong> IPFS Desktop usa entre 200-400 MB de RAM cuando está activo. En computadoras modernas no es problema, pero se nota en máquinas con poca memoria. Puedes configurar límites en <em>Settings</em>.</p>
+
+  <p><strong>Ancho de banda:</strong> tu nodo no solo descarga, también sube a otros nodos que le pidan archivos. Si tienes conexión limitada, configura límites en <em>Settings</em>. Con conexión doméstica normal no se nota.</p>
+
+  <p><strong>Apagado de la computadora:</strong> tus CIDs siguen vivos en la red mientras otros nodos los tengan pinneados (Filebase sigue siendo respaldo). Tu nodo simplemente deja de contribuir temporalmente. Al encender de nuevo, retoma automáticamente.</p>
+
+  <p><strong>Espacio en disco:</strong> cada CID pinneado ocupa su tamaño en tu disco local. Calcula: para 500 MB de corpus Foundation, tu nodo ocupa 500 MB. Para corpus Tezos grandes pueden ser varios GB. Revisa que tu disco tenga espacio.</p>
+
+  <h3>Qué te da concretamente</h3>
+  <ul>
+    <li><strong>Independencia real de Filebase:</strong> si cerrara mañana con tu nodo activo, tus archivos seguirían accesibles sin intervención tuya.</li>
+    <li><strong>Publicación sin intermediarios:</strong> si creas obra nueva y quieres pinnearla en IPFS sin pasar por ningún servicio, lo haces directo desde tu nodo.</li>
+    <li><strong>Comprensión técnica del sistema:</strong> correr un nodo, aunque sea pocas semanas, te da entendimiento del ecosistema que la mayoría de artistas NFT nunca adquieren.</li>
+    <li><strong>Contribución al ecosistema:</strong> cada nodo adicional fortalece la red IPFS completa. Tu participación no es solo autoprotección, es acto comunitario.</li>
+  </ul>
+
+  <h3>La evolución natural hacia Raspberry Pi</h3>
+  <p>Si después de experimentar con IPFS Desktop sientes que quieres permanencia real, el camino natural es:</p>
+
+  <ol>
+    <li>Comprar una Raspberry Pi 4 (4 u 8 GB de RAM) con fuente, carcasa y tarjeta microSD de 128 GB. Total aproximado 100-150 USD.</li>
+    <li>Conectarla a tu router por cable ethernet en algún rincón de tu casa.</li>
+    <li>Instalar IPFS siguiendo tutoriales específicos para Raspberry Pi (abundan en inglés, algunos en español).</li>
+    <li>Configurar reinicio automático ante cortes de luz para mantener el nodo siempre activo.</li>
+    <li>Opcional avanzado: configurar un subdominio propio (por ejemplo <code>ipfs.tuartista.art</code>) apuntando a tu Raspberry para tener tu propio gateway.</li>
+  </ol>
+
+  <p>Ese último paso, gateway propio con dominio propio, es soberanía máxima. Ya no dependes ni siquiera de <code>dweb.link</code> o <code>ipfs.io</code>. Los enlaces en tu web serán tuyos: <code>ipfs.tuartista.art/ipfs/[CID]/archivo.mp4</code>.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Para tenerlo claro</span>
+    <p>Tener nodo propio no reemplaza a Filebase ni hace obsoleto el trabajo que ya hiciste. Lo complementa. La estrategia ideal combina: Filebase como respaldo gestionado siempre activo + IPFS Desktop o Raspberry Pi como nodo propio que refuerza desde tu propia infraestructura + copia local en disco duro como archivo de último recurso. Tres capas redundantes, cada una protegida por diseño distinto.</p>
+  </div>
 </section>
 
 <div class="divider">❦ ❦ ❦</div>
