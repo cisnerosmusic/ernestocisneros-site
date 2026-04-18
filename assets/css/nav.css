@@ -15,13 +15,13 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(8, 6, 4, 0.92);
+  background: rgba(6, 5, 4, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gold-faint);
 }
 
 .nav.scrolled {
-  background: rgba(8, 6, 4, 0.97);
+  background: rgba(6, 5, 4, 0.97);
 }
 
 .nav-container {
@@ -85,7 +85,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(13, 10, 6, 0.97);
+  background: rgba(10, 9, 8, 0.97);
   border: 1px solid var(--gold-faint);
   min-width: 220px;
   opacity: 0;
@@ -184,7 +184,7 @@
   border-top: 1px solid var(--gold-faint);
   padding: 3rem 2rem;
   text-align: center;
-  background: var(--bg-deep, #080604);
+  background: var(--bg-deep, #060504);
   position: relative;
   z-index: 10;
 }
@@ -245,7 +245,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(8, 6, 4, 0.98);
+    background: rgba(6, 5, 4, 0.98);
     flex-direction: column;
     padding: 1rem 1rem 4rem;
     gap: 0;

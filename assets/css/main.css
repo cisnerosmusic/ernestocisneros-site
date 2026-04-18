@@ -8,15 +8,15 @@
    ===================================================== */
 :root {
   /* Colors - Golden Cosmic Palette */
-  --bg-deep: #080604;
-  --bg-dark: #0d0a06;
-  --bg-card: rgba(20, 16, 10, 0.6);
+  --bg-deep: #060504;
+  --bg-dark: #0a0908;
+  --bg-card: rgba(16, 14, 10, 0.5);
   --gold: #d4a030;
   --gold-bright: #f0c860;
-  --gold-dim: rgba(212, 160, 48, 0.5);
+  --gold-dim: rgba(212, 160, 48, 0.65);
   --gold-faint: rgba(212, 160, 48, 0.15);
-  --text-primary: #e8dcc8;
-  --text-secondary: rgba(200, 175, 130, 0.7);
+  --text-primary: #f0e6d6;
+  --text-secondary: rgba(215, 195, 155, 0.9);
   --line: rgba(180, 130, 60, 0.15);
 
   /* Typography */
@@ -96,7 +96,7 @@ img {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(8, 6, 4, 0.92);
+  background: rgba(6, 5, 4, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gold-faint);
 }
@@ -476,7 +476,7 @@ img {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(8, 6, 4, 0.98);
+    background: rgba(6, 5, 4, 0.98);
     flex-direction: column;
     padding: 1rem 1rem 4rem;
     gap: 0;
