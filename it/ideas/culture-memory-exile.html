@@ -213,6 +213,19 @@ a:hover { color: var(--gold-bright); }
   .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
   .essay-link { padding: 1rem 1.2rem; font-size: 0.95rem; }
 }
+/* Hidden literary links */
+.hidden-link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--gold-dim);
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.3s, text-decoration-color 0.3s;
+}
+.hidden-link:hover {
+  color: var(--gold-bright);
+  text-decoration-color: var(--gold-bright);
+}
 </style>
 <link rel="stylesheet" href="../../assets/css/nav.css">
 <script type="application/ld+json">
@@ -333,7 +346,7 @@ a:hover { color: var(--gold-bright); }
     <div class="prose">
       <p>El exilio no borra la creatividad, la agudiza. Cuando lo familiar se disuelve, la imaginación se convierte en una patria. El arte ya no es expresión: se convierte en supervivencia, estructura y significado.</p>
 
-      <p>En la música, la literatura y la creación visual, el exilio abre un registro único donde la emoción y la memoria coexisten con la precisión de <a href="the-circus-magician.html" title="Leggere «Il Mago del Circo» — un racconto di Sombras, Datos y Relámpagos">una herida que nunca cicatriza completamente</a>.</p>
+      <p>En la música, la literatura y la creación visual, el exilio abre un registro único donde la emoción y la memoria coexisten con la precisión de <a href="the-circus-magician.html" class="hidden-link" title="Leggere «Il Mago del Circo» — un racconto di Sombras, Datos y Relámpagos">una herida que nunca cicatriza completamente</a>.</p>
 
       <p>Mis obras en esta área (música, ensayos y arte digital) nacen de esa intersección: un diálogo entre lo que persiste y lo que escapa.</p>
     </div>
@@ -347,7 +360,7 @@ a:hover { color: var(--gold-bright); }
     <div class="prose">
       <p>Las culturas se rompen, migran, se adaptan y se reensamblan. Ningún exilio es idéntico a otro, pero todos comparten la misma paradoja: pertenecer y no pertenecer al mismo tiempo.</p>
 
-      <p><a href="the-sunken-library.html" title="Leggere «La Biblioteca Sommersa» — un racconto di Sombras, Datos y Relámpagos">La memoria se convierte en arquitectura</a>; la distancia se convierte en lente. En esa tensión, la identidad se reescribe, no se borra.</p>
+      <p><a href="the-sunken-library.html" class="hidden-link" title="Leggere «La Biblioteca Sommersa» — un racconto di Sombras, Datos y Relámpagos">La memoria se convierte en arquitectura</a>; la distancia se convierte en lente. En esa tensión, la identidad se reescribe, no se borra.</p>
     </div>
   </section>
 
