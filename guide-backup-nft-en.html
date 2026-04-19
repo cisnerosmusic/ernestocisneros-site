@@ -252,31 +252,39 @@ body {
 /* LANGUAGE TOGGLE */
 .lang-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 16px;
+  right: 16px;
   z-index: 100;
-  background: rgba(28, 26, 23, 0.9);
-  backdrop-filter: blur(10px);
-  padding: 8px 16px;
-  border-radius: 24px;
+  background: rgba(28, 26, 23, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 14px;
+  border-radius: 12px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   color: var(--gold);
   text-transform: uppercase;
-  border: 1px solid rgba(176, 141, 76, 0.3);
+  border: 1px solid rgba(176, 141, 76, 0.25);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 0;
+  max-width: 340px;
+  justify-content: center;
+  line-height: 1;
 }
 
 .lang-toggle a {
   color: var(--gold);
   border-bottom: none;
-  margin: 0 4px;
-  opacity: 0.6;
+  padding: 4px 6px;
+  opacity: 0.45;
   transition: opacity 0.2s;
+  font-size: 10px;
+  border-radius: 4px;
 }
 
-.lang-toggle a:hover { opacity: 1; }
-.lang-toggle a.active { opacity: 1; font-weight: 600; }
+.lang-toggle a:hover { opacity: 1; background: rgba(176, 141, 76, 0.12); }
+.lang-toggle a.active { opacity: 1; font-weight: 600; background: rgba(176, 141, 76, 0.18); }
 
 /* HEADER */
 .hero {
@@ -703,7 +711,8 @@ footer a {
   .toc { padding: 24px 24px; }
   .code-block { padding: 18px 20px; font-size: 12px; }
   .section ul, .section ol { margin-left: 18px; }
-  .lang-toggle { top: 12px; right: 12px; padding: 6px 12px; font-size: 10px; }
+  .lang-toggle { top: 10px; right: 10px; padding: 8px 10px; max-width: 280px; font-size: 9px; }
+  .lang-toggle a { padding: 3px 4px; font-size: 9px; }
 }
 
 /* PRINT */
@@ -723,9 +732,20 @@ footer a {
 <body>
 
 <div class="lang-toggle">
-  <a href="/es/guia-backup-nft.html" rel="alternate" hreflang="es">ES</a>
-  <span style="opacity: 0.3;">·</span>
   <a href="#" class="active" rel="alternate" hreflang="en">EN</a>
+  <a href="/es/guia-backup-nft.html" rel="alternate" hreflang="es">ES</a>
+  <a href="/fr/nft/guide-backup-nft-fr.html" rel="alternate" hreflang="fr">FR</a>
+  <a href="/it/guide-backup-nft.html" rel="alternate" hreflang="it">IT</a>
+  <a href="/ru/nft/guide-backup-nft-ru.html" rel="alternate" hreflang="ru">RU</a>
+  <a href="/translations/ucr/guide-backup-nft-uc.html" rel="alternate" hreflang="uk">UC</a>
+  <a href="/translations/pt/guide-backup-nft-pt.html" rel="alternate" hreflang="pt">PT</a>
+  <a href="/translations/de/guide-backup-nft-de.html" rel="alternate" hreflang="de">DE</a>
+  <a href="/ja/nft/guide-backup-nft-ja.html" rel="alternate" hreflang="ja">JA</a>
+  <a href="/ko/nft/guide-backup-nft-ko.html" rel="alternate" hreflang="ko">KO</a>
+  <a href="/translations/ch/guide-backup-nft-ch.html" rel="alternate" hreflang="zh">CH</a>
+  <a href="/translations/far/guide-backup-nft-fa.html" rel="alternate" hreflang="fa">FA</a>
+  <a href="/translations/hindi/guide-backup-nft-hi.html" rel="alternate" hreflang="hi">HI</a>
+  <a href="/translations/arabe/guide-backup-nft-ar.html" rel="alternate" hreflang="ar">AR</a>
 </div>
 
 <header class="hero">
