@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<title>Як зберегти ваші NFT до закриття Foundation | Повний посібник 2026</title>
+<meta name="description" content="Foundation закривається у 2026 році. Покроковий посібник українською для збереження ваших NFT: метадані та файли з Foundation до Filebase (безкоштовний IPFS пінінг). Запобігайте тому, щоб ваші токени стали візуально осиротілими. Від криптохудожника Ернесто Сіснероса.">
+<meta name="keywords" content="Foundation закривається, закриття Foundation, збереження NFT, резервне копіювання NFT, IPFS пінінг, Filebase посібник українською, як зберегти NFT Foundation, Foundation marketplace закриття, архів NFT, криптомистецтво, збереження цифрового мистецтва, CID IPFS, альтернатива Pinata, децентралізоване сховище NFT">
+<meta name="author" content="Ernesto Cisneros Cino">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://www.ernestocisneros.art/uk/guide-backup-nft.html">
+
+<!-- HREFLANG -->
+<link rel="alternate" hreflang="uk" href="https://www.ernestocisneros.art/uk/guide-backup-nft.html">
+<link rel="alternate" hreflang="es" href="https://www.ernestocisneros.art/es/guia-backup-nft.html">
+<link rel="alternate" hreflang="en" href="https://www.ernestocisneros.art/guide-backup-nft-en.html">
+<link rel="alternate" hreflang="it" href="https://www.ernestocisneros.art/it/guide-backup-nft.html">
+<link rel="alternate" hreflang="fr" href="https://www.ernestocisneros.art/fr/guide-backup-nft.html">
+<link rel="alternate" hreflang="ru" href="https://www.ernestocisneros.art/ru/guide-backup-nft.html">
+<link rel="alternate" hreflang="ko" href="https://www.ernestocisneros.art/ko/guide-backup-nft.html">
+<link rel="alternate" hreflang="ja" href="https://www.ernestocisneros.art/ja/guide-backup-nft.html">
+<link rel="alternate" hreflang="pt" href="https://www.ernestocisneros.art/pt/guide-backup-nft.html">
+<link rel="alternate" hreflang="de" href="https://www.ernestocisneros.art/de/guide-backup-nft.html">
+<link rel="alternate" hreflang="zh" href="https://www.ernestocisneros.art/zh/guide-backup-nft.html">
+<link rel="alternate" hreflang="x-default" href="https://www.ernestocisneros.art/guide-backup-nft-en.html">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ernesto Cisneros · Композитор та криптохудожник">
+<meta property="og:title" content="Як зберегти ваші NFT до закриття Foundation">
+<meta property="og:description" content="Foundation закривається. Ваші токени назавжди залишаться на Ethereum, але файли зображень та метаданих можуть зникнути. Покроковий посібник зі збереження вашого корпусу NFT у децентралізованому сховищі, безкоштовно.">
+<meta property="og:url" content="https://www.ernestocisneros.art/uk/guide-backup-nft.html">
+<meta property="og:image" content="https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Посібник зі збереження NFT до закриття Foundation, від Ернесто Сіснероса">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="article:author" content="Ernesto Cisneros Cino">
+<meta property="article:published_time" content="2026-04-17T00:00:00Z">
+<meta property="article:modified_time" content="2026-04-17T00:00:00Z">
+<meta property="article:section" content="Посібники з криптомистецтва">
+<meta property="article:tag" content="Foundation, NFT, IPFS, Filebase, резервне копіювання, криптомистецтво">
+
+<!-- TWITTER / X CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ErnestCisneros1">
+<meta name="twitter:creator" content="@ErnestCisneros1">
+<meta name="twitter:title" content="Як зберегти ваші NFT до закриття Foundation">
+<meta name="twitter:description" content="Foundation закривається. Покроковий посібник українською, щоб ваші NFT не стали візуально осиротілими. Безкоштовно, без банківської картки.">
+<meta name="twitter:image" content="https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg">
+<meta name="twitter:image:alt" content="Повний посібник зі збереження NFT з Foundation до закриття">
+
+<!-- SCHEMA.ORG JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "@id": "https://www.ernestocisneros.art/uk/guide-backup-nft.html#howto",
+      "name": "Yak zberehty vashi NFT do zakryttya Foundation",
+      "description": "Pokrokovyy posibnyk dlya kryptokhudozhnykiv: zberehty metadani ta media-fayly NFT z Foundation do servisu pinningu IPFS Filebase, bezkoshtovno.",
+      "image": "https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg",
+      "inLanguage": "uk",
+      "totalTime": "PT2H",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "supply": [
+        {"@type": "HowToSupply", "name": "Aktyvnyy wallet, z yakoho buv zroblenyy mint na Foundation"},
+        {"@type": "HowToSupply", "name": "Spysok vashykh NFT na Foundation"},
+        {"@type": "HowToSupply", "name": "Email dlya stvorennya akkauntu Filebase"}
+      ],
+      "tool": [
+        {"@type": "HowToTool", "name": "Bezkoshtovnyy akkaunt Filebase"},
+        {"@type": "HowToTool", "name": "Etherscan"},
+        {"@type": "HowToTool", "name": "IPFS gateway (dweb.link)"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.ernestocisneros.art/uk/guide-backup-nft.html#article",
+      "headline": "Yak zberehty vashi NFT do zakryttya Foundation",
+      "description": "Povnyy posibnyk ukrayinskoyu movoyu dlya kryptokhudozhnykiv pered zakryttyam marketplaceu Foundation u 2026 rotsi. Okhoplyuye IPFS pinning, nalashtuvannya Filebase, multi-provider nadlyshkovist ta dovhostrokovi stratehiyi zberihannya.",
+      "image": "https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg",
+      "datePublished": "2026-04-17T00:00:00Z",
+      "dateModified": "2026-04-17T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.ernestocisneros.art/#person",
+        "name": "Ernesto Cisneros Cino",
+        "url": "https://www.ernestocisneros.art/",
+        "sameAs": [
+          "https://orcid.org/0009-0002-2833-1787",
+          "https://twitter.com/ErnestCisneros1",
+          "https://github.com/cisnerosmusic",
+          "https://rarible.com/cisnerosmusic",
+          "https://hug.art/artists/ernestocisneros"
+        ],
+        "jobTitle": "Kompozytor, pianist, kryptokhudozhnyk",
+        "description": "Kubinskyy kompozytor z bilshe nizh 800 zareyestrovanymy tvoramy dlya kino, televizora, teatru ta baletu. Aktyvnyy u blockchain Ethereum z lypnya 2021. Zasnovnyk Impulses.art."
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://www.ernestocisneros.art/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.ernestocisneros.art/uk/guide-backup-nft.html"
+      },
+      "inLanguage": "uk"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.ernestocisneros.art/uk/guide-backup-nft.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Shcho stanetsya z moyimy NFT, koly Foundation zakryyetsya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vashi tokeny nazavzhdy zalyshatsya na Ethereum i ne mozhut buty vydaleni chy zmineni. Odnak fayly metadanykh ta media (zobrazhennya, video, opysy) znahodyatsya na IPFS i zaraz zapinneni na vuzlakh Foundation. Koly Foundation vymknetsya tsi vuzly, fayly mozhut staty nedostupnymy, yakshcho Vy ne zberezhete yikh na inshomu servisi pinningu IPFS, takomu yak Filebase. Volodinnya on-chain zalyshayetsya nedotorkanym; pid zahrozoyu znahodytsya vizualnyy ta opysovyy shar."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.ernestocisneros.art/uk/guide-backup-nft.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.ernestocisneros.art/"},
+        {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.ernestocisneros.art/uk/nft/resources.html"},
+        {"@type": "ListItem", "position": 3, "name": "NFT Backup Guide", "item": "https://www.ernestocisneros.art/uk/guide-backup-nft.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f4f1ea;
+  --bg-card: #ffffff;
+  --bg-code: #1c1a17;
+  --ink: #1c1a17;
+  --ink-soft: #4a4540;
+  --ink-muted: #8a837a;
+  --accent: #a84d2a;
+  --accent-dark: #7d3a20;
+  --gold: #b08d4c;
+  --line: #d8d0c0;
+  --ok: #4a6b3a;
+  --warn: #a84d2a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  padding: 0;
+  margin: 0;
+}
+
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: rgba(28, 26, 23, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border: 1px solid rgba(176, 141, 76, 0.3);
+}
+
+.lang-toggle a {
+  color: var(--gold);
+  border-bottom: none;
+  margin: 0 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.lang-toggle a:hover { opacity: 1; }
+.lang-toggle a.active { opacity: 1; font-weight: 600; }
+
+.hero {
+  background: linear-gradient(180deg, #1c1a17 0%, #2a2520 100%);
+  color: #f4f1ea;
+  padding: 80px 24px 70px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px double var(--gold);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(176, 141, 76, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(168, 77, 42, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "";
+  height: 1px;
+  background: var(--gold);
+  flex: 1;
+  opacity: 0.4;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #d8d0c0;
+  font-style: italic;
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.hero-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(216, 208, 192, 0.2);
+  padding-top: 20px;
+  max-width: 640px;
+}
+
+.hero-author strong {
+  color: #d8d0c0;
+  font-weight: 500;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 24px 120px;
+}
+
+.intro {
+  padding: 36px 40px;
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 70px;
+  box-shadow: 0 2px 20px rgba(28, 26, 23, 0.04);
+}
+
+.intro p { margin-bottom: 16px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro strong { color: var(--accent-dark); font-weight: 600; }
+
+.section {
+  margin-bottom: 72px;
+  scroll-margin-top: 20px;
+}
+
+.section-number {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.section-intro {
+  font-size: 20px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 36px;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.section p {
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+
+.section ul, .section ol {
+  margin-left: 24px;
+  margin-bottom: 22px;
+}
+
+.section li { margin-bottom: 10px; }
+.section strong { font-weight: 600; color: var(--ink); }
+.section em { font-style: italic; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 77, 42, 0.3);
+  transition: all 0.2s;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent-dark);
+}
+
+pre, code { font-family: 'JetBrains Mono', monospace; }
+
+code {
+  background: #ebe4d4;
+  color: var(--accent-dark);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.code-block {
+  background: var(--bg-code);
+  color: #d8d0c0;
+  padding: 22px 26px;
+  border-radius: 4px;
+  margin: 22px 0;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  position: relative;
+  border-left: 3px solid var(--gold);
+}
+
+.code-block code {
+  background: transparent;
+  color: #d8d0c0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.code-label {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.callout {
+  padding: 22px 28px;
+  margin: 26px 0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.callout-label {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.callout-warn { background: #fdf4ed; border-left: 3px solid var(--warn); }
+.callout-warn .callout-label { color: var(--warn); }
+
+.callout-ok { background: #f0f2ea; border-left: 3px solid var(--ok); }
+.callout-ok .callout-label { color: var(--ok); }
+
+.callout-info { background: #ede4d0; border-left: 3px solid var(--gold); }
+.callout-info .callout-label { color: var(--accent-dark); }
+
+.callout p { margin-bottom: 10px; }
+.callout p:last-child { margin-bottom: 0; }
+
+.cta-link {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #f4f1ea !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-bottom: 2px solid var(--accent-dark);
+  margin: 8px 0;
+  transition: all 0.2s;
+}
+
+.cta-link:hover {
+  background: var(--accent-dark);
+  color: #fff !important;
+}
+
+.toc {
+  background: var(--bg-card);
+  padding: 32px 36px;
+  margin-bottom: 60px;
+  border-top: 3px solid var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.toc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.toc ol {
+  list-style: none;
+  margin-left: 0;
+  counter-reset: toc-counter;
+}
+
+.toc li {
+  counter-increment: toc-counter;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc li::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  min-width: 30px;
+}
+
+.toc a {
+  border-bottom: none;
+  color: var(--ink);
+  font-size: 18px;
+  flex: 1;
+}
+
+.toc a:hover { color: var(--accent); }
+
+footer {
+  background: #1c1a17;
+  color: #d8d0c0;
+  padding: 60px 24px;
+  text-align: center;
+  border-top: 3px double var(--gold);
+}
+
+footer p {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+footer .signature {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 24px;
+}
+
+footer a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(176, 141, 76, 0.4);
+}
+
+.divider {
+  text-align: center;
+  margin: 60px 0;
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 0.5em;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .hero { padding: 60px 20px 50px; }
+  .container { padding: 40px 20px 80px; }
+  .intro { padding: 24px 26px; }
+  .toc { padding: 24px 24px; }
+  .code-block { padding: 18px 20px; font-size: 12px; }
+  .section ul, .section ol { margin-left: 18px; }
+  .lang-toggle { top: 12px; right: 12px; padding: 6px 12px; font-size: 10px; }
+}
+
+@media print {
+  body { background: white; font-size: 11pt; }
+  .hero { background: white; color: black; padding: 30px 0; border-bottom: 2px solid black; }
+  .hero h1 em { color: black; }
+  .hero-subtitle, .hero-author { color: black; }
+  footer { background: white; color: black; }
+  .code-block { background: #f0f0f0; color: black; border: 1px solid #ccc; }
+  a { color: black; text-decoration: underline; }
+  .section { page-break-inside: avoid; }
+  .lang-toggle { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="lang-toggle">
+  <a href="#" class="active" rel="alternate" hreflang="uk">UK</a>
+  <span style="opacity: 0.3;">·</span>
+  <a href="/es/guia-backup-nft.html" rel="alternate" hreflang="es">ES</a>
+  <span style="opacity: 0.3;">·</span>
+  <a href="/guide-backup-nft-en.html" rel="alternate" hreflang="en">EN</a>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Децентралізований архів · 2026</div>
+    <h1>Як зберегти ваші <em>NFT</em> до закриття Foundation</h1>
+    <p class="hero-subtitle">Покроковий посібник, щоб ваші твори не зникли разом із маркетплейсом. Блокчейн пам’ятає, але файли потребують когось, хто їх підтримає.</p>
+    <p class="hero-author"><strong>Автор: Ернесто Сіснерос Сіно</strong> · Композитор, криптохудожник, засновник Impulses.art · Квітень 2026</p>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="intro">
+  <p><strong>Foundation закривається.</strong> Токени назавжди залишаться у блокчейні, але файли, з яких вони складаються (зображення, відео, метадані), знаходяться на IPFS, запіннені на вузлах Foundation, які рано чи пізно будуть вимкнені. Коли це станеться, посилання перестануть працювати, а твори перетворяться на візуально осиротілі токени, навіть якщо все інше on-chain залишиться на місці.</p>
+  <p>Цей посібник супроводить Вас через процес <strong>збереження всього Вашого корпусу</strong> на незалежному децентралізованому сервісі пінінгу, не сплачуючи жодної копійки. Наприкінці Ваша робота буде захищена інфраструктурою, якою керуєте Ви, а не компанією, що може закритися завтра.</p>
+  <p>Займає від 30 хвилин до 2 годин залежно від кількості творів. Кожна хвилина того варта.</p>
+</section>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-title">Зміст</div>
+  <ol>
+    <li><a href="#shcho-vy-zrobyte">Що саме Ви зробите</a></li>
+    <li><a href="#chomu-filebase">Чому Filebase, а не Pinata</a></li>
+    <li><a href="#stvoryty-akkaunt">Створіть безкоштовний акаунт Filebase</a></li>
+    <li><a href="#stvoryty-bucket">Створіть архівний бакет</a></li>
+    <li><a href="#otrymaty-cid">Отримайте CID кожного твору</a></li>
+    <li><a href="#pinnyty">Запінніть Ваші CID у Filebase</a></li>
+    <li><a href="#pereviryty">Перевірте, що все в порядку</a></li>
+    <li><a href="#onovyty-sayt">Оновіть посилання на Вашому сайті</a></li>
+    <li><a href="#vypadok-arweave">Якщо Ваші твори на Arweave (резерв не потрібен)</a></li>
+    <li><a href="#pered-zakryttyam">Перед повним закриттям Foundation</a></li>
+    <li><a href="#postiynist">А якщо Filebase колись закриється?</a></li>
+    <li><a href="#faq">Поширені запитання</a></li>
+    <li><a href="#svij-vuzol">Технічне розширення: Ваш власний вузол IPFS</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="shcho-vy-zrobyte" class="section">
+  <span class="section-number">Крок 01</span>
+  <h2>Що саме Ви зробите</h2>
+  <p class="section-intro">Розуміння проблеми та рішення перед початком роботи вбереже Вас від плутанини далі.</p>
+
+  <h3>Проблема</h3>
+  <p>Коли Ви мінтували твір на Foundation, смартконтракт зберіг посилання в Ethereum (це <strong>CID</strong>, Content Identifier), що вказує на Ваш JSON-файл метаданих на IPFS. Цей JSON містить назву, опис, а також через інший CID вказує на реальний файл зображення чи відео.</p>
+  <p>Токен постійний. Але файли CID <strong>існують лише поки якийсь вузол IPFS тримає їх запінненими</strong>. Foundation тримав їх запінненими на своїх вузлах. Коли ці вузли будуть вимкнені, якщо більше ніхто ці файли не пінить, вони зникнуть з мережі.</p>
+
+  <h3>Рішення</h3>
+  <p>Ви запінните ті самі CID на Вашому власному вузлі (фактично на безкоштовному сервісі, що діє як Ваш вузол). Це не копіювання файлів кудись в інше місце, це <strong>посилення їх існування всередині тієї самої мережі IPFS</strong>. CID залишається тим самим, твір залишається тим самим, але тепер у нього є надлишковість: він живе на вузлах Foundation <em>і</em> на Ваших.</p>
+  <p>Коли Foundation вимкне свої вузли, Ваші залишаться активними. Посилання IPFS продовжать працювати. Ваша робота переживе закриття маркетплейсу.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Важливо</span>
+    <p>Токен Ethereum (Ваша власність, історія, продажі) ніколи не під загрозою. Під загрозою знаходиться візуальний та описовий шар. Саме цей шар ми і зберігаємо.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="chomu-filebase" class="section">
+  <span class="section-number">Крок 02</span>
+  <h2>Чому Filebase, а не Pinata</h2>
+  <p class="section-intro">Pinata був першопрохідцем, але його безкоштовний план більше не працює для цього конкретного випадку. Filebase, чесна альтернатива.</p>
+
+  <p>Pinata бере плату саме за ту функцію, яка нам потрібна (<em>Import from IPFS</em>, пінінг існуючих CID). На безкоштовному плані Ви можете лише завантажувати нові файли з Вашого комп’ютера, але не пінити CID, які вже існують у мережі.</p>
+  <p>Filebase пропонує <strong>5 ГБ сховища, до 1000 файлів, виділений шлюз та функцію <em>Import CID</em>, все включено в безкоштовний план без банківської картки</strong>. Це в п’ять разів більше простору, ніж у Pinata, і ключова функція без обмежень.</p>
+  <p>Filebase також використовує <strong>трикратну надлишковість у географічно різних місцях</strong>, і це реальна надлишковість, а не маркетингові слова.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Філософська нотатка</span>
+    <p>Pinata не поганий сервіс. Справа в тому, що Ваш сценарій (пінінг уже створених творів), саме те, що їхня поточна бізнес-модель переводить у платні тарифи. Filebase ставиться до цього сценарію як до законного безкоштовного використання.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="stvoryty-akkaunt" class="section">
+  <span class="section-number">Крок 03</span>
+  <h2>Створіть безкоштовний акаунт Filebase</h2>
+  <p class="section-intro">П’ять хвилин, без банківської картки.</p>
+
+  <ol>
+    <li>Зайдіть на <a href="https://filebase.com" target="_blank" rel="noopener">filebase.com</a> та натисніть <strong>Get Started Free</strong> або <strong>Sign Up</strong>.</li>
+    <li>Введіть Ваш email та створіть надійний пароль. Картка не потрібна, платіжна інформація не потрібна.</li>
+    <li>Підтвердіть Ваш email через посилання, яке Вам надішлють.</li>
+    <li>Увійдіть до панелі керування з Вашим іменем користувача та паролем.</li>
+  </ol>
+
+  <p>Ви побачите свій порожній робочий простір. Інтерфейс чистий, лише англійською, але процес простий.</p>
+
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="https://filebase.com" target="_blank" rel="noopener" class="cta-link">Перейти на Filebase →</a>
+  </p>
+</section>
+
+<!-- 4 -->
+<section id="stvoryty-bucket" class="section">
+  <span class="section-number">Крок 04</span>
+  <h2>Створіть архівний бакет</h2>
+  <p class="section-intro">Бакет це як папка, у якій житимуть Ваші піни.</p>
+
+  <ol>
+    <li>У панелі керування натисніть <strong>Buckets</strong> у бічній навігації.</li>
+    <li>Натисніть <strong>Create Bucket</strong>.</li>
+    <li>Дайте йому унікальне ім’я, наприклад <code>vashe-imya-nft-archive</code>. Імена бакетів є глобальними, тому якщо Ваше зайняте, потрібно буде вибрати інше.</li>
+    <li>У полі <strong>Network</strong> оберіть <strong>IPFS</strong>. Не обирайте Sia чи інші мережі, Вам потрібен IPFS для Ваших NFT з Foundation.</li>
+    <li>Підтвердьте натисканням <strong>Create</strong>.</li>
+  </ol>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Про S3 Private та Public</span>
+    <p>Filebase покаже сповіщення, що публічні бакети потребують платного плану. <strong>Проігноруйте його, залиште на S3 Private</strong>. Це сповіщення стосується доступу S3 (протокол Amazon), який не використовується NFT. Ваші файли все одно будуть публічно доступні за CID з будь-якого шлюзу IPFS: <code>ipfs.io</code>, <code>dweb.link</code>, <code>cloudflare-ipfs.com</code>. Налаштування приватного бакету це не обмежує.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="otrymaty-cid" class="section">
+  <span class="section-number">Крок 05</span>
+  <h2>Отримайте CID кожного твору</h2>
+  <p class="section-intro">У кожного твору є два CID для ідентифікації: один для JSON метаданих, інший для файлу зображення або відео.</p>
+
+  <h3>Метод 1: З Foundation (поки він ще працює)</h3>
+  <ol>
+    <li>Зайдіть у Ваш профіль Foundation і відкрийте одну з Ваших робіт.</li>
+    <li>Під вкладкою <strong>Details</strong> або <strong>Token Details</strong> Ви знайдете посилання <strong>IPFS</strong> або <strong>Metadata</strong>.</li>
+    <li>Воно виглядає так: <code>https://ipfs.io/ipfs/QmXX.../metadata.json</code>. Збережіть його.</li>
+    <li>CID метаданих це частина між <code>/ipfs/</code> та <code>/metadata.json</code>: <code>QmXX...</code></li>
+  </ol>
+
+  <h3>Метод 2: Відкрити JSON та витягнути CID медіафайлу</h3>
+  <p>Відкрийте JSON у Вашому браузері. Ви побачите щось на зразок:</p>
+
+  <div class="code-block">
+    <span class="code-label">JSON метадані</span>
+<code>{
+  "name": "Ваш твір",
+  "description": "...",
+  "image": "ipfs://QmYY.../nft.mp4"
+}</code>
+  </div>
+
+  <p>Значення поля <code>image</code> (або іноді <code>animation_url</code>) починається з <code>ipfs://</code>, після чого йде інший CID. Це CID медіафайлу. Збережіть і його.</p>
+
+  <h3>Створіть просту таблицю інвентарю</h3>
+  <p>Для кожного твору запишіть:</p>
+  <ul>
+    <li><strong>Назву</strong> твору</li>
+    <li><strong>CID JSON метаданих</strong></li>
+    <li><strong>CID файлу медіа</strong> (відео або зображення)</li>
+    <li><strong>Адресу контракту</strong> і <strong>TokenID</strong> (щоб потім шукати в Etherscan)</li>
+  </ul>
+
+  <p>Простої електронної таблиці достатньо. Зробіть це, поки Foundation ще доступний. Якщо зачекаєте, видобути дані стане значно складніше.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Порада</span>
+    <p>Якщо у Вас є інвентар, який легко скопіювати з Вашого профілю Foundation, беріть його масово. Ви також можете знайти свої токени прямо в Etherscan, шукаючи свій wallet і фільтруючи за NFT.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="pinnyty" class="section">
+  <span class="section-number">Крок 06</span>
+  <h2>Запінніть Ваші CID у Filebase</h2>
+  <p class="section-intro">Ось тут і відбувається магія. Filebase знаходить Ваші файли в мережі IPFS та копіює їх на свої вузли.</p>
+
+  <h3>Процес для кожного твору</h3>
+  <ol>
+    <li>Відкрийте бакет, який Ви створили, натиснувши на його ім’я.</li>
+    <li>Ви побачите три опції: <strong>Import CID</strong>, <strong>New Folder</strong>, <strong>Upload</strong>. Натисніть <strong>Import CID</strong>.</li>
+    <li>Відкривається форма. Вставте <strong>CID JSON метаданих</strong> першого твору.</li>
+    <li>Дайте йому описове ім’я, наприклад <code>moya-robota-metadata.json</code>.</li>
+    <li>Підтвердьте натисканням <strong>Search and Pin</strong>.</li>
+  </ol>
+
+  <p>Filebase шукатиме CID у мережі IPFS (це займає кілька секунд) та запінить його на свої вузли. Статус зміниться з <strong>Pinning</strong> (у процесі, помаранчева іконка) на <strong>Pinned</strong> (підтверджено, зелена іконка).</p>
+
+  <p>Повторіть для <strong>CID файлу медіа</strong>:</p>
+  <ol>
+    <li><strong>Import CID</strong> знову.</li>
+    <li>Вставте CID відео або зображення.</li>
+    <li>Ім’я: <code>moya-robota-media.mp4</code> (або правильне розширення).</li>
+    <li>Підтвердьте.</li>
+  </ol>
+
+  <h3>Рекомендована конвенція іменування</h3>
+  <p>Використовуйте послідовні імена, щоб потім було легко шукати у бакеті. Пропозиція:</p>
+  <ul>
+    <li><strong>Сольні роботи</strong>: <code>nazva-roboty-metadata.json</code> і <code>nazva-roboty-media.mp4</code></li>
+    <li><strong>Колаборації</strong>: <code>split-prizvyshche-spivavtora-nazva-metadata.json</code></li>
+    <li><strong>Нумеровані серії</strong>: <code>seriya-01-nazva-metadata.json</code>, <code>seriya-02-...</code> (використовуйте ведучі нулі, якщо у Вас більше 9)</li>
+  </ul>
+
+  <p>Імена в нижньому регістрі, з дефісами замість пробілів, без діакритичних знаків або спеціальних символів. Це уникає проблем з URL та файловими системами.</p>
+
+  <h3>Приблизний час</h3>
+  <p>Кожен пін займає від кількох секунд (для маленьких JSON) до пари хвилин (для важких відео). Для корпусу з 10-15 робіт плануйте 40 хвилин до 1 години ручної роботи.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Приємна деталь</span>
+    <p>Якщо Ви пінните CID, який Filebase уже запіннив деінде (тому що інший художник запіннив той самий файл), він пінниться майже миттєво. IPFS не дублює файли, він посилює їх присутність.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="pereviryty" class="section">
+  <span class="section-number">Крок 07</span>
+  <h2>Перевірте, що все в порядку</h2>
+  <p class="section-intro">Перш ніж вважати резервне копіювання завершеним, переконайтеся, що файли дійсно доступні з публічної мережі.</p>
+
+  <h3>Перевірка 1: Усі позначені Pinned</h3>
+  <p>Подивіться на стовпець <strong>Status</strong> у Вашому бакеті. Усі файли повинні мати зелену іконку та позначку <strong>Pinned</strong>. Якщо якийсь залишається в <strong>Pinning</strong> (помаранчевий) після кількох хвилин, зачекайте ще або оновіть сторінку.</p>
+
+  <h3>Перевірка 2: Доступно через публічний шлюз</h3>
+  <p>Скопіюйте один із Ваших CID і вставте в цей URL, замінивши <code>[CID]</code>:</p>
+
+  <div class="code-block">
+    <span class="code-label">Перевірити CID</span>
+<code>https://dweb.link/ipfs/[CID]</code>
+  </div>
+
+  <p>Якщо Ви бачите вміст (JSON чи відео), Ваш пін живий у децентралізованій мережі, доступний через будь-який шлюз, не залежно від Foundation чи Filebase.</p>
+
+  <h3>Перевірка 3: Розумне використання місця</h3>
+  <p>Подивіться на індикатор <strong>Storage</strong> Вашого бакета. Типове відео NFT важить від 10 до 80 МБ. Якщо у Вас 15 робіт із відео, Ви будете близько 500-800 МБ. Далеко від ліміту в 5 ГБ безкоштовного плану.</p>
+  <p>Якщо Ви близько до ліміту (тому що у Вас більше робіт або дуже важкі відео), розгляньте можливість пінити лише метадані менш критичних робіт і залишити їхні відео без додаткової резервної копії (вони продовжать жити на інших публічних вузлах IPFS деякий час).</p>
+</section>
+
+<!-- 8 -->
+<section id="onovyty-sayt" class="section">
+  <span class="section-number">Крок 08</span>
+  <h2>Оновіть посилання на Вашому сайті</h2>
+  <p class="section-intro">Якщо у Вас є особистий сайт або портфоліо з посиланнями на Ваші NFT, ці посилання потрібно змінити. Ті, що вказують на Foundation, помруть.</p>
+
+  <h3>Що замінити</h3>
+  <p>Шукайте на Вашому сайті посилання на кшталт таких:</p>
+
+  <div class="code-block">
+<code>https://foundation.app/mint/eth/0x...../tokenID
+
+https://fnd-collections.mypinata.cloud/ipfs/QmXX.../metadata.json
+
+https://fnd-collections4.mypinata.cloud/ipfs/...</code>
+  </div>
+
+  <p>Усі вони припинять працювати. Їх слід замінити стабільними посиланнями на шлюзи IPFS.</p>
+
+  <h3>Які посилання використовувати</h3>
+  <p>Рекомендую три типи посилань на роботу:</p>
+
+  <p><strong>1. Метадані (технічний запис роботи):</strong></p>
+  <div class="code-block">
+<code>https://dweb.link/ipfs/[CID_METADATA]/metadata.json</code>
+  </div>
+
+  <p><strong>2. Медіа (відео чи зображення):</strong></p>
+  <div class="code-block">
+<code>https://dweb.link/ipfs/[CID_MEDIA]/nft.mp4</code>
+  </div>
+
+  <p><strong>3. Etherscan (верифікація володіння on-chain):</strong></p>
+  <div class="code-block">
+<code>https://etherscan.io/token/[CONTRACT]?a=[TOKEN_ID]</code>
+  </div>
+
+  <p>Це третє посилання замінює посилання Foundation. Там, де Ви раніше вказували на маркетплейс, тепер вказуєте на публічний реєстр Ethereum, який ніколи не закривається.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Про шлюзи</span>
+    <p>Я використовую <code>dweb.link</code>, тому що ним керує Protocol Labs (фонд, не комерційна компанія), він відносно швидкий та нейтральний. Альтернативи: <code>ipfs.io</code> (той самий провайдер, іноді повільніший), <code>cloudflare-ipfs.com</code> (швидко, але залежить від централізованої компанії). Будь-який працює; важливий CID.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="vypadok-arweave" class="section">
+  <span class="section-number">Крок 09</span>
+  <h2>Якщо Ваші твори на Arweave (резерв не потрібен)</h2>
+  <p class="section-intro">Деякі твори Foundation використовують Arweave замість IPFS. У них вбудована постійність.</p>
+
+  <p>Якщо при відкритті метаданих Вашого твору Ви бачите URL, що закінчуються на <code>arweave.net</code>, або починаються з хешу, за яким іде <code>.arweave.net</code>, Ваш твір живе на <strong>Arweave</strong>, не на IPFS.</p>
+
+  <p>Arweave це інша децентралізована мережа сховища з філософськи іншою моделлю: Ви платите один раз при мінті, і зберігання гарантовано на двісті років через ендавмент-фонд, який продовжує платити вузлам безконечно.</p>
+
+  <p><strong>Практичний висновок:</strong> якщо одна з Ваших робіт на Arweave, її не потрібно зберігати. Її постійність структурна. Просто позначте це у Вашому інвентарі та переходьте до інших.</p>
+</section>
+
+<!-- 10 -->
+<section id="pered-zakryttyam" class="section">
+  <span class="section-number">Крок 10</span>
+  <h2>Перед повним закриттям Foundation</h2>
+  <p class="section-intro">Останні дії перед вимкненням.</p>
+
+  <h3>Зняти з продажу непродані роботи</h3>
+  <p>Якщо у Вас є роботи, виставлені на продаж на Foundation, у яких ще немає покупця, розгляньте зняття їх з продажу перед закриттям. Це звільняє токен від ескроу-контракту Foundation і повертає його у Ваш wallet (або wallet мінтера). Коштує трохи газу, але позбавляє від ускладнень потім.</p>
+
+  <h3>Документуйте співавторів</h3>
+  <p>Якщо у Вас є роботи з on-chain сплітом, нагадайте Вашим співавторам теж зробити це резервне копіювання зі свого боку. Сплит залишається активним, поки існує контракт, але файлам потрібні численні вузли для підтримки, щоб вижити.</p>
+
+  <h3>Експортуйте кураторську інформацію</h3>
+  <p>Foundation зберігає інформацію, яка не живе on-chain: історію продажів з іменами колекціонерів, редакторські описи, точні дати аукціонів, ставки, підписників. <strong>Усе це зникає з Foundation.</strong> Робіть скріншоти або експортуйте те, що можете, до закриття.</p>
+
+  <h3>Розкажіть Вашу історію</h3>
+  <p>Якщо Ви роками перебуваєте в просторі криптомистецтва, Ви свідок розділу культурної історії, який мало хто прожив зсередини. Запишіть те, що пам’ятаєте. Фотографії подій, імена спільноти, упалі платформи, блокування, яких зазнали художники з країн під ембарго. Цей наративний архів такий самий важливий, як CID.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Коли закінчите</span>
+    <p>Коли Ви запіннили всі роботи, перевірили публічний доступ і оновили посилання на своєму сайті, Ваш корпус переживе закриття Foundation. Робота залишається. Історія продовжується.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="postiynist" class="section">
+  <span class="section-number">Крок 11</span>
+  <h2>А якщо Filebase колись закриється?</h2>
+  <p class="section-intro">Справедливе запитання. Якщо Ви робите резервне копіювання, щоб не залежати від Foundation, чи не переміщуєте Ви просто залежність на іншу компанію? Варто відповісти чесно.</p>
+
+  <h3>Коротка відповідь</h3>
+  <p>Якби Filebase закрився завтра, Ваші файли <strong>не зникають миттєво</strong>. IPFS працює через накопичення вузлів, які реплікують той самий контент, а не через єдину точку відмови. Закриття Filebase видаляє лише одну з копій Вашого файлу, не всі.</p>
+  <p>Крім того, <strong>CID універсальні</strong>. Вони не належать Filebase. Якщо завтра Ви відкриєте акаунт в іншого провайдера і вставите ті самі CID, у Вас знову буде активний бекап за хвилини. Ваш інвентар (таблиця, яку Ви зібрали на Кроці 05) це все, що Вам потрібно для міграції.</p>
+
+  <h3>Як насправді працює постійність в IPFS</h3>
+  <p>Файл в IPFS існує, поки хоча б один вузол активно тримає його запінненим. Коли Filebase пінить Ваші CID, його вузли (зазвичай реплікуються тричі в різних локаціях) підтримують файл живим.</p>
+  <p>Але Filebase не єдиний, у кого є Ваші файли. Щоразу, коли хтось відвідує шлюз IPFS і завантажує Ваш твір, цей шлюз кешує його тимчасово. Кожна взаємодія залишає ефемерні копії. Foundation все ще тримає Ваші CID запінненими до закриття. У мережі є певна природна <strong>інерція реплікації</strong>.</p>
+
+  <h3>Три можливі сценарії, якщо Filebase закриється</h3>
+
+  <p><strong>Сценарій 1, закриття з попереднім повідомленням (очікуваний):</strong> серйозні сервіси попереджають за тижні або місяці. У Вас було б достатньо часу для міграції на іншого провайдера: 4EVERLAND, Web3.Storage, Lighthouse. Оскільки у Вас уже є інвентар CID, міграція тривіальна: відкриваєте акаунт, імпортуєте ті самі CID, продовжуєте.</p>
+
+  <p><strong>Сценарій 2, раптове закриття без попередження:</strong> малоймовірно, але можливо. Ваші файли втрачаються лише якщо одночасно жоден інший вузол їх не має. Для файлів із якою-небудь активністю це статистично рідко.</p>
+
+  <p><strong>Сценарій 3, поглинання іншою компанією (найпоширеніший):</strong> більша компанія купує меншу і підтримує сервіс із новими умовами. Ваші піни залишаються активними під час переходу. Недавній приклад із екосистеми: KnownOrigin був куплений eBay, із серйозними наслідками, але раніше створені файли залишилися доступними.</p>
+
+  <h3>Надійна стратегія: мультипровайдерна надлишковість</h3>
+  <p>Філософськи правильна відповідь це не просто вірити, що Filebase не закриється, а <strong>не залежати виключно від Filebase</strong>. Справжня децентралізація вимагає справжньої надлишковості. Чотири рівні захисту, що реалізуються поступово:</p>
+
+  <p><strong>Рівень 1, той, що у Вас уже є:</strong> активні піни у Filebase. 5 ГБ безкоштовно. Покриває стандартний випадок.</p>
+
+  <p><strong>Рівень 2, паралельна надлишковість:</strong> відкрити другий безкоштовний акаунт в іншого провайдера та реплікувати ті самі піни. Надійні варіанти:</p>
+  <ul>
+    <li><strong>4EVERLAND</strong>: 5 ГБ безкоштовно, чистий інтерфейс, інший провайдер.</li>
+    <li><strong>Web3.Storage</strong>: від Protocol Labs (творці IPFS). 5 ГБ безкоштовно, інституційно дуже стабільний.</li>
+    <li><strong>Lighthouse</strong>: модель одноразової оплати за постійне сховище, використовує Filecoin як економічний шар.</li>
+  </ul>
+  <p>З тими самими CID, запінненими в двох різних провайдерів, закриття одного не впливає на інший. Це саме те, що дозволяє децентралізація: не бути прив’язаним до жодного конкретного провайдера.</p>
+
+  <p><strong>Рівень 3, локальна фізична копія:</strong> завантажити всі медіафайли на Ваш жорсткий диск або зовнішній диск, організовані по папках. Не служить для створення публічних посилань, але гарантує, що якщо всі вузли у світі відмовлять, Ви збережете майстри. Це остання резервна копія, яку роблять серйозні архівісти.</p>
+
+  <p><strong>Рівень 4, опціональний та просунутий:</strong> запустити власний вузол IPFS з IPFS Desktop або IPFS CLI на одній із Ваших машин. Максимальна технічна автономія. Ваш вузол активний лише коли увімкнено комп’ютер, тому доповнює, але не замінює керовані сервіси.</p>
+
+  <h3>Прагматична рекомендація</h3>
+  <p>Поки що <strong>залишайтеся лише на Filebase</strong> (Рівень 1). Цього достатньо для реального короткострокового ризику. Filebase активний з 2019 року і здається інституційно стабільнішим за інших у цей момент.</p>
+  <p>Через <strong>3-6 місяців</strong>, якщо хочете посилити, відкрийте акаунт у 4EVERLAND або Web3.Storage та реплікуйте піни. 15 хвилин роботи, тому що у Вас уже є інвентар з усіма CID. Це дає Вам справжню надлишковість без надмірної інженерії.</p>
+  <p>Локальну копію на жорсткому диску можете зробити, коли буде час, не терміново, але варто. Власний вузол IPFS лише якщо подобається керувати інфраструктурою.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Філософська нотатка</span>
+    <p>Існує критична різниця між <strong>централізацією</strong> та <strong>залежністю</strong>. Filebase це централізований провайдер (приватна компанія, власні сервери), але Ваше використання Filebase <strong>відокремлюване</strong>: CID це стандарт IPFS, Ваш інвентар живе на Вашому диску, і Ви можете перейти до іншого провайдера в будь-який момент. Це дуже відрізняється від того, як Ви залежали від Foundation, де закриття Foundation означало втрату посилань, наративу, профілю та спільноти. На цей раз будь-яке закриття було б незручним, але не катастрофічним. Це реальний прогрес.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <span class="section-number">Поширені запитання</span>
+  <h2>Поширені запитання</h2>
+  <p class="section-intro">Короткі прямі відповіді на те, що художники запитують зараз про закриття Foundation та збереження NFT.</p>
+
+  <h3>Що відбувається з моїми NFT, коли Foundation закривається?</h3>
+  <p>Токени назавжди залишаються на Ethereum, недоторкані. Під загрозою знаходиться off-chain шар: JSON метаданих та медіафайли (зображення, відео), які зараз живуть на вузлах IPFS Foundation. Коли ці вузли будуть вимкнені, файли можуть стати недоступними, якщо тільки не запінити їх на іншому сервісі. Ваша власність у безпеці; візуальному представленню потрібна резервна копія.</p>
+
+  <h3>Чи потрібно переносити мої NFT на інший блокчейн?</h3>
+  <p>Ні. NFT залишаються на Ethereum незалежно від долі Foundation. Foundation це інтерфейс маркетплейсу; Ethereum це базовий блокчейн. Вам потрібно лише зберегти off-chain файли, а не переміщати токени.</p>
+
+  <h3>Filebase справді безкоштовний для резервного копіювання NFT?</h3>
+  <p>Так. 5 ГБ сховища, до 1000 запіннених файлів, виділений шлюз IPFS та функція Import CID, все безкоштовно без банківської картки. Це та комбінація функцій, яку Pinata перевів у платні плани.</p>
+
+  <h3>Що таке CID IPFS і чому це важливо?</h3>
+  <p>CID (Content Identifier) це криптографічний хеш, який ідентифікує файл в IPFS за його вмістом. Смартконтракт Вашого NFT зберігає посилання на CID, який вказує на метадані, які у свою чергу вказують на CID медіа. CID розв’язуються у контент лише поки вузли тримають файли запінненими. Без пінів немає вмісту, незалежно від існування токена.</p>
+
+  <h3>Що якщо Filebase теж закриється?</h3>
+  <p>Розглянуто детально на Кроці 11. Коротка версія: CID універсальні, тому можете мігрувати на іншого провайдера IPFS (4EVERLAND, Web3.Storage, Lighthouse) за хвилини з Вашим інвентарем. Для надійності використовуйте мультипровайдерну надлишковість.</p>
+
+  <h3>Чи потрібно знімати з продажу непродані NFT перед закриттям Foundation?</h3>
+  <p>Рекомендується. Зняття з продажу звільняє токен від ескроу-контракту Foundation і повертає його у wallet мінтера, залишаючи його вільним для повторного продажу десь в іншому місці в майбутньому. Коштує трохи газу, але уникає ускладнень.</p>
+
+  <h3>Скільки часу займає повний процес резервного копіювання?</h3>
+  <p>Для 10-15 NFT плануйте від 30 хвилин до 2 годин. JSON метадані пінняться за секунди; відеофайли можуть займати по пару хвилин кожен. Процес повторюваний, але не складний, коли готовий інвентар CID.</p>
+
+  <h3>Що якщо мої NFT на Arweave, а не на IPFS?</h3>
+  <p>Резервне копіювання не потрібне. Arweave забезпечує постійне сховище за дизайном: оплачено один раз при мінті, зберігається близько 200 років через економічний ендавмент, який платить вузлам безконечно.</p>
+
+  <h3>Чи працює цей посібник для художників поза Foundation?</h3>
+  <p>Так. Той самий процес застосовується до будь-якого NFT на Ethereum, чиї метадані та медіа живуть на IPFS. SuperRare, Zora, Objkt, KnownOrigin (до закриття), Rarible: процес ідентичний. Змінюється лише джерело CID.</p>
+
+  <h3>Чи можу я пінити NFT інших художників як колекціонер?</h3>
+  <p>Так, і це заохочується. CID публічні за дизайном. Пінінг NFT, які Ви колекціонували, захищає Вашу колекцію від відмови оригінальних вузлів. Розгляньте можливість повідомити художника на знак ввічливості, особливо якщо у Вас є прямий контакт.</p>
+</section>
+
+<!-- ВЛАСНИЙ ВУЗОЛ -->
+<section id="svij-vuzol" class="section">
+  <span class="section-number">Технічне розширення</span>
+  <h2>Як запустити власний вузол IPFS</h2>
+  <p class="section-intro">Цей розділ для художників з певною технічною впевненістю, які хочуть наступний рівень автономії. Це не обов’язково для резервного копіювання Ваших робіт (Filebase достатньо), але якщо Вам близька ідея не залежати від жодного провайдера, ось шлях.</p>
+
+  <h3>Що означає мати власний вузол</h3>
+  <p>Вузол IPFS це комп’ютер, який бере участь у мережі як ще один член рою. Коли Ви встановлюєте програмне забезпечення, Ваша машина може пінити файли, роздавати їх світу та підтримувати їх живими без залежності від будь-якого комерційного сервісу. Переходите від <strong>клієнта провайдера</strong> до <strong>повноправного учасника мережі</strong>. Цифровий еквівалент володіння власною типографією замість залежності від видавця.</p>
+  <p>Ключова відмінність від Filebase: з Filebase Ви просите компанію пінити Ваші файли на їхніх серверах. Із власним вузлом <strong>сервером є Ви</strong>.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Важливий компроміс</span>
+    <p>Ваш вузол роздає файли лише поки Ваш комп’ютер увімкнений та підключений до інтернету. Якщо вимикаєте машину, Ваші файли продовжують існувати на інших вузлах мережі (Filebase, публічні шлюзи, інші сервіси пінінгу), але Ви перестаєте робити свій внесок. Для справді постійної резервної копії Ваш вузол має бути активним майже весь час.</p>
+  </div>
+
+  <h3>Два справжніх шляхи, залежно від бажаного рівня контролю</h3>
+
+  <p><strong>Шлях А: IPFS Desktop</strong> (найдоступніший)</p>
+  <p>Графічна програма, яка встановлюється як будь-яка інша програма на macOS, Windows або Linux. Налаштування за 5 хвилин, візуальний інтерфейс, без командного рядка. Ідеально для експериментів і навчання.</p>
+  <p><em>Плюси:</em> проста установка, візуальний інтерфейс, можна закрити програму, коли не потрібно.<br>
+  <em>Мінуси:</em> споживає ОЗУ під час роботи (200-400 МБ), залежить від того, що Ви випадково не закриєте програму, і коли вимикаєте комп’ютер, втрачаєте доступність.</p>
+
+  <p><strong>Шлях Б: Виділений Raspberry Pi</strong> (серйозний)</p>
+  <p>Купуєте Raspberry Pi (близько 75-120 USD із корпусом, блоком живлення та SD-картою), встановлюєте на нього IPFS і залишаєте увімкненим 24/7 вдома, підключеним до роутера. Виділений постійний вузол з енергоспоживанням LED-лампи (5-10 Вт, близько 2-3 USD на місяць).</p>
+  <p><em>Плюси:</em> справжній постійний вузол, не споживає ресурси Вашого основного комп’ютера, повна технічна автономія.<br>
+  <em>Мінуси:</em> вимагає початкової покупки, складніша технічна установка (командний рядок), налаштування роутера для зовнішньої доступності.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Рекомендація</span>
+    <p>Почніть з IPFS Desktop. Вивчіть концепцію без економічних зобов’язань. Якщо через кілька тижнів відчуєте, що справді ним користуєтеся і хочете справжньої постійності, тоді оцініть інвестицію у виділений Raspberry Pi.</p>
+  </div>
+
+  <h3>Покрокова інструкція з IPFS Desktop</h3>
+
+  <p><strong>Крок 1: Завантажити інсталятор</strong></p>
+  <p>Зайдіть на <a href="https://ipfs.tech/install/ipfs-desktop/" target="_blank" rel="noopener">ipfs.tech/install/ipfs-desktop/</a> (офіційний домен проєкту). Виберіть інсталятор для Вашої операційної системи: macOS, Windows або Linux.</p>
+
+  <p><strong>Крок 2: Встановити</strong></p>
+  <p>На macOS відкрийте <code>.dmg</code> та перетягніть іконку до Applications. На Windows запустіть <code>.exe</code>. На Linux зазвичай це <code>.AppImage</code>. На macOS при першому запуску система може попередити про неперевіреного розробника: зайдіть у Системні налаштування, Безпека, і дайте дозвіл вручну. Це нормально, не означає, що програма небезпечна.</p>
+
+  <p><strong>Крок 3: Перший запуск</strong></p>
+  <p>При першому відкритті програми автоматично відбувається три речі. Перше, створюється унікальна криптографічна ідентичність для Вашого вузла (як постійний ідентифікатор Вашого вузла в мережі). Друге, підключається до глобальної мережі IPFS, і за кілька секунд Ви побачите десятки або сотні підключених <em>пірів</em> (інших вузлів). Третє, відкривається інтерфейс із п’ятьма вкладками: <strong>Status</strong>, <strong>Files</strong>, <strong>Explore</strong>, <strong>Peers</strong>, <strong>Settings</strong>.</p>
+
+  <p><strong>Крок 4: Запінити перший CID</strong></p>
+  <p>Перейдіть на вкладку <strong>Files</strong>. Зверху є кнопка <strong>Import</strong>. При натисканні розгортається меню з опціями. Виберіть <strong>From IPFS</strong> (іноді відображається як <em>Add by CID</em> або <em>Import from IPFS</em>). Вставте один із Ваших CID і підтвердьте.</p>
+  <p>Ваш вузол почне завантажувати файл з інших вузлів, у яких він є (Filebase, публічні шлюзи, будь-яке активне джерело). За секунди або хвилини (залежно від розміру) файл пінниться локально. У цей момент <strong>Ваш комп’ютер стає однією з бджіл</strong>, які підтримують цей CID.</p>
+
+  <p><strong>Крок 5: Перевірити, що працює</strong></p>
+  <p>Дві прості перевірки. Перша, у <em>Files</em> Ви повинні побачити CID з іконкою шпильки та завантаженим розміром. Друга, відкрийте у браузері:</p>
+
+  <div class="code-block">
+    <span class="code-label">Локальний шлюз</span>
+<code>http://localhost:8080/ipfs/[ваш-CID]</code>
+  </div>
+
+  <p>Цей <code>localhost:8080</code> це <strong>локальний шлюз</strong>, який піднімає Ваш власний вузол. Якщо бачите вміст, Ваш вузол активно роздає файл. Це справжня технічна автономія.</p>
+
+  <p><strong>Крок 6: Запінити решту корпусу</strong></p>
+  <p>Повторіть процес з усіма CID Вашого інвентарю. Для корпусу з 10-15 робіт плануйте від 30 хвилин до 2 годин залежно від Вашого підключення.</p>
+
+  <h3>Практичні міркування щоденного використання</h3>
+
+  <p><strong>Споживання ресурсів:</strong> IPFS Desktop використовує від 200 до 400 МБ ОЗУ під час роботи. На сучасних комп’ютерах це не проблема, але помітно на машинах з малою пам’яттю. Можете налаштувати ліміти в <em>Settings</em>.</p>
+
+  <p><strong>Пропускна здатність:</strong> Ваш вузол не тільки завантажує, а й відвантажує іншим вузлам, які просять файли. Якщо у Вас обмежене підключення, налаштуйте ліміти в <em>Settings</em>. З нормальним домашнім підключенням Ви не помітите.</p>
+
+  <p><strong>Вимкнення комп’ютера:</strong> Ваші CID залишаються живими в мережі, поки інші вузли тримають їх запінненими (Filebase залишається резервною копією). Ваш вузол просто перестає робити внесок тимчасово. При ввімкненні відновлюється автоматично.</p>
+
+  <p><strong>Дисковий простір:</strong> кожен запіннений CID займає свій розмір на Вашому локальному диску. Розрахунок: для 500 МБ корпусу Foundation Ваш вузол займає 500 МБ. Для великих корпусів Tezos це можуть бути кілька ГБ. Перевірте, що на диску є місце.</p>
+
+  <h3>Що це дає конкретно</h3>
+  <ul>
+    <li><strong>Справжня незалежність від Filebase:</strong> якщо він закриється завтра з активним Вашим вузлом, Ваші файли залишаться доступними без Вашого втручання.</li>
+    <li><strong>Публікація без посередників:</strong> якщо створюєте новий твір і хочете запінити його в IPFS без проходження через будь-який сервіс, робите це напряму зі свого вузла.</li>
+    <li><strong>Технічне розуміння системи:</strong> запуск вузла, навіть на кілька тижнів, дає Вам розуміння екосистеми, яке більшість NFT-художників ніколи не набуває.</li>
+    <li><strong>Внесок в екосистему:</strong> кожен додатковий вузол зміцнює всю мережу IPFS. Ваша участь це не лише самозахист, це громадська дія.</li>
+  </ul>
+
+  <h3>Природна еволюція в бік Raspberry Pi</h3>
+  <p>Якщо після експериментів з IPFS Desktop відчуваєте, що хочете справжньої постійності, природний шлях такий:</p>
+
+  <ol>
+    <li>Купити Raspberry Pi 4 (4 або 8 ГБ ОЗУ) з блоком живлення, корпусом та microSD-картою на 128 ГБ. Загальна сума приблизно 100-150 USD.</li>
+    <li>Підключити його до роутера через ethernet-кабель в якомусь куточку вдома.</li>
+    <li>Встановити IPFS, дотримуючись туторіалів спеціально для Raspberry Pi (багато англійською, деякі українською та російською).</li>
+    <li>Налаштувати автоматичний перезапуск при відключенні електрики для підтримки вузла завжди активним.</li>
+    <li>Опціональне просунуте: налаштувати власний піддомен (наприклад, <code>ipfs.vashartyst.art</code>), що вказує на Ваш Raspberry, щоб мати власний шлюз.</li>
+  </ol>
+
+  <p>Цей останній крок, власний шлюз з власним доменом, це максимальний суверенітет. Більше не залежите навіть від <code>dweb.link</code> або <code>ipfs.io</code>. Посилання на Вашому сайті будуть Вашими: <code>ipfs.vashartyst.art/ipfs/[CID]/file.mp4</code>.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Щоб було зрозуміло</span>
+    <p>Мати власний вузол не замінює Filebase і не робить застарілою вже виконану роботу. Доповнює її. Ідеальна стратегія поєднує: Filebase як завжди активну керовану резервну копію, плюс IPFS Desktop або Raspberry Pi як власний вузол, що посилює з Вашої власної інфраструктури, плюс локальну копію на жорсткому диску як архів останньої інстанції. Три надлишкові шари, кожен захищений різним дизайном.</p>
+  </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+<section class="section">
+  <h2 style="font-size: 28px; text-align: center; margin-bottom: 30px;">Потрібна допомога?</h2>
+  <p style="text-align: center; font-size: 19px; font-style: italic; color: var(--ink-soft);">Якщо у Вас є конкретні питання, написати мені напряму це найшвидший шлях. Нас кілька у спільноті робимо цю ж роботу в ці тижні, і чим раніше зробите резервну копію, тим краще.</p>
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="https://ernestocisneros.art" target="_blank" rel="noopener" class="cta-link">ernestocisneros.art →</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p>Цей посібник продовження педагогіки моделі Impulses.art Web3. Якщо він Вам допоміг, поділіться з іншими художниками. Децентралізація працює лише якщо ми підтримуємо її разом.</p>
+  <p style="margin-top: 24px;">Документ українською мовою для спільноти криптохудожників. Вільна ліцензія для обміну, адаптації, перекладу.</p>
+  <div class="signature">Ernesto Cisneros Cino · Miami 2026</div>
+  <p style="margin-top: 20px; font-size: 14px;">
+    <a href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a>
+  </p>
+</footer>
+
+</body>
+</html>
