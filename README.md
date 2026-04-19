@@ -2,42 +2,44 @@
 
 **Composer, Pianist, Digital Artist & Writer**
 
-Personal website of Ernesto Cisneros Cino — a Cuban composer, pianist, visual artist, mathematician, and writer based in Miami. This site serves as the central hub for his music, digital art (NFTs), published writings, theoretical research, and social impact projects.
+Personal website of Ernesto Cisneros Cino, a Cuban composer, pianist, visual artist, mathematician, and writer based in Miami. This site serves as the central hub for his music, digital art (NFTs), published writings, theoretical research, and social impact projects.
 
-Live at **[ernestocisneros.art](https://ernestocisneros.art)** — Available in 7 full languages (EN, ES, FR, IT, RU, JA, KO) + NFT Backup Guide in 14 languages
+Live at **[ernestocisneros.art](https://ernestocisneros.art)** | Available in 7 full languages (EN, ES, FR, IT, RU, JA, KO) + NFT Backup Guide in 14 languages
 
 ---
 
 ## Sections
 
-- **Music** — Five albums with integrated web players: *Atlas of Fragmented Light*, *Glacial Paths*, *Mare Incognitum*, *Sandbank*, and *Trash*, plus Other Musical Works.
-- **NFT** — Selected works on Ethereum, Tezos, and Bitcoin. Collected works, BTC Ordinal Inscription #95908, community portraits (The Ernestitos), marketplace links, and Resources subpage with the Foundation backup guide.
-- **Books** — *Sombras, Datos y Relámpagos*, *La Sospecha Razonable*, and *Huella* (forthcoming). The Power Trilogy — available on [Amazon](https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN).
-- **Ideas** — Essays and research across four domains: art & poetics, cosmology & physics, culture & exile, and technology & society. Includes independent research in stochastic cosmology ([ORCID](https://orcid.org/0009-0002-2833-1787)).
-- **Impulses.art** — Music therapy for refugees, families, and vulnerable communities. [impulses.online](https://impulses.online)
-- **Biography** — Background and trajectory.
-- **Contact** — Collaborations, commissions, and conversations.
-- **NFT Backup Guide** — Step-by-step guide to back up NFTs from Foundation marketplace before shutdown. Available in 14 languages with full SEO, hreflang, and Schema.org structured data.
+- **Music**: Five albums with integrated web players: *Atlas of Fragmented Light*, *Glacial Paths*, *Mare Incognitum*, *Sandbank*, and *Trash*, plus Other Musical Works.
+- **NFT**: Selected works on Ethereum, Tezos, and Bitcoin. Collected works, BTC Ordinal Inscription #95908, community portraits (The Ernestitos), marketplace links, and Resources subpage with the Foundation backup guide.
+- **Books**: *Sombras, Datos y Relámpagos*, *La Sospecha Razonable*, and *Huella* (forthcoming). The Power Trilogy, available on [Amazon](https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN).
+- **Ideas**: Essays and research across four domains: art & poetics, cosmology & physics, culture & exile, and technology & society. Includes independent research in stochastic cosmology ([ORCID](https://orcid.org/0009-0002-2833-1787)).
+- **Impulses.art**: Music therapy for refugees, families, and vulnerable communities. [impulses.online](https://impulses.online)
+- **Biography**: Background and trajectory.
+- **Contact**: Collaborations, commissions, and conversations.
+- **NFT Backup Guide**: Step-by-step guide to back up NFTs from Foundation marketplace before shutdown. Available in 14 languages with full SEO, hreflang, and Schema.org structured data.
 
 ## Multilingual
 
 Full site available in **7 languages**:
-- English (EN) — Root domain
-- Spanish (ES) — `/es/`
-- French (FR) — `/fr/`
-- Italian (IT) — `/it/`
-- Russian (RU) — `/ru/`
-- Japanese (JA) — `/ja/`
-- Korean (KO) — `/ko/`
+
+- English (EN): Root domain
+- Spanish (ES): `/es/`
+- French (FR): `/fr/`
+- Italian (IT): `/it/`
+- Russian (RU): `/ru/`
+- Japanese (JA): `/ja/`
+- Korean (KO): `/ko/`
 
 **NFT Backup Guide** available in **14 languages** (7 above + 7 additional):
-- Chinese (CH) — `/translations/ch/`
-- Portuguese (PT) — `/translations/pt/`
-- Ukrainian (UC) — `/translations/ucr/`
-- German (DE) — `/translations/de/`
-- Arabic (AR) — `/translations/arabe/` (RTL)
-- Farsi (FA) — `/translations/far/` (RTL)
-- Hindi (HI) — `/translations/hindi/`
+
+- Chinese (CH): `/translations/ch/`
+- Portuguese (PT): `/translations/pt/`
+- Ukrainian (UC): `/translations/ucr/`
+- German (DE): `/translations/de/`
+- Arabic (AR): `/translations/arabe/` (RTL)
+- Farsi (FA): `/translations/far/` (RTL)
+- Hindi (HI): `/translations/hindi/`
 
 Automatic language detection via `lang-detect.js` with manual switcher in navigation and footer. hreflang links on all pages for proper language negotiation. The backup guide includes a 14-language switcher in each page header.
 
@@ -49,18 +51,18 @@ Static site built with vanilla HTML, CSS, and JavaScript. No frameworks, no buil
 - **Design**: Dark theme (`#080604`) with gold accents (`#d4a030`), particle canvas animations, responsive layouts
 - **Audio**: Custom HTML5 audio players per album
 - **Video**: Compressed MP4 (H.264) with autoplay/loop for NFT pieces
-- **Analytics**: GoatCounter (cookie-free, privacy-respecting) — [dashboard](https://ernestocisnerosart.goatcounter.com)
+- **Analytics**: GoatCounter (cookie-free, privacy-respecting). [Dashboard](https://ernestocisnerosart.goatcounter.com)
 
 ## SEO / GEO Infrastructure
 
 The site uses an external JSON-LD schema architecture for search engine and generative AI optimization:
 
 - **25 schema files** in `assets/schemas/` (Person, Book, MusicAlbum, Article, VisualArtwork, Project, etc.)
-- **`schema-loader.js` (v2.0.0)** fetches and injects schemas at runtime via `data-schema` attributes with language detection
-- **`footer-lang.js`** manages multilingual language switching in the footer
-- **`llms.txt`** — LLM discovery file following the emerging 2026 standard
-- **`AGENTS.md`** — Protection instructions for AI agents working on this repository
-- **Pre-commit hook** (`.githooks/pre-commit`) blocks accidental deletion of schemas, analytics, or agent instructions
+- **`schema-loader.js` (v2.0.0)**: Fetches and injects schemas at runtime via `data-schema` attributes with language detection
+- **`footer-lang.js`**: Manages multilingual language switching in the footer
+- **`llms.txt`**: LLM discovery file following the emerging 2026 standard
+- **`AGENTS.md`**: Protection instructions for AI agents working on this repository
+- **Pre-commit hook** (`.githooks/pre-commit`): Blocks accidental deletion of schemas, analytics, or agent instructions
 - **hreflang + canonical** on all 230+ pages (7 languages + x-default, 14 languages for backup guide)
 - **`sitemap.xml`** with 230+ URLs covering all languages and translations
 - **`robots.txt`** with explicit permissions for AI crawlers (GPTBot, anthropic-ai, Claude-Web, Google-Extended)
@@ -120,11 +122,11 @@ privacy-policy/           Privacy policy
 
 This repository includes a multi-layer defense system to prevent AI agents from accidentally deleting critical infrastructure:
 
-1. **External schemas** — JSON-LD lives in separate `.json` files, not inline in HTML
-2. **AGENTS.md** — Read-first instructions for any AI agent working on the code
-3. **Pre-commit hook** — Blocks commits that remove schemas, GoatCounter, or AGENTS.md
-4. **HTML comments** — `<!-- CRITICAL SEO/GEO -->` markers on protected elements
-5. **Multilingual safeguards** — Changes to pages require updates across all 7 language versions
+1. **External schemas**: JSON-LD lives in separate `.json` files, not inline in HTML
+2. **AGENTS.md**: Read-first instructions for any AI agent working on the code
+3. **Pre-commit hook**: Blocks commits that remove schemas, GoatCounter, or AGENTS.md
+4. **HTML comments**: `<!-- CRITICAL SEO/GEO -->` markers on protected elements
+5. **Multilingual safeguards**: Changes to pages require updates across all 7 language versions
 
 The site contains 230+ pages across 7 full languages + 7 additional translation languages. Always verify that schema, hreflang, and analytics changes are propagated to all language versions.
 
