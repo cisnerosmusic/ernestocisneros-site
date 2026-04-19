@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<title>Foundation 종료 전 NFT 백업 방법 | 완전 가이드 2026</title>
+<meta name="description" content="Foundation이 2026년에 종료됩니다. Foundation에서 Filebase (무료 IPFS 피닝)로 NFT 메타데이터와 파일을 백업하는 한국어 단계별 가이드. 토큰이 시각적 고아가 되는 것을 방지하세요. 크립토 아티스트 Ernesto Cisneros.">
+<meta name="keywords" content="Foundation 종료, Foundation 마켓플레이스 폐쇄, NFT 백업, IPFS 피닝, Filebase 튜토리얼 한국어, Foundation NFT 저장, NFT 아카이브, 크립토 아트, 디지털 아트 보존, CID IPFS, Pinata 대안, 탈중앙화 스토리지 NFT">
+<meta name="author" content="Ernesto Cisneros Cino">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://www.ernestocisneros.art/ko/guide-backup-nft.html">
+
+<!-- HREFLANG -->
+<link rel="alternate" hreflang="ko" href="https://www.ernestocisneros.art/ko/guide-backup-nft.html">
+<link rel="alternate" hreflang="es" href="https://www.ernestocisneros.art/es/guia-backup-nft.html">
+<link rel="alternate" hreflang="en" href="https://www.ernestocisneros.art/guide-backup-nft-en.html">
+<link rel="alternate" hreflang="it" href="https://www.ernestocisneros.art/it/guide-backup-nft.html">
+<link rel="alternate" hreflang="fr" href="https://www.ernestocisneros.art/fr/guide-backup-nft.html">
+<link rel="alternate" hreflang="ru" href="https://www.ernestocisneros.art/ru/guide-backup-nft.html">
+<link rel="alternate" hreflang="ja" href="https://www.ernestocisneros.art/ja/guide-backup-nft.html">
+<link rel="alternate" hreflang="x-default" href="https://www.ernestocisneros.art/guide-backup-nft-en.html">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ernesto Cisneros · 작곡가 및 크립토 아티스트">
+<meta property="og:title" content="Foundation 종료 전 NFT 백업 방법">
+<meta property="og:description" content="Foundation이 종료됩니다. 토큰은 이더리움에 영원히 남지만, 이미지 및 메타데이터 파일은 사라질 수 있습니다. 무료로 탈중앙화 스토리지에 NFT 코퍼스를 백업하는 단계별 가이드.">
+<meta property="og:url" content="https://www.ernestocisneros.art/ko/guide-backup-nft.html">
+<meta property="og:image" content="https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Foundation 종료 전 NFT 백업 가이드, Ernesto Cisneros">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="article:author" content="Ernesto Cisneros Cino">
+<meta property="article:published_time" content="2026-04-17T00:00:00Z">
+<meta property="article:modified_time" content="2026-04-17T00:00:00Z">
+<meta property="article:section" content="크립토 아트 가이드">
+<meta property="article:tag" content="Foundation, NFT, IPFS, Filebase, 백업, 크립토 아트">
+
+<!-- TWITTER / X CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ErnestCisneros1">
+<meta name="twitter:creator" content="@ErnestCisneros1">
+<meta name="twitter:title" content="Foundation 종료 전 NFT 백업 방법">
+<meta name="twitter:description" content="Foundation이 종료됩니다. NFT 작품이 시각적 고아가 되지 않도록 하는 한국어 단계별 가이드. 무료, 신용카드 불필요.">
+<meta name="twitter:image" content="https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg">
+<meta name="twitter:image:alt" content="Foundation NFT 백업 완전 가이드">
+
+<!-- SCHEMA.ORG JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "@id": "https://www.ernestocisneros.art/ko/guide-backup-nft.html#howto",
+      "name": "Foundation jongryo jeon NFT backup bangbeob",
+      "description": "Kripto art-ist-deul-eul wihan dangye-byeol gaideu. Foundation-eseo Filebase-ro NFT metadata-wa media-file-eul backup-haneun bangbeob.",
+      "image": "https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg",
+      "inLanguage": "ko",
+      "totalTime": "PT2H",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "supply": [
+        {"@type": "HowToSupply", "name": "Foundation-eseo mint-haet-deon active wallet"},
+        {"@type": "HowToSupply", "name": "Foundation-e it-neun NFT moglog"},
+        {"@type": "HowToSupply", "name": "Filebase gyejeong saengseong-ul wihan email"}
+      ],
+      "tool": [
+        {"@type": "HowToTool", "name": "Filebase murye gyejeong"},
+        {"@type": "HowToTool", "name": "Etherscan"},
+        {"@type": "HowToTool", "name": "IPFS gateway (dweb.link)"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.ernestocisneros.art/ko/guide-backup-nft.html#article",
+      "headline": "Foundation jongryo jeon NFT backup bangbeob",
+      "description": "2026 nyeon Foundation marketplace jongryo-e daebihan kripto artist-deul-eul wihan wanjeon hangugeo gaideu. IPFS pinning, Filebase seoljeong, multi-provider redundancy, jangki-boyongjang jeonryak-eul pogwam.",
+      "image": "https://www.ernestocisneros.art/assets/images/og-backup-guide-es.jpg",
+      "datePublished": "2026-04-17T00:00:00Z",
+      "dateModified": "2026-04-17T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.ernestocisneros.art/#person",
+        "name": "Ernesto Cisneros Cino",
+        "url": "https://www.ernestocisneros.art/",
+        "sameAs": [
+          "https://orcid.org/0009-0002-2833-1787",
+          "https://twitter.com/ErnestCisneros1",
+          "https://github.com/cisnerosmusic",
+          "https://rarible.com/cisnerosmusic",
+          "https://hug.art/artists/ernestocisneros"
+        ],
+        "jobTitle": "Jakgokga, pianist, kripto artist",
+        "description": "Kuba chulshin jakgokga. Yeonghwa, TV, yeongeuk, balle yeongyeok-eseo 800-yeo pyeon-ui deungnok jakpum. 2021 nyeon 7-wol bu-teo Ethereum blockchain-eseo hwaldong. Impulses.art changripja."
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://www.ernestocisneros.art/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.ernestocisneros.art/ko/guide-backup-nft.html"
+      },
+      "inLanguage": "ko"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.ernestocisneros.art/ko/guide-backup-nft.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Foundation-i jongryo-doe-myeon je NFT-neun eotteoh-ke doeji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Token-eun Ethereum-e yeongwonhi namgi-mu sakje-doeji anh-seubnida. Ha-jiman metadata-wa media file-eun IPFS-e jonjae-ha-myeo, hyeonjae Foundation node-e pin-doeo it-seubnida. Foundation-i i node-deul-eul kkeu-myeon, daleun IPFS pinning service (ex: Filebase)-e backup-haji anh-eu-myeon file-deul-i jeobgun bulganeung-hae-jil su it-seubnida. On-chain soyu-gwon-eun anjeon-ha-ji-man, sigakjeok gyeochung-i wiheom-e cheoham-nida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "NFT-reul daleun blockchain-euro omgyeo-ya ham-nikka?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aniyo. NFT-neun Foundation-ui unmyeong-gwa gwangye-eobsi Ethereum-e namaisseubnida. Foundation-eun marketplace interface-il ppunigo, Ethereum-i gibon blockchain-ibnida. IPFS-e jonjae-haneun off-chain file (metadata-wa media)-man backup-ha-myeon doe-myeo, token jachae-reul omgil piryo-neun eobs-seubnida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Filebase-neun NFT backup-ul wihae jeongmal muryo ibnikka?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ne. Filebase-ui muryo plan-eun 5GB storage, choedae 1,000 gae-ui pin-doen file, jeonyong IPFS gateway, geurigo gijon IPFS CID-reul pin-hal su it-neun Import CID gineung-eul pogwam-hamnida. Sinyong card-i piryo-eobs-seubnida. I plan-eun Import CID gineung-eul yuryo plan-euro ibdong-han Pinata-ui hyeonjae muryo plan bo-da deo nolleum-habnida."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.ernestocisneros.art/ko/guide-backup-nft.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.ernestocisneros.art/"},
+        {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.ernestocisneros.art/ko/nft/resources.html"},
+        {"@type": "ListItem", "position": 3, "name": "NFT Backup Guide", "item": "https://www.ernestocisneros.art/ko/guide-backup-nft.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f4f1ea;
+  --bg-card: #ffffff;
+  --bg-code: #1c1a17;
+  --ink: #1c1a17;
+  --ink-soft: #4a4540;
+  --ink-muted: #8a837a;
+  --accent: #a84d2a;
+  --accent-dark: #7d3a20;
+  --gold: #b08d4c;
+  --line: #d8d0c0;
+  --ok: #4a6b3a;
+  --warn: #a84d2a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  padding: 0;
+  margin: 0;
+}
+
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: rgba(28, 26, 23, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border: 1px solid rgba(176, 141, 76, 0.3);
+}
+
+.lang-toggle a {
+  color: var(--gold);
+  border-bottom: none;
+  margin: 0 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.lang-toggle a:hover { opacity: 1; }
+.lang-toggle a.active { opacity: 1; font-weight: 600; }
+
+.hero {
+  background: linear-gradient(180deg, #1c1a17 0%, #2a2520 100%);
+  color: #f4f1ea;
+  padding: 80px 24px 70px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px double var(--gold);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(176, 141, 76, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(168, 77, 42, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "";
+  height: 1px;
+  background: var(--gold);
+  flex: 1;
+  opacity: 0.4;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #d8d0c0;
+  font-style: italic;
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.hero-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(216, 208, 192, 0.2);
+  padding-top: 20px;
+  max-width: 640px;
+}
+
+.hero-author strong {
+  color: #d8d0c0;
+  font-weight: 500;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 24px 120px;
+}
+
+.intro {
+  padding: 36px 40px;
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 70px;
+  box-shadow: 0 2px 20px rgba(28, 26, 23, 0.04);
+}
+
+.intro p { margin-bottom: 16px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro strong { color: var(--accent-dark); font-weight: 600; }
+
+.section {
+  margin-bottom: 72px;
+  scroll-margin-top: 20px;
+}
+
+.section-number {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.section-intro {
+  font-size: 20px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 36px;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.section p {
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+
+.section ul, .section ol {
+  margin-left: 24px;
+  margin-bottom: 22px;
+}
+
+.section li { margin-bottom: 10px; }
+.section strong { font-weight: 600; color: var(--ink); }
+.section em { font-style: italic; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 77, 42, 0.3);
+  transition: all 0.2s;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent-dark);
+}
+
+pre, code { font-family: 'JetBrains Mono', monospace; }
+
+code {
+  background: #ebe4d4;
+  color: var(--accent-dark);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.code-block {
+  background: var(--bg-code);
+  color: #d8d0c0;
+  padding: 22px 26px;
+  border-radius: 4px;
+  margin: 22px 0;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  position: relative;
+  border-left: 3px solid var(--gold);
+}
+
+.code-block code {
+  background: transparent;
+  color: #d8d0c0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.code-label {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.callout {
+  padding: 22px 28px;
+  margin: 26px 0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.callout-label {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.callout-warn { background: #fdf4ed; border-left: 3px solid var(--warn); }
+.callout-warn .callout-label { color: var(--warn); }
+
+.callout-ok { background: #f0f2ea; border-left: 3px solid var(--ok); }
+.callout-ok .callout-label { color: var(--ok); }
+
+.callout-info { background: #ede4d0; border-left: 3px solid var(--gold); }
+.callout-info .callout-label { color: var(--accent-dark); }
+
+.callout p { margin-bottom: 10px; }
+.callout p:last-child { margin-bottom: 0; }
+
+.cta-link {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #f4f1ea !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-bottom: 2px solid var(--accent-dark);
+  margin: 8px 0;
+  transition: all 0.2s;
+}
+
+.cta-link:hover {
+  background: var(--accent-dark);
+  color: #fff !important;
+}
+
+.toc {
+  background: var(--bg-card);
+  padding: 32px 36px;
+  margin-bottom: 60px;
+  border-top: 3px solid var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.toc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.toc ol {
+  list-style: none;
+  margin-left: 0;
+  counter-reset: toc-counter;
+}
+
+.toc li {
+  counter-increment: toc-counter;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc li::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  min-width: 30px;
+}
+
+.toc a {
+  border-bottom: none;
+  color: var(--ink);
+  font-size: 18px;
+  flex: 1;
+}
+
+.toc a:hover { color: var(--accent); }
+
+footer {
+  background: #1c1a17;
+  color: #d8d0c0;
+  padding: 60px 24px;
+  text-align: center;
+  border-top: 3px double var(--gold);
+}
+
+footer p {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+footer .signature {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 24px;
+}
+
+footer a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(176, 141, 76, 0.4);
+}
+
+.divider {
+  text-align: center;
+  margin: 60px 0;
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 0.5em;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .hero { padding: 60px 20px 50px; }
+  .container { padding: 40px 20px 80px; }
+  .intro { padding: 24px 26px; }
+  .toc { padding: 24px 24px; }
+  .code-block { padding: 18px 20px; font-size: 12px; }
+  .section ul, .section ol { margin-left: 18px; }
+  .lang-toggle { top: 12px; right: 12px; padding: 6px 12px; font-size: 10px; }
+}
+
+@media print {
+  body { background: white; font-size: 11pt; }
+  .hero { background: white; color: black; padding: 30px 0; border-bottom: 2px solid black; }
+  .hero h1 em { color: black; }
+  .hero-subtitle, .hero-author { color: black; }
+  footer { background: white; color: black; }
+  .code-block { background: #f0f0f0; color: black; border: 1px solid #ccc; }
+  a { color: black; text-decoration: underline; }
+  .section { page-break-inside: avoid; }
+  .lang-toggle { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="lang-toggle">
+  <a href="#" class="active" rel="alternate" hreflang="ko">KO</a>
+  <span style="opacity: 0.3;">·</span>
+  <a href="/es/guia-backup-nft.html" rel="alternate" hreflang="es">ES</a>
+  <span style="opacity: 0.3;">·</span>
+  <a href="/guide-backup-nft-en.html" rel="alternate" hreflang="en">EN</a>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">탈중앙화 아카이브 · 2026</div>
+    <h1>Foundation 종료 전 <em>NFT</em> 백업 방법</h1>
+    <p class="hero-subtitle">마켓플레이스가 사라져도 작품을 지키기 위한 단계별 가이드입니다. 블록체인은 기억하지만, 파일은 누군가가 유지해야 합니다.</p>
+    <p class="hero-author"><strong>작성자: Ernesto Cisneros Cino</strong> · 작곡가, 크립토 아티스트, Impulses.art 창립자 · 2026년 4월</p>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="intro">
+  <p><strong>Foundation이 종료됩니다.</strong> 토큰은 블록체인에 영원히 남지만, 토큰을 구성하는 파일(이미지, 비디오, 메타데이터)은 IPFS에 있으며 Foundation의 노드에 핀되어 있습니다. 이 노드들이 오프라인이 되면, 링크는 작동하지 않고 작품은 시각적으로 고아가 된 토큰이 됩니다. 온체인 정보는 그대로 남지만, 시각 콘텐츠는 사라질 수 있습니다.</p>
+  <p>이 가이드는 독립적이고 탈중앙화된 피닝 서비스에서 <strong>전체 코퍼스를 백업</strong>하는 방법을 안내합니다. 비용은 들지 않습니다. 완료 후에는 내일 문을 닫을 수 있는 회사가 아니라, 여러분이 제어하는 인프라에 작품이 보호됩니다.</p>
+  <p>작품 수에 따라 30분에서 2시간 정도 소요됩니다.</p>
+</section>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-title">목차</div>
+  <ol>
+    <li><a href="#what-to-do">정확히 무엇을 할 것인가</a></li>
+    <li><a href="#why-filebase">Filebase를 선택하는 이유</a></li>
+    <li><a href="#create-account">Filebase 무료 계정 생성</a></li>
+    <li><a href="#create-bucket">아카이브 버킷 생성</a></li>
+    <li><a href="#get-cids">각 작품의 CID 획득</a></li>
+    <li><a href="#pin-cids">Filebase에 CID 핀하기</a></li>
+    <li><a href="#verify">정상 작동 확인</a></li>
+    <li><a href="#update-site">웹사이트 링크 업데이트</a></li>
+    <li><a href="#arweave-case">작품이 Arweave에 있는 경우</a></li>
+    <li><a href="#before-closing">Foundation 완전 종료 전</a></li>
+    <li><a href="#permanence">Filebase가 언젠가 종료되면 어떻게 되나</a></li>
+    <li><a href="#faq">자주 묻는 질문</a></li>
+    <li><a href="#own-node">기술 확장: 자체 IPFS 노드</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="what-to-do" class="section">
+  <span class="section-number">단계 01</span>
+  <h2>정확히 무엇을 할 것인가</h2>
+  <p class="section-intro">시작하기 전에 문제와 해결책을 이해하면 혼란을 피할 수 있습니다.</p>
+
+  <h3>문제</h3>
+  <p>Foundation에서 작품을 민팅했을 때, 스마트 컨트랙트는 이더리움에 <strong>CID</strong>(Content Identifier) 참조를 저장했습니다. 이 CID는 IPFS에 있는 메타데이터 JSON 파일을 가리킵니다. JSON에는 제목과 설명이 있고, 또 다른 CID를 통해 실제 이미지 또는 비디오 파일을 가리킵니다.</p>
+  <p>토큰은 영구적입니다. 그러나 CID 파일은 <strong>어떤 IPFS 노드가 핀된 상태로 유지하는 동안에만 존재</strong>합니다. Foundation은 자체 노드에 파일을 핀해 두었습니다. 이 노드들이 꺼지고 아무도 파일을 핀하지 않으면, 파일은 네트워크에서 사라집니다.</p>
+
+  <h3>해결책</h3>
+  <p>같은 CID를 여러분의 노드(실제로는 노드 역할을 하는 무료 서비스)에 핀합니다. 파일을 다른 곳에 복사하는 것이 아니라, <strong>같은 IPFS 네트워크 내에서 파일의 존재를 강화</strong>하는 것입니다. CID는 그대로 유지되고 작품도 그대로지만, 이제 중복성이 생깁니다. 파일은 Foundation 노드 <em>와</em> 여러분의 노드에 모두 존재합니다.</p>
+  <p>Foundation이 노드를 끄더라도 여러분의 노드는 활성 상태로 유지됩니다. IPFS 링크는 계속 작동하고, 작품은 마켓플레이스 종료 후에도 유지됩니다.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">중요</span>
+    <p>이더리움 토큰(소유권, 거래 내역, 판매 기록)은 위험하지 않습니다. 위험한 것은 시각 및 설명 계층입니다. 이 가이드는 이 계층을 보호합니다.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="why-filebase" class="section">
+  <span class="section-number">단계 02</span>
+  <h2>Filebase를 선택하는 이유</h2>
+  <p class="section-intro">Pinata는 업계 선구자였지만, 무료 플랜은 이 특정 사용 사례에서 더 이상 작동하지 않습니다. Filebase가 현실적인 대안입니다.</p>
+
+  <p>Pinata는 우리가 필요로 하는 정확한 기능(<em>Import from IPFS</em>, 기존 CID 핀하기)에 요금을 부과합니다. 무료 플랜에서는 컴퓨터에서 새 파일만 업로드할 수 있고, 네트워크에 이미 존재하는 CID는 핀할 수 없습니다.</p>
+  <p>Filebase는 <strong>5GB 스토리지, 최대 1,000개 파일, 전용 게이트웨이, <em>Import CID</em> 기능까지 모두 무료로 제공하며 신용카드가 필요 없습니다</strong>. Pinata보다 5배 많은 공간이고, 핵심 기능에 제한이 없습니다.</p>
+  <p>Filebase는 또한 <strong>지리적으로 분리된 위치에서 3중 중복성</strong>을 사용합니다. 마케팅 문구가 아니라 실제 중복성입니다.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">참고</span>
+    <p>Pinata가 나쁜 서비스라는 뜻은 아닙니다. 단지 여러분의 사용 사례(이미 민팅된 작품 핀하기)가 현재 비즈니스 모델에서 유료 플랜으로 이동한 기능입니다. Filebase는 같은 사용 사례를 무료로 제공합니다.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="create-account" class="section">
+  <span class="section-number">단계 03</span>
+  <h2>Filebase 무료 계정 생성</h2>
+  <p class="section-intro">5분, 신용카드 불필요.</p>
+
+  <ol>
+    <li><a href="https://filebase.com" target="_blank" rel="noopener">filebase.com</a>에 접속하여 <strong>Get Started Free</strong> 또는 <strong>Sign Up</strong>을 클릭합니다.</li>
+    <li>이메일을 입력하고 안전한 비밀번호를 생성합니다. 카드 정보나 결제 정보가 필요하지 않습니다.</li>
+    <li>수신한 이메일의 링크로 계정을 확인합니다.</li>
+    <li>사용자 이름과 비밀번호로 대시보드에 로그인합니다.</li>
+  </ol>
+
+  <p>빈 작업 공간이 표시됩니다. 인터페이스는 영어로만 제공되지만, 흐름은 단순합니다.</p>
+
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="https://filebase.com" target="_blank" rel="noopener" class="cta-link">Filebase로 이동 →</a>
+  </p>
+</section>
+
+<!-- 4 -->
+<section id="create-bucket" class="section">
+  <span class="section-number">단계 04</span>
+  <h2>아카이브 버킷 생성</h2>
+  <p class="section-intro">버킷은 핀들이 저장될 폴더와 같습니다.</p>
+
+  <ol>
+    <li>대시보드에서 사이드 메뉴의 <strong>Buckets</strong>를 클릭합니다.</li>
+    <li><strong>Create Bucket</strong>을 클릭합니다.</li>
+    <li>고유한 이름을 지정합니다. 예: <code>your-name-nft-archive</code>. 버킷 이름은 전역으로 관리되므로, 이미 사용 중이면 다른 이름을 선택해야 합니다.</li>
+    <li><strong>Network</strong>에서 <strong>IPFS</strong>를 선택합니다. Sia나 다른 네트워크는 선택하지 마십시오. Foundation NFT 백업에는 IPFS가 필요합니다.</li>
+    <li><strong>Create</strong>로 확정합니다.</li>
+  </ol>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">S3 Private와 Public 설정</span>
+    <p>Filebase는 공개 버킷이 유료 플랜에서만 가능하다는 알림을 표시합니다. <strong>무시하고 S3 Private로 유지하십시오</strong>. 이 알림은 S3 액세스(Amazon 프로토콜)와 관련된 것이며, NFT와는 무관합니다. 파일은 <code>ipfs.io</code>, <code>dweb.link</code>, <code>cloudflare-ipfs.com</code> 등 모든 IPFS 게이트웨이를 통해 CID로 공개적으로 접근 가능합니다. 버킷의 Private 설정은 이에 영향을 주지 않습니다.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="get-cids" class="section">
+  <span class="section-number">단계 05</span>
+  <h2>각 작품의 CID 획득</h2>
+  <p class="section-intro">각 작품에는 두 개의 CID가 있습니다. 메타데이터 JSON용과 이미지/비디오 파일용입니다.</p>
+
+  <h3>방법 1: Foundation에서 (아직 활성 상태일 때)</h3>
+  <ol>
+    <li>Foundation 프로필에서 작품 하나를 엽니다.</li>
+    <li><strong>Details</strong> 또는 <strong>Token Details</strong> 탭에서 <strong>IPFS</strong> 또는 <strong>Metadata</strong> 링크를 찾습니다.</li>
+    <li>다음과 같은 형식입니다: <code>https://ipfs.io/ipfs/QmXX.../metadata.json</code>. 저장합니다.</li>
+    <li>메타데이터 CID는 <code>/ipfs/</code>와 <code>/metadata.json</code> 사이의 부분입니다: <code>QmXX...</code></li>
+  </ol>
+
+  <h3>방법 2: JSON을 열어 미디어 CID 추출</h3>
+  <p>브라우저에서 JSON을 엽니다. 다음과 같은 내용이 표시됩니다:</p>
+
+  <div class="code-block">
+    <span class="code-label">JSON 메타데이터</span>
+<code>{
+  "name": "작품명",
+  "description": "...",
+  "image": "ipfs://QmYY.../nft.mp4"
+}</code>
+  </div>
+
+  <p><code>image</code> 필드의 값(때로는 <code>animation_url</code>)은 <code>ipfs://</code>로 시작하고 또 다른 CID가 이어집니다. 이것이 미디어 CID입니다. 이것도 저장합니다.</p>
+
+  <h3>간단한 인벤토리 표 작성</h3>
+  <p>각 작품에 대해 다음을 기록합니다:</p>
+  <ul>
+    <li>작품 <strong>제목</strong></li>
+    <li>메타데이터 <strong>JSON의 CID</strong></li>
+    <li>미디어 파일(비디오 또는 이미지)의 <strong>CID</strong></li>
+    <li><strong>컨트랙트 주소</strong>와 <strong>TokenID</strong> (나중에 Etherscan에서 검색용)</li>
+  </ul>
+
+  <p>간단한 스프레드시트로 충분합니다. Foundation이 아직 접근 가능할 때 작성하십시오. 나중에는 데이터 추출이 훨씬 어려워질 수 있습니다.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">팁</span>
+    <p>Foundation 프로필에 복사하기 쉬운 인벤토리가 있으면 일괄 추출하십시오. Etherscan에서 지갑을 검색하고 NFT로 필터링하여 토큰을 직접 찾을 수도 있습니다.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="pin-cids" class="section">
+  <span class="section-number">단계 06</span>
+  <h2>Filebase에 CID 핀하기</h2>
+  <p class="section-intro">이 단계에서 실제 백업이 이루어집니다. Filebase가 IPFS 네트워크에서 파일을 찾아 자체 노드에 복사합니다.</p>
+
+  <h3>각 작품에 대한 프로세스</h3>
+  <ol>
+    <li>버킷 이름을 클릭하여 생성한 버킷을 엽니다.</li>
+    <li>세 가지 옵션이 표시됩니다: <strong>Import CID</strong>, <strong>New Folder</strong>, <strong>Upload</strong>. <strong>Import CID</strong>를 클릭합니다.</li>
+    <li>양식이 열립니다. 첫 작품의 <strong>메타데이터 JSON CID</strong>를 붙여넣습니다.</li>
+    <li>설명적인 이름을 지정합니다. 예: <code>my-artwork-metadata.json</code>.</li>
+    <li><strong>Search and Pin</strong>으로 확정합니다.</li>
+  </ol>
+
+  <p>Filebase가 IPFS 네트워크에서 CID를 검색하고(몇 초 소요) 자체 노드에 핀합니다. 상태는 <strong>Pinning</strong>(진행 중, 주황색 아이콘)에서 <strong>Pinned</strong>(확정, 녹색 아이콘)로 변경됩니다.</p>
+
+  <p><strong>미디어 파일 CID</strong>에 대해 반복합니다:</p>
+  <ol>
+    <li><strong>Import CID</strong>를 다시 클릭합니다.</li>
+    <li>비디오 또는 이미지 CID를 붙여넣습니다.</li>
+    <li>이름: <code>my-artwork-media.mp4</code> (또는 올바른 확장자).</li>
+    <li>확정합니다.</li>
+  </ol>
+
+  <h3>권장 명명 규칙</h3>
+  <p>나중에 버킷을 쉽게 탐색할 수 있도록 일관된 이름을 사용합니다. 제안:</p>
+  <ul>
+    <li><strong>단독 작품</strong>: <code>artwork-title-metadata.json</code> 및 <code>artwork-title-media.mp4</code></li>
+    <li><strong>협업</strong>: <code>split-collaborator-name-title-metadata.json</code></li>
+    <li><strong>번호가 있는 시리즈</strong>: <code>series-01-title-metadata.json</code>, <code>series-02-...</code> (9개 이상이면 앞에 0을 붙임)</li>
+  </ul>
+
+  <p>소문자, 공백 대신 하이픈, 특수문자나 악센트 없이 작성합니다. URL과 파일 시스템 문제를 방지합니다.</p>
+
+  <h3>예상 시간</h3>
+  <p>각 핀은 몇 초(작은 JSON)에서 몇 분(무거운 비디오)까지 걸립니다. 10-15개 작품의 코퍼스에 대해 40분에서 1시간의 수동 작업을 예상하십시오.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">좋은 점</span>
+    <p>Filebase가 이미 다른 곳에 핀된 CID(다른 아티스트가 같은 파일을 핀한 경우)를 핀하면 거의 즉시 핀됩니다. IPFS는 파일을 복제하지 않고, 존재를 강화합니다.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="verify" class="section">
+  <span class="section-number">단계 07</span>
+  <h2>정상 작동 확인</h2>
+  <p class="section-intro">백업을 완료로 간주하기 전에, 파일이 실제로 공개 네트워크에서 접근 가능한지 확인합니다.</p>
+
+  <h3>확인 1: 모든 파일이 Pinned 상태</h3>
+  <p>버킷의 <strong>Status</strong> 열을 확인합니다. 모든 파일에 녹색 아이콘과 <strong>Pinned</strong> 라벨이 표시되어야 합니다. 몇 분이 지나도 <strong>Pinning</strong>(주황색) 상태인 파일이 있으면 더 기다리거나 페이지를 새로고침합니다.</p>
+
+  <h3>확인 2: 공개 게이트웨이에서 접근 가능</h3>
+  <p>CID 하나를 복사하여 다음 URL에 붙여넣습니다. <code>[CID]</code> 자리에 실제 CID를 넣습니다:</p>
+
+  <div class="code-block">
+    <span class="code-label">CID 테스트</span>
+<code>https://dweb.link/ipfs/[CID]</code>
+  </div>
+
+  <p>콘텐츠(JSON 또는 비디오)가 표시되면, 핀이 탈중앙화 네트워크에서 활성 상태이며 Foundation이나 Filebase 없이도 모든 게이트웨이에서 접근 가능함을 확인합니다.</p>
+
+  <h3>확인 3: 합리적인 공간 사용</h3>
+  <p>버킷의 <strong>Storage</strong> 표시기를 확인합니다. 일반적인 NFT 비디오는 10-80MB입니다. 비디오가 있는 작품이 15개라면 500-800MB 정도입니다. 무료 플랜의 5GB 한도에서 충분히 여유가 있습니다.</p>
+  <p>한도에 가까우면(작품이 더 많거나 비디오가 매우 무거운 경우), 덜 중요한 작품의 메타데이터만 핀하고 비디오는 추가 백업 없이 두는 것을 고려하십시오. 해당 비디오는 다른 공개 IPFS 노드에서 한동안 유지됩니다.</p>
+</section>
+
+<!-- 8 -->
+<section id="update-site" class="section">
+  <span class="section-number">단계 08</span>
+  <h2>웹사이트 링크 업데이트</h2>
+  <p class="section-intro">개인 웹사이트나 포트폴리오에 NFT 링크가 있으면 변경해야 합니다. Foundation을 가리키는 링크는 작동하지 않게 됩니다.</p>
+
+  <h3>교체 대상</h3>
+  <p>웹사이트에서 다음과 같은 링크를 찾습니다:</p>
+
+  <div class="code-block">
+<code>https://foundation.app/mint/eth/0x...../tokenID
+
+https://fnd-collections.mypinata.cloud/ipfs/QmXX.../metadata.json
+
+https://fnd-collections4.mypinata.cloud/ipfs/...</code>
+  </div>
+
+  <p>이 링크들은 모두 작동을 멈춥니다. 안정적인 IPFS 게이트웨이 링크로 교체해야 합니다.</p>
+
+  <h3>사용할 링크</h3>
+  <p>작품당 세 가지 링크 유형을 권장합니다:</p>
+
+  <p><strong>1. 메타데이터 (작품의 기술 기록):</strong></p>
+  <div class="code-block">
+<code>https://dweb.link/ipfs/[CID_METADATA]/metadata.json</code>
+  </div>
+
+  <p><strong>2. 미디어 (비디오 또는 이미지):</strong></p>
+  <div class="code-block">
+<code>https://dweb.link/ipfs/[CID_MEDIA]/nft.mp4</code>
+  </div>
+
+  <p><strong>3. Etherscan (온체인 소유권 확인):</strong></p>
+  <div class="code-block">
+<code>https://etherscan.io/token/[CONTRACT]?a=[TOKEN_ID]</code>
+  </div>
+
+  <p>이 세 번째 링크는 Foundation 링크를 대체합니다. 이전에 마켓플레이스를 가리키던 곳에서 이제는 절대 종료되지 않는 이더리움 공개 레지스트리를 가리킵니다.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">게이트웨이에 대하여</span>
+    <p>저는 <code>dweb.link</code>를 사용합니다. Protocol Labs(영리 기업이 아닌 재단)가 운영하며, 상대적으로 빠르고 중립적입니다. 유효한 대안: <code>ipfs.io</code>(동일 제공자, 때때로 더 느림), <code>cloudflare-ipfs.com</code>(빠르지만 중앙화된 회사에 의존). 어떤 것이든 작동합니다. 중요한 것은 CID입니다.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="arweave-case" class="section">
+  <span class="section-number">단계 09</span>
+  <h2>작품이 Arweave에 있는 경우 (백업 불필요)</h2>
+  <p class="section-intro">일부 Foundation 작품은 IPFS가 아닌 Arweave를 사용합니다. 이 경우 영속성이 내장되어 있습니다.</p>
+
+  <p>작품의 메타데이터를 열었을 때 URL이 <code>arweave.net</code>으로 끝나거나, 해시 뒤에 <code>.arweave.net</code>이 이어지면, 작품은 IPFS가 아닌 <strong>Arweave</strong>에 있습니다.</p>
+
+  <p>Arweave는 다른 모델을 가진 탈중앙화 스토리지 네트워크입니다. 민팅 시 한 번 비용을 지불하면, 노드에 지속적으로 비용을 지급하는 엔다우먼트 펀드를 통해 200년 동안 스토리지가 보장됩니다.</p>
+
+  <p><strong>결론:</strong> 작품이 Arweave에 있으면 백업할 필요가 없습니다. 영속성이 구조적으로 보장됩니다. 인벤토리에 기록만 하고 다음 작품으로 넘어갑니다.</p>
+</section>
+
+<!-- 10 -->
+<section id="before-closing" class="section">
+  <span class="section-number">단계 10</span>
+  <h2>Foundation 완전 종료 전</h2>
+  <p class="section-intro">최종 작업.</p>
+
+  <h3>판매되지 않은 작품 상장 취소</h3>
+  <p>아직 구매자가 없는 Foundation 판매 목록이 있으면, 종료 전에 상장 취소를 고려하십시오. Foundation의 에스크로 컨트랙트에서 토큰을 해제하고 지갑(또는 민터의 지갑)으로 반환합니다. 약간의 가스 비용이 들지만 이후 복잡한 상황을 피할 수 있습니다.</p>
+
+  <h3>협업자 기록</h3>
+  <p>온체인 스플릿이 있는 작품이 있으면, 협업자에게도 백업을 진행하도록 알립니다. 스플릿은 컨트랙트가 존재하는 한 활성 상태지만, 파일은 여러 노드의 지원이 필요합니다.</p>
+
+  <h3>큐레이션 정보 내보내기</h3>
+  <p>Foundation에는 온체인에 있지 않은 정보가 있습니다: 컬렉터 이름이 포함된 판매 기록, 편집 설명, 정확한 경매 날짜, 입찰, 팔로워. <strong>이 모든 정보는 Foundation과 함께 사라집니다.</strong> 종료 전에 스크린샷을 찍거나 가능한 것을 내보내십시오.</p>
+
+  <h3>자신의 이야기 기록</h3>
+  <p>수년간 크립토 아트 분야에 있었다면, 문화 역사의 한 챕터를 내부에서 경험한 몇 안 되는 사람입니다. 기억하는 것을 기록하십시오. 이벤트 사진, 커뮤니티 이름, 사라진 플랫폼, 금수 조치 국가 아티스트에게 가해진 차단. 이 서사적 아카이브는 CID만큼 중요합니다.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">완료 시</span>
+    <p>모든 작품을 핀하고, 공개 접근을 확인하고, 웹사이트 링크를 업데이트하면, 코퍼스는 Foundation 종료 후에도 유지됩니다.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="permanence" class="section">
+  <span class="section-number">단계 11</span>
+  <h2>Filebase가 언젠가 종료되면 어떻게 되나</h2>
+  <p class="section-intro">타당한 질문입니다. Foundation에 의존하지 않기 위해 백업하는데, 단지 다른 회사로 의존을 옮기는 것 아닌가요?</p>
+
+  <h3>짧은 답변</h3>
+  <p>Filebase가 내일 종료되더라도, 파일이 <strong>즉시 사라지지는 않습니다</strong>. IPFS는 단일 장애점을 통하지 않고, 같은 콘텐츠를 복제하는 노드의 축적을 통해 작동합니다. Filebase 종료는 파일의 사본 하나만 제거할 뿐이지, 전체를 제거하지 않습니다.</p>
+  <p>또한, <strong>CID는 보편적</strong>입니다. Filebase에 속하지 않습니다. 내일 다른 제공업체에 계정을 만들고 같은 CID를 붙여넣으면, 몇 분 안에 다시 활성 백업이 생깁니다. 5단계에서 만든 인벤토리만 있으면 마이그레이션이 가능합니다.</p>
+
+  <h3>IPFS에서 영속성이 작동하는 방식</h3>
+  <p>IPFS의 파일은 최소 한 개의 노드가 활성 상태로 핀하고 있는 동안 존재합니다. Filebase가 CID를 핀하면, 해당 노드들(일반적으로 서로 다른 위치에 3배 복제)이 파일을 유지합니다.</p>
+  <p>하지만 Filebase만 파일을 가지고 있는 것은 아닙니다. 누군가 IPFS 게이트웨이에서 작품을 로드할 때마다, 그 게이트웨이가 파일을 임시로 캐시합니다. 각 상호작용은 일시적 사본을 남깁니다. Foundation도 종료까지 CID를 핀 상태로 유지합니다. 네트워크에는 자연스러운 <strong>복제 관성</strong>이 있습니다.</p>
+
+  <h3>Filebase 종료 시 세 가지 시나리오</h3>
+
+  <p><strong>시나리오 1, 사전 공지를 포함한 종료 (예상되는 경우):</strong> 신뢰할 수 있는 서비스는 몇 주 또는 몇 달 전에 공지합니다. 다른 제공업체(4EVERLAND, Web3.Storage, Lighthouse)로 마이그레이션할 시간이 충분합니다. 이미 CID 인벤토리가 있으므로, 마이그레이션은 계정을 만들고 같은 CID를 가져오면 끝납니다.</p>
+
+  <p><strong>시나리오 2, 사전 공지 없는 갑작스러운 종료:</strong> 가능성은 낮지만 발생할 수 있습니다. 다른 노드가 동시에 파일을 가지고 있지 않은 경우에만 파일이 사라집니다. 활동이 있는 파일은 통계적으로 드문 사례입니다.</p>
+
+  <p><strong>시나리오 3, 다른 회사의 인수 (가장 일반적):</strong> 더 큰 회사가 작은 회사를 인수하고 새 약관으로 서비스를 유지합니다. 전환 중에도 핀은 활성 상태입니다. 최근 사례: KnownOrigin은 eBay에 인수되었고 정책 변경이 있었지만, 이전에 민팅된 파일은 기술적으로 계속 접근 가능했습니다.</p>
+
+  <h3>견고한 전략: 멀티 제공업체 중복성</h3>
+  <p>철학적으로 올바른 접근은 Filebase가 종료되지 않을 것이라고 믿는 것이 아니라, <strong>Filebase에만 전적으로 의존하지 않는 것</strong>입니다. 점진적으로 구현할 수 있는 네 가지 보호 수준:</p>
+
+  <p><strong>수준 1, 현재 상태:</strong> Filebase의 활성 핀. 5GB 무료. 표준 사용 사례 해결.</p>
+
+  <p><strong>수준 2, 병렬 중복성:</strong> 다른 제공업체에 두 번째 무료 계정을 만들고 같은 핀을 복제합니다. 견고한 옵션:</p>
+  <ul>
+    <li><strong>4EVERLAND</strong>: 5GB 무료, 깔끔한 인터페이스, 다른 제공업체.</li>
+    <li><strong>Web3.Storage</strong>: Protocol Labs(IPFS 창설자)의 서비스. 5GB 무료, 제도적으로 매우 안정적.</li>
+    <li><strong>Lighthouse</strong>: 영구 스토리지를 위한 일회성 결제 모델. Filecoin을 경제적 계층으로 사용.</li>
+  </ul>
+  <p>같은 CID가 두 개의 다른 제공업체에 핀되어 있으면, 하나의 종료가 다른 하나에 영향을 주지 않습니다.</p>
+
+  <p><strong>수준 3, 로컬 물리적 사본:</strong> 모든 미디어 파일을 하드 드라이브나 외장 디스크에 폴더별로 정리하여 다운로드합니다. 공개 링크에는 사용되지 않지만, 전 세계 모든 노드가 실패해도 마스터를 보관합니다. 진지한 아키비스트의 최후 수단입니다.</p>
+
+  <p><strong>수준 4, 선택적, 고급:</strong> 자체 머신에서 IPFS Desktop 또는 IPFS CLI로 자체 IPFS 노드를 실행합니다. 최대의 기술적 자율성. 노드는 컴퓨터가 켜져 있을 때만 활성이므로 관리 서비스를 보완하지만 대체하지는 않습니다.</p>
+
+  <h3>실용적 권장사항</h3>
+  <p>현재로서는 <strong>Filebase만 유지</strong>(수준 1)하는 것으로 충분합니다. 단기 위험에 대응하기에 충분합니다. Filebase는 2019년부터 운영되고 있으며 현재 다른 서비스보다 제도적으로 안정적으로 보입니다.</p>
+  <p><strong>3-6개월 후</strong> 강화를 원하면, 4EVERLAND 또는 Web3.Storage에 계정을 만들고 핀을 복제합니다. 이미 모든 CID가 있는 인벤토리가 있으므로 15분의 작업으로 실제 중복성을 확보할 수 있습니다.</p>
+  <p>하드 드라이브의 로컬 사본은 시간이 있을 때 하면 됩니다. 급하지는 않지만 가치가 있습니다. 자체 IPFS 노드는 인프라 관리를 즐기는 경우에만 권장합니다.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">중요한 구분</span>
+    <p><strong>중앙화</strong>와 <strong>의존성</strong>은 다릅니다. Filebase는 중앙화된 제공업체(사설 회사, 자체 서버)이지만, Filebase에 대한 의존은 <strong>분리 가능</strong>합니다. CID는 IPFS 표준이고, 인벤토리는 사용자 디스크에 있으며, 언제든지 다른 제공업체로 이동할 수 있습니다. Foundation에 대한 의존과는 다릅니다. Foundation 종료는 링크, 서사, 프로필, 커뮤니티의 손실을 의미했습니다. 이번에는 어떤 종료라도 불편할 뿐, 재앙은 아닙니다.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <span class="section-number">FAQ</span>
+  <h2>자주 묻는 질문</h2>
+  <p class="section-intro">Foundation 종료와 NFT 보존에 대한 일반적인 질문에 대한 짧고 직접적인 답변.</p>
+
+  <h3>Foundation이 종료되면 제 NFT는 어떻게 되나요?</h3>
+  <p>토큰은 이더리움에 영원히 유지됩니다. 위험한 것은 오프체인 계층입니다. 현재 Foundation IPFS 노드에 있는 JSON 메타데이터와 미디어 파일(이미지, 비디오)입니다. 이 노드들이 종료되면, 다른 서비스에 핀하지 않는 한 파일에 접근할 수 없게 될 수 있습니다. 소유권은 안전하지만, 시각적 표현에는 백업이 필요합니다.</p>
+
+  <h3>NFT를 다른 블록체인으로 옮겨야 하나요?</h3>
+  <p>아니요. Foundation의 운명과 무관하게 NFT는 이더리움에 남습니다. Foundation은 마켓플레이스 인터페이스이고, 이더리움은 기반 블록체인입니다. 오프체인 파일만 백업하면 되며, 토큰 자체는 이동할 필요가 없습니다.</p>
+
+  <h3>Filebase는 정말 NFT 백업에 무료인가요?</h3>
+  <p>네. 5GB 스토리지, 최대 1,000개 핀 파일, 전용 IPFS 게이트웨이, Import CID 기능까지 모두 신용카드 없이 무료입니다. Pinata가 유료 플랜으로 이동한 기능 조합입니다.</p>
+
+  <h3>IPFS CID는 무엇이며 왜 중요한가요?</h3>
+  <p>CID(Content Identifier)는 콘텐츠에 기반하여 IPFS의 파일을 고유하게 식별하는 암호화 해시입니다. NFT의 스마트 컨트랙트는 메타데이터를 가리키는 CID 참조를 저장하고, 메타데이터는 미디어 CID를 가리킵니다. CID는 노드가 파일을 핀하고 있는 동안에만 콘텐츠로 해결됩니다. 핀이 없으면 토큰 존재 여부와 관계없이 콘텐츠가 없습니다.</p>
+
+  <h3>Filebase도 종료되면 어떻게 되나요?</h3>
+  <p>11단계에서 자세히 다룹니다. 요약: CID는 보편적이므로 인벤토리를 사용하여 몇 분 안에 다른 IPFS 제공업체(4EVERLAND, Web3.Storage, Lighthouse)로 마이그레이션할 수 있습니다. 견고성을 위해 멀티 제공업체 중복성을 사용합니다.</p>
+
+  <h3>Foundation 종료 전에 판매되지 않은 NFT를 상장 취소해야 하나요?</h3>
+  <p>권장합니다. 상장 취소는 Foundation의 에스크로 컨트랙트에서 토큰을 해제하고 민터의 지갑으로 반환하여, 다른 곳에서 재상장할 수 있게 합니다. 약간의 가스 비용이 들지만 이후 복잡한 상황을 피할 수 있습니다.</p>
+
+  <h3>전체 백업 프로세스에 얼마나 걸리나요?</h3>
+  <p>10-15개 NFT의 경우 30분에서 2시간 정도 예상하십시오. JSON 메타데이터는 몇 초 안에 핀됩니다. 비디오 파일은 각각 몇 분이 걸릴 수 있습니다. CID 인벤토리가 준비되면 반복적이지만 복잡하지 않은 프로세스입니다.</p>
+
+  <h3>NFT가 IPFS가 아닌 Arweave에 있으면 어떻게 되나요?</h3>
+  <p>백업이 필요 없습니다. Arweave는 설계에 의한 영구 스토리지를 제공합니다. 민팅 시 한 번 지불하면, 노드에 지속적으로 비용을 지급하는 엔다우먼트를 통해 약 200년 동안 보존됩니다.</p>
+
+  <h3>이 가이드는 Foundation 외의 아티스트에게도 적용되나요?</h3>
+  <p>네. 메타데이터와 미디어가 IPFS에 있는 이더리움의 모든 NFT에 동일한 프로세스가 적용됩니다. SuperRare, Zora, Objkt, KnownOrigin(종료 전), Rarible: 흐름은 동일합니다. CID의 출처만 다릅니다.</p>
+
+  <h3>컬렉터로서 다른 아티스트의 NFT를 핀할 수 있나요?</h3>
+  <p>네, 권장됩니다. CID는 설계상 공개됩니다. 수집한 NFT를 핀하면 원본 노드의 실패로부터 컬렉션을 보호할 수 있습니다. 특히 직접 연락이 가능한 경우 아티스트에게 알리는 것이 예의입니다.</p>
+</section>
+
+<!-- OWN NODE -->
+<section id="own-node" class="section">
+  <span class="section-number">기술 확장</span>
+  <h2>자체 IPFS 노드 실행</h2>
+  <p class="section-intro">이 섹션은 기술적 숙련도가 있고 더 높은 수준의 자율성을 원하는 아티스트를 위한 것입니다. 작품 백업에는 필수가 아닙니다(Filebase로 충분합니다). 어떤 제공업체에도 의존하지 않는 것이 목표라면 이 경로를 따르십시오.</p>
+
+  <h3>자체 노드 소유의 의미</h3>
+  <p>IPFS 노드는 네트워크 참여자로서 작동하는 컴퓨터입니다. 소프트웨어를 설치하면 여러분의 머신은 파일을 핀하고, 전 세계에 제공하며, 상업 서비스 없이 유지할 수 있습니다. <strong>제공업체의 클라이언트</strong>에서 <strong>네트워크의 완전한 참여자</strong>로 전환됩니다.</p>
+  <p>Filebase와의 주요 차이점: Filebase에서는 회사에 파일을 자체 서버에 핀하도록 요청합니다. 자체 노드에서는 <strong>여러분이 서버</strong>입니다.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">중요한 트레이드오프</span>
+    <p>노드는 컴퓨터가 켜져 있고 인터넷에 연결된 동안에만 파일을 제공합니다. 머신을 끄면 파일은 네트워크의 다른 노드(Filebase, 공개 게이트웨이, 기타 핀 서비스)에서 계속 존재하지만, 여러분은 더 이상 기여하지 않습니다. 실질적인 영구 백업을 위해서는 노드가 거의 항상 활성 상태여야 합니다.</p>
+  </div>
+
+  <h3>제어 수준에 따른 두 가지 경로</h3>
+
+  <p><strong>경로 A: IPFS Desktop</strong> (가장 접근하기 쉬움)</p>
+  <p>macOS, Windows, Linux에서 다른 프로그램과 같이 설치하는 그래픽 애플리케이션. 5분 설정, 시각적 인터페이스, 명령줄 불필요. 실험과 학습에 이상적.</p>
+  <p><em>장점:</em> 간단한 설치, 시각적 인터페이스, 필요 없을 때 앱 종료 가능.<br>
+  <em>단점:</em> 실행 중 RAM 소비(200-400 MB), 앱을 실수로 종료하지 않아야 함, 컴퓨터 종료 시 가용성 손실.</p>
+
+  <p><strong>경로 B: 전용 Raspberry Pi</strong> (본격적인 옵션)</p>
+  <p>Raspberry Pi(케이스, 전원 공급 장치, SD 카드 포함 약 75-120 USD)를 구입하여 IPFS를 설치하고, 집에서 라우터에 연결한 상태로 24/7 켜 둡니다. LED 전구 수준의 전력 소비(5-10 와트, 월 약 2-3 USD)로 전용 영구 노드.</p>
+  <p><em>장점:</em> 실제 영구 노드, 주 컴퓨터 리소스 사용 없음, 완전한 기술적 자율성.<br>
+  <em>단점:</em> 초기 구매 필요, 더 복잡한 기술 설치(명령줄), 외부 접근을 위한 라우터 구성.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">권장사항</span>
+    <p>IPFS Desktop으로 시작하십시오. 경제적 약속 없이 개념을 배웁니다. 몇 주 후 실제로 사용하고 영구성이 필요하다고 느끼면, 전용 Raspberry Pi 투자를 검토합니다.</p>
+  </div>
+
+  <h3>IPFS Desktop 단계별 안내</h3>
+
+  <p><strong>단계 1: 설치 프로그램 다운로드</strong></p>
+  <p><a href="https://ipfs.tech/install/ipfs-desktop/" target="_blank" rel="noopener">ipfs.tech/install/ipfs-desktop/</a>(프로젝트 공식 도메인)로 이동합니다. 운영 체제 설치 프로그램 선택: macOS, Windows, Linux.</p>
+
+  <p><strong>단계 2: 설치</strong></p>
+  <p>macOS에서는 <code>.dmg</code>를 열고 아이콘을 Applications로 드래그합니다. Windows에서는 <code>.exe</code>를 실행합니다. Linux에서는 일반적으로 <code>.AppImage</code>입니다. macOS 처음 실행 시 시스템이 검증되지 않은 개발자에 대해 경고할 수 있습니다. 시스템 환경설정 → 보안에서 수동으로 권한을 부여합니다. 정상이며 소프트웨어가 안전하지 않다는 뜻은 아닙니다.</p>
+
+  <p><strong>단계 3: 첫 실행</strong></p>
+  <p>처음 애플리케이션을 열면 세 가지가 자동으로 발생합니다. 첫째, 노드에 대한 고유한 암호화 ID가 생성됩니다(네트워크에서 노드의 영구 ID). 둘째, 글로벌 IPFS 네트워크에 연결되며 몇 초 안에 연결된 수십에서 수백 개의 <em>피어</em>(다른 노드)가 표시됩니다. 셋째, 다섯 개 탭이 있는 인터페이스가 열립니다: <strong>Status</strong>, <strong>Files</strong>, <strong>Explore</strong>, <strong>Peers</strong>, <strong>Settings</strong>.</p>
+
+  <p><strong>단계 4: 첫 CID 핀하기</strong></p>
+  <p><strong>Files</strong> 탭으로 이동합니다. 상단에 <strong>Import</strong> 버튼이 있습니다. 클릭하면 옵션 메뉴가 펼쳐집니다. <strong>From IPFS</strong>(때로는 <em>Add by CID</em> 또는 <em>Import from IPFS</em>로 표시)를 선택합니다. CID 하나를 붙여넣고 확정합니다.</p>
+  <p>노드가 파일을 가진 다른 노드(Filebase, 공개 게이트웨이, 활성 소스)에서 파일을 다운로드하기 시작합니다. 몇 초에서 몇 분(크기에 따라) 후 파일이 로컬에 핀됩니다. 그 순간 여러분의 컴퓨터는 해당 CID를 지원하는 네트워크의 일원이 됩니다.</p>
+
+  <p><strong>단계 5: 작동 확인</strong></p>
+  <p>두 가지 간단한 확인. 첫째, <em>Files</em>에서 핀 아이콘과 다운로드된 크기가 있는 CID가 표시되어야 합니다. 둘째, 브라우저에서 엽니다:</p>
+
+  <div class="code-block">
+    <span class="code-label">로컬 게이트웨이</span>
+<code>http://localhost:8080/ipfs/[your-CID]</code>
+  </div>
+
+  <p><code>localhost:8080</code>은 여러분의 노드가 실행하는 <strong>로컬 게이트웨이</strong>입니다. 콘텐츠가 표시되면 노드가 파일을 활성적으로 제공하고 있는 것입니다. 이것이 실질적인 기술적 자율성입니다.</p>
+
+  <p><strong>단계 6: 나머지 코퍼스 핀하기</strong></p>
+  <p>인벤토리의 모든 CID로 프로세스를 반복합니다. 10-15개 작품의 경우 연결 속도에 따라 30분에서 2시간을 예상하십시오.</p>
+
+  <h3>일상 사용의 실용적 고려사항</h3>
+
+  <p><strong>리소스 소비:</strong> IPFS Desktop은 활성 상태에서 200-400MB의 RAM을 사용합니다. 최신 컴퓨터에서는 문제가 되지 않지만, 메모리가 적은 머신에서는 눈에 띕니다. <em>Settings</em>에서 제한을 구성할 수 있습니다.</p>
+
+  <p><strong>대역폭:</strong> 노드는 다운로드뿐만 아니라 파일을 요청하는 다른 노드에 업로드도 합니다. 연결이 제한적이면 <em>Settings</em>에서 제한을 구성하십시오. 일반 가정용 연결에서는 알아차리지 못합니다.</p>
+
+  <p><strong>컴퓨터 종료:</strong> CID는 다른 노드가 핀 상태로 유지하는 한 네트워크에서 활성 상태로 유지됩니다(Filebase가 백업으로 남음). 노드는 단지 임시로 기여를 중단합니다. 다시 켜면 자동으로 재개됩니다.</p>
+
+  <p><strong>디스크 공간:</strong> 각 핀된 CID는 로컬 디스크에서 해당 크기를 차지합니다. 계산: 500MB 크기의 Foundation 코퍼스면 노드가 500MB를 차지합니다. 큰 Tezos 코퍼스의 경우 몇 GB가 될 수 있습니다. 디스크에 공간이 있는지 확인하십시오.</p>
+
+  <h3>얻는 것</h3>
+  <ul>
+    <li><strong>Filebase로부터의 실질적 독립:</strong> 내일 Filebase가 종료되어도 활성 노드가 있으면 파일은 개입 없이 접근 가능합니다.</li>
+    <li><strong>중개자 없는 출판:</strong> 새 작품을 만들어 IPFS에 핀하고 싶으면 서비스 없이 노드에서 직접 수행합니다.</li>
+    <li><strong>시스템의 기술적 이해:</strong> 몇 주만 노드를 실행해도 대부분의 NFT 아티스트가 얻지 못하는 생태계에 대한 이해를 얻습니다.</li>
+    <li><strong>생태계 기여:</strong> 각 추가 노드는 전체 IPFS 네트워크를 강화합니다. 참여는 자기 보호뿐만 아니라 커뮤니티 행동이기도 합니다.</li>
+  </ul>
+
+  <h3>Raspberry Pi로의 자연스러운 진화</h3>
+  <p>IPFS Desktop으로 실험한 후 실제 영구성을 원하면 자연스러운 경로는:</p>
+
+  <ol>
+    <li>Raspberry Pi 4(4 또는 8GB RAM), 전원 공급 장치, 케이스, 128GB microSD 카드 구매. 대략 100-150 USD.</li>
+    <li>집 한구석에서 이더넷 케이블로 라우터에 연결합니다.</li>
+    <li>Raspberry Pi용 튜토리얼(영어에 많음, 일부 스페인어)에 따라 IPFS를 설치합니다.</li>
+    <li>정전 시 노드를 항상 활성 상태로 유지하기 위해 자동 재시작을 구성합니다.</li>
+    <li>고급 옵션: Raspberry Pi를 가리키는 자체 서브도메인(예: <code>ipfs.yourartist.art</code>)을 구성하여 자체 게이트웨이를 만듭니다.</li>
+  </ol>
+
+  <p>이 마지막 단계, 자체 도메인으로 자체 게이트웨이를 구축하는 것은 최대의 자율성입니다. <code>dweb.link</code>나 <code>ipfs.io</code>에도 의존하지 않습니다. 웹사이트의 링크는 자체 링크가 됩니다: <code>ipfs.yourartist.art/ipfs/[CID]/file.mp4</code>.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">명확히 하기 위해</span>
+    <p>자체 노드를 갖는 것이 Filebase를 대체하거나 이미 수행된 작업을 무용지물로 만들지 않습니다. 보완합니다. 이상적인 전략은 항상 활성 관리 백업인 Filebase, 자체 인프라에서 강화하는 IPFS Desktop 또는 Raspberry Pi 자체 노드, 최후 보루 아카이브인 하드 드라이브 로컬 사본을 조합합니다. 세 개의 중복 계층, 각각 다른 설계로 보호됩니다.</p>
+  </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+<section class="section">
+  <h2 style="font-size: 28px; text-align: center; margin-bottom: 30px;">도움이 필요하신가요?</h2>
+  <p style="text-align: center; font-size: 19px; font-style: italic; color: var(--ink-soft);">구체적인 질문이 있으면 직접 메시지를 보내는 것이 가장 빠릅니다. 커뮤니티의 여러 아티스트가 이번 몇 주 동안 같은 작업을 하고 있으며, 빨리 백업할수록 좋습니다.</p>
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="https://ernestocisneros.art" target="_blank" rel="noopener" class="cta-link">ernestocisneros.art →</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p>이 가이드는 Impulses.art Web3 모델의 연장입니다. 도움이 되었다면 다른 아티스트와 공유하십시오. 탈중앙화는 우리가 함께 유지할 때만 작동합니다.</p>
+  <p style="margin-top: 24px;">크립토 아트 커뮤니티를 위한 한국어 문서. 공유, 적응, 번역을 위한 자유 라이센스.</p>
+  <div class="signature">Ernesto Cisneros Cino · Miami 2026</div>
+  <p style="margin-top: 20px; font-size: 14px;">
+    <a href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a>
+  </p>
+</footer>
+
+</body>
+</html>
