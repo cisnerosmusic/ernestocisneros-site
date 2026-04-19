@@ -588,15 +588,15 @@ a:hover { color: var(--gold-bright); }
       </div>
     </article>
     <div style="text-align:center;margin-top:1.5rem;">
-      <button id="flying-free-btn" onclick="(function(){var a=document.getElementById('flying-free-audio'),b=document.getElementById('flying-free-btn');if(a.paused){a.play();b.classList.add('playing')}else{a.pause();b.classList.remove('playing')}})()" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(180,130,60,0.25);background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all 0.3s;opacity:0.4;padding:0;" onmouseenter="this.style.opacity='0.8';this.style.borderColor='rgba(212,160,48,0.65)'" onmouseleave="if(!document.getElementById('flying-free-audio').paused)this.style.opacity='0.8';else{this.style.opacity='0.4';this.style.borderColor='rgba(180,130,60,0.25)'}">
+      <button id="flying-free-btn" onclick="(function(){var a=document.getElementById('flying-free-audio'),b=document.getElementById('flying-free-btn');if(a.paused){a.play();b.classList.add('playing')}else{a.pause();b.classList.remove('playing')}})()" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(180,130,60,0.25);background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all 0.3s;padding:0;" onmouseenter="this.style.borderColor='rgba(212,160,48,0.65)'" onmouseleave="this.style.borderColor='rgba(180,130,60,0.25)'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(212,160,48,0.7)"><polygon id="flying-free-icon" points="6,3 21,12 6,21"/></svg>
       </button>
-      <audio id="flying-free-audio" src="../assets/audio/flying-free.mp3" preload="none" onended="document.getElementById('flying-free-btn').classList.remove('playing');document.getElementById('flying-free-btn').style.opacity='0.4';document.getElementById('flying-free-icon').setAttribute('points','6,3 21,12 6,21')"></audio>
+      <audio id="flying-free-audio" src="../assets/audio/flying-free.mp3" preload="none" onended="document.getElementById('flying-free-btn').classList.remove('playing');document.getElementById('flying-free-icon').setAttribute('points','6,3 21,12 6,21')"></audio>
     </div>
     <style>
-      #flying-free-btn.playing { opacity: 0.8 !important; border-color: rgba(212,160,48,0.65) !important; }
+      #flying-free-btn.playing { border-color: rgba(212,160,48,0.65) !important; }
       #flying-free-btn.playing #flying-free-icon { animation: pulse-glow 2s ease-in-out infinite; }
-      @keyframes pulse-glow { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+      @keyframes pulse-glow { 0%,100% { opacity: 0.85; } 50% { opacity: 1; } }
     </style>
   </section>
 
