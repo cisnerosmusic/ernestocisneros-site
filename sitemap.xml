@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <!-- Core Pages -->
   <url>
     <loc>https://ernestocisneros.art/</loc>
@@ -20,7 +20,7 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <!-- Music Section -->
   <url>
     <loc>https://ernestocisneros.art/music.html</loc>
@@ -64,7 +64,7 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <!-- NFT Section -->
   <url>
     <loc>https://ernestocisneros.art/nft.html</loc>
@@ -102,7 +102,13 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+  <url>
+    <loc>https://ernestocisneros.art/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Books -->
   <url>
     <loc>https://ernestocisneros.art/books.html</loc>
@@ -110,7 +116,7 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <!-- Ideas Section -->
   <url>
     <loc>https://ernestocisneros.art/ideas.html</loc>
@@ -148,13 +154,43 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+  <url>
+    <loc>https://ernestocisneros.art/ideas/resilience-valley-viz.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Impulses.art -->
   <url>
     <loc>https://ernestocisneros.art/impulses-art.html</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/guide-backup-nft-en.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://ernestocisneros.art/privacy-policy/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Particles -->
+  <url>
+    <loc>https://ernestocisneros.art/particles.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
   <!-- ============================================ -->
@@ -262,6 +298,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://ernestocisneros.art/es/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
   <!-- ES: Books -->
   <url>
@@ -315,6 +357,14 @@
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- ES: NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/es/guia-backup-nft.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- FR: Impulses.art -->
@@ -467,6 +517,22 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- FR: NFT Section - Additional Resources -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- FR: NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/fr/nft/guide-backup-nft-fr.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ============================================ -->
   <!-- Japanese Version (/ja/) -->
   <!-- ============================================ -->
@@ -598,6 +664,22 @@
     <loc>https://ernestocisneros.art/ja/ideas/art-poetics-philosophy.html</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- JA: NFT Section - Additional Resources -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- JA: NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/ja/nft/guide-backup-nft-ja.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
@@ -743,6 +825,22 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- RU: NFT Section - Additional Resources -->
+  <url>
+    <loc>https://ernestocisneros.art/ru/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- RU: NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/ru/nft/guide-backup-nft-ru.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ============================================ -->
   <!-- Italian Version (/it/) -->
   <!-- ============================================ -->
@@ -885,6 +983,22 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- IT: NFT Section - Additional Resources -->
+  <url>
+    <loc>https://ernestocisneros.art/it/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- IT: NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/it/guide-backup-nft.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ============================================ -->
   <!-- Korean Version (/ko/) -->
   <!-- ============================================ -->
@@ -1025,6 +1139,82 @@
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- KO: NFT Section - Additional Resources -->
+  <url>
+    <loc>https://ernestocisneros.art/ko/nft/resources.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- KO: NFT Backup Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/ko/nft/guide-backup-nft-ko.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- Translation Folder NFT Guides -->
+  <!-- ============================================ -->
+
+  <!-- Chinese Simplified Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/ch/guide-backup-nft-ch.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Portuguese Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/pt/guide-backup-nft-pt.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Ukrainian Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/ucr/guide-backup-nft-uc.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- German Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/de/guide-backup-nft-de.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Arabic Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/arabe/guide-backup-nft-ar.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Farsi Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/far/guide-backup-nft-fa.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Hindi Guide -->
+  <url>
+    <loc>https://ernestocisneros.art/translations/hindi/guide-backup-nft-hi.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- ============================================ -->
