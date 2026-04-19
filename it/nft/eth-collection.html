@@ -190,6 +190,31 @@ a:hover { color: var(--gold-bright); }
   margin-bottom: 1.5rem;
 }
 
+.collection-card .nft-preservation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0 1.2rem 1rem;
+}
+.collection-card .nft-preservation a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  transition: all 0.3s;
+  opacity: 0.7;
+  text-decoration: none;
+}
+.collection-card .nft-preservation a:hover {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  opacity: 1;
+}
+
 .card-action {
   display: block;
   font-family: var(--font-display);
@@ -443,43 +468,67 @@ a:hover { color: var(--gold-bright); }
   <section class="gallery">
     <div class="collection-grid">
 
-      <a href="https://foundation.app/mint/eth/0x6191AAabD6dB16351FEb088126c8A1A93fF389A2/10" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/flows-like-blood.jpg" alt="Flows like blood" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Flows like blood</span>
           <span class="card-artist">by Cinthia Ponce</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmXz4ey8Vc6ay1JwNZXehfy5KMyxXeWC62fRtdYBAeCz79/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmNa9bChj4ZxqJTRF4sZNiWwhN7Y5qSimMaTpERDCsEGHs/nft.jpg" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/token/0x6191AAabD6dB16351FEb088126c8A1A93fF389A2?a=10" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0xd0651cF426650bD0f81Fae1Fc6Fbd26284c96447/2" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/vecchia-illusione.jpg" alt="Vecchia illusione" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Vecchia illusione</span>
           <span class="card-artist">Collected</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmNtZind2DNbsE8STMRak2hTJZzzfTiSNWeZvUirikXpaN/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmXtaZeinatxaddjaLh73JDcenzn3R4K2BoXBBJ1VYfMtC/nft.jpg" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/token/0xd0651cF426650bD0f81Fae1Fc6Fbd26284c96447?a=2" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0x7E974cCa00a39607d16dce293b75b98dd5e1F55B/5" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/healing-pain.jpg" alt="Healing Pain" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Healing Pain</span>
           <span class="card-artist">by Tuco</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://arweave.net/BVYRqE6FlJraSAbkwHqBpT3mQ_uIsPTvAfOjZA_C7E8/4" target="_blank" rel="noopener" title="Arweave Metadata">Arweave Metadata</a>
+          <a href="https://arweave.net/G94_FUVRGnOjJP-Wx3sg_Q7B6TYfWVbTMyl9dQHnqBA" target="_blank" rel="noopener" title="Arweave Media">Arweave Media</a>
+          <a href="https://etherscan.io/token/0x7E974cCa00a39607d16dce293b75b98dd5e1F55B?a=5" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0xd815EaCfd95443059935Aa3582BD5b8ad59057c7/1" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/soul-portrait-07.jpg" alt="Soul Portrait 07" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Soul Portrait 07</span>
           <span class="card-artist">by Achtungrael</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://arweave.net/4_rj78eQSTfr2R7puwySTNyMSt4xf_0BLlRSR2udaFo" target="_blank" rel="noopener" title="Arweave Metadata">Arweave Metadata</a>
+          <a href="https://arweave.net/ErFzPRjvqjj8Wzjo4l5Hxam9uWpGyjkFR4H3dIdoEhY" target="_blank" rel="noopener" title="Arweave Media">Arweave Media</a>
+          <a href="https://etherscan.io/token/0xd815EaCfd95443059935Aa3582BD5b8ad59057c7?a=1" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405/56320" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><video autoplay muted loop playsinline aria-label="White Eye - animated NFT artwork">
           <source src="../../assets/nft/compressed/eth-collection/white-eye.mp4" type="video/mp4">
           Your browser does not support video.
@@ -489,18 +538,30 @@ a:hover { color: var(--gold-bright); }
           <span class="card-artist">by Aissa Santiso</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmRu7kTYRK86QYjaZw3a4yae8WbJw6XhJRvDWkUJfyCM6Q/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/Qmf5UVnHrABbGDrkwtT9mQTyTcjg55XUQ6K1DsQKBZmQWy/nft.mp4" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/token/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405?a=56320" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0xd18b48d23ae5100c069d837c7e6E4AaA0545B6b7/1" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/toy-garden.gif" alt="Toy Garden" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Toy Garden</span>
           <span class="card-artist">by Mina Power</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmQcUDt9rYTtaft7f28EjEwSYtcZqfXyguastvmHa9cAa8/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmbaLXJqHm2L89wPVLS4w1sSbLYw3ydcpXTZicfMUnpcBS/nft.gif" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/token/0xd18b48d23ae5100c069d837c7e6E4AaA0545B6b7?a=1" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405/111528" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><video autoplay muted loop playsinline aria-label="Traveling Without Moving - animated NFT artwork">
           <source src="../../assets/nft/compressed/eth-collection/traveling-without-moving.mp4" type="video/mp4">
           Your browser does not support video.
@@ -508,29 +569,46 @@ a:hover { color: var(--gold-bright); }
         <div class="card-info">
           <span class="card-title">Traveling without moving</span>
           <span class="card-artist">by LuiscArt</span>
-          <span class="card-action">Visualizza su Foundation →</span>
+          <a href="https://foundation.app/mint/eth/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405/111528" target="_blank" rel="noopener noreferrer" class="card-action">Visualizza su Foundation →</a>
         </div>
-      </a>
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmRNC6sCayxB9T2FNx279cjErkHPGo2NA2fRW5VWfpVyXH/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmTiyV4zfYBzY5oTVvgRMG4f5tquMFtLShXDBdEQjjrSdn/nft.mp4" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/token/0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405?a=111528" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0xADD06c60872A81Dd883a9d731B5da08bE3Bf9Ca6/2" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/desahogo.jpg" alt="Desahogo" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Desahogo</span>
           <span class="card-artist">by Solum</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://arweave.net/bNCBJnPS92wA-RReK7xS3xWfEUYw0ODjltUzg04GHck" target="_blank" rel="noopener" title="Arweave Metadata">Arweave Metadata</a>
+          <a href="https://arweave.net/Dyjkkm19ogbWp-qU08uYYp-ti-vCxLnnQclnw_JDJY0" target="_blank" rel="noopener" title="Arweave Media">Arweave Media</a>
+          <a href="https://etherscan.io/token/0xADD06c60872A81Dd883a9d731B5da08bE3Bf9Ca6?a=2" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/mint/eth/0x4e16D3B5B5f49060127EcF2Ad1E78D7182eDBda8/95" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/amparuche-95.jpg" alt="Amparuche #95" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Amparuche #95</span>
           <span class="card-artist">Collected</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmXNe6z8RfNzvj7vAx1MR9GqcB2ZoZdoEsWNmuxyQPsaUN/95.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmZ7kqnZFtNtvX3qBF7w1HuMf9agY41ZX6vqjUdGwY6J1h/95.png" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/token/0x4e16D3B5B5f49060127EcF2Ad1E78D7182eDBda8?a=95" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><video autoplay muted loop playsinline aria-label="Road - animated NFT artwork">
           <source src="../../assets/nft/compressed/eth-collection/road.mp4" type="video/mp4">
           Your browser does not support video.
@@ -540,25 +618,43 @@ a:hover { color: var(--gold-bright); }
           <span class="card-artist">Video Work</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmVUYLRKCEL8KZ3e5ghDqgiih5pWqEG418oXXb1kZTiqW1/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmXjbksto8waVgnHdkgYTEkTnGegaS9CyMCc6PYgLCjULh/nft.mp4" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/address/0x8653dd6cE3715C5EC9eF85A08dd788ACD8F1b48a" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><img src="../../assets/nft/compressed/eth-collection/forgive-me.jpg" alt="Forgive me" loading="lazy"></div>
         <div class="card-info">
           <span class="card-title">Forgive me</span>
           <span class="card-artist">by Ryanny Torna</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://zzrc6ygj6s3r6zpoetmgzahrsimpqam2yrsztp6ltdmsacl43kpa.arweave.net/zmIvYMn0tx9l7iTYbIDxkhj4AZrEZZm_y5jZIAl82p4" target="_blank" rel="noopener" title="Arweave Metadata">Arweave Metadata</a>
+          <a href="https://wgu33fzns62fpowzp354r2vzwvfyah65j565cyo6ib6fw3l3qz6q.arweave.net/sam9ly2XtFe62X77yOq5tUuAH91PfdFh3kB8W217hn0" target="_blank" rel="noopener" title="Arweave Media">Arweave Media</a>
+          <a href="https://etherscan.io/token/0xED8709776cc4ec981Ed7CFD106CB5b1F0a7F3c64?a=11" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
-      <a href="https://foundation.app/@cisnerosmusic" target="_blank" rel="noopener noreferrer" class="collection-card">
+      <div class="collection-card">
         <div class="card-media"><video autoplay muted loop playsinline aria-label="Zoetrope B5 NFT preview"><source src="../../assets/nft/compressed/eth-collection/zoetrope-b5.mp4" type="video/mp4"></video></div>
         <div class="card-info">
           <span class="card-title">Zoetrope B5</span>
           <span class="card-artist">Video Work</span>
           <span class="card-action">Visualizza su Foundation →</span>
         </div>
-      </a>
+      
+        <div class="nft-preservation">
+          <a href="https://dweb.link/ipfs/QmVzd4scE7DTybQjk2SreBVqQXGhhxsJaCKWs3yJnTp6Rf/metadata.json" target="_blank" rel="noopener" title="IPFS Metadata">IPFS Metadata</a>
+          <a href="https://dweb.link/ipfs/QmZoLDSSEML9jnFKQBBjf2CQp2c8fuSfGNvc9nATWMBjn5/nft.mp4" target="_blank" rel="noopener" title="IPFS Media">IPFS Media</a>
+          <a href="https://etherscan.io/address/0xe9206A6c70C5Eaac7DD0EEc3e72E8AD38255174a" target="_blank" rel="noopener" title="Etherscan">Etherscan</a>
+        </div>
+      </div>
 
     </div>
   </section>
