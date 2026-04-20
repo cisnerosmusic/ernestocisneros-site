@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO -->
+<title>Dónde vive realmente tu arte: Una anatomía de la permanencia digital | Ernesto Cisneros Cino</title>
+<meta name="description" content="Una guia sobre la infraestructura real detras de los NFTs: donde vive realmente tu arte, quién controla cada eslabon de la cadena, y qué pasa cuando uno desaparece. IPFS, Arweave, almacenamiento on-chain, metadatos, marketplaces y la filosofía de la permanencia. Por Ernesto Cisneros.">
+<meta name="keywords" content="almacenamiento NFT, IPFS, Arweave, Filecoin, arte on-chain, token URI, metadatos, pinning, permanencia NFT, almacenamiento descentralizado, Manifold, lazy minting, arte generativo, cierre de marketplaces, Foundation, preservación digital, criptoarte">
+<meta name="author" content="Ernesto Cisneros Cino">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/guide-where-your-art-lives-en.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/guide-where-your-art-lives-en.html">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ernesto Cisneros Cino - Compositor &amp; Criptoartista">
+<meta property="og:title" content="Dónde vive realmente tu arte: Una anatomía de la permanencia digital">
+<meta property="og:description" content="La infraestructura invisible detras de los NFTs. IPFS, Arweave, metadatos, marketplaces y la fragil cadena entre tu arte y la eternidad.">
+<meta property="og:url" content="https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="article:author" content="Ernesto Cisneros Cino">
+<meta property="article:published_time" content="2026-04-19T00:00:00Z">
+<meta property="article:section" content="Guias de Criptoarte">
+<meta property="article:tag" content="Almacenamiento NFT, IPFS, Arweave, Permanencia, Descentralización, Criptoarte, Metadatos">
+
+<!-- TWITTER / X CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ErnestCisneros1">
+<meta name="twitter:creator" content="@ErnestCisneros1">
+<meta name="twitter:title" content="Dónde vive realmente tu arte: Una anatomía de la permanencia digital">
+<meta name="twitter:description" content="IPFS, Arweave, metadatos, marketplaces y la filosofía de la permanencia digital para criptoartistas.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<!-- SCHEMA.ORG JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html#article",
+      "headline": "Dónde vive realmente tu arte: Una anatomía de la permanencia digital",
+      "description": "Una guia sobre la infraestructura real detras de los NFTs: donde vive realmente tu arte, quién controla cada eslabon, y qué pasa cuando uno desaparece. Cubre IPFS, Arweave, Filecoin, almacenamiento on-chain, arquitectura de metadatos, historia de marketplaces, Manifold, lazy minting y la filosofía de la permanencia.",
+      "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
+      "datePublished": "2026-04-19T00:00:00Z",
+      "dateModified": "2026-04-19T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "@id": "https://ernestocisneros.art/#person",
+        "name": "Ernesto Cisneros Cino",
+        "url": "https://ernestocisneros.art/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://ernestocisneros.art/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html"
+      },
+      "inLanguage": "es"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ernestocisneros.art/es/"},
+        {"@type": "ListItem", "position": 2, "name": "Recursos NFT", "item": "https://ernestocisneros.art/es/nft/resources.html"},
+        {"@type": "ListItem", "position": 3, "name": "Dónde vive realmente tu arte", "item": "https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f4f1ea;
+  --bg-card: #ffffff;
+  --bg-code: #1c1a17;
+  --ink: #1c1a17;
+  --ink-soft: #4a4540;
+  --ink-muted: #8a837a;
+  --accent: #a84d2a;
+  --accent-dark: #7d3a20;
+  --gold: #b08d4c;
+  --line: #d8d0c0;
+  --ok: #4a6b3a;
+  --warn: #a84d2a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; line-height: 1.65; padding: 0; margin: 0; }
+.lang-toggle { position: fixed; top: 16px; right: 16px; z-index: 100; background: rgba(28, 26, 23, 0.95); backdrop-filter: blur(12px); padding: 10px 14px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; border: 1px solid rgba(176, 141, 76, 0.25); display: flex; gap: 2px; line-height: 1; }
+.lang-toggle a { color: var(--gold); border-bottom: none; padding: 4px 6px; opacity: 0.45; transition: opacity 0.2s; font-size: 10px; border-radius: 4px; }
+.lang-toggle a:hover { opacity: 1; background: rgba(176, 141, 76, 0.12); }
+.lang-toggle a.active { opacity: 1; font-weight: 600; background: rgba(176, 141, 76, 0.18); }
+.hero { background: linear-gradient(180deg, #1c1a17 0%, #2a2520 100%); color: #f4f1ea; padding: 80px 24px 70px; position: relative; overflow: hidden; border-bottom: 3px double var(--gold); }
+.hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 20% 30%, rgba(176, 141, 76, 0.08) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(168, 77, 42, 0.06) 0%, transparent 40%); pointer-events: none; }
+.hero-content { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before, .hero-eyebrow::after { content: ""; height: 1px; background: var(--gold); flex: 1; opacity: 0.4; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 500; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.01em; }
+.hero h1 em { color: var(--gold); font-style: italic; font-weight: 400; }
+.hero-subtitle { font-size: 20px; line-height: 1.5; color: #d8d0c0; font-style: italic; max-width: 640px; margin-bottom: 36px; }
+.hero-author { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-muted); letter-spacing: 0.1em; border-top: 1px solid rgba(216, 208, 192, 0.2); padding-top: 20px; max-width: 640px; }
+.hero-author strong { color: #d8d0c0; font-weight: 500; }
+.hero-author a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.hero-author a:hover { color: var(--gold); }
+.container { max-width: 820px; margin: 0 auto; padding: 60px 24px 120px; }
+.intro { padding: 36px 40px; background: var(--bg-card); border-left: 4px solid var(--accent); margin-bottom: 70px; box-shadow: 0 2px 20px rgba(28, 26, 23, 0.04); }
+.intro p { margin-bottom: 16px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro strong { color: var(--accent-dark); font-weight: 600; }
+.section { margin-bottom: 72px; scroll-margin-top: 20px; }
+.section-number { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; display: block; }
+.section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 40px); font-weight: 600; line-height: 1.15; margin-bottom: 16px; color: var(--ink); letter-spacing: -0.01em; }
+.section-intro { font-size: 20px; color: var(--ink-soft); font-style: italic; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.section h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-top: 36px; margin-bottom: 14px; color: var(--ink); }
+.section p { margin-bottom: 18px; color: var(--ink); }
+.section ul, .section ol { margin-left: 24px; margin-bottom: 22px; }
+.section li { margin-bottom: 10px; }
+.section strong { font-weight: 600; color: var(--ink); }
+.section em { font-style: italic; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(168, 77, 42, 0.3); transition: all 0.2s; }
+a:hover { color: var(--accent-dark); border-bottom-color: var(--accent-dark); }
+pre, code { font-family: 'JetBrains Mono', monospace; }
+code { background: #ebe4d4; color: var(--accent-dark); padding: 2px 7px; border-radius: 3px; font-size: 14px; word-break: break-all; }
+.code-block { background: var(--bg-code); color: #d8d0c0; padding: 22px 26px; border-radius: 4px; margin: 22px 0; overflow-x: auto; font-size: 13.5px; line-height: 1.7; position: relative; border-left: 3px solid var(--gold); }
+.code-block code { background: transparent; color: #d8d0c0; padding: 0; font-size: inherit; }
+.code-label { position: absolute; top: 10px; right: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; }
+.callout { padding: 22px 28px; margin: 26px 0; border-radius: 4px; position: relative; }
+.callout-label { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 8px; display: block; font-weight: 600; }
+.callout-warn { background: #fdf4ed; border-left: 3px solid var(--warn); }
+.callout-warn .callout-label { color: var(--warn); }
+.callout-ok { background: #f0f2ea; border-left: 3px solid var(--ok); }
+.callout-ok .callout-label { color: var(--ok); }
+.callout-info { background: #ede4d0; border-left: 3px solid var(--gold); }
+.callout-info .callout-label { color: var(--accent-dark); }
+.callout p { margin-bottom: 10px; }
+.callout p:last-child { margin-bottom: 0; }
+.diagram { background: var(--bg-card); border: 1px solid var(--line); padding: 28px; margin: 26px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 2; color: var(--ink-soft); overflow-x: auto; }
+.diagram .arrow { color: var(--gold); font-weight: 600; }
+.diagram .label { display: inline-block; background: var(--bg-code); color: #d8d0c0; padding: 4px 14px; border-radius: 4px; margin: 4px; font-size: 12px; }
+.diagram .label-gold { background: rgba(176, 141, 76, 0.15); color: var(--accent-dark); border: 1px solid rgba(176, 141, 76, 0.3); }
+.toc { background: var(--bg-card); padding: 32px 36px; margin-bottom: 60px; border-top: 3px solid var(--gold); border-bottom: 1px solid var(--line); }
+.toc-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.3em; color: var(--ink-muted); text-transform: uppercase; margin-bottom: 18px; }
+.toc ol { list-style: none; margin-left: 0; counter-reset: toc-counter; }
+.toc li { counter-increment: toc-counter; padding: 10px 0; border-bottom: 1px dotted var(--line); display: flex; align-items: baseline; gap: 16px; }
+.toc li:last-child { border-bottom: none; }
+.toc li::before { content: counter(toc-counter, decimal-leading-zero); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); min-width: 30px; }
+.toc a { border-bottom: none; color: var(--ink); font-size: 18px; flex: 1; }
+.toc a:hover { color: var(--accent); }
+footer { background: #1c1a17; color: #d8d0c0; padding: 60px 24px; text-align: center; border-top: 3px double var(--gold); }
+footer p { max-width: 640px; margin: 0 auto 16px; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; line-height: 1.6; }
+footer .signature { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-top: 24px; }
+footer a { color: var(--gold); border-bottom: 1px solid rgba(176, 141, 76, 0.4); }
+.divider { text-align: center; margin: 60px 0; color: var(--gold); font-size: 18px; letter-spacing: 0.5em; }
+.data-table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 16px; }
+.data-table th { background: var(--bg-code); color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 16px; text-align: left; }
+.data-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table code { font-size: 12px; }
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .hero { padding: 60px 20px 50px; }
+  .container { padding: 40px 20px 80px; }
+  .intro { padding: 24px 26px; }
+  .toc { padding: 24px 24px; }
+  .code-block { padding: 18px 20px; font-size: 12px; }
+  .section ul, .section ol { margin-left: 18px; }
+  .lang-toggle { top: 10px; right: 10px; padding: 8px 10px; font-size: 9px; }
+  .lang-toggle a { padding: 3px 4px; font-size: 9px; }
+  .data-table { font-size: 14px; }
+  .data-table th, .data-table td { padding: 8px 10px; }
+  .diagram { padding: 18px; font-size: 12px; }
+}
+@media print {
+  body { background: white; font-size: 11pt; }
+  .hero { background: white; color: black; padding: 30px 0; border-bottom: 2px solid black; }
+  .hero h1 em { color: black; }
+  .hero-subtitle, .hero-author { color: black; }
+  footer { background: white; color: black; }
+  .code-block { background: #f0f0f0; color: black; border: 1px solid #ccc; }
+  a { color: black; text-decoration: underline; }
+  .section { page-break-inside: avoid; }
+  .lang-toggle { display: none; }
+}
+</style>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+</head>
+<body>
+
+<div class="lang-toggle">
+  <a href="/guide-where-your-art-lives-en.html" rel="alternate" hreflang="en">EN</a>
+  <a href="#" class="active" rel="alternate" hreflang="es">ES</a>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Guía enciclopédica - 2026</div>
+    <h1>Dónde vive realmente tu <em>arte</em></h1>
+    <p class="hero-subtitle">Una anatomía de la permanencia digital. La cadena invisible de eslabones entre tu creación y la eternidad, quién controla cada uno, y qué pasa cuando se rompen.</p>
+    <p class="hero-author"><strong>Por <a href="https://ernestocisneros.art/es/nft.html" target="_blank" rel="noopener">Ernesto Cisneros Cino</a></strong> - Compositor, criptoartista, fundador de Impulses.art - Abril 2026</p>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="intro">
+  <p><strong>En enero de 2026, Foundation, Nifty Gateway y MakersPlace cerraron con dias de diferencia.</strong> Cientos de miles de NFTs necesitaron de pronto un nuevo hogar. ¿Los artistas que habían confiado su trabajo de años a estas plataformas se enfrentaron a una pregunta incomoda: dónde estaba el arte, exactamente?</p>
+  <p>La respuesta, en la mayoría de los casos, no era "en la blockchain". El token estaba allí, sí. Pero el arte en si, la imagen, la animacion, el sonido, estaba en otro lugar completamente distinto. Esta guía mapea ese "otro lugar", eslabón por eslabón, desde el contrato inteligente hasta la pantalla del coleccionista, revelando <strong>quién controla que y qué pasa cuando cada pieza desaparece</strong>.</p>
+  <p>Porque la diferencia entre un NFT que sobrevive decadas y uno que se convierte en un enlace roto no es suerte. Es arquitectura.</p>
+</section>
+
+<nav class="toc">
+  <div class="toc-title">Contenido</div>
+  <ol>
+    <li><a href="#s1">La ilusión de la permanencia</a></li>
+    <li><a href="#s2">La cadena de eslabones: Del contrato a la pantalla</a></li>
+    <li><a href="#s3">¿Qué hay realmente en la blockchain?</a></li>
+    <li><a href="#s4">El Token URI: La línea de código más importante</a></li>
+    <li><a href="#s5">IPFS: La promesa del direccionamiento descentralizado</a></li>
+    <li><a href="#s6">El problema del pinning: ¿Quién mantiene las luces encendidas?</a></li>
+    <li><a href="#s7">Arweave: Paga una vez, almacena para siempre</a></li>
+    <li><a href="#s8">Filecoin y la nube descentralizada</a></li>
+    <li><a href="#s9">Otros modelos de almacenamiento: Sia, Storj y más</a></li>
+    <li><a href="#s10">Totalmente on-chain: Cuando el arte es el contrato</a></li>
+    <li><a href="#s11">¿Por qué es tan difícil tener arte en la blockchain</a></li>
+    <li><a href="#s12">Arte generativo: La excepción elegante</a></li>
+    <li><a href="#s13">¿Qué ofrece el marketplace (y qué no)</a></li>
+    <li><a href="#s14">El cementerio: Una historia de cierres de marketplaces</a></li>
+    <li><a href="#s15">Manifold y el contrato propiedad del artista</a></li>
+    <li><a href="#s16">Lazy minting: La compensación invisible</a></li>
+    <li><a href="#s17">Un kit de supervivencia para artistas</a></li>
+    <li><a href="#s18">La filosofía de la permanencia digital</a></li>
+  </ol>
+</nav>
+
+<!-- ==================== CAPITULO 1 ==================== -->
+<section class="section" id="s1">
+  <span class="section-number">Capítulo I</span>
+  <h2>La ilusión de la permanencia</h2>
+  <p class="section-intro">Nos dijeron que la blockchain era para siempre. Eso era la mitad de la verdad.</p>
+
+  <p>El discurso era seductor: mintea tu arte como NFT, y vivira en la blockchain para siempre. Inmutable. Incensurable. Eterno. Para un artista, esto era embriagador. Tras siglos de cuadros pudriéndose en almacenes, de negativos perdidos en inundaciones, de discos duros fallando a las tres de la mañana, aquí había una tecnología que prometia la permanencia como característica, no como esperanza.</p>
+  <p>Pero la promesa contenia un truco de manos. El <em>token</em> está en la blockchain. El registro que dice "la wallet 0xABC posee el token #42 del contrato 0xDEF" es, efectivamente, permanente e inmutable, almacenado en decenas de miles de nodos por todo el mundo. Ese registro sobrevivirá mientras Ethereum (o Solana, o Tezos, o Bitcoin) sobreviva.</p>
+  <p>El arte, sin embargo, casi nunca está en la blockchain. Esta en otro lugar: un servidor, una red peer-to-peer, un protocolo de almacenamiento permanente. El token simplemente <em>apunta</em> al arte. Y un puntero solo vale lo que aquello a lo que apunta.</p>
+  <p>Esta distincion, entre el token y el arte, entre el recibo y la cosa en si, es el concepto más importante de está guía. Todo lo que sigue es una elaboracion de está única verdad incomoda: <strong>tu NFT es un puntero, y los punteros se pueden romper.</strong></p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Una metáfora útil</span>
+    <p>Piensa en un NFT cómo una escritura de propiedad. La escritura está archivada en el registro civil (la blockchain). Registra quien posee que, y es permanente. Pero la escritura no es la casa. Si la casa se quema, la escritura sigue existiendo. Simplemente apunta a escombros. En el mundo de los NFTs, la "casa" es el archivo de tu obra, y está almacenado en un lugar mucho menos permanente que la blockchain.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 2 ==================== -->
+<section class="section" id="s2">
+  <span class="section-number">Capítulo II</span>
+  <h2>La cadena de eslabones: Del contrato a la pantalla</h2>
+  <p class="section-intro">Cada vez que alguien visualiza tu NFT, una secuencia invisible de peticiones se dispara a traves de internet. Entender está cadena es entender dónde pueden romperse las cosas.</p>
+
+  <div class="diagram">
+    <span class="label-gold">Contrato inteligente</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Token URI</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Metadatos JSON</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">URL de la imagen</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Tu arte</span>
+    <br>
+    <span style="font-size: 11px; color: var(--ink-muted);">On-chain &nbsp;|&nbsp; Puntero &nbsp;|&nbsp; JSON off-chain &nbsp;|&nbsp; Otro puntero &nbsp;|&nbsp; El archivo real</span>
+  </div>
+
+  <h3>Eslabón 1: El contrato inteligente</h3>
+  <p>El contrato vive en la blockchain. Almacena el mapeo de IDs de tokens a propietarios y proporciona una función llamada <code>tokenURI()</code> que devuelve una URL para cada token. Este es el punto de partida. Es permanente e inmutable (a menos que el contrato sea actualizable o tenga una función <code>setBaseURI</code>, cómo se explica en la guía de Contratos Inteligentes).</p>
+
+  <h3>Eslabón 2: El Token URI</h3>
+  <p>La URL devuelta por <code>tokenURI()</code> apunta a un archivo JSON. Esta URL puede empezar con <code>https://</code> (un servidor web), <code>ipfs://</code> (la red IPFS), <code>ar://</code> (Arweave), o <code>data:</code> (base64 inline, totalmente on-chain). Cada prefijo tiene implicaciones radicalmente distintas para la permanencia.</p>
+
+  <h3>Eslabón 3: Los metadatos JSON</h3>
+  <p>El archivo JSON contiene el nombre, la descripción, los atributos, y el campo <code>image</code>, qué es otra URL mas. Este es el segundo puntero: los metadatos apuntan al archivo de arte real. Algunas plataformas también incluyen <code>animation_url</code> para videos y piezas interactivas.</p>
+
+  <h3>Eslabón 4: El archivo de la obra</h3>
+  <p>Finalmente, la imagen, video o archivo HTML real. Esto es lo que el coleccionista ve. Esto es lo que tiene valor estético. Y este es el eslabón más frágil de la cadena.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Dos puntos de fallo</span>
+    <p>Hay como mínimo dos eslabones off-chain en está cadena: los metadatos JSON y el archivo de la obra. Cualquiera puede romperse independientemente. Puedes tener metadatos que cargan pero una imagen qué no, resultando en un NFT que muestra su nombre y descripción pero muestra un icono de imagen rota. También puedes tener metadatos que fallan por completo, dejando el NFT cómo una cascara vacia en la blockchain.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 3 ==================== -->
+<section class="section" id="s3">
+  <span class="section-number">Capítulo III</span>
+  <h2>¿Qué hay realmente en la blockchain?</h2>
+  <p class="section-intro">Menos de lo que piensas. Entender esto previene la idea erronea más comun en el criptoarte.</p>
+
+  <p>Para un NFT ERC-721 típico en Ethereum, los siguientes datos se almacenan on-chain: el bytecode del contrato (su lógica), el mapeo de IDs de tokens a direcciones de propietarios, el token URI de cada token (un string, normalmente una URL), datos de aprobacion (quién tiene permiso para transferir que tokens) y registros de eventos (el historial de transferencias, mints y burns).</p>
+  <p>Eso es todo. La imagen no está ahí. La descripción no está ahí. Los atributos no están ahí. El nombre del artista a menudo no está ahí (puede estar en los metadatos off-chain). Todo el contenido estético del NFT, la razon por la que alguien se interesa en el, está almacenado en otro lugar.</p>
+
+  <h3>¿Cuántos datos puedes almacenar?</h3>
+  <p>El limite práctico de Ethereum para desplegar contratos es aproximadamente 24 KB de bytecode (EIP-170). Puedes almacenar datos adicionales en el storage del contrato, pero el coste es asombroso: aproximadamente 640,000 gas por 32 bytes, que a precios típicos de gas se traduce en varios dólares por kilobyte. Almacenar una imagen de 5 MB en Ethereum costaría miles de dólares solo en gas.</p>
+  <p>Esta es la restricción fundamental: <strong>las blockchains están diseñadas para el consenso, no para el almacenamiento.</strong> Están optimizadas para asegurar que cada nodo este de acuerdo sobre el estado del mundo, no para guardar archivos grandes. Usar una blockchain como sistema de almacenamiento de archivos es como usar una sentencia del Tribunal Supremo para recordar la lista de la compra: tecnicamente posible, absurdamente caro y arquitectonicamente equivocado.</p>
+
+  <div class="code-block">
+    <span class="code-label">Comparacion de costes</span>
+    <code>Almacenar 1 MB de datos:
+    Ethereum mainnet:    ~$5,000 - $50,000 (dependiendo del gas)
+    IPFS + Pinata:       ~$0.00 - $0.15/mes
+    Arweave:             ~$0.08 pago único
+    Servidor centralizado: ~$0.00003/mes (precios S3)</code>
+  </div>
+
+  <p>Esta disparidad de costes no es un bug. Es una característica. El gasto de la blockchain refleja la extraordinaria redundancia computacional de tener miles de nodos verificando y almacenando cada byte. Esa redundancia es valiosa para registros de propiedad (datos pequeños y críticos). Es un desperdicio para archivos de arte (datos grandes y estáticos).</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 4 ==================== -->
+<section class="section" id="s4">
+  <span class="section-number">Capítulo IV</span>
+  <h2>El Token URI: La línea de código más importante</h2>
+  <p class="section-intro">Este único string determina si tu arte sobrevive decadas o desaparece cuando una empresa cambia de rumbo.</p>
+
+  <p>El token URI es el puente entre el mundo blockchain y el mundo del almacenamiento de archivos. Se ve así:</p>
+
+  <div class="code-block">
+    <span class="code-label">Ejemplos de Token URI</span>
+    <code>Centralizado (frágil):
+    https://api.foundation.app/metadata/0x3B3e...c7/42
+
+IPFS (necesita pinning):
+    ipfs://QmX4z...kP9/42.json
+
+Arweave (permanente):
+    ar://bNz7G...xQ4
+
+Totalmente on-chain (lo más permanente):
+    data:application/json;base64,eyJuYW1lIjoiTXkg...</code>
+  </div>
+
+  <h3>El problema del HTTPS</h3>
+  <p>Un token URI que empieza con <code>https://</code> apunta al servidor de una empresa específica. Cuando Foundation cerró en enero de 2026, cada token URI que apuntaba a <code>api.foundation.app</code> se convirtió en un enlace potencialmente muerto. La empresa anunció un plan de transición (transferencia a BlackDove), pero el problema fundamental permanece: una URL centralizada es un único punto de fallo controlado por una única entidad.</p>
+
+  <h3>¿Se puede cambiar el Token URI?</h3>
+  <p>Depende del contrato. Algunos contratos tienen una función <code>setBaseURI</code> o <code>setTokenURI</code> que permite al propietario del contrato cambiar a donde apuntan los tokens. Esto es un arma de doble filo: significa que la plataforma puede migrar tu arte a un nuevo sistema de almacenamiento (útil cuando una empresa hace la transición), pero también significa que alguien puede reemplazar tu arte con otra cosa (peligroso si la clave está comprometida o el propietario es malicioso).</p>
+  <p>Los contratos que "congelan" los metadatos (haciendo el URI permanentemente inmodificable) ofrecen la garantia más fuerte, pero también eliminan la via de escape si la capa de almacenamiento falla.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 5 ==================== -->
+<section class="section" id="s5">
+  <span class="section-number">Capítulo V</span>
+  <h2>IPFS: La promesa del direccionamiento descentralizado</h2>
+  <p class="section-intro">IPFS cambio nuestra forma de pensar sobre los archivos en internet. Pero no resolvio el problema de la permanencia. Entender por que requiere entender qué es y qué no es IPFS.</p>
+
+  <h3>Direccionamiento por contenido vs direccionamiento por ubicacion</h3>
+  <p>La web tradicional usa direccionamiento por ubicacion: una URL te dice <em>donde</em> está un archivo (en que servidor, en que ruta). Si el servidor se mueve o muere, la URL se rompe. IPFS usa direccionamiento por contenido: un CID (Content Identifier) es un hash criptográfico del contenido del archivo. Te dice <em>que</em> es el archivo, no donde está. Cualquier nodo de la red que tenga una copia puede servirlo.</p>
+  <p>Este es un cambio profundo. La dirección IPFS de un archivo nunca cambia porque se deriva del propio archivo. Si cambia un solo byte, el CID cambia. Esto hace que las direcciones IPFS sean inherentemente a prueba de manipulación: puedes verificar que el archivo que recibiste es exactamente el archivo que describe el CID.</p>
+
+  <h3>Lo que IPFS no es</h3>
+  <p>IPFS <strong>no es un sistema de almacenamiento.</strong> Este es el error más comun. IPFS es un protocolo para encontrar y recuperar archivos a traves de una red distribuida. No garantiza que alguien este almacenando tu archivo. ¿Es un lenguaje para preguntar "¿alguien tiene el archivo X?" Si nadie lo tiene, el archivo está efectivamente perdido, aunque su CID siga existiendo.</p>
+  <p>Piénsalo así: IPFS es una guía telefónica que lista nombres (CIDs) y te permite encontrar personas (nodos con el archivo). Pero la guía telefónica no garantiza que alguien este en casa.</p>
+
+  <h3>Gateways: El puente al navegador</h3>
+  <p>Los navegadores no entienden nativamente las URLs <code>ipfs://</code>. Para ver contenido IPFS, necesitas un gateway: un servidor que busca en la red IPFS y lo sirve por HTTP. Los gateways comunes incluyen <code>ipfs.io</code>, <code>dweb.link</code>, <code>cloudflare-ipfs.com</code> y <code>nftstorage.link</code>. Si el gateway se cae, no puedes acceder al archivo a traves de ese gateway, aunque el archivo siga disponible en la red.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">¿Por qué IPFS y no otra cosa?</span>
+    <p>IPFS se convirtió en el estándar para NFTs por timing y encaje. Se lanzó en 2015 (el mismo año que Ethereum), era de código abierto, su modelo de direccionamiento por contenido se alineaba filosoficamente con el ethos trustless de la blockchain, y Protocol Labs (creadores de IPFS) cortejaron activamente a la comunidad NFT. Para cuando las alternativas maduraron, IPFS ya estaba atrincherado como el estándar.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 6 ==================== -->
+<section class="section" id="s6">
+  <span class="section-number">Capítulo VI</span>
+  <h2>El problema del pinning: ¿Quién mantiene las luces encendidas?</h2>
+  <p class="section-intro">Un archivo IPFS sin un pinner es un pensamiento sin pensador. Existe en teoria pero en ninguna parte en la práctica.</p>
+
+  <h3>¿¿Qué es el pinning?</h3>
+  <p>Cuando un nodo IPFS almacena un archivo y lo pone disponible para la red, está haciendo "pinning" de ese archivo. Pinear es un compromiso activo y continuo: el nodo debe permanecer online, el almacenamiento debe seguir asignado, y el operador debe continuar pagando por la infraestructura. Si todos los nodos que pinean un archivo dejan de pinearlo, el archivo desaparece de la red.</p>
+
+  <h3>Servicios de pinning</h3>
+  <p>Dado que ejecutar tu propio nodo IPFS 24/7 es impracticable para la mayoría de los artistas, surgieron los servicios de pinning: empresas que pinean archivos en tu nombre a cambio de una tarifa. Los principales servicios de pinning incluyen:</p>
+  <ul>
+    <li><strong>Pinata</strong>: El servicio de pinning comercial más popular. Ofrece un plan gratuito (almacenamiento limitado) y planes de pago. Fiable, con API bien documentada.</li>
+    <li><strong>Infura IPFS</strong>: Parte de la suite de infraestructura de Consensys. Popular entre desarrolladores.</li>
+    <li><strong>Filebase</strong>: Multi-protocolo (IPFS, Arweave, Sia, Storj) con API compatible con S3.</li>
+    <li><strong>web3.storage</strong>: Almacena datos tanto en IPFS como en Filecoin para redundancia.</li>
+  </ul>
+
+  <h3>La historia de NFT.Storage: Un cuento con moraleja</h3>
+  <p>NFT.Storage, creado por Protocol Labs, fue el servicio de pinning gratuito más importante para NFTs. Ofrecia almacenamiento gratuito ilimitado específicamente para datos NFT, pineando archivos tanto en IPFS como en Filecoin. Millones de NFTs dependian de el.</p>
+  <p>En junio de 2024, NFT.Storage desactivó su servicio de subida. No más pins nuevos. Los datos existentes permanecieron accesibles a traves del gateway y en Filecoin, pero el servicio advirtió que "con el tiempo, la latencia y disponibilidad podrían degradarse". La transición a asociaciones con Pinata y Lighthouse ayudo, pero el mensaje fue claro: <strong>el pinning gratuito y perpetuo no es un modelo de negocio sostenible.</strong></p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">La economía de la permanencia</span>
+    <p>El pinning cuesta dinero, continuamente. Alguien paga por los servidores, el ancho de banda, la electricidad. Cuando ese alguien es una startup quemando capital de riesgo, la permanencia de tu arte depende de la pista de aterrizaje de la startup. Cuando se acaba el dinero del VC, los pins pueden seguir el mismo camino. Esto no es cinismo. Es la realidad económica de la infraestructura.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 7 ==================== -->
+<section class="section" id="s7">
+  <span class="section-number">Capítulo VII</span>
+  <h2>Arweave: Paga una vez, almacena para siempre</h2>
+  <p class="section-intro">La proposición radical de Arweave: un pago único para almacenamiento permanente. Entender su modelo revela tanto sus fortalezas como sus suposiciones.</p>
+
+  <h3>El modelo de dotación</h3>
+  <p>Cuando subes datos a Arweave, pagas una tarifa única en tokens AR. Esta tarifa va a un fondo de dotación que genera recompensas continuas de almacenamiento para los mineros. El modelo económico se basa en una suposicion clave: el coste del almacenamiento de datos disminuye con el tiempo (históricamente, los costes de almacenamiento han bajado aproximadamente un 30% al año). La dotación está dimensionada para cubrir los costes de almacenamiento durante al menos 200 años con estimaciones conservadoras de reducción de costes.</p>
+  <p>A principios de 2026, almacenar 100 MB en Arweave cuesta aproximadamente $8 en tokens AR. Sin tarifas mensuales, sin renovaciones, sin suscripciones. Pagas una vez, y los incentivos económicos de la red están diseñados para mantener tus datos disponibles indefinidamente.</p>
+
+  <h3>Cómo funciona</h3>
+  <p>Arweave usa una estructura llamada "blockweave" (una variación de una blockchain) donde cada bloque contiene datos de transacciones. Los mineros son recompensados tanto por procesar transacciones como por almacenar datos históricos. El mecanismo de consenso Succinct Proofs of Random Access (SPoRA) requiere que los mineros demuestren que almacenan fragmentos aleatorios del historial del weave, incentivandolos a almacenar tanto dato cómo sea posible.</p>
+
+  <h3>Arweave AO: La capa de computación</h3>
+  <p>En 2025, Arweave lanzó AO (Actor Oriented), una capa de computación hiperparalela construida sobre su almacenamiento permanente. AO permite aplicaciones descentralizadas que usan el almacenamiento de Arweave como capa de datos permanente. Para los NFTs, esto abre posibilidades como arte generativo alojado permanentemente que ejecuta computaciones directamente en la infraestructura de Arweave.</p>
+
+  <h3>Herramientas para artistas</h3>
+  <p><strong>ArDrive</strong> es el camino más amigable hacia Arweave. Proporciona una capa de sistema de archivos (ArFS), subidas de arrastrar y soltar, y opciones de pago en fiat a traves del bundling Turbo. No necesitas tener tokens AR ni entender los detalles técnicos para usarlo.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Buena práctica</span>
+    <p>El estándar emergente para proyectos NFT serios es el almacenamiento hibrido: metadatos en Arweave para permanencia, con una copia en IPFS para recuperación rápida a traves de los gateways existentes. Nifty Gateway, antes de cerrar, anunció que migraria todos los metadatos y medios NFT a Arweave. Art Blocks usa Arweave para el almacenamiento a largo plazo de scripts de arte generativo.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 8 ==================== -->
+<section class="section" id="s8">
+  <span class="section-number">Capítulo VIII</span>
+  <h2>Filecoin y la nube descentralizada</h2>
+  <p class="section-intro">Construido por el mismo equipo detras de IPFS, Filecoin anade lo que a IPFS le falta: incentivos económicos para los proveedores de almacenamiento.</p>
+
+  <h3>La capa económica</h3>
+  <p>Dónde IPFS es un protocolo (sin incentivos integrados), Filecoin es una blockchain con un token nativo (FIL) que crea un mercado para el almacenamiento. Los proveedores de almacenamiento ganan FIL comprometiendo espacio en disco y demostrando que almacenan los datos fielmente. Deben depositar una garantia que se confisca (slash) si no mantienen los datos, creando una penalización financiera por negligencia.</p>
+
+  <h3>En que se diferencia Filecoin de Arweave</h3>
+  <p>Filecoin usa un modelo de alquiler: pagas por acuerdos de almacenamiento con duraciones específicas. Cuando un acuerdo expira, debes renovarlo o los datos se vuelven inaccesibles. Esto es fundamentalmente diferente del pago único de Arweave. La compensación: Filecoin es más barato para grandes volúmenes de datos y ofrece más flexibilidad, pero requiere atencion continua a la gestion de acuerdos.</p>
+
+  <h3>La hoja de ruta 2026: Onchain Cloud</h3>
+  <p>A principios de 2026, Filecoin anunció su iniciativa "Onchain Cloud", posicionandose cómo una alternativa full-stack descentralizada a AWS, Google Cloud y Azure. Para los NFTs, esto significa no solo almacenamiento sino también computación, recuperación tipo CDN y procesamiento de datos, todo sobre infraestructura descentralizada.</p>
+
+  <div class="data-table-wrapper" style="overflow-x:auto;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Característica</th>
+        <th>IPFS</th>
+        <th>Filecoin</th>
+        <th>Arweave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tipo</strong></td>
+        <td>Protocolo</td>
+        <td>Blockchain + Mercado</td>
+        <td>Blockchain + Dotación</td>
+      </tr>
+      <tr>
+        <td><strong>Pago</strong></td>
+        <td>Ninguno (autoalojas o usas un servicio)</td>
+        <td>Periódico (basado en acuerdos)</td>
+        <td>Pago único</td>
+      </tr>
+      <tr>
+        <td><strong>Permanencia</strong></td>
+        <td>Solo si está pineado</td>
+        <td>Duracion del acuerdo</td>
+        <td>Disenado para 200+ años</td>
+      </tr>
+      <tr>
+        <td><strong>Coste (100 MB)</strong></td>
+        <td>$0-2/mes (pinning)</td>
+        <td>~$0.01/mes</td>
+        <td>~$8 pago único</td>
+      </tr>
+      <tr>
+        <td><strong>Ideal para</strong></td>
+        <td>Recuperacion rápida, resistencia a censura</td>
+        <td>Almacenamiento a gran escala, renovable</td>
+        <td>Archivos permanentes</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 9 ==================== -->
+<section class="section" id="s9">
+  <span class="section-number">Capítulo IX</span>
+  <h2>Otros modelos de almacenamiento: Sia, Storj y más</h2>
+  <p class="section-intro">IPFS, Filecoin y Arweave dominan la conversacion, pero no son las unicas opciones.</p>
+
+  <h3>Sia</h3>
+  <p>Sia (ahora parte del ecosistema Skynet) usa un modelo de alquiler donde los hosts compiten para ofrecer almacenamiento a precios de mercado. Los datos se cifran, se dividen en fragmentos y se distribuyen entre multiples hosts con redundancia. Si un host individual se desconecta, los datos permanecen disponibles desde otros fragmentos. La ventaja de Sia es una fuerte privacidad (cifrado por defecto) y precios competitivos.</p>
+
+  <h3>Storj</h3>
+  <p>Storj (se pronuncia "storage") adopta un enfoque similar: los archivos se cifran, se dividen en 80 piezas (de las cuales solo 29 son necesarias para reconstruir el archivo) y se distribuyen globalmente. Storj es compatible con S3, lo qué significa que cualquier aplicación que funcione con Amazon S3 puede usar Storj como reemplazo directo. En 2026, Storj añadió pinning de IPFS cómo servicio, tendiendo un puente entre el almacenamiento empresarial y el ecosistema NFT.</p>
+
+  <h3>Inscripciones en Bitcoin</h3>
+  <p>Cómo se explica en la guía de Contratos Inteligentes, las inscripciones Ordinals almacenan datos directamente en los datos witness de Bitcoin. Este es posiblemente el almacenamiento más permanente disponible: hereda el presupuesto de seguridad de Bitcoin (el más grande en criptomonedas) y no puede ser eliminado por ninguna entidad. El coste es alto (una imagen de 100 KB puede costar $20-100+ dependiendo del nivel de comisiónes), y hay objeciones culturales de los puristas de Bitcoin, pero para artistas que priorizan la permanencia por encima de todo, Bitcoin es la bóveda definitiva.</p>
+
+  <h3>¿Por qué no usar simplemente un proveedor cloud?</h3>
+  <p>Algunos proyectos almacenan metadatos en AWS S3, Google Cloud o Cloudflare. Son fiables, rápidos y baratos. Pero introducen una dependencia corporativa: el proveedor puede cambiar los términos, subir precios o ser obligado por gobiernos a eliminar contenido. Para arte que pretende ser permanente e incensurable, el almacenamiento cloud centralizado contradice el propósito. Sin embargo, como capa de cache caliente frente al almacenamiento descentralizado, los proveedores cloud pueden mejorar el rendimiento sin sacrificar la permanencia.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 10 ==================== -->
+<section class="section" id="s10">
+  <span class="section-number">Capítulo X</span>
+  <h2>Totalmente on-chain: Cuando el arte es el contrato</h2>
+  <p class="section-intro">La forma más pura de permanencia digital: la obra de arte existe enteramente dentro de la blockchain misma. Sin dependencias externas. Sin enlaces que romper.</p>
+
+  <h3>Cómo funciona</h3>
+  <p>En lugar de almacenar una URL en el token URI, los NFTs totalmente on-chain codifican los datos de la obra directamente. El enfoque más comun es codificar la imagen (o SVG, o HTML) en base64 e incrustarla en el JSON de metadatos, que a su vez se codifica en base64 y se devuelve como URI <code>data:</code>.</p>
+
+  <div class="code-block">
+    <span class="code-label">Token URI on-chain</span>
+    <code>data:application/json;base64,eyJuYW1lIjoiT24tQ2hhaW4g
+QXJ0IiwiZGVzY3JpcHRpb24iOiJUaGlzIGFydHdvcmsgbGl2
+ZXMgZW50aXJlbHkgb24gdGhlIGJsb2NrY2hhaW4uIiwiaW1h
+Z2UiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LC4uLiJ9</code>
+  </div>
+
+  <h3>Pioneros</h3>
+  <p><strong>Autoglyphs</strong> (2019) de Larva Labs fue el primer proyecto de arte generativo totalmente on-chain en Ethereum. El algoritmo vive en el contrato inteligente, y la salida visual de cada token puede regenerarse a partir de datos on-chain en cualquier momento. Sin IPFS, sin servidores, sin dependencias. El arte existe mientras Ethereum exista.</p>
+
+  <h3>La restricción de tamaño</h3>
+  <p>El limite de 24 KB de Ethereum para el tamaño de contratos (EIP-170) es la restricción principal. No puedes almacenar una fotografía de alta resolución on-chain. Lo que puedes almacenar: SVGs (que son texto y a menudo pequeños), arte ASCII, pixel art pequeño, algoritmos generativos (el código que produce el arte, no la salida), datos comprimidos a traves de multiples transacciones, y archivos HTML/JavaScript pequeños.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">La paradoja del peso</span>
+    <p>El arte más permanente en la blockchain es, por necesidad, el más ligero. Un SVG que pesa 3 KB sobrevivirá a un video de 50 MB que depende del modelo de dotación de Arweave, que a su vez depende de la continua disminución de los costes de almacenamiento, que a su vez depende de leyes de la fisica en las que creemos pero qué no podemos garantizar durante siglos. Permanencia y tamaño de archivo son inversamente proporcionales. Esto no es una limitacion contra la que luchar. Es una restricción con la que componer.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 11 ==================== -->
+<section class="section" id="s11">
+  <span class="section-number">Capítulo XI</span>
+  <h2>¿Por qué es tan difícil tener arte en la blockchain</h2>
+  <p class="section-intro">Las restricciones técnicas no son arbitrarias. Reflejan una tension fundamental entre para qué están diseñadas las blockchains y lo que los artistas necesitan.</p>
+
+  <h3>Las blockchains son para consenso, no para contenido</h3>
+  <p>Una blockchain es una máquina para hacer que miles de ordenadores esten de acuerdo en la misma verdad. Cada byte almacenado on-chain debe replicarse en cada nodo completo. En Ethereum, hay aproximadamente 6,000-8,000 nodos completos. Almacenar 1 MB on-chain significa almacenar 1 MB en cada uno de esos nodos. El trabajo de la red es ser un libro mayor compartido y confiable, no un servidor de archivos.</p>
+
+  <h3>El problema del ancho de banda</h3>
+  <p>Las blockchains tienen limites estrictos de rendimiento. Ethereum procesa aproximadamente 15 transacciones por segundo. Cada transacción tiene un limite de gas. Almacenar archivos grandes requiere multiples transacciones, aumentando el coste y la complejidad. Incluso en cadenas más rápidas como Solana, el cuello de botella no es la velocidad sino el modelo económico: los validadores no deberían tener que almacenar cantidades arbitrarias de datos gratis.</p>
+
+  <h3>La trampa de la resolución</h3>
+  <p>El arte digital, especialmente la fotografía y el trabajo visual detallado, requiere alta resolución. Una imagen de 4000x4000 pixeles en formato PNG puede pesar fácilmente 10-20 MB. Incluso comprimida como JPEG, típicamente pesa 1-5 MB. Estos tamaños son simplemente incompatibles con el almacenamiento on-chain a los costes actuales. Esto fuerza una eleccion: reducir la calidad (inaceptable para la mayoría de artistas), reducir la resolución (limitando el tamaño de visualización), cambiar de medio (moverse a arte vectorial, generativo o basado en texto), o aceptar el almacenamiento off-chain (con sus compensaciónes de permanencia).</p>
+
+  <h3>Video y audio: Aun más dificil</h3>
+  <p>Un video de 30 segundos en 1080p puede pesar 50-100 MB. Un archivo de audio de la duración de un album pesa 60-100 MB. Para criptoartistas multimedia, el almacenamiento on-chain no es solo caro; es físicamente impracticable en las blockchains actuales. Estas obras siempre dependeran de almacenamiento externo, haciendo que la eleccion de la capa de almacenamiento (IPFS, Arweave, centralizado) sea críticamente importante.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 12 ==================== -->
+<section class="section" id="s12">
+  <span class="section-number">Capítulo XII</span>
+  <h2>Arte generativo: La excepción elegante</h2>
+  <p class="section-intro">El arte generativo esquiva el problema del almacenamiento por completo. En lugar de almacenar la obra, almacena el algoritmo. Por eso se ha convertido en la forma de arte nativa de la blockchain.</p>
+
+  <h3>El código es pequeño. La salida es infinita.</h3>
+  <p>Un script de arte generativo, el código que produce la salida visual, típicamente pesa entre 1 KB y 50 KB. Un sketch de p5.js que produce imagenes complejas y hermosas puede escribirse en menos de 10 KB. Este código, cuando se combina con una semilla única (a menudo el hash de la transacción), produce una salida determinista: la misma semilla siempre genera la misma imagen. Almacena el código y la semilla on-chain, y la obra puede regenerarse para siempre.</p>
+  <p>Por eso el 90% de todos los proyectos de Art Blocks son ahora totalmente on-chain. Los scripts, junto con sus dependencias (p5.js, three.js), se almacenan directamente en Ethereum. Cada elemento necesario para generar la obra está disponible permanentemente. Sin IPFS, sin servidores, sin confianza.</p>
+
+  <h3>fxhash y ONCHFS</h3>
+  <p>fxhash, la plataforma lider de arte generativo en Tezos (ahora también en Ethereum), desarrolló ONCHFS (On-Chain File Storage System), un protocolo para almacenar archivos on-chain de forma estructurada. ONCHFS maneja el chunking (división de archivos entre transacciones), el direccionamiento (encontrar las piezas) y la reconstrucción (reensamblarlas para su visualización). Es relativamente nuevo, pero representa un esfuerzo serio para hacer que el almacenamiento on-chain sea práctico para obras generativas más complejas.</p>
+
+  <h3>El encaje filosófico</h3>
+  <p>Hay algo profundamente apropiado en que el arte generativo sea la forma nativa del arte blockchain. Ambos se construyen sobre sistemas deterministas. Ambos producen salidas a partir de algoritmos e inputs. Ambos existen como procesos más que como objetos. Una obra de arte generativo on-chain no es un archivo; es un conjunto de instrucciones esperando ser ejecutadas. En cierto sentido, es un contrato inteligente que produce belleza en lugar de lógica financiera.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Para artistas que consideran el trabajo generativo</span>
+    <p>Si quieres que tu trabajo sea verdaderamente permanente, el arte generativo es el camino más natural. Las herramientas son maduras (p5.js, three.js, shaders GLSL), las plataformas están establecidas (Art Blocks, fxhash, Prohibition), y la economía funciona (tamaño de código pequeño = almacenamiento on-chain asequible). La restricción de trabajar en kilobytes en lugar de megabytes es creativamente exigente, pero los artistas siempre han prosperado bajo restricciones.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 13 ==================== -->
+<section class="section" id="s13">
+  <span class="section-number">Capítulo XIII</span>
+  <h2>¿Qué ofrece el marketplace (y qué no)</h2>
+  <p class="section-intro">Cuando minteas en una plataforma, la plataforma se encarga del almacenamiento. Pero "se encarga" es una palabra vaga que oculta detalles críticos.</p>
+
+  <h3>El stack típico de un marketplace</h3>
+  <p>Cuando subes arte a un marketplace y haces clic en "mint", la plataforma típicamente: sube tu archivo de arte a IPFS (o a sus propios servidores), crea un archivo JSON de metadatos que apunta a la obra, pinea ambos archivos a traves de un servicio de pinning (a menudo sus propios nodos o Pinata), despliega o llama a un contrato inteligente con el URI de los metadatos, e indexa el resultado para mostrarlo en su sitio web.</p>
+  <p>El artista ve un botón. Detras de el, cuatro o cinco decisiones de infraestructura se han tomado en su nombre. La calidad de esas decisiones varia enormemente entre plataformas.</p>
+
+  <h3>¿Qué pasa cuando el marketplace cierra?</h3>
+  <p>Cuando un marketplace cierra, varias cosas pueden romperse: la interfaz web de la plataforma desaparece (ya no puedes ver, listar o gestionar tus NFTs a traves de su sitio), su pinning de IPFS puede detenerse (los archivos de arte pueden volverse inaccesibles si nadie más los pinea), su indexacion se desconecta (marketplaces como OpenSea y Rarible pueden seguir mostrando el NFT si indexan el contrato independientemente), y el contrato inteligente permanece on-chain (el token en si no desaparece, pero el arte al que apunta podría hacerlo).</p>
+
+  <h3>Contratos compartidos vs contratos dedicados</h3>
+  <p>Algunas plataformas mintean todo el trabajo de los artistas a traves de un único contrato compartido (Foundation, SuperRare en sus inicios). Otras despliegan un contrato dedicado para cada artista (Manifold). La diferencia importa: con un contrato compartido, la plataforma retiene el control administrativo. Con un contrato dedicado, lo hace el artista.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">La cadena de dependencias</span>
+    <p>Cuando minteas a traves del contrato compartido de una plataforma, la supervivencia de tu arte depende de: que el pinning IPFS de la plataforma continue, que los servidores de metadatos de la plataforma sigan online, que la plataforma no cambie el token URI (si el contrato lo permite), y el plan de transición de la plataforma si cierra. Son cuatro dependencias de una única empresa. En un espacio que predica la descentralización, es una cantidad notable de confianza.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 14 ==================== -->
+<section class="section" id="s14">
+  <span class="section-number">Capítulo XIV</span>
+  <h2>El cementerio: Una historia de cierres de marketplaces</h2>
+  <p class="section-intro">La lista es más larga de lo que la mayoría piensa. Cada cierre puso a prueba la durabilidad del trabajo de sus artistas.</p>
+
+  <h3>La ola de enero de 2026</h3>
+  <p>Enero de 2026 fue el mes más cruel para los marketplaces de NFTs. En cuestión de dias, tres grandes plataformas anunciaron su cierre:</p>
+  <ul>
+    <li><strong>Nifty Gateway</strong> (24 de enero de 2026): Fundado en 2018, adquirido por Gemini, fácilitó más de $300 millones en ventas en su punto máximo. Aproximadamente 650,000 NFTs requerian retiro antes de la fecha limite del 23 de abril. Nifty Gateway anunció planes para migrar los metadatos a Arweave, un movimiento responsable aunque tardío.</li>
+    <li><strong>Foundation</strong> (enero de 2026): Transfirió la propiedad a BlackDove, una empresa de streaming de arte digital. Foundation había generado $230 millones en ventas primarias. El destino del arte pineado en IPFS depende del compromiso continuado de infraestructura de BlackDove.</li>
+    <li><strong>MakersPlace</strong> (enero de 2025): Facilito la venta histórica de Beeple por $69.3 millones a traves de Christie's en 2021. Su cierre envió un mensaje escalofriante: ni siquiera la plataforma detras de la venta de NFT más cara de la historia era inmune al colapso del mercado.</li>
+  </ul>
+
+  <h3>Cierres anteriores</h3>
+  <ul>
+    <li><strong>Hic et Nunc</strong> (noviembre de 2021): La querida plataforma de arte en Tezos fue cerrada abruptamente por su fundador. La comunidad hizo fork del proyecto en multiples sucesores (Teia, objkt.com, Versum), demostrando la resiliencia de la infraestructura descentralizada. Como los datos de los contratos de Tezos estaban on-chain y los hashes IPFS se preservaron, el arte sobrevivió a la muerte de la plataforma.</li>
+    <li><strong>KnownOrigin</strong> (julio de 2024): Adquirido por eBay en 2022, cesó operaciones dos años despues cuando eBay decidio salir del espacio NFT.</li>
+    <li><strong>Async Art</strong> (octubre de 2023): Pionero del arte programable, pero cerró al no encontrar ingresos sostenibles.</li>
+  </ul>
+
+  <h3>Los supervivientes</h3>
+  <p>SuperRare declaró públicamente que "no iba a ninguna parte". OpenSea sigue operando pero ha reducido personal multiples veces. objkt.com en Tezos permanece activo con fuerte apoyo comunitario. Exchange Art en Solana continua sirviendo a su comunidad artistica. Pero "sobrevivir" y "prosperar" son cosas diferentes. Los volúmenes de trading se desplomaron de $2.9 mil millones en 2021 a $23.8 millones a principios de 2025, una caida del 93%.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">La leccion</span>
+    <p>Cada marketplace cerrado es un caso de estudio sobre qué pasa cuando los artistas delegan el almacenamiento a intermediarios. Las plataformas que lo manejaron mejor (Nifty Gateway migrando a Arweave, el fork comunitario de Hic et Nunc) se prepararon para su propia mortalidad. El resto dejo a los artistas corriendo.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 15 ==================== -->
+<section class="section" id="s15">
+  <span class="section-number">Capítulo XV</span>
+  <h2>Manifold y el contrato propiedad del artista</h2>
+  <p class="section-intro">El cambio más importante en la infraestructura NFT no fue un nuevo protocolo de almacenamiento. Fue la idea de que el artista debería ser el propietario del contrato.</p>
+
+  <h3>Qué hace Manifold</h3>
+  <p>Manifold Studio permite a cualquier artista desplegar su propio contrato inteligente en Ethereum (o Base, Optimism y otras cadenas EVM) sin escribir código. El contrato no es de Manifold. Es tuyo: desplegado desde tu wallet, firmado por tu dirección, controlado por tus claves. Manifold proporciona las herramientas; tu eres dueño del resultado.</p>
+  <p>Este es un cambio fundamental respecto al modelo de contrato compartido. Cuando minteas a traves de Foundation o SuperRare, tus NFTs viven en su contrato. Cuando Foundation cierra, el destino de ese contrato depende del plan de transición de Foundation. Cuando minteas a traves de tu propio contrato Manifold, tu controlas el futuro del contrato independientemente de lo qué le pase a Manifold como empresa.</p>
+
+  <h3>Que proporciona Manifold</h3>
+  <ul>
+    <li><strong>Despliegue de contrato</strong>: ERC-721 o ERC-1155, desplegado a tu wallet.</li>
+    <li><strong>Interfaz de minting</strong>: Herramientas sin código para crear tokens, establecer regalias y gestionar metadatos.</li>
+    <li><strong>Mecánicas de drop</strong>: Páginas de claim, allowlists, subastas y ediciones abiertas.</li>
+    <li><strong>Subidas a IPFS</strong>: Manifold maneja el pinning a traves de su infraestructura.</li>
+    <li><strong>Interoperabilidad</strong>: Tu contrato funciona en OpenSea, Rarible, Blur y cualquier marketplace compatible con ERC-721.</li>
+  </ul>
+  <p>Todo esto es gratuito (excluyendo las tarifas de gas por despliegue y minting).</p>
+
+  <h3>Alternativas a Manifold</h3>
+  <p>Manifold no es la única opción para contratos propiedad del artista:</p>
+  <ul>
+    <li><strong>Zora</strong>: Enfoque protocol-first. Minimalista, centrado en medios on-chain. Tiene su propia Layer 2 (Zora Network) con minting sin gas.</li>
+    <li><strong>ThirdWeb</strong>: Orientado a desarrolladores pero ofrece despliegue de contratos sin código.</li>
+    <li><strong>Decent</strong>: Especializado en minting cross-chain y ediciones.</li>
+    <li><strong>Solidity/OpenZeppelin personalizado</strong>: Para artistas que quieran escribir (o encargar) su propio código de contrato desde cero.</li>
+  </ul>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">La recomendacion</span>
+    <p>Si eres un criptoartista serio, desplegar tu propio contrato ya no es opcional. Es higiene profesional básica. Manifold lo hace gratuito y accesible. Los 10 minutos que toma desplegar un contrato podrían salvar años de trabajo de depender de una plataforma que podría no existir mañana.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 16 ==================== -->
+<section class="section" id="s16">
+  <span class="section-number">Capítulo XVI</span>
+  <h2>Lazy minting: La compensación invisible</h2>
+  <p class="section-intro">El lazy minting promete creación gratuita. Pero "gratis" significa algo específico, y entenderlo revela una compensación de permanencia que la mayoría de artistas nunca considera.</p>
+
+  <h3>Cómo funciona</h3>
+  <p>Con el lazy minting, el NFT no se escribe en la blockchain cuando lo creas. En su lugar, los metadatos y la obra se almacenan off-chain (típicamente en los servidores de la plataforma o en IPFS), y se crea un voucher (un mensaje firmado). Solo cuando un comprador adquiere el NFT ocurre el minting real on-chain, con la transacción del comprador pagando la tarifa de gas.</p>
+  <p>Esto resuelve elegantemente el problema del coste de gas para los artistas: puedes listar obras ilimitadas sin pagar nada. El comprador absorbe el coste en el momento de la compra.</p>
+
+  <h3>El problema de la permanencia</h3>
+  <p>Pero considera qué pasa con las piezas no vendidas. Si haces lazy mint de 100 obras y vendes 10, las otras 90 nunca se mintearon realmente on-chain. Existen solo en los servidores de la plataforma. Si la plataforma cierra, esas 90 obras desaparecen por completo, no solo de la vista, sino de la existencia. Nunca estuvieron en ninguna blockchain. Eran promesas, no artefactos.</p>
+  <p>Incluso para las piezas vendidas, el minting a menudo usa el contrato compartido de la plataforma (no el tuyo propio), lo qué significa que las preocupaciones de permanencia del Capítulo 13 aplican.</p>
+
+  <h3>Minting sin gas: Un modelo diferente</h3>
+  <p>El minting sin gas es distinto del lazy minting. Con el minting sin gas (cómo lo ofrece Zora en su Layer 2), el NFT se mintea realmente on-chain de inmediato, pero la plataforma o protocolo patrocina la tarifa de gas. El artista no paga nada, el NFT existe on-chain desde el principio, y el panorama de permanencia es mucho mejor.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Elegir sabiamente</span>
+    <p>El lazy minting es una herramienta razonable para probar la demanda y evitar costes iniciales. Pero para el trabajo que consideras importante, prefiere el minting real on-chain (sin gas o no) a traves de tu propio contrato. La diferencia entre "listado en un servidor" y "existente en la blockchain" es la diferencia entre un borrador y una obra publicada.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 17 ==================== -->
+<section class="section" id="s17">
+  <span class="section-number">Capítulo XVII</span>
+  <h2>Un kit de supervivencia para artistas</h2>
+  <p class="section-intro">Pasos prácticos para maximizar la permanencia de tu trabajo. No teoria. Acciones.</p>
+
+  <h3>1. Despliega tu propio contrato</h3>
+  <p>Usa Manifold, Zora, o un despliegue personalizado. Se dueño de la dirección del contrato. Este es el cimiento de todo lo demas.</p>
+
+  <h3>2. Almacena en Arweave + IPFS</h3>
+  <p>Sube tu obra y metadatos a Arweave (permanente, pago único) y pinea en IPFS (recuperación rápida). Usa ArDrive para subidas a Arweave. Usa Pinata o web3.storage para pinning en IPFS. Establece tu token URI al CID de IPFS (direccionado por contenido, a prueba de manipulación).</p>
+
+  <h3>3. Pinea tus propios datos en IPFS</h3>
+  <p>No dependas únicamente del pinning de una plataforma. Usa tu propia cuenta de Pinata (el plan gratuito cubre las necesidades básicas) para pinear cada CID que referencien tus tokens. Si tienes un servidor o una Raspberry Pi, considera ejecutar un nodo IPFS.</p>
+
+  <h3>4. Verifica tus Token URIs</h3>
+  <p>Comprueba periódicamente que tus token URIs resuelven correctamente. Ve a tu contrato en Etherscan, llama a <code>tokenURI()</code> para cada token y sigue la URL. Si empieza con <code>https://</code>, verifica que el servidor sigue funcionando. Si empieza con <code>ipfs://</code>, pruebalo a traves de multiples gateways.</p>
+
+  <h3>5. Congela los metadatos cuando estes listo</h3>
+  <p>Si tu contrato lo permite, congela los metadatos una vez qué estes satisfecho con la configuración de almacenamiento. Esto hace el token URI permanentemente inmutable, eliminando el riesgo de manipulación de metadatos pero también eliminando la capacidad de corregir problemas de almacenamiento despues.</p>
+
+  <h3>6. Documenta tu infraestructura</h3>
+  <p>Mantiene un registro de cada CID, cada ID de transacción en Arweave, cada dirección de contrato y cada token URI. Almacena este registro fuera de la blockchain (un simple archivo de texto, con control de versiones en GitHub, o en tu propio ordenador). Si alguna vez necesitas reconstruir desde cero, este registro es tu plano.</p>
+
+  <h3>7. Considera enfoques generativos</h3>
+  <p>Si tu práctica artistica lo permite, explora trabajo generativo, SVG o basado en código que pueda vivir totalmente on-chain. No todos los artistas pueden o deben hacer esto, pero para aquellos cuyo trabajo se presta a la expresión algorítmica, el almacenamiento on-chain elimina cada dependencia en la cadena.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">El mínimo</span>
+    <p>Como mínimo absoluto: se dueño de tu contrato (Manifold, gratis) y pinea tus datos IPFS tu mismo (plan gratuito de Pinata). Estos dos pasos, qué no cuestan nada, te protegen del modo de fallo más comun: una plataforma cierra y se lleva la accesibilidad de tu arte consigo.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPITULO 18 ==================== -->
+<section class="section" id="s18">
+  <span class="section-number">Capítulo XVIII</span>
+  <h2>La filosofía de la permanencia digital</h2>
+  <p class="section-intro">Hemos hablado de protocolos y servicios de pinning y costes de gas. Ahora hablemos de lo que realmente estamos haciendo, y por que importa.</p>
+
+  <p>El deseo de hacer el arte permanente es tan antiguo como el arte mismo. Los pintores de las cuevas de Lascaux mezclaron oxido de manganeso con grasa animal para crear pigmentos que duraron 17,000 años. Los egipcios tallaron en piedra. Los monjes medievales copiaron manuscritos a mano, cada copia una apuesta a que el conocimiento sobreviviria al próximo incendio, a la próxima guerra, a la próxima ola de indiferencia.</p>
+  <p>Todo medio se degrada. ¿La pregunta siempre ha sido: a que ritmo, y bajo el cuidado de quien?</p>
+  <p>La blockchain prometió cambiar está ecuacion. En lugar de confiar en instituciones (museos, bibliotecas, iglesias) para preservar el arte, confiaríamos en las matemáticas. En lugar de depender de la buena voluntad de un custodio, dependeríamos de incentivos económicos integrados en un protocolo. El arte persistiría no porque alguien quisiera que así fuera, sino porque el sistema estaba diseñado para qué no pudiera ser de otra manera.</p>
+  <p>Esta vision era genuina y parcialmente correcta. El registro de propiedad en la blockchain es, efectivamente, extraordinariamente duradero. Pero el arte en si, aquello a lo que apunta el registro, heredó todas las fragilidades antiguas: dependencia de infraestructura, dependencia de financiación, dependencia de decisiones humanas sobre que conservar y que descartar.</p>
+
+  <h3>La descentralización como valor cultural</h3>
+  <p>La idea de la descentralización no empezo con Bitcoin. Esta enraizada en siglos de pensamiento politico y filosófico sobre los peligros del poder concentrado. La separación de poderes de la Ilustración, la arquitectura de conmutación de paquetes de internet, el modelo de desarrolló distribuido del movimiento open-source, todos reflejan la misma intuición: los sistemas sin un único punto de fallo son más resilientes que los que tienen uno.</p>
+  <p>Aplicado al almacenamiento de arte, esto significa: ninguna empresa debería poder hacer desaparecer tu arte. Ningun fallo de servidor debería borrar una coleccion. Ningun gobierno debería poder censurar un cuerpo de trabajo. Esto no es una preferencia técnica. Es un valor cultural con raíces profundas.</p>
+
+  <h3>El humo y la verdad</h3>
+  <p>Esta guía existe en parte para que cuando alguien te venda humo, puedas identificarlo. Las afirmaciones falsas o enganosas más comunes incluyen: "Tu arte está en la blockchain" (normalmente solo el token lo está). "IPFS es permanente" (solo si alguien lo pinea). ¿"Usamos almacenamiento descentralizado" (qué protocolo? ¿quién paga? ¿por cuánto tiempo?). "Tu NFT durara para siempre" (el token quiza; el arte depende de la capa de almacenamiento).</p>
+  <p>El antidoto contra el humo es la especificidad. ¿Pregunta: dónde se almacenan los metadatos? El token URI apunta a IPFS, Arweave o un servidor centralizado? Quien está pineando los datos? Qué pasa si la plataforma cierra? El contrato es propiedad del artista o de la plataforma? Se pueden cambiar los metadatos despues del minting?</p>
+  <p>Estas preguntas no son descorteses. Son profesionales. Y cualquier plataforma qué no pueda responderlas con claridad no está lista para tu confianza.</p>
+
+  <h3>Lo qué le debemos al futuro</h3>
+  <p>Cada artista que mintea trabajo en una blockchain está haciendo una apuesta con el futuro. La apuesta dice: está obra importa lo suficiente como para ser preservada. La infraestructura de esa preservación, los protocolos de almacenamiento, los servicios de pinning, los contratos, las claves, no es una ocurrencia tardía. Es la arquitectura de la apuesta misma.</p>
+  <p>Los monjes de Lindisfarne no solo escribieron manuscritos hermosos. Construyeron muros gruesos, formaron escribas para copiar y distribuyeron copias a otros monasterios. Entendieron que la preservación no es un acto único sino un sistema: un conjunto de redundancias diseñado para sobrevivir a cualquier fallo individual.</p>
+  <p>Estamos construyendo el equivalente digital. Las herramientas son diferentes. El principio es el mismo. Y el primer paso, siempre, es saber dónde vive realmente tu arte.</p>
+</section>
+
+</main>
+
+<footer>
+  <p>La permanencia no es una característica. Es una disciplina.</p>
+  <p class="signature"><a href="https://ernestocisneros.art" target="_blank" rel="noopener">Ernesto Cisneros Cino</a></p>
+  <p style="font-style: normal; font-size: 14px; color: #8a837a; margin-top: 20px;">
+    <a href="https://ernestocisneros.art/es/nft/resources.html" style="color: #8a837a;">&#8592; Volver a Recursos</a>
+  </p>
+</footer>
+
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
