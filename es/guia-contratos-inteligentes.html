@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO -->
+<title>Contratos Inteligentes de Alfa a Omega | Ernesto Cisneros Cino</title>
+<meta name="description" content="Guía enciclopédica sobre contratos inteligentes para artistas cripto. Desde la EVM de Ethereum hasta los programas de Solana, la verificación formal de Tezos y los Ordinals de Bitcoin. Regalías, contratos actualizables, seguridad y el futuro. Por Ernesto Cisneros.">
+<meta name="keywords" content="contratos inteligentes guía, EVM, Solidity, Ethereum, programas Solana, Tezos Michelson, Bitcoin Ordinals, Runes, minteo NFT, ERC-721, ERC-1155, FA2, Metaplex, regalías, ERC-2981, contratos actualizables, patrón proxy, reentrancia, arte cripto, aprobaciones de tokens">
+<meta name="author" content="Ernesto Cisneros Cino">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://ernestocisneros.art/es/guia-contratos-inteligentes.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/guide-smart-contracts-en.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/guia-contratos-inteligentes.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/guide-smart-contracts-en.html">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ernesto Cisneros Cino - Compositor &amp; Artista Cripto">
+<meta property="og:title" content="Contratos Inteligentes de Alfa a Omega">
+<meta property="og:description" content="Guía enciclopédica para artistas cripto. Desde la EVM y Solidity hasta los Ordinals de Bitcoin, regalías, seguridad y el futuro del arte on-chain.">
+<meta property="og:url" content="https://ernestocisneros.art/es/guia-contratos-inteligentes.html">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="article:author" content="Ernesto Cisneros Cino">
+<meta property="article:published_time" content="2026-04-19T00:00:00Z">
+<meta property="article:section" content="Guías de Arte Cripto">
+<meta property="article:tag" content="Contrato Inteligente, Ethereum, Solana, Tezos, Bitcoin, NFT, Regalías, Seguridad">
+
+<!-- TWITTER / X CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ErnestCisneros1">
+<meta name="twitter:creator" content="@ErnestCisneros1">
+<meta name="twitter:title" content="Contratos Inteligentes de Alfa a Omega">
+<meta name="twitter:description" content="Guía enciclopédica para artistas cripto. EVM, Solana, Tezos, Ordinals de Bitcoin, regalías, contratos actualizables y seguridad.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<!-- SCHEMA.ORG JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://ernestocisneros.art/es/guia-contratos-inteligentes.html#article",
+      "headline": "Contratos Inteligentes de Alfa a Omega",
+      "description": "Guía enciclopédica sobre contratos inteligentes para artistas cripto. Cubre la EVM de Ethereum, los programas de Solana, la verificación formal de Tezos, los Ordinals de Bitcoin, regalías, contratos actualizables, exploits de seguridad y el futuro del arte on-chain.",
+      "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
+      "datePublished": "2026-04-19T00:00:00Z",
+      "dateModified": "2026-04-19T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "@id": "https://ernestocisneros.art/#person",
+        "name": "Ernesto Cisneros Cino",
+        "url": "https://ernestocisneros.art/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://ernestocisneros.art/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ernestocisneros.art/es/guia-contratos-inteligentes.html"
+      },
+      "inLanguage": "es"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ernestocisneros.art/es/"},
+        {"@type": "ListItem", "position": 2, "name": "Recursos NFT", "item": "https://ernestocisneros.art/es/nft/resources.html"},
+        {"@type": "ListItem", "position": 3, "name": "Contratos Inteligentes de Alfa a Omega", "item": "https://ernestocisneros.art/es/guia-contratos-inteligentes.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f4f1ea;
+  --bg-card: #ffffff;
+  --bg-code: #1c1a17;
+  --ink: #1c1a17;
+  --ink-soft: #4a4540;
+  --ink-muted: #8a837a;
+  --accent: #a84d2a;
+  --accent-dark: #7d3a20;
+  --gold: #b08d4c;
+  --line: #d8d0c0;
+  --ok: #4a6b3a;
+  --warn: #a84d2a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  padding: 0;
+  margin: 0;
+}
+
+.lang-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  background: rgba(28, 26, 23, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border: 1px solid rgba(176, 141, 76, 0.25);
+  display: flex;
+  gap: 2px;
+  line-height: 1;
+}
+
+.lang-toggle a {
+  color: var(--gold);
+  border-bottom: none;
+  padding: 4px 6px;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  font-size: 10px;
+  border-radius: 4px;
+}
+
+.lang-toggle a:hover { opacity: 1; background: rgba(176, 141, 76, 0.12); }
+.lang-toggle a.active { opacity: 1; font-weight: 600; background: rgba(176, 141, 76, 0.18); }
+
+.hero {
+  background: linear-gradient(180deg, #1c1a17 0%, #2a2520 100%);
+  color: #f4f1ea;
+  padding: 80px 24px 70px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px double var(--gold);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(176, 141, 76, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(168, 77, 42, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "";
+  height: 1px;
+  background: var(--gold);
+  flex: 1;
+  opacity: 0.4;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #d8d0c0;
+  font-style: italic;
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.hero-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(216, 208, 192, 0.2);
+  padding-top: 20px;
+  max-width: 640px;
+}
+
+.hero-author strong { color: #d8d0c0; font-weight: 500; }
+.hero-author a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.hero-author a:hover { color: var(--gold); }
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 24px 120px;
+}
+
+.intro {
+  padding: 36px 40px;
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 70px;
+  box-shadow: 0 2px 20px rgba(28, 26, 23, 0.04);
+}
+
+.intro p { margin-bottom: 16px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro strong { color: var(--accent-dark); font-weight: 600; }
+
+.section {
+  margin-bottom: 72px;
+  scroll-margin-top: 20px;
+}
+
+.section-number {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.section-intro {
+  font-size: 20px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 36px;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.section p { margin-bottom: 18px; color: var(--ink); }
+.section ul, .section ol { margin-left: 24px; margin-bottom: 22px; }
+.section li { margin-bottom: 10px; }
+.section strong { font-weight: 600; color: var(--ink); }
+.section em { font-style: italic; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 77, 42, 0.3);
+  transition: all 0.2s;
+}
+
+a:hover { color: var(--accent-dark); border-bottom-color: var(--accent-dark); }
+
+pre, code { font-family: 'JetBrains Mono', monospace; }
+
+code {
+  background: #ebe4d4;
+  color: var(--accent-dark);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.code-block {
+  background: var(--bg-code);
+  color: #d8d0c0;
+  padding: 22px 26px;
+  border-radius: 4px;
+  margin: 22px 0;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  position: relative;
+  border-left: 3px solid var(--gold);
+}
+
+.code-block code { background: transparent; color: #d8d0c0; padding: 0; font-size: inherit; }
+
+.code-label {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.callout {
+  padding: 22px 28px;
+  margin: 26px 0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.callout-label {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.callout-warn { background: #fdf4ed; border-left: 3px solid var(--warn); }
+.callout-warn .callout-label { color: var(--warn); }
+.callout-ok { background: #f0f2ea; border-left: 3px solid var(--ok); }
+.callout-ok .callout-label { color: var(--ok); }
+.callout-info { background: #ede4d0; border-left: 3px solid var(--gold); }
+.callout-info .callout-label { color: var(--accent-dark); }
+.callout p { margin-bottom: 10px; }
+.callout p:last-child { margin-bottom: 0; }
+
+.diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  padding: 28px;
+  margin: 26px 0;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--ink-soft);
+  overflow-x: auto;
+}
+
+.diagram .arrow { color: var(--gold); font-weight: 600; }
+.diagram .label { display: inline-block; background: var(--bg-code); color: #d8d0c0; padding: 4px 14px; border-radius: 4px; margin: 4px; font-size: 12px; }
+.diagram .label-gold { background: rgba(176, 141, 76, 0.15); color: var(--accent-dark); border: 1px solid rgba(176, 141, 76, 0.3); }
+
+.toc {
+  background: var(--bg-card);
+  padding: 32px 36px;
+  margin-bottom: 60px;
+  border-top: 3px solid var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.toc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.toc ol { list-style: none; margin-left: 0; counter-reset: toc-counter; }
+
+.toc li {
+  counter-increment: toc-counter;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.toc li:last-child { border-bottom: none; }
+.toc li::before { content: counter(toc-counter, decimal-leading-zero); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); min-width: 30px; }
+.toc a { border-bottom: none; color: var(--ink); font-size: 18px; flex: 1; }
+.toc a:hover { color: var(--accent); }
+
+footer {
+  background: #1c1a17;
+  color: #d8d0c0;
+  padding: 60px 24px;
+  text-align: center;
+  border-top: 3px double var(--gold);
+}
+
+footer p {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+footer .signature {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 24px;
+}
+
+footer a { color: var(--gold); border-bottom: 1px solid rgba(176, 141, 76, 0.4); }
+
+.divider { text-align: center; margin: 60px 0; color: var(--gold); font-size: 18px; letter-spacing: 0.5em; }
+
+.data-table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 16px; }
+.data-table th { background: var(--bg-code); color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 16px; text-align: left; }
+.data-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table code { font-size: 12px; }
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .hero { padding: 60px 20px 50px; }
+  .container { padding: 40px 20px 80px; }
+  .intro { padding: 24px 26px; }
+  .toc { padding: 24px 24px; }
+  .code-block { padding: 18px 20px; font-size: 12px; }
+  .section ul, .section ol { margin-left: 18px; }
+  .lang-toggle { top: 10px; right: 10px; padding: 8px 10px; font-size: 9px; }
+  .lang-toggle a { padding: 3px 4px; font-size: 9px; }
+  .data-table { font-size: 14px; }
+  .data-table th, .data-table td { padding: 8px 10px; }
+  .diagram { padding: 18px; font-size: 12px; }
+}
+
+@media print {
+  body { background: white; font-size: 11pt; }
+  .hero { background: white; color: black; padding: 30px 0; border-bottom: 2px solid black; }
+  .hero h1 em { color: black; }
+  .hero-subtitle, .hero-author { color: black; }
+  footer { background: white; color: black; }
+  .code-block { background: #f0f0f0; color: black; border: 1px solid #ccc; }
+  a { color: black; text-decoration: underline; }
+  .section { page-break-inside: avoid; }
+  .lang-toggle { display: none; }
+}
+</style>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+</head>
+<body>
+
+<div class="lang-toggle">
+  <a href="/guide-smart-contracts-en.html" rel="alternate" hreflang="en">EN</a>
+  <a href="#" class="active" rel="alternate" hreflang="es">ES</a>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Guía enciclopédica - 2026</div>
+    <h1><em>Contratos Inteligentes</em> de Alfa a Omega</h1>
+    <p class="hero-subtitle">Todo lo que un artista cripto debe saber sobre el código que vive en la blockchain: qué hace, cómo se ejecuta, dónde puede traicionarte y por qué entenderlo es la diferencia entre ser dueño de tu arte y confiar en que otro lo sea.</p>
+    <p class="hero-author"><strong>Por <a href="https://ernestocisneros.art/nft.html" target="_blank" rel="noopener">Ernesto Cisneros Cino</a></strong> - Compositor, artista cripto, fundador de Impulses.art - Abril 2026</p>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="intro">
+  <p><strong>Cada vez que minteas un NFT, estás llamando a un contrato inteligente.</strong> Cada vez que listas una obra en venta, aceptas una oferta o apruebas que un marketplace mueva tus tokens, estás interactuando con código que alguien más escribió y desplegó permanentemente en una blockchain. Sin embargo, la mayoría de los artistas nunca ha leído una sola línea de ese código.</p>
+  <p>Esta guía existe para cambiar eso. No para convertirte en desarrollador, sino para darte el entendimiento suficiente para <strong>hacer las preguntas correctas, detectar las señales de alerta y proteger tu obra</strong>. Recorreremos cuatro blockchains, desde la pionera (Ethereum) hasta el lienzo inesperado (Bitcoin), examinando cómo cada una maneja el concepto de código ejecutable on-chain.</p>
+  <p>No se requiere conocimiento previo de programación. Cada concepto técnico se explica con lenguaje llano, diagramas y casos reales del mundo del arte cripto.</p>
+</section>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-title">Contenido</div>
+  <ol>
+    <li><a href="#s1">¿Qué es realmente un contrato inteligente?</a></li>
+    <li><a href="#s2">Anatomía de un contrato</a></li>
+    <li><a href="#s3">La máquina virtual: donde vive el código</a></li>
+    <li><a href="#s4">De la idea a la blockchain: el ciclo de vida</a></li>
+    <li><a href="#s5">Ethereum: la pionera</a></li>
+    <li><a href="#s6">Solana: la máquina de velocidad</a></li>
+    <li><a href="#s7">Tezos: la cadena del matemático</a></li>
+    <li><a href="#s8">Bitcoin: el lienzo inesperado</a></li>
+    <li><a href="#s9">Estándares de tokens: el lenguaje del arte digital</a></li>
+    <li><a href="#s10">Qué pasa realmente cuando minteas</a></li>
+    <li><a href="#s11">Regalías: la promesa rota</a></li>
+    <li><a href="#s12">Contratos actualizables: lo mutable inmutable</a></li>
+    <li><a href="#s13">Aprobaciones y permisos: las llaves que prestas</a></li>
+    <li><a href="#s14">Leer un contrato: autodefensa para artistas</a></li>
+    <li><a href="#s15">Seguridad: exploits, estafas y señales de alerta</a></li>
+    <li><a href="#s16">Gas: la economía de la ejecución</a></li>
+    <li><a href="#s17">On-chain vs off-chain: dónde vive realmente tu arte</a></li>
+    <li><a href="#s18">El futuro: hacia dónde van los contratos inteligentes</a></li>
+  </ol>
+</nav>
+
+<!-- ==================== CAPÍTULO 1 ==================== -->
+<section class="section" id="s1">
+  <span class="section-number">Capítulo I</span>
+  <h2>¿Qué es realmente un contrato inteligente?</h2>
+  <p class="section-intro">Antes de la blockchain, antes de Ethereum, antes de Solidity, la idea ya existía. Entender su origen revela lo que se suponía que debía ser y en lo que se convirtió.</p>
+
+  <h3>La idea (1994)</h3>
+  <p>En 1994, el científico de la computación Nick Szabo propuso el concepto de "contrato inteligente": un programa que ejecuta automáticamente los términos de un acuerdo, del mismo modo que una máquina expendedora aplica la regla "inserta moneda, recibe producto" sin necesidad de un vendedor.</p>
+  <p>La visión de Szabo era simple: si dos partes acuerdan condiciones, y esas condiciones pueden ser verificadas por una máquina, entonces la máquina puede ejecutar el acuerdo sin un intermediario de confianza. Sin abogado, sin agente de custodia, sin banco.</p>
+
+  <h3>La realidad (2015 en adelante)</h3>
+  <p>Cuando Ethereum se lanzó en 2015, le dio a la idea de Szabo su primer hogar real. Un contrato inteligente en Ethereum es un programa almacenado en una dirección específica de la blockchain. Una vez desplegado, <strong>nadie puede modificarlo</strong> (con algunas excepciones importantes que examinaremos en el Capítulo 12). Se ejecuta exactamente como fue escrito, cada vez, para cualquiera que lo invoque.</p>
+  <p>Pero "inteligente" es una palabra generosa. Un contrato inteligente no es inteligente. No razona, no se adapta, no aprende. Es una máquina determinista: ante la misma entrada, siempre produce la misma salida. Es "inteligente" solo en el sentido de que se ejecuta automáticamente. Un nombre más preciso sería "acuerdo autoejecutante" o "programa autónomo."</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Idea Clave</span>
+    <p>Un contrato inteligente es a un contrato legal tradicional lo que un rollo de pianola es a una partitura. La partitura requiere un intérprete para ejecutarla. El rollo de pianola se ejecuta mecánicamente, exactamente como fue codificado, sin espacio para la interpretación. Las ventajas (precisión, automatización, ausencia de confianza) son también los peligros (rigidez, irreversibilidad, ausencia de juicio).</p>
+  </div>
+
+  <h3>¿Qué lo diferencia de un programa normal?</h3>
+  <p>Un programa normal se ejecuta en el servidor de alguien. Ese alguien puede apagarlo, modificarlo o negarte el acceso. Un contrato inteligente, una vez desplegado, se ejecuta en cada nodo de la red simultáneamente. Ninguna entidad puede detenerlo, alterarlo o censurarlo. Esta es la propuesta de valor fundamental: <strong>código que nadie controla pero que todos pueden verificar</strong>.</p>
+  <p>Por supuesto, "nadie controla" viene con matices. El desplegador eligió qué hace el código. El desplegador eligió quién tiene permisos especiales. Y como veremos, algunos contratos están diseñados para ser actualizables, lo que significa que alguien sí retiene el control. Pero la promesa, el ideal, es radical: un programa que sirve a sus usuarios sin un amo.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 2 ==================== -->
+<section class="section" id="s2">
+  <span class="section-number">Capítulo II</span>
+  <h2>Anatomía de un contrato</h2>
+  <p class="section-intro">Todo contrato inteligente, independientemente de la blockchain en la que viva, tiene los mismos componentes básicos. Entenderlos es como entender las partes de una célula antes de estudiar biología.</p>
+
+  <h3>Estado: la memoria</h3>
+  <p>Un contrato tiene almacenamiento persistente, datos que sobreviven entre llamadas. Para un contrato NFT, el estado incluye: quién es dueño de cada token, el número total de tokens minteados, la URI base que apunta a los metadatos y cualquier permiso especial (quién puede mintear, quién puede pausar el contrato).</p>
+  <p>Este estado vive directamente en la blockchain. Modificarlo cuesta gas (en Ethereum) o renta (en Solana), porque cada nodo de la red debe almacenar estos datos para siempre.</p>
+
+  <h3>Funciones: las acciones</h3>
+  <p>Las funciones son las operaciones que un contrato puede realizar. Vienen en dos sabores:</p>
+  <ul>
+    <li><strong>Funciones de lectura</strong> (gratuitas): Solo consultan el estado sin modificarlo. Ejemplo: "¿Quién es dueño del token #42?" o "¿Cuántos tokens existen?" No cuestan nada porque no modifican la blockchain.</li>
+    <li><strong>Funciones de escritura</strong> (cuestan gas): Modifican el estado. Ejemplo: "Mintear un nuevo token," "Transferir el token #42 a Alice," o "Establecer una nueva URI base." Requieren una transacción, una tarifa y confirmación de la red.</li>
+  </ul>
+
+  <h3>Eventos: los anuncios</h3>
+  <p>Cuando algo importante ocurre dentro de un contrato, este puede emitir un evento: un registro que las aplicaciones externas pueden escuchar. Cuando minteas un NFT y tu wallet lo muestra inmediatamente, es porque la wallet estaba escuchando un evento <code>Transfer</code> del contrato.</p>
+
+  <h3>El constructor: nacimiento y muerte</h3>
+  <p>El constructor es código especial que se ejecuta exactamente una vez, en el momento del despliegue. Establece el estado inicial: el nombre de la colección, el símbolo, la dirección del propietario y cualquier otra configuración. Después del despliegue, el constructor nunca puede ejecutarse de nuevo.</p>
+
+  <div class="diagram">
+    <span class="label">Estado</span>
+    <span class="arrow">&larr;&rarr;</span>
+    <span class="label">Funciones</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Eventos</span>
+    <br>
+    <span style="font-size: 11px; color: var(--ink-muted);">Datos persistentes &nbsp;|&nbsp; Lectura (gratis) + Escritura (gas) &nbsp;|&nbsp; Registros para apps externas</span>
+  </div>
+
+  <h3>Modificadores y control de acceso</h3>
+  <p>No todas las funciones deberían ser invocables por cualquiera. Los modificadores son reglas que restringen el acceso. El más común es <code>onlyOwner</code>, que limita una función a la dirección del desplegador. Otros incluyen acceso basado en roles (solo el rol "minter" puede mintear) y bloqueos temporales (esta función no puede llamarse hasta el bloque 10.000.000).</p>
+  <p>Cuando lees un contrato y ves un modificador <code>onlyOwner</code> en una función crítica como <code>setBaseURI</code>, significa que el desplegador puede cambiar a dónde apuntan los metadatos. Eso es poder. Si es benigno o peligroso depende de quién lo tiene y qué pretende.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 3 ==================== -->
+<section class="section" id="s3">
+  <span class="section-number">Capítulo III</span>
+  <h2>La máquina virtual: donde vive el código</h2>
+  <p class="section-intro">Los contratos inteligentes no se ejecutan en tu computadora ni en el servidor de una empresa. Se ejecutan dentro de una máquina virtual replicada en miles de nodos. Entender esta máquina es entender el escenario donde tu arte actúa.</p>
+
+  <h3>¿Qué es una máquina virtual?</h3>
+  <p>Una máquina virtual (VM) es un entorno de computación aislado. Piensa en ella como un sandbox: los programas pueden ejecutarse dentro, pero no pueden salir a tocar archivos, internet u otros programas. Este aislamiento es crítico para la seguridad. Un contrato malicioso no puede acceder a tu disco duro, tu cámara ni tu cuenta bancaria. Solo puede hacer lo que el protocolo de la blockchain permite.</p>
+
+  <h3>La EVM (Ethereum Virtual Machine)</h3>
+  <p>La EVM es la máquina virtual más influyente en la historia de la blockchain. Cada nodo de Ethereum ejecuta una copia de la EVM, y cada copia procesa cada transacción de manera idéntica. La EVM está basada en pila, lo que significa que procesa datos empujando y sacando valores de una pila, una operación a la vez.</p>
+  <p>Cuando despliegas un contrato en Solidity, el compilador lo traduce a <strong>bytecode</strong>: una secuencia de instrucciones de bajo nivel llamadas opcodes. Cada opcode tiene un costo fijo de gas. <code>ADD</code> (suma) cuesta 3 gas. <code>SSTORE</code> (escritura en almacenamiento) cuesta 20.000 gas para un slot nuevo. El gas total consumido por una transacción determina su tarifa.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Para los Curiosos</span>
+    <p>La EVM tiene aproximadamente 140 opcodes. Algunos son aritméticos (<code>ADD</code>, <code>MUL</code>, <code>SUB</code>), algunos gestionan memoria (<code>MLOAD</code>, <code>MSTORE</code>), algunos interactúan con la blockchain (<code>BALANCE</code>, <code>BLOCKHASH</code>) y algunos controlan el flujo de ejecución (<code>JUMP</code>, <code>JUMPI</code>). Ningún opcode accede a internet ni a ningún sistema externo. Esto es por diseño.</p>
+  </div>
+
+  <h3>Solana: el runtime Sealevel</h3>
+  <p>Solana no usa la EVM. Ejecuta su propio runtime llamado Sealevel, que puede procesar miles de transacciones en paralelo. Donde la EVM procesa una transacción a la vez, Sealevel analiza qué cuentas toca cada transacción y ejecuta simultáneamente las transacciones que no entran en conflicto.</p>
+  <p>En Solana, los contratos inteligentes se llaman "programas" y se compilan a bytecode BPF (Berkeley Packet Filter). Una diferencia arquitectónica clave: <strong>en Solana, los programas son sin estado (stateless)</strong>. No almacenan datos dentro de sí mismos. En su lugar, leen y escriben en "cuentas" separadas que contienen los datos. Esta separación de lógica y almacenamiento es lo que permite el paralelismo.</p>
+
+  <h3>Tezos: la VM Michelson</h3>
+  <p>Tezos ejecuta su propia máquina virtual basada en pila, diseñada para la verificación formal: la prueba matemática de que un programa hace exactamente lo que dice. Los contratos se compilan a Michelson, un lenguaje de bajo nivel donde cada operación es explícita y verificable. Esta es la blockchain del matemático. El énfasis no está en la velocidad sino en la corrección.</p>
+
+  <h3>Bitcoin: sin máquina virtual (casi)</h3>
+  <p>Bitcoin nunca fue diseñado para ejecutar contratos inteligentes. Su lenguaje de scripting, Bitcoin Script, es intencionalmente limitado: no es Turing-completo, lo que significa que no puede hacer bucles ni realizar computación arbitraria. Esta fue una elección deliberada por seguridad y simplicidad.</p>
+  <p>Sin embargo, Bitcoin ha evolucionado. La actualización Taproot (noviembre 2021) expandió lo que Script puede hacer, y protocolos como Ordinals y Runes han encontrado formas creativas de inscribir datos y definir tokens en Bitcoin. Exploraremos esto en profundidad en el Capítulo 8.</p>
+
+  <div class="data-table-wrapper" style="overflow-x:auto;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Cadena</th>
+        <th>VM / Runtime</th>
+        <th>Lenguaje</th>
+        <th>¿Turing-completo?</th>
+        <th>Paralelismo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Ethereum</strong></td>
+        <td>EVM</td>
+        <td>Solidity, Vyper</td>
+        <td>Sí</td>
+        <td>Secuencial</td>
+      </tr>
+      <tr>
+        <td><strong>Solana</strong></td>
+        <td>Sealevel (BPF)</td>
+        <td>Rust, Anchor</td>
+        <td>Sí</td>
+        <td>Paralelo</td>
+      </tr>
+      <tr>
+        <td><strong>Tezos</strong></td>
+        <td>Michelson VM</td>
+        <td>SmartPy, LIGO</td>
+        <td>Sí</td>
+        <td>Secuencial</td>
+      </tr>
+      <tr>
+        <td><strong>Bitcoin</strong></td>
+        <td>Intérprete Script</td>
+        <td>Bitcoin Script</td>
+        <td>No</td>
+        <td>N/A</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 4 ==================== -->
+<section class="section" id="s4">
+  <span class="section-number">Capítulo IV</span>
+  <h2>De la idea a la blockchain: el ciclo de vida</h2>
+  <p class="section-intro">Un contrato inteligente atraviesa fases distintas, desde su concepción hasta el despliegue permanente. Cada fase tiene implicaciones para el artista.</p>
+
+  <h3>Fase 1: Escritura</h3>
+  <p>Alguien (un desarrollador, una plataforma o, cada vez más, una herramienta de IA) escribe el código fuente del contrato. Para una colección NFT, esto típicamente significa definir: qué sucede cuando alguien mintea, cómo funcionan las transferencias, qué información de regalías se adjunta y quién tiene privilegios administrativos.</p>
+  <p>La mayoría de los artistas nunca escribe sus propios contratos. Usan plataformas (Foundation, SuperRare, objkt, Manifold) que despliegan contratos pre-escritos y auditados en su nombre. Esto es práctico, pero significa que estás confiando el código de esa plataforma con tu arte.</p>
+
+  <h3>Fase 2: Compilación</h3>
+  <p>El código fuente legible por humanos se traduce a bytecode que la máquina virtual puede ejecutar. Este paso es automático y lo maneja un compilador (solc para Solidity, cargo para Rust/Solana, el compilador SmartPy para Tezos).</p>
+
+  <h3>Fase 3: Despliegue</h3>
+  <p>El bytecode compilado se envía a la blockchain en una transacción especial. Esta transacción cuesta gas (o la tarifa equivalente de la cadena). Una vez confirmada, el contrato existe en una dirección específica, para siempre. En Ethereum, esta dirección se deriva de la dirección del desplegador y su contador de transacciones (nonce).</p>
+
+  <div class="diagram">
+    <span class="label">Código fuente</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Compilador</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Bytecode</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Contrato desplegado</span>
+    <br>
+    <span style="font-size: 11px; color: var(--ink-muted);">Legible por humanos &nbsp;|&nbsp; Traducción &nbsp;|&nbsp; Legible por máquinas &nbsp;|&nbsp; Vive on-chain para siempre</span>
+  </div>
+
+  <h3>Fase 4: Verificación</h3>
+  <p>Después del despliegue, el código fuente puede publicarse en un explorador de bloques (Etherscan, Solscan, TzKT) para que cualquiera pueda verificar que el bytecode on-chain coincide con el código publicado. Esto se llama "verificación." <strong>Un contrato no verificado es una señal de alerta.</strong> Significa que no puedes leer qué hace realmente el código.</p>
+
+  <h3>Fase 5: Interacción</h3>
+  <p>Los usuarios (y otros contratos) interactúan con el contrato desplegado enviando transacciones que invocan sus funciones. Cada interacción es pública, permanente y auditable. Cuando minteas un NFT en Foundation, tu wallet envía una transacción al contrato de Foundation invocando la función <code>mint</code> con tus parámetros.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Advertencia</span>
+    <p>El despliegue es irreversible. Si el contrato tiene un bug, no se puede parchar. Si tiene una vulnerabilidad, no se puede corregir. Las únicas opciones son: desplegar un nuevo contrato y migrar (costoso, disruptivo), usar un patrón de actualización si fue incorporado desde el inicio (ver Capítulo 12), o abandonar el contrato por completo. Por eso importan las auditorías.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 5 ==================== -->
+<section class="section" id="s5">
+  <span class="section-number">Capítulo V</span>
+  <h2>Ethereum: la pionera</h2>
+  <p class="section-intro">Ethereum inventó el concepto de blockchain de propósito general. Todo lo que vino después, desde DeFi hasta NFTs y DAOs, se construyó sobre los cimientos que estableció.</p>
+
+  <h3>Solidity: la lingua franca</h3>
+  <p>Solidity es el lenguaje dominante para contratos inteligentes en Ethereum. Creado por Gavin Wood en 2014, su sintaxis se parece a JavaScript, haciéndolo accesible para desarrolladores web. Un contrato NFT básico en Solidity define un mapeo de IDs de token a direcciones de propietarios, una función de minteo que crea nuevos tokens y una función de transferencia que mueve tokens entre direcciones.</p>
+  <p>Pero la accesibilidad es una espada de doble filo. Porque Solidity parece simple, los desarrolladores a veces subestiman sus sutilezas. Muchos de los peores exploits en la historia de la blockchain vinieron de código en Solidity que parecía correcto pero contenía un defecto oculto.</p>
+
+  <h3>Las garantías de la EVM</h3>
+  <p>Cuando invocas una función en un contrato de Ethereum, cada nodo de la red ejecuta el mismo código con las mismas entradas y llega al mismo resultado. Si no están de acuerdo, la red rechaza al disidente. Esto es consenso. Significa que no necesitas confiar en ningún nodo individual; confías en las matemáticas del acuerdo.</p>
+
+  <h3>Gas y costos de computación</h3>
+  <p>Cada operación en la EVM cuesta gas. Las operaciones simples (suma, comparación) cuestan 3-5 gas. Las operaciones de almacenamiento cuestan miles. Un minteo estándar de NFT cuesta aproximadamente 50.000-150.000 unidades de gas, dependiendo de la complejidad del contrato. Multiplica por el precio actual del gas (en gwei) y el precio de ETH para obtener el costo en dólares.</p>
+
+  <div class="code-block">
+    <span class="code-label">Pseudocódigo</span>
+    <code>FUNCIÓN mint(destinatario, tokenURI):
+    requerir(invocante == propietario O invocante == minter)
+    requerir(suministroTotal &lt; suministroMáximo)
+
+    nuevoTokenId = suministroTotal + 1
+    propietarioDe[nuevoTokenId] = destinatario
+    tokenURIs[nuevoTokenId] = tokenURI
+    suministroTotal = suministroTotal + 1
+
+    EMITIR Transfer(dirección(0), destinatario, nuevoTokenId)
+    RETORNAR nuevoTokenId</code>
+  </div>
+
+  <h3>Vyper: la alternativa</h3>
+  <p>Vyper es el segundo lenguaje de Ethereum, diseñado para ser más simple y más auditable que Solidity. Intencionalmente carece de características que Solidity tiene (como herencia y sobrecarga de operadores) para hacer los contratos más fáciles de leer y verificar. Algunos proyectos enfocados en seguridad prefieren Vyper precisamente porque tiene menos lugares donde los bugs pueden esconderse.</p>
+
+  <h3>Compatibilidad EVM: el imperio se expande</h3>
+  <p>La influencia de la EVM se extiende mucho más allá de Ethereum. Cadenas como Polygon, Arbitrum, Optimism, Base, Avalanche y BNB Chain ejecutan máquinas virtuales compatibles con la EVM. Un contrato escrito para Ethereum puede desplegarse en cualquiera de estas cadenas con cambios mínimos o nulos. Por eso Solidity es el lenguaje de contratos inteligentes más comercialmente importante del mundo.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 6 ==================== -->
+<section class="section" id="s6">
+  <span class="section-number">Capítulo VI</span>
+  <h2>Solana: la máquina de velocidad</h2>
+  <p class="section-intro">Donde Ethereum prioriza la descentralización y la seguridad, Solana optimiza la velocidad y el costo. Para artistas que mintean grandes colecciones, este equilibrio importa.</p>
+
+  <h3>Programas, no contratos</h3>
+  <p>En Solana, los contratos inteligentes se llaman "programas." Esto no es solo una cuestión de marca: refleja una arquitectura fundamentalmente diferente. Un programa de Solana es <strong>sin estado (stateless)</strong>. Contiene solo lógica, no datos. Todos los datos se almacenan en "cuentas" separadas desde las que el programa lee y escribe.</p>
+  <p>Piénsalo así: en Ethereum, un contrato es como una tienda que guarda su propio inventario en la trastienda. En Solana, un programa es como un cajero que consulta un almacén separado cada vez que un cliente pregunta. El cajero (programa) no tiene memoria de transacciones previas; simplemente sigue las reglas y actualiza el almacén (cuentas).</p>
+
+  <h3>El modelo de cuentas</h3>
+  <p>Todo en Solana es una cuenta. Tu wallet es una cuenta. Un NFT es una cuenta. Los metadatos de ese NFT son una cuenta separada. La colección a la que pertenece es otra cuenta. Este modelo es más granular que el de Ethereum, y permite el procesamiento paralelo: si dos transacciones tocan cuentas diferentes, pueden ejecutarse simultáneamente.</p>
+
+  <div class="diagram">
+    <span class="label">Programa (Lógica)</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Cuenta A (datos NFT)</span>
+    <br>
+    <span class="label">Programa (Lógica)</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Cuenta B (Metadatos)</span>
+    <br>
+    <span class="label">Programa (Lógica)</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Cuenta C (Colección)</span>
+    <br>
+    <span style="font-size: 11px; color: var(--ink-muted);">Mismo programa, diferentes cuentas de datos = ejecución paralela</span>
+  </div>
+
+  <h3>Rust y el framework Anchor</h3>
+  <p>Los programas de Solana se escriben en Rust, un lenguaje conocido por su seguridad de memoria y rendimiento, pero también por su curva de aprendizaje pronunciada. El framework Anchor simplifica el desarrollo proporcionando macros y abstracciones que manejan gran parte del código repetitivo. La mayoría de los programas relacionados con NFTs en Solana se construyen con Anchor.</p>
+
+  <h3>Metaplex: la infraestructura NFT</h3>
+  <p>Metaplex es a los NFTs de Solana lo que OpenZeppelin es a Ethereum: la biblioteca estándar. Proporciona programas para minteo, gestión de metadatos, subastas y escaparates. Los dos programas clave de Metaplex para artistas son:</p>
+  <ul>
+    <li><strong>Token Metadata Program</strong>: Adjunta metadatos (nombre, símbolo, URI, información de regalías) a cualquier token de Solana.</li>
+    <li><strong>Bubblegum (v2)</strong>: Habilita "NFTs comprimidos" usando árboles de Merkle, reduciendo el costo de minteo en órdenes de magnitud. Una colección de un millón de NFTs puede mintearse por unos pocos SOL en lugar de miles.</li>
+  </ul>
+
+  <h3>Metaplex Core: la siguiente generación</h3>
+  <p>Metaplex Core es un estándar más nuevo que usa un diseño de cuenta única, reduciendo los costos de minteo en más del 80% comparado con el enfoque original de Token Metadata. También proporciona <strong>regalías forzadas</strong> a nivel de protocolo, un sistema flexible de plugins para comportamientos personalizados y soporte nativo para colecciones y ediciones.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Para Artistas</span>
+    <p>Las tarifas bajas de Solana la hacen atractiva para ediciones grandes y ediciones abiertas. Los NFTs comprimidos a través de Bubblegum v2 permiten distribuir arte a miles de coleccionistas por centavos. La contrapartida: Solana ha experimentado varias caídas de red, y los requisitos de hardware para sus validadores son significativamente más altos que los de Ethereum, concentrando el poder de validación entre menos operadores y más acaudalados.</p>
+  </div>
+
+  <h3>Renta y tiempo de vida de las cuentas</h3>
+  <p>En Solana, almacenar datos cuesta "renta" pagada en SOL. Las cuentas deben mantener un saldo mínimo (el umbral de "exención de renta") o serán eliminadas por la red. Para un NFT, el costo de exención de renta es típicamente alrededor de 0.002 SOL. Este es un depósito único que se puede recuperar si la cuenta se cierra.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 7 ==================== -->
+<section class="section" id="s7">
+  <span class="section-number">Capítulo VII</span>
+  <h2>Tezos: la cadena del matemático</h2>
+  <p class="section-intro">Tezos fue construida con una filosofía diferente: corrección sobre velocidad, gobernanza sobre disrupción. Para una blockchain que alberga arte, esto importa más de lo que podrías pensar.</p>
+
+  <h3>Verificación formal: prueba, no esperanza</h3>
+  <p>La característica definitoria de los contratos inteligentes de Tezos es su afinidad con la verificación formal: la prueba matemática de que un programa se comporta exactamente como se especifica. Aunque la verificación formal es posible en cualquier cadena, Tezos fue diseñada desde cero para hacerla práctica. Su lenguaje de bajo nivel, Michelson, está basado en pila y es determinista, haciéndolo susceptible a herramientas de prueba automatizada.</p>
+  <p>¿Por qué importa esto para los artistas? Porque un contrato formalmente verificado es uno donde no necesitas confiar en las intenciones del desarrollador ni esperar que no haya cometido errores. Las matemáticas lo garantizan.</p>
+
+  <h3>Michelson, SmartPy y LIGO</h3>
+  <p>Nadie escribe Michelson a mano (bueno, casi nadie). Los artistas y desarrolladores usan lenguajes de alto nivel que se compilan a Michelson:</p>
+  <ul>
+    <li><strong>SmartPy</strong>: Sintaxis similar a Python, popular en la comunidad artística, usado por plataformas como objkt.com.</li>
+    <li><strong>LIGO</strong>: Ofrece múltiples variantes de sintaxis (CameLIGO se parece a OCaml, JsLIGO se parece a TypeScript). Usado para contratos complejos de DeFi y gobernanza.</li>
+  </ul>
+
+  <h3>FA2: el estándar multi-activo</h3>
+  <p>Donde Ethereum separa los NFTs (ERC-721) de los tokens semi-fungibles (ERC-1155), Tezos unifica todo bajo FA2 (TZIP-12). Un solo contrato FA2 puede manejar tokens fungibles, tokens no fungibles y multi-ediciones en un solo despliegue. Esto es elegante y eficiente: un contrato, una interfaz, múltiples tipos de activos.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">El legado del NFT limpio</span>
+    <p>Tezos fue la primera cadena importante en usar proof-of-stake desde su génesis, y su consumo energético es una fracción de los niveles pre-Merge de Ethereum. Durante el boom de NFTs de 2021-2022, muchos artistas preocupados por el medio ambiente eligieron Tezos específicamente por esta razón. Plataformas como Hic et Nunc (ahora Teia) y objkt.com se convirtieron en centros culturales para el arte cripto, creando una de las comunidades de artistas más vibrantes del ecosistema.</p>
+  </div>
+
+  <h3>Gobernanza on-chain y actualizaciones</h3>
+  <p>Tezos tiene un mecanismo único de auto-enmienda: el protocolo mismo puede actualizarse mediante votación on-chain por los bakers (validadores de Tezos). Esto significa que la blockchain evoluciona sin hard forks. Para los contratos inteligentes, esto es significativo: las reglas de la máquina virtual pueden cambiar, pero cambian mediante consenso democrático, no por decreto corporativo.</p>
+
+  <h3>Etherlink: el puente EVM</h3>
+  <p>Reconociendo la dominancia del ecosistema EVM, Tezos lanzó Etherlink, una Layer 2 compatible con la EVM construida sobre Smart Rollups. Esto significa que los desarrolladores de Solidity pueden desplegar sus contratos de Ethereum en la infraestructura de Tezos, beneficiándose de su modelo de seguridad mientras mantienen compatibilidad con las herramientas del ecosistema EVM. Rarible ya ha añadido soporte para Etherlink en drops y trading de NFTs.</p>
+
+  <h3>Smart Rollups: escalando sin compromisos</h3>
+  <p>Los Smart Rollups de Tezos están integrados en el protocolo (no son un complemento de terceros). Permiten computación fuera de cadena con verificación on-chain, aumentando dramáticamente el rendimiento. El objetivo a largo plazo es ambicioso: un millón de transacciones por segundo en la capa de rollups. Para los artistas, esto significa que los proyectos generativos a gran escala y las ediciones abiertas se vuelven económicamente viables en Tezos sin sacrificar las garantías de corrección de la cadena.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 8 ==================== -->
+<section class="section" id="s8">
+  <span class="section-number">Capítulo VIII</span>
+  <h2>Bitcoin: el lienzo inesperado</h2>
+  <p class="section-intro">Bitcoin nunca fue diseñado para el arte. Fue diseñado para mover valor, punto. Y sin embargo, mediante una combinación de ingenio y terquedad, los artistas encontraron una entrada.</p>
+
+  <h3>Bitcoin Script: la limitación intencional</h3>
+  <p>El lenguaje de scripting de Bitcoin es deliberadamente limitado. No puede hacer bucles, no puede almacenar estado complejo y no puede llamar a otros scripts. Satoshi Nakamoto lo diseñó así para minimizar la superficie de ataque: un lenguaje más simple significa menos formas de que las cosas salgan mal.</p>
+  <p>Bitcoin Script maneja condiciones como "esta transacción solo puede gastarse si se proporcionan la firma A y la firma B" (multi-firma) o "esta transacción no puede gastarse hasta la altura de bloque 800.000" (bloqueos temporales). Útil para lógica financiera, pero lejos de lo que necesitas para NFTs.</p>
+
+  <h3>La actualización Taproot (noviembre 2021)</h3>
+  <p>Taproot expandió lo que Bitcoin Script podía hacer al introducir firmas Schnorr y un nuevo tipo de script llamado Tapscript. Críticamente, hizo económicamente viable incrustar cantidades mayores de datos en transacciones de Bitcoin. Esto abrió la puerta.</p>
+
+  <h3>Ordinals: cada satoshi recibe un nombre</h3>
+  <p>En enero de 2023, el desarrollador Casey Rodarmor lanzó el protocolo Ordinals, que asigna un número secuencial a cada satoshi (la unidad más pequeña de Bitcoin, 1 BTC = 100.000.000 satoshis). Este "número ordinal" convierte a cada satoshi en una entidad única e identificable.</p>
+  <p>Las inscripciones llevan esto más lejos: puedes adjuntar datos (una imagen, un texto, una página HTML, incluso un programa) directamente a un satoshi específico. Estos datos se almacenan en la sección witness de una transacción de Bitcoin y viven en la blockchain de Bitcoin permanentemente. Sin IPFS, sin Arweave, sin almacenamiento externo. El arte está literalmente en Bitcoin.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">Escala</span>
+    <p>Para enero de 2026, se habían creado más de 107 millones de inscripciones en Bitcoin. Esto no es un experimento de nicho; es un movimiento cultural.</p>
+  </div>
+
+  <h3>Runes: tokens fungibles en Bitcoin</h3>
+  <p>También creado por Casey Rodarmor, Runes (lanzado en abril de 2024) habilita tokens fungibles nativamente en Bitcoin. A diferencia de BRC-20 (un estándar anterior menos eficiente), Runes usa el modelo UTXO de Bitcoin directamente, creando menos saturación de la blockchain. Para los artistas, Runes podría habilitar ediciones, membresías o tokens comunitarios sin salir de Bitcoin.</p>
+
+  <h3>Alkanes: los contratos inteligentes llegan a Bitcoin</h3>
+  <p>El desarrollo más reciente es Alkanes, un metaprotocolo que trae contratos inteligentes basados en WASM a la capa base de Bitcoin. A diferencia de los contratos inteligentes al estilo de Ethereum, Alkanes opera sin puentes ni capas de ejecución externas. Los desarrolladores pueden construir aplicaciones y lanzar tokens nativamente en Bitcoin con lógica programable. Esto aún está en fase temprana, pero representa el intento más ambicioso de traer computación general a la capa base de Bitcoin.</p>
+
+  <h3>La división cultural</h3>
+  <p>No todos en la comunidad de Bitcoin dan la bienvenida a estos desarrollos. Los maximalistas de Bitcoin argumentan que las inscripciones saturan la blockchain y distraen de la misión de Bitcoin como dinero sólido. Los defensores responden que la seguridad y permanencia de la red Bitcoin la convierten en el lienzo definitivo para el arte digital. Como artista, debes saber que este debate existe y que ocasionalmente afecta decisiones técnicas (algunos mineros han discutido filtrar transacciones de inscripciones).</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Importante</span>
+    <p>A finales de febrero de 2026, Magic Eden anunció que cerraría el soporte para Bitcoin Ordinals, Runes y NFTs EVM. El trading terminó el 9 de marzo y las APIs se desconectaron el 27 de marzo. La lección: los marketplaces son intermediarios. Incluso en Bitcoin, donde los datos son permanentes, la infraestructura a su alrededor no lo es.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 9 ==================== -->
+<section class="section" id="s9">
+  <span class="section-number">Capítulo IX</span>
+  <h2>Estándares de tokens: el lenguaje del arte digital</h2>
+  <p class="section-intro">Los estándares de tokens definen cómo se comportan los activos digitales: cómo se crean, se transfieren y se consultan. Son la gramática del arte on-chain.</p>
+
+  <h3>ERC-721: el NFT original</h3>
+  <p>Propuesto en enero de 2018, ERC-721 definió lo que ahora llamamos un NFT: un token donde cada unidad es única y no intercambiable. El estándar especifica: cada token tiene un ID único dentro de su contrato, cada token tiene exactamente un propietario, los tokens pueden transferirse y la propiedad es consultable.</p>
+  <p>CryptoKitties (2017) fue el catalizador, pero ERC-721 formalizó el patrón. Cada NFT que hayas minteado en Ethereum, Polygon, Arbitrum o cualquier cadena EVM usa ERC-721 o su sucesor.</p>
+
+  <h3>ERC-1155: el multi-token</h3>
+  <p>Creado por el equipo de Enjin, ERC-1155 permite que un solo contrato gestione tanto tokens fungibles como no fungibles. Puedes tener piezas únicas 1/1 junto con ediciones de 100 en el mismo contrato. Las operaciones por lotes (mintear 50 tokens en una transacción) reducen los costos de gas dramáticamente.</p>
+
+  <div class="data-table-wrapper" style="overflow-x:auto;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Estándar</th>
+        <th>Cadena</th>
+        <th>Tokens únicos</th>
+        <th>Ediciones</th>
+        <th>Ops por lotes</th>
+        <th>Info de regalías</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ERC-721</strong></td>
+        <td>Cadenas EVM</td>
+        <td>Sí</td>
+        <td>No (necesita workaround)</td>
+        <td>No</td>
+        <td>Vía ERC-2981</td>
+      </tr>
+      <tr>
+        <td><strong>ERC-1155</strong></td>
+        <td>Cadenas EVM</td>
+        <td>Sí</td>
+        <td>Sí (nativo)</td>
+        <td>Sí</td>
+        <td>Vía ERC-2981</td>
+      </tr>
+      <tr>
+        <td><strong>FA2 (TZIP-12)</strong></td>
+        <td>Tezos</td>
+        <td>Sí</td>
+        <td>Sí (nativo)</td>
+        <td>Sí</td>
+        <td>Vía TZIP-16</td>
+      </tr>
+      <tr>
+        <td><strong>Metaplex Core</strong></td>
+        <td>Solana</td>
+        <td>Sí</td>
+        <td>Sí (nativo)</td>
+        <td>Sí</td>
+        <td>Forzadas</td>
+      </tr>
+      <tr>
+        <td><strong>Ordinals</strong></td>
+        <td>Bitcoin</td>
+        <td>Sí</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Ninguna</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>FA2 en Tezos</h3>
+  <p>FA2 es el estándar unificado. Un contrato, una interfaz, cualquier tipo de token. Esta simplicidad tiene beneficios prácticos: las wallets, los marketplaces y los indexadores solo necesitan soportar un estándar, reduciendo la complejidad de integración y los bugs.</p>
+
+  <h3>Estándares Metaplex en Solana</h3>
+  <p>Solana ha iterado a través de múltiples estándares de NFT. El programa Token Metadata original requería múltiples cuentas por NFT. Metaplex Core consolidó esto en un diseño de cuenta única con regalías forzadas y una arquitectura de plugins. Los NFTs comprimidos (Bubblegum) añadieron una tercera opción para minteo de alto volumen y bajo costo usando árboles de Merkle.</p>
+
+  <h3>Ordinals: sin estándar, solo datos</h3>
+  <p>Los Bitcoin Ordinals no siguen un "estándar de token" en el sentido tradicional. No hay un contrato inteligente que defina la lógica de transferencia. La propiedad se determina por cuál satoshi tiene la inscripción adjunta, y las transferencias siguen el modelo UTXO nativo de Bitcoin. Esto es radicalmente simple pero también significa que no hay regalías on-chain, ni mecanismos de aprobación, ni comportamiento programable después de la inscripción.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 10 ==================== -->
+<section class="section" id="s10">
+  <span class="section-number">Capítulo X</span>
+  <h2>Qué pasa realmente cuando minteas</h2>
+  <p class="section-intro">El botón de "Mint" oculta una secuencia extraordinaria de eventos. Esto es lo que realmente sucede, paso a paso, en cada cadena.</p>
+
+  <h3>En Ethereum</h3>
+  <p>Cuando haces clic en "Mint" en una plataforma como Foundation o SuperRare:</p>
+  <ol>
+    <li>Tu wallet construye una transacción invocando la función <code>mint</code> del contrato, pasando tu dirección y la URI de metadatos del token.</li>
+    <li>Firmas la transacción con tu llave privada y la envías a la red (vía un endpoint RPC, como se cubre en La Biblia de las Wallets).</li>
+    <li>La transacción entra al mempool, donde espera a que un validador la incluya en un bloque.</li>
+    <li>Un validador recoge tu transacción, la EVM ejecuta la función <code>mint</code>: verifica que el minteo está permitido, asigna un nuevo ID de token, mapea ese ID a tu dirección en el almacenamiento del contrato y registra la URI de metadatos.</li>
+    <li>El contrato emite un evento <code>Transfer</code> desde address(0) (la dirección cero, significando creación) a tu dirección.</li>
+    <li>El bloque se finaliza. El NFT ahora existe permanentemente en Ethereum.</li>
+    <li>Los indexadores (como los que usan OpenSea y Rarible) detectan el evento <code>Transfer</code> y actualizan sus bases de datos. Tu NFT aparece en tu perfil.</li>
+  </ol>
+
+  <div class="diagram">
+    <span class="label">Tú</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Wallet</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Nodo RPC</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Mempool</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Validador</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Ejecución EVM</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label-gold">Bloque</span>
+    <br>
+    <span style="font-size: 11px; color: var(--ink-muted);">Clic &rarr; Firma &rarr; Transmisión &rarr; Espera &rarr; Ejecución &rarr; Finalización</span>
+  </div>
+
+  <h3>En Solana</h3>
+  <p>El proceso es similar en propósito pero diferente en mecánica. Cuando minteas en Exchange Art o Tensor:</p>
+  <ol>
+    <li>Tu wallet construye una transacción que invoca el programa Metaplex Token Metadata (o el programa Metaplex Core).</li>
+    <li>La transacción especifica qué cuentas crear o modificar: la cuenta de minteo, la cuenta de metadatos y tu cuenta de token.</li>
+    <li>Un validador procesa la transacción. Como los programas de Solana son sin estado, el runtime pasa las cuentas relevantes al programa, que verifica condiciones y escribe datos.</li>
+    <li>La finalidad se alcanza en aproximadamente 400 milisegundos. El NFT existe.</li>
+  </ol>
+
+  <h3>En Tezos</h3>
+  <p>En objkt.com o Teia:</p>
+  <ol>
+    <li>Tu wallet construye una operación invocando el entrypoint <code>mint</code> del contrato FA2.</li>
+    <li>La operación se firma y transmite. Un baker la incluye en un bloque.</li>
+    <li>La VM Michelson ejecuta el contrato. El big map (el almacenamiento eficiente de clave-valor de Tezos) se actualiza con los datos del nuevo token.</li>
+    <li>La finalidad toma aproximadamente 30 segundos (un bloque).</li>
+  </ol>
+
+  <h3>En Bitcoin</h3>
+  <p>Las inscripciones funcionan diferente porque no hay contrato inteligente:</p>
+  <ol>
+    <li>Preparas los datos (imagen, texto, HTML) y los codificas en los datos witness de una transacción de Bitcoin usando el protocolo Ordinals.</li>
+    <li>La transacción se transmite. Un minero la incluye en un bloque.</li>
+    <li>La inscripción queda permanentemente incrustada en la blockchain de Bitcoin. El número ordinal del satoshi al que está adjunta se convierte en su identificador.</li>
+    <li>No hay "contrato" que invocar, ni "función de minteo" que llamar. La inscripción es el artefacto en sí mismo.</li>
+  </ol>
+
+  <div class="callout callout-info">
+    <span class="callout-label">El factor tiempo</span>
+    <p>Ethereum: ~12 segundos por bloque. Solana: ~400 milisegundos. Tezos: ~30 segundos. Bitcoin: ~10 minutos. Estos tiempos importan cuando estás minteando durante un drop de alta demanda. En Ethereum, los precios de gas se disparan mientras todos compiten por espacio en el bloque. En Solana, la ventaja de velocidad puede convertirse en desventaja cuando la red está congestionada y las transacciones se descartan.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 11 ==================== -->
+<section class="section" id="s11">
+  <span class="section-number">Capítulo XI</span>
+  <h2>Regalías: la promesa rota</h2>
+  <p class="section-intro">Las regalías para creadores se suponía que serían la revolución: artistas ganando de cada venta secundaria, automáticamente, para siempre. La realidad es más complicada.</p>
+
+  <h3>El sueño</h3>
+  <p>La propuesta era irresistible: mintea un NFT con un 10% de regalías, y cada vez que cambie de manos en el mercado secundario, el 10% del precio de venta fluye de vuelta a ti automáticamente. Sin agentes, sin contratos que renegociar, sin depender de la buena voluntad de nadie. El contrato inteligente lo garantiza.</p>
+  <p>Excepto que no lo hace.</p>
+
+  <h3>ERC-2981: una señal, no una ley</h3>
+  <p>ERC-2981 es el estándar de Ethereum para información de regalías. Define una función llamada <code>royaltyInfo</code> que cualquier marketplace puede invocar para preguntar: "Para este token, ¿quién debería recibir regalías y cuánto?" El contrato responde con una dirección y un porcentaje.</p>
+  <p>Pero aquí está el punto crítico: <strong>ERC-2981 no puede forzar el pago.</strong> Es una señal, una sugerencia. El propio estándar lo dice. El marketplace es libre de invocar <code>royaltyInfo</code>, leer la respuesta e ignorarla completamente. Y cada vez más, eso es exactamente lo que ocurre.</p>
+
+  <h3>La carrera al cero</h3>
+  <p>En 2023, comenzaron las guerras de marketplaces. Blur se lanzó con regalías opcionales, atrayendo traders que preferían no pagar tarifas al creador. OpenSea respondió introduciendo su Operator Filter Registry, que permitía a los creadores bloquear sus NFTs de ser comercializados en marketplaces que no honraran regalías. Pero esto creó fricción y fragmentación.</p>
+  <p>A finales de 2023, OpenSea desmanteló el Operator Filter. La "carrera al cero" se aceleró. En 2026, el panorama se ha estabilizado en un equilibrio incómodo: algunos marketplaces honran regalías voluntariamente (SuperRare, Foundation), algunos las hacen opcionales (OpenSea, Blur), y algunos las ignoran por completo.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">La verdad dura</span>
+    <p>En Ethereum y la mayoría de las cadenas EVM, las regalías no son ejecutables a nivel de protocolo. Dependen de la cooperación del marketplace. Si un comprador transfiere un NFT directamente a otra wallet (una transferencia peer-to-peer), no se activa ninguna regalía, porque la función de transferencia en ERC-721 no tiene concepto de pago.</p>
+  </div>
+
+  <h3>Donde las regalías sí se cumplen</h3>
+  <p><strong>Metaplex Core en Solana</strong> es la excepción notable. Fuerza las regalías a nivel de programa. Las transferencias que no respetan las reglas de regalías son rechazadas por el propio programa, no por política del marketplace. Esta es una ventaja técnica genuina para artistas que quieren ingresos secundarios garantizados.</p>
+  <p>Los marketplaces de <strong>Tezos</strong> (objkt.com, Teia) generalmente han mantenido la aplicación de regalías, en parte porque la cultura de la comunidad valora la compensación al creador y en parte porque la flexibilidad del estándar FA2 permite una integración más estrecha entre la lógica de transferencia y el pago.</p>
+  <p>Los <strong>Bitcoin Ordinals</strong> no tienen ningún mecanismo de regalías on-chain. Las inscripciones siguen la lógica de transferencia nativa de Bitcoin, y no hay manera de adjuntar programáticamente un requisito de regalías.</p>
+
+  <h3>¿Qué puede hacer un artista?</h3>
+  <p>Elige tu cadena y plataforma deliberadamente. Si las regalías secundarias son críticas para tu modelo económico, Solana con Metaplex Core ofrece la garantía más sólida. En Ethereum, considera plataformas como Manifold que te dan tu propio contrato, y acepta que la aplicación depende de la cooperación del marketplace. En Bitcoin, construye tu modelo económico sobre ventas primarias y relaciones con coleccionistas, no sobre regalías.</p>
+
+  <div class="data-table-wrapper" style="overflow-x:auto;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Cadena</th>
+        <th>Estándar de regalías</th>
+        <th>Nivel de cumplimiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Ethereum / EVM</strong></td>
+        <td>ERC-2981</td>
+        <td>Voluntario (el marketplace decide)</td>
+      </tr>
+      <tr>
+        <td><strong>Solana (Metaplex Core)</strong></td>
+        <td>Integrado</td>
+        <td>Forzado a nivel de protocolo</td>
+      </tr>
+      <tr>
+        <td><strong>Tezos</strong></td>
+        <td>TZIP-16 / Plataforma</td>
+        <td>Forzado por marketplace (cultura fuerte)</td>
+      </tr>
+      <tr>
+        <td><strong>Bitcoin</strong></td>
+        <td>Ninguno</td>
+        <td>Ninguno</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 12 ==================== -->
+<section class="section" id="s12">
+  <span class="section-number">Capítulo XII</span>
+  <h2>Contratos actualizables: lo mutable inmutable</h2>
+  <p class="section-intro">Se supone que los contratos inteligentes son inmutables. Pero algunos de los contratos más importantes del ecosistema pueden cambiarse después del despliegue. Entender cómo, y los riesgos, es esencial.</p>
+
+  <h3>El patrón proxy</h3>
+  <p>El mecanismo de actualización más común usa un sistema de dos contratos. El primer contrato (el "proxy") almacena todos los datos y recibe todas las llamadas de los usuarios. El segundo contrato (la "implementación") contiene la lógica real. Cuando llamas al proxy, este reenvía tu llamada al contrato de implementación.</p>
+  <p>La actualización funciona cambiando a cuál implementación apunta el proxy. Los datos permanecen en el proxy (sin cambios), pero la lógica que opera sobre esos datos se reemplaza. Desde la perspectiva del usuario, la dirección del contrato no cambia. Pero el código detrás de ella sí.</p>
+
+  <div class="diagram">
+    <span class="label-gold">Usuario</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Proxy (datos + dirección)</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Implementación v1</span>
+    <br><br>
+    <span style="font-size: 11px; color: var(--ink-muted);">Después de la actualización:</span>
+    <br>
+    <span class="label-gold">Usuario</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Proxy (mismos datos + misma dirección)</span>
+    <span class="arrow">&rarr;</span>
+    <span class="label">Implementación v2</span>
+  </div>
+
+  <h3>Por qué los contratos se hacen actualizables</h3>
+  <p>Las razones legítimas incluyen: corregir bugs descubiertos después del despliegue, añadir funcionalidades solicitadas por la comunidad, cumplir con regulaciones cambiantes y optimizar costos de gas. OpenZeppelin, la biblioteca de contratos inteligentes más utilizada, proporciona un framework de actualización estandarizado usado por miles de proyectos.</p>
+
+  <h3>Los riesgos para los artistas</h3>
+  <p>Un contrato actualizable significa que <strong>alguien retiene el poder de cambiar las reglas después del despliegue</strong>. Esto es la antítesis de la promesa "el código es ley." Los riesgos específicos incluyen:</p>
+  <ul>
+    <li><strong>Manipulación de metadatos</strong>: El propietario del contrato podría cambiar a dónde apuntan los metadatos del token, reemplazando efectivamente tu arte con otra cosa.</li>
+    <li><strong>Restricciones de transferencia</strong>: Una actualización maliciosa podría congelar las transferencias, impidiéndote vender o mover tus tokens.</li>
+    <li><strong>Cambios de regalías</strong>: Los porcentajes de regalías o las direcciones de destinatario podrían alterarse.</li>
+    <li><strong>Rug pull</strong>: En el peor caso, una actualización podría drenar todo el valor del contrato.</li>
+  </ul>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Señal de alerta</span>
+    <p>Si un contrato es actualizable y la llave de actualización la tiene una sola dirección (no un multi-sig, no una DAO, no un mecanismo con bloqueo temporal), esa dirección tiene poder absoluto sobre el contrato. Una llave comprometida, un mal actor, un momento de debilidad, y todo cambia. Al evaluar un proyecto NFT, siempre pregunta: ¿quién controla la llave de actualización?</p>
+  </div>
+
+  <h3>Mitigaciones</h3>
+  <p>Los proyectos responsables usan varios mecanismos para hacer las actualizaciones más seguras: <strong>bloqueos temporales</strong> (las actualizaciones se anuncian días o semanas por adelantado, dando tiempo a los usuarios para salir), <strong>wallets multi-firma</strong> (múltiples partes deben aprobar una actualización), <strong>votaciones de gobernanza</strong> (la comunidad decide) y <strong>renuncia a la actualización</strong> (la capacidad de deshabilitar permanentemente las actualizaciones una vez que el contrato es estable).</p>
+
+  <h3>El enfoque de Solana</h3>
+  <p>En Solana, los programas son actualizables por defecto. El desplegador retiene una "autoridad de actualización" que puede desplegar nuevo código en la misma dirección del programa. Para hacer un programa inmutable, el desplegador debe revocar explícitamente esta autoridad. Siempre verifica si la autoridad de actualización de un programa de Solana ha sido revocada si la inmutabilidad te importa.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 13 ==================== -->
+<section class="section" id="s13">
+  <span class="section-number">Capítulo XIII</span>
+  <h2>Aprobaciones y permisos: las llaves que prestas</h2>
+  <p class="section-intro">Cada vez que interactúas con un marketplace, otorgas permisos. Entender qué estás otorgando, y a quién, es quizás el capítulo más prácticamente importante de esta guía.</p>
+
+  <h3>Cómo funcionan las aprobaciones en Ethereum</h3>
+  <p>Cuando listas un NFT en venta en OpenSea, el marketplace necesita permiso para transferir ese NFT en tu nombre cuando aparezca un comprador. Otorgas este permiso mediante una transacción de "aprobación." Hay dos tipos:</p>
+  <ul>
+    <li><code>approve(dirección, tokenId)</code>: Otorga permiso para un token específico. Más seguro, pero requiere una transacción separada para cada listado.</li>
+    <li><code>setApprovalForAll(dirección, true)</code>: Otorga permiso para <strong>cada token que poseas en ese contrato</strong>. Conveniente (una transacción cubre todos los listados), pero peligroso: si la dirección aprobada está comprometida o es maliciosa, cada token está en riesgo.</li>
+  </ul>
+
+  <h3>El problema de la aprobación ilimitada</h3>
+  <p>Para tokens ERC-20 (tokens fungibles como WETH o USDC), la situación es aún más traicionera. Cuando apruebas un protocolo DeFi o marketplace para gastar tus tokens, a menudo apruebas una cantidad "ilimitada." Esto significa que el contrato aprobado puede mover cualquier cantidad de ese token desde tu wallet, en cualquier momento, sin confirmación adicional.</p>
+  <p>Si ese contrato es explotado posteriormente, el atacante hereda todas tus aprobaciones ilimitadas. Esto no es teórico: miles de millones de dólares se han perdido a través de exploits basados en aprobaciones.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Crítico</span>
+    <p>Revisa y revoca aprobaciones antiguas regularmente. Herramientas como <strong>revoke.cash</strong> y el <strong>Token Approval Checker de Etherscan</strong> te permiten ver cada contrato que has aprobado y revocar los que ya no uses. Esto es higiene básica, como cambiar contraseñas. Hazlo al menos mensualmente.</p>
+  </div>
+
+  <h3>Permisos en Solana</h3>
+  <p>Solana usa un modelo diferente. Las cuentas de token tienen un campo de "delegado" que puede establecerse para permitir que otra dirección transfiera o queme el token. Importantemente, las delegaciones en Solana típicamente están limitadas a una cantidad específica, haciendo las aprobaciones ilimitadas menos comunes. Sin embargo, el concepto permanece: otorgar delegación significa confiar en otro programa con tus activos.</p>
+
+  <h3>Operadores en Tezos</h3>
+  <p>En el estándar FA2, el concepto equivalente es "operadores." Añades una dirección de operador para un tipo específico de token, y ese operador puede transferir tokens en tu nombre. El patrón es similar al <code>setApprovalForAll</code> de Ethereum, pero el ecosistema de marketplaces más pequeño y curado de Tezos significa que hay menos contratos desconocidos solicitando permisos.</p>
+
+  <h3>La trampa de la firma</h3>
+  <p>No todos los permisos requieren transacciones on-chain. Algunos marketplaces usan firmas fuera de cadena (EIP-712 typed data) para crear listados. Firmas un mensaje con tu wallet, y el marketplace guarda esa firma hasta que aparezca un comprador. El peligro: los sitios de phishing pueden presentar solicitudes de firma que parecen legítimas pero que en realidad autorizan transferencias de activos. <strong>Siempre lee lo que estás firmando.</strong> Si tu wallet muestra una solicitud para firmar un "SetApprovalForAll" o una interacción con un contrato desconocido disfrazada como firma, recházala.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 14 ==================== -->
+<section class="section" id="s14">
+  <span class="section-number">Capítulo XIV</span>
+  <h2>Leer un contrato: autodefensa para artistas</h2>
+  <p class="section-intro">No necesitas ser desarrollador para leer un contrato inteligente. Necesitas saber dónde mirar y qué buscar.</p>
+
+  <h3>Paso 1: Encontrar el contrato</h3>
+  <p>Cada NFT vive en un contrato en una dirección específica. En Ethereum, ve a la página del NFT en cualquier marketplace, encuentra el enlace "Contract Address" y síguelo a Etherscan. En Solana, usa Solscan o Solana Explorer. En Tezos, usa TzKT o Better Call Dev.</p>
+
+  <h3>Paso 2: Verificar la verificación</h3>
+  <p>En Etherscan, busca la marca verde junto a "Contract" en las pestañas de navegación. Si el código fuente está verificado, puedes leerlo. Si no está verificado, solo puedes ver el bytecode crudo, que es ilegible para humanos. <strong>Un contrato no verificado es una señal de advertencia.</strong></p>
+
+  <h3>Paso 3: Buscar señales de alerta</h3>
+  <p>No necesitas entender cada línea. Concéntrate en estos elementos críticos:</p>
+  <ul>
+    <li><strong>Funciones solo del propietario</strong>: Busca <code>onlyOwner</code> o <code>onlyRole</code>. ¿Qué puede hacer el propietario? ¿Puede pausar transferencias? ¿Cambiar metadatos? ¿Retirar fondos?</li>
+    <li><strong>Funciones de retiro</strong>: ¿El contrato retiene ETH? ¿Quién puede retirarlo? Una función como <code>withdraw()</code> con <code>onlyOwner</code> es normal para un contrato de minteo (el artista cobra los ingresos). Pero si la función de retiro no existe o apunta a una dirección desconocida, eso es sospechoso.</li>
+    <li><strong>setBaseURI o setTokenURI</strong>: ¿Se pueden cambiar los metadatos después del minteo? Si es así, tu arte podría teóricamente ser reemplazado.</li>
+    <li><strong>Patrones proxy</strong>: Si el contrato parece demasiado simple (solo unas pocas líneas), podría ser un proxy. Verifica si delega llamadas a otro contrato.</li>
+    <li><strong>Minteo oculto</strong>: ¿Puede el propietario mintear tokens para sí mismo sin pagar? Busca funciones de minteo que eviten las reglas del minteo público.</li>
+  </ul>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Consejo Pro</span>
+    <p>En Etherscan, ve a la pestaña "Read Contract." Invoca <code>owner()</code> para ver quién controla el contrato. Luego verifica esa dirección: ¿es una wallet regular, un multi-sig (como un Safe/Gnosis Safe) o una dirección de plataforma conocida? Un multi-sig es buena señal. Una wallet aleatoria es un riesgo.</p>
+  </div>
+
+  <h3>Paso 4: Revisar el historial de transacciones</h3>
+  <p>Etherscan muestra cada transacción enviada al contrato. Observa: cuántas direcciones únicas han interactuado (más es generalmente mejor), si el propietario ha llamado funciones administrativas recientemente, y si hay transacciones fallidas que podrían indicar bugs o exploits.</p>
+
+  <h3>Herramientas para no-desarrolladores</h3>
+  <p>Varias herramientas pueden ayudarte a entender contratos sin leer código: <strong>Bubblemaps</strong> visualiza la distribución de tokens y conexiones entre wallets. <strong>DethCode</strong> proporciona una interfaz tipo VS Code para leer contratos de Etherscan. <strong>Tenderly</strong> te permite simular transacciones antes de ejecutarlas. <strong>Token Sniffer</strong> analiza contratos de tokens buscando patrones comunes de estafa.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 15 ==================== -->
+<section class="section" id="s15">
+  <span class="section-number">Capítulo XV</span>
+  <h2>Seguridad: exploits, estafas y señales de alerta</h2>
+  <p class="section-intro">Miles de millones de dólares se han perdido por vulnerabilidades en contratos inteligentes. Como artista, tu obra y la confianza de tus coleccionistas están en juego. Conocer los ataques comunes es saber cómo evitarlos.</p>
+
+  <h3>Reentrancia: el clásico</h3>
+  <p>La reentrancia es la vulnerabilidad de contratos inteligentes más antigua y más infame. Ocurre cuando un contrato envía ETH a una dirección externa antes de actualizar su propio estado. La dirección receptora puede ser un contrato malicioso que, al recibir ETH, inmediatamente vuelve a llamar al contrato original y dispara otro pago, una y otra vez, antes de que la transacción original se complete.</p>
+
+  <div class="code-block">
+    <span class="code-label">Pseudocódigo - Vulnerable</span>
+    <code>FUNCIÓN retirar():
+    cantidad = saldos[invocante]
+    ENVIAR cantidad A invocante     // llamada externa ANTES de actualizar estado
+    saldos[invocante] = 0           // demasiado tarde: el atacante re-entró arriba</code>
+  </div>
+
+  <div class="code-block">
+    <span class="code-label">Pseudocódigo - Seguro</span>
+    <code>FUNCIÓN retirar():
+    cantidad = saldos[invocante]
+    saldos[invocante] = 0           // actualización de estado PRIMERO
+    ENVIAR cantidad A invocante     // llamada externa DESPUÉS (seguro)</code>
+  </div>
+
+  <p>La solución es simple en principio: siempre actualiza el estado antes de hacer llamadas externas. Este patrón se llama "verificaciones-efectos-interacciones." En 2025, los ataques de reentrancia aún causaron $35,7 millones en pérdidas. En 2026, permanecen en el OWASP Smart Contract Top 10.</p>
+
+  <h3>Fallas de control de acceso</h3>
+  <p>Cuando las funciones críticas carecen de restricciones de acceso apropiadas, cualquiera puede llamarlas. Imagina una función <code>mint</code> sin un modificador <code>onlyOwner</code> que se suponía que era solo para administradores: cualquiera podría mintear tokens ilimitados. O una función <code>setRoyaltyRecipient</code> que cualquiera puede llamar para redirigir regalías a su propia dirección.</p>
+
+  <h3>Manipulación de oráculos</h3>
+  <p>Los contratos inteligentes no pueden acceder a datos externos directamente. Dependen de "oráculos" (servicios como Chainlink) para feeds de precios e información fuera de cadena. Si un atacante puede manipular los datos del oráculo, puede engañar al contrato para que tome decisiones basadas en información falsa. Esto es especialmente relevante en DeFi pero puede afectar mecanismos de precios de NFTs.</p>
+
+  <h3>La anatomía del rug pull</h3>
+  <p>Un rug pull típicamente sigue este patrón: un proyecto se lanza con arte y marketing atractivos, el contrato recolecta los ingresos del minteo, y luego sucede alguna de estas cosas: el equipo retira todos los fondos y desaparece, las URIs de metadatos se cambian para apuntar a imágenes en blanco o sin valor, o el contrato se actualiza (vía proxy) para deshabilitar transferencias, atrapando los tokens de los coleccionistas.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Lista de señales de alerta</span>
+    <p>Contrato no verificado en Etherscan. Equipo anónimo sin historial. El propietario puede cambiar metadatos después del minteo. Sin multi-sig en la dirección del propietario del contrato. Promesas irrealistas de valor futuro. Presión para mintear rápidamente ("tiempo limitado"). Sin auditoría de una firma reputada. La función de retiro envía a una dirección desconocida.</p>
+  </div>
+
+  <h3>Ataques de flash loan</h3>
+  <p>Los flash loans permiten a cualquiera pedir prestadas cantidades enormes de criptomonedas sin colateral, siempre que el préstamo se devuelva dentro de la misma transacción. Los atacantes usan flash loans para obtener temporalmente suficiente capital para manipular mercados, explotar mecanismos de precios u obtener poder de gobernanza. En el arte cripto, esto es menos común pero no imposible, especialmente para protocolos NFT-fi que usan NFTs como colateral.</p>
+
+  <h3>La escala del problema</h3>
+  <p>El robo de criptomonedas alcanzó $3.400 millones en 2025, el peor año registrado, con más de $2.300 millones drenados solo en la primera mitad. El exploit del Cetus Protocol ($223 millones por desbordamiento de enteros), el incidente de Balancer v2 ($120 millones) y numerosos hackeos menores demuestran que la seguridad de contratos inteligentes sigue siendo un desafío sin resolver.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 16 ==================== -->
+<section class="section" id="s16">
+  <span class="section-number">Capítulo XVI</span>
+  <h2>Gas: la economía de la ejecución</h2>
+  <p class="section-intro">El gas es el precio de la computación. Entenderlo te ayuda a elegir el momento de tus minteos, escoger tu cadena y evitar pagar de más.</p>
+
+  <h3>Qué es realmente el gas</h3>
+  <p>El gas es una unidad de trabajo computacional, no una moneda. Cada operación en la EVM tiene un costo fijo de gas. El gas total de una transacción es la suma de todas las operaciones que dispara. Luego multiplicas por el "precio del gas" (en gwei, donde 1 gwei = 0,000000001 ETH) para obtener la tarifa en ETH.</p>
+
+  <div class="code-block">
+    <span class="code-label">Ejemplo</span>
+    <code>Transacción de minteo:
+    Gas usado:          85.000 unidades
+    Tarifa base:        15 gwei
+    Tarifa de prioridad: 2 gwei
+    Tarifa total:       85.000 x 17 gwei = 1.445.000 gwei = 0,001445 ETH
+    A ETH = $3.200:     aproximadamente $4,62</code>
+  </div>
+
+  <h3>EIP-1559: el mecanismo de tarifas</h3>
+  <p>Desde agosto de 2021, Ethereum usa EIP-1559, que divide la tarifa en una "tarifa base" (determinada por la demanda de la red y quemada, reduciendo el suministro de ETH) y una "tarifa de prioridad" (una propina al validador). Cuando la red está ocupada, la tarifa base sube automáticamente. Cuando está tranquila, baja. Esto crea un mecanismo de precios dinámico que reemplaza el antiguo sistema de subasta.</p>
+
+  <h3>Gas en diferentes cadenas</h3>
+  <p>Las estructuras de tarifas varían dramáticamente:</p>
+  <ul>
+    <li><strong>Ethereum mainnet</strong>: $1-50+ por transacción dependiendo de la congestión de la red. Las operaciones complejas (minteo, despliegue) cuestan más.</li>
+    <li><strong>Layer 2s (Arbitrum, Base, Optimism)</strong>: $0,01-0,50. Misma EVM, una fracción del costo.</li>
+    <li><strong>Solana</strong>: ~$0,001 por transacción. Las tarifas de prioridad existen pero son mínimas.</li>
+    <li><strong>Tezos</strong>: ~$0,01-0,05 por transacción. Estable y predecible.</li>
+    <li><strong>Bitcoin</strong>: $1-20+ dependiendo del tamaño de la transacción y la congestión del mempool. Las inscripciones son transacciones más grandes y cuestan más.</li>
+  </ul>
+
+  <h3>Eligiendo el momento de tus transacciones</h3>
+  <p>En Ethereum, los precios de gas siguen patrones predecibles: más bajos durante las noches y fines de semana de Norteamérica, más altos durante las horas laborales europeas/americanas. Herramientas como <strong>Blocknative Gas Estimator</strong> y <strong>Ultrasound.money</strong> muestran datos de gas en tiempo real e histórico. Si tu minteo no es urgente, esperar horarios de baja actividad puede ahorrarte un 50% o más.</p>
+
+  <div class="callout callout-ok">
+    <span class="callout-label">Para Artistas</span>
+    <p>Cuando despliegas tu propio contrato, la transacción de despliegue es la más cara (a menudo $50-200 en Ethereum mainnet durante condiciones normales). Considera desplegar en una Layer 2 o durante períodos de gas bajo. Para minteos, las operaciones por lotes (ERC-1155) y el lazy minting (minteo bajo demanda cuando el coleccionista compra) pueden reducir los costos significativamente.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 17 ==================== -->
+<section class="section" id="s17">
+  <span class="section-number">Capítulo XVII</span>
+  <h2>On-chain vs off-chain: dónde vive realmente tu arte</h2>
+  <p class="section-intro">El contrato inteligente dice que eres dueño del token #42. Pero, ¿dónde está la imagen real, la obra real? La respuesta es más compleja, y más frágil, de lo que la mayoría de los artistas creen.</p>
+
+  <h3>La Token URI</h3>
+  <p>Cada NFT tiene una <code>tokenURI</code> que apunta a un archivo JSON que contiene los metadatos: el nombre, la descripción, los atributos y, críticamente, el campo <code>image</code>, que es una URL que apunta al archivo de la obra real. El token on-chain es esencialmente un puntero. A dónde apunta determina todo.</p>
+
+  <h3>Dónde pueden vivir los metadatos</h3>
+  <ul>
+    <li><strong>Servidor centralizado (HTTP)</strong>: Los metadatos viven en el servidor de una empresa. Si la empresa cierra, el servidor se cae o el dominio expira, los metadatos (y por lo tanto el arte) desaparecen. Esta es la peor opción para la permanencia.</li>
+    <li><strong>IPFS (InterPlanetary File System)</strong>: Una red descentralizada direccionada por contenido. Los archivos se identifican por su hash de contenido, así que la URI nunca cambia. Pero alguien debe "pinear" el archivo (mantener una copia disponible). Si todos los que pinean dejan de hacerlo, el archivo se vuelve inaccesible. Servicios como Pinata, Infura IPFS y nft.storage proporcionan pinning.</li>
+    <li><strong>Arweave</strong>: Una red de almacenamiento permanente donde pagas una vez y los datos se almacenan para siempre (en teoría). El modelo económico incentiva a los mineros a mantener los datos disponibles. Muchos proyectos serios de arte (Art Blocks, plataformas de arte generativo) usan Arweave.</li>
+    <li><strong>Completamente on-chain</strong>: Los datos de la obra se almacenan directamente en el almacenamiento del contrato inteligente o como parte de la transacción de despliegue. Esta es la opción más permanente pero también la más cara. Solo archivos pequeños (SVGs, arte ASCII, imágenes pequeñas codificadas en base64) son prácticos completamente on-chain.</li>
+    <li><strong>Inscripciones de Bitcoin</strong>: Los datos inscritos vía Ordinals se almacenan en los datos witness de la blockchain de Bitcoin, haciéndolos tan permanentes como Bitcoin mismo. Este es posiblemente el almacenamiento más permanente disponible, respaldado por la blockchain más valiosa y segura.</li>
+  </ul>
+
+  <div class="diagram">
+    <span class="label-gold">Contrato inteligente</span>
+    <span style="font-size: 11px;">(on-chain, permanente)</span>
+    <br>
+    <span class="arrow">&darr;</span>
+    <span style="font-size: 11px;">tokenURI apunta a...</span>
+    <br>
+    <span class="label">Servidor HTTP</span>
+    <span style="font-size: 11px; color: var(--warn);">(frágil)</span>
+    &nbsp;&nbsp;
+    <span class="label">IPFS</span>
+    <span style="font-size: 11px; color: var(--gold);">(necesita pinning)</span>
+    &nbsp;&nbsp;
+    <span class="label">Arweave</span>
+    <span style="font-size: 11px; color: var(--ok);">(permanente)</span>
+    &nbsp;&nbsp;
+    <span class="label">On-chain</span>
+    <span style="font-size: 11px; color: var(--ok);">(permanente)</span>
+  </div>
+
+  <h3>El problema de la fragilidad</h3>
+  <p>Un NFT cuyos metadatos apuntan a <code>https://empresa.com/api/token/42</code> es tan permanente como el servidor de esa empresa. Si la empresa pivotea, se queda sin dinero o simplemente olvida renovar el dominio, el arte se desvanece. El token sigue existiendo on-chain, pero apunta a la nada. Eres dueño de un recibo por un artículo que ya no existe.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Acción Requerida</span>
+    <p>Si eres artista, verifica a dónde apuntan tus obras minteadas. Ve al contrato en Etherscan, invoca <code>tokenURI</code> con tu ID de token y examina la URL devuelta. Si comienza con <code>https://</code> apuntando a un dominio de empresa, la permanencia de tu arte depende de esa empresa. Si comienza con <code>ipfs://</code>, verifica que el archivo siga pineado. Si comienza con <code>ar://</code>, está en Arweave (bien). Si los datos se devuelven en línea (base64), están on-chain (lo mejor).</p>
+  </div>
+
+  <h3>Congelar metadatos</h3>
+  <p>Algunos contratos permiten al propietario "congelar" los metadatos, haciendo la <code>tokenURI</code> permanentemente inmodificable. Este es el estándar de oro para contratos desplegados por artistas: sube el arte a IPFS o Arweave, establece la URI y congela. Después de congelar, ni siquiera el propietario del contrato puede cambiar a dónde apunta el arte.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== CAPÍTULO 18 ==================== -->
+<section class="section" id="s18">
+  <span class="section-number">Capítulo XVIII</span>
+  <h2>El futuro: hacia dónde van los contratos inteligentes</h2>
+  <p class="section-intro">La tecnología está evolucionando rápidamente. Estos son los desarrollos que darán forma a cómo los artistas interactúan con los contratos inteligentes en los próximos años.</p>
+
+  <h3>Account abstraction y smart wallets</h3>
+  <p>Como se cubre en La Biblia de las Wallets, la abstracción de cuentas (ERC-4337) difumina la línea entre wallets y contratos. Tu wallet misma se convierte en un contrato inteligente, capaz de lógica personalizada: recuperación social, límites de gasto, llaves de sesión que otorgan permisos temporales. Para los artistas, esto significa experiencias más fluidas para los coleccionistas (sin gestión de gas para los compradores) y mecanismos de minteo más sofisticados (suscripciones, pagos a plazos, acceso condicional).</p>
+
+  <h3>Intents: lo que quieres, no cómo conseguirlo</h3>
+  <p>Las arquitecturas basadas en intents son un paradigma emergente donde los usuarios especifican lo que quieren ("comprar este NFT por menos de 0,5 ETH") y "solvers" compiten para encontrar la mejor manera de cumplir esa intención. Esto mueve la complejidad del usuario a la infraestructura, haciendo que las interacciones con contratos inteligentes se sientan más como usar un motor de búsqueda que como programar una computadora.</p>
+
+  <h3>Interoperabilidad entre cadenas</h3>
+  <p>Los bridges y protocolos cross-chain están madurando, habilitando que los NFTs se muevan entre cadenas. Estándares como OFT de LayerZero (Omnichain Fungible Token) y protocolos de mensajería cross-chain están haciendo técnicamente factible que un NFT minteado en Ethereum sea visible y comercializable en Solana o viceversa. Esto aún está en fase temprana y es riesgoso (los exploits de bridges han causado algunas de las mayores pérdidas en la historia cripto), pero representa un futuro donde los artistas no tienen que elegir una sola cadena.</p>
+
+  <h3>La verificación formal se vuelve mainstream</h3>
+  <p>Lo que Tezos fue pionera en implementar está llegando gradualmente a otras cadenas. Las herramientas de verificación formal para contratos en Solidity están mejorando, y las firmas auditoras usan cada vez más pruebas matemáticas junto con la revisión manual. A medida que lo que está en juego crece, la industria se está moviendo de "probar y esperar" hacia "demostrar y desplegar."</p>
+
+  <h3>Arte generativo on-chain</h3>
+  <p>El arte generativo completamente on-chain (donde el algoritmo vive en el contrato mismo, no solo un puntero a código externo) se está volviendo más factible a medida que las L2 reducen los costos de almacenamiento y plataformas especializadas (Art Blocks Engine, fxhash) proporcionan infraestructura. El contrato no es solo un certificado de propiedad; es el renderizador de la obra, su ADN, su fuente de verdad permanente.</p>
+
+  <h3>Regulación</h3>
+  <p>Los contratos inteligentes existen en una zona gris legal. Preguntas sobre si ciertos tokens constituyen valores, si los desarrolladores de contratos inteligentes tienen responsabilidad legal, y cómo la gobernanza descentralizada interactúa con la ley existente se están debatiendo activamente. Los artistas deben mantenerse informados, porque las decisiones regulatorias afectarán qué plataformas sobreviven, cómo se gravan las regalías y qué obligaciones contractuales existen entre creadores y coleccionistas.</p>
+
+  <div class="callout callout-info">
+    <span class="callout-label">La visión a largo plazo</span>
+    <p>Los contratos inteligentes tienen menos de una década. La primera generación estableció el concepto. La generación actual está luchando con la escala, la seguridad y la sostenibilidad. La próxima generación probablemente lucirá muy diferente a la de hoy: interfaces más simples, garantías más fuertes, integración más profunda con el mundo físico y (ojalá) derechos de creador ejecutables incorporados en cada protocolo.</p>
+  </div>
+</section>
+
+<!-- ==================== GLOSARIO ==================== -->
+<section class="section" id="glossary">
+  <span class="section-number">Referencia</span>
+  <h2>Glosario</h2>
+  <p class="section-intro">Referencia rápida de términos usados a lo largo de esta guía.</p>
+
+  <div class="data-table-wrapper" style="overflow-x:auto;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Término</th>
+        <th>Definición</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ABI</strong></td>
+        <td>Application Binary Interface. Una descripción JSON de las funciones y eventos de un contrato, usada por wallets y dApps para interactuar con el contrato.</td>
+      </tr>
+      <tr>
+        <td><strong>Account Abstraction</strong></td>
+        <td>Un paradigma (ERC-4337) donde las wallets de los usuarios son contratos inteligentes en sí mismas, habilitando lógica personalizada como recuperación social y transacciones sin gas.</td>
+      </tr>
+      <tr>
+        <td><strong>Bytecode</strong></td>
+        <td>La versión compilada y legible por máquinas de un contrato inteligente, desplegada on-chain. El código fuente legible por humanos se compila a bytecode.</td>
+      </tr>
+      <tr>
+        <td><strong>Constructor</strong></td>
+        <td>Código especial que se ejecuta una vez al momento del despliegue, estableciendo el estado inicial del contrato. No puede volver a llamarse.</td>
+      </tr>
+      <tr>
+        <td><strong>ERC-721</strong></td>
+        <td>El estándar de Ethereum para tokens no fungibles. Cada token es único y tiene exactamente un propietario.</td>
+      </tr>
+      <tr>
+        <td><strong>ERC-1155</strong></td>
+        <td>Un estándar multi-token que soporta tanto tokens fungibles como no fungibles en un solo contrato.</td>
+      </tr>
+      <tr>
+        <td><strong>ERC-2981</strong></td>
+        <td>El estándar de información de regalías. Proporciona una función para consultar detalles de regalías, pero no fuerza el pago.</td>
+      </tr>
+      <tr>
+        <td><strong>EVM</strong></td>
+        <td>Ethereum Virtual Machine. El entorno de ejecución que ejecuta contratos inteligentes en Ethereum y cadenas compatibles.</td>
+      </tr>
+      <tr>
+        <td><strong>FA2 (TZIP-12)</strong></td>
+        <td>El estándar de token unificado de Tezos. Maneja tokens fungibles, no fungibles y multi-edición en una sola interfaz.</td>
+      </tr>
+      <tr>
+        <td><strong>Gas</strong></td>
+        <td>Una unidad de trabajo computacional en Ethereum. Cada operación cuesta una cantidad fija de gas. Gas total por precio de gas igual a tarifa de transacción.</td>
+      </tr>
+      <tr>
+        <td><strong>Inscripción</strong></td>
+        <td>Datos (imagen, texto, HTML) permanentemente incrustados en una transacción de Bitcoin vía el protocolo Ordinals.</td>
+      </tr>
+      <tr>
+        <td><strong>Mempool</strong></td>
+        <td>La sala de espera para transacciones no confirmadas. Las transacciones esperan aquí hasta que un validador las incluye en un bloque.</td>
+      </tr>
+      <tr>
+        <td><strong>Opcode</strong></td>
+        <td>Una instrucción individual de bajo nivel en la EVM. Los contratos inteligentes se compilan en secuencias de opcodes.</td>
+      </tr>
+      <tr>
+        <td><strong>Oráculo</strong></td>
+        <td>Un servicio que proporciona datos externos a los contratos inteligentes (feeds de precios, aleatoriedad, eventos fuera de cadena). Chainlink es el proveedor más grande.</td>
+      </tr>
+      <tr>
+        <td><strong>Patrón Proxy</strong></td>
+        <td>Un diseño que separa datos (contrato proxy) de lógica (contrato de implementación), permitiendo actualizaciones al intercambiar la implementación.</td>
+      </tr>
+      <tr>
+        <td><strong>Reentrancia</strong></td>
+        <td>Una vulnerabilidad donde un contrato hace una llamada externa antes de actualizar su estado, permitiendo al contrato llamado re-entrar y explotar el estado desactualizado.</td>
+      </tr>
+      <tr>
+        <td><strong>Rug Pull</strong></td>
+        <td>Una estafa donde los creadores del proyecto lo abandonan después de recolectar fondos, a menudo involucrando manipulación de metadatos, retiro de fondos o congelamiento de transferencias.</td>
+      </tr>
+      <tr>
+        <td><strong>Sealevel</strong></td>
+        <td>El motor de ejecución paralela de Solana. Procesa transacciones no conflictivas simultáneamente para alto rendimiento.</td>
+      </tr>
+      <tr>
+        <td><strong>Token URI</strong></td>
+        <td>La URI almacenada en el contrato inteligente que apunta a los metadatos del token (nombre, descripción, URL de imagen, atributos).</td>
+      </tr>
+      <tr>
+        <td><strong>Verificación Formal</strong></td>
+        <td>Prueba matemática de que un programa se comporta como se especifica. Elimina ciertas clases de bugs con certeza.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>El código que custodia tu arte no es un detalle. Es la arquitectura de tu soberanía creativa.</p>
+  <p class="signature"><a href="https://ernestocisneros.art" target="_blank" rel="noopener">Ernesto Cisneros Cino</a></p>
+  <p style="font-style: normal; font-size: 14px; color: #8a837a; margin-top: 20px;">
+    <a href="https://ernestocisneros.art/es/nft/resources.html" style="color: #8a837a;">&#8592; Volver a Recursos</a>
+  </p>
+</footer>
+
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
