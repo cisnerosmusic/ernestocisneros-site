@@ -27,38 +27,19 @@
   <style>
     /* Music Hub Specific Styles */
     .music-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: calc(var(--nav-height) + 4rem) var(--space-md) var(--space-lg);
-      position: relative;
-      background: radial-gradient(ellipse at center, rgba(212, 160, 48, 0.06) 0%, transparent 70%);
-    }
-
-    .music-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(212, 160, 48, 0.03) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(212, 160, 48, 0.03) 0%, transparent 40%);
-      pointer-events: none;
+      padding: 4rem 2rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .music-title {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 10vw, 6rem);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
       font-weight: 400;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.12em;
       color: var(--gold);
       margin-bottom: 2rem;
-      position: relative;
     }
 
     .music-philosophy {
@@ -240,8 +221,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       .music-hero {
-        padding-top: calc(var(--nav-height) + 2rem);
-        min-height: 80vh;
+        padding: 3rem 1.5rem 2rem;
       }
 
       .music-philosophy p {
