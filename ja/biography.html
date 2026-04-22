@@ -106,11 +106,15 @@
     .bio-text { font-size: 1.1rem; }
     .bio-text p { margin-bottom: 1.5rem; }
     .bio-text strong { color: var(--gold); font-weight: 500; }
+        .bio-text { text-align: left; }
+    .bio-wikipedia-wrapper {
+      text-align: center;
+      margin-top: 2rem;
+    }
     .bio-wikipedia {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 1rem;
       padding: 0.6rem 1.2rem;
       border: 1px solid var(--gold-dim);
       border-radius: 3px;
@@ -131,7 +135,7 @@
     }
 
     /* Collaborations */
-    .collaborations { margin-top: 3rem; }
+    .collaborations { margin-top: 3rem; text-align: center; }
     .collab-title {
       font-family: var(--font-display);
       font-size: 1.2rem;
@@ -721,12 +725,14 @@
           今日、彼の作品は音、芸術、記憶、体系的思考の交差点にあります。<a href="music.html" class="hidden-link">音楽</a>、<a href="nft.html" class="hidden-link">デジタル創作</a>、<a href="books.html" class="hidden-link">ナラティブ</a>、<a href="ideas/cosmology-physics.html" class="hidden-link">複雑な思想</a>が収束する学際的領域です。間（ま）— 意味のある空白と寂寥 — が彼の美学を特徴づけています。
         </p>
 
-        <a href="https://es.wikipedia.org/wiki/Ernesto_Cisneros_Cino" target="_blank" class="bio-wikipedia">
-          Wikipedia
-          <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-          </svg>
-        </a>
+        <div class="bio-wikipedia-wrapper">
+          <a href="https://es.wikipedia.org/wiki/Ernesto_Cisneros_Cino" target="_blank" class="bio-wikipedia">
+            Wikipedia
+            <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
 
