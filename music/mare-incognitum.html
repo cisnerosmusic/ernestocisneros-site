@@ -934,7 +934,7 @@ input:focus-visible,
   <div id="tracklist-mobile-title">Tracklist</div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
 <script>
 // NAVIGATION — loaded from shared nav.js
 
@@ -1024,6 +1024,7 @@ TRACKS.forEach((t, i) => {
   const el = document.createElement('div');
   el.className = 'track-item';
   el.id = 'ti-' + i;
+  // Safe: innerHTML with hardcoded HTML structure and data from local TRACKS array only (no user input)
   el.innerHTML = `
     <span class="track-num">${String(t.num).padStart(2,'0')}</span>
     <span class="track-name">${t.name}</span>
@@ -1038,6 +1039,7 @@ if (tlMobile) {
     const el = document.createElement('div');
     el.className = 'track-item';
     el.id = 'ti-m-' + i;
+    // Safe: innerHTML with hardcoded HTML structure and data from local TRACKS array only (no user input)
     el.innerHTML = `
       <span class="track-num">${String(t.num).padStart(2,'0')}</span>
       <span class="track-name">${t.name}</span>
@@ -1075,6 +1077,7 @@ function updateTracklistUI(){
 }
 
 function setPlayButtonState(playing){
+  // Safe: innerHTML with hardcoded string literals only (no user input)
   btnPlay.innerHTML = playing ? '❚❚' : '▶';
 }
 
@@ -2091,6 +2094,6 @@ requestAnimationFrame(animate);
 <script src="../assets/js/nav.js"></script>
 
 <script src="../assets/js/footer-lang.js" defer></script>
-<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
 </body>
 </html>

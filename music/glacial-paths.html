@@ -976,6 +976,7 @@ function buildConstellation() {
     node.className = 'track-node';
     node.style.left = pos.x + '%';
     node.style.top  = pos.y + '%';
+    // Safe: innerHTML with hardcoded HTML structure and data from local tracks array only (no user input)
     node.innerHTML = `
       <div class="node-dot"></div>
       <div class="node-label">${t.title}</div>
@@ -1239,6 +1240,6 @@ document.addEventListener('keydown', (e) => {
 </script>
 <script src="../assets/js/nav.js"></script>
 <script src="../assets/js/footer-lang.js" defer></script>
-<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
 </body>
 </html>

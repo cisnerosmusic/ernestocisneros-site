@@ -917,6 +917,7 @@ input:focus-visible,
   tracks.forEach((t, i) => {
     const item = document.createElement('div');
     item.className = 'track-item' + (i === 0 ? ' active' : '');
+    // Safe: innerHTML with hardcoded HTML structure and data from local tracks array only (no user input)
     item.innerHTML =
       `<span class="track-item-num">${String(i+1).padStart(2,'0')}</span>` +
       `<span class="track-item-name">${t.title}</span>` +
@@ -947,6 +948,7 @@ input:focus-visible,
 
   function setPlaying(state) {
     isPlaying = state;
+    // Safe: innerHTML with hardcoded SVG paths only (no user input)
     playIcon.innerHTML = state
       ? '<path d="M6 19h4V5H6zm8-14v14h4V5z"/>'
       : '<path d="M8 5v14l11-7z"/>';
@@ -1087,6 +1089,6 @@ input:focus-visible,
 </script>
 <script src="../assets/js/nav.js"></script>
 <script src="../assets/js/footer-lang.js" defer></script>
-<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
 </body>
 </html>

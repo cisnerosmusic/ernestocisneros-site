@@ -1370,7 +1370,8 @@
       if (data.cta) {
         html += `<a href="${data.cta.url}" class="cta-button" target="${data.cta.url.startsWith('http') ? '_blank' : '_self'}">${data.cta.text}</a>`;
       }
-      
+
+      // Safe: innerHTML with HTML built from static panelContent object only (no user input)
       content.innerHTML = html;
       
       content.querySelectorAll('.connection-tag').forEach(tag => {
@@ -1418,6 +1419,6 @@
 
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/footer-lang.js" defer></script>
-<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
 </body>
 </html>

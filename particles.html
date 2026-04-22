@@ -475,6 +475,7 @@ function loadTrack(idx) {
 
   audioReady = true;
   isPlaying = true;
+  // Safe: innerHTML with hardcoded HTML entity only (no user input)
   document.getElementById('btnPlay').innerHTML = '&#9646;&#9646;';
 }
 
@@ -504,11 +505,13 @@ document.getElementById('btnPlay').addEventListener('click', () => {
   if (isPlaying) {
     audioEl.pause();
     isPlaying = false;
+    // Safe: innerHTML with hardcoded HTML entity only (no user input)
     document.getElementById('btnPlay').innerHTML = '&#9654;';
   } else {
     if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
     audioEl.play();
     isPlaying = true;
+    // Safe: innerHTML with hardcoded HTML entity only (no user input)
     document.getElementById('btnPlay').innerHTML = '&#9646;&#9646;';
   }
 });
@@ -1071,6 +1074,6 @@ function loop() {
 loop();
 </script>
 
-<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
 </body>
 </html>

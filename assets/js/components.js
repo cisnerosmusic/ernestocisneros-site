@@ -16,13 +16,14 @@
       const response = await fetch(basePath + 'components/header.html');
       if (response.ok) {
         let html = await response.text();
-        
+
         // Adjust paths for subfolders
         if (isSubfolder) {
           html = html.replace(/href="(?!http|#|mailto)/g, 'href="../');
           html = html.replace(/src="(?!http)/g, 'src="../');
         }
-        
+
+        // Safe: Loading trusted HTML template from server, no user input
         headerContainer.innerHTML = html;
         
         // Reinitialize mobile menu toggle after loading
@@ -41,6 +42,7 @@
       const response = await fetch(basePath + 'components/footer.html');
       if (response.ok) {
         let html = await response.text();
+        // Safe: Loading trusted HTML template from server, no user input
         footerContainer.innerHTML = html;
       }
     } catch (err) {
