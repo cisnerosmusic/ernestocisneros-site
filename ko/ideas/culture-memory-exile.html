@@ -195,6 +195,55 @@ a:hover { color: var(--gold-bright); }
   right: 1.2rem;
 }
 
+/* Published Article Reference */
+.article-ref {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.article-ref-intro {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-style: italic;
+  margin-bottom: 1.8rem;
+}
+
+.article-ref-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--gold-dim);
+  border-radius: 3px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: all 0.3s;
+}
+
+.article-ref-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.article-ref-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.article-ref-source {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gold-faint);
@@ -353,6 +402,21 @@ a:hover { color: var(--gold-bright); }
       <p>In music, literature, and visual creation, exile opens a unique register where emotion and memory coexist with the precision of <a href="the-circus-magician.html" class="hidden-link" title="'서커스의 마술사' 읽기 — Sombras, Datos y Relámpagos 단편">a wound that never fully closes</a>.</p>
       
       <p>My works in this area (music, essays, and digital art) are born from that intersection: a dialogue between what persists and what escapes.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+    <div class="article-ref">
+      <p class="article-ref-intro">Cubanet에 게재된 이 에세이에서, 나는 쿠바 정체성 형성에 있어 미국 문화의 부인할 수 없는 존재를 탐구한다 — 수십 년간의 근접성, 영향, 긴장을 통해 단련된 유대를, 두 세계를 모두 내면에 품고 있는 이들의 시선으로 바라본다.</p>
+      <a href="https://www.cubanet.org/la-indiscutible-huella-norteamericana-en-la-identidad-cubana/" target="_blank" rel="noopener" class="article-ref-btn">
+        La indiscutible huella norteamericana en la identidad cubana
+        <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+      <p class="article-ref-source">Cubanet</p>
     </div>
   </section>
 

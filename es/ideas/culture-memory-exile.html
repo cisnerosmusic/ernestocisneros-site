@@ -195,6 +195,55 @@ a:hover { color: var(--gold-bright); }
   right: 1.2rem;
 }
 
+/* Published Article Reference */
+.article-ref {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.article-ref-intro {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-style: italic;
+  margin-bottom: 1.8rem;
+}
+
+.article-ref-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--gold-dim);
+  border-radius: 3px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: all 0.3s;
+}
+
+.article-ref-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.article-ref-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.article-ref-source {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gold-faint);
@@ -351,6 +400,21 @@ a:hover { color: var(--gold-bright); }
       <p>En la música, la literatura y la creación visual, el exilio abre un registro único donde la emoción y la memoria coexisten con la precisión de <a href="the-circus-magician.html" class="hidden-link" title="Leer «El mago del circo» — cuento de Sombras, Datos y Relámpagos">una herida que nunca cicatriza completamente</a>.</p>
 
       <p>Mis obras en esta área (música, ensayos y arte digital) nacen de esa intersección: un diálogo entre lo que persiste y lo que escapa.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+    <div class="article-ref">
+      <p class="article-ref-intro">En este ensayo, publicado en Cubanet, exploro la presencia innegable de la cultura norteamericana en la formación de la identidad cubana — un vínculo forjado a través de décadas de proximidad, influencia y tensión, visto desde la perspectiva de quienes llevamos ambos mundos dentro.</p>
+      <a href="https://www.cubanet.org/la-indiscutible-huella-norteamericana-en-la-identidad-cubana/" target="_blank" rel="noopener" class="article-ref-btn">
+        La indiscutible huella norteamericana en la identidad cubana
+        <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+      <p class="article-ref-source">Cubanet</p>
     </div>
   </section>
 

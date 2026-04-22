@@ -195,6 +195,55 @@ a:hover { color: var(--gold-bright); }
   right: 1.2rem;
 }
 
+/* Published Article Reference */
+.article-ref {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.article-ref-intro {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-style: italic;
+  margin-bottom: 1.8rem;
+}
+
+.article-ref-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--gold-dim);
+  border-radius: 3px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: all 0.3s;
+}
+
+.article-ref-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.article-ref-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.article-ref-source {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gold-faint);
@@ -354,6 +403,21 @@ a:hover { color: var(--gold-bright); }
       <p>En musique, en littérature et en création visuelle, l'exil ouvre un registre unique où l'émotion et la mémoire coexistent avec la précision d'<a href="the-circus-magician.html" class="hidden-link" title="Lire « Le Magicien du Cirque » — un récit de Sombras, Datos y Relámpagos">une plaie qui ne se ferme jamais tout à fait</a>.</p>
 
       <p>Mes œuvres dans ce domaine (musique, essais et art numérique) naissent de cette intersection : un dialogue entre ce qui persiste et ce qui s'échappe.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+    <div class="article-ref">
+      <p class="article-ref-intro">Dans cet essai, publié dans Cubanet, j'explore la présence indéniable de la culture américaine dans la formation de l'identité cubaine — un lien forgé à travers des décennies de proximité, d'influence et de tension, vu depuis la perspective de ceux qui portent les deux mondes en eux.</p>
+      <a href="https://www.cubanet.org/la-indiscutible-huella-norteamericana-en-la-identidad-cubana/" target="_blank" rel="noopener" class="article-ref-btn">
+        La indiscutible huella norteamericana en la identidad cubana
+        <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+      <p class="article-ref-source">Cubanet</p>
     </div>
   </section>
 
