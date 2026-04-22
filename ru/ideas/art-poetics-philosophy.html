@@ -729,6 +729,17 @@ a:hover { color: var(--gold-bright); }
         <em>Strike!</em></p>
       </div>
     </article>
+    <div style="text-align:center;margin-top:1.5rem;">
+      <button id="flashes-btn" onclick="(function(){var a=document.getElementById('flashes-audio'),b=document.getElementById('flashes-btn'),p=document.getElementById('fl-play'),s=document.getElementById('fl-pause');if(a.paused){a.play();b.classList.add('playing');p.style.display='none';s.style.display='block'}else{a.pause();b.classList.remove('playing');p.style.display='block';s.style.display='none'}})()" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(180,130,60,0.4);background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all 0.3s;padding:0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(212,160,48,0.85)"><polygon id="fl-play" points="6,3 21,12 6,21"/><g id="fl-pause" style="display:none"><rect x="4" y="3" width="5.5" height="18" rx="1"/><rect x="14.5" y="3" width="5.5" height="18" rx="1"/></g></svg>
+      </button>
+      <audio id="flashes-audio" src="../../assets/audio/Broken Signal Run experimental 1.mp3" preload="none" onended="(function(){var b=document.getElementById('flashes-btn');b.classList.remove('playing');document.getElementById('fl-play').style.display='block';document.getElementById('fl-pause').style.display='none'})()"></audio>
+    </div>
+    <style>
+      #flashes-btn { transition: box-shadow 0.5s, border-color 0.3s; }
+      #flashes-btn:hover { border-color: rgba(212,160,48,0.65); }
+      #flashes-btn.playing { border-color: rgba(212,160,48,0.5) !important; animation: halo-breathe 3s ease-in-out infinite; }
+    </style>
   </section>
 
   <div class="divider"></div>
