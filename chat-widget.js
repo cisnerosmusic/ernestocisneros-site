@@ -281,19 +281,41 @@
   inputEl.placeholder = getPlaceholder();
 
   // ── Helpers ──
-  function linkify(text) {
-    // Convert URLs to clickable links
-    return text.replace(
-      /(https?:\/\/[^\s,)]+)/g,
+  function formatMessage(text) {
+    // 1. Escape HTML to prevent injection
+    text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    // 2. Handle markdown links [text](url) first
+    text = text.replace(
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener" style="color: #f0c860; text-decoration: underline; text-underline-offset: 2px;">$1</a>'
+    );
+
+    // 3. Bold: **text** or __text__
+    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+    // 4. Italic: *text* or _text_ (but not inside URLs)
+    text = text.replace(/(?<![\/\w])\*([^*]+?)\*(?![\/\w])/g, '<em>$1</em>');
+    text = text.replace(/(?<![\/\w])_([^_]+?)_(?![\/\w])/g, '<em>$1</em>');
+
+    // 5. Convert plain URLs to clickable links (not already inside an href)
+    text = text.replace(
+      /(?<!href="|">)(https?:\/\/[^\s,)<]+)/g,
       '<a href="$1" target="_blank" rel="noopener" style="color: #f0c860; text-decoration: underline; text-underline-offset: 2px;">$1</a>'
     );
+
+    // 6. Line breaks
+    text = text.replace(/\n/g, '<br>');
+
+    return text;
   }
 
   function addMessageToDOM(role, text) {
     const div = document.createElement('div');
     div.className = `ec-msg ec-msg-${role}`;
     if (role === 'assistant') {
-      div.innerHTML = linkify(text);
+      div.innerHTML = formatMessage(text);
     } else {
       div.textContent = text;
     }
