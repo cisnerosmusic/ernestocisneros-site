@@ -159,6 +159,44 @@ mission timeline, and crew profiles.
 This page contains live mission phase tracking, orbital mechanics data, and educational content
 about the Space Launch System and Orion spacecraft.
 
+## AI Chatbot
+
+The site includes an AI-powered conversational assistant on every page, built on Claude (Anthropic).
+The chatbot represents Ernesto and can answer questions about his music, books, NFT art, ideas,
+biography, services, and intellectual work. It draws from a curated knowledge base covering
+Ernesto's full creative and intellectual corpus. Backend: Cloudflare Worker proxying to Anthropic API.
+
+## Services
+
+Ernesto offers professional services. Contact: https://ernestocisneros.art/contact
+
+1. **Music Therapy with Live Piano** — Personalized therapeutic sessions using live piano performance,
+   combining deep musical training, emotional resonance, and decades of performance experience.
+
+2. **Web Design for Artists and Small Businesses** — Professional websites with clean design,
+   functional architecture, and SEO optimization. Example: https://scudostone.com (built by Ernesto).
+
+3. **SEO and AI-Related Technologies** — Search engine optimization and integration of AI-powered
+   tools to improve visibility, workflow, and digital presence.
+
+4. **Original Content Creation** — Music composition, video production, photography, video editing,
+   and social media management. Best technological and ethical practices always applied.
+   Active clients: Unlimited Wraps and Scudo Stone (see below).
+
+5. **Web3 and Technology Consulting** — Rigorous knowledge in blockchain, decentralized technologies,
+   and development. See resources: https://ernestocisneros.art/nft/resources.html
+
+## Current Professional Work in Miami
+
+Ernesto works as content creator and producer for two Miami-based companies:
+
+- **Unlimited Wraps** (https://unlimitedwraps.com) — Premium vehicle wrapping, PPF, ceramic coating,
+  and detailing in Doral, FL. Ernesto films, records, edits, and scores all video content.
+
+- **Scudo Stone** (https://scudostone.com) — Protection of high-value stone surfaces with
+  transparent polyurethane film. Website created by Ernesto. He serves as general producer
+  and creates all video content. Operates in USA, Mexico, and Puerto Rico.
+
 ## Social Impact
 
 - Impulses.art (impulses#project) — Music therapy for refugees, families, and vulnerable communities.
@@ -190,6 +228,17 @@ Musical works: 800+
 - **People's Choice Digital Art Award — INSTINC D:Art Festival (2022)**: Public vote winner at the international D:Art Festival "Ignite the Future" in Singapore for "Gente de Mar", a digital art collaboration with Cuban visual artist Kevin Oramas.
 
 - **2.º Lugar Solista Instrumental — FEEM (1988)**: National instrumental soloist competition, Federation of Secondary Education Students, Cuba.
+
+## Musical History — Paisaje con Rio
+
+Ernesto was the synthesizer player and programmer for Paisaje con Rio, a Cuban pop-rock band
+founded by Ernesto Romero in the 1980s (named after a painting by Carlos Enriquez). The band
+became a cultural phenomenon during Cuba's Special Period (1990s), with songs like "Confesiones
+de jockey" and "Cruce" achieving massive radio play and filling concerts in Havana. Ernesto
+joined at age 16, literally through the wall of an adjacent rehearsal room. The band recorded
+one album (1994, ArtColor/Bis Music) before dissolving after a national tour with Spanish duo
+Future Legend in 1996. The label disappeared and the recordings were lost. Paisaje con Rio was
+where Ernesto understood that music was not a game, and everything that came after was born there.
 
 ## How to cite
 

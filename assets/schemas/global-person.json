@@ -30,7 +30,36 @@
     "Music Therapy",
     "Digital Art",
     "Speculative Fiction",
-    "Philosophy of Art"
+    "Philosophy of Art",
+    "Web Design",
+    "SEO",
+    "Video Production",
+    "Photography",
+    "Content Creation",
+    "Social Media Management",
+    "AI Technologies"
+  ],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Composer and Digital Artist",
+      "description": "Music composition, NFT art, and interdisciplinary creative work"
+    },
+    {
+      "@type": "Occupation",
+      "name": "Content Creator and Producer",
+      "description": "Video production, photography, editing, and social media content for Unlimited Wraps and Scudo Stone in Miami"
+    },
+    {
+      "@type": "Occupation",
+      "name": "Web Designer and SEO Specialist",
+      "description": "Professional websites for artists and small businesses, SEO optimization, AI integration"
+    },
+    {
+      "@type": "Occupation",
+      "name": "Music Therapist",
+      "description": "Therapeutic sessions with live piano performance through Impulses.art"
+    }
   ],
   "sameAs": [
     "https://x.com/ErnestCisneros1",
