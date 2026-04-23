@@ -229,6 +229,54 @@ a:hover { color: var(--gold-bright); }
   color: var(--gold-bright);
 }
 
+/* Featured Work */
+.featured-work {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.featured-work img {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid var(--gold-faint);
+  transition: border-color 0.3s;
+}
+
+.featured-work img:hover {
+  border-color: var(--gold);
+}
+
+.featured-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.featured-artist {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+.featured-player {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.featured-player audio {
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  filter: sepia(0.3) saturate(1.5) brightness(0.85);
+}
+
 /* Lightbox */
 .lightbox {
   position: fixed;
@@ -469,6 +517,18 @@ a:hover { color: var(--gold-bright); }
   </section>
 
   <section class="gallery">
+
+    <div class="featured-work">
+      <img src="../assets/nft/compressed/eth-collection/dance-of-impossible-love.webp" alt="Dance of impossible love - artwork by NurArt">
+      <h3 class="featured-title">Dance of impossible love</h3>
+      <p class="featured-artist">by NurArt</p>
+      <div class="featured-player">
+        <audio controls preload="metadata">
+          <source src="../assets/nft/compressed/eth-collection/dance-of-impossible-love.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
     <div class="collection-grid">
 
       <div class="collection-card">
