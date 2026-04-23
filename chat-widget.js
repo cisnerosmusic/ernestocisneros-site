@@ -51,7 +51,7 @@
 
     #ec-chat-toggle {
       position: fixed;
-      bottom: 224px;
+      bottom: 340px;
       right: 24px;
       width: 56px;
       height: 56px;
@@ -78,7 +78,7 @@
 
     #ec-chat-panel {
       position: fixed;
-      bottom: 292px;
+      bottom: 408px;
       right: 24px;
       width: 370px;
       max-height: 520px;
@@ -239,7 +239,7 @@
         max-height: 70vh;
       }
       #ec-chat-toggle {
-        bottom: 216px;
+        bottom: 340px;
         right: 16px;
       }
     }
