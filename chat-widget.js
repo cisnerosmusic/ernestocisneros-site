@@ -283,10 +283,22 @@
   inputEl.placeholder = getPlaceholder();
 
   // ── Helpers ──
+  function linkify(text) {
+    // Convert URLs to clickable links
+    return text.replace(
+      /(https?:\/\/[^\s,)]+)/g,
+      '<a href="$1" target="_blank" rel="noopener" style="color: #f0c860; text-decoration: underline; text-underline-offset: 2px;">$1</a>'
+    );
+  }
+
   function addMessageToDOM(role, text) {
     const div = document.createElement('div');
     div.className = `ec-msg ec-msg-${role}`;
-    div.textContent = text;
+    if (role === 'assistant') {
+      div.innerHTML = linkify(text);
+    } else {
+      div.textContent = text;
+    }
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
