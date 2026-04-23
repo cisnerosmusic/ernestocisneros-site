@@ -47,10 +47,15 @@
   // ── Inject Styles ──
   const style = document.createElement('style');
   style.textContent = `
-    #ec-chat-toggle {
+    #ec-chat-toggle-wrap {
       position: fixed;
       bottom: 340px;
       right: 24px;
+      width: 56px;
+      height: 56px;
+      z-index: 10000;
+    }
+    #ec-chat-toggle {
       width: 56px;
       height: 56px;
       border-radius: 50%;
@@ -58,11 +63,11 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(212, 160, 48, 0.3);
-      z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
     #ec-chat-toggle:hover {
       transform: scale(1.08);
@@ -72,6 +77,72 @@
       width: 26px;
       height: 26px;
       fill: #0a0908;
+    }
+    #ec-chat-ring {
+      position: absolute;
+      top: 0; left: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid rgba(212, 160, 48, 0.4);
+      pointer-events: none;
+      opacity: 0;
+    }
+    #ec-chat-ring.ec-pulse {
+      animation: ec-ring-pulse 2s ease-out;
+    }
+    @keyframes ec-ring-pulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    #ec-chat-dot {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #4ade80;
+      border: 2px solid #0a0908;
+      pointer-events: none;
+      animation: ec-dot-glow 2s ease-in-out infinite;
+    }
+    @keyframes ec-dot-glow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    #ec-chat-tooltip {
+      position: absolute;
+      bottom: 66px;
+      right: -6px;
+      background: #0a0908;
+      border: 1px solid rgba(212, 160, 48, 0.3);
+      border-radius: 10px 10px 2px 10px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: #f0e6d6;
+      font-family: 'Cormorant Garamond', serif;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    #ec-chat-tooltip.ec-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #ec-chat-tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 16px;
+      width: 10px;
+      height: 10px;
+      background: #0a0908;
+      border-right: 1px solid rgba(212, 160, 48, 0.3);
+      border-bottom: 1px solid rgba(212, 160, 48, 0.3);
+      transform: rotate(45deg);
     }
 
     #ec-chat-panel {
@@ -236,7 +307,7 @@
         bottom: 84px;
         max-height: 70vh;
       }
-      #ec-chat-toggle {
+      #ec-chat-toggle-wrap {
         bottom: 340px;
         right: 16px;
       }
@@ -244,12 +315,43 @@
   `;
   document.head.appendChild(style);
 
+  // ── Tooltip messages (multilingual) ──
+  function getTooltipMessages() {
+    const msgs = {
+      en: ['Hello!', 'Can I help you?', 'Want me to guide you?', 'Welcome!'],
+      es: ['Hola!', 'Hoy puedo ayudarte.', 'Quieres que te guie?', 'Bienvenido!'],
+      fr: ['Bonjour!', 'Je peux vous aider.', 'Besoin d\'un guide?', 'Bienvenue!'],
+      it: ['Ciao!', 'Posso aiutarti.', 'Vuoi che ti guidi?', 'Benvenuto!'],
+      ja: ['こんにちは！', 'お手伝いします。', 'ご案内しましょうか？', 'ようこそ！'],
+      ko: ['안녕하세요!', '도와드릴까요?', '안내해 드릴까요?', '환영합니다!'],
+      ru: ['Привет!', 'Могу помочь.', 'Показать дорогу?', 'Добро пожаловать!'],
+    };
+    return msgs[getPageLang()] || msgs.en;
+  }
+
   // ── Build DOM ──
-  // Toggle button
+  // Toggle wrapper (holds button + ring + dot + tooltip)
+  const toggleWrap = document.createElement('div');
+  toggleWrap.id = 'ec-chat-toggle-wrap';
+
   const toggle = document.createElement('button');
   toggle.id = 'ec-chat-toggle';
   toggle.setAttribute('aria-label', 'Open chat');
   toggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>`;
+
+  const ring = document.createElement('div');
+  ring.id = 'ec-chat-ring';
+
+  const dot = document.createElement('div');
+  dot.id = 'ec-chat-dot';
+
+  const tooltip = document.createElement('div');
+  tooltip.id = 'ec-chat-tooltip';
+
+  toggleWrap.appendChild(ring);
+  toggleWrap.appendChild(toggle);
+  toggleWrap.appendChild(dot);
+  toggleWrap.appendChild(tooltip);
 
   // Panel
   const panel = document.createElement('div');
@@ -268,7 +370,7 @@
     </div>
   `;
 
-  document.body.appendChild(toggle);
+  document.body.appendChild(toggleWrap);
   document.body.appendChild(panel);
 
   // ── References ──
@@ -373,11 +475,49 @@
     isLoading = false;
   }
 
+  // ── Nudge animation: pulse ring + random tooltip every 2 min ──
+  let nudgeInterval = null;
+  let lastMsgIndex = -1;
+
+  function playNudge() {
+    if (isOpen) return;
+    // Pulse ring
+    ring.classList.remove('ec-pulse');
+    void ring.offsetWidth;
+    ring.classList.add('ec-pulse');
+    // Random tooltip message (avoid repeating the last one)
+    const msgs = getTooltipMessages();
+    let idx;
+    do { idx = Math.floor(Math.random() * msgs.length); } while (idx === lastMsgIndex && msgs.length > 1);
+    lastMsgIndex = idx;
+    tooltip.textContent = msgs[idx];
+    tooltip.classList.add('ec-show');
+    setTimeout(() => { tooltip.classList.remove('ec-show'); }, 4000);
+  }
+
+  function startNudge() {
+    if (nudgeInterval) return;
+    // First nudge after 15 seconds, then every 2 minutes
+    setTimeout(() => {
+      playNudge();
+      nudgeInterval = setInterval(playNudge, 120000);
+    }, 15000);
+  }
+
+  function stopNudge() {
+    tooltip.classList.remove('ec-show');
+    ring.classList.remove('ec-pulse');
+  }
+
+  startNudge();
+
   // ── Events ──
   toggle.addEventListener('click', () => {
     isOpen = !isOpen;
     if (isOpen) {
       panel.classList.add('ec-open');
+      dot.style.display = 'none';
+      stopNudge();
       toggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
       if (messages.length === 0) {
         addMessageToDOM('assistant', getWelcome());
@@ -385,6 +525,7 @@
       inputEl.focus();
     } else {
       panel.classList.remove('ec-open');
+      dot.style.display = '';
       toggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>`;
     }
   });
@@ -392,6 +533,7 @@
   closeBtn.addEventListener('click', () => {
     isOpen = false;
     panel.classList.remove('ec-open');
+    dot.style.display = '';
     toggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>`;
   });
 
