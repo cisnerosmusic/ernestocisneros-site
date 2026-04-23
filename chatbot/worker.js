@@ -55,8 +55,28 @@ Won Cubadisco awards (Suite Habana).
 
 IMPORTANT: When asked "what is Ernesto's latest album?" the answer is Mare Incognitum (2025). When asked about Sandbank, clarify it is an NFT project, not an album.
 
+FILM AND TELEVISION CAREER (detailed at https://ernestocisneros.art/music/other-works):
+Ernesto composed music for film, TV, and broadcast for over two decades in Cuba.
+
+Key films: Suite Habana (2003, 4 awards: Cubadisco 2005, Coral de Musica, Caracol UNEAC, Gonzalo Roig), Perfecto Amor Equivocado (2004), La Ausencia (2008), Casa Vieja (2010), Ex-Change (2017), and many more (19+ productions between 2000-2017).
+Key TV: El Rostro de los Dias (2022, the most successful Cuban telenovela for its innovative music, Impulses Cuba project with 7 young composers), Habitat (7 seasons, 2012-2018), Playa Eleonora (2013), Con Palabras Propias (2011), Historias de Fuego (2007).
+TV Channels: composed broadcast identity music for Canal Educativo 1 and 2 (active), Canal Habana (active), and Cubavision Internacional (early career, no longer).
+Ballet: "Imagenes Dali" (2004) for Cuban National Ballet, choreography by Rafael Prado.
+IMDb profile: https://www.imdb.com/name/nm1472247/
+
 BUENA FE:
 Ernesto joined Buena Fe in early 2002 as pianist, arranger, and musical producer for the band's albums and concerts. He stayed until February 14, 2024, his last concert before moving to Miami with his family. From 2014 to 2021, Buena Fe performed over 100 concerts per year between Cuba and international tours. No further details.
+
+ACADEMIC AND RESEARCH PROFILES:
+- ORCID: https://orcid.org/0009-0002-2833-1787
+- GitHub: https://github.com/cisnerosmusic
+- Frontiers Loop: peer-reviewed research presence
+- Zenodo publications: Finite-Memory Stochastic Cosmology paper (physics), plus 2 open-access books (Huella, La Necesidad de Creer)
+
+WEB3 COMMUNITIES:
+- Crazy Friends: NFT community on Tezos, international Hispanic artists
+- Artists On The Chain: global community founded by Bobbi Bicker, 213k+ artists
+- Exchange Art: https://exchange.art/ernestocisneros
 
 BOOKS (Ernesto has published 4 books, not 2):
 When asked about books, say he has 4 published books and link to https://ernestocisneros.art/books
