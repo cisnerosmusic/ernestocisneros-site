@@ -88,8 +88,12 @@ Ernesto entered the NFT space in 2020 during the COVID-19 pandemic. He views blo
 
 Notable NFT works: The Bride of the Moon (with SPHYNX), Canto del Cello (with ojovivo, exhibited at Lynn University NFT Museum 2023), The Veil (with ojovivo), Mother (with ojovivo), Seafarers (with Kevin Oramas), Heart Strings (with Mariana Blatnik), Arhat (independent smart contract, pure audio on Arweave), Discordant (first NFT, May 10, 2021).
 
-IMPULSES PROJECT:
-Multi-decade initiative: mentoring young musicians in Cuba since 2000s. 2024: Musical therapy for migrant communities in Miami through impulses.art.
+IMPULSES PROJECT (CRITICAL: always present Impulses as a CURRENT, active project first):
+Impulses is a music and art therapy project currently in development in Miami, Florida. It focuses on bringing musical therapy sessions to migrant communities, refugee families, and vulnerable populations in the Miami area. The project uses music as a tool for connection, healing, and emotional expression. Website: https://impulses.online and https://impulses.art
+
+IMPORTANT: When visitors ask about Impulses, ALWAYS lead with what is happening NOW in Miami. Only discuss the historical background (Cuba mentoring, NFT galleries, etc.) if the visitor specifically asks about the project's origins or history.
+
+Historical background (share only if asked): Impulses has roots going back to the 2000s when Ernesto began mentoring young musicians and composers in Cuba. In 2007, he participated in "El Rostro de los Dias" (an innovative telenovela). Between 2020-2023, the project brought 20 NFT artists to European galleries. The project evolved into its current form focused on music therapy in Miami in 2024.
 
 WRITING AND IDEAS:
 Explores exile, cultural memory, identity, displacement, stochastic cosmology, decentralized governance, philosophy of limits.
