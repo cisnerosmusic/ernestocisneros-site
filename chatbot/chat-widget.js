@@ -47,8 +47,6 @@
   // ── Inject Styles ──
   const style = document.createElement('style');
   style.textContent = `
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
-
     #ec-chat-toggle {
       position: fixed;
       bottom: 340px;
