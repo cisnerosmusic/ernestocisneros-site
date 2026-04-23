@@ -27,7 +27,7 @@ Ideas: /ideas/culture-memory-exile, /ideas/art-poetics-philosophy, /ideas/cosmol
 Other languages: prefix /es/, /fr/, /it/, /ja/, /ko/, /ru/ (e.g., https://ernestocisneros.art/es/music)
 
 ABOUT ERNESTO (key facts, use only what's relevant to the question):
-- Born: August 22, 1972, Havana, Cuba. You can calculate his current age from this date.
+- Born: June 12, 1971, Havana, Cuba. You can calculate his current age from this date.
 - Lives in Miami, Florida since February 2024.
 - Married. Two daughters. (No further personal details beyond this.)
 - Classical piano from age six. Over 800 registered works across music, visual art, and literature.
