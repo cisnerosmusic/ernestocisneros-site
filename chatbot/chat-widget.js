@@ -304,12 +304,44 @@
       #ec-chat-panel {
         width: calc(100vw - 24px);
         right: 12px;
-        bottom: 84px;
+        bottom: 72px;
         max-height: 70vh;
       }
       #ec-chat-toggle-wrap {
         bottom: 340px;
         right: 16px;
+        width: 44px;
+        height: 44px;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+      #ec-chat-toggle-wrap.ec-hidden {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        pointer-events: none;
+      }
+      #ec-chat-toggle {
+        width: 44px;
+        height: 44px;
+        box-shadow: 0 3px 14px rgba(212, 160, 48, 0.25);
+      }
+      #ec-chat-toggle svg {
+        width: 21px;
+        height: 21px;
+      }
+      #ec-chat-ring {
+        width: 44px;
+        height: 44px;
+      }
+      #ec-chat-dot {
+        width: 9px;
+        height: 9px;
+        top: 1px;
+        right: 1px;
+      }
+      #ec-chat-tooltip {
+        font-size: 12px;
+        bottom: 54px;
+        right: -8px;
       }
     }
   `;
@@ -551,5 +583,46 @@
   sendBtn.addEventListener('click', () => {
     sendMessage(inputEl.value);
   });
+
+  // ── Mobile auto-hide on scroll down, show on scroll up ──
+  (function() {
+    if (window.innerWidth > 480) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      if (isOpen) return; // never hide while chat is open
+
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY;
+
+      if (delta > 8) {
+        // scrolling down — hide
+        toggleWrap.classList.add('ec-hidden');
+        stopNudge();
+      } else if (delta < -8) {
+        // scrolling up — show
+        toggleWrap.classList.remove('ec-hidden');
+      }
+
+      lastScrollY = currentY;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Re-check on resize (e.g. orientation change)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 480) {
+        toggleWrap.classList.remove('ec-hidden');
+      }
+    });
+  })();
 
 })();
