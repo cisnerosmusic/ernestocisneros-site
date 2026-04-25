@@ -145,6 +145,11 @@
     }
 
     /* Individual album colors */
+    .album-card[data-album="velvet"] .album-cover {
+      background: linear-gradient(135deg, #06061a 0%, #1a1040 50%, #06061a 100%);
+    }
+    .album-card[data-album="velvet"] .album-visual { color: rgba(212, 160, 48, 0.85); }
+
     .album-card[data-album="glacial"] .album-cover {
       background: linear-gradient(135deg, #0a1520 0%, #1a3050 50%, #0a1520 100%);
     }
@@ -441,7 +446,41 @@
           </div>
         </a>
 
-        </div>
+
+        <a href="../music/trash.html" class="album-card" data-album="trash">
+          <div class="album-cover">
+            <div class="album-visual">▣</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Trash</h3>
+            <p class="album-desc">Sept pièces nées du cinéma qui n'a jamais atteint l'écran. Désormais une collection NFT sur Tezos.</p>
+            <span class="album-link">Écouter</span>
+          </div>
+        </a>
+
+        <a href="../music/sandbank.html" class="album-card" data-album="sandbank">
+          <div class="album-cover">
+            <div class="album-visual">☼</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Sandbank</h3>
+            <p class="album-desc">Projet NFT collaboratif avec Gino Battiston. Film documentaire du désert patagonien.</p>
+            <span class="album-link">Écouter</span>
+          </div>
+        </a>
+
+        <a href="../music/other-works.html" class="album-card" data-album="other">
+          <div class="album-cover">
+            <div class="album-visual">◎</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Autres Œuvres Musicales</h3>
+            <p class="album-desc">Archives de musiques de film, compositions pour la télévision et œuvres expérimentales de plus de 30 ans.</p>
+            <span class="album-link">Explorer</span>
+          </div>
+        </a>
+
+      </div>
     </section>
   </main>
 

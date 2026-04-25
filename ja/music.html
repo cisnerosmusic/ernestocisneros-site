@@ -145,6 +145,11 @@
     }
 
     /* Individual album colors */
+    .album-card[data-album="velvet"] .album-cover {
+      background: linear-gradient(135deg, #06061a 0%, #1a1040 50%, #06061a 100%);
+    }
+    .album-card[data-album="velvet"] .album-visual { color: rgba(212, 160, 48, 0.85); }
+
     .album-card[data-album="glacial"] .album-cover {
       background: linear-gradient(135deg, #0a1520 0%, #1a3050 50%, #0a1520 100%);
     }
@@ -440,7 +445,41 @@
           </div>
         </a>
 
-        </div>
+
+        <a href="../music/trash.html" class="album-card" data-album="trash">
+          <div class="album-cover">
+            <div class="album-visual">▣</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Trash</h3>
+            <p class="album-desc">スクリーンに届かなかった映画から生まれた7つの作品。現在Tezos上のNFTコレクション。</p>
+            <span class="album-link">聴く</span>
+          </div>
+        </a>
+
+        <a href="../music/sandbank.html" class="album-card" data-album="sandbank">
+          <div class="album-cover">
+            <div class="album-visual">☼</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Sandbank</h3>
+            <p class="album-desc">Gino Battistonとの共同NFTプロジェクト。パタゴニア砂漠のドキュメンタリー映画。</p>
+            <span class="album-link">聴く</span>
+          </div>
+        </a>
+
+        <a href="../music/other-works.html" class="album-card" data-album="other">
+          <div class="album-cover">
+            <div class="album-visual">◎</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">その他の音楽作品</h3>
+            <p class="album-desc">30年以上にわたる映画音楽、テレビ作曲、実験的作品のアーカイブ。</p>
+            <span class="album-link">探索する</span>
+          </div>
+        </a>
+
+      </div>
     </section>
   </main>
 

@@ -145,6 +145,11 @@
     }
 
     /* Individual album colors */
+    .album-card[data-album="velvet"] .album-cover {
+      background: linear-gradient(135deg, #06061a 0%, #1a1040 50%, #06061a 100%);
+    }
+    .album-card[data-album="velvet"] .album-visual { color: rgba(212, 160, 48, 0.85); }
+
     .album-card[data-album="glacial"] .album-cover {
       background: linear-gradient(135deg, #0a1520 0%, #1a3050 50%, #0a1520 100%);
     }
@@ -441,7 +446,41 @@
           </div>
         </a>
 
-        </div>
+
+        <a href="../music/trash.html" class="album-card" data-album="trash">
+          <div class="album-cover">
+            <div class="album-visual">▣</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Trash</h3>
+            <p class="album-desc">Семь пьес, рождённых из кинематографа, который так и не дошёл до экрана. Теперь NFT-коллекция на Tezos.</p>
+            <span class="album-link">Слушать</span>
+          </div>
+        </a>
+
+        <a href="../music/sandbank.html" class="album-card" data-album="sandbank">
+          <div class="album-cover">
+            <div class="album-visual">☼</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Sandbank</h3>
+            <p class="album-desc">Коллаборативный NFT-проект с Джино Баттистоном. Документальный фильм из патагонской пустыни.</p>
+            <span class="album-link">Слушать</span>
+          </div>
+        </a>
+
+        <a href="../music/other-works.html" class="album-card" data-album="other">
+          <div class="album-cover">
+            <div class="album-visual">◎</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Другие музыкальные работы</h3>
+            <p class="album-desc">Архив киномузыки, телевизионных композиций и экспериментальных работ за более чем 30 лет.</p>
+            <span class="album-link">Исследовать</span>
+          </div>
+        </a>
+
+      </div>
     </section>
   </main>
 

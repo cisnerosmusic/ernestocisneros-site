@@ -145,6 +145,11 @@
     }
 
     /* Individual album colors */
+    .album-card[data-album="velvet"] .album-cover {
+      background: linear-gradient(135deg, #06061a 0%, #1a1040 50%, #06061a 100%);
+    }
+    .album-card[data-album="velvet"] .album-visual { color: rgba(212, 160, 48, 0.85); }
+
     .album-card[data-album="glacial"] .album-cover {
       background: linear-gradient(135deg, #0a1520 0%, #1a3050 50%, #0a1520 100%);
     }
@@ -440,7 +445,41 @@
           </div>
         </a>
 
-        </div>
+
+        <a href="../music/trash.html" class="album-card" data-album="trash">
+          <div class="album-cover">
+            <div class="album-visual">▣</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Trash</h3>
+            <p class="album-desc">스크린에 도달하지 못한 영화에서 탄생한 7개의 작품. 현재 Tezos의 NFT 컬렉션.</p>
+            <span class="album-link">듣기</span>
+          </div>
+        </a>
+
+        <a href="../music/sandbank.html" class="album-card" data-album="sandbank">
+          <div class="album-cover">
+            <div class="album-visual">☼</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Sandbank</h3>
+            <p class="album-desc">Gino Battiston과의 공동 NFT 프로젝트. 파타고니아 사막 다큐멘터리 영화.</p>
+            <span class="album-link">듣기</span>
+          </div>
+        </a>
+
+        <a href="../music/other-works.html" class="album-card" data-album="other">
+          <div class="album-cover">
+            <div class="album-visual">◎</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">기타 음악 작품</h3>
+            <p class="album-desc">30년 이상의 영화 음악, TV 작곡 및 실험 작품 아카이브.</p>
+            <span class="album-link">탐색</span>
+          </div>
+        </a>
+
+      </div>
     </section>
   </main>
 
