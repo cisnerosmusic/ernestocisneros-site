@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#06061a">
+<title>Velvet Alloy | Ernesto Cisneros Cino</title>
+<meta name="description" content="Velvet Alloy - An immersive electronic album by Ernesto Cisneros Cino. Nineteen tracks with interactive WebGL particle visualization and audio-reactive experience.">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/music/velvet-alloy.html">
+    <meta property="og:title" content="Velvet Alloy | Ernesto Cisneros Cino">
+    <meta property="og:description" content="Velvet Alloy - An immersive electronic album by Ernesto Cisneros Cino. Nineteen tracks with interactive WebGL particle visualization.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Velvet Alloy | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="Velvet Alloy - An immersive electronic album by Ernesto Cisneros Cino. Nineteen tracks with interactive WebGL particle visualization.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="canonical" href="https://ernestocisneros.art/music/velvet-alloy.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/music/velvet-alloy.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/music/velvet-alloy.html">
+
+<link href="../assets/css/nav.css" rel="stylesheet">
+<link href="../assets/css/fonts.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../assets/js/schema-loader.js" data-schema="music-velvet-alloy" defer></script>
+<style>
+  :root {
+    --base: #06061a;
+    --gold: rgba(212, 160, 48, 0.78);
+    --gold-soft: rgba(212, 160, 48, 0.42);
+    --cream: rgba(232, 220, 200, 0.62);
+    --cream-soft: rgba(232, 220, 200, 0.28);
+    --paleblue: rgba(165, 185, 220, 0.50);
+    --paleblue-soft: rgba(165, 185, 220, 0.28);
+
+    /* Nav CSS variables */
+    --gold-bright: rgba(212, 160, 48, 1);
+    --gold-dim: rgba(212, 160, 48, 0.5);
+    --gold-faint: rgba(212, 160, 48, 0.15);
+    --text-primary: rgba(232, 220, 200, 0.85);
+    --text-secondary: rgba(232, 220, 200, 0.55);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Cormorant Garamond', serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--base);
+    overflow: hidden;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--cream);
+    overscroll-behavior: none;
+  }
+  a { color: inherit; text-decoration: none; }
+  canvas#field {
+    display: block;
+    width: 100%; height: 100%;
+    touch-action: none;
+    transition: filter 0.45s ease, opacity 0.7s ease;
+  }
+  body.list-open canvas#field {
+    filter: blur(18px) saturate(0.7);
+  }
+
+  /* ============ Splash (universal, every load) ============ */
+  .splash {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    pointer-events: none;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    background: radial-gradient(ellipse at center, rgba(6,6,26,0.0) 0%, rgba(6,6,26,0.65) 100%);
+  }
+  body.intro .splash { opacity: 1; }
+  .splash-title {
+    color: var(--gold);
+    font-size: 28px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding-left: 0.45em; /* compensate for letter-spacing */
+  }
+  .splash-author {
+    color: var(--cream);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+
+  /* ============ All UI fades in after splash ============ */
+  .meta, .bands, .tracks, .player, .player-mobile { transition: opacity 0.7s ease; }
+  body.intro .meta,
+  body.intro .bands,
+  body.intro .tracks,
+  body.intro .player,
+  body.intro .player-mobile { opacity: 0; }
+
+  /* ============ Desktop meta (bottom-left) ============ */
+  .meta {
+    position: fixed; bottom: 26px; left: 30px;
+    pointer-events: none; user-select: none;
+    z-index: 5; line-height: 1.6;
+    max-width: 300px;
+  }
+  .meta .title { color: var(--gold); font-size: 13px; letter-spacing: 0.42em; text-transform: uppercase; font-weight: 400; }
+  .meta .sub { display: block; color: var(--gold-soft); font-size: 9.5px; letter-spacing: 0.32em; text-transform: uppercase; margin-top: 2px; }
+  .meta .desc {
+    display: block; color: var(--cream);
+    font-size: 12px; line-height: 1.55;
+    font-style: italic; font-weight: 300;
+    margin-top: 16px; opacity: 0.75;
+    letter-spacing: 0.02em;
+  }
+
+  /* ============ Desktop bands (top-left) ============ */
+  .bands {
+    position: fixed; top: 80px; left: 30px;
+    z-index: 5; pointer-events: none;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .bands .row { display: flex; align-items: center; gap: 10px; }
+  .bands .label { font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-soft); width: 78px; font-weight: 300; }
+  .bands .bar { width: 90px; height: 2px; background: rgba(232,220,200,0.10); overflow: hidden; }
+  .bands .fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.06s linear; }
+
+  /* ============ Track list ============ */
+  /* Desktop: top-right column. Mobile: full-width sheet sliding from bottom. */
+  .tracks {
+    position: fixed; top: 80px; right: 30px;
+    z-index: 6; user-select: none;
+    width: 240px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(232,220,200,0.18) transparent;
+  }
+  .tracks::-webkit-scrollbar { width: 3px; }
+  .tracks::-webkit-scrollbar-track { background: transparent; }
+  .tracks::-webkit-scrollbar-thumb { background: rgba(232,220,200,0.18); }
+  .tracks .header {
+    font-size: 8.5px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--cream-soft); margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 1px solid rgba(232,220,200,0.10);
+    text-align: right; font-weight: 400;
+  }
+  .tracks .track {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 3.5px 0;
+    font-size: 11px;
+    cursor: pointer;
+    color: var(--paleblue);
+    transition: color 0.22s ease;
+    font-weight: 300;
+  }
+  .tracks .track:hover { color: var(--cream); }
+  .tracks .track.playing { color: var(--gold); }
+  .tracks .track .num {
+    font-size: 9px; letter-spacing: 0.18em; opacity: 0.65;
+    width: 18px; flex-shrink: 0; text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .tracks .track .name { letter-spacing: 0.10em; flex: 1; }
+  .tracks .track.playing .num { opacity: 1; }
+
+  /* ============ Desktop player (bottom-center) ============ */
+  .player {
+    position: fixed;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 6; user-select: none;
+    width: min(420px, 65vw);
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .player .seek { height: 1.5px; background: rgba(232,220,200,0.12); position: relative; cursor: pointer; }
+  .player .seek:hover { height: 2.5px; transition: height 0.15s ease; }
+  .player .seek-fill { height: 100%; background: var(--gold); width: 0%; }
+  .player .row {
+    display: flex; align-items: center; gap: 22px;
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    justify-content: center;
+  }
+  .player .btn {
+    background: transparent; border: none; color: var(--cream);
+    font-family: inherit; font-size: 10px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    cursor: pointer; padding: 3px 0;
+    transition: color 0.2s ease;
+    font-weight: 300;
+  }
+  .player .btn:hover { color: var(--gold); }
+  .player .btn.active { color: var(--gold); }
+  .player .btn.play { font-size: 13px; letter-spacing: 0; min-width: 22px; }
+  .player .time { color: var(--cream-soft); font-variant-numeric: tabular-nums; font-size: 10px; letter-spacing: 0.14em; }
+
+  /* ============ Mobile mini player (hidden on desktop) ============ */
+  .player-mobile {
+    display: none;
+    position: fixed; left: 0; right: 0;
+    bottom: 0;
+    z-index: 6; user-select: none;
+    flex-direction: column; align-items: center; gap: 14px;
+    padding: 0 24px calc(28px + env(safe-area-inset-bottom)) 24px;
+    pointer-events: none;
+  }
+  .player-mobile .track-now {
+    color: var(--cream);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    max-width: 80vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0.78;
+  }
+  .player-mobile .btn-play-m {
+    pointer-events: auto;
+    background: transparent;
+    border: 1px solid var(--cream-soft);
+    color: var(--cream);
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.22s ease, color 0.22s ease, background 0.22s ease;
+  }
+  .player-mobile .btn-play-m:active { background: rgba(212,160,48,0.10); border-color: var(--gold); color: var(--gold); }
+
+  /* ============ Mobile mode (applied via JS body class) ============ */
+  body.mobile .meta,
+  body.mobile .bands,
+  body.mobile .player { display: none !important; }
+  body.mobile .player-mobile { display: flex; }
+
+  /* Track list as bottom sheet on mobile */
+  body.mobile .tracks {
+    top: auto; right: 0; left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 78vh;
+    padding: 22px 28px calc(110px + env(safe-area-inset-bottom)) 28px;
+    background: linear-gradient(to top, rgba(6,6,26,0.94) 0%, rgba(6,6,26,0.72) 80%, rgba(6,6,26,0.0) 100%);
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    -webkit-overflow-scrolling: touch;
+  }
+  body.mobile.list-open .tracks { transform: translateY(0); }
+  body.mobile .tracks .header { text-align: center; font-size: 9.5px; }
+  body.mobile .tracks .track {
+    padding: 9px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(232,220,200,0.05);
+  }
+  body.mobile .tracks .track .num { font-size: 10px; width: 22px; }
+  body.mobile .tracks .track .name { letter-spacing: 0.14em; }
+
+  /* Mobile splash slightly smaller */
+  body.mobile .splash-title { font-size: 22px; letter-spacing: 0.4em; padding-left: 0.4em; }
+  body.mobile .splash-author { font-size: 9.5px; letter-spacing: 0.30em; margin-top: 12px; }
+
+  /* ============ Nav overrides for immersive page ============ */
+  .nav {
+    background: rgba(6, 6, 26, 0.85) !important;
+    border-bottom-color: rgba(212, 160, 48, 0.10) !important;
+  }
+  .nav.scrolled {
+    background: rgba(6, 6, 26, 0.95) !important;
+  }
+  @media (max-width: 768px) {
+    .nav-menu {
+      background: rgba(6, 6, 26, 0.98) !important;
+    }
+  }
+</style>
+</head>
+<body class="intro">
+
+<a href="#field" class="skip-to-content">Skip to main content</a>
+
+<nav class="nav" id="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item active">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="velvet-alloy.html" class="nav-dropdown-item active">Velvet Alloy</a>
+          <a href="glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        </div>
+      </li>
+
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+          <a href="../nft/resources.html" class="nav-dropdown-item">Resources</a>
+        </div>
+      </li>
+
+      <li><a href="../books.html" class="nav-item">Books</a></li>
+
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="../ideas/technology-society.html" class="nav-dropdown-item">Technology & Society</a>
+          <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">Culture, Memory & Exile</a>
+          <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="velvet-alloy.html" class="active-lang" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<canvas id="field"></canvas>
+
+<!-- Splash on every load -->
+<div class="splash" id="splash">
+  <div class="splash-title">Velvet Alloy</div>
+  <div class="splash-author">Ernesto Cisneros</div>
+</div>
+
+<!-- Desktop meta -->
+<div class="meta">
+  <span class="title">Velvet Alloy</span>
+  <span class="sub">Ernesto Cisneros</span>
+  <span class="desc">Velvet Alloy does not describe a future. It hints at it as something inevitable, quiet, and coherent.</span>
+</div>
+
+<!-- Desktop spectrum -->
+<div class="bands" id="bandsUI">
+  <div class="row"><span class="label">20–40 Hz</span><div class="bar"><div class="fill"></div></div></div>
+  <div class="row"><span class="label">100–300 Hz</span><div class="bar"><div class="fill"></div></div></div>
+  <div class="row"><span class="label">1–3 kHz</span><div class="bar"><div class="fill"></div></div></div>
+  <div class="row"><span class="label">3.1–5 kHz</span><div class="bar"><div class="fill"></div></div></div>
+  <div class="row"><span class="label">5–20 kHz</span><div class="bar"><div class="fill"></div></div></div>
+</div>
+
+<!-- Track list (desktop column / mobile sheet) -->
+<div class="tracks" id="trackList">
+  <div class="header">Track list</div>
+</div>
+
+<!-- Desktop player -->
+<div class="player">
+  <div class="seek" id="seek"><div class="seek-fill" id="seekFill"></div></div>
+  <div class="row">
+    <button class="btn play" id="btnPlay">&#9654;</button>
+    <button class="btn" id="btnLoopTrack">&#8634; track</button>
+    <button class="btn" id="btnLoopAlbum">&#8634; album</button>
+    <span class="time"><span id="tCur">0:00</span> / <span id="tTot">0:00</span></span>
+  </div>
+</div>
+
+<!-- Mobile mini player -->
+<div class="player-mobile">
+  <div class="track-now" id="trackNow">Velvet Alloy</div>
+  <button class="btn-play-m" id="btnPlayMobile" aria-label="play">&#9654;</button>
+</div>
+
+<!-- ======================  SHADERS  ====================== -->
+<script id="vert-bg" type="x-shader/x-vertex">
+attribute vec2 a_pos;
+void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }
+</script>
+<script id="frag-bg" type="x-shader/x-fragment">
+precision highp float;
+uniform vec2  u_res;
+uniform float u_time;
+uniform float u_yellowMean;
+
+float hash21(vec2 p) {
+  p = fract(p * vec2(123.34, 456.21));
+  p += dot(p, p + 45.32);
+  return fract(p.x * p.y);
+}
+float vnoise(vec2 p) {
+  vec2 i = floor(p), f = fract(p);
+  vec2 u = f*f*(3.0-2.0*f);
+  return mix(mix(hash21(i), hash21(i+vec2(1,0)), u.x),
+             mix(hash21(i+vec2(0,1)), hash21(i+vec2(1,1)), u.x), u.y);
+}
+float fbm(vec2 p) {
+  float v = 0.0, a = 0.5;
+  for (int i=0; i<4; i++) { v += a * vnoise(p); p *= 2.07; a *= 0.55; }
+  return v;
+}
+void main() {
+  vec2 p = (gl_FragCoord.xy - 0.5*u_res) / min(u_res.x, u_res.y);
+  float t = u_time;
+  float u1 = sin(p.x*2.5) * cos(p.y*2.5) * sin(t*0.18);
+  float u2 = sin(p.x*5.0+0.6) * cos(p.y*4.5-0.4) * sin(t*0.31);
+  float undulation = u1*0.6 + u2*0.4;
+  float vel = fbm(p*2.2 + vec2(0.0, t*0.04));
+  vec3 cDeep = vec3(0.022, 0.018, 0.075);
+  vec3 cMid  = vec3(0.060, 0.052, 0.165);
+  vec3 cHi   = vec3(0.130, 0.090, 0.275);
+  float field = undulation*0.45 + (vel-0.5)*0.55;
+  vec3 col = mix(cDeep, cMid, smoothstep(-0.5, 0.2, field));
+  col = mix(col, cHi, smoothstep(0.1, 0.7, field) * 0.55);
+  float yellowAmbient = u_yellowMean * smoothstep(-0.2, 0.6, field) * 1.6;
+  col = mix(col, vec3(0.85, 0.72, 0.30), yellowAmbient);
+  float r = length(p);
+  col *= 1.0 - smoothstep(0.4, 1.05, r) * 0.55;
+  float grain = (hash21(gl_FragCoord.xy + fract(t)) - 0.5) * 0.014;
+  col += grain;
+  gl_FragColor = vec4(col, 1.0);
+}
+</script>
+
+<script id="frag-atmos" type="x-shader/x-fragment">
+precision highp float;
+uniform vec2  u_res;
+uniform float u_atmosTime;
+float hash21(vec2 p) {
+  p = fract(p * vec2(123.34, 456.21));
+  p += dot(p, p + 45.32);
+  return fract(p.x * p.y);
+}
+float vnoise(vec2 p) {
+  vec2 i = floor(p), f = fract(p);
+  vec2 u = f*f*(3.0-2.0*f);
+  return mix(mix(hash21(i), hash21(i+vec2(1,0)), u.x),
+             mix(hash21(i+vec2(0,1)), hash21(i+vec2(1,1)), u.x), u.y);
+}
+float fbm(vec2 p) {
+  float v = 0.0, a = 0.5;
+  for (int i=0; i<5; i++) { v += a * vnoise(p); p *= 2.07; a *= 0.55; }
+  return v;
+}
+void main() {
+  vec2 p = (gl_FragCoord.xy - 0.5*u_res) / min(u_res.x, u_res.y);
+  float t = u_atmosTime;
+  vec2 q1 = p * 1.20 + vec2(t * 0.0118, t * 0.0073);
+  vec2 q2 = p * 0.75 + vec2(-t * 0.0095, t * 0.0142);
+  float n1 = fbm(q1);
+  float n2 = fbm(q2 + vec2(7.3, 2.1));
+  float atmos = mix(n1, n2, 0.5);
+  float density = smoothstep(0.42, 0.72, atmos) * 0.22;
+  float warm = smoothstep(0.50, 0.85, n1);
+  vec3 hazeCool = vec3(0.10, 0.09, 0.18);
+  vec3 hazeWarm = vec3(0.20, 0.13, 0.20);
+  vec3 hazeColor = mix(hazeCool, hazeWarm, warm * 0.5);
+  float r = length(p);
+  density *= 1.0 - smoothstep(0.55, 1.15, r) * 0.5;
+  gl_FragColor = vec4(hazeColor, density);
+}
+</script>
+
+<script id="vert-pt" type="x-shader/x-vertex">
+attribute vec3  a_basePos;
+attribute float a_seed;
+attribute float a_yellow;
+uniform mat4  u_viewProj;
+uniform mat4  u_cluster;
+uniform float u_time;
+uniform float u_pointBase;
+uniform float u_separation;
+uniform float u_compression;
+uniform float u_mid;
+varying float v_seed;
+varying float v_depth;
+varying float v_yellow;
+varying float v_midKick;
+void main() {
+  float ph = a_seed * 6.28318;
+  vec3 wobble = vec3(
+    sin(u_time * 0.6 + ph * 1.3),
+    cos(u_time * 0.7 + ph * 1.7),
+    sin(u_time * 0.5 + ph * 2.1)
+  ) * 0.012;
+  float midResp = step(0.7, fract(a_seed * 7.13));
+  float midPhase = a_seed * 47.123;
+  float midOsc = sin(u_time * 4.0 + midPhase) * 0.5 + 0.5;
+  float midKick = midResp * u_mid * midOsc;
+  vec3 midJitterDir = vec3(
+    sin(midPhase * 1.3),
+    cos(midPhase * 1.7),
+    sin(midPhase * 2.1 + 1.0)
+  );
+  vec3 midJitter = midJitterDir * midKick * 0.030;
+  vec3 localPos = a_basePos + wobble + midJitter;
+  vec4 worldPos = u_cluster * vec4(localPos, 1.0);
+  vec4 clipPos  = u_viewProj * worldPos;
+  gl_Position = clipPos;
+  float wAtten = clamp(2.4 / max(0.4, clipPos.w), 0.25, 4.5);
+  float seedSize = 0.8 + 0.5 * fract(a_seed * 17.13);
+  float midSizeBoost = 1.0 + midKick * 0.55;
+  float yellowSizeBoost = 1.0 + smoothstep(0.10, 0.55, a_yellow) * 0.45;
+  gl_PointSize = u_pointBase * wAtten * seedSize * midSizeBoost * yellowSizeBoost;
+  v_seed = a_seed; v_depth = clipPos.w;
+  v_yellow = a_yellow; v_midKick = midKick;
+}
+</script>
+<script id="frag-pt" type="x-shader/x-fragment">
+precision highp float;
+varying float v_seed;
+varying float v_depth;
+varying float v_yellow;
+varying float v_midKick;
+uniform float u_compression;
+uniform float u_separation;
+void main() {
+  vec2 pc = gl_PointCoord - 0.5;
+  float r = length(pc) * 2.0;
+  if (r > 1.0) discard;
+  float core = exp(-r*r * 3.6);
+  float halo = exp(-r*r * 1.2) * 0.35;
+  float alpha = clamp(core + halo, 0.0, 1.0);
+  float h = fract(v_seed * 17.13);
+  vec3 cAzul    = vec3(0.16, 0.14, 0.42);
+  vec3 cVioleta = vec3(0.34, 0.20, 0.58);
+  vec3 cYellow  = vec3(0.95, 0.78, 0.28);
+  vec3 base = mix(cAzul, cVioleta, h);
+  base = mix(base, cAzul * 0.85, u_compression * 0.35);
+  float ySharp = smoothstep(0.10, 0.55, v_yellow);
+  vec3 col = mix(base, cYellow, ySharp);
+  col *= 1.0 + ySharp * 0.55;
+  col *= 1.0 + u_separation * 0.18;
+  col *= 1.0 + v_midKick * 0.55;
+  float fog = exp(-max(0.0, v_depth - 1.5) * 0.18);
+  col *= fog;
+  gl_FragColor = vec4(col * alpha, alpha);
+}
+</script>
+
+<!-- ======================  MAIN  ====================== -->
+<script>
+(function () {
+
+  // ============================================================
+  //  DEVICE DETECTION
+  // ============================================================
+  const IS_MOBILE = window.matchMedia('(max-width: 768px) and (pointer: coarse)').matches
+                 || window.matchMedia('(max-height: 500px) and (pointer: coarse)').matches;
+  document.body.classList.add(IS_MOBILE ? 'mobile' : 'desktop');
+
+  // ============================================================
+  //  TRACK CONFIGURATION
+  // ============================================================
+  const TRACK_BASE_PATH = '../assets/audio/Velvet-Alloy/';
+  const TRACKS = [
+    'Velvet Alloy', 'Polished Silence Field', 'Liquid Circuits',
+    'Soft Chrome Pulse', 'Fractured Luster Grid', 'Neon Residue',
+    'Harmonic Surface Drift', 'Glass Frequency', 'Silent Machinery Glow',
+    'Electric Patina Trace', 'Subtle Voltage Horizon', 'Chromatic Drift',
+    'Resonant Mirror Flux', 'Digital Fabric Echo', 'Synthetic Calm Vector',
+    'Ambient', 'Luminous Friction Pattern', 'Radiant Structure Memory',
+    'Final Polishing State'
+  ];
+  function trackUrl(i) { return TRACK_BASE_PATH + TRACKS[i].replace(/ /g, '-') + '.mp3'; }
+
+  // ============================================================
+  //  PARAMS — different presets for desktop vs mobile
+  // ============================================================
+  const PARAMS_DESKTOP = {
+    GRID_N: 20,
+    AMP_SEPARATION: 0.06,
+    AMP_ROTATION:   0.18,
+    AMP_COMPRESSION:0.15,
+    BASS_CURVE_EXP: 1.5,
+    ROT_BASE: 0.10,
+    TAU_YELLOW: 1.7, DIFF_RATE: 2.6, CHARGE_GAIN: 7.0,
+    CHARGE_CURVE_EXP: 1.4, RECEPTIVE_FRACTION: 0.05,
+    TAU: [0.45, 0.20, 0.09, 0.045, 0.018],
+    CAM_RADIUS_MIN: 0.55, CAM_RADIUS_MAX: 8.0,
+    CAM_PAN_MAX: 1.4,
+    CAM_ORBIT_MAX_SPEED: 0.95, CAM_ORBIT_ACCEL: 4.5,
+    CAM_PAN_SPEED: 1.6, CAM_ZOOM_SPEED: 2.2,
+    AUTO_ZOOM: false
+  };
+
+  const PARAMS_MOBILE = {
+    GRID_N: 18,
+    AMP_SEPARATION: 0.04,
+    AMP_ROTATION:   0.12,
+    AMP_COMPRESSION:0.10,
+    BASS_CURVE_EXP: 1.7,
+    ROT_BASE: 0.08,
+    TAU_YELLOW: 1.7, DIFF_RATE: 2.6, CHARGE_GAIN: 7.0,
+    CHARGE_CURVE_EXP: 1.4, RECEPTIVE_FRACTION: 0.05,
+    TAU: [0.85, 0.40, 0.20, 0.10, 0.045],
+    CAM_RADIUS_MIN: 0.55, CAM_RADIUS_MAX: 8.0,
+    CAM_PAN_MAX: 1.4,
+    CAM_ORBIT_MAX_SPEED: 0.95, CAM_ORBIT_ACCEL: 4.5,
+    CAM_PAN_SPEED: 1.6, CAM_ZOOM_SPEED: 2.2,
+    AUTO_ZOOM: true,
+    AUTO_ZOOM_PERIOD: 120,
+    AUTO_ZOOM_RADIUS_OUT: 3.5,
+    AUTO_ZOOM_RADIUS_IN:  0.40,
+    AUTO_ZOOM_ELEVATION: 0.22
+  };
+
+  const PARAMS = IS_MOBILE ? PARAMS_MOBILE : PARAMS_DESKTOP;
+
+  // ============================================================
+  //  WebGL setup
+  // ============================================================
+  const canvas = document.getElementById('field');
+  const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+  if (!gl) {
+    document.body.innerHTML = '<div style="color:#d4a030;padding:40px;font-family:serif;letter-spacing:.1em;">WebGL not available.</div>';
+    return;
+  }
+
+  function compile(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); throw 0; }
+    return s;
+  }
+  function link(vs, fs) {
+    const p = gl.createProgram();
+    gl.attachShader(p, vs); gl.attachShader(p, fs); gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) { console.error(gl.getProgramInfoLog(p)); throw 0; }
+    return p;
+  }
+  const vsBG = compile(gl.VERTEX_SHADER, document.getElementById('vert-bg').textContent);
+  const progBG = link(vsBG, compile(gl.FRAGMENT_SHADER, document.getElementById('frag-bg').textContent));
+  const uBG = {
+    res: gl.getUniformLocation(progBG, 'u_res'),
+    time: gl.getUniformLocation(progBG, 'u_time'),
+    yellowMean: gl.getUniformLocation(progBG, 'u_yellowMean'),
+  };
+  const aBGPos = gl.getAttribLocation(progBG, 'a_pos');
+
+  const progATMOS = link(vsBG, compile(gl.FRAGMENT_SHADER, document.getElementById('frag-atmos').textContent));
+  const uATMOS = {
+    res: gl.getUniformLocation(progATMOS, 'u_res'),
+    atmosTime: gl.getUniformLocation(progATMOS, 'u_atmosTime'),
+  };
+  const aATMOSPos = gl.getAttribLocation(progATMOS, 'a_pos');
+
+  const progPT = link(
+    compile(gl.VERTEX_SHADER,   document.getElementById('vert-pt').textContent),
+    compile(gl.FRAGMENT_SHADER, document.getElementById('frag-pt').textContent)
+  );
+  const uPT = {
+    viewProj: gl.getUniformLocation(progPT, 'u_viewProj'),
+    cluster:  gl.getUniformLocation(progPT, 'u_cluster'),
+    time:     gl.getUniformLocation(progPT, 'u_time'),
+    pointBase: gl.getUniformLocation(progPT, 'u_pointBase'),
+    separation: gl.getUniformLocation(progPT, 'u_separation'),
+    compression: gl.getUniformLocation(progPT, 'u_compression'),
+    mid: gl.getUniformLocation(progPT, 'u_mid'),
+  };
+  const aPTBase   = gl.getAttribLocation(progPT, 'a_basePos');
+  const aPTSeed   = gl.getAttribLocation(progPT, 'a_seed');
+  const aPTYellow = gl.getAttribLocation(progPT, 'a_yellow');
+
+  const quadBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+  gl.bufferData(gl.ARRAY_BUFFER,
+    new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]),
+    gl.STATIC_DRAW);
+
+  // ============================================================
+  //  Lattice
+  // ============================================================
+  const N = PARAMS.GRID_N;
+  const TOTAL = N * N * N;
+  const posArr   = new Float32Array(TOTAL * 3);
+  const seedArr  = new Float32Array(TOTAL);
+  const yellowRec = new Float32Array(TOTAL);
+  let yellow     = new Float32Array(TOTAL);
+  let yellowNext = new Float32Array(TOTAL);
+
+  let rng = 1;
+  function rand() {
+    rng = (rng * 1664525 + 1013904223) | 0;
+    return ((rng >>> 0) % 100000) / 100000;
+  }
+  let p = 0, s = 0;
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      for (let k = 0; k < N; k++) {
+        const x = (i / (N-1) - 0.5);
+        const y = (j / (N-1) - 0.5);
+        const z = (k / (N-1) - 0.5);
+        posArr[p++] = x + (rand() - 0.5) * 0.025;
+        posArr[p++] = y + (rand() - 0.5) * 0.025;
+        posArr[p++] = z + (rand() - 0.5) * 0.025;
+        seedArr[s] = rand();
+        const r1 = rand();
+        yellowRec[s] = (r1 > 1.0 - PARAMS.RECEPTIVE_FRACTION) ? (0.55 + 0.45 * rand()) : 0.0;
+        s++;
+      }
+    }
+  }
+  const posBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, posArr, gl.STATIC_DRAW);
+  const seedBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, seedBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, seedArr, gl.STATIC_DRAW);
+  const yellowBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, yellowBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, yellow, gl.DYNAMIC_DRAW);
+
+  // ============================================================
+  //  Matrices
+  // ============================================================
+  function m4Perspective(fovy, aspect, near, far) {
+    const f = 1 / Math.tan(fovy / 2), nf = 1 / (near - far);
+    return new Float32Array([f/aspect,0,0,0, 0,f,0,0, 0,0,(far+near)*nf,-1, 0,0,2*far*near*nf,0]);
+  }
+  function sub3(a,b){ return [a[0]-b[0], a[1]-b[1], a[2]-b[2]]; }
+  function dot3(a,b){ return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
+  function cross3(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+  function norm3(a){ const l = Math.sqrt(dot3(a,a)) || 1; return [a[0]/l, a[1]/l, a[2]/l]; }
+  function m4LookAt(eye, target, up) {
+    const z = norm3(sub3(eye, target));
+    const x = norm3(cross3(up, z));
+    const y = cross3(z, x);
+    return new Float32Array([
+      x[0],y[0],z[0],0, x[1],y[1],z[1],0, x[2],y[2],z[2],0,
+      -dot3(x,eye), -dot3(y,eye), -dot3(z,eye), 1
+    ]);
+  }
+  function m4Mul(a, b) {
+    const o = new Float32Array(16);
+    for (let r=0; r<4; r++) for (let c=0; c<4; c++) {
+      let v = 0; for (let k=0; k<4; k++) v += a[k*4+r] * b[c*4+k];
+      o[c*4+r] = v;
+    }
+    return o;
+  }
+  function m4RotYScale(angle, sc) {
+    const c = Math.cos(angle), s = Math.sin(angle);
+    return new Float32Array([c*sc,0,-s*sc,0, 0,sc,0,0, s*sc,0,c*sc,0, 0,0,0,1]);
+  }
+
+  // ============================================================
+  //  Camera (desktop: keyboard-controlled; mobile: auto-zoom loop)
+  // ============================================================
+  const cam = { azimuth: 0.7, elevation: 0.22, radius: 3.4, panX: 0, panY: 0, azimuthVel: 0 };
+  function getViewMatrix() {
+    const ce = Math.cos(cam.elevation), se = Math.sin(cam.elevation);
+    const ca = Math.cos(cam.azimuth),   sa = Math.sin(cam.azimuth);
+    const eyeBase = [ca * ce * cam.radius, se * cam.radius, sa * ce * cam.radius];
+    const fwd   = norm3(sub3([0,0,0], eyeBase));
+    const right = norm3(cross3([0,1,0], fwd));
+    const upL   = cross3(fwd, right);
+    const ox = right[0]*cam.panX + upL[0]*cam.panY;
+    const oy = right[1]*cam.panX + upL[1]*cam.panY;
+    const oz = right[2]*cam.panX + upL[2]*cam.panY;
+    return m4LookAt([eyeBase[0]+ox, eyeBase[1]+oy, eyeBase[2]+oz], [ox, oy, oz], [0,1,0]);
+  }
+
+  // Desktop keyboard
+  const keys = {};
+  if (!IS_MOBILE) {
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      keys[e.key.toLowerCase()] = true;
+      if (['arrowup','arrowdown','arrowleft','arrowright','w','s','a','d',' '].includes(e.key.toLowerCase())) e.preventDefault();
+      if (e.key === ' ') togglePlay();
+    });
+    window.addEventListener('keyup', (e) => { keys[e.key.toLowerCase()] = false; });
+  } else {
+    window.addEventListener('keydown', (e) => { if (e.key === ' ') { e.preventDefault(); togglePlay(); } });
+  }
+
+  // ============================================================
+  //  Audio system
+  // ============================================================
+  const BAND_RANGES = [[20,40],[100,300],[1000,3000],[3100,5000],[5000,20000]];
+  const audioEl = new Audio();
+  audioEl.preload = 'auto';
+  audioEl.crossOrigin = 'anonymous';
+
+  const audio = {
+    ctx: null, analyser: null, source: null, fftSize: 4096,
+    freqData: null, connected: false,
+    bandsRaw: [0,0,0,0,0],
+    bands:    [0,0,0,0,0]
+  };
+  function ensureCtx() {
+    if (!audio.ctx) {
+      audio.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      audio.analyser = audio.ctx.createAnalyser();
+      audio.analyser.fftSize = audio.fftSize;
+      audio.analyser.smoothingTimeConstant = 0.0;
+      audio.freqData = new Uint8Array(audio.analyser.frequencyBinCount);
+      audio.source = audio.ctx.createMediaElementSource(audioEl);
+      audio.source.connect(audio.analyser);
+      audio.analyser.connect(audio.ctx.destination);
+      audio.connected = true;
+    }
+    if (audio.ctx.state === 'suspended') audio.ctx.resume();
+  }
+
+  // Simulated bands while no track plays
+  const SIM = [
+    { freq: 0.045, phase: 0.3, beatRate: 0.18, beatDur: 0.16 },
+    { freq: 0.13,  phase: 1.7, beatRate: 0.55, beatDur: 0.10 },
+    { freq: 0.27,  phase: 4.1, beatRate: 0.83, beatDur: 0.08 },
+    { freq: 0.46,  phase: 2.2, beatRate: 1.30, beatDur: 0.05 },
+    { freq: 0.71,  phase: 5.8, beatRate: 0.31, beatDur: 0.04 }
+  ];
+  function simBand(spec, t) {
+    const carrier = 0.18 + 0.18 * Math.sin(t * spec.freq * 6.283 + spec.phase);
+    const ph = (t * spec.beatRate) % 1.0;
+    const beat = ph < spec.beatDur ? Math.exp(-ph / spec.beatDur * 4.0) * 0.55 : 0;
+    return Math.max(0, Math.min(1, carrier + beat));
+  }
+  function bandEnergy(loHz, hiHz, logWeighted) {
+    const binWidth = audio.ctx.sampleRate / audio.fftSize;
+    const lo = Math.max(1, Math.floor(loHz / binWidth));
+    const hi = Math.min(audio.freqData.length - 1, Math.ceil(hiHz / binWidth));
+    let sum = 0, wSum = 0;
+    for (let i = lo; i <= hi; i++) {
+      const w = logWeighted ? Math.log(i * binWidth) : 1.0;
+      sum  += audio.freqData[i] * w;
+      wSum += 255 * w;
+    }
+    return wSum > 0 ? sum / wSum : 0;
+  }
+  function updateBands(dt, t) {
+    if (audio.connected) {
+      audio.analyser.getByteFrequencyData(audio.freqData);
+      for (let i = 0; i < 5; i++) {
+        const r = BAND_RANGES[i];
+        audio.bandsRaw[i] = Math.min(1, bandEnergy(r[0], r[1], i === 4) * 1.4);
+      }
+    } else {
+      for (let i = 0; i < 5; i++) audio.bandsRaw[i] = simBand(SIM[i], t);
+    }
+    for (let i = 0; i < 5; i++) {
+      const alpha = 1 - Math.exp(-dt / PARAMS.TAU[i]);
+      audio.bands[i] += (audio.bandsRaw[i] - audio.bands[i]) * alpha;
+    }
+  }
+
+  // ============================================================
+  //  Yellow contagion
+  // ============================================================
+  function updateYellow(dt, brilliance) {
+    const decayFactor = Math.exp(-dt / PARAMS.TAU_YELLOW);
+    const briShaped = Math.pow(Math.max(0, brilliance), PARAMS.CHARGE_CURVE_EXP);
+    const chargeAmt = briShaped * dt * PARAMS.CHARGE_GAIN;
+
+    for (let i = 0; i < TOTAL; i++) {
+      let v = yellow[i] * decayFactor + chargeAmt * yellowRec[i];
+      if (v > 1) v = 1;
+      yellow[i] = v;
+    }
+
+    let alpha = PARAMS.DIFF_RATE * dt;
+    if (alpha > 0.45) alpha = 0.45;
+
+    const NN = N * N;
+    let mean = 0;
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        for (let k = 0; k < N; k++) {
+          const idx = i*NN + j*N + k;
+          let sum = 0, cnt = 0;
+          if (i > 0)   { sum += yellow[idx - NN]; cnt++; }
+          if (i < N-1) { sum += yellow[idx + NN]; cnt++; }
+          if (j > 0)   { sum += yellow[idx - N];  cnt++; }
+          if (j < N-1) { sum += yellow[idx + N];  cnt++; }
+          if (k > 0)   { sum += yellow[idx - 1];  cnt++; }
+          if (k < N-1) { sum += yellow[idx + 1];  cnt++; }
+          const v = yellow[idx] + alpha * (sum/cnt - yellow[idx]);
+          yellowNext[idx] = v;
+          mean += v;
+        }
+      }
+    }
+    const tmp = yellow; yellow = yellowNext; yellowNext = tmp;
+    return mean / TOTAL;
+  }
+
+  // ============================================================
+  //  Track list UI
+  // ============================================================
+  const trackListEl = document.getElementById('trackList');
+  TRACKS.forEach((name, i) => {
+    const div = document.createElement('div');
+    div.className = 'track';
+    div.dataset.index = i;
+    div.innerHTML = '<span class="num">' + (i+1).toString().padStart(2,'0') + '</span>' +
+                    '<span class="name">' + name + '</span>';
+    div.addEventListener('click', () => {
+      playTrack(i, true);
+      if (IS_MOBILE) closeMobileList(true);
+    });
+    trackListEl.appendChild(div);
+  });
+
+  // ============================================================
+  //  Player state + controls
+  // ============================================================
+  const player = {
+    currentIndex: -1,
+    loopTrack: false,
+    loopAlbum: false
+  };
+
+  const btnPlay  = document.getElementById('btnPlay');
+  const btnLoopT = document.getElementById('btnLoopTrack');
+  const btnLoopA = document.getElementById('btnLoopAlbum');
+  const seekEl   = document.getElementById('seek');
+  const seekFill = document.getElementById('seekFill');
+  const tCur     = document.getElementById('tCur');
+  const tTot     = document.getElementById('tTot');
+  const btnPlayMobile = document.getElementById('btnPlayMobile');
+  const trackNowEl    = document.getElementById('trackNow');
+
+  function fmtTime(sec) {
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function updatePlayingHighlight() {
+    const els = trackListEl.querySelectorAll('.track');
+    els.forEach((el, i) => {
+      el.classList.toggle('playing', i === player.currentIndex && !audioEl.paused);
+    });
+  }
+
+  function updatePlayButton() {
+    const sym = audioEl.paused ? '\u25B6' : '\u275A\u275A';
+    if (btnPlay)       btnPlay.textContent = sym;
+    if (btnPlayMobile) btnPlayMobile.textContent = sym;
+  }
+
+  function updateTrackNow() {
+    const idx = player.currentIndex < 0 ? 0 : player.currentIndex;
+    trackNowEl.textContent = TRACKS[idx];
+  }
+  updateTrackNow();
+
+  function updateLoopButtons() {
+    if (btnLoopT) btnLoopT.classList.toggle('active', player.loopTrack);
+    if (btnLoopA) btnLoopA.classList.toggle('active', player.loopAlbum);
+  }
+  updateLoopButtons();
+
+  function playTrack(index, autoplay) {
+    if (index < 0 || index >= TRACKS.length) return;
+    ensureCtx();
+    player.currentIndex = index;
+    audioEl.src = trackUrl(index);
+    audioEl.loop = player.loopTrack;
+    if (autoplay !== false) audioEl.play().catch(err => console.warn('audio play failed:', err));
+    updatePlayingHighlight();
+    updatePlayButton();
+    updateTrackNow();
+  }
+
+  function togglePlay() {
+    ensureCtx();
+    if (player.currentIndex < 0) { playTrack(0, true); return; }
+    if (audioEl.paused) audioEl.play().catch(err => console.warn(err));
+    else audioEl.pause();
+    updatePlayButton();
+    updatePlayingHighlight();
+  }
+
+  if (btnPlay)        btnPlay.addEventListener('click', togglePlay);
+  if (btnPlayMobile)  btnPlayMobile.addEventListener('click', togglePlay);
+  if (btnLoopT) btnLoopT.addEventListener('click', () => {
+    player.loopTrack = !player.loopTrack;
+    audioEl.loop = player.loopTrack;
+    updateLoopButtons();
+  });
+  if (btnLoopA) btnLoopA.addEventListener('click', () => {
+    player.loopAlbum = !player.loopAlbum;
+    updateLoopButtons();
+  });
+  if (seekEl) seekEl.addEventListener('click', (e) => {
+    if (!audioEl.duration) return;
+    const rect = seekEl.getBoundingClientRect();
+    audioEl.currentTime = (e.clientX - rect.left) / rect.width * audioEl.duration;
+  });
+
+  audioEl.addEventListener('ended', () => {
+    if (player.loopTrack) {
+      audioEl.currentTime = 0; audioEl.play();
+    } else {
+      const next = player.currentIndex + 1;
+      if (next < TRACKS.length) {
+        playTrack(next, true);
+      } else if (player.loopAlbum) {
+        playTrack(0, true);
+      } else {
+        updatePlayButton();
+        updatePlayingHighlight();
+      }
+    }
+  });
+  audioEl.addEventListener('play',  () => { updatePlayButton(); updatePlayingHighlight(); });
+  audioEl.addEventListener('pause', () => { updatePlayButton(); updatePlayingHighlight(); });
+  audioEl.addEventListener('loadedmetadata', () => { if (tTot) tTot.textContent = fmtTime(audioEl.duration); });
+
+  setInterval(() => {
+    if (audioEl.duration && seekFill) {
+      seekFill.style.width = (audioEl.currentTime / audioEl.duration * 100) + '%';
+      if (tCur) tCur.textContent = fmtTime(audioEl.currentTime);
+    }
+  }, 100);
+
+  // ============================================================
+  //  MOBILE: swipe-up to reveal track list, 3s auto-force timer
+  // ============================================================
+  let listAutoTimer = null;
+  function openMobileList() {
+    if (document.body.classList.contains('list-open')) return;
+    document.body.classList.add('list-open');
+    listAutoTimer = setTimeout(() => {
+      if (player.currentIndex < 0 || audioEl.paused) {
+        playTrack(0, true);
+      }
+      closeMobileList(false);
+    }, 3000);
+  }
+  function closeMobileList(cancelTimer) {
+    if (cancelTimer && listAutoTimer) { clearTimeout(listAutoTimer); listAutoTimer = null; }
+    document.body.classList.remove('list-open');
+  }
+
+  if (IS_MOBILE) {
+    let touchStartY = null;
+    let touchStartX = null;
+    let touchActive = false;
+    let touchOnField = false;
+
+    function isOnList(target) {
+      let el = target;
+      while (el) {
+        if (el === trackListEl) return true;
+        el = el.parentNode;
+      }
+      return false;
+    }
+
+    // Ignore touches on the nav
+    function isOnNav(target) {
+      let el = target;
+      while (el) {
+        if (el.id === 'nav') return true;
+        el = el.parentNode;
+      }
+      return false;
+    }
+
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      if (isOnNav(e.target)) return;
+      if (document.body.classList.contains('list-open') && isOnList(e.target)) return;
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+      touchActive = true;
+      touchOnField = !isOnList(e.target);
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      if (!touchActive) return;
+      touchActive = false;
+      if (touchStartY === null) return;
+      const endY = (e.changedTouches[0] || {}).clientY ?? touchStartY;
+      const endX = (e.changedTouches[0] || {}).clientX ?? touchStartX;
+      const dy = endY - touchStartY;
+      const dx = endX - touchStartX;
+      const adx = Math.abs(dx);
+      const ady = Math.abs(dy);
+
+      const isOpen = document.body.classList.contains('list-open');
+
+      if (isOpen && touchOnField && ady < 10 && adx < 10) {
+        closeMobileList(true);
+        return;
+      }
+
+      if (ady > 50 && ady > adx) {
+        if (dy < 0 && !isOpen) {
+          openMobileList();
+        } else if (dy > 0 && isOpen) {
+          closeMobileList(true);
+        }
+      }
+      touchStartY = null;
+    }, { passive: true });
+
+    let wheelAccum = 0;
+    let wheelTimer = null;
+    document.addEventListener('wheel', (e) => {
+      const isOpen = document.body.classList.contains('list-open');
+      if (isOpen && isOnList(e.target)) return;
+      wheelAccum += e.deltaY;
+      if (wheelTimer) clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(() => { wheelAccum = 0; }, 200);
+      if (wheelAccum > 80 && !isOpen) { openMobileList(); wheelAccum = 0; }
+      else if (wheelAccum < -80 && isOpen) { closeMobileList(true); wheelAccum = 0; }
+    }, { passive: true });
+  }
+
+  const bandFills = Array.from(document.querySelectorAll('#bandsUI .fill'));
+
+  // ============================================================
+  //  Splash dismissal
+  // ============================================================
+  setTimeout(() => {
+    document.body.classList.remove('intro');
+  }, 1500);
+
+  // ============================================================
+  //  Resize
+  // ============================================================
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width  = Math.floor(window.innerWidth  * dpr);
+    canvas.height = Math.floor(window.innerHeight * dpr);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ============================================================
+  //  Main loop
+  // ============================================================
+  let startTime = performance.now() / 1000;
+  let lastFrame = startTime;
+  let fieldTime = 0;
+  let atmosTime = 0;
+  let rotAngle  = 0;
+
+  function frame() {
+    const now = performance.now() / 1000;
+    const dt  = Math.min(0.05, now - lastFrame);
+    lastFrame = now;
+    const tWall = now - startTime;
+
+    updateBands(dt, tWall);
+    const b = audio.bands;
+
+    const subBassEff = Math.pow(b[0], PARAMS.BASS_CURVE_EXP);
+    const bassEff    = Math.pow(b[1], PARAMS.BASS_CURVE_EXP);
+
+    fieldTime += dt;
+    atmosTime += dt;
+    rotAngle  += dt * PARAMS.ROT_BASE * (1.0 + PARAMS.AMP_ROTATION * bassEff);
+    const clusterScale = 1.0 + PARAMS.AMP_SEPARATION * subBassEff
+                              - PARAMS.AMP_COMPRESSION * b[3];
+
+    const yellowMean = updateYellow(dt, b[4]);
+    gl.bindBuffer(gl.ARRAY_BUFFER, yellowBuf);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, yellow);
+
+    // ----- Camera -----
+    if (IS_MOBILE && PARAMS.AUTO_ZOOM) {
+      const phase = (tWall % PARAMS.AUTO_ZOOM_PERIOD) / PARAMS.AUTO_ZOOM_PERIOD;
+      const c = Math.cos(phase * 2 * Math.PI);
+      const mid = (PARAMS.AUTO_ZOOM_RADIUS_OUT + PARAMS.AUTO_ZOOM_RADIUS_IN) / 2;
+      const amp = (PARAMS.AUTO_ZOOM_RADIUS_OUT - PARAMS.AUTO_ZOOM_RADIUS_IN) / 2;
+      cam.radius = mid + amp * c;
+      cam.elevation = PARAMS.AUTO_ZOOM_ELEVATION;
+    } else {
+      if (keys['arrowup'])    cam.panY = Math.min( PARAMS.CAM_PAN_MAX, cam.panY + dt * PARAMS.CAM_PAN_SPEED);
+      if (keys['arrowdown'])  cam.panY = Math.max(-PARAMS.CAM_PAN_MAX, cam.panY - dt * PARAMS.CAM_PAN_SPEED);
+      if (keys['arrowright']) cam.panX = Math.min( PARAMS.CAM_PAN_MAX, cam.panX + dt * PARAMS.CAM_PAN_SPEED);
+      if (keys['arrowleft'])  cam.panX = Math.max(-PARAMS.CAM_PAN_MAX, cam.panX - dt * PARAMS.CAM_PAN_SPEED);
+      if (keys['w'])          cam.radius = Math.max(PARAMS.CAM_RADIUS_MIN, cam.radius - dt * PARAMS.CAM_ZOOM_SPEED);
+      if (keys['s'])          cam.radius = Math.min(PARAMS.CAM_RADIUS_MAX, cam.radius + dt * PARAMS.CAM_ZOOM_SPEED);
+      const targetAziVel = ((keys['d'] ? 1 : 0) - (keys['a'] ? 1 : 0)) * PARAMS.CAM_ORBIT_MAX_SPEED;
+      cam.azimuthVel += (targetAziVel - cam.azimuthVel) * Math.min(1, PARAMS.CAM_ORBIT_ACCEL * dt);
+      cam.azimuth += cam.azimuthVel * dt;
+    }
+
+    const aspect = canvas.width / canvas.height;
+    const proj = m4Perspective(50 * Math.PI/180, aspect, 0.1, 50);
+    const view = getViewMatrix();
+    const viewProj = m4Mul(proj, view);
+    const cluster  = m4RotYScale(rotAngle, clusterScale);
+
+    // Pass 1: background
+    gl.disable(gl.DEPTH_TEST); gl.disable(gl.BLEND);
+    gl.useProgram(progBG);
+    gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+    gl.enableVertexAttribArray(aBGPos);
+    gl.vertexAttribPointer(aBGPos, 2, gl.FLOAT, false, 0, 0);
+    gl.uniform2f(uBG.res, canvas.width, canvas.height);
+    gl.uniform1f(uBG.time, fieldTime);
+    gl.uniform1f(uBG.yellowMean, yellowMean);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+    // Pass 2: atmospheric haze
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.useProgram(progATMOS);
+    gl.enableVertexAttribArray(aATMOSPos);
+    gl.vertexAttribPointer(aATMOSPos, 2, gl.FLOAT, false, 0, 0);
+    gl.uniform2f(uATMOS.res, canvas.width, canvas.height);
+    gl.uniform1f(uATMOS.atmosTime, atmosTime);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+    // Pass 3: particles
+    gl.useProgram(progPT);
+    gl.blendFunc(gl.ONE, gl.ONE);
+    gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+    gl.enableVertexAttribArray(aPTBase);
+    gl.vertexAttribPointer(aPTBase, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, seedBuf);
+    gl.enableVertexAttribArray(aPTSeed);
+    gl.vertexAttribPointer(aPTSeed, 1, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, yellowBuf);
+    gl.enableVertexAttribArray(aPTYellow);
+    gl.vertexAttribPointer(aPTYellow, 1, gl.FLOAT, false, 0, 0);
+    gl.uniformMatrix4fv(uPT.viewProj, false, viewProj);
+    gl.uniformMatrix4fv(uPT.cluster,  false, cluster);
+    gl.uniform1f(uPT.time, fieldTime);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    gl.uniform1f(uPT.pointBase, 2.4 * dpr);
+    gl.uniform1f(uPT.separation,  b[0]);
+    gl.uniform1f(uPT.compression, b[3]);
+    gl.uniform1f(uPT.mid,         b[2]);
+    gl.drawArrays(gl.POINTS, 0, TOTAL);
+
+    // Bands UI (desktop only)
+    if (!IS_MOBILE) {
+      for (let i = 0; i < 5; i++) {
+        bandFills[i].style.width = (b[i] * 100).toFixed(1) + '%';
+      }
+    }
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+<script src="../assets/js/nav.js"></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
+<script src="/chat-widget.js" defer></script>
+
+</body>
+</html>

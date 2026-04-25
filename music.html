@@ -145,6 +145,11 @@
     }
 
     /* Individual album colors */
+    .album-card[data-album="velvet"] .album-cover {
+      background: linear-gradient(135deg, #06061a 0%, #1a1040 50%, #06061a 100%);
+    }
+    .album-card[data-album="velvet"] .album-visual { color: rgba(212, 160, 48, 0.85); }
+
     .album-card[data-album="glacial"] .album-cover {
       background: linear-gradient(135deg, #0a1520 0%, #1a3050 50%, #0a1520 100%);
     }
@@ -338,6 +343,8 @@
         <li class="nav-dropdown">
           <a href="music.html" class="nav-item active">Music</a>
           <div class="nav-dropdown-content">
+            <a href="music/velvet-alloy.html" class="nav-dropdown-item">Velvet Alloy</a>
+
             <a href="music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
             <a href="music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
             <a href="music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
@@ -406,6 +413,17 @@
       <h2 class="albums-title">Explore the Albums</h2>
       
       <div class="albums-grid">
+        <a href="music/velvet-alloy.html" class="album-card" data-album="velvet">
+          <div class="album-cover">
+            <div class="album-visual">◆</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Velvet Alloy</h3>
+            <p class="album-desc">Nineteen electronic pieces with immersive WebGL visualization. An inevitable, quiet, coherent future.</p>
+            <span class="album-link">Listen</span>
+          </div>
+        </a>
+
         <a href="music/glacial-paths.html" class="album-card" data-album="glacial">
           <div class="album-cover">
             <div class="album-visual">❄</div>
