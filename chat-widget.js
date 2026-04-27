@@ -5,7 +5,7 @@
   'use strict';
 
   // ── Configuration ──
-  const WORKER_URL = 'https://ernesto-chatbot.malditoernesto.workers.dev';
+const WORKER_URL = 'https://ernesto-chatbot-v2.malditoernesto.workers.dev';
 
   // ── State ──
   let messages = [];
