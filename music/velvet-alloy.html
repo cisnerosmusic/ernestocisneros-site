@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<!-- CRITICAL SEO/GEO: Schema loader, do not remove -->
 <script src="../assets/js/schema-loader.js" data-schema="music-velvet-alloy" defer></script>
 <style>
   :root {
@@ -44,7 +44,6 @@
     --paleblue: rgba(165, 185, 220, 0.50);
     --paleblue-soft: rgba(165, 185, 220, 0.28);
 
-    /* Nav CSS variables */
     --gold-bright: rgba(212, 160, 48, 1);
     --gold-dim: rgba(212, 160, 48, 0.5);
     --gold-faint: rgba(212, 160, 48, 0.15);
@@ -73,7 +72,6 @@
     filter: blur(18px) saturate(0.7);
   }
 
-  /* ============ Splash (universal, every load) ============ */
   .splash {
     position: fixed; inset: 0;
     display: flex; flex-direction: column;
@@ -91,7 +89,7 @@
     letter-spacing: 0.45em;
     text-transform: uppercase;
     font-weight: 400;
-    padding-left: 0.45em; /* compensate for letter-spacing */
+    padding-left: 0.45em;
   }
   .splash-author {
     color: var(--cream);
@@ -102,7 +100,6 @@
     font-weight: 300;
   }
 
-  /* ============ All UI fades in after splash ============ */
   .meta, .bands, .tracks, .player, .player-mobile { transition: opacity 0.7s ease; }
   body.intro .meta,
   body.intro .bands,
@@ -110,7 +107,6 @@
   body.intro .player,
   body.intro .player-mobile { opacity: 0; }
 
-  /* ============ Desktop meta (bottom-left) ============ */
   .meta {
     position: fixed; bottom: 26px; left: 30px;
     pointer-events: none; user-select: none;
@@ -127,7 +123,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* ============ Desktop bands (top-left) ============ */
   .bands {
     position: fixed; top: 80px; left: 30px;
     z-index: 5; pointer-events: none;
@@ -138,8 +133,6 @@
   .bands .bar { width: 90px; height: 2px; background: rgba(232,220,200,0.10); overflow: hidden; }
   .bands .fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.06s linear; }
 
-  /* ============ Track list ============ */
-  /* Desktop: top-right column. Mobile: full-width sheet sliding from bottom. */
   .tracks {
     position: fixed; top: 80px; right: 30px;
     z-index: 6; user-select: none;
@@ -177,7 +170,6 @@
   .tracks .track .name { letter-spacing: 0.10em; flex: 1; }
   .tracks .track.playing .num { opacity: 1; }
 
-  /* ============ Desktop player (bottom-center) ============ */
   .player {
     position: fixed;
     bottom: 28px; left: 50%;
@@ -207,7 +199,6 @@
   .player .btn.play { font-size: 13px; letter-spacing: 0; min-width: 22px; }
   .player .time { color: var(--cream-soft); font-variant-numeric: tabular-nums; font-size: 10px; letter-spacing: 0.14em; }
 
-  /* ============ Mobile mini player (hidden on desktop) ============ */
   .player-mobile {
     display: none;
     position: fixed; left: 0; right: 0;
@@ -245,13 +236,11 @@
   }
   .player-mobile .btn-play-m:active { background: rgba(212,160,48,0.10); border-color: var(--gold); color: var(--gold); }
 
-  /* ============ Mobile mode (applied via JS body class) ============ */
   body.mobile .meta,
   body.mobile .bands,
   body.mobile .player { display: none !important; }
   body.mobile .player-mobile { display: flex; }
 
-  /* Track list as bottom sheet on mobile */
   body.mobile .tracks {
     top: auto; right: 0; left: 0;
     bottom: 0;
@@ -273,11 +262,9 @@
   body.mobile .tracks .track .num { font-size: 10px; width: 22px; }
   body.mobile .tracks .track .name { letter-spacing: 0.14em; }
 
-  /* Mobile splash slightly smaller */
   body.mobile .splash-title { font-size: 22px; letter-spacing: 0.4em; padding-left: 0.4em; }
   body.mobile .splash-author { font-size: 9.5px; letter-spacing: 0.30em; margin-top: 12px; }
 
-  /* ============ Nav overrides for immersive page ============ */
   .nav {
     background: rgba(6, 6, 26, 0.85) !important;
     border-bottom-color: rgba(212, 160, 48, 0.10) !important;
@@ -360,20 +347,17 @@
 
 <canvas id="field"></canvas>
 
-<!-- Splash on every load -->
 <div class="splash" id="splash">
   <div class="splash-title">Velvet Alloy</div>
   <div class="splash-author">Ernesto Cisneros</div>
 </div>
 
-<!-- Desktop meta -->
 <div class="meta">
   <span class="title">Velvet Alloy</span>
   <span class="sub">Ernesto Cisneros</span>
   <span class="desc">Velvet Alloy does not describe a future. It hints at it as something inevitable, quiet, and coherent.</span>
 </div>
 
-<!-- Desktop spectrum -->
 <div class="bands" id="bandsUI">
   <div class="row"><span class="label">20–40 Hz</span><div class="bar"><div class="fill"></div></div></div>
   <div class="row"><span class="label">100–300 Hz</span><div class="bar"><div class="fill"></div></div></div>
@@ -382,12 +366,10 @@
   <div class="row"><span class="label">5–20 kHz</span><div class="bar"><div class="fill"></div></div></div>
 </div>
 
-<!-- Track list (desktop column / mobile sheet) -->
 <div class="tracks" id="trackList">
   <div class="header">Track list</div>
 </div>
 
-<!-- Desktop player -->
 <div class="player">
   <div class="seek" id="seek"><div class="seek-fill" id="seekFill"></div></div>
   <div class="row">
@@ -398,7 +380,6 @@
   </div>
 </div>
 
-<!-- Mobile mini player -->
 <div class="player-mobile">
   <div class="track-now" id="trackNow">Velvet Alloy</div>
   <button class="btn-play-m" id="btnPlayMobile" aria-label="play">&#9654;</button>
@@ -597,7 +578,7 @@ void main() {
   function trackUrl(i) { return TRACK_BASE_PATH + TRACKS[i].replace(/ /g, '-') + '.mp3'; }
 
   // ============================================================
-  //  PARAMS — different presets for desktop vs mobile
+  //  PARAMS, different presets for desktop vs mobile
   // ============================================================
   const PARAMS_DESKTOP = {
     GRID_N: 20,
@@ -613,7 +594,8 @@ void main() {
     CAM_PAN_MAX: 1.4,
     CAM_ORBIT_MAX_SPEED: 0.95, CAM_ORBIT_ACCEL: 4.5,
     CAM_PAN_SPEED: 1.6, CAM_ZOOM_SPEED: 2.2,
-    AUTO_ZOOM: false
+    AUTO_ZOOM: false,
+    MORPH_DURATION: 2.2
   };
 
   const PARAMS_MOBILE = {
@@ -634,10 +616,149 @@ void main() {
     AUTO_ZOOM_PERIOD: 120,
     AUTO_ZOOM_RADIUS_OUT: 3.5,
     AUTO_ZOOM_RADIUS_IN:  0.40,
-    AUTO_ZOOM_ELEVATION: 0.22
+    AUTO_ZOOM_ELEVATION: 0.22,
+    MORPH_DURATION: 2.6
   };
 
   const PARAMS = IS_MOBILE ? PARAMS_MOBILE : PARAMS_DESKTOP;
+
+  // ============================================================
+  //  TRACK GEOMETRIES
+  //  Each function maps the cube lattice point (cx, cy, cz)
+  //  in [-0.5, 0.5]^3 to a deformed [x, y, z] position.
+  //  Track 0 is the identity cube, track 18 is the polished sphere.
+  //  The progression follows the album narrative, from raw alloy
+  //  to final polish.
+  // ============================================================
+
+  // Helper: real spherical harmonic radial deformation on the unit sphere.
+  // Returns a point on a deformed sphere of nominal radius 0.5.
+  function Ylm(cx, cy, cz, l, m, amp) {
+    const r = Math.hypot(cx, cy, cz);
+    if (r < 1e-6) return [0, 0, 0];
+    const sx = cx/r, sy = cy/r, sz = cz/r;
+    const theta = Math.acos(Math.max(-1, Math.min(1, sz)));
+    const phi   = Math.atan2(sy, sx);
+    const ct = Math.cos(theta), st = Math.sin(theta);
+    let Y = 0;
+    if (l===2 && m===1) Y = st*ct*Math.cos(phi);
+    if (l===2 && m===2) Y = st*st*Math.cos(2*phi);
+    if (l===3 && m===2) Y = st*st*ct*Math.cos(2*phi);
+    if (l===3 && m===3) Y = st*st*st*Math.cos(3*phi);
+    if (l===4 && m===3) Y = st*st*st*ct*Math.cos(3*phi);
+    if (l===4 && m===4) Y = st*st*st*st*Math.cos(4*phi);
+    const newR = 0.5 * (1 + amp * Y);
+    return [sx*newR, sy*newR, sz*newR];
+  }
+
+  const TRACK_GEOMETRIES = [
+    // 01 Velvet Alloy, identity cube, the raw alloy
+    (cx, cy, cz) => [cx, cy, cz],
+
+    // 02 Polished Silence Field, rounded cube (volume blend toward sphere)
+    (cx, cy, cz) => {
+      const r = Math.hypot(cx, cy, cz);
+      if (r < 1e-6) return [0, 0, 0];
+      const t = 0.35;
+      const k = (1 - t) + t * (0.5 / r);
+      return [cx*k, cy*k, cz*k];
+    },
+
+    // 03 Liquid Circuits, torus shell on xy with z slab
+    (cx, cy, cz) => {
+      const theta = Math.atan2(cy, cx);
+      const rho   = Math.hypot(cx, cy);
+      const ring  = 0.30 + 0.20 * (rho - 0.25) * 2;
+      return [ring * Math.cos(theta), ring * Math.sin(theta), cz * 0.45];
+    },
+
+    // 04 Soft Chrome Pulse, vertical ellipsoid (volume)
+    (cx, cy, cz) => [cx * 0.78, cy * 1.20, cz * 0.78],
+
+    // 05 Fractured Luster Grid, quantized 4x4x4 shards (volume)
+    (cx, cy, cz) => {
+      const c = (a) => Math.floor(a * 4) / 4 + 0.125;
+      const h = Math.sin(c(cx)*91.2 + c(cy)*41.7 + c(cz)*73.1);
+      return [c(cx) + 0.06*h, c(cy) + 0.06*h*0.7, c(cz) - 0.06*h*0.5];
+    },
+
+    // 06 Neon Residue, soft inward collapse (volume), low-density halo
+    (cx, cy, cz) => {
+      const r = Math.hypot(cx, cy, cz);
+      const k = Math.exp(-r * 1.5) * 0.6 + 0.4;
+      return [cx * k, cy * k, cz * k];
+    },
+
+    // 07 Harmonic Surface Drift, Y(2,1) harmonic shell
+    (cx, cy, cz) => Ylm(cx, cy, cz, 2, 1, 0.45),
+
+    // 08 Glass Frequency, standing wave along x (volume)
+    (cx, cy, cz) => [
+      cx,
+      cy + 0.08 * Math.sin(cx * Math.PI * 4),
+      cz + 0.08 * Math.cos(cx * Math.PI * 4)
+    ],
+
+    // 09 Silent Machinery Glow, gear-toothed disc with z compression
+    (cx, cy, cz) => {
+      const theta = Math.atan2(cy, cx);
+      const teeth = 1 + 0.10 * Math.cos(theta * 12);
+      return [cx * teeth, cy * teeth, cz * 0.55];
+    },
+
+    // 10 Electric Patina Trace, multi-frequency noise displacement (volume)
+    (cx, cy, cz) => {
+      const n = Math.sin(cx*7.3) * Math.cos(cy*5.1) * Math.sin(cz*6.7);
+      return [cx + 0.06*n, cy + 0.06*n, cz + 0.06*n];
+    },
+
+    // 11 Subtle Voltage Horizon, thin slab with mild curvature (volume)
+    (cx, cy, cz) => [cx, cy * 0.25 + 0.10 * Math.sin(cx * Math.PI * 2), cz],
+
+    // 12 Chromatic Drift, helical twist around y (volume)
+    (cx, cy, cz) => {
+      const a = cy * Math.PI * 1.5;
+      const c = Math.cos(a), s = Math.sin(a);
+      return [cx*c - cz*s, cy, cx*s + cz*c];
+    },
+
+    // 13 Resonant Mirror Flux, Y(3,2) harmonic shell
+    (cx, cy, cz) => Ylm(cx, cy, cz, 3, 2, 0.50),
+
+    // 14 Digital Fabric Echo, cylindrical weave shell
+    (cx, cy, cz) => {
+      const theta = cx * Math.PI * 2;
+      return [0.42 * Math.cos(theta), cy, 0.42 * Math.sin(theta) + cz * 0.25];
+    },
+
+    // 15 Synthetic Calm Vector, vertical column collapse (volume)
+    (cx, cy, cz) => [cx * 0.4, cy * 1.10, cz * 0.4],
+
+    // 16 Ambient, low-frequency turbulence (volume)
+    (cx, cy, cz) => [
+      cx + 0.05 * Math.sin(cy*3.1 + cz*2.7),
+      cy + 0.05 * Math.cos(cx*2.9 + cz*3.3),
+      cz + 0.05 * Math.sin(cx*3.5 + cy*2.5)
+    ],
+
+    // 17 Luminous Friction Pattern, Y(4,3) harmonic shell, high-frequency lobes
+    (cx, cy, cz) => Ylm(cx, cy, cz, 4, 3, 0.55),
+
+    // 18 Radiant Structure Memory, superquadric (rounded cube, p=4)
+    (cx, cy, cz) => {
+      const a = Math.abs(cx), b = Math.abs(cy), c = Math.abs(cz);
+      const r = Math.pow(a*a*a*a + b*b*b*b + c*c*c*c, 0.25);
+      if (r < 1e-6) return [0, 0, 0];
+      return [cx * 0.5 / r, cy * 0.5 / r, cz * 0.5 / r];
+    },
+
+    // 19 Final Polishing State, perfect sphere shell
+    (cx, cy, cz) => {
+      const r = Math.hypot(cx, cy, cz);
+      if (r < 1e-6) return [0, 0, 0];
+      return [cx * 0.5 / r, cy * 0.5 / r, cz * 0.5 / r];
+    }
+  ];
 
   // ============================================================
   //  WebGL setup
@@ -701,31 +822,40 @@ void main() {
     gl.STATIC_DRAW);
 
   // ============================================================
-  //  Lattice
+  //  Lattice (track-aware, with morph buffers)
   // ============================================================
   const N = PARAMS.GRID_N;
   const TOTAL = N * N * N;
-  const posArr   = new Float32Array(TOTAL * 3);
   const seedArr  = new Float32Array(TOTAL);
   const yellowRec = new Float32Array(TOTAL);
   let yellow     = new Float32Array(TOTAL);
   let yellowNext = new Float32Array(TOTAL);
+
+  // Three position buffers: from, to, current.
+  // Identity of each particle is preserved across morphs:
+  // particle (i,j,k) is always the same, only its base position changes.
+  const posArrFrom    = new Float32Array(TOTAL * 3);
+  const posArrTarget  = new Float32Array(TOTAL * 3);
+  const posArrCurrent = new Float32Array(TOTAL * 3);
+
+  // Pre-compute the base lattice jitter once, shared across all geometries,
+  // so the same particle keeps the same micro-offset in every form.
+  const jitterArr = new Float32Array(TOTAL * 3);
 
   let rng = 1;
   function rand() {
     rng = (rng * 1664525 + 1013904223) | 0;
     return ((rng >>> 0) % 100000) / 100000;
   }
-  let p = 0, s = 0;
+
+  // First pass: jitter, seed, yellow receptivity
+  let s = 0, jp = 0;
   for (let i = 0; i < N; i++) {
     for (let j = 0; j < N; j++) {
       for (let k = 0; k < N; k++) {
-        const x = (i / (N-1) - 0.5);
-        const y = (j / (N-1) - 0.5);
-        const z = (k / (N-1) - 0.5);
-        posArr[p++] = x + (rand() - 0.5) * 0.025;
-        posArr[p++] = y + (rand() - 0.5) * 0.025;
-        posArr[p++] = z + (rand() - 0.5) * 0.025;
+        jitterArr[jp++] = (rand() - 0.5) * 0.020;
+        jitterArr[jp++] = (rand() - 0.5) * 0.020;
+        jitterArr[jp++] = (rand() - 0.5) * 0.020;
         seedArr[s] = rand();
         const r1 = rand();
         yellowRec[s] = (r1 > 1.0 - PARAMS.RECEPTIVE_FRACTION) ? (0.55 + 0.45 * rand()) : 0.0;
@@ -733,15 +863,71 @@ void main() {
       }
     }
   }
+
+  function buildPositionsForTrack(trackIndex, outArr) {
+    const fn = TRACK_GEOMETRIES[trackIndex] || TRACK_GEOMETRIES[0];
+    let p = 0, jp2 = 0;
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        for (let k = 0; k < N; k++) {
+          const cx = (i / (N-1) - 0.5);
+          const cy = (j / (N-1) - 0.5);
+          const cz = (k / (N-1) - 0.5);
+          const out = fn(cx, cy, cz);
+          outArr[p++] = out[0] + jitterArr[jp2++];
+          outArr[p++] = out[1] + jitterArr[jp2++];
+          outArr[p++] = out[2] + jitterArr[jp2++];
+        }
+      }
+    }
+  }
+
+  // Initialize on track 0 (the cube)
+  buildPositionsForTrack(0, posArrTarget);
+  posArrCurrent.set(posArrTarget);
+
   const posBuf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-  gl.bufferData(gl.ARRAY_BUFFER, posArr, gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, posArrCurrent, gl.DYNAMIC_DRAW);
+
   const seedBuf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, seedBuf);
   gl.bufferData(gl.ARRAY_BUFFER, seedArr, gl.STATIC_DRAW);
+
   const yellowBuf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, yellowBuf);
   gl.bufferData(gl.ARRAY_BUFFER, yellow, gl.DYNAMIC_DRAW);
+
+  // ============================================================
+  //  Morph state
+  // ============================================================
+  let morphActive = false;
+  let morphStart  = 0;
+
+  function startMorphToTrack(trackIndex, now) {
+    posArrFrom.set(posArrCurrent);
+    buildPositionsForTrack(trackIndex, posArrTarget);
+    morphActive = true;
+    morphStart = now;
+  }
+
+  function updateMorph(now) {
+    if (!morphActive) return false;
+    const t = (now - morphStart) / PARAMS.MORPH_DURATION;
+    if (t >= 1) {
+      posArrCurrent.set(posArrTarget);
+      morphActive = false;
+    } else {
+      const e = t * t * (3 - 2 * t); // smoothstep
+      const len = posArrCurrent.length;
+      for (let i = 0; i < len; i++) {
+        posArrCurrent[i] = posArrFrom[i] + (posArrTarget[i] - posArrFrom[i]) * e;
+      }
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, posArrCurrent);
+    return true;
+  }
 
   // ============================================================
   //  Matrices
@@ -777,7 +963,7 @@ void main() {
   }
 
   // ============================================================
-  //  Camera (desktop: keyboard-controlled; mobile: auto-zoom loop)
+  //  Camera
   // ============================================================
   const cam = { azimuth: 0.7, elevation: 0.22, radius: 3.4, panX: 0, panY: 0, azimuthVel: 0 };
   function getViewMatrix() {
@@ -793,7 +979,6 @@ void main() {
     return m4LookAt([eyeBase[0]+ox, eyeBase[1]+oy, eyeBase[2]+oz], [ox, oy, oz], [0,1,0]);
   }
 
-  // Desktop keyboard
   const keys = {};
   if (!IS_MOBILE) {
     window.addEventListener('keydown', (e) => {
@@ -836,7 +1021,6 @@ void main() {
     if (audio.ctx.state === 'suspended') audio.ctx.resume();
   }
 
-  // Simulated bands while no track plays
   const SIM = [
     { freq: 0.045, phase: 0.3, beatRate: 0.18, beatDur: 0.16 },
     { freq: 0.13,  phase: 1.7, beatRate: 0.55, beatDur: 0.10 },
@@ -936,7 +1120,7 @@ void main() {
   });
 
   // ============================================================
-  //  Player state + controls
+  //  Player state and controls
   // ============================================================
   const player = {
     currentIndex: -1,
@@ -989,6 +1173,9 @@ void main() {
   function playTrack(index, autoplay) {
     if (index < 0 || index >= TRACKS.length) return;
     ensureCtx();
+    if (index !== player.currentIndex) {
+      startMorphToTrack(index, performance.now() / 1000);
+    }
     player.currentIndex = index;
     audioEl.src = trackUrl(index);
     audioEl.loop = player.loopTrack;
@@ -1051,7 +1238,7 @@ void main() {
   }, 100);
 
   // ============================================================
-  //  MOBILE: swipe-up to reveal track list, 3s auto-force timer
+  //  MOBILE: swipe up to reveal track list
   // ============================================================
   let listAutoTimer = null;
   function openMobileList() {
@@ -1083,8 +1270,6 @@ void main() {
       }
       return false;
     }
-
-    // Ignore touches on the nav
     function isOnNav(target) {
       let el = target;
       while (el) {
@@ -1193,11 +1378,14 @@ void main() {
     const clusterScale = 1.0 + PARAMS.AMP_SEPARATION * subBassEff
                               - PARAMS.AMP_COMPRESSION * b[3];
 
+    // Update geometry morph
+    updateMorph(now);
+
     const yellowMean = updateYellow(dt, b[4]);
     gl.bindBuffer(gl.ARRAY_BUFFER, yellowBuf);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, yellow);
 
-    // ----- Camera -----
+    // Camera
     if (IS_MOBILE && PARAMS.AUTO_ZOOM) {
       const phase = (tWall % PARAMS.AUTO_ZOOM_PERIOD) / PARAMS.AUTO_ZOOM_PERIOD;
       const c = Math.cos(phase * 2 * Math.PI);
@@ -1266,7 +1454,6 @@ void main() {
     gl.uniform1f(uPT.mid,         b[2]);
     gl.drawArrays(gl.POINTS, 0, TOTAL);
 
-    // Bands UI (desktop only)
     if (!IS_MOBILE) {
       for (let i = 0; i < 5; i++) {
         bandFills[i].style.width = (b[i] * 100).toFixed(1) + '%';
