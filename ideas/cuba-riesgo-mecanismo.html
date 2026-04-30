@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuba: The Risk of Repeating the Mechanism | Ideas | Ernesto Cisneros Cino</title>
+<meta name="description" content="Essay on Cuba: why the central problem is not who holds power but the form of power itself. A proposal for democratic transition that honors the republican ethics of José Martí.">
+<meta name="keywords" content="Cuba, democratic transition, José Martí, GAESA, dictatorship, exile, political pendulum, FAR, Ernesto Cisneros">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ernestocisneros.art/ideas/cuba-riesgo-mecanismo.html">
+    <meta property="og:title" content="Cuba: The Risk of Repeating the Mechanism">
+    <meta property="og:description" content="The central problem is not who holds power but the form of power itself. A proposal for democratic transition that honors the republican ethics of José Martí.">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cuba: The Risk of Repeating the Mechanism">
+    <meta name="twitter:description" content="The central problem is not who holds power but the form of power itself.">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link href="../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #000000;
+  --bg-dark: #0a0908;
+  --bg-card: rgba(16, 14, 10, 0.5);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.65);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #f0e6d6;
+  --text-secondary: rgba(215, 195, 155, 0.9);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.download-actions {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+}
+
+.download-btn:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.download-btn::before {
+  content: "↓";
+  font-size: 1.1em;
+  margin-right: 0.2em;
+}
+
+.toc {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--gold-faint);
+  background: var(--bg-card);
+}
+
+.toc-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+}
+
+.toc ol li {
+  counter-increment: toc-counter;
+  padding: 0.35rem 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.toc ol li::before {
+  content: counter(toc-counter, upper-roman) ". ";
+  color: var(--gold-dim);
+  font-family: var(--font-display);
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+}
+
+.toc ol li.toc-prologue::before { content: "Prologue. "; }
+.toc ol li.toc-epilogue::before { content: "Epilogue. "; }
+
+.toc a { color: var(--text-secondary); transition: color 0.3s; }
+.toc a:hover { color: var(--gold-bright); }
+
+.content-section {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.research-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin: 4rem 0 1.2rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.research-title .chapter-num {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-dim);
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+}
+
+.section-header {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold-bright);
+  margin: 2.2rem 0 0.8rem;
+  line-height: 1.4;
+}
+
+.narrative-text {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 1.95;
+}
+
+.narrative-text p {
+  margin-bottom: 1.3rem;
+}
+
+.narrative-text p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.narrative-text p em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+.marti-quote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.2rem 1.8rem;
+  margin: 2.2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.12rem;
+  line-height: 1.85;
+  background: rgba(212, 160, 48, 0.04);
+}
+
+.marti-quote::before {
+  content: "❝";
+  display: block;
+  font-family: var(--font-display);
+  color: var(--gold-dim);
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.marti-quote cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-style: normal;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.marti-quote cite::before { content: "— "; }
+
+.highlight {
+  background: rgba(212, 160, 48, 0.08);
+  padding: 0.05em 0.3em;
+  border-radius: 1px;
+}
+
+.closing-block {
+  max-width: 900px;
+  margin: 4rem auto 2rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.closing-block p {
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.closing-block .signature {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-top: 2.5rem;
+  font-style: normal;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+.divider-stars {
+  text-align: center;
+  margin: 3rem auto;
+  font-family: var(--font-display);
+  color: var(--gold-dim);
+  letter-spacing: 0.5em;
+  font-size: 0.85rem;
+}
+
+.context-links {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-faint);
+  transition: all 0.3s;
+  line-height: 1.4;
+}
+
+.context-link:hover {
+  background: var(--gold-faint);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* Martí biographical note */
+.marti-note {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--gold-faint);
+  background: var(--bg-card);
+}
+
+.marti-note-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.marti-note p {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.marti-note p:last-child {
+  margin-bottom: 0;
+}
+
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, background 0.3s, color 0.3s;
+  z-index: 100;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--gold-faint);
+  color: var(--gold-bright);
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section, .closing-block, .toc, .marti-note { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .context-links { flex-direction: column; align-items: center; }
+  .download-actions { flex-direction: column; align-items: center; }
+  body { font-size: 17px; }
+  .narrative-text { font-size: 1.02rem; }
+  .marti-quote { padding: 1rem 1.3rem; font-size: 1.05rem; }
+  .research-title { font-size: 1.35rem; }
+  .back-to-top { bottom: 1.2rem; right: 1.2rem; }
+}
+</style>
+
+<link rel="stylesheet" href="../assets/css/nav.css">
+
+<link rel="canonical" href="https://ernestocisneros.art/ideas/cuba-riesgo-mecanismo.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/ideas/cuba-riesgo-mecanismo.html">
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/ideas/cuba-riesgo-mecanismo.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/ideas/cuba-riesgo-mecanismo.html">
+<script src="../assets/js/schema-loader.js" data-schema="ideas-culture-memory-exile" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Cuba: The Risk of Repeating the Mechanism",
+  "headline": "Cuba: The Risk of Repeating the Mechanism",
+  "url": "https://ernestocisneros.art/ideas/cuba-riesgo-mecanismo.html",
+  "datePublished": "2025-11-01",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Ernesto Cisneros Cino",
+    "sameAs": "https://orcid.org/0009-0002-2833-1787",
+    "url": "https://ernestocisneros.art/biography.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ernesto Cisneros Cino"
+  },
+  "description": "Essay on Cuba: why the central problem is not who holds power but the form of power itself. A proposal for democratic transition that avoids the pendulum trap and honors the republican ethics of José Martí.",
+  "keywords": "Cuba, democratic transition, José Martí, GAESA, dictatorship, exile, political pendulum, Armed Forces, anthropological deformation",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art"
+  },
+  "about": [
+    {"@type": "Thing", "name": "Cuba"},
+    {"@type": "Thing", "name": "Democratic transition"},
+    {"@type": "Thing", "name": "Political philosophy"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
+
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">Home</a></li>
+      <li><a href="../biography.html" class="nav-item">Biography</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item">Music</a>
+        <div class="nav-dropdown-content">
+          <a href="../music/velvet-alloy.html" class="nav-dropdown-item">Velvet Alloy</a>
+          <a href="../music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="../music/atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="../music/trash.html" class="nav-dropdown-item">Trash</a>
+          <a href="../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="../music/other-works.html" class="nav-dropdown-item">Other Musical Works</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETH Collection</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">A Gift from the Community</a>
+          <a href="../nft/resources.html" class="nav-dropdown-item">Resources</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">Books</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item active">Ideas</a>
+        <div class="nav-dropdown-content">
+          <a href="cosmology-physics.html" class="nav-dropdown-item">Cosmology & Physics</a>
+          <a href="technology-society.html" class="nav-dropdown-item">Technology & Society</a>
+          <a href="culture-memory-exile.html" class="nav-dropdown-item active">Culture, Memory & Exile</a>
+          <a href="art-poetics-philosophy.html" class="nav-dropdown-item">Art, Poetics & Philosophy</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">Impulses.art</a></li>
+      <li><a href="../contact.html" class="nav-item">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="../es/ideas/cuba-riesgo-mecanismo.html" title="Español" onclick="localStorage.setItem('lang','es')">🇪🇸</a>
+        <span class="lang-sep">|</span>
+        <a href="cuba-riesgo-mecanismo.html" class="active-lang" title="English" onclick="localStorage.setItem('lang','en')">🇺🇸</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-content" id="main-content">
+
+  <div class="sr-only" style="position:absolute;left:-9999px;height:1px;overflow:hidden">
+    <p>Page type: Political and philosophical essay on Cuba. Author: Ernesto Cisneros Cino. Topics: democratic transition, mechanism of power, José Martí, FAR, GAESA, anthropological deformation, diaspora, political pendulum.</p>
+  </div>
+
+  <section class="hero">
+    <span class="hero-subtitle">Ideas / Culture, Memory & Exile</span>
+    <h1 class="hero-title">Cuba: The Risk of Repeating the Mechanism</h1>
+    <p class="hero-lead">A reflection on power, transition, and the Cuban wound, in honor of the republican ethics of José Martí.</p>
+  </section>
+
+  <div class="download-actions">
+    <a href="../assets/pdf/cuba-riesgo-mecanismo-en.pdf" class="download-btn" download>Download PDF (English)</a>
+    <a href="../assets/pdf/cuba-riesgo-mecanismo-es.pdf" class="download-btn" download>Descargar PDF (Español)</a>
+  </div>
+
+  <div class="divider"></div>
+
+  <nav class="toc" aria-label="Table of Contents">
+    <p class="toc-title">Contents</p>
+    <ol>
+        <li class="toc-prologue"><a href="#prologue">The wound and the clarity</a></li>
+        <li><a href="#mechanism">The mechanism. How a single truth is built</a></li>
+        <li><a href="#pendulum">The pendulum trap</a></li>
+        <li><a href="#beyond-left-right">Beyond left and right</a></li>
+        <li><a href="#economic-failure">The economic failure. It was not just concentration of power</a></li>
+        <li><a href="#deformation">The anthropological deformation. The damage unseen in speeches</a></li>
+        <li><a href="#diaspora">The diaspora as ambivalent actor, and as evidence</a></li>
+        <li><a href="#geopolitics">Geopolitics as a structural constraint</a></li>
+        <li><a href="#polarization">Polarization. Symptom and instrument</a></li>
+        <li><a href="#brain-drain">The brain drain as a political fact</a></li>
+        <li><a href="#armed-forces">The Armed Forces. From instrument of dictatorship to guarantors of transition</a></li>
+        <li><a href="#civic-void">The civic void and ethical reconstruction</a></li>
+        <li><a href="#principles">Principles for not repeating the mistake</a></li>
+        <li><a href="#models">Models of transition. What experience teaches</a></li>
+        <li><a href="#legitimacy">The legitimacy of transitional power</a></li>
+        <li><a href="#emotion">Emotion as engine, and as danger</a></li>
+        <li><a href="#transition">The possible transition. A concrete guide for the first 24 months</a></li>
+        <li class="toc-epilogue"><a href="#epilogue">The responsibility</a></li>
+    </ol>
+  </nav>
+
+  <!-- Prologue -->
+  <section class="content-section" id="prologue">
+    <h3 class="research-title">
+      <span class="chapter-num">Prologue</span>
+      The wound and the clarity
+    </h3>
+    <div class="narrative-text">
+
+      <p>There are wounds that are not discussed—they are felt.</p>
+
+      <p>Cuba is one of them.</p>
+
+      <p>More than six decades of a dictatorship that has failed in every respect—economic, social, institutional, ethical, military, and human—have left an exhausted island, an impoverished people, and a fractured nation. The Cuban government is not a "system with flaws." It is a totalitarian dictatorship that has failed catastrophically: it has destroyed the economy, corrupted public morality, impoverished the civilian population to inhumane extremes, turned the Armed Forces into an apparatus of repression and control, and betrayed every last republican principle that José Martí dreamed for Cuba.</p>
+
+      <p>Every Cuban, inside or outside the island, carries their own version of that history. Some lived it from within; others inherited it from exile. But all, in one way or another, recognize it.</p>
+
+      <p>That wound is not neutral. It conditions how we see. Mine included.</p>
+
+      <p>It would be dishonest to speak of the future without admitting that, at times, the emotional response takes over: the visceral rejection, the need for total rupture. It is understandable. It is human.</p>
+
+      <p>But precisely for that reason, it is dangerous.</p>
+
+      <p>The greatest risk for Cuba is not only the system it has endured. It is failing to understand the mechanism that made it possible. Because that mechanism does not belong to any ideology. It belongs to the human condition. And if it is not clearly identified, it can repeat itself. Even with the best of intentions.</p>
+
+      <p>This text is not a manifesto. It does not propose a leader, a platform, or a party. It proposes something more difficult and more necessary: a way of seeing that is, at the same time, a concrete guide for the transition to democracy. A transition that honors Martí—not as a statue, but as an ethical and republican compass.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter I -->
+  <section class="content-section" id="mechanism">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter I</span>
+      The mechanism. How a single truth is built
+    </h3>
+    <div class="narrative-text">
+
+      <p>Dictatorships do not appear out of nowhere. They are built. And they follow recognizable patterns, almost as predictable as those of a disease progressing through stages.</p>
+
+      <p>First, a figure or a narrative emerges that promises a solution. It may be a charismatic leader or a powerful idea. In contexts of crisis, that kind of figure finds fertile ground: people do not seek perfection—they seek a way out. Urgency suppresses critical judgment. The promise takes the place of analysis.</p>
+
+      <p>Then, an enemy is defined. Internal or external, real or exaggerated, but necessary. Because every project that aspires to concentrate power needs to justify it. And nothing justifies it better than danger. The enemy serves an architectural function: it is the pillar that holds up the edifice of control.</p>
+
+      <p>From there, language begins to shift. The adversary ceases to be an interlocutor and becomes an obstacle. Then, a problem. Finally, a threat. And when someone becomes a threat, their elimination—symbolic or real—begins to seem reasonable.</p>
+
+      <p>Repression does not arrive all at once. It is normalized.</p>
+
+      <p>It is first accepted in exceptional cases. Then in necessary situations. And finally, as part of normal operations. Fear is institutionalized. Dissent is punished. Obedience is rewarded.</p>
+
+      <p>The Cuban dictatorship was not a historical accident. It was the systematic and conscious application of that mechanism: a charismatic leader who promised paradise, an eternal enemy (imperialism), a language that turned the dissident into a traitor, and finally, repression institutionalized as the norm. Today, that mechanism no longer convinces even its own officials. It is an ideological corpse sustained only by brute force and residual fear.</p>
+
+      <p>That is why identifying it is not a historical exercise. It is a practical necessity.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter II -->
+  <section class="content-section" id="pendulum">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter II</span>
+      The pendulum trap
+    </h3>
+    <div class="narrative-text">
+
+      <p>When a system of control endures for decades, it generates an inevitable reaction. The accumulated pressure does not disappear. It transforms.</p>
+
+      <p>Rage appears. Urgency. The need for rupture. And with them, a tempting idea: that the problem can be solved by inverting the terms.</p>
+
+      <p>But that idea is a trap. <strong>The pendulum does not correct the error. It reproduces it in the opposite direction.</strong></p>
+
+      <p>Where there was ideological imposition, the impulse to impose another arises. Where there was exclusion, the desire to exclude appears. The mechanism remains intact. Only the discourse that justifies it changes.</p>
+
+      <p>Inverting the terms is not enough. Switching from a left-wing dictatorship to a possible right-wing one would be repeating the mistake in a different disguise.</p>
+
+      <blockquote class="marti-quote">Freedom is not just independence from a foreign yoke, but from the internal one.<cite>José Martí</cite></blockquote>
+
+    </div>
+  </section>
+
+  <!-- Chapter III -->
+  <section class="content-section" id="beyond-left-right">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter III</span>
+      Beyond left and right
+    </h3>
+    <div class="narrative-text">
+
+      <p>The classical framework of left and right is insufficient. It is used more to identify sides than to describe concrete policies.</p>
+
+      <p>The United States combines a market economy with labor regulations and social protection systems. The country has survived transitions between radically different administrations without collapsing, because institutions are stronger than the ideologies of those who temporarily occupy them.</p>
+
+      <p>China maintains centralized political control while operating an economy integrated into the global market. What remains constant is the concentration of power. And therein lies the warning: China is not a model. It is a reminder that economic growth without political freedom is unstable in the long run.</p>
+
+      <p><strong>The problem is not whether a system calls itself left or right. The problem is whether or not it allows the unlimited concentration of power—political and economic.</strong></p>
+
+    </div>
+  </section>
+
+  <!-- Chapter IV -->
+  <section class="content-section" id="economic-failure">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter IV</span>
+      The economic failure. It was not just concentration of power
+    </h3>
+    <div class="narrative-text">
+
+      <p>The Cuban model did not fail only because power was concentrated. It failed because centrally planned socialism systematically destroys the three pillars that sustain any functional economy: incentives, information, and property.</p>
+
+      <h4 class="section-header">Incentives</h4>
+
+      <p>In a planned economy, the link between effort and reward is broken by design. The consequence is not equality: it is downward uniformity. It is not that everyone has a lot. It is that no one has incentive to produce more than the minimum. Cuba demonstrated this with decades of data.</p>
+
+      <h4 class="section-header">Information</h4>
+
+      <p>Friedrich Hayek explained it with mathematical precision in 1945: no central planner can aggregate and process the dispersed information that millions of economic actors generate with their individual decisions. The price of a good in a free market is not just a number: it is condensed information that no bureaucracy can calculate from above. Central planning is not just inefficient: it is epistemologically impossible at scale. Cuba was not a failed experiment of a good idea. It was the experimental confirmation of a theoretical impossibility.</p>
+
+      <h4 class="section-header">Property</h4>
+
+      <p>Private property is the condition of possibility for economic responsibility. Whoever does not own what they produce has no reason to care for it or invest in it. The result is the progressive degradation of everything: buildings, factories, land, hospitals, infrastructure.</p>
+
+      <p>A rule of law without a genuine market economy degenerates. This is not a theoretical possibility. It is a historical regularity. Venezuela demonstrated it at accelerated speed: weak institutions plus a statized economy plus oil revenue produces exactly the same result as Cuba, with different vocabulary and more velocity.</p>
+
+      <p>Real economic opening is not one of the principles for Cuba's future. It is the condition of possibility for all the others. Without a material base, democracy is fragile. Without economic incentives, freedom is abstract. Without property, dignity is nominal.</p>
+
+      <blockquote class="marti-quote">The prosperity of a people is not measured by the wealth of a few, but by the dignity of all.<cite>José Martí</cite></blockquote>
+
+    </div>
+  </section>
+
+  <!-- Chapter V -->
+  <section class="content-section" id="deformation">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter V</span>
+      The anthropological deformation. The damage unseen in speeches
+    </h3>
+    <div class="narrative-text">
+
+      <p>This is the most uncomfortable chapter. And precisely for that reason, the most necessary.</p>
+
+      <p>Cuba does not only suffer a civic void. It suffers a total civil impoverishment: entire generations have grown up without knowing what a dignified salary is, a home of their own, a functioning hospital, a school that teaches how to think. Material poverty is only the visible face. Moral poverty is worse: everyday corruption, "resolving" as a survival ethic, informing as a tool for advancement, double standards as a way of life. The regime destroyed the republican ethic that Martí placed at the center of the nation.</p>
+
+      <blockquote class="marti-quote">To be educated is the only way to be free.<cite>José Martí</cite></blockquote>
+
+      <h4 class="section-header">Informing as social norm</h4>
+
+      <p>In a system that for decades rewarded denunciation and punished private loyalty, distrust became a survival mechanism. This is not a moral accusation: it is a functional description. When informing protects and trusting exposes, rational people learn to inform and to distrust. These behaviors, practiced for decades, become internalized. They become reflexive.</p>
+
+      <h4 class="section-header">Double standards as second nature</h4>
+
+      <p>Saying in public the opposite of what one thinks in private. Applauding what one rejects. This permanent splitting is not ordinary hypocrisy: it is cognitive adaptation to an environment where consistency is dangerous. It produces people who instinctively distrust any public discourse, including that of the opposition itself.</p>
+
+      <h4 class="section-header">State dependency as identity</h4>
+
+      <p>Several generations grew up in an environment where the State was the only actor capable of solving problems. That dependency is not just economic: it is psychological. The transition will require citizens who assume individual responsibility in an environment without guarantees. That leap is neither automatic nor immediate.</p>
+
+      <h4 class="section-header">Cynicism as shield</h4>
+
+      <p>In a society where promises have been systematically broken, cynicism is a reasonable adaptive response. But generalized cynicism destroys the social capital that any democracy needs. Democracies are sustained by citizens who believe, even with reservations, that the rules matter and that voting changes something.</p>
+
+      <p>Institutions can be built in years. <strong>Social trust is rebuilt over generations.</strong> The deepest wound of Castroism is not in the destroyed economy or the deformed institutions. It is in the people who learned to survive under conditions that should not exist.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter VI -->
+  <section class="content-section" id="diaspora">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter VI</span>
+      The diaspora as ambivalent actor, and as evidence
+    </h3>
+    <div class="narrative-text">
+
+      <p>Let us begin with what many analyses omit: the Cuban diaspora (especially in Miami) is the most powerful empirical demonstration of what Cubans can achieve in freedom. In less than two generations, a community that arrived without resources, without institutional networks, without the language, built an economy, a cultural infrastructure, and a level of professional integration that few immigrant communities have achieved in any country in the world.</p>
+
+      <p>That gap in outcomes dismantles, more effectively than any political treatise, the narrative that Cuba's failure is inevitable or structural. <strong>The problem was never the people. It was the system.</strong></p>
+
+      <p>Martí, himself an exile for much of his adult life, never proposed excluding those who stayed behind. He proposed uniting all Cubans of good faith. That is the only diaspora that can help build something new: one that arrives with capacity, not with a bill.</p>
+
+      <p>However. It must be said with equal clarity. For decades, significant sectors of the exile have financed discourses of total rupture that reproduce exactly the logic of the pendulum. And part of the diaspora has operated within a political system that has instrumentalized Cuba for electoral purposes. The same embargo that some exile sectors defend has functioned for decades as the regime's most effective argument to justify the failure of socialism.</p>
+
+      <p>What the diaspora has to offer is threefold: economic capital for reconstruction, human capital in the form of professionals trained in functional systems, and symbolic capital in the form of lived evidence that another Cuba is possible.</p>
+
+      <p>A real transition will need everyone. There is no legitimate Cuba of the exile and an illegitimate Cuba of the interior. There is a single Cuba, fractured, and its reconstitution requires that both parts recognize the irrevocable humanity of the other.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter VII -->
+  <section class="content-section" id="geopolitics">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter VII</span>
+      Geopolitics as a structural constraint
+    </h3>
+    <div class="narrative-text">
+
+      <p>Cuba cannot be redesigned in a vacuum. The most dangerous illusion of certain transitional discourses is to treat the country as a neutral space that can be reinvented at will. External variables are not secondary. They are structural.</p>
+
+      <p>The U.S. embargo has functioned as much as an internal justification for the regime as an external punishment. Lifting or reforming the embargo is not a gesture of sympathy toward the regime. It is a structural condition for any economic opening to have real possibilities.</p>
+
+      <p>The historical dependence on Venezuela, the Chinese economic presence, Russian interests: Cuba is a strategic point in the Caribbean with established relationships with powers that have their own interests in the outcome of any transition. Those interests are neither benevolent nor neutral.</p>
+
+      <p>A viable transition must take these variables into account—not as excuses for inaction, but as the real map of the territory. Governing without a map is getting lost.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter VIII -->
+  <section class="content-section" id="polarization">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter VIII</span>
+      Polarization. Symptom and instrument
+    </h3>
+    <div class="narrative-text">
+
+      <p>Polarization does not appear by accident. It is fed. On social media (the space where much of the Cuban political battle is now fought) polarizing content has more reach and more emotional resonance than sober analysis. Algorithms reward outrage.</p>
+
+      <p><strong>A polarized country does not deliberate. It reacts.</strong></p>
+
+      <p>Polarization is not the underlying problem. It is the visible manifestation of the difficulty of coexisting with disagreement without turning it into existential conflict. And in Cuba that difficulty is aggravated by decades of anthropological deformation: a society that learned that disagreement was dangerous does not learn overnight to treat it as something useful.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter IX -->
+  <section class="content-section" id="brain-drain">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter IX</span>
+      The brain drain as a political fact
+    </h3>
+    <div class="narrative-text">
+
+      <p>Cuba is losing, right now, the generation that could build the democracy it desires.</p>
+
+      <p>Young professionals, technicians, artists, educators, doctors, engineers—those with exactly the human capital that a transition needs—are emigrating. This is not an ordinary brain drain: it is the active emptying of the social layer that would have been the scaffolding for any process of institutional reconstruction.</p>
+
+      <p>The system expels precisely those who would be the agents of change. And here a perverse circle closes: those who remain are, statistically, the most dependent on the State, the most marked by the deformation of the system. This is not an accusation. It is the predictable result of decades of adverse selection.</p>
+
+      <p><strong>Mass emigration is not just a consequence of the system. It is, at this point, one of its most effective instruments of perpetuation.</strong></p>
+
+    </div>
+  </section>
+
+  <!-- Chapter X -->
+  <section class="content-section" id="armed-forces">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter X</span>
+      The Armed Forces. From instrument of dictatorship to guarantors of transition
+    </h3>
+    <div class="narrative-text">
+
+      <p>This is the chapter that political analyses of Cuba most frequently avoid. And its omission is, in itself, a problem.</p>
+
+      <p>The Revolutionary Armed Forces are not a professional army in the conventional sense. They are the armed wing of the Communist Party. But their role goes far beyond repression: through the conglomerate GAESA (Grupo de Administración Empresarial S.A.), the FAR control hotels, ports, hard-currency stores, imports, exports, and conservative estimates suggest they manage between 60 and 80% of the hard currency circulating in the Cuban economy. <strong>The Cuban military are not just guardians of the regime. They are its majority shareholders.</strong></p>
+
+      <p>This has direct consequences for any transition. A civilian government that attempts to reform the economy without simultaneously reforming the military structure will be trying to build a new house on foundations that belong to another owner.</p>
+
+      <p>In a democratic transition, the Armed Forces must be immediately subordinated to civilian power and to a Constitution—not as a formality but as real architecture. They must lose all economic control: the total and audited privatization of GAESA and all enterprises under military control is a condition of possibility for a free economy. There can be no genuine market while an actor with coercive capacity controls more than half the currency flow. They must undergo a process of ethical review on an individual basis: those who committed documented crimes against humanity will be tried; the rest will be integrated under new civilian command. And they must receive a clear and singular mission: to defend the sovereignty of the territory, not a regime or an ideology.</p>
+
+      <blockquote class="marti-quote">A people that surrenders its destiny to the military ends up being enslaved by its own soldiers.<cite>José Martí</cite></blockquote>
+
+      <p>Failing to reform the Armed Forces is not a tactical omission. It is leaving intact the most powerful mechanism of the system's perpetuation.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter XI -->
+  <section class="content-section" id="civic-void">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter XI</span>
+      The civic void and ethical reconstruction
+    </h3>
+    <div class="narrative-text">
+
+      <p>A democracy is not built solely with laws. It is sustained by citizens capable of understanding them, defending them, and demanding their enforcement. Without that foundation, any attempt at opening risks being captured by already familiar dynamics.</p>
+
+      <p>The first pillar is <strong>active civic education</strong>—not as a school subject but as practice. Rebuilding the republican ethic that Martí placed at the center of his project: teaching people to distinguish a right from a privilege, an institution from a favor, law from an order.</p>
+
+      <p>The second pillar is <strong>freedom of the press</strong> and independent media. Not as a democratic ornament, but as a mechanism of social oversight. A citizen who only has access to one account of the world cannot exercise real citizenship.</p>
+
+      <p>The third pillar is <strong>organized civil society</strong>: real unions, autonomous professional associations, community organizations, churches in their historical function as counterweights to State power. That space, in Cuba, has been systematically emptied. Refilling it is not optional: it is the condition of possibility for everything else.</p>
+
+      <p>Without a society grounded in republican ethics, democratic institutions will be mere facades. Martí warned with clarity: <em>the republic is not just a form of government. It is a way of being.</em></p>
+
+    </div>
+  </section>
+
+  <!-- Chapter XII -->
+  <section class="content-section" id="principles">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter XII</span>
+      Principles for not repeating the mistake
+    </h3>
+    <div class="narrative-text">
+
+      <p>If there is one lesson drawn from experience, it is that the problem lies not solely in who exercises power, but in how that power is structured:</p>
+
+      <h4 class="section-header">Rule of law</h4>
+      <p>The law above any figure, group, or ideology. An independent judiciary, not appointed by the executive.</p>
+
+      <h4 class="section-header">Real separation of powers</h4>
+      <p>A legislature that is not a rubber-stamp chamber, a judiciary that does not obey the executive, autonomous oversight institutions.</p>
+
+      <h4 class="section-header">Active protection of dissent</h4>
+      <p>Disagreement not merely tolerated, but structurally guaranteed—even when it is inconvenient for those in power.</p>
+
+      <h4 class="section-header">Individual justice</h4>
+      <p>Accountability based on documented concrete acts. Not on ideological affiliations or collective guilt.</p>
+
+      <h4 class="section-header">Limits on power</h4>
+      <p>Defined terms, institutional transparency. No office without an expiration date.</p>
+
+      <h4 class="section-header">Market economy with real property</h4>
+      <p>The material foundation of all other principles. Genuine private property, an end to the state and military monopoly over commerce.</p>
+
+      <h4 class="section-header">Demilitarization of the State</h4>
+      <p>Armed Forces subordinated to civilian power, without economic control, without political function.</p>
+
+      <h4 class="section-header">National ethical reconstruction</h4>
+      <p>A republic "with all and for the good of all," where the citizen's dignity is the foundation—not the ruler's favor.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter XIII -->
+  <section class="content-section" id="models">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter XIII</span>
+      Models of transition. What experience teaches
+    </h3>
+    <div class="narrative-text">
+
+      <p>Speaking of transition without looking at the historical evidence is philosophy without friction.</p>
+
+      <p><strong>South Africa</strong> and the Truth and Reconciliation Commissions represent the most documented attempt to build justice without destroying the viability of the state. The lesson is not that impunity is acceptable, but that justice must be designed within the limits of what a society can sustain without fragmenting.</p>
+
+      <p><strong>East Germany</strong>, after reunification, opened the Stasi archives and allowed citizens to access their own files. It was not a witch hunt. It was a confrontation with truth. Cuba has, in its own state archives, a similar tool—if it ever decides to use it with the same rigor.</p>
+
+      <p>The <strong>Spanish Transition</strong> was a pact of forgetting. Its consequences are felt to this day. What it teaches is not that forgetting works, but that pacts without truth generate wounds that never heal.</p>
+
+      <p><strong>Post-Pinochet Chile</strong> shows a middle path: individual trials, slow, partial, advancing over decades. The process itself had a stabilizing social effect.</p>
+
+      <p>No imported model will serve without adaptation to Cuban reality. But all teach the same thing: <em>truth is non-negotiable; the mechanisms of justice can be adapted; transitions that try to resolve everything at once collapse.</em></p>
+
+    </div>
+  </section>
+
+  <!-- Chapter XIV -->
+  <section class="content-section" id="legitimacy">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter XIV</span>
+      The legitimacy of transitional power
+    </h3>
+    <div class="narrative-text">
+
+      <p>Who governs between the end of the current system and the consolidation of a new one? With what legitimacy? How is that transitional power prevented from becoming permanent?</p>
+
+      <p>Legitimate transitional power requires three conditions: <strong>legitimacy of origin</strong> (defined timelines, international oversight, prohibition on its members standing for immediate elections); <strong>legitimacy of process</strong> (total transparency, because a transitional government that operates in secret is laying the foundations of a new authoritarianism); and <strong>legitimacy of outcome</strong> (a short, public, and legally binding expiration date—maximum 18 to 24 months).</p>
+
+      <p>The transitional government must include representatives of civil society from the interior and from the diaspora. It cannot be the project of a single sector, a single generation, or a single geography.</p>
+
+      <p><strong>Legitimate transitional power is not the one with the best intentions. It is the one with the best limits.</strong></p>
+
+    </div>
+  </section>
+
+  <!-- Chapter XV -->
+  <section class="content-section" id="emotion">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter XV</span>
+      Emotion as engine, and as danger
+    </h3>
+    <div class="narrative-text">
+
+      <p>This chapter is addressed to whoever is on the street. To whoever carries the rage in their body, not just in words. To whoever has watched their family suffer, to whoever has been waiting for years, to whoever can bear no more.</p>
+
+      <p><strong>You are right in your rage. You do not need to justify it.</strong></p>
+
+      <p>Decades of humiliation, of institutionalized fear, of forced silence, of watching those you love depart: that generates a moral debt that cannot be repaid with words.</p>
+
+      <p>But rage mobilizes, and rage without structure destroys both those you want to tear down and those you want to build up. The moments of historical rupture are also the moments when the kind of future being built is decided. What is done in those moments matters. It matters who makes the decisions and how. It matters whether the institutions built in urgency have the solidity to survive when the urgency passes.</p>
+
+      <p>Rage is necessary. Rage is just. But rage that does not know when to stop does not transform: it destroys and then becomes what it destroyed.</p>
+
+      <p>The challenge is not choosing between emotion and reason. <strong>The challenge is using them together.</strong> Emotion without structure generates chaos. Structure without emotion lacks the force to move. Together they can build something that lasts.</p>
+
+    </div>
+  </section>
+
+  <!-- Chapter XVI -->
+  <section class="content-section" id="transition">
+    <h3 class="research-title">
+      <span class="chapter-num">Chapter XVI</span>
+      The possible transition. A concrete guide for the first 24 months
+    </h3>
+    <div class="narrative-text">
+
+      <p>Cuba does not need another messiah. It needs institutions, economy, and ethics. The priority steps for the transition period, in order of urgency:</p>
+
+      <h4 class="section-header">Week one</h4>
+      <p>Immediate release of all political prisoners and general amnesty for crimes of conscience. This is the foundational act of any transitional legitimacy. Without it, everything else is rhetoric.</p>
+
+      <h4 class="section-header">First month</h4>
+      <p>Convening a plural and sovereign Constituent Assembly, with representation from interior civil society, the diaspora, and all regions of the country. Its mandate: to draft a new Constitution, not to reform the existing one.</p>
+
+      <h4 class="section-header">First six months</h4>
+      <p>Beginning of radical economic reform: declaration of full and irrevocable private property over land, housing, and businesses; opening to foreign investment with clear rules and without state intermediaries; elimination of the state monopoly in all productive sectors within a 24-month horizon; creation of an independent Central Bank and a convertible currency; dismantling of regulations that suffocate the entrepreneur.</p>
+
+      <h4 class="section-header">Parallel and immediate</h4>
+      <p>Beginning of military reform: subordination of the Armed Forces to elected civilian power; opening of independent audits of GAESA and all military enterprises; beginning of the audited privatization process; establishment of a new institutional mission: defense of territory, not defense of a regime.</p>
+
+      <h4 class="section-header">First twelve months</h4>
+      <p>National program of ethical and civic reconstruction: new citizen education based on Martí's republican legacy; active promotion of civil society; public recognition of the regime's victims and design of mechanisms for symbolic and material reparation.</p>
+
+      <h4 class="section-header">Months twelve to twenty-four</h4>
+      <p>First free, plural, and internationally supervised elections. The transitional government surrenders power. No exceptions. No extensions. No emergency arguments.</p>
+
+      <p>This timeline is demanding. It is also the minimum necessary for the transition to be real and not a change of name over the same structure.</p>
+
+    </div>
+  </section>
+
+  <!-- Epilogue -->
+  <section class="content-section" id="epilogue">
+    <h3 class="research-title">
+      <span class="chapter-num">Epilogue</span>
+      The responsibility
+    </h3>
+    <div class="narrative-text">
+
+      <p>Cuba does not face merely a political change.</p>
+
+      <p>It faces a historic decision.</p>
+
+      <p><strong>Reproducing the mechanism</strong>—with a different discourse, with different names, with a different direction on the pendulum—is the shortest path. Also the most familiar. And the one that most resembles what has already been lived.</p>
+
+      <p><strong>Breaking it</strong> requires something more difficult: understanding it. Not in the abstract, but in its concrete, everyday manifestations. In the language it uses. In the enemies it constructs. In the power it concentrates. In the limits it denies. In the economy it controlled. In the military it sustained. In the people it shaped.</p>
+
+      <p>This is not about replacing one truth with another. It is about building a system where no truth can be imposed without limits.</p>
+
+      <p>That system will not arrive complete and finished from outside. It will be built by citizens: imperfect, contradictory, marked by decades of deformation—but capable (as every Cuban who has prospered in freedom demonstrates) of something entirely different when conditions allow it.</p>
+
+      <div class="divider-stars">○ ○ ○</div>
+
+      <p style="text-align:center; font-style:italic; color: var(--text-primary); font-size: 1.1rem;">Cuba does not need to change the hands that hold the power that oppresses.</p>
+
+      <p style="text-align:center; font-style:italic; color: var(--text-primary); font-size: 1.1rem;">It needs to change the form in which power exists.</p>
+
+      <div class="divider-stars">○ ○ ○</div>
+
+      <p>And it cannot do so only with laws, only with markets, only with institutions. It also needs to heal the people the system shaped. That is the longest work. And the most urgent.</p>
+
+      <blockquote class="marti-quote">With all, and for the good of all.<cite>José Martí</cite></blockquote>
+
+      <p style="text-align:center; font-style:italic; color: var(--text-primary); font-size: 1.1rem;">It is time to build the Cuba that Martí imagined.</p>
+
+      <p style="text-align:center; font-style:italic; color: var(--text-primary); font-size: 1.1rem;">It is time for Cubans, at last, to be masters of our own destiny.</p>
+
+      <p>And Cuba has paid too much—with hunger, with exile, with blood and broken dreams—to deserve a repetition.</p>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closing-block">
+    <p class="signature">Ernesto Cisneros Cino</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- José Martí biographical note (EN only) -->
+  <section class="content-section">
+    <div class="marti-note">
+      <p class="marti-note-title">A Note on José Martí (1853–1895)</p>
+      <p>José Martí is the most revered figure in Cuban history—a poet, essayist, philosopher, and revolutionary leader whose writings and moral vision shaped not only Cuba's war of independence from Spain but the very idea of what Cuba should be as a nation. Born in Havana in 1853, he was imprisoned at sixteen for his political convictions, spent most of his adult life in exile—primarily in New York—and used that distance to build the intellectual and organizational foundations of Cuban independence.</p>
+      <p>Martí was not merely a political figure. He was one of the foremost writers of the Spanish language in the nineteenth century: a modernist poet, a literary critic, a journalist of extraordinary range, and a thinker who engaged deeply with questions of democracy, civic virtue, racial equality, and Latin American sovereignty. His essay "Nuestra América" (Our America, 1891) remains a foundational text of Latin American political thought.</p>
+      <p>He fell in battle on May 19, 1895, at the very beginning of the war he had organized, at Dos Ríos, Cuba. He was forty-two years old. His death ensured that he would never hold political power—and that his legacy would remain permanently ethical rather than partisan.</p>
+      <p>For all Cubans—regardless of political affiliation, geography, or generation—Martí occupies a unique place: he is the one figure on whom everyone agrees. His words are invoked throughout this essay not as rhetorical decoration, but as the ethical compass by which any future Cuban project must be measured. To understand Cuba, one must first understand Martí.</p>
+    </div>
+  </section>
+
+  <div class="context-links">
+    <a href="culture-memory-exile.html" class="context-link">&#8592; Culture, Memory & Exile</a>
+    <a href="../ideas.html" class="context-link">Back to Ideas</a>
+    <a href="../contact.html" class="context-link">Contact</a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="social-links" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1rem;">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" aria-label="X (Twitter)" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" aria-label="Instagram" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" aria-label="GitHub" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" aria-label="YouTube" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" aria-label="LinkedIn" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <p class="copyright">© 2020 – 2026 Ernesto Cisneros Cino</p>
+</footer>
+
+<a href="#main-content" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+
+<script>
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speed: Math.random() * 0.3 + 0.05,
+      opacity: Math.random() * 0.5 + 0.2,
+      drift: (Math.random() - 0.5) * 0.2,
+    };
+  }
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let p of particles) {
+      p.y -= p.speed;
+      p.x += p.drift;
+      if (p.y < -10) {
+        Object.assign(p, createParticle(false));
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 160, 48, ${p.opacity})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  draw();
+})();
+</script>
+
+<script>
+(function() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  }, { passive: true });
+})();
+</script>
+
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
+<script src="/chat-widget.js" defer></script>
+
+</body>
+</html>
