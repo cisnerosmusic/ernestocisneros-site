@@ -100,12 +100,59 @@
     font-weight: 300;
   }
 
-  .meta, .bands, .tracks, .player, .player-mobile { transition: opacity 0.7s ease; }
+  .meta, .bands, .tracks, .player, .player-mobile, .compass { transition: opacity 0.7s ease; }
   body.intro .meta,
   body.intro .bands,
   body.intro .tracks,
   body.intro .player,
-  body.intro .player-mobile { opacity: 0; }
+  body.intro .player-mobile,
+  body.intro .compass { opacity: 0; }
+
+  /* ============ Compass (desktop only) ============ */
+  .compass {
+    position: fixed;
+    bottom: 26px; right: 30px;
+    width: 84px; height: 84px;
+    z-index: 5;
+    pointer-events: none;
+    user-select: none;
+    color: var(--cream);
+  }
+  .compass-ring {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    overflow: visible;
+  }
+  .compass-ring circle {
+    fill: none;
+    stroke: rgba(232, 220, 200, 0.18);
+    stroke-width: 0.5;
+  }
+  .compass .key {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(212, 160, 48, 0.50);
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.18s ease, text-shadow 0.18s ease, transform 0.18s ease;
+    text-shadow: 0 0 0 rgba(212, 160, 48, 0);
+  }
+  .compass .key-w { top: 7px;  left: 50%; transform: translateX(-50%); }
+  .compass .key-a { left: 9px; top: 50%; transform: translateY(-50%); }
+  .compass .key-s { bottom: 7px; left: 50%; transform: translateX(-50%); }
+  .compass .key-d { right: 9px; top: 50%; transform: translateY(-50%); }
+  .compass .key.active {
+    color: rgba(212, 160, 48, 1);
+    text-shadow: 0 0 10px rgba(212, 160, 48, 0.65);
+  }
+  .compass .key-w.active { transform: translate(-50%, -1px); }
+  .compass .key-s.active { transform: translate(-50%,  1px); }
+  .compass .key-a.active { transform: translate(-1px, -50%); }
+  .compass .key-d.active { transform: translate( 1px, -50%); }
+
+  body.mobile .compass { display: none; }
 
   .meta {
     position: fixed; bottom: 26px; left: 30px;
@@ -383,6 +430,17 @@
 <div class="player-mobile">
   <div class="track-now" id="trackNow">Velvet Alloy</div>
   <button class="btn-play-m" id="btnPlayMobile" aria-label="play">&#9654;</button>
+</div>
+
+<!-- Desktop compass (cryptic WASD hint) -->
+<div class="compass" id="compass" aria-hidden="true">
+  <svg class="compass-ring" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <circle cx="50" cy="50" r="46"></circle>
+  </svg>
+  <span class="key key-w" data-key="w">W</span>
+  <span class="key key-a" data-key="a">A</span>
+  <span class="key key-s" data-key="s">S</span>
+  <span class="key key-d" data-key="d">D</span>
 </div>
 
 <!-- ======================  SHADERS  ====================== -->
@@ -980,14 +1038,37 @@ void main() {
   }
 
   const keys = {};
+
+  // Compass key elements (desktop only): map "w","a","s","d" to their span
+  const compassKeys = {};
+  if (!IS_MOBILE) {
+    document.querySelectorAll('.compass .key').forEach(el => {
+      const k = el.dataset.key;
+      if (k) compassKeys[k] = el;
+    });
+  }
+
   if (!IS_MOBILE) {
     window.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      keys[e.key.toLowerCase()] = true;
-      if (['arrowup','arrowdown','arrowleft','arrowright','w','s','a','d',' '].includes(e.key.toLowerCase())) e.preventDefault();
+      const k = e.key.toLowerCase();
+      keys[k] = true;
+      if (compassKeys[k]) compassKeys[k].classList.add('active');
+      if (['arrowup','arrowdown','arrowleft','arrowright','w','s','a','d',' '].includes(k)) e.preventDefault();
       if (e.key === ' ') togglePlay();
     });
-    window.addEventListener('keyup', (e) => { keys[e.key.toLowerCase()] = false; });
+    window.addEventListener('keyup', (e) => {
+      const k = e.key.toLowerCase();
+      keys[k] = false;
+      if (compassKeys[k]) compassKeys[k].classList.remove('active');
+    });
+    // Defensive: clear active state if focus is lost (e.g. user alt-tabs while holding a key)
+    window.addEventListener('blur', () => {
+      Object.keys(keys).forEach(k => {
+        keys[k] = false;
+        if (compassKeys[k]) compassKeys[k].classList.remove('active');
+      });
+    });
   } else {
     window.addEventListener('keydown', (e) => { if (e.key === ' ') { e.preventDefault(); togglePlay(); } });
   }
