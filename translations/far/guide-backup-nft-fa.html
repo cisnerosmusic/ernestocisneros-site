@@ -64,125 +64,6 @@
 <meta name="twitter:image:alt" content="راهنمای کامل برای پشتیبانی گیری NFT از Foundation قبل از بستن">
 
 <!-- SCHEMA.ORG JSON-LD: HowTo + Article + FAQPage + Author -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "HowTo",
-      "@id": "https://ernestocisneros.art/fa/guide-backup-nft.html#howto",
-      "name": "چگونه NFT های خود را قبل از بستن Foundation پشتیبانی گیری کنید",
-      "description": "راهنمای گام به گام برای هنرمندان رمزنگاری برای پشتیبانی گیری از متادیتا و فایل های رسانه ای NFT از بازار Foundation به سرویس سنجاق گذاری IPFS غیرمتمرکز Filebase، بطور رایگان.",
-      "image": "https://ernestocisneros.art/og-backup-guide-en.jpg",
-      "totalTime": "PT2H",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "0"
-      },
-      "supply": [
-        {"@type": "HowToSupply", "name": "کیف پولی فعالی که روی Foundation ضرب شده است"},
-        {"@type": "HowToSupply", "name": "فهرست NFT های شما در Foundation"},
-        {"@type": "HowToSupply", "name": "آدرس ایمیل برای ثبت نام Filebase"}
-      ],
-      "tool": [
-        {"@type": "HowToTool", "name": "حساب رایگان Filebase"},
-        {"@type": "HowToTool", "name": "Etherscan"},
-        {"@type": "HowToTool", "name": "درگاه IPFS (dweb.link)"}
-      ]
-    },
-    {
-      "@type": "Article",
-      "@id": "https://ernestocisneros.art/fa/guide-backup-nft.html#article",
-      "headline": "چگونه NFT های خود را قبل از بستن Foundation پشتیبانی گیری کنید",
-      "description": "راهنمای کامل فارسی برای هنرمندان رمزنگاری روبروی بستن بازار Foundation در سال ۲۰۲۶. شامل سنجاق گذاری IPFS، راه اندازی Filebase، تاب آوری چند سرویس دهنده، و استراتژی های حفاظت بلندمدت.",
-      "image": "https://ernestocisneros.art/og-backup-guide-en.jpg",
-      "datePublished": "2026-04-17T00:00:00Z",
-      "dateModified": "2026-04-17T00:00:00Z",
-      "author": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person",
-        "name": "Ernesto Cisneros Cino",
-        "url": "https://ernestocisneros.art/",
-        "sameAs": [
-          "https://orcid.org/0009-0002-2833-1787",
-          "https://twitter.com/ErnestCisneros1",
-          "https://github.com/cisnerosmusic",
-          "https://rarible.com/cisnerosmusic",
-          "https://hug.art/artists/ernestocisneros"
-        ],
-        "jobTitle": "Composer, Pianist, Crypto Artist",
-        "description": "آهنگساز کوبایی تولد با ۸۰۰+ اثر ثبت شده در فیلم، تلویزیون، تئاتر و بالت. فعال در بلاک چین Ethereum از ژوئیه ۲۰۲۱. بنیان گذار Impulses.art."
-      },
-      "publisher": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ernestocisneros.art/fa/guide-backup-nft.html"
-      },
-      "inLanguage": "fa",
-      "keywords": "بستن Foundation، پشتیبانی گیری NFT، سنجاق گذاری IPFS، Filebase، حفاظت هنری رمزنگاری، جایگزین Pinata، ذخیره سازی غیرمتمرکز"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://ernestocisneros.art/fa/guide-backup-nft.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "هنگام بستن Foundation، چه اتفاقی برای NFT های من می افتد؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "توکن های شما برای همیشه روی Ethereum باقی می مانند و نمی توانند حذف یا تغییر کنند. با این حال، متادیتا و فایل های رسانه ای (تصاویر، ویدیوها، توضیحات) روی IPFS زندگی می کنند و در حال حاضر بر روی گره های Foundation سنجاق شده اند. هنگام بستن آن گره ها، فایل ها ممکن است غیرقابل دسترس شوند مگر اینکه آنها را به سرویس سنجاق گذاری دیگری مثل Filebase پشتیبانی گیری کنید. مالکیت بلاک چین ایمن است؛ لایه بصری در خطر است."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "آیا باید NFT های خود را به بلاک چین دیگری انتقال دهم؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "خیر. NFT های شما بدون توجه به اتفاقات Foundation روی Ethereum باقی می مانند. Foundation یک رابط بازار است؛ Ethereum بلاک چین زیربنایی است. شما فقط باید فایل های خارج از زنجیره (متادیتا و رسانه) را که روی IPFS زندگی می کنند پشتیبانی گیری کنید، نه خود توکن ها را منتقل کنید."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "آیا Filebase واقعاً برای پشتیبانی گیری NFT رایگان است؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "بله. Filebase ۵ گیگابایت ذخیره سازی، تا ۱۰۰۰ فایل سنجاق شده، یک درگاه IPFS اختصاصی، و عملکرد Import CID را در لایه رایگان ارائه می دهد. بدون کارت اعتباری مورد نیاز. این بیشتر از لایه رایگان Pinata است، که ویژگی Import CID را به پلان های پرداختی منتقل کرد."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "CID در IPFS چیست و چرا برای NFT مهم است؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "CID (شناسه محتوا) یک تابع هش رمزنگاری است که به طور منحصر به فرد فایلی را در IPFS بر اساس محتوای آن شناسایی می کند. هنگام ضرب روی Foundation، قرارداد هوشمند یک ارجاع به CID را ذخیره کرد که به JSON متادیتای شما اشاره می کند، که به نوبه خود به CID برای فایل تصویری یا ویدیویی اشاره می کند. این CID ها تنها زمانی که گره هایی روی شبکه IPFS فایل ها را سنجاق کنند تراکم می یابند. اگر تمام گره ها متوقف شوند، CID یک اشاره گر یتیم می شود."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "اگر خود Filebase بسته شود؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "فایل های شما بلافاصله ناپدید نمی شوند. CID ها در سراسر IPFS جهانی هستند، بنابراین می توانید به سرویس دیگری (4EVERLAND، Web3.Storage، Lighthouse) در دقایق منتقل شوید. علاوه بر این، فایل ها به طور همزمان در گره های متعددی در سراسر شبکه IPFS وجود دارند. برای حفاظت قوی، تاب آوری چند سرویس دهنده را پیاده سازی کنید: CID های خود را روی دو سرویس مختلف سنجاق کنید و یک کپی درایو سخت محلی نگهدارید."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://ernestocisneros.art/fa/guide-backup-nft.html#breadcrumb",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "خانه", "item": "https://ernestocisneros.art/"},
-        {"@type": "ListItem", "position": 2, "name": "راهنماها", "item": "https://ernestocisneros.art/#guides"},
-        {"@type": "ListItem", "position": 3, "name": "راهنمای پشتیبانی گیری NFT", "item": "https://ernestocisneros.art/fa/guide-backup-nft.html"}
-      ]
-    }
-  ]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -709,12 +590,16 @@ footer a {
   .section { page-break-inside: avoid; }
   .lang-toggle { display: none; }
 }
-</style>
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Translations", "item": "/translations/"}, {"@type": "ListItem", "position": 3, "name": "Far", "item": "/translations/far/"}, {"@type": "ListItem", "position": 4, "name": "چگونه NFT های خود را قبل از بستن Foundation پشتیبانی گیری کنید — راهنمای کامل ۲۰۲۶"}]}
+</script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="lang-toggle">
   <a href="/guide-backup-nft-en.html" rel="alternate" hreflang="en">EN</a>
@@ -742,7 +627,7 @@ footer a {
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main-content">
 
 <!-- INTRO -->
 <section class="intro">

@@ -43,45 +43,6 @@
 <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
 
 <!-- SCHEMA.ORG JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "@id": "https://ernestocisneros.art/guide-where-your-art-lives-en.html#article",
-      "headline": "Where Your Art Really Lives: An Anatomy of Digital Permanence",
-      "description": "A guide to the real infrastructure behind NFTs: where your art actually lives, who controls each link, and what happens when one disappears. Covers IPFS, Arweave, Filecoin, on-chain storage, metadata architecture, marketplace history, Manifold, lazy minting, and the philosophy of permanence.",
-      "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
-      "datePublished": "2026-04-19T00:00:00Z",
-      "dateModified": "2026-04-19T00:00:00Z",
-      "author": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person",
-        "name": "Ernesto Cisneros Cino",
-        "url": "https://ernestocisneros.art/"
-      },
-      "publisher": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ernestocisneros.art/guide-where-your-art-lives-en.html"
-      },
-      "inLanguage": "en"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ernestocisneros.art/"},
-        {"@type": "ListItem", "position": 2, "name": "NFT Resources", "item": "https://ernestocisneros.art/nft/resources.html"},
-        {"@type": "ListItem", "position": 3, "name": "Where Your Art Really Lives", "item": "https://ernestocisneros.art/guide-where-your-art-lives-en.html"}
-      ]
-    }
-  ]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -201,12 +162,13 @@ footer a { color: var(--gold); border-bottom: 1px solid rgba(176, 141, 76, 0.4);
   .section { page-break-inside: avoid; }
   .lang-toggle { display: none; }
 }
-</style>
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="lang-toggle">
   <a href="#" class="active" rel="alternate" hreflang="en">EN</a>
@@ -222,7 +184,7 @@ footer a { color: var(--gold); border-bottom: 1px solid rgba(176, 141, 76, 0.4);
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main-content">
 
 <section class="intro">
   <p><strong>In January 2026, Foundation, Nifty Gateway, and MakersPlace shut down within days of each other.</strong> Hundreds of thousands of NFTs suddenly needed new homes. Artists who had trusted these platforms with years of work faced an uncomfortable question: where was the art, exactly?</p>

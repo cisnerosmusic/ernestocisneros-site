@@ -64,162 +64,6 @@
 <meta name="twitter:image:alt" content="Foundation शटडाउन से पहले NFT को बैकअप करने के लिए संपूर्ण गाइड">
 
 <!-- SCHEMA.ORG JSON-LD: HowTo + Article + FAQPage + Author -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "HowTo",
-      "@id": "https://ernestocisneros.art/hi/guide-backup-nft.html#howto",
-      "name": "Foundation शटडाउन से पहले अपने NFT को बैकअप कैसे करें",
-      "description": "क्रिप्टो कलाकारों के लिए Foundation मार्केटप्लेस से NFT मेटाडेटा और मीडिया फ़ाइलों को Filebase विकेंद्रीकृत IPFS पिनिंग सेवा में बैकअप करने के लिए चरण-दर-चरण गाइड, मुफ्त में।",
-      "image": "https://ernestocisneros.art/og-backup-guide-en.jpg",
-      "totalTime": "PT2H",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "0"
-      },
-      "supply": [
-        {"@type": "HowToSupply", "name": "सक्रिय वॉलेट जो Foundation पर मिंट किया गया"},
-        {"@type": "HowToSupply", "name": "Foundation पर आपके NFT की सूची"},
-        {"@type": "HowToSupply", "name": "Filebase साइन अप के लिए ईमेल पता"}
-      ],
-      "tool": [
-        {"@type": "HowToTool", "name": "Filebase मुफ्त खाता"},
-        {"@type": "HowToTool", "name": "Etherscan"},
-        {"@type": "HowToTool", "name": "IPFS गेटवे (dweb.link)"}
-      ],
-      "step": [
-        {"@type": "HowToStep", "name": "समझें कि आप क्या करेंगे", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#what-youll-do", "text": "जानें कि Foundation बंद होने पर आपकी NFT मीडिया फ़ाइलें क्यों खतरे में हैं जबकि टोकन Ethereum पर सुरक्षित रहते हैं।"},
-        {"@type": "HowToStep", "name": "Filebase क्यों और Pinata नहीं", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#why-filebase", "text": "Filebase Import CID फ़ंक्शन के साथ 5 GB मुफ्त प्रदान करता है; Pinata ने इस फ़ीचर को सशुल्क योजनाओं में स्थानांतरित किया।"},
-        {"@type": "HowToStep", "name": "अपना मुफ्त Filebase खाता बनाएं", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#create-account", "text": "filebase.com पर ईमेल और पासवर्ड से साइन अप करें। क्रेडिट कार्ड की आवश्यकता नहीं।"},
-        {"@type": "HowToStep", "name": "अपनी आर्काइव बकेट बनाएं", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#create-bucket", "text": "एक अद्वितीय नाम के साथ IPFS नेटवर्क बकेट बनाएं। S3 Private सेटिंग रखें; यह IPFS सार्वजनिक एक्सेस को प्रभावित नहीं करता।"},
-        {"@type": "HowToStep", "name": "प्रत्येक टुकड़े के लिए CID प्राप्त करें", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#get-cids", "text": "प्रत्येक NFT से मेटाडेटा CID और मीडिया CID निकालें। एक इन्वेंटरी स्प्रेडशीट बनाएं।"},
-        {"@type": "HowToStep", "name": "अपने CID को Filebase पर पिन करें", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#pin-cids", "text": "प्रत्येक मेटाडेटा JSON और मीडिया फ़ाइल को Filebase नोड्स पर पिन करने के लिए Import CID फ़ंक्शन का उपयोग करें।"},
-        {"@type": "HowToStep", "name": "सत्यापित करें कि सब कुछ काम करता है", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#verify", "text": "Pinned स्टेटस जांचें, सार्वजनिक गेटवे एक्सेस का परीक्षण करें, भंडारण उपयोग की पुष्टि करें।"},
-        {"@type": "HowToStep", "name": "अपनी वेबसाइट पर लिंक अपडेट करें", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#update-website", "text": "Foundation URL को स्थिर IPFS गेटवे लिंक और Etherscan सत्यापन से बदलें।"},
-        {"@type": "HowToStep", "name": "Arweave विशेष मामला", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#arweave-case", "text": "यदि आपके टुकड़े Arweave पर हैं, तो बैकअप की आवश्यकता नहीं है; स्थायित्व संरचनात्मक है।"},
-        {"@type": "HowToStep", "name": "Foundation बंद होने से पहले अंतिम कदम", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#final-steps", "text": "अप्रकाशित टुकड़े हटाएं, सहयोगियों को सूचित करें, क्यूरेटोरियल जानकारी निर्यात करें, अपनी कहानी दस्तावेज करें।"},
-        {"@type": "HowToStep", "name": "मल्टी-प्रोवाइडर अनावृत्ति रणनीति", "url": "https://ernestocisneros.art/hi/guide-backup-nft.html#permanence", "text": "4EVERLAND, Web3.Storage, स्थानीय डिस्क प्रति, या व्यक्तिगत IPFS नोड के साथ अनावृत्ति जोड़ें।"}
-      ]
-    },
-    {
-      "@type": "Article",
-      "@id": "https://ernestocisneros.art/hi/guide-backup-nft.html#article",
-      "headline": "Foundation शटडाउन से पहले अपने NFT को बैकअप कैसे करें",
-      "description": "2026 Foundation मार्केटप्लेस बंद होने का सामना कर रहे क्रिप्टो कलाकारों के लिए संपूर्ण हिंदी भाषा की गाइड। IPFS पिनिंग, Filebase सेटअप, मल्टी-प्रोवाइडर अनावृत्ति, और दीर्घकालीन संरक्षण रणनीतियों को कवर करता है।",
-      "image": "https://ernestocisneros.art/og-backup-guide-en.jpg",
-      "datePublished": "2026-04-17T00:00:00Z",
-      "dateModified": "2026-04-17T00:00:00Z",
-      "author": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person",
-        "name": "Ernesto Cisneros Cino",
-        "url": "https://ernestocisneros.art/",
-        "sameAs": [
-          "https://orcid.org/0009-0002-2833-1787",
-          "https://twitter.com/ErnestCisneros1",
-          "https://github.com/cisnerosmusic",
-          "https://rarible.com/cisnerosmusic",
-          "https://hug.art/artists/ernestocisneros"
-        ],
-        "jobTitle": "संगीतकार, पियानोवादक, क्रिप्टो कलाकार",
-        "description": "क्यूबा में जन्मे संगीतकार जिनके फिल्म, दूरदर्शन, थिएटर और बैले में 800+ पंजीकृत कार्य हैं। जुलाई 2021 के बाद से Ethereum ब्लॉकचेन में सक्रिय। Impulses.art के संस्थापक।"
-      },
-      "publisher": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ernestocisneros.art/hi/guide-backup-nft.html"
-      },
-      "inLanguage": "hi",
-      "keywords": "Foundation बंद, NFT बैकअप, IPFS पिनिंग, Filebase, क्रिप्टो आर्ट संरक्षण, Pinata विकल्प, विकेंद्रीकृत भंडारण"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://ernestocisneros.art/hi/guide-backup-nft.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Foundation बंद होने पर मेरे NFT का क्या होगा?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "आपके टोकन Ethereum पर हमेशा के लिए रहेंगे और न तो हटाए जा सकते हैं और न ही बदले जा सकते हैं। हालांकि, मेटाडेटा और मीडिया फ़ाइलें (छवियां, वीडियो, विवरण) IPFS पर रहती हैं और वर्तमान में Foundation के नोड्स पर पिन हैं। जब Foundation उन नोड्स को बंद कर देता है, तो जब तक आप उन्हें Filebase जैसी किसी अन्य IPFS पिनिंग सेवा में बैकअप नहीं कर लेते, तब तक फ़ाइलें अप्राप्य हो सकती हैं। ब्लॉकचेन स्वामित्व सुरक्षित है; दृश्य और विवरणात्मक परत जोखिम में है।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "क्या मुझे अपने NFT को किसी अन्य ब्लॉकचेन पर स्थानांतरित करना होगा?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "नहीं। आपके NFT Foundation के भाग्य की परवाह किए बिना Ethereum पर रहेंगे। Foundation एक मार्केटप्लेस इंटरफेस है; Ethereum अंतर्निहित ब्लॉकचेन है। आपको केवल ऑफ-चेन फ़ाइलों (मेटाडेटा और मीडिया) को बैकअप करने की आवश्यकता है जो IPFS पर रहती हैं, न कि टोकन को स्थानांतरित करने की।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "क्या Filebase वास्तव में NFT बैकअप के लिए मुफ्त है?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "हां। Filebase एक 5 GB भंडारण मुफ्त स्तर प्रदान करता है, जिसमें 1,000 तक पिन की गई फ़ाइलें, एक समर्पित IPFS गेटवे, और Import CID फ़ंक्शन शामिल है। क्रेडिट कार्ड की आवश्यकता नहीं है। यह Pinata के वर्तमान मुफ्त स्तर की तुलना में पाँच गुना अधिक जगह है, और मुख्य फ़ंक्शन अप्रतिबंधित है।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "IPFS CID क्या है और NFT के लिए यह क्यों महत्वपूर्ण है?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "एक CID (सामग्री पहचानकर्ता) एक क्रिप्टोग्राफिक हैश है जो सामग्री के आधार पर IPFS पर एक फ़ाइल की विशिष्ट रूप से पहचान करता है। जब आपने Foundation पर मिंट किया, तो स्मार्ट कॉन्ट्रैक्ट ने एक CID के लिए एक संदर्भ संग्रहीत किया जो आपके मेटाडेटा JSON की ओर इशारा करता है, जो बदले में छवि या वीडियो फ़ाइल के लिए एक CID की ओर इशारा करता है। ये CID केवल तब तक सामग्री को हल करते हैं जब तक IPFS नेटवर्क पर नोड्स फ़ाइलें पिन करते हैं। यदि सभी नोड्स बंद करते हैं, तो CID एक अनाथ सूचक बन जाता है।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "क्या होगा अगर Filebase भी बंद हो जाए?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "आपकी फ़ाइलें तुरंत गायब नहीं होंगी। CID IPFS प्रदाताओं में सार्वभौमिक हैं, इसलिए आप मिनटों में किसी अन्य सेवा (4EVERLAND, Web3.Storage, Lighthouse) में माइग्रेट कर सकते हैं। इसके अलावा, फ़ाइलें IPFS नेटवर्क भर में एक साथ कई नोड्स पर मौजूद हैं। मजबूत सुरक्षा के लिए, मल्टी-प्रोवाइडर अनावृत्ति लागू करें: अपने CID को दो अलग-अलग सेवाओं पर पिन करें और स्थानीय हार्ड ड्राइव प्रति रखें।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "क्या मुझे Foundation बंद होने से पहले बिकी हुई NFT को हटा देना चाहिए?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "हां, यह अनुशंसित है। Delisting Foundation के escrow कॉन्ट्रैक्ट से टोकन को जारी करता है और इसे minter के वॉलेट में वापस कर देता है। यह टोकन को अन्य मार्केटप्लेस पर भविष्य के relisting के लिए मुक्त करता है। इसमें कुछ गैस फीस खर्च होती है लेकिन शटडाउन के बाद की जटिलताओं से बचा जाता है।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "NFT कार्पस को बैकअप करने में कितना समय लगता है?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "10-15 NFT के लिए, 30 मिनट से 2 घंटे की योजना बनाएं। प्रत्येक पिन में छोटी JSON मेटाडेटा फ़ाइलों के लिए कुछ सेकंड और बड़ी वीडियो फ़ाइलों के लिए कुछ मिनट लगते हैं। यह प्रक्रिया दोहराई जाती है लेकिन एक बार CID इन्वेंटरी तैयार हो जाए तो यह सीधी है।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "क्या होगा अगर मेरे NFT Arweave पर हों, IPFS पर नहीं?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "यदि आपके NFT मेटाडेटा और मीडिया Arweave पर संग्रहीत हैं (URL में arweave.net युक्त), तो बैकअप की आवश्यकता नहीं है। Arweave डिज़ाइन द्वारा स्थायी भंडारण प्रदान करता है: आप mint समय पर भुगतान करते हैं और फ़ाइलें लगभग 200 वर्षों के लिए एक endowment fund के माध्यम से संरक्षित रहती हैं जो नोड्स को अनिश्चितकाल तक भुगतान करती है।"
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://ernestocisneros.art/hi/guide-backup-nft.html#breadcrumb",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "होम", "item": "https://ernestocisneros.art/"},
-        {"@type": "ListItem", "position": 2, "name": "गाइड्स", "item": "https://ernestocisneros.art/#guides"},
-        {"@type": "ListItem", "position": 3, "name": "NFT बैकअप गाइड", "item": "https://ernestocisneros.art/hi/guide-backup-nft.html"}
-      ]
-    }
-  ]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -735,12 +579,16 @@ footer a {
   .section { page-break-inside: avoid; }
   .lang-toggle { display: none; }
 }
-</style>
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Translations", "item": "/translations/"}, {"@type": "ListItem", "position": 3, "name": "Hindi", "item": "/translations/hindi/"}, {"@type": "ListItem", "position": 4, "name": "Foundation शटडाउन से पहले अपने NFT को बैकअप करें — संपूर्ण गाइड 2026"}]}
+</script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="lang-toggle">
   <a href="/guide-backup-nft-en.html" rel="alternate" hreflang="en">EN</a>
@@ -768,7 +616,7 @@ footer a {
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main-content">
 
 <!-- INTRO -->
 <section class="intro">

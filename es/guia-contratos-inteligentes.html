@@ -43,45 +43,6 @@
 <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
 
 <!-- SCHEMA.ORG JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "@id": "https://ernestocisneros.art/es/guia-contratos-inteligentes.html#article",
-      "headline": "Contratos Inteligentes de Alfa a Omega",
-      "description": "Guía enciclopédica sobre contratos inteligentes para artistas cripto. Cubre la EVM de Ethereum, los programas de Solana, la verificación formal de Tezos, los Ordinals de Bitcoin, regalías, contratos actualizables, exploits de seguridad y el futuro del arte on-chain.",
-      "image": "https://ernestocisneros.art/assets/images/portrait.jpg",
-      "datePublished": "2026-04-19T00:00:00Z",
-      "dateModified": "2026-04-19T00:00:00Z",
-      "author": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person",
-        "name": "Ernesto Cisneros Cino",
-        "url": "https://ernestocisneros.art/"
-      },
-      "publisher": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ernestocisneros.art/es/guia-contratos-inteligentes.html"
-      },
-      "inLanguage": "es"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ernestocisneros.art/es/"},
-        {"@type": "ListItem", "position": 2, "name": "Recursos NFT", "item": "https://ernestocisneros.art/es/nft/resources.html"},
-        {"@type": "ListItem", "position": 3, "name": "Contratos Inteligentes de Alfa a Omega", "item": "https://ernestocisneros.art/es/guia-contratos-inteligentes.html"}
-      ]
-    }
-  ]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -488,12 +449,13 @@ footer a { color: var(--gold); border-bottom: 1px solid rgba(176, 141, 76, 0.4);
   .section { page-break-inside: avoid; }
   .lang-toggle { display: none; }
 }
-</style>
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="lang-toggle">
   <a href="/guide-smart-contracts-en.html" rel="alternate" hreflang="en">EN</a>
@@ -509,7 +471,7 @@ footer a { color: var(--gold); border-bottom: 1px solid rgba(176, 141, 76, 0.4);
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main-content">
 
 <!-- INTRO -->
 <section class="intro">

@@ -67,163 +67,6 @@
 <meta name="twitter:image:alt" content="Guía completa para respaldar NFTs de Foundation antes del cierre">
 
 <!-- SCHEMA.ORG JSON-LD: HowTo + Article + FAQPage + Author -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "HowTo",
-      "@id": "https://ernestocisneros.art/es/guia-backup-nft.html#howto",
-      "name": "Cómo Respaldar tus NFTs Antes del Cierre de Foundation",
-      "description": "Guía paso a paso para criptoartistas: respaldar metadatos y archivos media de NFTs en Foundation al servicio de pinning IPFS Filebase, gratis.",
-      "image": "https://ernestocisneros.art/og-backup-guide-es.jpg",
-      "inLanguage": "es",
-      "totalTime": "PT2H",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "0"
-      },
-      "supply": [
-        {"@type": "HowToSupply", "name": "Wallet activa que minteó en Foundation"},
-        {"@type": "HowToSupply", "name": "Lista de tus NFTs en Foundation"},
-        {"@type": "HowToSupply", "name": "Correo electrónico para crear cuenta en Filebase"}
-      ],
-      "tool": [
-        {"@type": "HowToTool", "name": "Cuenta gratuita en Filebase"},
-        {"@type": "HowToTool", "name": "Etherscan"},
-        {"@type": "HowToTool", "name": "Gateway IPFS (dweb.link)"}
-      ],
-      "step": [
-        {"@type": "HowToStep", "name": "Qué vas a hacer exactamente", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#que-vas-a-hacer", "text": "Entiende por qué el cierre de Foundation pone en riesgo los archivos media de tus NFTs aunque los tokens queden seguros en Ethereum."},
-        {"@type": "HowToStep", "name": "Por qué Filebase y no Pinata", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#por-que-filebase", "text": "Filebase ofrece 5 GB gratis con la función Import CID; Pinata movió esa función a planes pagos."},
-        {"@type": "HowToStep", "name": "Crear cuenta gratuita en Filebase", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#crear-cuenta", "text": "Regístrate en filebase.com con email y contraseña. Sin tarjeta de crédito."},
-        {"@type": "HowToStep", "name": "Crear tu bucket de archivo", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#crear-bucket", "text": "Crea un bucket en red IPFS con nombre único. Mantén S3 Private; no afecta al acceso público de IPFS."},
-        {"@type": "HowToStep", "name": "Obtener los CIDs de cada obra", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#obtener-cids", "text": "Extrae el CID de metadatos y el CID del archivo media de cada NFT. Arma una hoja de inventario."},
-        {"@type": "HowToStep", "name": "Pinnear tus CIDs en Filebase", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#pinnear", "text": "Usa Import CID para pinnear cada JSON de metadatos y archivo media en los nodos de Filebase."},
-        {"@type": "HowToStep", "name": "Verificar que todo quedó bien", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#verificar", "text": "Comprueba estado Pinned, prueba acceso desde gateway público, confirma consumo razonable de espacio."},
-        {"@type": "HowToStep", "name": "Actualizar los enlaces en tu web", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#actualizar-web", "text": "Reemplaza las URLs de Foundation por enlaces IPFS estables y Etherscan para verificación on-chain."},
-        {"@type": "HowToStep", "name": "Caso Arweave", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#caso-arweave", "text": "Si tus obras están en Arweave, no necesitas respaldo; la permanencia es estructural."},
-        {"@type": "HowToStep", "name": "Antes del cierre de Foundation", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#cerrar", "text": "Deslista obras no vendidas, avisa a colaboradores, exporta información curatorial, documenta tu historia."},
-        {"@type": "HowToStep", "name": "Estrategia de redundancia multi-proveedor", "url": "https://ernestocisneros.art/es/guia-backup-nft.html#permanencia", "text": "Añade redundancia con 4EVERLAND, Web3.Storage, copia local en disco, o nodo IPFS propio."}
-      ]
-    },
-    {
-      "@type": "Article",
-      "@id": "https://ernestocisneros.art/es/guia-backup-nft.html#article",
-      "headline": "Cómo Respaldar tus NFTs Antes del Cierre de Foundation",
-      "description": "Guía completa en español para criptoartistas frente al cierre del marketplace Foundation en 2026. Cubre pinning IPFS, configuración Filebase, redundancia multi-proveedor y estrategias de preservación a largo plazo.",
-      "image": "https://ernestocisneros.art/og-backup-guide-es.jpg",
-      "datePublished": "2026-04-17T00:00:00Z",
-      "dateModified": "2026-04-17T00:00:00Z",
-      "author": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person",
-        "name": "Ernesto Cisneros Cino",
-        "url": "https://ernestocisneros.art/",
-        "sameAs": [
-          "https://orcid.org/0009-0002-2833-1787",
-          "https://twitter.com/ErnestCisneros1",
-          "https://github.com/cisnerosmusic",
-          "https://rarible.com/cisnerosmusic",
-          "https://hug.art/artists/ernestocisneros"
-        ],
-        "jobTitle": "Compositor, pianista, criptoartista",
-        "description": "Compositor cubano con más de 800 obras registradas para cine, televisión, teatro y ballet. Activo en la blockchain de Ethereum desde julio de 2021. Fundador de Impulses.art."
-      },
-      "publisher": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ernestocisneros.art/es/guia-backup-nft.html"
-      },
-      "inLanguage": "es",
-      "keywords": "Foundation cierra, respaldar NFT, pinning IPFS, Filebase, preservación criptoarte, alternativa Pinata, almacenamiento descentralizado"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://ernestocisneros.art/es/guia-backup-nft.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Qué pasa con mis NFTs cuando Foundation cierre?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tus tokens permanecen en Ethereum para siempre y no pueden ser borrados ni alterados. Sin embargo, los archivos de metadatos y media (imágenes, videos, descripciones) viven en IPFS y actualmente están pinneados en los nodos de Foundation. Cuando Foundation apague esos nodos, los archivos pueden volverse inaccesibles a menos que tú los respaldes en otro servicio de pinning IPFS como Filebase. La propiedad on-chain queda intacta; la capa visual y descriptiva es la que está en riesgo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Necesito mover mis NFTs a otra blockchain?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Tus NFTs siguen en Ethereum sin importar lo que pase con Foundation. Foundation es una interfaz de marketplace; Ethereum es la blockchain subyacente. Solo necesitas respaldar los archivos off-chain (metadatos y media) que viven en IPFS, no mover los tokens mismos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Filebase es realmente gratis para respaldar NFTs?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. Filebase ofrece un plan gratuito con 5 GB de almacenamiento, hasta 1.000 archivos pinneados, un gateway IPFS dedicado, y la función Import CID que permite pinnear CIDs existentes de IPFS. No requiere tarjeta de crédito. Este plan es más generoso que el tier gratuito actual de Pinata, que movió la función Import CID a los planes pagos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué es un CID de IPFS y por qué importa para los NFTs?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un CID (Content Identifier) es un hash criptográfico que identifica únicamente un archivo en IPFS según su contenido. Cuando minteaste en Foundation, el contrato inteligente guardó una referencia a un CID que apunta a tu JSON de metadatos, que a su vez apunta a un CID para el archivo de imagen o video. Estos CIDs solo resuelven a contenido real mientras haya nodos en la red IPFS que tengan los archivos pinneados. Si todos los nodos dejan de pinnearlos, el CID queda como un puntero huérfano."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué pasa si Filebase también cierra?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tus archivos no desaparecen instantáneamente. Los CIDs son universales entre proveedores de IPFS, así que puedes migrar a otro servicio (4EVERLAND, Web3.Storage, Lighthouse) en minutos usando tu inventario de CIDs. Además, los archivos existen simultáneamente en múltiples nodos de la red IPFS. Para protección robusta, implementa redundancia multi-proveedor: pinnea tus CIDs en dos servicios distintos y además mantén copia local en disco duro."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Debería deslistar mis NFTs no vendidos antes del cierre de Foundation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí, es recomendable. Al deslistar liberas el token del contrato de escrow de Foundation y vuelve a la wallet del minteador. Esto deja el token libre para relistarse en el futuro en otros marketplaces. Cuesta algo de gas pero evita complicaciones después del cierre."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto tiempo toma respaldar un corpus NFT?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Para 10-15 NFTs, calcula entre 30 minutos y 2 horas de trabajo manual. Cada pin tarda unos segundos para archivos pequeños de metadatos JSON, y hasta un par de minutos para videos más grandes. El proceso es repetitivo pero directo una vez que tienes tu inventario de CIDs listo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué pasa si mis NFTs están en Arweave en vez de IPFS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Si tus metadatos y media de NFT están en Arweave (URLs que contienen arweave.net), no necesitas respaldo. Arweave proporciona almacenamiento permanente por diseño: pagas una sola vez al mintear y los archivos se preservan durante aproximadamente 200 años gracias a un fondo de endowment que paga a los nodos indefinidamente."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://ernestocisneros.art/es/guia-backup-nft.html#breadcrumb",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ernestocisneros.art/"},
-        {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://ernestocisneros.art/#guides"},
-        {"@type": "ListItem", "position": 3, "name": "Guía de respaldo NFT", "item": "https://ernestocisneros.art/es/guia-backup-nft.html"}
-      ]
-    }
-  ]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -738,9 +581,10 @@ footer a {
   .section { page-break-inside: avoid; }
   .lang-toggle { display: none; }
 }
-</style>
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="lang-toggle">
   <a href="/guide-backup-nft-en.html" rel="alternate" hreflang="en">EN</a>
@@ -768,7 +612,7 @@ footer a {
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main-content">
 
 <!-- INTRO -->
 <section class="intro">

@@ -64,149 +64,6 @@
 <meta name="twitter:image:alt" content="Полное руководство по сохранению NFT из Foundation до закрытия">
 
 <!-- SCHEMA.ORG JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "HowTo",
-      "@id": "https://ernestocisneros.art/ru/guide-backup-nft.html#howto",
-      "name": "Kak sokhranit vashi NFT do zakrytiya Foundation",
-      "description": "Poshagovoye rukovodstvo dlya kriptokhudozhnikov: sokhranit metadannyye i media-fayly NFT iz Foundation v Filebase, besplatno.",
-      "image": "https://ernestocisneros.art/assets/images/og-backup-guide-es.jpg",
-      "inLanguage": "ru",
-      "totalTime": "PT2H",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "0"
-      },
-      "supply": [
-        {"@type": "HowToSupply", "name": "Aktivnyy wallet, s kotorogo byl sdelan mint na Foundation"},
-        {"@type": "HowToSupply", "name": "Spisok vashikh NFT na Foundation"},
-        {"@type": "HowToSupply", "name": "Email dlya sozdaniya akkaunta Filebase"}
-      ],
-      "tool": [
-        {"@type": "HowToTool", "name": "Besplatnyy akkaunt Filebase"},
-        {"@type": "HowToTool", "name": "Etherscan"},
-        {"@type": "HowToTool", "name": "IPFS gateway (dweb.link)"}
-      ]
-    },
-    {
-      "@type": "Article",
-      "@id": "https://ernestocisneros.art/ru/guide-backup-nft.html#article",
-      "headline": "Kak sokhranit vashi NFT do zakrytiya Foundation",
-      "description": "Polnoye rukovodstvo na russkom yazyke dlya kriptokhudozhnikov pered zakrytiyem marketpleysa Foundation v 2026 godu. Pokryvayet IPFS pinning, nastroyku Filebase, mul tiprovayderuyu izbytochnost i dolgosrochnyye strategii sokhraneniya.",
-      "image": "https://ernestocisneros.art/assets/images/og-backup-guide-es.jpg",
-      "datePublished": "2026-04-17T00:00:00Z",
-      "dateModified": "2026-04-17T00:00:00Z",
-      "author": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person",
-        "name": "Ernesto Cisneros Cino",
-        "url": "https://ernestocisneros.art/",
-        "sameAs": [
-          "https://orcid.org/0009-0002-2833-1787",
-          "https://twitter.com/ErnestCisneros1",
-          "https://github.com/cisnerosmusic",
-          "https://rarible.com/cisnerosmusic",
-          "https://hug.art/artists/ernestocisneros"
-        ],
-        "jobTitle": "Kompozitor, pianist, kriptokhudozhnik",
-        "description": "Kubinskiy kompozitor s bolee chem 800 zaregistrirovannymi proizvedeniyami dlya kino, televideniya, teatra i baleta. Aktiven v blockchain Ethereum s iyulya 2021. Osnovatel Impulses.art."
-      },
-      "publisher": {
-        "@type": "Person",
-        "@id": "https://ernestocisneros.art/#person"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ernestocisneros.art/ru/guide-backup-nft.html"
-      },
-      "inLanguage": "ru"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://ernestocisneros.art/ru/guide-backup-nft.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Chto proizoydet s moimi NFT, kogda Foundation zakroyetsya?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vashi tokeny ostanutsya na Ethereum navsegda i ne mogut byt udaleny ili izmeneny. Odnako fayly metadannykh i media (izobrazheniya, video, opisaniya) zhivut na IPFS i seychas zapinneny na uzlakh Foundation. Kogda Foundation otklyuchit eti uzly, fayly mogut stat nedostupnymi, esli vy ne sokhranite ikh na drugom servise pinninga IPFS, takom kak Filebase. Vladeniye on-chain ostayotsya netronutym; pod ugrozoy nakhoditsya vizualnyy i opisatelnyy sloy."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Nuzhno li perenosit moi NFT na druguyu blockchain?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Net. Vashi NFT ostayutsya na Ethereum nezavisimo ot togo, chto proiskhodit s Foundation. Foundation eto interfeys marketpleysa; Ethereum eto bazovyy blockchain. Vam nuzhno tolko sokhranit fayly off-chain (metadannyye i media), zhivushchiye na IPFS, a ne peremeshchat sami tokeny."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Filebase deystvitelno besplatnyy dlya rezervnogo kopirovaniya NFT?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Da. Filebase predlagayet besplatnyy plan s 5 GB khranilishcha, do 1000 zapinnennykh faylov, vydelennym shlyuzom IPFS i funktsiyey Import CID, kotoraya pozvolyayet zapinnivat sushchestvuyushchiye CID v IPFS. Bankovskaya karta ne trebuyetsya. Etot plan shchedree, chem tekushchiy besplatnyy plan Pinata, kotoryy peremestil funktsiyu Import CID v platnyye plany."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Chto takoye CID v IPFS i pochemu eto vazhno dlya NFT?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "CID (Content Identifier) eto kriptograficheskiy khesh, kotoryy unikalno identifitsiruyet fayl v IPFS po yego soderzhimomu. Kogda vy sdelali mint na Foundation, smart-kontrakt sokhranil ssylku na CID, ukazyvayushchiy na vash JSON metadannykh, kotoryy v svoyu ochered ukazyvayet na CID dlya fayla izobrazheniya ili video. Eti CID razreshayutsya v realnoye soderzhimoye tolko poka uzly v seti IPFS imeyut fayly zapinnennymi. Esli vse uzly perestanut ikh pinnivat, CID stanet pustym ukazatelem."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Chto proizoydet, esli Filebase tozhe zakroyetsya?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vashi fayly ne ischeznut mgnovenno. CID universalny mezhdu provayderami IPFS, poetomu vy mozhete migrirovat na drugoy servis (4EVERLAND, Web3.Storage, Lighthouse) za minuty s pomoshchyu vashego inventarya CID. Krome togo, fayly sushchestvuyut odnovremenno na neskolkikh uzlakh seti IPFS. Dlya nadyozhnoy zashchity realizuyte mnogoprovayderuyu izbytochnost: pinnite vashi CID na dvukh razlichnykh servisakh i takzhe khranite lokalnuyu kopiyu na zhyostkom diske."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Nuzhno li snyat s prodazhi neprodannye NFT pered zakrytiyem Foundation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Da, rekomenduyetsya. Snyatiye s prodazhi osvobozhdayet token ot eskrou-kontrakta Foundation i vozvrashchayet yego v wallet minter a. Eto ostavlyayet token svobodnym dlya povtornoy prodazhi v budushchem na drugikh marketpleysakh. Eto stoit nemnogo gaza, no izbegayet oslozhneniy posle zakrytiya."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Skolko vremeni zanimayet rezervnoye kopirovaniye korpusa NFT?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Dlya 10-15 NFT rasschityvayte ot 30 minut do 2 chasov ruchnoy raboty. Kazhdyy pin zanimayet neskolko sekund dlya nebolshikh faylov JSON metadannykh i do paru minut dlya bolshikh videofaylov. Protsess povtoryayushchiysya, no pryamoy, kogda u vas gotov inventar CID."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Chto yesli moi NFT nakhodyatsya na Arweave, a ne na IPFS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Esli vashi metadannyye i media NFT nakhodyatsya na Arweave (URL, soderzhashchiye arweave.net), rezervnoye kopirovaniye ne trebuyetsya. Arweave obespechivayet postoyannoye khranenie po dizaynu: vy platite odin raz pri minte i fayly sokhranyayutsya priblizitelno 200 let blagodarya endowment-fondu, kotoryy platit uzlam beskonechno."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://ernestocisneros.art/ru/guide-backup-nft.html#breadcrumb",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Glavnaya", "item": "https://ernestocisneros.art/"},
-        {"@type": "ListItem", "position": 2, "name": "Resursy", "item": "https://ernestocisneros.art/ru/nft/resources.html"},
-        {"@type": "ListItem", "position": 3, "name": "Rukovodstvo po sokhraneniyu NFT", "item": "https://ernestocisneros.art/ru/guide-backup-nft.html"}
-      ]
-    }
-  ]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -658,13 +515,17 @@ footer a {
   .section { page-break-inside: avoid; }
   .lang-toggle { display: none; }
 }
-</style>
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
 
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "/ru/"}, {"@type": "ListItem", "position": 2, "name": "NFT", "item": "/ru/nft/"}, {"@type": "ListItem", "position": 3, "name": "Как сохранить ваши NFT до закрытия Foundation. Полное руководство 2026"}]}
+</script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="lang-toggle">
   <a href="/guide-backup-nft-en.html" rel="alternate" hreflang="en">EN</a>
@@ -692,7 +553,7 @@ footer a {
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main-content">
 
 <!-- INTRO -->
 <section class="intro">
