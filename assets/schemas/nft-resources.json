@@ -1,0 +1,20 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/nft/resources.html",
+    "name": "Resources for Crypto Artists",
+    "url": "https://ernestocisneros.art/nft/resources.html",
+    "description": "Practical guides, strategies, and tools for crypto artists navigating the Web3 space. Resources from real experience in the NFT ecosystem.",
+    "about": [
+      {"@type": "Thing", "name": "NFT"},
+      {"@type": "Thing", "name": "Web3"},
+      {"@type": "Thing", "name": "Crypto Art"},
+      {"@type": "Thing", "name": "Digital Art Preservation"}
+    ],
+    "isPartOf": {
+      "@id": "https://ernestocisneros.art/#website"
+    },
+    "inLanguage": "en"
+  }
+]

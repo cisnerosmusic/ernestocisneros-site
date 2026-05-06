@@ -1,0 +1,34 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://ernestocisneros.art/music/velvet-alloy.html#album",
+    "name": "Velvet Alloy",
+    "url": "https://ernestocisneros.art/music/velvet-alloy.html",
+    "description": "Velvet Alloy by Ernesto Cisneros Cino. An album exploring the intersection of electronic textures and acoustic warmth, blending synthesizers with organic instrumentation.",
+    "byArtist": {
+      "@id": "https://ernestocisneros.art/#person"
+    },
+    "genre": [
+      "Electronic",
+      "Ambient",
+      "Experimental"
+    ],
+    "albumProductionType": "https://schema.org/StudioAlbum",
+    "image": "https://ernestocisneros.art/assets/images/albums/velvet-alloy.jpg",
+    "inLanguage": "en"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Velvet Alloy | Ernesto Cisneros Cino",
+    "url": "https://ernestocisneros.art/music/velvet-alloy.html",
+    "description": "Velvet Alloy - An album by Ernesto Cisneros Cino exploring the intersection of electronic textures and acoustic warmth.",
+    "isPartOf": {
+      "@id": "https://ernestocisneros.art/#website"
+    },
+    "mainEntity": {
+      "@id": "https://ernestocisneros.art/music/velvet-alloy.html#album"
+    }
+  }
+]
