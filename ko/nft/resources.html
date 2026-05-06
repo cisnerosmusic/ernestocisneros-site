@@ -262,6 +262,23 @@ a:hover { color: var(--gold-bright); }
     font-size: 1.2rem;
   }
 }
+
+/* Crypto Price Tracker */
+.crypto-section { max-width: 1200px; margin: 0 auto; padding: 0 2rem 3rem; }
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.crypto-card { border: 1px solid var(--gold-faint); background: var(--bg-card); padding: 1.2rem 1.5rem; position: relative; overflow: hidden; transition: border-color 0.3s ease; }
+.crypto-card:hover { border-color: rgba(212, 160, 48, 0.4); }
+.crypto-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+.crypto-name { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+.crypto-symbol { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--gold-dim); }
+.crypto-price { font-family: var(--font-body); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin: 0.2rem 0; }
+.crypto-change { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.crypto-change.positive { color: #6b9e7a; }
+.crypto-change.negative { color: #c46b5c; }
+.crypto-sparkline { width: 100%; height: 45px; display: block; }
+.crypto-status { text-align: center; padding: 2rem; color: var(--gold-dim); font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; grid-column: 1 / -1; }
+@media (max-width: 900px) { .crypto-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .crypto-section { padding: 0 1rem 2rem; } .crypto-grid { grid-template-columns: 1fr; gap: 1rem; } }
 </style>
 <link rel="stylesheet" href="../../assets/css/nav.css">
 <script type="application/ld+json">
@@ -382,6 +399,31 @@ a:hover { color: var(--gold-bright); }
         <p class="resource-card-description">마켓플레이스 폐쇄 전에 NFT 데이터를 보호하기 위한 실용 가이드. 메타데이터, 이미지, IPFS 해시 백업 방법을 배워보세요. 이는 디지털 아트를 블록체인에 연결하는 중요한 정보입니다. 이 가이드는 단일 플랫폼을 넘어 작품을 보존하기 위한 필수 단계를 안내합니다.</p>
         <span class="resource-card-meta">NFT 보호</span>
       </a>
+
+      <a href="../../guide-wallet-en.html" class="resource-card">
+        <h3 class="resource-card-title">월렛 바이블: 암호화폐 지갑의 작동 원리</h3>
+        <p class="resource-card-description">암호화 아티스트가 지갑에 대해 알아야 할 모든 것을 담은 백과사전적 가이드. 키 생성과 시드 문구부터 RPC 엔드포인트, 토큰 승인, 계정 추상화의 미래까지.</p>
+        <span class="resource-card-meta">월렛 지식 · EN</span>
+      </a>
+
+      <a href="../../guide-smart-contracts-en.html" class="resource-card">
+        <h3 class="resource-card-title">스마트 컨트랙트 완전 가이드</h3>
+        <p class="resource-card-description">암호화 아티스트를 위한 스마트 컨트랙트 백과사전. Ethereum의 EVM과 Solidity부터 Solana 프로그램, Tezos 형식 검증, Bitcoin Ordinals까지. 토큰 표준, 로열티, 보안, 온체인 스토리지를 다룹니다.</p>
+        <span class="resource-card-meta">스마트 컨트랙트 지식 · EN</span>
+      </a>
+
+      <a href="../../guide-where-your-art-lives-en.html" class="resource-card">
+        <h3 class="resource-card-title">당신의 예술이 실제로 사는 곳</h3>
+        <p class="resource-card-description">디지털 영속성의 해부학. 스마트 컨트랙트에서 화면까지 보이지 않는 연결 고리를 매핑합니다: IPFS, Arweave, Filecoin, 피닝 서비스, 온체인 스토리지, 메타데이터 아키텍처, 분산형 예술 보존의 철학.</p>
+        <span class="resource-card-meta">디지털 영속성 · EN</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="crypto-section">
+    <h2 class="section-title">시장 동향</h2>
+    <div class="crypto-grid" id="crypto-grid" data-loading="시장 데이터 로딩 중..." data-error="시장 데이터를 일시적으로 사용할 수 없습니다">
+      <div class="crypto-status">시장 데이터 로딩 중...</div>
     </div>
   </section>
 </main>
@@ -472,6 +514,7 @@ a:hover { color: var(--gold-bright); }
 </script>
 
 <script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/crypto-tracker.js" defer></script>
 <script src="../../assets/js/footer-lang.js" defer></script>
 <script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
     <script src="/chat-widget.js" defer></script>

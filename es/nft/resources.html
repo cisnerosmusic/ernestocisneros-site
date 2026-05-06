@@ -262,6 +262,98 @@ a:hover { color: var(--gold-bright); }
     font-size: 1.2rem;
   }
 }
+
+/* Crypto Price Tracker */
+.crypto-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.crypto-card {
+  border: 1px solid var(--gold-faint);
+  background: var(--bg-card);
+  padding: 1.2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.crypto-card:hover {
+  border-color: rgba(212, 160, 48, 0.4);
+}
+
+.crypto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.crypto-name {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.crypto-symbol {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-dim);
+}
+
+.crypto-price {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0.2rem 0;
+}
+
+.crypto-change {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+.crypto-change.positive { color: #6b9e7a; }
+.crypto-change.negative { color: #c46b5c; }
+
+.crypto-sparkline {
+  width: 100%;
+  height: 45px;
+  display: block;
+}
+
+.crypto-status {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gold-dim);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .crypto-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .crypto-section { padding: 0 1rem 2rem; }
+  .crypto-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
 </style>
 <link rel="stylesheet" href="../../assets/css/nav.css">
 <script type="application/ld+json">
@@ -402,6 +494,13 @@ a:hover { color: var(--gold-bright); }
       </a>
     </div>
   </section>
+
+  <section class="crypto-section">
+    <h2 class="section-title">Pulso del Mercado</h2>
+    <div class="crypto-grid" id="crypto-grid" data-loading="Cargando datos del mercado..." data-error="Datos del mercado temporalmente no disponibles">
+      <div class="crypto-status">Cargando datos del mercado...</div>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
@@ -490,6 +589,7 @@ a:hover { color: var(--gold-bright); }
 </script>
 
 <script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/crypto-tracker.js" defer></script>
 <script src="../../assets/js/footer-lang.js" defer></script>
 <script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
     <script src="/chat-widget.js" defer></script>
