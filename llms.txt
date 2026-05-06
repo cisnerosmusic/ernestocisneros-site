@@ -9,6 +9,7 @@
 - /nft — Digital art collections on Ethereum and Tezos blockchains
 - /books — Published books: Sombras Datos y Relámpagos, La Sospecha Razonable, Huella, La Necesidad de Creer
 - /biography — Full biography and collaborations
+- /impulses-art — Music therapy for refugees, families, and vulnerable communities in Miami, Florida
 - /contact — Contact information
 
 ## Languages
