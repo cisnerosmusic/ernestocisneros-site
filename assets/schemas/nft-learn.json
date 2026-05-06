@@ -1,0 +1,24 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/nft/learn.html",
+    "name": "NFT Art Guide — Learn About Digital Art on Blockchain",
+    "url": "https://ernestocisneros.art/nft/learn.html",
+    "description": "The Artist's Guide to NFT Art: Master wallets, smart contracts, IPFS storage, and preservation. Comprehensive blockchain education for digital artists.",
+    "about": [
+      {"@type": "Thing", "name": "NFT"},
+      {"@type": "Thing", "name": "Blockchain"},
+      {"@type": "Thing", "name": "Digital Art"},
+      {"@type": "Thing", "name": "Web3"},
+      {"@type": "Thing", "name": "Crypto Wallet"},
+      {"@type": "Thing", "name": "Smart Contract"},
+      {"@type": "Thing", "name": "IPFS"},
+      {"@type": "Thing", "name": "Art Preservation"}
+    ],
+    "isPartOf": {
+      "@id": "https://ernestocisneros.art/#website"
+    },
+    "inLanguage": "en"
+  }
+]
