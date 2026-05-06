@@ -10,14 +10,15 @@ Live at **[ernestocisneros.art](https://ernestocisneros.art)** | Available in 7 
 
 ## Sections
 
-- **Music**: Five albums with integrated web players: *Atlas of Fragmented Light*, *Glacial Paths*, *Mare Incognitum*, *Sandbank*, and *Trash*, plus Other Musical Works.
-- **NFT**: Selected works on Ethereum, Tezos, and Bitcoin. Collected works, BTC Ordinal Inscription #95908, community portraits (The Ernestitos), marketplace links, and Resources subpage with the Foundation backup guide.
+- **Music**: Six albums with integrated web players: *Atlas of Fragmented Light*, *Glacial Paths*, *Mare Incognitum*, *Sandbank*, *Trash*, and *Velvet Alloy*, plus Other Musical Works.
+- **NFT**: Selected works on Ethereum, Tezos, and Bitcoin. Collected works, BTC Ordinal Inscription #95908, community portraits (The Ernestitos), marketplace links, and Resources subpage with the Foundation backup guide, wallet guide, smart contracts guide, and decentralized storage guide.
 - **Books**: *Sombras, Datos y Relámpagos*, *La Sospecha Razonable*, and *Huella* (forthcoming). The Power Trilogy, available on [Amazon](https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN).
-- **Ideas**: Essays and research across four domains: art & poetics, cosmology & physics, culture & exile, and technology & society. Includes independent research in stochastic cosmology ([ORCID](https://orcid.org/0009-0002-2833-1787)).
+- **Ideas**: Essays and research across four domains: art & poetics, cosmology & physics, culture & exile, and technology & society. Includes independent research in stochastic cosmology ([ORCID](https://orcid.org/0009-0002-2833-1787)). Featured essay: *Cuba: el riesgo de repetir el mecanismo* (ES/EN), with downloadable PDF versions.
 - **Impulses.art**: Music therapy for refugees, families, and vulnerable communities. [impulses.online](https://impulses.online)
 - **Biography**: Background and trajectory.
 - **Contact**: Collaborations, commissions, and conversations.
 - **NFT Backup Guide**: Step-by-step guide to back up NFTs from Foundation marketplace before shutdown. Available in 14 languages with full SEO, hreflang, and Schema.org structured data.
+- **NFT Resource Guides** (EN + ES): Wallet guide, smart contracts guide, and decentralized storage guide for artists navigating Web3.
 
 ## Multilingual
 
@@ -63,8 +64,8 @@ The site uses an external JSON-LD schema architecture for search engine and gene
 - **`llms.txt`**: LLM discovery file following the emerging 2026 standard
 - **`AGENTS.md`**: Protection instructions for AI agents working on this repository
 - **Pre-commit hook** (`.githooks/pre-commit`): Blocks accidental deletion of schemas, analytics, or agent instructions
-- **hreflang + canonical** on all 230+ pages (7 languages + x-default, 14 languages for backup guide)
-- **`sitemap.xml`** with 230+ URLs covering all languages and translations
+- **hreflang + canonical** on all 245+ pages (7 languages + x-default, 14 languages for backup guide)
+- **`sitemap.xml`** with 245+ URLs covering all languages and translations
 - **`robots.txt`** with explicit permissions for AI crawlers (GPTBot, anthropic-ai, Claude-Web, Google-Extended)
 
 ## Project Structure
@@ -78,10 +79,13 @@ ideas.html                Essays index
 ideas/                    Individual essay pages (cosmology, philosophy, culture, technology)
 impulses-art.html         Music therapy project
 music.html                Music index
-music/                    Album pages with players (6 sections)
+music/                    Album pages with players (7 albums)
 nft.html                  NFT selected works
 nft/                      Collections (ETH, Tezos, BTC, gifts, marketplaces, resources)
 guide-backup-nft-en.html  NFT Backup Guide (English)
+guide-wallet-en.html      NFT Wallet Guide (English)
+guide-smart-contracts-en.html  Smart Contracts Guide (English)
+guide-where-your-art-lives-en.html  Decentralized Storage Guide (English)
 artemis-ii.html           Artemis II live mission tracker
 particles.html            Particle canvas visualization
 en/                       English pages (alternative routing)
@@ -100,7 +104,7 @@ translations/
   pt/                     Portuguese guide
   ucr/                    Ukrainian guide
 assets/
-  audio/                  MP3 files (5 albums)
+  audio/                  MP3 files (6 albums)
   css/                    Shared stylesheets (main.css, nav.css)
   images/                 Portraits, logos, book covers
   js/                     nav.js, lang-detect.js, schema-loader.js (v2.0.0), footer-lang.js
@@ -113,7 +117,7 @@ humans.txt                humans.txt (humanstxt.org format)
 AGENTS.md                 AI agent protection instructions
 .githooks/pre-commit      Schema/analytics protection hook
 robots.txt                Search engine + AI crawler directives
-sitemap.xml               Full multilingual sitemap (230+ URLs)
+sitemap.xml               Full multilingual sitemap (245+ URLs)
 privacy-policy/           Privacy policy
 404.html                  Custom error page
 ```
@@ -128,7 +132,7 @@ This repository includes a multi-layer defense system to prevent AI agents from 
 4. **HTML comments**: `<!-- CRITICAL SEO/GEO -->` markers on protected elements
 5. **Multilingual safeguards**: Changes to pages require updates across all 7 language versions
 
-The site contains 230+ pages across 7 full languages + 7 additional translation languages. Always verify that schema, hreflang, and analytics changes are propagated to all language versions.
+The site contains 245+ pages across 7 full languages + 7 additional translation languages. Always verify that schema, hreflang, and analytics changes are propagated to all language versions.
 
 To activate the pre-commit hook after cloning:
 

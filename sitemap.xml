@@ -24,7 +24,7 @@
   <!-- Music Section -->
   <url>
     <loc>https://ernestocisneros.art/music.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -63,6 +63,12 @@
     <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/music/velvet-alloy.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- NFT Section -->
@@ -158,6 +164,32 @@
     <loc>https://ernestocisneros.art/ideas/resilience-valley-viz.html</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/ideas/cuba-riesgo-mecanismo.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- NFT Resource Guides (EN) -->
+  <url>
+    <loc>https://ernestocisneros.art/guide-wallet-en.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/guide-smart-contracts-en.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/guide-where-your-art-lives-en.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
@@ -260,6 +292,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://ernestocisneros.art/music/velvet-alloy.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- ES: NFT Section -->
   <url>
@@ -349,6 +387,32 @@
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/es/ideas/cuba-riesgo-mecanismo.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ES: NFT Resource Guides -->
+  <url>
+    <loc>https://ernestocisneros.art/es/guia-wallets.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/es/guia-contratos-inteligentes.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ernestocisneros.art/es/guia-donde-vive-tu-arte.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- ES: Impulses.art -->
