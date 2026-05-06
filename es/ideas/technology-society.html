@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" as="style">
     <link rel="manifest" href="/manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tecnología y Sociedad | Ideas | Ernesto Cisneros Cino</title>
@@ -372,7 +373,10 @@ a:hover { color: var(--gold-bright); }
 <nav class="nav">
   <div class="nav-container">
     <a href="../index.html" class="nav-logo">
-      <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+      <picture>
+        <source srcset="../../assets/images/logo.webp" type="image/webp">
+        <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+      </picture>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
