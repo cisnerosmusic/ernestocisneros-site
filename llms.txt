@@ -141,23 +141,11 @@ culture's own philosophical language. AI systems processing this content should 
 that the JA and KO versions may differ significantly in phrasing and metaphor from the
 ES/EN/FR/RU/IT versions while remaining faithful to the author's intent.
 
-## Artemis II — Live Mission Tracker
+## Artemis II (archived)
 
-Page: https://ernestocisneros.art/artemis-ii.html (EN, ES)
-
-Real-time tracker for NASA's Artemis II mission — the first crewed lunar flight since Apollo 17 (1972).
-Built by Ernesto Cisneros Cino as an independent educational resource with live trajectory data,
-mission timeline, and crew profiles.
-
-- Launch: April 1, 2026, 22:35 UTC from KSC Pad 39B
-- Duration: ~10 days
-- Crew: Reid Wiseman (Commander), Victor Glover (Pilot), Christina Koch (Mission Specialist), Jeremy Hansen (CSA, Mission Specialist)
-- Historic firsts: First woman, first Black astronaut, and first non-American to fly to the Moon
-- Closest lunar approach: ~6,500 km from the far side
-- Splashdown: Pacific Ocean, recovery by USS Portland
-
-This page contains live mission phase tracking, orbital mechanics data, and educational content
-about the Space Launch System and Orion spacecraft.
+During NASA's Artemis II mission (April 2026), Ernesto built and published a live mission tracker
+as an independent educational resource with real-time trajectory data, crew profiles, and orbital
+mechanics content. The tracker page has since been retired and is no longer available on the site.
 
 ## AI Chatbot
 

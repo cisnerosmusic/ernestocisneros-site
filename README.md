@@ -86,7 +86,6 @@ guide-backup-nft-en.html  NFT Backup Guide (English)
 guide-wallet-en.html      NFT Wallet Guide (English)
 guide-smart-contracts-en.html  Smart Contracts Guide (English)
 guide-where-your-art-lives-en.html  Decentralized Storage Guide (English)
-artemis-ii.html           Artemis II live mission tracker
 particles.html            Particle canvas visualization
 en/                       English pages (alternative routing)
 es/                       Spanish pages (full mirror of root structure)
