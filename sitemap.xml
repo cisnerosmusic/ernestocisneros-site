@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/</loc>
     <lastmod>2026-04-03</lastmod>
@@ -21,7 +21,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/music.html</loc>
     <lastmod>2026-04-25</lastmod>
@@ -71,7 +71,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/nft.html</loc>
     <lastmod>2026-04-03</lastmod>
@@ -115,7 +115,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/books.html</loc>
     <lastmod>2026-04-03</lastmod>
@@ -123,7 +123,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ideas.html</loc>
     <lastmod>2026-04-03</lastmod>
@@ -173,7 +173,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- NFT Resource Guides (EN) -->
+  
   <url>
     <loc>https://ernestocisneros.art/guide-wallet-en.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -193,7 +193,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/impulses-art.html</loc>
     <lastmod>2026-04-03</lastmod>
@@ -201,7 +201,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/guide-backup-nft-en.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -209,7 +209,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Privacy Policy -->
+  
   <url>
     <loc>https://ernestocisneros.art/privacy-policy/</loc>
     <lastmod>2026-04-19</lastmod>
@@ -217,7 +217,7 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Particles -->
+  
   <url>
     <loc>https://ernestocisneros.art/particles.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -225,11 +225,11 @@
     <priority>0.4</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Spanish Version (/es/) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- ES: Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/</loc>
     <lastmod>2026-04-04</lastmod>
@@ -249,7 +249,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ES: Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/music.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -299,7 +299,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ES: NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/nft.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -343,7 +343,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- ES: Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/books.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -351,7 +351,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ES: Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/ideas.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -395,7 +395,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- ES: NFT Resource Guides -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/guia-wallets.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -415,7 +415,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- ES: Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/impulses-art.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -423,7 +423,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ES: NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/guia-backup-nft.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -431,7 +431,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- FR: Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/impulses-art.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -439,7 +439,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- JA: Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/impulses-art.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -447,11 +447,11 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- French Version (/fr/) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- FR: Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/</loc>
     <lastmod>2026-04-04</lastmod>
@@ -471,7 +471,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- FR: NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/nft.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -509,7 +509,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- FR: Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/music.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -535,7 +535,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- FR: Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/books.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -543,7 +543,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- FR: Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/ideas.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -581,7 +581,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- FR: NFT Section - Additional Resources -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/nft/resources.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -589,7 +589,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- FR: NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/nft/guide-backup-nft-fr.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -597,11 +597,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Japanese Version (/ja/) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- JA: Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/</loc>
     <lastmod>2026-04-04</lastmod>
@@ -621,7 +621,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- JA: NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/nft.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -659,7 +659,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- JA: Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/music.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -685,7 +685,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- JA: Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/books.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -693,7 +693,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- JA: Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/ideas.html</loc>
     <lastmod>2026-04-04</lastmod>
@@ -731,7 +731,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- JA: NFT Section - Additional Resources -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/nft/resources.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -739,7 +739,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- JA: NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/nft/guide-backup-nft-ja.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -747,11 +747,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Russian Version (/ru/) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- RU: Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/</loc>
     <lastmod>2026-04-05</lastmod>
@@ -771,7 +771,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- RU: NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/nft.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -809,7 +809,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- RU: Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/music.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -835,7 +835,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- RU: Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/books.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -843,7 +843,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- RU: Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/ideas.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -881,7 +881,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- RU: Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/impulses-art.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -889,7 +889,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- RU: NFT Section - Additional Resources -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/nft/resources.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -897,7 +897,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- RU: NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/nft/guide-backup-nft-ru.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -905,11 +905,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Italian Version (/it/) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- IT: Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/</loc>
     <lastmod>2026-04-05</lastmod>
@@ -929,7 +929,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- IT: NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/nft.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -967,7 +967,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- IT: Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/music.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -993,7 +993,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- IT: Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/books.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1001,7 +1001,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- IT: Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/ideas.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1039,7 +1039,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- IT: Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/impulses-art.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1047,7 +1047,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- IT: NFT Section - Additional Resources -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/nft/resources.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1055,7 +1055,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- IT: NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/guide-backup-nft.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1063,11 +1063,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Korean Version (/ko/) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- KO: Core Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1087,7 +1087,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- KO: NFT Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/nft.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1125,7 +1125,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- KO: Music Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/music.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1151,7 +1151,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- KO: Books -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/books.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1159,7 +1159,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- KO: Ideas Section -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/ideas.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1197,7 +1197,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- KO: Impulses.art -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/impulses-art.html</loc>
     <lastmod>2026-04-05</lastmod>
@@ -1205,7 +1205,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- KO: NFT Section - Additional Resources -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/nft/resources.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1213,7 +1213,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- KO: NFT Backup Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/nft/guide-backup-nft-ko.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1221,11 +1221,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Translation Folder NFT Guides -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- Chinese Simplified Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/ch/guide-backup-nft-ch.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1233,7 +1233,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Portuguese Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/pt/guide-backup-nft-pt.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1241,7 +1241,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Ukrainian Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/ucr/guide-backup-nft-uc.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1249,7 +1249,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- German Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/de/guide-backup-nft-de.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1257,7 +1257,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Arabic Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/arabe/guide-backup-nft-ar.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1265,7 +1265,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Farsi Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/far/guide-backup-nft-fa.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1273,7 +1273,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Hindi Guide -->
+  
   <url>
     <loc>https://ernestocisneros.art/translations/hindi/guide-backup-nft-hi.html</loc>
     <lastmod>2026-04-19</lastmod>
@@ -1281,11 +1281,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ============================================ -->
-  <!-- Hidden Pages (contextual discovery only) -->
-  <!-- ============================================ -->
+  
+  
+  
 
-  <!-- EN: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1335,7 +1335,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- ES: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/es/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1385,7 +1385,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- FR: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/fr/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1435,7 +1435,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- JA: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ja/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1485,7 +1485,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- RU: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ru/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1535,7 +1535,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- IT: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/it/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1585,7 +1585,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- KO: Hidden Pages -->
+  
   <url>
     <loc>https://ernestocisneros.art/ko/ideas/burning-piano.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -1635,4 +1635,4 @@
     <priority>0.6</priority>
   </url>
 
-</urlset>
+<url><loc>https://ernestocisneros.art/404.html</loc><lastmod>2026-05-06</lastmod><changefreq>yearly</changefreq><priority>0.1</priority></url><url><loc>https://ernestocisneros.art/es/404.html</loc><lastmod>2026-05-06</lastmod><changefreq>yearly</changefreq><priority>0.1</priority></url></urlset>
