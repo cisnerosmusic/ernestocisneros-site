@@ -45,3 +45,15 @@ Allow: /
 
 User-agent: DuckDuckBot
 Allow: /
+
+User-agent: ChatGPT-User       # Crawler de fetches activados por usuarios en ChatGPT
+Allow: /
+
+User-agent: Meta-ExternalAgent # Meta/Facebook AI
+Allow: /
+
+User-agent: Bytespider         # ByteDance/TikTok
+Allow: /
+
+User-agent: Amazonbot          # Amazon (Alexa/Rufus)
+Allow: /
