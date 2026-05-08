@@ -458,6 +458,8 @@
         }
       }
       phantoms.reset();
+      trackAtmosphere.transition(idx);
+      smoke.regenWithProfile(trackAtmosphere.to);
       this.refreshUI();
     },
     next() {
@@ -520,6 +522,200 @@
     stripeCopper:[160, 170, 142]
   };
   const rgb  = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+
+  // ============================================================
+  // TRACK PROFILES · per-track atmosphere
+  // Each profile defines the chromatic temperature for:
+  //   voidColor     — canvas clear color (the deep background)
+  //   smokeTintLo   — tint for the heavy low smoke layer
+  //   smokeBaseLo   — highlight tint for low smoke
+  //   smokeTintHi   — tint for the light high smoke layer
+  //   smokeBaseHi   — highlight tint for high smoke
+  //   smokeDensityLo — opacity multiplier for low smoke (default 200)
+  //   smokeDensityHi — opacity multiplier for high smoke (default 90)
+  //   vigCenterColor — vignette center radial color
+  //   vigCenterAlpha — vignette center base alpha
+  //   vigEdgeAlpha   — vignette edge base alpha
+  //   stripe1, stripe2, stripe3 — three stripe color variants
+  // ============================================================
+  const TRACK_PROFILES = [
+    // 01 — Nocturne of Glass Currents: original bone/bronze palette
+    { voidColor: [10, 11, 8],
+      smokeTintLo: [29, 32, 23], smokeBaseLo: [58, 63, 40],
+      smokeTintHi: [58, 63, 40], smokeBaseHi: [90, 95, 62],
+      smokeDensityLo: 200, smokeDensityHi: 90,
+      vigCenterColor: [29, 32, 23], vigCenterAlpha: 0.25, vigEdgeAlpha: 0.85,
+      stripe1: [196, 176, 112], stripe2: [208, 204, 192], stripe3: [160, 170, 142] },
+
+    // 02 — Echoes Through Mercury Veins: deep magenta / mercury silver
+    { voidColor: [14, 8, 16],
+      smokeTintLo: [36, 18, 40], smokeBaseLo: [72, 40, 78],
+      smokeTintHi: [60, 35, 68], smokeBaseHi: [100, 70, 108],
+      smokeDensityLo: 180, smokeDensityHi: 85,
+      vigCenterColor: [40, 20, 45], vigCenterAlpha: 0.28, vigEdgeAlpha: 0.88,
+      stripe1: [190, 160, 200], stripe2: [210, 195, 215], stripe3: [160, 140, 175] },
+
+    // 03 — Fractured Dreams in Gold Dust: warm gold dust
+    { voidColor: [11, 11, 4],
+      smokeTintLo: [38, 34, 14], smokeBaseLo: [70, 62, 28],
+      smokeTintHi: [62, 55, 22], smokeBaseHi: [100, 90, 42],
+      smokeDensityLo: 210, smokeDensityHi: 95,
+      vigCenterColor: [42, 38, 16], vigCenterAlpha: 0.30, vigEdgeAlpha: 0.82,
+      stripe1: [210, 185, 90], stripe2: [220, 210, 170], stripe3: [180, 155, 80] },
+
+    // 04 — Glass Under Skin: glacial blue
+    { voidColor: [6, 10, 16],
+      smokeTintLo: [14, 24, 42], smokeBaseLo: [28, 48, 75],
+      smokeTintHi: [22, 38, 60], smokeBaseHi: [45, 68, 100],
+      smokeDensityLo: 170, smokeDensityHi: 80,
+      vigCenterColor: [16, 28, 48], vigCenterAlpha: 0.22, vigEdgeAlpha: 0.90,
+      stripe1: [140, 175, 210], stripe2: [190, 205, 220], stripe3: [110, 145, 185] },
+
+    // 05 — Malformed Halo: oxide red / rust
+    { voidColor: [16, 8, 8],
+      smokeTintLo: [42, 16, 14], smokeBaseLo: [78, 32, 28],
+      smokeTintHi: [65, 28, 22], smokeBaseHi: [105, 50, 40],
+      smokeDensityLo: 190, smokeDensityHi: 88,
+      vigCenterColor: [48, 18, 16], vigCenterAlpha: 0.30, vigEdgeAlpha: 0.88,
+      stripe1: [210, 140, 110], stripe2: [215, 195, 180], stripe3: [180, 110, 85] },
+
+    // 06 — Unlined Neon Drift: muted neon green / phosphor
+    { voidColor: [4, 10, 8],
+      smokeTintLo: [12, 32, 24], smokeBaseLo: [25, 60, 45],
+      smokeTintHi: [20, 50, 38], smokeBaseHi: [42, 82, 62],
+      smokeDensityLo: 175, smokeDensityHi: 82,
+      vigCenterColor: [14, 36, 26], vigCenterAlpha: 0.22, vigEdgeAlpha: 0.86,
+      stripe1: [130, 200, 150], stripe2: [190, 215, 195], stripe3: [100, 170, 130] },
+
+    // 07 — Glass Rituals for Phantom Hearts: ritual violet
+    { voidColor: [10, 8, 12],
+      smokeTintLo: [28, 20, 42], smokeBaseLo: [52, 38, 75],
+      smokeTintHi: [42, 32, 62], smokeBaseHi: [72, 55, 100],
+      smokeDensityLo: 185, smokeDensityHi: 88,
+      vigCenterColor: [32, 22, 48], vigCenterAlpha: 0.28, vigEdgeAlpha: 0.88,
+      stripe1: [175, 155, 210], stripe2: [205, 195, 220], stripe3: [145, 125, 185] },
+
+    // 08 — Midnight Bloom of Machines: industrial cyan / petrol
+    { voidColor: [6, 8, 10],
+      smokeTintLo: [14, 26, 34], smokeBaseLo: [28, 50, 65],
+      smokeTintHi: [22, 42, 55], smokeBaseHi: [42, 72, 90],
+      smokeDensityLo: 180, smokeDensityHi: 85,
+      vigCenterColor: [16, 30, 38], vigCenterAlpha: 0.24, vigEdgeAlpha: 0.87,
+      stripe1: [120, 190, 210], stripe2: [185, 210, 220], stripe3: [95, 165, 190] },
+
+    // 09 — The Blood of the Virtual World: digital blood red
+    { voidColor: [16, 4, 4],
+      smokeTintLo: [48, 10, 10], smokeBaseLo: [88, 20, 18],
+      smokeTintHi: [72, 16, 14], smokeBaseHi: [115, 30, 28],
+      smokeDensityLo: 200, smokeDensityHi: 92,
+      vigCenterColor: [55, 12, 10], vigCenterAlpha: 0.32, vigEdgeAlpha: 0.90,
+      stripe1: [220, 110, 100], stripe2: [220, 190, 185], stripe3: [195, 85, 75] },
+
+    // 10 — Malfunction Atlas: monochrome glitch grey
+    { voidColor: [8, 8, 8],
+      smokeTintLo: [22, 22, 22], smokeBaseLo: [48, 48, 48],
+      smokeTintHi: [38, 38, 38], smokeBaseHi: [68, 68, 68],
+      smokeDensityLo: 160, smokeDensityHi: 75,
+      vigCenterColor: [25, 25, 25], vigCenterAlpha: 0.20, vigEdgeAlpha: 0.92,
+      stripe1: [180, 180, 180], stripe2: [210, 210, 210], stripe3: [150, 150, 150] },
+
+    // 11 — The Moon's Abandoned Bride: lunar indigo
+    { voidColor: [8, 8, 14],
+      smokeTintLo: [18, 18, 42], smokeBaseLo: [35, 35, 75],
+      smokeTintHi: [30, 30, 62], smokeBaseHi: [52, 52, 100],
+      smokeDensityLo: 185, smokeDensityHi: 88,
+      vigCenterColor: [20, 20, 48], vigCenterAlpha: 0.26, vigEdgeAlpha: 0.88,
+      stripe1: [160, 160, 215], stripe2: [200, 200, 220], stripe3: [130, 130, 190] },
+
+    // 12 — Wet Concrete Orbit: damp moss green / wet stone
+    { voidColor: [8, 10, 8],
+      smokeTintLo: [20, 28, 20], smokeBaseLo: [42, 55, 40],
+      smokeTintHi: [35, 45, 33], smokeBaseHi: [60, 78, 58],
+      smokeDensityLo: 195, smokeDensityHi: 90,
+      vigCenterColor: [22, 32, 22], vigCenterAlpha: 0.25, vigEdgeAlpha: 0.85,
+      stripe1: [155, 180, 145], stripe2: [200, 210, 195], stripe3: [125, 155, 120] },
+
+    // 13 — Broken Signal Run: amber interference / signal noise
+    { voidColor: [12, 10, 6],
+      smokeTintLo: [36, 28, 14], smokeBaseLo: [68, 52, 28],
+      smokeTintHi: [55, 42, 20], smokeBaseHi: [92, 72, 38],
+      smokeDensityLo: 195, smokeDensityHi: 90,
+      vigCenterColor: [40, 32, 16], vigCenterAlpha: 0.28, vigEdgeAlpha: 0.85,
+      stripe1: [215, 175, 90], stripe2: [220, 205, 165], stripe3: [190, 150, 70] },
+
+    // 14 — Piano with an Absent Soul: spectral blue-grey / ash
+    { voidColor: [10, 10, 14],
+      smokeTintLo: [22, 24, 34], smokeBaseLo: [45, 48, 65],
+      smokeTintHi: [36, 38, 52], smokeBaseHi: [62, 65, 85],
+      smokeDensityLo: 170, smokeDensityHi: 78,
+      vigCenterColor: [24, 26, 38], vigCenterAlpha: 0.22, vigEdgeAlpha: 0.90,
+      stripe1: [165, 170, 200], stripe2: [200, 205, 215], stripe3: [140, 145, 180] }
+  ];
+
+  // ============================================================
+  // TRACK ATMOSPHERE · interpolation engine
+  // Smoothly transitions all atmosphere values over FADE_MS when
+  // a new track loads. The render loop reads `current.*` which
+  // is always a lerp between `from.*` and `to.*`.
+  // ============================================================
+  const trackAtmosphere = {
+    FADE_MS: 2000,
+    startTime: 0,
+    progress: 1,
+    from: null,
+    to: null,
+    current: null,
+
+    init() {
+      const p = TRACK_PROFILES[0];
+      this.from = this._clone(p);
+      this.to = this._clone(p);
+      this.current = this._clone(p);
+      this.progress = 1;
+    },
+    transition(idx) {
+      const p = TRACK_PROFILES[idx] || TRACK_PROFILES[0];
+      this.from = this._clone(this.current);
+      this.to = this._clone(p);
+      this.startTime = performance.now();
+      this.progress = 0;
+    },
+    update(t) {
+      if (this.progress >= 1) return;
+      const elapsed = t - this.startTime;
+      const p = Math.min(1, elapsed / this.FADE_MS);
+      this.progress = p * p * (3 - 2 * p);
+      this._lerpAll();
+      if (this.progress >= 1) {
+        smoke.regenWithProfile(this.current);
+      }
+    },
+    _lerpAll() {
+      const t = this.progress;
+      const keys3 = ['voidColor','smokeTintLo','smokeBaseLo','smokeTintHi','smokeBaseHi',
+                      'vigCenterColor','stripe1','stripe2','stripe3'];
+      for (const k of keys3) {
+        for (let i = 0; i < 3; i++) {
+          this.current[k][i] = this.from[k][i] + (this.to[k][i] - this.from[k][i]) * t;
+        }
+      }
+      const keys1 = ['smokeDensityLo','smokeDensityHi','vigCenterAlpha','vigEdgeAlpha'];
+      for (const k of keys1) {
+        this.current[k] = this.from[k] + (this.to[k] - this.from[k]) * t;
+      }
+    },
+    _clone(p) {
+      return {
+        voidColor: [...p.voidColor],
+        smokeTintLo: [...p.smokeTintLo], smokeBaseLo: [...p.smokeBaseLo],
+        smokeTintHi: [...p.smokeTintHi], smokeBaseHi: [...p.smokeBaseHi],
+        smokeDensityLo: p.smokeDensityLo, smokeDensityHi: p.smokeDensityHi,
+        vigCenterColor: [...p.vigCenterColor],
+        vigCenterAlpha: p.vigCenterAlpha, vigEdgeAlpha: p.vigEdgeAlpha,
+        stripe1: [...p.stripe1], stripe2: [...p.stripe2], stripe3: [...p.stripe3]
+      };
+    }
+  };
 
   // ============================================================
   // SCRIPTED MOMENTS
@@ -734,6 +930,9 @@
     sw: 0, sh: 0,
     offsetLo: 0, offsetHi: 0,
     regen() {
+      this.regenWithProfile(trackAtmosphere.current);
+    },
+    regenWithProfile(prof) {
       this.sw = Math.ceil(W / 2);
       this.sh = Math.ceil(H / 2);
       [this.lo, this.hi] = [this.lo || document.createElement('canvas'),
@@ -741,16 +940,17 @@
       [this.lo, this.hi].forEach(c => { c.width = this.sw; c.height = this.sh; });
       this.loCtx = this.lo.getContext('2d');
       this.hiCtx = this.hi.getContext('2d');
-      this.bake('lo', 0.006, 4, 1);
-      this.bake('hi', 0.018, 3, 1.8);
+      this.bake('lo', 0.006, 4, 1, prof);
+      this.bake('hi', 0.018, 3, 1.8, prof);
     },
-    bake(which, scale, oct, warp) {
+    bake(which, scale, oct, warp, prof) {
       const c = which === 'lo' ? this.loCtx : this.hiCtx;
       const w = this.sw, h = this.sh;
       const img = c.createImageData(w, h);
       const d = img.data;
-      const tint = which === 'lo' ? PALETTE.bronzeDeep : PALETTE.bronze;
-      const baseTint = which === 'lo' ? PALETTE.bronze : PALETTE.bronzeLit;
+      const tint = which === 'lo' ? prof.smokeTintLo : prof.smokeTintHi;
+      const baseTint = which === 'lo' ? prof.smokeBaseLo : prof.smokeBaseHi;
+      const densityMax = which === 'lo' ? prof.smokeDensityLo : prof.smokeDensityHi;
       for (let y = 0; y < h; y++) {
         for (let x = 0; x < w; x++) {
           const wx = noise.fbm(x * scale + 100, y * scale, 0, 2) * warp;
@@ -758,7 +958,6 @@
           let v = noise.fbm((x + wx * 30) * scale, (y + wy * 30) * scale, 0, oct);
           v = (v + 0.5);
           if (which === 'lo') {
-            // Heavy at the bottom, thinner at top
             const grad = 1 - (y / h);
             v *= 0.55 + 0.45 * grad;
           } else {
@@ -770,7 +969,7 @@
           const g = tint[1] + (baseTint[1] - tint[1]) * v;
           const b = tint[2] + (baseTint[2] - tint[2]) * v;
           d[i] = r; d[i + 1] = g; d[i + 2] = b;
-          d[i + 3] = which === 'lo' ? 200 * v : 90 * v;
+          d[i + 3] = densityMax * v;
         }
       }
       c.putImageData(img, 0, 0);
@@ -1019,13 +1218,13 @@
       const heightFrac = fullHeight ? 1 : (0.25 + Math.random() * 0.6);
       const y = fullHeight ? 0 : Math.random() * (H * (1 - heightFrac));
       const dur = 60 + Math.random() * 120;            // 60-180 ms
-      // Color variant: weighted random, fixed for stripe lifetime.
-      // 55% bone yellow, 30% dirty white, 15% oxidized copper.
-      // Subtle variation gives an analog non-uniform feel.
+      // Color variant: weighted random from current track profile.
+      // 55% primary, 30% secondary, 15% tertiary stripe color.
       const roll = Math.random();
-      const color = roll < 0.55 ? PALETTE.boneYellow
-                  : roll < 0.85 ? PALETTE.stripeWhite
-                                : PALETTE.stripeCopper;
+      const atm = trackAtmosphere.current;
+      const color = roll < 0.55 ? atm.stripe1
+                  : roll < 0.85 ? atm.stripe2
+                                : atm.stripe3;
       return {
         x, width,
         y, h: H * heightFrac,
@@ -1435,16 +1634,20 @@
     presentation.update(t);
     updateMoments();
 
-    // Background void
-    ctx.fillStyle = rgb(PALETTE.void);
+    // Atmosphere interpolation
+    trackAtmosphere.update(t);
+    const atm = trackAtmosphere.current;
+
+    // Background void — uses track profile color
+    ctx.fillStyle = rgb(atm.voidColor);
     ctx.fillRect(0, 0, W, H);
 
-    // Vignette pulse
+    // Vignette pulse — uses track profile colors and intensities
     const vign = ctx.createRadialGradient(W / 2, H / 2, 0,
                                           W / 2, H / 2, Math.max(W, H) * 0.7);
-    vign.addColorStop(0, rgb(PALETTE.bronzeDeep, 0.25 + audio.smoothed.bass * 0.2));
-    vign.addColorStop(0.6, rgb(PALETTE.void, 0.0));
-    vign.addColorStop(1, rgb(PALETTE.void, 0.85));
+    vign.addColorStop(0, rgb(atm.vigCenterColor, atm.vigCenterAlpha + audio.smoothed.bass * 0.2));
+    vign.addColorStop(0.6, rgb(atm.voidColor, 0.0));
+    vign.addColorStop(1, rgb(atm.voidColor, atm.vigEdgeAlpha));
     ctx.fillStyle = vign;
     ctx.fillRect(0, 0, W, H);
 
@@ -1457,9 +1660,9 @@
     stripes.draw(t);
     filter.apply(t);
 
-    // Silence moment: deep fade
+    // Silence moment: deep fade (uses track atmosphere void)
     if (activeMoment.silence > 0) {
-      ctx.fillStyle = rgb(PALETTE.void, activeMoment.silence * 0.7);
+      ctx.fillStyle = rgb(atm.voidColor, activeMoment.silence * 0.7);
       ctx.fillRect(0, 0, W, H);
     }
 
@@ -1471,6 +1674,7 @@
   // ============================================================
   function start() {
     resize();
+    trackAtmosphere.init();
     smoke.regen();
     entity.init();
     filter.init();
