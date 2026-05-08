@@ -4,10 +4,10 @@
 (function() {
   'use strict';
 
-  // ── Hide on music player pages in mobile ──
-  const isMusicPlayer = /\/music\//.test(window.location.pathname);
-  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-  if (isMusicPlayer && isTouchDevice) return;
+  // ── Hide on music player pages (except Other Musical Works) ──
+  const path = window.location.pathname;
+  const isMusicPlayer = /\/music\//.test(path) && !/other-works/.test(path);
+  if (isMusicPlayer) return;
 
   // ── Configuration ──
 const WORKER_URL = 'https://ernesto-chatbot-v2.malditoernesto.workers.dev';
