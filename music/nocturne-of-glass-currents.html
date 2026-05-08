@@ -115,6 +115,7 @@
     transition: opacity 1.5s ease 0.4s;
   }
   #tracklist.visible { opacity: 1; }
+  #tracklist.dimmed { opacity: 0.6; }
   .tracklist-header {
     text-transform: uppercase;
     letter-spacing: 0.32em;
@@ -163,6 +164,7 @@
     transition: opacity 1.5s ease 0.4s;
   }
   #controls-wrap.visible { opacity: 1; }
+  #controls-wrap.dimmed { opacity: 0.6; }
   #now-playing {
     text-align: center;
     font-size: 10px;
@@ -1874,13 +1876,24 @@
     }
   });
 
+  const controlsWrap = document.getElementById('controls-wrap');
+  const tracklistEl  = document.getElementById('tracklist');
+
   audio.el.addEventListener('play',  () => {
     playBtn.textContent = '❚❚ Pause';
     mobilePlayBtn.textContent = '❚❚ pause';
+    if (!isMobile) {
+      controlsWrap.classList.add('dimmed');
+      tracklistEl.classList.add('dimmed');
+    }
   });
   audio.el.addEventListener('pause', () => {
     playBtn.textContent = '▶ Play';
     mobilePlayBtn.textContent = '▶ play';
+    if (!isMobile) {
+      controlsWrap.classList.remove('dimmed');
+      tracklistEl.classList.remove('dimmed');
+    }
   });
   audio.el.addEventListener('ended', () => playlist.onEnded());
 
