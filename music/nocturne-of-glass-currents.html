@@ -294,6 +294,79 @@
     width: auto;
     height: auto;
   }
+
+  /* MOBILE: tracklist scrolls in from below the viewport */
+  @media (max-width: 768px) and (pointer: coarse) {
+    html, body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: auto;
+    }
+    #stage {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+    }
+    #intro {
+      position: fixed;
+      height: 100vh;
+    }
+    #controls-wrap {
+      position: fixed;
+      bottom: 1.2rem;
+    }
+    #corner-tl {
+      top: 1rem; left: 1rem;
+    }
+    #corner-br {
+      bottom: 1rem !important; right: 1rem !important;
+    }
+    #tracklist {
+      position: relative;
+      top: auto; right: auto;
+      margin-top: 100vh;
+      max-width: 100%;
+      padding: 2rem 1.5rem 4rem;
+      background: linear-gradient(to bottom, transparent 0%, rgba(10, 11, 8, 0.92) 3rem);
+      z-index: 20;
+    }
+    .tracklist-header {
+      text-align: center;
+    }
+    #scroll-hint {
+      display: block;
+    }
+  }
+
+  /* Desktop: hide scroll hint */
+  #scroll-hint {
+    display: none;
+    position: fixed;
+    bottom: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 13;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    pointer-events: none;
+  }
+  #scroll-hint.visible { opacity: 0.5; }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+  }
+  #scroll-hint span {
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
 </style>
 <link href="../assets/css/fonts.css" rel="stylesheet">
 </head>
@@ -351,6 +424,8 @@
   <span style="margin-left:0.4rem;font-size:8px;letter-spacing:0.3em;color:var(--bone-dim);">© 2026</span>
 </div>
 
+<div id="scroll-hint">tracklist<span>▾</span></div>
+
 <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
 
 <script>
@@ -387,6 +462,9 @@
   // 5..6.5s : crossfade — title fades out, UI fades in, entity grows to full presence
   // 6.5s+   : main mode
   // ============================================================
+  // Mobile detection: touch device with narrow viewport
+  const isMobile = window.matchMedia('(max-width: 768px) and (pointer: coarse)').matches;
+
   const presentation = {
     startTime: null,
     INTRO_MS: 5000,
@@ -397,10 +475,19 @@
       // Schedule the visual handoff at the start of the crossfade
       setTimeout(() => {
         document.getElementById('intro').classList.add('fading');
-        document.getElementById('tracklist').classList.add('visible');
+        if (!isMobile) {
+          document.getElementById('tracklist').classList.add('visible');
+        }
         document.getElementById('controls-wrap').classList.add('visible');
         document.getElementById('corner-tl').classList.add('visible');
         document.getElementById('corner-br').classList.add('visible');
+        // Mobile: show scroll hint and autoplay
+        if (isMobile) {
+          document.getElementById('scroll-hint').classList.add('visible');
+          playlist.repeatMode = REPEAT_ALL;
+          playlist.load(0, true);
+          playlist.refreshUI();
+        }
       }, this.INTRO_MS);
     },
     update(t) {
@@ -1792,6 +1879,22 @@
       playlist.load(Math.max(playlist.currentIndex - 1, 0), !audio.el.paused);
     }
   });
+
+  // Mobile: reveal tracklist on scroll, hide hint
+  if (isMobile) {
+    let scrollHintHidden = false;
+    const tracklistEl = document.getElementById('tracklist');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY > 40 && !scrollHintHidden) {
+        scrollHintHidden = true;
+        document.getElementById('scroll-hint').classList.remove('visible');
+      }
+      if (scrollY > 20) {
+        tracklistEl.classList.add('visible');
+      }
+    }, { passive: true });
+  }
 
   // Kick off the intro phase
   presentation.init();
