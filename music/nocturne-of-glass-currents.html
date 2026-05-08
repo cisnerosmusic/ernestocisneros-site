@@ -459,7 +459,6 @@
       }
       phantoms.reset();
       trackAtmosphere.transition(idx);
-      smoke.regenWithProfile(trackAtmosphere.to);
       this.refreshUI();
     },
     next() {
@@ -659,8 +658,10 @@
   // is always a lerp between `from.*` and `to.*`.
   // ============================================================
   const trackAtmosphere = {
-    FADE_MS: 2000,
+    FADE_MS: 7000,
+    REBAKE_INTERVAL: 1400,
     startTime: 0,
+    lastRebake: 0,
     progress: 1,
     from: null,
     to: null,
@@ -678,6 +679,7 @@
       this.from = this._clone(this.current);
       this.to = this._clone(p);
       this.startTime = performance.now();
+      this.lastRebake = this.startTime;
       this.progress = 0;
     },
     update(t) {
@@ -687,6 +689,9 @@
       this.progress = p * p * (3 - 2 * p);
       this._lerpAll();
       if (this.progress >= 1) {
+        smoke.regenWithProfile(this.current);
+      } else if (t - this.lastRebake > this.REBAKE_INTERVAL) {
+        this.lastRebake = t;
         smoke.regenWithProfile(this.current);
       }
     },
