@@ -295,7 +295,7 @@
     height: auto;
   }
 
-  /* MOBILE: tracklist scrolls in from below the viewport */
+  /* MOBILE: minimal controls, tracklist scrolls in from below */
   @media (max-width: 768px) and (pointer: coarse) {
     html, body {
       overflow-x: hidden;
@@ -314,6 +314,17 @@
     #controls-wrap {
       position: fixed;
       bottom: 1.2rem;
+      width: 90%;
+    }
+    #time-bar { display: none; }
+    #button-row { display: none; }
+    #now-playing {
+      margin-bottom: 0.5rem;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+    }
+    #mobile-play {
+      display: block;
     }
     #corner-tl {
       top: 1rem; left: 1rem;
@@ -336,6 +347,28 @@
     #scroll-hint {
       display: block;
     }
+  }
+
+  /* Mobile play button: hidden on desktop */
+  #mobile-play {
+    display: none;
+    text-align: center;
+  }
+  #mobile-play-btn {
+    background: transparent;
+    border: none;
+    color: var(--bone-dim);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: color 0.3s ease;
+  }
+  #mobile-play-btn:hover,
+  #mobile-play-btn:active {
+    color: var(--bone);
   }
 
   /* Desktop: hide scroll hint */
@@ -398,6 +431,7 @@
 
 <div id="controls-wrap">
   <div id="now-playing"></div>
+  <div id="mobile-play"><button id="mobile-play-btn">▶ play</button></div>
   <div id="time-bar">
     <span id="time-elapsed">0:00</span>
     <div id="progress" role="slider" aria-label="Progress">
@@ -1825,8 +1859,29 @@
 
   repeatBtn.addEventListener('click', () => playlist.cycleRepeat());
 
-  audio.el.addEventListener('play',  () => { playBtn.textContent = '❚❚ Pause'; });
-  audio.el.addEventListener('pause', () => { playBtn.textContent = '▶ Play'; });
+  // Mobile play button
+  const mobilePlayBtn = document.getElementById('mobile-play-btn');
+  mobilePlayBtn.addEventListener('click', () => {
+    if (playlist.currentIndex < 0) {
+      playlist.load(0, true);
+      return;
+    }
+    if (audio.el.paused) {
+      audio.init();
+      audio.el.play().catch(() => {});
+    } else {
+      audio.el.pause();
+    }
+  });
+
+  audio.el.addEventListener('play',  () => {
+    playBtn.textContent = '❚❚ Pause';
+    mobilePlayBtn.textContent = '❚❚ pause';
+  });
+  audio.el.addEventListener('pause', () => {
+    playBtn.textContent = '▶ Play';
+    mobilePlayBtn.textContent = '▶ play';
+  });
   audio.el.addEventListener('ended', () => playlist.onEnded());
 
   audio.el.addEventListener('timeupdate', () => {
