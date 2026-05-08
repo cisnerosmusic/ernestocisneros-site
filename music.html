@@ -155,6 +155,11 @@
     }
     .album-card[data-album="velvet"] .album-visual { color: rgba(212, 160, 48, 0.85); }
 
+    .album-card[data-album="nocturne"] .album-cover {
+      background: linear-gradient(135deg, #0a0510 0%, #1a0a2a 50%, #0a0510 100%);
+    }
+    .album-card[data-album="nocturne"] .album-visual { color: #9a8adf; }
+
     .album-card[data-album="glacial"] .album-cover {
       background: linear-gradient(135deg, #0a1520 0%, #1a3050 50%, #0a1520 100%);
     }
@@ -352,6 +357,8 @@
         <li class="nav-dropdown">
           <a href="music.html" class="nav-item active">Music</a>
           <div class="nav-dropdown-content">
+            <a href="music/nocturne-of-glass-currents.html" class="nav-dropdown-item">Nocturne of Glass Currents</a>
+
             <a href="music/velvet-alloy.html" class="nav-dropdown-item">Velvet Alloy</a>
 
             <a href="music/glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
@@ -420,8 +427,19 @@
 
     <section class="albums-section">
       <h2 class="albums-title">Explore the Albums</h2>
-      
+
       <div class="albums-grid">
+        <a href="music/nocturne-of-glass-currents.html" class="album-card" data-album="nocturne">
+          <div class="album-cover">
+            <div class="album-visual">◇</div>
+          </div>
+          <div class="album-info">
+            <h3 class="album-name">Nocturne of Glass Currents</h3>
+            <p class="album-desc">Fourteen tracks of audio-reactive generative art. Perlin noise smoke, phantom words, and broken-camera aesthetics.</p>
+            <span class="album-link">Listen</span>
+          </div>
+        </a>
+
         <a href="music/velvet-alloy.html" class="album-card" data-album="velvet">
           <div class="album-cover">
             <div class="album-visual">◆</div>

@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+<title>Nocturne of Glass Currents | Ernesto Cisneros Cino</title>
+<meta name="description" content="Nocturne of Glass Currents — Fourteen tracks of audio-reactive generative art. An immersive listening experience by Ernesto Cisneros Cino.">
+<meta property="og:type" content="music.album">
+<meta property="og:url" content="https://ernestocisneros.art/music/nocturne-of-glass-currents.html">
+<meta property="og:title" content="Nocturne of Glass Currents | Ernesto Cisneros Cino">
+<meta property="og:description" content="Fourteen tracks of audio-reactive generative art. An immersive listening experience.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://ernestocisneros.art/music/nocturne-of-glass-currents.html">
+<meta name="twitter:title" content="Nocturne of Glass Currents | Ernesto Cisneros Cino">
+<meta name="twitter:description" content="Fourteen tracks of audio-reactive generative art. An immersive listening experience.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link rel="canonical" href="https://ernestocisneros.art/music/nocturne-of-glass-currents.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/music/nocturne-of-glass-currents.html">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/music/nocturne-of-glass-currents.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "Nocturne of Glass Currents",
+  "byArtist": {"@type": "Person", "name": "Ernesto Cisneros Cino", "sameAs": "https://orcid.org/0009-0002-2833-1787"},
+  "numTracks": 14,
+  "datePublished": "2026",
+  "url": "https://ernestocisneros.art/music/nocturne-of-glass-currents.html",
+  "genre": ["Electronic", "Ambient", "Experimental"],
+  "description": "Fourteen tracks of audio-reactive generative art"
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Music", "item": "/music.html"}, {"@type": "ListItem", "position": 3, "name": "Nocturne of Glass Currents"}]}
+</script>
+<style>
+  :root {
+    --void: #0a0b08;
+    --bronze-deep: #1d2017;
+    --bronze: #3a3f28;
+    --bronze-lit: #5a5f3e;
+    --bone-dim: #7a7568;
+    --bone: #b8b3a0;
+    --bone-lit: #d4cdb8;
+    --mono: 'Courier New', 'Lucida Console', 'Monaco', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--void);
+    overflow: hidden;
+    color: var(--bone);
+    font-family: var(--mono);
+    cursor: default;
+  }
+  #stage {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: block;
+  }
+
+  /* INTRO: large title + author, fades after 5s */
+  #intro {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1.75rem;
+    background: rgba(10, 11, 8, 0.55);
+    z-index: 30;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+  }
+  #intro.fading { opacity: 0; }
+  #intro-title {
+    font-family: var(--mono);
+    font-size: clamp(26px, 4.6vw, 54px);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-align: center;
+    color: var(--bone);
+    text-transform: uppercase;
+    line-height: 1.15;
+    max-width: 92%;
+  }
+  #intro-author {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.45em;
+    color: var(--bone-dim);
+    text-transform: uppercase;
+  }
+
+  /* TRACKLIST: top-right corner */
+  #tracklist {
+    position: fixed;
+    top: 1.5rem; right: 1.5rem;
+    max-width: 320px;
+    z-index: 12;
+    font-family: var(--mono);
+    color: var(--bone-dim);
+    opacity: 0;
+    transition: opacity 1.5s ease 0.4s;
+  }
+  #tracklist.visible { opacity: 1; }
+  .tracklist-header {
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    margin-bottom: 0.85rem;
+    color: var(--bone-dim);
+    font-size: 9px;
+    text-align: right;
+  }
+  .track-row {
+    padding: 0.32rem 0.5rem 0.32rem 0.7rem;
+    cursor: pointer;
+    display: flex;
+    gap: 0.55rem;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    transition: color 0.3s ease, background 0.3s ease;
+    border-left: 1px solid transparent;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+  }
+  .track-row:hover { color: var(--bone); }
+  .track-row.active {
+    color: var(--bone-lit);
+    border-left-color: var(--bone);
+    background: rgba(184, 179, 160, 0.04);
+  }
+  .track-num {
+    color: var(--bone-dim);
+    min-width: 22px;
+    flex-shrink: 0;
+  }
+  .track-row.active .track-num { color: var(--bone); }
+  .track-title { flex: 1; }
+
+  /* BOTTOM CONTROLS */
+  #controls-wrap {
+    position: fixed;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(640px, 90%);
+    z-index: 12;
+    font-family: var(--mono);
+    opacity: 0;
+    transition: opacity 1.5s ease 0.4s;
+  }
+  #controls-wrap.visible { opacity: 1; }
+  #now-playing {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 0.9rem;
+    min-height: 14px;
+  }
+  #time-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--bone-dim);
+    margin-bottom: 1.1rem;
+  }
+  #progress {
+    flex: 1;
+    height: 1px;
+    background: rgba(184, 179, 160, 0.15);
+    position: relative;
+    cursor: pointer;
+  }
+  #progress::before {
+    content: '';
+    position: absolute;
+    top: -8px; bottom: -8px; left: 0; right: 0;
+  }
+  #progress-fill {
+    height: 100%;
+    background: var(--bone);
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+  #progress-head {
+    position: absolute;
+    top: 50%; left: 0%;
+    width: 6px; height: 6px;
+    background: var(--bone-lit);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: left 0.1s linear;
+  }
+  #time-elapsed, #time-remaining {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    min-width: 54px;
+    color: var(--bone-dim);
+  }
+  #time-remaining { text-align: right; }
+
+  #button-row {
+    display: flex;
+    gap: 0.85rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    background: transparent;
+    border: 1px solid var(--bone-dim);
+    color: var(--bone);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    min-width: 96px;
+  }
+  .btn:hover {
+    border-color: var(--bone);
+    color: var(--bone-lit);
+    background: rgba(184, 179, 160, 0.05);
+  }
+  .btn.active {
+    border-color: var(--bone);
+    color: var(--bone-lit);
+    background: rgba(184, 179, 160, 0.08);
+  }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  #play-btn { min-width: 116px; }
+
+  /* Corner attribution */
+  .corner {
+    position: fixed;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-family: var(--mono);
+    z-index: 11;
+  }
+  #corner-tl {
+    top: 1.5rem; left: 1.5rem;
+    opacity: 0;
+    transition: opacity 1.5s ease 0.4s;
+  }
+  #corner-tl.visible { opacity: 1; }
+  #corner-br {
+    opacity: 0;
+    transition: opacity 1.5s ease 0.4s;
+  }
+  #corner-br.visible { opacity: 1; }
+
+  /* Skip links */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999;
+    padding: 8px;
+    background: var(--bone);
+    color: var(--void);
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .skip-link:focus {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    width: auto;
+    height: auto;
+  }
+</style>
+<link href="../assets/css/fonts.css" rel="stylesheet">
+</head>
+<body>
+<a href="#controls-wrap" class="skip-link">Skip to main content</a>
+<a href="#controls-wrap" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:var(--bone);color:var(--void);font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Skip to main content</a>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+
+<nav id="corner-tl" class="corner" style="display:flex;align-items:center;gap:1.2rem;">
+  <a href="../index.html" aria-label="Home" style="opacity:0.5;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+    <picture>
+      <source srcset="../assets/images/logo.webp" type="image/webp">
+      <img src="../assets/images/logo.png" alt="ECC" style="height:28px;mix-blend-mode:lighten;" loading="lazy">
+    </picture>
+  </a>
+  <a href="../music.html" style="color:var(--bone-dim);font-size:9px;letter-spacing:0.3em;text-transform:uppercase;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'">← Music</a>
+</nav>
+
+<div id="intro">
+  <h1 id="intro-title">Nocturne of Glass Currents</h1>
+  <p id="intro-author">Ernesto Cisneros Cino</p>
+</div>
+
+<div id="tracklist" aria-label="Tracklist">
+  <div class="tracklist-header">— Tracklist —</div>
+  <div id="tracklist-rows"></div>
+</div>
+
+<div id="controls-wrap">
+  <div id="now-playing"></div>
+  <div id="time-bar">
+    <span id="time-elapsed">0:00</span>
+    <div id="progress" role="slider" aria-label="Progress">
+      <div id="progress-fill"></div>
+      <div id="progress-head"></div>
+    </div>
+    <span id="time-remaining">-0:00</span>
+  </div>
+  <div id="button-row">
+    <button class="btn" id="prev-btn" title="Previous track">⟵ Prev</button>
+    <button class="btn" id="play-btn">▶ Play</button>
+    <button class="btn" id="next-btn" title="Next track">Next ⟶</button>
+    <button class="btn" id="repeat-btn">Loop : Off</button>
+  </div>
+</div>
+
+<div id="corner-br" class="corner" style="bottom:1.5rem;right:1.5rem;top:auto;left:auto;display:flex;align-items:center;gap:0.8rem;opacity:0;transition:opacity 1.5s ease 0.4s;">
+  <a href="https://x.com/ErnestCisneros1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" style="color:var(--bone-dim);transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:var(--bone-dim);transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+  <a href="https://github.com/cisnerosmusic" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style="color:var(--bone-dim);transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+  <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style="color:var(--bone-dim);transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+  <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="color:var(--bone-dim);transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a href="https://gitlab.com/ernestocisneroscino" target="_blank" rel="noopener noreferrer" aria-label="GitLab" style="color:var(--bone-dim);transition:color 0.3s;" onmouseover="this.style.color='var(--bone-lit)'" onmouseout="this.style.color='var(--bone-dim)'"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 00-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 00-.867 0L1.386 9.452.044 13.587a.924.924 0 00.331 1.023L12 23.054l11.625-8.443a.92.92 0 00.33-1.024"/></svg></a>
+  <span style="margin-left:0.4rem;font-size:8px;letter-spacing:0.3em;color:var(--bone-dim);">© 2026</span>
+</div>
+
+<audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
+
+<script>
+(() => {
+  'use strict';
+
+  // ============================================================
+  // TRACKLIST
+  // Audio files live at /assets/audio/nocturne-of-glass-currents/
+  // Each entry has a display `title` and a real `file` on disk.
+  // The file is URL-encoded at load time to handle spaces and quotes.
+  // ============================================================
+  const AUDIO_BASE = '/assets/audio/nocturne-of-glass-currents/';
+  const TRACKS = [
+    { title: 'Nocturne of Glass Currents',          file: '01-Nocturne of Glass Currents.mp3' },
+    { title: 'Echoes Through Mercury Veins',        file: '02-Echoes Through Mercury Veins.mp3' },
+    { title: 'Fractured Dreams in Gold Dust',       file: '03-Fractured Dreams in Gold Dust.mp3' },
+    { title: 'Glass Under Skin',                    file: '04-Glass Under Skin.mp3' },
+    { title: 'Malformed Halo',                      file: '05-Malformed Halo.mp3' },
+    { title: 'Unlined Neon Drift',                  file: '06-Unlined Neon Drift.mp3' },
+    { title: 'Glass Rituals for Phantom Hearts',    file: '07-Glass Rituals for Phantom Hearts.mp3' },
+    { title: 'Midnight Bloom of Machines',          file: '08-Midnight Bloom of Machines.mp3' },
+    { title: 'The Blood of the Virtual World',      file: '09-The Blood of the Virtual World.mp3' },
+    { title: 'Malfunction Atlas',                   file: '10-Malfunction Atlas.mp3' },
+    { title: "The Moon's Abandoned Bride",          file: "11-The Moon's Abandoned Bride.mp3" },
+    { title: 'Wet Concrete Orbit',                  file: '12-Wet Concrete Orbit.mp3' },
+    { title: 'Broken Signal Run',                   file: '13-Broken Signal Run.mp3' },
+    { title: 'Piano with an Absent Soul',           file: '14-Piano with an Absent Soul.mp3' }
+  ];
+
+  // ============================================================
+  // PRESENTATION · intro phase manager
+  // 0..5s   : title + author visible, entity reduced to 55% size and 40% opacity
+  // 5..6.5s : crossfade — title fades out, UI fades in, entity grows to full presence
+  // 6.5s+   : main mode
+  // ============================================================
+  const presentation = {
+    startTime: null,
+    INTRO_MS: 5000,
+    XFADE_MS: 1500,
+    introInfluence: 1.0,   // 1 = full intro state, 0 = full main state
+    init() {
+      this.startTime = performance.now();
+      // Schedule the visual handoff at the start of the crossfade
+      setTimeout(() => {
+        document.getElementById('intro').classList.add('fading');
+        document.getElementById('tracklist').classList.add('visible');
+        document.getElementById('controls-wrap').classList.add('visible');
+        document.getElementById('corner-tl').classList.add('visible');
+        document.getElementById('corner-br').classList.add('visible');
+      }, this.INTRO_MS);
+    },
+    update(t) {
+      const e = t - this.startTime;
+      if (e < this.INTRO_MS) {
+        this.introInfluence = 1.0;
+      } else if (e < this.INTRO_MS + this.XFADE_MS) {
+        const p = (e - this.INTRO_MS) / this.XFADE_MS;
+        // Smoothstep-like easing: 1 - p smoothed
+        this.introInfluence = 1 - (p * p * (3 - 2 * p));
+      } else {
+        this.introInfluence = 0;
+      }
+    }
+  };
+
+  // ============================================================
+  // PLAYLIST · track navigation and repeat modes
+  // Repeat: 0 = off, 1 = current track, 2 = whole album
+  // ============================================================
+  const REPEAT_OFF = 0, REPEAT_ONE = 1, REPEAT_ALL = 2;
+  const playlist = {
+    tracks: TRACKS,
+    currentIndex: -1,        // none loaded yet
+    repeatMode: REPEAT_OFF,
+    render() {
+      const wrap = document.getElementById('tracklist-rows');
+      wrap.innerHTML = '';
+      this.tracks.forEach((tr, i) => {
+        const row = document.createElement('div');
+        row.className = 'track-row';
+        row.dataset.idx = i;
+        const num = document.createElement('span');
+        num.className = 'track-num';
+        num.textContent = String(i + 1).padStart(2, '0');
+        const title = document.createElement('span');
+        title.className = 'track-title';
+        title.textContent = tr.title;
+        row.appendChild(num);
+        row.appendChild(title);
+        row.addEventListener('click', () => this.load(i, true));
+        wrap.appendChild(row);
+      });
+    },
+    load(idx, autoplay) {
+      if (idx < 0 || idx >= this.tracks.length) return;
+      this.currentIndex = idx;
+      const track = this.tracks[idx];
+      audio.init();
+      if (track.file) {
+        const url = AUDIO_BASE + encodeURIComponent(track.file);
+        audio.loadUrl(url);
+        if (autoplay) {
+          audio.el.play().catch(() => { /* swallow autoplay rejection */ });
+        }
+      }
+      phantoms.reset();
+      this.refreshUI();
+    },
+    next() {
+      if (this.currentIndex + 1 < this.tracks.length) {
+        this.load(this.currentIndex + 1, true);
+      } else if (this.repeatMode === REPEAT_ALL) {
+        this.load(0, true);
+      } else {
+        // End of album, no loop: stop here
+        document.getElementById('play-btn').textContent = '▶ Play';
+      }
+    },
+    onEnded() {
+      if (this.repeatMode === REPEAT_ONE) {
+        audio.el.currentTime = 0;
+        audio.el.play();
+        phantoms.reset();
+      } else {
+        this.next();
+      }
+    },
+    cycleRepeat() {
+      this.repeatMode = (this.repeatMode + 1) % 3;
+      this.refreshUI();
+    },
+    refreshUI() {
+      // Track rows
+      document.querySelectorAll('.track-row').forEach((el, i) => {
+        el.classList.toggle('active', i === this.currentIndex);
+      });
+      // Repeat button
+      const labels = ['Loop : Off', 'Loop : One', 'Loop : All'];
+      const rb = document.getElementById('repeat-btn');
+      rb.textContent = labels[this.repeatMode];
+      rb.classList.toggle('active', this.repeatMode !== REPEAT_OFF);
+      // Now playing line
+      const np = document.getElementById('now-playing');
+      if (this.currentIndex >= 0) {
+        const tr = this.tracks[this.currentIndex];
+        np.textContent = String(this.currentIndex + 1).padStart(2, '0') + '  —  ' + tr.title;
+      } else {
+        np.textContent = '';
+      }
+    }
+  };
+
+  // ============================================================
+  // CONSTANTS · PALETTE
+  // ============================================================
+  const PALETTE = {
+    void:        [10, 11, 8],
+    bronzeDeep:  [29, 32, 23],
+    bronze:      [58, 63, 40],
+    bronzeLit:   [90, 95, 62],
+    boneDim:     [122, 117, 104],
+    bone:        [184, 179, 160],
+    boneLit:     [212, 205, 184],
+    boneYellow:  [196, 176, 112],
+    stripeWhite: [208, 204, 192],
+    stripeCopper:[160, 170, 142]
+  };
+  const rgb  = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+
+  // ============================================================
+  // SCRIPTED MOMENTS
+  // Pre-populate this array with your own track-specific cues
+  // once the master is finalized. Each moment has:
+  //   t        = time in seconds
+  //   type     = 'collapse' | 'apparition' | 'silence' | 'tear'
+  //   d        = duration in ms
+  //   strength = 0..1 intensity multiplier
+  //
+  // Example:
+  //   { t: 92.4, type: 'collapse',   d: 1800, strength: 0.85 },
+  //   { t: 184,  type: 'apparition', d: 2400, strength: 1.0  },
+  //   { t: 233,  type: 'silence',    d: 1500, strength: 0.6  },
+  //   { t: 287,  type: 'tear',       d:  300, strength: 1.0  },
+  // ============================================================
+  const MOMENTS = [];
+
+  // ============================================================
+  // CANVAS SETUP
+  // ============================================================
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d', { alpha: false });
+  let W = 0, H = 0, DPR = 1;
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    if (smoke.lo) smoke.regen();
+  }
+  window.addEventListener('resize', resize);
+
+  // ============================================================
+  // VALUE NOISE (2D and 3D) — small, deterministic, no deps
+  // ============================================================
+  const noise = (() => {
+    const perm = new Uint8Array(512);
+    const tmp = new Uint8Array(256);
+    for (let i = 0; i < 256; i++) tmp[i] = i;
+    let seed = 1729;
+    const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    for (let i = 255; i > 0; i--) {
+      const j = Math.floor(rnd() * (i + 1));
+      [tmp[i], tmp[j]] = [tmp[j], tmp[i]];
+    }
+    for (let i = 0; i < 512; i++) perm[i] = tmp[i & 255];
+    const fade = t => t * t * t * (t * (t * 6 - 15) + 10);
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const grad = (h, x, y, z) => {
+      const u = h < 8 ? x : y;
+      const v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+      return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+    };
+    function n3(x, y, z) {
+      const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+      x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+      const u = fade(x), v = fade(y), w = fade(z);
+      const A = perm[X] + Y, AA = perm[A] + Z, AB = perm[A + 1] + Z;
+      const B = perm[X + 1] + Y, BA = perm[B] + Z, BB = perm[B + 1] + Z;
+      return lerp(
+        lerp(
+          lerp(grad(perm[AA], x, y, z), grad(perm[BA], x - 1, y, z), u),
+          lerp(grad(perm[AB], x, y - 1, z), grad(perm[BB], x - 1, y - 1, z), u),
+          v),
+        lerp(
+          lerp(grad(perm[AA + 1], x, y, z - 1), grad(perm[BA + 1], x - 1, y, z - 1), u),
+          lerp(grad(perm[AB + 1], x, y - 1, z - 1), grad(perm[BB + 1], x - 1, y - 1, z - 1), u),
+          v),
+        w);
+    }
+    function fbm(x, y, z, oct = 4, lac = 2.0, gain = 0.5) {
+      let f = 1, a = 1, sum = 0, norm = 0;
+      for (let i = 0; i < oct; i++) {
+        sum += a * n3(x * f, y * f, z * f);
+        norm += a;
+        f *= lac;
+        a *= gain;
+      }
+      return sum / norm;
+    }
+    return { n3, fbm };
+  })();
+
+  // ============================================================
+  // AUDIO SYSTEM
+  // ============================================================
+  const audio = {
+    el: document.getElementById('audio'),
+    ctx: null,
+    analyser: null,
+    source: null,
+    data: null,
+    bands: { sub: 0, bass: 0, lowMid: 0, mid: 0, hiMid: 0, treble: 0, air: 0, k1khz: 0, k5_8: 0 },
+    smoothed: { sub: 0, bass: 0, lowMid: 0, mid: 0, hiMid: 0, treble: 0, air: 0, k1khz: 0, k5_8: 0, energy: 0, peak: 0 },
+    energy: 0,
+    peak: 0,
+    ready: false,
+    procedural: true,
+
+    init() {
+      if (this.ctx) {
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        return;
+      }
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      this.analyser = this.ctx.createAnalyser();
+      this.analyser.fftSize = 1024;
+      this.analyser.smoothingTimeConstant = 0.6;
+      this.data = new Uint8Array(this.analyser.frequencyBinCount);
+      this.source = this.ctx.createMediaElementSource(this.el);
+      this.source.connect(this.analyser);
+      this.analyser.connect(this.ctx.destination);
+      this.ready = true;
+    },
+    loadUrl(url) {
+      this.el.src = url;
+      this.el.load();
+      this.procedural = false;
+      document.getElementById('play-btn').disabled = false;
+    },
+    sample() {
+      if (this.procedural || !this.ready) {
+        // Procedural mode: fabricate plausible audio for visual testing.
+        const t = performance.now() * 0.001;
+        const sub  = 0.5 + 0.5 * Math.sin(t * 0.31);
+        const bass = 0.45 + 0.45 * Math.sin(t * 0.7 + 1.2) * Math.sin(t * 0.13);
+        const mid  = 0.4 + 0.4 * Math.sin(t * 1.3 + 2.1);
+        const treble = 0.25 + 0.25 * Math.abs(Math.sin(t * 2.7));
+        this.bands.sub = sub * 0.55;
+        this.bands.bass = bass * 0.5;
+        this.bands.lowMid = (sub + bass) * 0.25;
+        this.bands.mid = mid * 0.4;
+        this.bands.hiMid = mid * 0.3;
+        this.bands.treble = treble * 0.4;
+        this.bands.air = treble * 0.25;
+        // Procedural K1khz: oscillation independent of other bands
+        this.bands.k1khz = 0.3 + 0.4 * Math.abs(Math.sin(t * 0.45 + 0.7)) * (0.6 + 0.4 * Math.sin(t * 0.11));
+        // Procedural K5-8khz: sparse rhythmic transients (Math.pow biases toward zero
+        // with occasional high spikes, simulating hi-hat / percussive transients)
+        this.bands.k5_8 = Math.max(0, treble - 0.2) * 1.2 + 0.8 * Math.pow(Math.random(), 5);
+        this.energy = (sub + bass + mid + treble) * 0.25;
+        this.peak = Math.max(sub, bass, mid, treble);
+      } else {
+        this.analyser.getByteFrequencyData(this.data);
+        const N = this.data.length;
+        // Logarithmic-ish band slicing on FFT bins
+        const slice = (a, b) => {
+          let s = 0, c = 0;
+          for (let i = a; i < b; i++) { s += this.data[i]; c++; }
+          return c > 0 ? (s / c) / 255 : 0;
+        };
+        this.bands.sub    = slice(0, 4);
+        this.bands.bass   = slice(4, 12);
+        this.bands.lowMid = slice(12, 32);
+        this.bands.mid    = slice(32, 80);
+        this.bands.hiMid  = slice(80, 160);
+        this.bands.treble = slice(160, 320);
+        this.bands.air    = slice(320, N);
+        // Gaussian-weighted energy around 1 kHz
+        // K = sum(magnitude(f) * exp(-(f - f0)^2 / (2 sigma^2))) / sum(weights)
+        // Adjust SIGMA_HZ to widen or narrow the bell. Smaller = more selective.
+        const F0_HZ = 1000;
+        const SIGMA_HZ = 250;
+        const sr = this.ctx.sampleRate;
+        const binHz = sr / (this.analyser.fftSize);
+        let kSum = 0, kNorm = 0;
+        for (let i = 0; i < N; i++) {
+          const f = i * binHz;
+          const df = f - F0_HZ;
+          const w = Math.exp(-(df * df) / (2 * SIGMA_HZ * SIGMA_HZ));
+          if (w < 0.001) continue; // skip negligible weights
+          kSum += (this.data[i] / 255) * w;
+          kNorm += w;
+        }
+        this.bands.k1khz = kNorm > 0 ? (kSum / kNorm) : 0;
+        // Flat-window energy in 5-8 kHz range (percussive transients zone)
+        const F_LO = 5000, F_HI = 8000;
+        const binLo = Math.max(0, Math.floor(F_LO / binHz));
+        const binHi = Math.min(N, Math.ceil(F_HI / binHz));
+        let s58 = 0, c58 = 0;
+        for (let i = binLo; i < binHi; i++) { s58 += this.data[i]; c58++; }
+        this.bands.k5_8 = c58 > 0 ? (s58 / c58) / 255 : 0;
+        this.energy = (this.bands.sub + this.bands.bass + this.bands.mid + this.bands.treble) * 0.25;
+        let peak = 0;
+        for (let i = 0; i < N; i++) if (this.data[i] / 255 > peak) peak = this.data[i] / 255;
+        this.peak = peak;
+      }
+      // Exponential smoothing
+      const k = 0.18;
+      for (const key in this.bands) {
+        this.smoothed[key] = this.smoothed[key] * (1 - k) + this.bands[key] * k;
+      }
+      this.smoothed.energy = this.smoothed.energy * 0.92 + this.energy * 0.08;
+      this.smoothed.peak = this.smoothed.peak * 0.85 + this.peak * 0.15;
+    }
+  };
+
+  // ============================================================
+  // SMOKE LAYERS
+  // Two offscreen canvases, regenerated periodically with
+  // domain-warped fractal noise. Tinted bronze. Drift slowly.
+  // ============================================================
+  const smoke = {
+    lo: null, hi: null,
+    loCtx: null, hiCtx: null,
+    sw: 0, sh: 0,
+    offsetLo: 0, offsetHi: 0,
+    regen() {
+      this.sw = Math.ceil(W / 2);
+      this.sh = Math.ceil(H / 2);
+      [this.lo, this.hi] = [this.lo || document.createElement('canvas'),
+                             this.hi || document.createElement('canvas')];
+      [this.lo, this.hi].forEach(c => { c.width = this.sw; c.height = this.sh; });
+      this.loCtx = this.lo.getContext('2d');
+      this.hiCtx = this.hi.getContext('2d');
+      this.bake('lo', 0.006, 4, 1);
+      this.bake('hi', 0.018, 3, 1.8);
+    },
+    bake(which, scale, oct, warp) {
+      const c = which === 'lo' ? this.loCtx : this.hiCtx;
+      const w = this.sw, h = this.sh;
+      const img = c.createImageData(w, h);
+      const d = img.data;
+      const tint = which === 'lo' ? PALETTE.bronzeDeep : PALETTE.bronze;
+      const baseTint = which === 'lo' ? PALETTE.bronze : PALETTE.bronzeLit;
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const wx = noise.fbm(x * scale + 100, y * scale, 0, 2) * warp;
+          const wy = noise.fbm(x * scale, y * scale + 100, 0, 2) * warp;
+          let v = noise.fbm((x + wx * 30) * scale, (y + wy * 30) * scale, 0, oct);
+          v = (v + 0.5);
+          if (which === 'lo') {
+            // Heavy at the bottom, thinner at top
+            const grad = 1 - (y / h);
+            v *= 0.55 + 0.45 * grad;
+          } else {
+            v *= 0.4;
+          }
+          v = Math.max(0, Math.min(1, v));
+          const i = (y * w + x) * 4;
+          const r = tint[0] + (baseTint[0] - tint[0]) * v;
+          const g = tint[1] + (baseTint[1] - tint[1]) * v;
+          const b = tint[2] + (baseTint[2] - tint[2]) * v;
+          d[i] = r; d[i + 1] = g; d[i + 2] = b;
+          d[i + 3] = which === 'lo' ? 200 * v : 90 * v;
+        }
+      }
+      c.putImageData(img, 0, 0);
+    },
+    draw(t) {
+      if (!this.lo) return;
+      this.offsetLo += 0.15 + audio.smoothed.sub * 0.4;
+      this.offsetHi += 0.05 + audio.smoothed.air * 0.6;
+      const yLo = (this.offsetLo % this.sh);
+      const yHi = (this.offsetHi % this.sh);
+      ctx.globalAlpha = 0.85;
+      ctx.drawImage(this.lo, 0, yLo - this.sh, W, H);
+      ctx.drawImage(this.lo, 0, yLo, W, H);
+      ctx.globalAlpha = 0.55;
+      ctx.drawImage(this.hi, 0, yHi - this.sh, W, H);
+      ctx.drawImage(this.hi, 0, yHi, W, H);
+      ctx.globalAlpha = 1;
+    }
+  };
+
+  // ============================================================
+  // ENTITY
+  // 28 vertices on a noise-deformed sphere.
+  // Edges drawn between pairs whose 3D distance × audio_factor < threshold.
+  // The connection rule never resolves into a recognizable polyhedron.
+  // ============================================================
+  const entity = {
+    N: 28,
+    base: [],   // unit-sphere positions
+    pos: [],    // current 3D positions after deformation
+    proj: [],   // projected 2D + depth
+    rot: { x: 0, y: 0, z: 0 },
+    init() {
+      // Fibonacci sphere distribution
+      const phi = Math.PI * (3 - Math.sqrt(5));
+      for (let i = 0; i < this.N; i++) {
+        const y = 1 - (i / (this.N - 1)) * 2;
+        const r = Math.sqrt(1 - y * y);
+        const theta = phi * i;
+        this.base.push([Math.cos(theta) * r, y, Math.sin(theta) * r]);
+        this.pos.push([0, 0, 0]);
+        this.proj.push([0, 0, 0, 0]);
+      }
+    },
+    update(t) {
+      // Three irrational rotation rates
+      this.rot.x = t * 0.00009;
+      this.rot.y = t * 0.00013 * 1.317;
+      this.rot.z = t * 0.00007 * 0.831;
+      const cx = Math.cos(this.rot.x), sx = Math.sin(this.rot.x);
+      const cy = Math.cos(this.rot.y), sy = Math.sin(this.rot.y);
+      const cz = Math.cos(this.rot.z), sz = Math.sin(this.rot.z);
+      const tt = t * 0.0004;
+      const breath = 1 + audio.smoothed.bass * 0.35 + Math.sin(t * 0.0008) * 0.04;
+      // During intro, entity is reduced to ~55% of normal size
+      const introScale = 1 - presentation.introInfluence * 0.45;
+      const baseRadius = Math.min(W, H) * 0.18 * breath * introScale;
+      const distort = 0.35 + audio.smoothed.energy * 0.7 + activeMoment.distort;
+
+      for (let i = 0; i < this.N; i++) {
+        const b = this.base[i];
+        // Per-vertex deformation: 3D noise sampled at (b * scale + time)
+        const nx = noise.fbm(b[0] * 1.7 + tt, b[1] * 1.7, b[2] * 1.7, 3) * distort;
+        const ny = noise.fbm(b[0] * 1.7, b[1] * 1.7 + tt, b[2] * 1.7, 3) * distort;
+        const nz = noise.fbm(b[0] * 1.7, b[1] * 1.7, b[2] * 1.7 + tt, 3) * distort;
+        let x = b[0] + nx, y = b[1] + ny, z = b[2] + nz;
+        // Rotate: Y then X then Z
+        let x1 =  cy * x + sy * z;
+        let z1 = -sy * x + cy * z;
+        let y1 =  cx * y - sx * z1;
+        let z2 =  sx * y + cx * z1;
+        let x2 =  cz * x1 - sz * y1;
+        let y2 =  sz * x1 + cz * y1;
+        this.pos[i][0] = x2 * baseRadius;
+        this.pos[i][1] = y2 * baseRadius;
+        this.pos[i][2] = z2 * baseRadius;
+        // Perspective projection
+        const fov = Math.min(W, H) * 0.9;
+        const camZ = baseRadius * 3;
+        const denom = (camZ - this.pos[i][2]);
+        const sx2 = (this.pos[i][0] * fov / denom) + W / 2;
+        const sy2 = (this.pos[i][1] * fov / denom) + H / 2;
+        this.proj[i][0] = sx2;
+        this.proj[i][1] = sy2;
+        this.proj[i][2] = this.pos[i][2];
+        this.proj[i][3] = denom;
+      }
+    },
+    draw(t) {
+      // Edges: for every pair, connect if distance below an audio-modulated threshold.
+      // The threshold breathes and occasionally widens for "apparition" moments.
+      const baseR = Math.min(W, H) * 0.18;
+      const intensity = audio.smoothed.energy + audio.smoothed.bass * 0.5;
+      const apparitionBoost = activeMoment.apparition;
+      const threshold = baseR * (1.05 + intensity * 0.65 + apparitionBoost * 0.6);
+
+      // Phase shifts the connectivity rule slowly so structures dissolve
+      const phaseScale = 0.0001;
+      const phase = noise.fbm(t * phaseScale, 0, 0, 2) * 0.3;
+
+      // Curvature parameter: how much each edge bows away from straight.
+      // Driven by K1khz (gaussian-weighted energy around 1 kHz).
+      // CURVE_MAX is the maximum bow as a fraction of edge length.
+      // 34% of pairs are flagged as "aggressive": their curvature is
+      // larger, oscillates faster, and is unstable (noise-modulated).
+      const CURVE_MAX = 0.35;
+      const AGGRESSIVE_FRAC = 0.34;
+      const AGGRESSIVE_MULT = 2.5;
+      const K = audio.smoothed.k1khz;
+      // During intro, all entity opacities are dimmed to ~40%
+      const introDim = 1 - presentation.introInfluence * 0.6;
+
+      // Deterministic hash to flag a stable subset of pairs as aggressive
+      const isAggressive = (i, j) => {
+        const h = (((i + 1) * 73856093) ^ ((j + 1) * 19349663)) >>> 0;
+        return (h % 1000) / 1000 < AGGRESSIVE_FRAC;
+      };
+
+      ctx.lineCap = 'round';
+      for (let i = 0; i < this.N; i++) {
+        for (let j = i + 1; j < this.N; j++) {
+          const dx = this.pos[i][0] - this.pos[j][0];
+          const dy = this.pos[i][1] - this.pos[j][1];
+          const dz = this.pos[i][2] - this.pos[j][2];
+          const d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          // Add a non-obvious modulation per pair so the rule is not pure proximity
+          const mod = 1 + phase * Math.sin((i + 1) * (j + 1) * 0.7);
+          const eff = d * mod;
+          if (eff < threshold) {
+            const a = (1 - eff / threshold) * 0.55;
+            const z = (this.pos[i][2] + this.pos[j][2]) * 0.5;
+            const depthFade = 0.5 + 0.5 * (z / baseR);
+            const finalA = Math.max(0.02, a * depthFade) * introDim;
+            // Color: bone for the closer/highlighted edges, bronze for the deeper web
+            const useBone = depthFade > 0.65 || audio.smoothed.treble > 0.5;
+            const c = useBone ? PALETTE.bone : PALETTE.bronzeLit;
+            ctx.strokeStyle = rgb(c, finalA);
+            ctx.lineWidth = 0.5 + audio.smoothed.treble * 1.2;
+
+            // Curved edge via quadratic Bezier.
+            // Calm pairs (66%): slow stable oscillation of sign.
+            // Aggressive pairs (34%): faster sign + noise-modulated
+            // magnitude + larger maximum bow.
+            const x1 = this.proj[i][0], y1 = this.proj[i][1];
+            const x2 = this.proj[j][0], y2 = this.proj[j][1];
+            const sx = x2 - x1, sy = y2 - y1;
+            const segLen = Math.sqrt(sx * sx + sy * sy) || 1;
+            const nx = -sy / segLen;
+            const ny =  sx / segLen;
+            let bow;
+            if (isAggressive(i, j)) {
+              const fastSign = Math.sin((i + 1) * (j + 1) * 1.371 + t * 0.0025);
+              const wobble = noise.n3(i * 0.4 + t * 0.0015, j * 0.4, 0);
+              bow = K * segLen * CURVE_MAX * AGGRESSIVE_MULT * fastSign * (1 + Math.abs(wobble) * 0.6);
+            } else {
+              const slowSign = Math.sin((i + 1) * (j + 1) * 1.371 + t * 0.0002);
+              bow = K * segLen * CURVE_MAX * slowSign;
+            }
+            const cx = (x1 + x2) * 0.5 + nx * bow;
+            const cy = (y1 + y2) * 0.5 + ny * bow;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.quadraticCurveTo(cx, cy, x2, y2);
+            ctx.stroke();
+          }
+        }
+      }
+      // Vertices: respond to overall energy and bass with size and brightness.
+      // Bass-driven glow halo emerges on low-end hits. Size growth is modest
+      // to avoid the entity feeling inflated.
+      const eAvg = audio.smoothed.energy;
+      const eBass = audio.smoothed.bass;
+      const ePeak = audio.smoothed.peak;
+      for (let i = 0; i < this.N; i++) {
+        const z = this.pos[i][2];
+        const depthFade = 0.4 + 0.6 * ((z + baseR) / (baseR * 2));
+        // Size: gentle growth (base 0.9, peak/bass push, energy floor lift)
+        const r = (0.9 + ePeak * 1.2 + eBass * 0.7 + eAvg * 0.4) * depthFade;
+        // Glow halo on bass pulse (only emerges above a threshold so it
+        // reads as a punctuated event, not constant ambient glow).
+        // Uses a radial gradient that fades fully to transparent at the
+        // edge, so the outer rim is undefined (no hard circle).
+        const glow = eBass * 0.7 + ePeak * 0.35;
+        if (glow > 0.18) {
+          const px = this.proj[i][0], py = this.proj[i][1];
+          const haloR = r * (2.8 + glow * 4.2);
+          const c = PALETTE.boneLit;
+          const peakA = Math.min(1, glow * 0.55) * depthFade * introDim;
+          const grad = ctx.createRadialGradient(px, py, 0, px, py, haloR);
+          grad.addColorStop(0,    `rgba(${c[0]},${c[1]},${c[2]},${peakA})`);
+          grad.addColorStop(0.30, `rgba(${c[0]},${c[1]},${c[2]},${peakA * 0.55})`);
+          grad.addColorStop(0.70, `rgba(${c[0]},${c[1]},${c[2]},${peakA * 0.12})`);
+          grad.addColorStop(1,    `rgba(${c[0]},${c[1]},${c[2]},0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(px, py, haloR, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // Core: brightness scales with bass and overall energy
+        const coreA = Math.min(1, 0.55 + eBass * 0.4 + eAvg * 0.25) * depthFade * introDim;
+        ctx.fillStyle = rgb(PALETTE.boneLit, coreA);
+        ctx.beginPath();
+        ctx.arc(this.proj[i][0], this.proj[i][1], r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  };
+
+  // ============================================================
+  // STRIPES · 5-8 kHz reactive vertical flashes
+  // Thin vertical bands of opaque bone-yellow that spawn in
+  // response to the 5-8 kHz energy band. Number of active stripes
+  // scales with that band's intensity. Each stripe has a short
+  // attack-release life (60-180ms), a soft halo on each side, and
+  // is distorted vertically by 2D noise so it trembles instead of
+  // breaking cleanly.
+  // ============================================================
+  const stripes = {
+    active: [],
+    MAX: 8,             // max simultaneous stripes
+    SPAWN_GAIN: 8.7,    // base spawn probability per frame at K=1
+    update(t) {
+      // Suppress stripes during intro and crossfade phases.
+      // Also suppress in procedural / no-audio-playing mode: stripes are
+      // a reactive layer to real percussive transients, not atmosphere.
+      if (presentation.introInfluence > 0 ||
+          audio.procedural || !audio.ctx || audio.el.paused) {
+        if (this.active.length) this.active = [];
+        return;
+      }
+      // Use raw (un-smoothed) band so transients respond instantly
+      const k = audio.bands.k5_8;
+      const maxActive = Math.floor(k * this.MAX);
+      const spawnProb = k * this.SPAWN_GAIN;
+      if (this.active.length < maxActive && Math.random() < spawnProb) {
+        this.active.push(this.spawn(t, k));
+      }
+      // Cull dead
+      this.active = this.active.filter(s => t < s.endAt);
+    },
+    spawn(t, intensity) {
+      const x = Math.random() * W;
+      const width = 1 + Math.random() * 2;             // 1-3 px
+      // Stripe height: sometimes full height, sometimes partial
+      const fullHeight = Math.random() < 0.4;
+      const heightFrac = fullHeight ? 1 : (0.25 + Math.random() * 0.6);
+      const y = fullHeight ? 0 : Math.random() * (H * (1 - heightFrac));
+      const dur = 60 + Math.random() * 120;            // 60-180 ms
+      // Color variant: weighted random, fixed for stripe lifetime.
+      // 55% bone yellow, 30% dirty white, 15% oxidized copper.
+      // Subtle variation gives an analog non-uniform feel.
+      const roll = Math.random();
+      const color = roll < 0.55 ? PALETTE.boneYellow
+                  : roll < 0.85 ? PALETTE.stripeWhite
+                                : PALETTE.stripeCopper;
+      return {
+        x, width,
+        y, h: H * heightFrac,
+        startAt: t,
+        endAt: t + dur,
+        intensity,
+        seed: Math.random() * 1000,
+        color
+      };
+    },
+    draw(t) {
+      if (presentation.introInfluence > 0) return;
+      if (audio.procedural || !audio.ctx || audio.el.paused) return;
+      if (this.active.length === 0) return;
+      ctx.save();
+      for (const s of this.active) {
+        const age = (t - s.startAt) / (s.endAt - s.startAt);
+        // Sharp attack (15%), longer release (85%)
+        const env = age < 0.15 ? (age / 0.15) : (1 - (age - 0.15) / 0.85);
+        if (env <= 0) continue;
+        const alpha = env * 0.85;
+        // Halo: horizontal gradient, falls off either side
+        const haloW = 10 + s.intensity * 18;
+        const grad = ctx.createLinearGradient(s.x - haloW, 0, s.x + haloW, 0);
+        const ch = s.color;
+        grad.addColorStop(0,   `rgba(${ch[0]},${ch[1]},${ch[2]},0)`);
+        grad.addColorStop(0.5, `rgba(${ch[0]},${ch[1]},${ch[2]},${alpha * 0.22})`);
+        grad.addColorStop(1,   `rgba(${ch[0]},${ch[1]},${ch[2]},0)`);
+        ctx.fillStyle = grad;
+        ctx.fillRect(s.x - haloW, s.y, haloW * 2, s.h);
+        // Stripe body, distorted by vertical-segment noise jitter.
+        // Each 4px slab is shifted in X by noise sampled along the stripe.
+        const segH = 4;
+        const segs = Math.ceil(s.h / segH);
+        const ageT = t * 0.008;
+        for (let i = 0; i < segs; i++) {
+          const sy = s.y + i * segH;
+          // 2D noise gives continuity vertically (the stripe trembles
+          // along its length instead of being random pixels)
+          const jitter = noise.n3(s.seed + i * 0.18, ageT, 0) * 4 * (0.6 + s.intensity * 0.5);
+          // Per-segment opacity wobble for "noisy, not clean" look
+          const segA = alpha * (0.65 + 0.35 * noise.n3(s.seed + 33, i * 0.4 + ageT * 1.5, 0));
+          ctx.fillStyle = `rgba(${ch[0]},${ch[1]},${ch[2]},${segA})`;
+          ctx.fillRect(s.x + jitter, sy, s.width, segH);
+        }
+      }
+      ctx.restore();
+    }
+  };
+
+  // ============================================================
+  // PHANTOMS · ghostly word layer
+  // Words from the album lore (75%) and broken code fragments (25%)
+  // appear behind everything else, fading in and out with sinusoidal
+  // envelopes. Some scale slowly during their lifetime (the "approach").
+  // Active window: starts 20s into the audio, closes 120s after the
+  // first spawn, so intro and coda remain free of text.
+  // ~12% of phantoms exhibit a bug behavior (jitter, char corruption,
+  // double render). Most are tiny (5-8px), reading as visual noise.
+  // ============================================================
+  const phantoms = {
+    WORDS: [
+      // --- Lore words (75%): from the album's emotional vocabulary ---
+      'FRACTURE','HOLLOW','DISSOLVE','ABSENT','TRACE','WHISPER','SHATTERED','DREAMS','MEMORY','BLEED',
+      'ECHO','PHANTOM','HEART','RITUAL','HALO','DRIFT','SOUL','WET','CONCRETE','ORBIT',
+      'ABANDONED','BRIDE','MOON','VEINS','MERCURY','GLASS','CURRENTS','NOCTURNE','MALFORMED','MALFUNCTION',
+      'ATLAS','BLOOD','VIRTUAL','GOLD','DUST','PIANO','AGONY','DESCENT','TREMOR','ANXIETY',
+      'LUCID','SUFFOCATE','DECAY','WITHDRAWN','THIRST','ALONE','FORGOTTEN','DISAPPEAR','UNREAL','SHUDDER',
+      'UNNAMABLE','DEFORMED','ENDLESS','VOICE','SPECTRE','NEON','RAIN','INSIDE','NEVER','WAITING',
+      'ISOLATION','DESIRE','WOUND','EMPTY','SILENCE','NIGHT','FEAR','ABSENCE','PAIN','SHADOW',
+      'TRAIN','STORM','SKIN','PULSE','ASH','BONE','PRESENCE','IMMENSE','INDIFFERENT','NOTHING',
+      'NOBODY','LOST','MIRROR','BREATHE','BROKEN','INCOMPLETE','DARK','COLD','SMOKE','STILL',
+      // --- Broken code fragments (25%): old systems failure language ---
+      'NULL','VOID','0xFF','0x00','SEGFAULT','ORPHAN','ZOMBIE','DANGLING','FAULT','PANIC',
+      'ABORT','SIGSEGV','KERNEL','FATAL','HALT','GOTO','REM','DIM','POKE','PEEK',
+      '0xDEAD','0xBEEF','0xBADF00D','/dev/null','EXIT 139','PIPE BROKEN','RECURSION','UNCAUGHT','KILL -9','CORE DUMPED'
+    ],
+    BUG_GLYPHS: ['▓','░','▒','│','┤','└','┴','▀','■','▪','▌','▐'],
+    COLOR_GREEN: [120, 195, 110],
+    COLOR_YELLOW: [210, 200, 130],
+
+    // Tunable parameters
+    START_DELAY: 20,           // seconds into the audio before first appearance
+    CODA_GUARD: 20,            // close the window when fewer than N seconds remain
+    MAX_ACTIVE: 10,
+    MIN_LIFE_S: 1.0,
+    MAX_LIFE_S: 7.0,
+    SPAWN_PROB: 0.08,          // per-frame spawn probability
+    MAX_PLACE_ATTEMPTS: 8,
+    YELLOW_PROB: 0.20,         // 20% pale yellow, 80% console green
+    APPROACH_PROB: 0.35,       // 35% scale slowly during life
+    BUG_PROB: 0.12,            // 12% exhibit a bug behavior
+    PEAK_ALPHA: 0.55,
+
+    active: [],
+    _lastAudioTime: 0,
+
+    reset() {
+      this.active = [];
+      this._lastAudioTime = 0;
+    },
+    pickFontSize() {
+      // Skewed distribution: most words are tiny (barely legible).
+      const r = Math.random();
+      if (r < 0.50) return 5 + Math.floor(Math.random() * 4);   //  5-8 px
+      if (r < 0.85) return 9 + Math.floor(Math.random() * 3);   //  9-11 px
+      return 12 + Math.floor(Math.random() * 3);                // 12-14 px
+    },
+    corruptWord(w) {
+      const n = 1 + Math.floor(Math.random() * 2);
+      const chars = w.split('');
+      for (let i = 0; i < n; i++) {
+        const idx = Math.floor(Math.random() * chars.length);
+        chars[idx] = this.BUG_GLYPHS[Math.floor(Math.random() * this.BUG_GLYPHS.length)];
+      }
+      return chars.join('');
+    },
+    overlaps(x, y, w, h) {
+      for (const p of this.active) {
+        const sc = Math.max(p.startScale, p.endScale);
+        const pw = p.w * sc, ph = p.h * sc;
+        const px = p.x - (pw - p.w) * 0.5;
+        const py = p.y - (ph - p.h) * 0.5;
+        if (x < px + pw && x + w > px && y < py + ph && y + h > py) return true;
+      }
+      return false;
+    },
+    trySpawn(ct) {
+      const word = this.WORDS[Math.floor(Math.random() * this.WORDS.length)];
+      const fs = this.pickFontSize();
+      const family = "'Courier New', 'Lucida Console', 'Monaco', monospace";
+      ctx.save();
+      ctx.font = `${fs}px ${family}`;
+      const tw = ctx.measureText(word).width;
+      ctx.restore();
+      const th = fs * 1.3;
+      const pad = 8;
+
+      // Try several positions to avoid overlap
+      let x = 0, y = 0, placed = false;
+      for (let i = 0; i < this.MAX_PLACE_ATTEMPTS; i++) {
+        x = pad + Math.random() * Math.max(1, W - tw - pad * 2);
+        y = pad + Math.random() * Math.max(1, H - th - pad * 2);
+        if (!this.overlaps(x, y, tw + pad, th + pad)) { placed = true; break; }
+      }
+      if (!placed) return;
+
+      const color = Math.random() < this.YELLOW_PROB ? this.COLOR_YELLOW : this.COLOR_GREEN;
+      const lifeS = this.MIN_LIFE_S + Math.random() * (this.MAX_LIFE_S - this.MIN_LIFE_S);
+
+      let bug = null;
+      if (Math.random() < this.BUG_PROB) {
+        const r = Math.random();
+        bug = r < 0.40 ? 'jitter' : r < 0.75 ? 'corrupt' : 'double';
+      }
+      const approach = Math.random() < this.APPROACH_PROB;
+      const startScale = approach ? 0.82 : 1.0;
+      const endScale   = approach ? 1.20 : 1.0;
+
+      this.active.push({
+        word: bug === 'corrupt' ? this.corruptWord(word) : word,
+        x, y, w: tw, h: th,
+        fontSize: fs, family,
+        color,
+        audioStart: ct,
+        audioEnd: ct + lifeS,
+        bug, approach, startScale, endScale
+      });
+    },
+    update(t) {
+      if (audio.procedural || !audio.ctx || audio.el.paused) return;
+      const ct = audio.el.currentTime;
+      // Backward-seek detection: full reset
+      if (ct < this._lastAudioTime - 1) this.reset();
+      this._lastAudioTime = ct;
+
+      if (ct < this.START_DELAY) return;
+      // Cull dead
+      this.active = this.active.filter(p => p.audioEnd > ct);
+      // Window: closes when fewer than CODA_GUARD seconds remain in the track,
+      // preserving an untouched coda regardless of track length. Falls back
+      // gracefully when duration metadata is not yet available (NaN).
+      const dur = audio.el.duration;
+      if (isFinite(dur) && dur > 0 && (dur - ct) <= this.CODA_GUARD) return;
+      // Spawn attempt
+      if (this.active.length < this.MAX_ACTIVE && Math.random() < this.SPAWN_PROB) {
+        this.trySpawn(ct);
+      }
+    },
+    draw(t) {
+      if (this.active.length === 0) return;
+      if (!audio.ctx || audio.procedural) return;
+      const ct = audio.el.currentTime;
+      ctx.save();
+      ctx.textBaseline = 'alphabetic';
+      for (const p of this.active) {
+        const dur = p.audioEnd - p.audioStart;
+        const prog = (ct - p.audioStart) / dur;
+        if (prog < 0 || prog > 1) continue;
+        // Symmetric sinusoidal fade in/out, never reaches 1.0
+        const env = Math.sin(prog * Math.PI);
+        const alpha = env * this.PEAK_ALPHA;
+        const scale = p.startScale + (p.endScale - p.startScale) * prog;
+        const cx = p.x + p.w * 0.5;
+        const cy = p.y + p.h * 0.7;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(scale, scale);
+        ctx.translate(-cx, -cy);
+        let jx = 0, jy = 0;
+        if (p.bug === 'jitter') {
+          jx = (Math.random() - 0.5) * 3;
+          jy = (Math.random() - 0.5) * 1.5;
+        }
+        ctx.font = `${p.fontSize}px ${p.family}`;
+        const c = p.color;
+        if (p.bug === 'double') {
+          ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha * 0.45})`;
+          ctx.fillText(p.word, p.x + 1.5 + jx, p.y + p.h * 0.8 + 1 + jy);
+        }
+        ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+        ctx.fillText(p.word, p.x + jx, p.y + p.h * 0.8 + jy);
+        ctx.restore();
+      }
+      ctx.restore();
+    }
+  };
+
+  // ============================================================
+  // FILTER · BROKEN-CAMERA EFFECTS
+  // - Asymmetric two-tone aberration (bone vs bronze, not RGB)
+  // - Breathing grain
+  // - Freeze-frame regions (snapshot a rect, hold 80-160ms)
+  // - Brief "tear" glitches on cue
+  // ============================================================
+  const filter = {
+    snapshot: null,
+    snapCtx: null,
+    freezes: [],
+    nextFreezeAt: 0,
+    grainCanvas: null,
+    grainCtx: null,
+    grainPattern: null,
+    init() {
+      this.snapshot = document.createElement('canvas');
+      this.snapCtx = this.snapshot.getContext('2d');
+      this.grainCanvas = document.createElement('canvas');
+      this.grainCtx = this.grainCanvas.getContext('2d');
+      this.regrain();
+    },
+    regrain() {
+      const s = 256;
+      this.grainCanvas.width = s;
+      this.grainCanvas.height = s;
+      const img = this.grainCtx.createImageData(s, s);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const v = Math.random() * 255;
+        d[i] = v; d[i + 1] = v; d[i + 2] = v;
+        d[i + 3] = 18;
+      }
+      this.grainCtx.putImageData(img, 0, 0);
+    },
+    applyAberration() {
+      // Subtle asymmetric two-tone offset by re-stamping the canvas
+      // with bone tint and bronze tint at slight different vectors.
+      const ox = (noise.n3(performance.now() * 0.0003, 0, 0)) * 1.4;
+      const oy = (noise.n3(0, performance.now() * 0.0003, 0)) * 1.0;
+      const intensity = 0.10 + audio.smoothed.peak * 0.18 + activeMoment.tear * 0.4;
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalAlpha = intensity;
+      ctx.filter = 'brightness(0.6)';
+      // Bone-side ghost
+      ctx.drawImage(canvas, ox * 1.3, oy * 0.7);
+      // Bronze-side ghost (opposite vector, smaller)
+      ctx.drawImage(canvas, -ox * 0.8, -oy * 1.4);
+      ctx.filter = 'none';
+      ctx.restore();
+    },
+    applyGrain(t) {
+      ctx.save();
+      const breath = 0.10 + audio.smoothed.energy * 0.15;
+      ctx.globalAlpha = breath;
+      ctx.globalCompositeOperation = 'overlay';
+      // Tile grain
+      if (!this.grainPattern) this.grainPattern = ctx.createPattern(this.grainCanvas, 'repeat');
+      ctx.fillStyle = this.grainPattern;
+      // Random offset per frame so grain "moves"
+      const ox = Math.floor(Math.random() * 256);
+      const oy = Math.floor(Math.random() * 256);
+      ctx.translate(-ox, -oy);
+      ctx.fillRect(0, 0, W + 256, H + 256);
+      ctx.restore();
+      // Re-bake grain occasionally so it doesn't look static
+      if (Math.random() < 0.05) {
+        this.regrain();
+        this.grainPattern = ctx.createPattern(this.grainCanvas, 'repeat');
+      }
+    },
+    handleFreezes(t) {
+      // Spawn new freezes on a randomized schedule
+      if (t > this.nextFreezeAt) {
+        this.spawnFreeze();
+        const interval = 4000 + Math.random() * 8000 - audio.smoothed.energy * 1500;
+        this.nextFreezeAt = t + Math.max(2500, interval);
+      }
+      // Resize snapshot canvas if needed
+      if (this.snapshot.width !== W || this.snapshot.height !== H) {
+        this.snapshot.width = W;
+        this.snapshot.height = H;
+      }
+      // Capture current frame state into snapshot
+      this.snapCtx.drawImage(canvas, 0, 0, W, H);
+      // Draw active freezes
+      const now = t;
+      this.freezes = this.freezes.filter(f => now < f.endAt);
+      for (const f of this.freezes) {
+        const age = (now - f.startAt) / (f.endAt - f.startAt);
+        const a = age < 0.8 ? 1 : (1 - (age - 0.8) / 0.2);
+        ctx.save();
+        ctx.globalAlpha = a;
+        ctx.drawImage(f.cap,
+                      0, 0, f.w, f.h,
+                      f.x, f.y, f.w, f.h);
+        // Slight bronze tint over freeze region
+        ctx.fillStyle = rgb(PALETTE.bronze, 0.08);
+        ctx.fillRect(f.x, f.y, f.w, f.h);
+        ctx.restore();
+      }
+    },
+    spawnFreeze() {
+      const fw = 80 + Math.random() * 280;
+      const fh = 50 + Math.random() * 200;
+      const fx = Math.random() * (W - fw);
+      const fy = Math.random() * (H - fh);
+      const cap = document.createElement('canvas');
+      cap.width = fw;
+      cap.height = fh;
+      cap.getContext('2d').drawImage(canvas, fx, fy, fw, fh, 0, 0, fw, fh);
+      const dur = 80 + Math.random() * 180;
+      this.freezes.push({
+        x: fx, y: fy, w: fw, h: fh,
+        cap,
+        startAt: performance.now(),
+        endAt: performance.now() + dur
+      });
+    },
+    applyTear() {
+      if (activeMoment.tear < 0.05) return;
+      const slices = 4 + Math.floor(activeMoment.tear * 12);
+      for (let i = 0; i < slices; i++) {
+        const sy = Math.random() * H;
+        const sh = 4 + Math.random() * 24;
+        const dx = (Math.random() - 0.5) * activeMoment.tear * 80;
+        ctx.drawImage(canvas, 0, sy, W, sh, dx, sy, W, sh);
+      }
+    },
+    apply(t) {
+      this.applyAberration();
+      this.handleFreezes(t);
+      this.applyTear();
+      this.applyGrain(t);
+    }
+  };
+
+  // ============================================================
+  // SCRIPTED MOMENT MANAGER
+  // ============================================================
+  const activeMoment = {
+    distort: 0,
+    apparition: 0,
+    tear: 0,
+    silence: 0
+  };
+  const momentEnvelope = (elapsed, duration) => {
+    // Smooth in-out envelope (0 to 1 to 0 over duration)
+    const x = elapsed / duration;
+    if (x < 0 || x > 1) return 0;
+    return Math.sin(x * Math.PI);
+  };
+  function updateMoments() {
+    activeMoment.distort = 0;
+    activeMoment.apparition = 0;
+    activeMoment.tear = 0;
+    activeMoment.silence = 0;
+    if (!audio.el || audio.procedural) return;
+    const ct = audio.el.currentTime;
+    for (const m of MOMENTS) {
+      const elapsed = (ct - m.t) * 1000;
+      if (elapsed < 0 || elapsed > m.d) continue;
+      const env = momentEnvelope(elapsed, m.d) * m.strength;
+      switch (m.type) {
+        case 'collapse':   activeMoment.distort    = Math.max(activeMoment.distort, env);    break;
+        case 'apparition': activeMoment.apparition = Math.max(activeMoment.apparition, env); break;
+        case 'tear':       activeMoment.tear       = Math.max(activeMoment.tear, env);       break;
+        case 'silence':    activeMoment.silence    = Math.max(activeMoment.silence, env);    break;
+      }
+    }
+  }
+
+  // ============================================================
+  // MAIN LOOP
+  // ============================================================
+  function frame(t) {
+    audio.sample();
+    presentation.update(t);
+    updateMoments();
+
+    // Background void
+    ctx.fillStyle = rgb(PALETTE.void);
+    ctx.fillRect(0, 0, W, H);
+
+    // Vignette pulse
+    const vign = ctx.createRadialGradient(W / 2, H / 2, 0,
+                                          W / 2, H / 2, Math.max(W, H) * 0.7);
+    vign.addColorStop(0, rgb(PALETTE.bronzeDeep, 0.25 + audio.smoothed.bass * 0.2));
+    vign.addColorStop(0.6, rgb(PALETTE.void, 0.0));
+    vign.addColorStop(1, rgb(PALETTE.void, 0.85));
+    ctx.fillStyle = vign;
+    ctx.fillRect(0, 0, W, H);
+
+    phantoms.update(t);
+    phantoms.draw(t);
+    smoke.draw(t);
+    entity.update(t);
+    entity.draw(t);
+    stripes.update(t);
+    stripes.draw(t);
+    filter.apply(t);
+
+    // Silence moment: deep fade
+    if (activeMoment.silence > 0) {
+      ctx.fillStyle = rgb(PALETTE.void, activeMoment.silence * 0.7);
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  function start() {
+    resize();
+    smoke.regen();
+    entity.init();
+    filter.init();
+    requestAnimationFrame(frame);
+  }
+
+  // ============================================================
+  // UI HANDLERS
+  // ============================================================
+  const playBtn = document.getElementById('play-btn');
+  const repeatBtn = document.getElementById('repeat-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const progress = document.getElementById('progress');
+  const progressFill = document.getElementById('progress-fill');
+  const progressHead = document.getElementById('progress-head');
+  const elapsedEl = document.getElementById('time-elapsed');
+  const remainingEl = document.getElementById('time-remaining');
+
+  // Build tracklist DOM
+  playlist.render();
+  playlist.refreshUI();
+
+  // Play/pause: also auto-loads first track if none loaded
+  playBtn.addEventListener('click', () => {
+    if (playlist.currentIndex < 0) {
+      playlist.load(0, true);
+      playBtn.textContent = '❚❚ Pause';
+      return;
+    }
+    if (audio.el.paused) {
+      audio.init();
+      audio.el.play().catch(() => {});
+      playBtn.textContent = '❚❚ Pause';
+    } else {
+      audio.el.pause();
+      playBtn.textContent = '▶ Play';
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (playlist.currentIndex > 0) {
+      playlist.load(playlist.currentIndex - 1, !audio.el.paused);
+    } else {
+      playlist.load(playlist.tracks.length - 1, !audio.el.paused);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (playlist.currentIndex < playlist.tracks.length - 1) {
+      playlist.load(playlist.currentIndex + 1, !audio.el.paused);
+    } else {
+      playlist.load(0, !audio.el.paused);
+    }
+  });
+
+  repeatBtn.addEventListener('click', () => playlist.cycleRepeat());
+
+  audio.el.addEventListener('play',  () => { playBtn.textContent = '❚❚ Pause'; });
+  audio.el.addEventListener('pause', () => { playBtn.textContent = '▶ Play'; });
+  audio.el.addEventListener('ended', () => playlist.onEnded());
+
+  audio.el.addEventListener('timeupdate', () => {
+    const dur = audio.el.duration;
+    const ct = audio.el.currentTime;
+    if (!isFinite(dur) || dur <= 0) {
+      elapsedEl.textContent = fmtTime(ct);
+      remainingEl.textContent = '-0:00';
+      return;
+    }
+    const pct = (ct / dur) * 100;
+    progressFill.style.width = pct + '%';
+    progressHead.style.left = pct + '%';
+    elapsedEl.textContent = fmtTime(ct);
+    remainingEl.textContent = '-' + fmtTime(Math.max(0, dur - ct));
+  });
+
+  audio.el.addEventListener('loadedmetadata', () => {
+    if (isFinite(audio.el.duration)) {
+      remainingEl.textContent = '-' + fmtTime(audio.el.duration);
+    }
+  });
+
+  progress.addEventListener('click', e => {
+    if (!isFinite(audio.el.duration) || audio.el.duration <= 0) return;
+    const r = progress.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+    audio.el.currentTime = pct * audio.el.duration;
+  });
+
+  function fmtTime(s) {
+    if (!isFinite(s) || s < 0) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
+    return m + ':' + sec;
+  }
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); playBtn.click(); }
+    else if (e.code === 'KeyF') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+    else if (e.code === 'KeyR') repeatBtn.click();
+    else if (e.code === 'ArrowRight' && playlist.currentIndex >= 0) {
+      playlist.load(Math.min(playlist.currentIndex + 1, playlist.tracks.length - 1), !audio.el.paused);
+    }
+    else if (e.code === 'ArrowLeft' && playlist.currentIndex >= 0) {
+      playlist.load(Math.max(playlist.currentIndex - 1, 0), !audio.el.paused);
+    }
+  });
+
+  // Kick off the intro phase
+  presentation.init();
+
+  start();
+})();
+</script>
+
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>
