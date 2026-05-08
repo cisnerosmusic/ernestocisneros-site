@@ -56,7 +56,8 @@
 
   // If a matching language was found, check if page exists and redirect
   if (targetLang) {
-    var targetPath = targetLang.path + (currentPath === '/' ? 'index.html' : currentPath);
+    var pagePart = currentPath === '/' ? 'index.html' : currentPath.replace(/^\//, '');
+    var targetPath = targetLang.path + pagePart;
 
     // Do a HEAD request to verify the target page exists before redirecting
     var xhr = new XMLHttpRequest();
