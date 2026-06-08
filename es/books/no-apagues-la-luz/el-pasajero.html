@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Pasajero | No apagues la luz | Ernesto Cisneros Cino</title>
+<meta name="description" content="Un hombre sube a un taxi y pide que lo lleven a una dirección. El taxista la conoce. Porque es la suya.">
+<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-pasajero.html">
+<meta property="og:title" content="El Pasajero">
+<meta property="og:description" content="Un hombre sube a un taxi y pide que lo lleven a una dirección. El taxista la conoce. Porque es la suya.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="El Pasajero">
+<meta name="twitter:description" content="Un hombre sube a un taxi y pide que lo lleven a una dirección. El taxista la conoce. Porque es la suya.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-pasajero.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-passenger.html">
+<link rel="canonical" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-pasajero.html">
+
+<link href="../../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-subtle: #f2efe8;
+  --text: #060606;
+  --text-secondary: #2a2929;
+  --text-muted: #6e6e6e;
+  --accent: #151515;
+  --line: #d4cfc5;
+  --line-light: #e8e4dc;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 19px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: all 0.3s; }
+a:hover { text-decoration-color: var(--text); }
+
+.site-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: flex; gap: 0.8rem; }
+.lang-switch a.active { color: var(--text); border-bottom: 1px solid var(--text); }
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.hero-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.35;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  margin: 2.5rem auto;
+  border: none;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+.article p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.article p.dialog {
+  text-align: left;
+  padding-left: 0;
+}
+
+.story-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.story-nav a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.story-nav .nav-prev { text-align: left; }
+.story-nav .nav-next { text-align: right; }
+.nav-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.nav-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.story-nav a:hover .nav-title { color: var(--text); }
+
+.series-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+}
+.series-footer-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.series-footer a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.series-footer a:hover { color: var(--text); }
+
+.site-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.5rem 1.5rem; }
+  .article { padding: 0 1.5rem 2rem; }
+  .story-nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href=".">← Índice</a>
+  <div class="lang-switch">
+    <a href="." class="active">ES</a>
+    <a href="../../../books/dont-turn-off-the-light/the-passenger.html" class="">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">Libros · No apagues la luz</div>
+  <div class="hero-number">V</div>
+  <h1 class="hero-title">El Pasajero</h1>
+  <hr class="hero-rule">
+</header>
+
+<article class="article">
+<p>Esteban manejaba de noche desde hacía once años.</p>
+<p>Le gustaba, o se había convencido de que le gustaba, que viene a ser lo mismo cuando uno lleva once años haciendo algo. La ciudad de madrugada era otra ciudad, más limpia, más callada, sin la prisa fea del día. Y el coche era suyo, su cabina, su música baja, su termo de café.</p>
+<p>Lo único que se le había ido gastando con los años eran los pasajeros.</p>
+<p>Antes hablaban. Subían, le contaban su vida, la noche de la que venían, la mujer que los había dejado, el negocio que iba a hacerlos ricos. Esteban escuchaba. Era bueno escuchando. Para mucha gente, él había sido la última persona con la que hablaron antes de llegar a una casa vacía.</p>
+<p>Ahora subían con los audífonos puestos. Decían la dirección mirando el teléfono y no volvían a levantar la vista. Pagaban con la app, sin tocarlo, sin mirarlo. Bajaban. Como paquetes que se transportan solos.</p>
+<p>Esteban tenía una hija en otra ciudad que cada vez llamaba menos.</p>
+<p>Tenía un apartamento donde la única voz, al llegar, era la del refrigerador.</p>
+<p>Tenía cincuenta y nueve años, y empezaba a notar que pasaban noches enteras sin que nadie le dijera su nombre.</p>
+<p>Aquella noche lo recogió en una esquina sin nada, a las tres y pico, un hombre con abrigo largo que levantó la mano como se hacía antes.</p>
+<p class="dialog">—Buenas noches —dijo el hombre al subir.</p>
+<p>Y a Esteban algo se le destrabó en el pecho, porque hacía semanas que nadie le decía buenas noches.</p>
+<p>Hablaron.</p>
+<p>No sabría reconstruir de qué. De la ciudad, de cómo había cambiado. De que ya nadie conversa. De ponerse viejo. El hombre tenía una voz tranquila, sin prisa, y una manera de preguntar que daban ganas de contestar de verdad. Le preguntó por su hija. Esteban le contó cosas que no le contaba a nadie, ahí, mirando la carretera, las dos de la cara de uno en el espejo y la del otro en la oscuridad de atrás.</p>
+<p>Fue la mejor hora que Esteban había pasado en mucho tiempo.</p>
+<p>Lo dejó donde le pidió, otra calle vacía, sin un solo portal encendido.</p>
+<p>El hombre se quedó un momento de pie junto a la ventanilla, antes de irse.</p>
+<p class="dialog">—Gracias por traerme —dijo—. Hacía mucho tiempo que nadie me hablaba.</p>
+<p>Y se fue caminando hacia lo oscuro, despacio, hasta que Esteban ya no lo vio.</p>
+<p>Reglamento de la flota: cámara interior, audio y video, encendida todo el turno.</p>
+<p>Esteban casi nunca la miraba. Esa noche sí, en casa, antes de dormir, porque quería volver a ver al hombre del abrigo, ponerle cara con calma, recordar la conversación.</p>
+<p>Adelantó hasta las tres y pico.</p>
+<p>El coche se detiene en la esquina sin nada. La puerta de atrás se abre. Se cierra.</p>
+<p>Y el asiento de atrás está vacío.</p>
+<p>Vacío toda la hora. El cinturón sin abrochar, el cuero liso, nadie. El coche arranca solo, conduce, para en los semáforos, gira, mientras Esteban, en el asiento del conductor, habla.</p>
+<p>Habla con el asiento vacío.</p>
+<p>Sonríe. Asiente. Escucha. Se ríe de algo. Una hora entera de un hombre solo conversando con nadie en un coche en marcha.</p>
+<p>Pero el audio.</p>
+<p>El audio tenía las dos voces.</p>
+<p>La de Esteban, y la otra, la tranquila, clarísima, contestando, preguntando por su hija, dando las buenas noches. Subió el volumen hasta el tope. No era un eco, no era su propia voz cambiada. Era otro. Otro hombre, hablando, perfectamente, en un asiento donde la cámara juraba que no había nadie.</p>
+<p>Y al final, nítida, la última frase, dirigida a un Esteban que en la pantalla estaba completamente solo:</p>
+<p class="dialog">—Gracias por traerme. Hacía mucho tiempo que nadie me hablaba.</p>
+<p>Esteban no borró el archivo.</p>
+<p>Lo guardó.</p>
+<p>Y esa madrugada, antes de dormir, lo escuchó otra vez. Solo el audio. Con los ojos cerrados. Como quien vuelve a poner una canción.</p>
+<p>Volvió.</p>
+<p>No esa noche, ni la siguiente, pero volvió. La misma esquina, la misma hora, la misma voz tranquila subiendo al asiento que ninguna cámara conseguía llenar.</p>
+<p>Y Esteban, que tendría que haber tenido miedo, que al principio lo tuvo, dejó de tenerlo.</p>
+<p>Porque era buena compañía. Porque la conversación era de verdad aunque el hombre no lo fuera. Porque en once años de madrugadas, aquella voz era lo único que le preguntaba cómo estaba y esperaba la respuesta.</p>
+<p>Aprendió la esquina. Aprendió la hora. Empezó a estar ahí, a las tres y pico, sin pasaje, esperando. Apagaba la app en esa franja para que no le entraran otros viajes, los de verdad, los de los audífonos y el silencio. Para qué. Tenía con quién hablar.</p>
+<p>El mundo, alrededor, se le fue adelgazando, y él más contento cada noche.</p>
+<p>Su hija dejó un par de mensajes que no contestó, y después dejó de dejarlos. El de la central le preguntó una vez, con cuidado, que si estaba bien, que lo veían dar muchas vueltas en vacío, que hablaba solo en la cámara. Esteban dijo que sí, que estaba bien. Y era verdad. No estaba solo. Dejó de pasar por el bar donde paraban los otros choferes. Para qué.</p>
+<p>El hombre del abrigo, poco a poco, dejó de preguntar por su hija.</p>
+<p>Le pedía, en cambio, que dieran una vuelta más. Que la noche estaba linda. Que se quedara un rato.</p>
+<p>Y los viajes se fueron haciendo más largos, hacia ninguna parte.</p>
+<p>Una noche, cualquiera, Esteban entendió lo que era el hombre del abrigo.</p>
+<p>No un muerto. No un demonio. Nada de eso.</p>
+<p>La cosa más sola de toda la carretera. Algo que un día también manejó de noche, o esperó de noche, o vivió de noche, hasta que el mundo dejó de mirarlo. Y que ahora andaba buscando, de esquina en esquina, al siguiente, al más solo de todos los que quedaban despiertos, para hacerle compañía.</p>
+<p>Porque era lo único que sabía dar. Compañía.</p>
+<p>Y dándola, sin querer o queriendo, lo iba volviendo igual a sí mismo.</p>
+<p>La frase, esa que la primera noche le había parecido la tristeza del pasajero, Esteban entendió por fin de quién era.</p>
+<p>&quot;Hacía mucho tiempo que nadie me hablaba.&quot;</p>
+<p>No era el pasado del hombre del abrigo.</p>
+<p>Era el futuro de Esteban.</p>
+<p>La última vez que miró la cámara fue por costumbre, ya sin esperar nada.</p>
+<p>Adelantó hasta las tres y pico.</p>
+<p>El coche recorría la ciudad vacía, despacio, dando vueltas hacia ningún sitio, parando en los semáforos en rojo aunque no hubiera un alma para chocarlo.</p>
+<p>El asiento de atrás, vacío. Como siempre.</p>
+<p>Pero esta vez también el de delante.</p>
+<p>El asiento del conductor, vacío. El volante girando solo en las curvas. El coche entero conduciéndose por la madrugada sin un cuerpo dentro, ni atrás ni adelante, ni uno solo.</p>
+<p>Y el audio, lleno.</p>
+<p>Las dos voces. La del hombre del abrigo, tranquila. Y la de Esteban, contenta, viva, conversando, riéndose, pidiendo dar otra vuelta porque la noche estaba linda.</p>
+<p>Dos hombres hablando toda la noche, a gusto, acompañados.</p>
+<p>Y nadie, absolutamente nadie, en el coche.</p>
+<p>Esteban miró la pantalla un rato largo.</p>
+<p>No sintió horror. Eso era lo peor, que ya no sentía horror. Sintió algo parecido a llegar a casa.</p>
+<p>Porque ya no había nadie en el mundo que pudiera verlo. Y no le importaba. Tenía con quién hablar. Lo tendría siempre, ahora, las dos voces solas en un coche que iba a ninguna parte por una ciudad que dormía.</p>
+<p>Apagó la pantalla.</p>
+<p>Bajó al garaje.</p>
+<p>Se sentó al volante, en la oscuridad, y esperó las tres y pico, como quien espera a un amigo.</p>
+<p>Y cuando la voz tranquila le dio las buenas noches desde el asiento de atrás, Esteban, por primera vez, le contestó con la frase entera.</p>
+<p class="dialog">—Gracias por acompañarme. Hacía mucho tiempo que nadie me hablaba.</p>
+<p>Y arrancó.</p>
+</article>
+
+<nav class="story-nav">
+  <a href="la-llamada.html" class="nav-prev"><span class="nav-label">← Anterior</span><span class="nav-title">La Llamada</span></a>
+  <a href="la-lista.html" class="nav-next"><span class="nav-label">Siguiente →</span><span class="nav-title">La Lista</span></a>
+</nav>
+
+<div class="series-footer">
+  <div class="series-footer-label">No apagues la luz</div>
+  <a href=".">Índice</a>
+</div>
+
+<footer class="site-footer">
+  <a href="../../index.html">ernestocisneros.art</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Llamada | No apagues la luz | Ernesto Cisneros Cino</title>
+<meta name="description" content="Un teléfono suena en la madrugada. Una voz que no debería existir pide ayuda desde un lugar que no debería estar.">
+<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ernestocisneros.art/es/books/no-apagues-la-luz/la-llamada.html">
+<meta property="og:title" content="La Llamada">
+<meta property="og:description" content="Un teléfono suena en la madrugada. Una voz que no debería existir pide ayuda desde un lugar que no debería estar.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La Llamada">
+<meta name="twitter:description" content="Un teléfono suena en la madrugada. Una voz que no debería existir pide ayuda desde un lugar que no debería estar.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/la-llamada.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-call.html">
+<link rel="canonical" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/la-llamada.html">
+
+<link href="../../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-subtle: #f2efe8;
+  --text: #060606;
+  --text-secondary: #2a2929;
+  --text-muted: #6e6e6e;
+  --accent: #151515;
+  --line: #d4cfc5;
+  --line-light: #e8e4dc;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 19px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: all 0.3s; }
+a:hover { text-decoration-color: var(--text); }
+
+.site-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: flex; gap: 0.8rem; }
+.lang-switch a.active { color: var(--text); border-bottom: 1px solid var(--text); }
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.hero-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.35;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  margin: 2.5rem auto;
+  border: none;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+.article p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.article p.dialog {
+  text-align: left;
+  padding-left: 0;
+}
+
+.story-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.story-nav a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.story-nav .nav-prev { text-align: left; }
+.story-nav .nav-next { text-align: right; }
+.nav-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.nav-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.story-nav a:hover .nav-title { color: var(--text); }
+
+.series-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+}
+.series-footer-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.series-footer a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.series-footer a:hover { color: var(--text); }
+
+.site-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.5rem 1.5rem; }
+  .article { padding: 0 1.5rem 2rem; }
+  .story-nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href=".">← Índice</a>
+  <div class="lang-switch">
+    <a href="." class="active">ES</a>
+    <a href="../../../books/dont-turn-off-the-light/the-call.html" class="">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">Libros · No apagues la luz</div>
+  <div class="hero-number">IV</div>
+  <h1 class="hero-title">La Llamada</h1>
+  <hr class="hero-rule">
+</header>
+
+<article class="article">
+<p>Era un martes sin nada.</p>
+<p>Nora había llegado a casa con la ropa mojada, porque empezaba a chispear y el coche estaba lejos. Se quitó los zapatos en la entrada. Puso agua a hervir. Encendió una lámpara, la pequeña, la de la mesa, porque la luz del techo le parecía demasiado para una noche así.</p>
+<p>El apartamento estaba en silencio. Su silencio de siempre, el bueno, el de estar sola y a salvo.</p>
+<p>El teléfono sonó.</p>
+<p>Lo tenía en la mano. Lo había estado mirando hacía un segundo, sin nada que ver en él, y aun así sonó, como si la llamada hubiera entrado por detrás de la pantalla.</p>
+<p>En el identificador no había nombre. No había número.</p>
+<p>Había una palabra: Nora.</p>
+<p>Su propio nombre, llamándola.</p>
+<p>Pensó en un error, en una de esas estafas que le clonan a una el contacto. Contestó solo para que dejara de sonar.</p>
+<p class="dialog">—¿Sí?</p>
+<p>Y la voz que respondió era la suya.</p>
+<p>No parecida. No una imitación buena. La suya, con el catarro que tenía hoy, con esa aspereza en la garganta que le había dejado la lluvia hacía media hora. Era escucharse en una grabación, pero en vivo, contestándole.</p>
+<p class="dialog">—Nora. Escúchame. —La voz hablaba rápido, baja, con una urgencia que le erizó la piel—. Soy tú. Dentro de diez minutos. No tengo tiempo de explicarlo, no me lo creerías igual. Solo escucha esto, solo esto.</p>
+<p>Nora no pudo decir nada.</p>
+<p class="dialog">—No abras la puerta.</p>
+<p>Un silencio con respiración detrás.</p>
+<p class="dialog">—Pase lo que pase. Aunque oigas lo que oigas. No abras la puer—</p>
+<p>La línea se cortó.</p>
+<p>No el pitido de colgar. El silencio liso del que nunca hubo nada.</p>
+<p>Nora apartó el teléfono de la oreja con la mano temblando.</p>
+<p>Buscó en las llamadas recientes.</p>
+<p>Nada.</p>
+<p>Ni esa, ni ninguna. La última entrada era de la mañana, su madre, doce minutos. Después, vacío. Como si el aparato no hubiera sonado nunca, como si lo hubiera soñado de pie, en su propia cocina, con el agua empezando a hervir a su espalda.</p>
+<p>Se dijo cosas razonables.</p>
+<p>Que estaba cansada. Que la lluvia, que el trabajo, que se había quedado dormida un segundo y lo había soñado. Que las estafas modernas usan grabaciones, que le habrían sacado la voz de algún video, que existía una explicación aburrida y la encontraría mañana, a la luz del día, riéndose.</p>
+<p>Pero su voz no se ríe.</p>
+<p>Su voz, la de verdad, sabía dos cosas que ninguna grabación podía saber.</p>
+<p>Sabía que estaba en casa.</p>
+<p>Sabía que tenía catarro desde hacía media hora.</p>
+<p>Apagó el fuego. El agua se había quedado a mitad, ni fría ni hervida.</p>
+<p>Miró el reloj del horno sin querer mirarlo.</p>
+<p>Y esperó, porque ya no sabía hacer otra cosa.</p>
+<p>Tres minutos.</p>
+<p>Sonó el timbre.</p>
+<p>Nora dio un salto que la dejó pegada a la encimera, con las dos manos agarradas al borde, el corazón en un sitio donde no debía estar.</p>
+<p>El timbre otra vez. Normal. Educado. Dos toques cortos, como llama cualquiera.</p>
+<p>Se quedó quieta.</p>
+<p>&quot;No abras la puerta.&quot;</p>
+<p>Se lo había dicho ella misma. Dentro de diez minutos. Es decir, ella, después de que pasara lo que estaba a punto de pasar ahora. Ella, que ya lo había vivido, que sabía cómo terminaba, y que había hecho lo imposible, lo que no se puede hacer, llamar hacia atrás, para impedirlo.</p>
+<p>Si esa voz era ella, había que obedecer.</p>
+<p>Pero.</p>
+<p>Pero quizá la voz no era ella. Quizá la voz era la trampa. Quizá lo que quería de verdad la cosa de la llamada era justo eso, que no abriera, que se quedara dentro, encerrada, sola, mientras lo verdadero, lo que de veras debía salvarla, esperaba afuera en el pasillo y se iba.</p>
+<p>Creerle, o no creerle.</p>
+<p>A sí misma.</p>
+<p>Y no había manera de saberlo. No había un solo dato en el mundo que inclinara la balanza, porque las dos voces, la de adentro y la que llamaba a la puerta, eran exactamente la misma.</p>
+<p>Llamaron con los nudillos.</p>
+<p>Y entonces, desde el otro lado de la puerta, alguien habló.</p>
+<p class="dialog">—Nora. Ábreme.</p>
+<p>Su voz.</p>
+<p class="dialog">—Por favor, ábreme. Soy yo. La de la llamada te mintió. —Sonaba al borde del llanto, helada, conocidísima—. No era yo, era otra cosa con mi voz, no le hagas caso. Estoy aquí afuera y hace frío y no me dejes aquí, por favor. Soy yo. Soy la de verdad.</p>
+<p>Nora se tapó la boca con las dos manos.</p>
+<p>Porque era verdad.</p>
+<p>Esa también era ella.</p>
+<p>No abrió.</p>
+<p>No supo por qué eligió eso y no lo otro. No fue valor, ni cálculo, ni fe en la primera voz. Fue que las piernas no la llevaron hasta la puerta. Fue que se quedó pegada a la encimera, temblando, mientras la voz de afuera le suplicaba con su propia garganta, le recordaba cosas que solo ella sabía, lloraba, golpeaba, pedía.</p>
+<p>Hasta que dejó de pedir.</p>
+<p>La voz se apagó como se apaga una vela.</p>
+<p>Y volvió el silencio.</p>
+<p>Pero ya no era el bueno. Ya nunca más iba a ser el bueno.</p>
+<p>Nora se quedó de pie en la cocina mucho rato, sin mirar la puerta, sin mirar nada, escuchando su propio pulso, que era el único sonido que le quedaba en el mundo.</p>
+<p>Y dentro de ese silencio, despacio, empezó a entender que no había terminado.</p>
+<p>Porque la voz de la llamada había dicho diez minutos.</p>
+<p>Y solo habían pasado siete.</p>
+<p>Miró el reloj del horno.</p>
+<p>Lo miró de frente, esta vez.</p>
+<p>Y entendió que era su turno.</p>
+<p>Que siempre había sido su turno. Que esto era lo que pasaba a los diez minutos: que ella, viva todavía, sin saber todavía qué había afuera ni si había hecho bien o mal en no abrir, tendría que llamar hacia atrás. A la mujer de hace diez minutos. A la que aún tenía el silencio bueno, la lámpara pequeña encendida, el agua sin hervir.</p>
+<p>Y avisarla.</p>
+<p>No porque supiera la verdad. No la sabía. No iba a saberla nunca.</p>
+<p>Sino porque eso fue lo que le dijeron a ella, y el aviso giraba en redondo, de Nora a Nora, sin principio y sin fondo. Una mujer pasándose el miedo a sí misma para siempre, y nadie, en ningún punto del círculo, sabiendo jamás quién esperaba detrás de la puerta.</p>
+<p>Cogió el teléfono.</p>
+<p>Le sorprendió lo quieta que tenía la mano. Había temblado toda la noche, y ahora no. Porque el miedo necesita una salida, y cuando no le queda ninguna se queda quieto, frío, a mitad de camino, como el agua que había apagado sin que llegara a hervir.</p>
+<p>Marcó su propio número.</p>
+<p>Se lo sabía de memoria, claro. Era el suyo.</p>
+<p>Empezó a dar tono.</p>
+<p>Y en algún lugar, diez minutos hacia atrás, en una cocina con una lámpara pequeña encendida, Nora oyó que ella misma contestaba.</p>
+<p class="dialog">—¿Sí?</p>
+<p>Abrió la boca.</p>
+<p>La garganta áspera. El catarro de la lluvia.</p>
+<p class="dialog">—Nora. Escúchame. Soy tú. Dentro de diez minutos. No abras la puerta. Pase lo que pase. Aunque oigas lo que oigas. No abras la puer—</p>
+</article>
+
+<nav class="story-nav">
+  <a href="el-peso.html" class="nav-prev"><span class="nav-label">← Anterior</span><span class="nav-title">El Peso</span></a>
+  <a href="el-pasajero.html" class="nav-next"><span class="nav-label">Siguiente →</span><span class="nav-title">El Pasajero</span></a>
+</nav>
+
+<div class="series-footer">
+  <div class="series-footer-label">No apagues la luz</div>
+  <a href=".">Índice</a>
+</div>
+
+<footer class="site-footer">
+  <a href="../../index.html">ernestocisneros.art</a>
+</footer>
+
+</body>
+</html>

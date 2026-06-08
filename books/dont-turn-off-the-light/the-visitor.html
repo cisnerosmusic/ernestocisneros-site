@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Visitor | Don't Turn Off the Light | Ernesto Cisneros Cino</title>
+<meta name="description" content="An old man receives a visit from someone who claims to be him, forty years younger.">
+<link rel="icon" type="image/x-icon" href="../../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ernestocisneros.art/books/dont-turn-off-the-light/the-visitor.html">
+<meta property="og:title" content="The Visitor">
+<meta property="og:description" content="An old man receives a visit from someone who claims to be him, forty years younger.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Visitor">
+<meta name="twitter:description" content="An old man receives a visit from someone who claims to be him, forty years younger.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-visitante.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-visitor.html">
+<link rel="canonical" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-visitor.html">
+
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-subtle: #f2efe8;
+  --text: #060606;
+  --text-secondary: #2a2929;
+  --text-muted: #6e6e6e;
+  --accent: #151515;
+  --line: #d4cfc5;
+  --line-light: #e8e4dc;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 19px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: all 0.3s; }
+a:hover { text-decoration-color: var(--text); }
+
+.site-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: flex; gap: 0.8rem; }
+.lang-switch a.active { color: var(--text); border-bottom: 1px solid var(--text); }
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.hero-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.35;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  margin: 2.5rem auto;
+  border: none;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+.article p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.article p.dialog {
+  text-align: left;
+  padding-left: 0;
+}
+
+.story-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.story-nav a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.story-nav .nav-prev { text-align: left; }
+.story-nav .nav-next { text-align: right; }
+.nav-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.nav-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.story-nav a:hover .nav-title { color: var(--text); }
+
+.series-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+}
+.series-footer-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.series-footer a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.series-footer a:hover { color: var(--text); }
+
+.site-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.5rem 1.5rem; }
+  .article { padding: 0 1.5rem 2rem; }
+  .story-nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href=".">← Books</a>
+  <div class="lang-switch">
+    <a href="../../es/books/no-apagues-la-luz/el-visitante.html" class="">ES</a>
+    <a href="." class="active">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">Books · Don't Turn Off the Light</div>
+  <div class="hero-number">XI</div>
+  <h1 class="hero-title">The Visitor</h1>
+  <hr class="hero-rule">
+</header>
+
+<article class="article">
+<p>Her father had spent months without knowing her name.</p>
+<p>Sofía had accepted this the way you accept these things, which is not all at once but a thousand times over, each visit a small and new loss. She drove the forty minutes to his house on Saturdays, filled the fridge, threw out what had spoiled, cut his nails, listened to him tell for the third time in an hour the same story about a dog he had as a child.</p>
+<p>Aurelio was eighty-one years old, and he had an illness that was turning off the rooms of his memory one by one, the way someone moves through a dark house closing doors.</p>
+<p>He had closed the door on Sofía some time ago.</p>
+<p>On Mateo, no.</p>
+<p class="dialog">—Your brother came last night —he told her that Saturday, happily, while she prepared his soup. —We played. He beat me again. He was always better than me with the knights.</p>
+<p>Sofía put down the spoon for a moment.</p>
+<p>Mateo had died seven years ago.</p>
+<p>At first she had corrected him. Gently, but she corrected him, because it seemed cruel to let him believe. Later a nurse explained to her that no, that with this illness you don&#x27;t correct, you don&#x27;t argue, you don&#x27;t drag the patient through a grief he&#x27;ll have to live through entirely each time. That you accompany and that&#x27;s all.</p>
+<p>So now she only said:</p>
+<p class="dialog">—Oh really? And how is Mateo?</p>
+<p class="dialog">—Fine. —Her father smiled with a peace that pierced her. —Same as always.</p>
+<p>In the living room, on the small table, stood the chess set. The one they had always had, wood, with a chipped black pawn. Aurelio had taught Mateo to play on that board, as a boy, the two heads bent together under the lamp. Sofía had never been as interested. Mateo had been. Mateo became good, very good.</p>
+<p>The pieces were arranged mid-game.</p>
+<p>Sofía didn&#x27;t remember having left them like that.</p>
+<p>The first time she thought he was moving them himself.</p>
+<p>It made sense. A lonely old man, restless hands, fiddling with the pieces without knowing what he was doing. She would gather them, arrange them in their squares, white below, black above, ready to begin.</p>
+<p>The following Saturday, mid-game again.</p>
+<p>And the position was not the muddle of clumsy hands. It was a real game. The pieces were in conversation: a bishop pinned a knight, a rook threatened along the open file, the pawns advanced in chains. Someone who knew how to play had been there.</p>
+<p>Her father no longer knew how to play. The illness had taken that from him among the first things. He couldn&#x27;t follow the rules, he didn&#x27;t remember how the queen moved, she had watched him try and give up.</p>
+<p>But the board woke each Saturday a little further along in a clean, coherent, good game.</p>
+<p>She began to photograph it. Before she left on Saturday night, one photo. When she came back the following Saturday, another. Between one and the other, seven nights, and the game had always advanced. Five, six moves per side. As if someone came to make one move a night and then left.</p>
+<p>She decided not to wait until Saturday. She installed cameras.</p>
+<p>She told herself it was because of the illness. In case he fell, in case he wandered out into the street in the middle of the night, in case he left the gas on. That&#x27;s what she told herself. She bought three, placed them in the living room, in the hallway, in the bedroom, and connected them to her phone.</p>
+<p>The first night she stayed awake, watching the small screen, her father&#x27;s room in grey, her father asleep.</p>
+<p>At quarter past three, he got up.</p>
+<p>On the video, Aurelio crosses the living room slowly, in his pajamas, without turning on the light, like someone going to a familiar place. He sits down at the small table. In front of the board.</p>
+<p>And in front of him, in the other chair, there is no one.</p>
+<p>Her father smiles. He moves his lips. Sofía had no audio that first night, so she could only watch him talk, nod, laugh at something, that whole laugh she hadn&#x27;t seen in him for years, the laugh from before, the one belonging to the man he had been.</p>
+<p>He moves a white piece. He advances it with two fingers. And waits.</p>
+<p>He looks at the empty chair with the fond attention of someone listening to another person think.</p>
+<p>And then, without any hand touching it, a black piece slides one square.</p>
+<p>By itself.</p>
+<p>Her father nods, as if to say good move, son, and it&#x27;s his turn again.</p>
+<p>Sofía watched the video fourteen times that night. In slow motion. Frame by frame. The black piece didn&#x27;t wobble, didn&#x27;t jump the way a trick of editing would. It moved smoothly, deliberately, the way a hand not present would move it.</p>
+<p>At quarter to four, Aurelio stood up, said good night to the air, tenderly, and went back to bed.</p>
+<p>By morning he would remember nothing.</p>
+<p>What took Sofía longest to understand was the thing about the games.</p>
+<p>Because she began to reconstruct them. In the morning, with the photos, she wrote down the moves, worked through the development. She knew just enough to follow them; Mateo had taught her as a teenager, during the dead afternoons, though she had never risen above mediocre.</p>
+<p>The early games, from the first weeks, were badly played by black. Clumsy. Hesitating, losing pieces carelessly, opening badly. Like someone who is learning. Like someone who remembers that a game exists but not quite how it is played.</p>
+<p>Then it improved.</p>
+<p>Week by week, black played better. It stopped giving away pieces. It began to set traps. To sacrifice a pawn to open a diagonal, the kinds of things that don&#x27;t occur to a beginner.</p>
+<p>And one Saturday Sofía recognized something on the board that left her cold.</p>
+<p>Black had opened with the Sicilian defense, closed variation, and had maneuvered the knights inside in an odd, old, awkward way that she had seen before. That she had seen her whole childhood. It was Mateo&#x27;s way of playing. The style her father had put in his head as a boy, under that lamp, the mannerisms, the knights inside, the queenside pawn early.</p>
+<p>Black was no longer playing like a stranger who is learning.</p>
+<p>Black was playing like her brother.</p>
+<p>The board was a transcription. Night after night, someone was sitting across from her father and learning to be Mateo, move by move, and each week was doing it better.</p>
+<p>The thing about quarter past three she discovered while looking for something else.</p>
+<p>She was sorting through her father&#x27;s papers, the old ones, the ones he could no longer manage, and among them appeared the hospital envelope. Mateo&#x27;s report. The one from the night of the accident.</p>
+<p>Time of death: 3:15.</p>
+<p>Sofía sat on the floor with the paper in her hand for a long time.</p>
+<p>She had never told her father. The exact time, no. By the time Mateo died, Aurelio was already too far gone, already closing doors, and she had spared him that detail the way you spare someone the details that only serve to hurt. Her father didn&#x27;t know at what hour his son had died.</p>
+<p>The visitor came at that hour.</p>
+<p>At that one, and no other.</p>
+<p>She didn&#x27;t look for an explanation. She had already understood that the story she was living had no explanations, only facts that didn&#x27;t fit with being alive. She wrote down the hour in her notebook, below the moves, and didn&#x27;t tell anyone, because there was no one to tell, because who was going to believe her about a chess board?</p>
+<p>The question arrived one ordinary midday.</p>
+<p>During the day. In sunlight. With nothing strange in the air.</p>
+<p>Sofía was buttoning up her father&#x27;s shirt, and Aurelio was looking out the window, absent, nowhere in particular. And then, all at once, Aurelio came back.</p>
+<p>It&#x27;s not easy to explain to someone who has never cared for a person like this. But sometimes, for a second, they return. The eyes focus, the face composes itself, and for an instant the whole man is there, the one from before, looking at you for real.</p>
+<p>Her father looked at her for real.</p>
+<p>He recognized her. She knew it because his eyes filled the way only a father&#x27;s eyes fill.</p>
+<p>And he asked her, with an immense gentleness, without reproach, almost gratefully:</p>
+<p class="dialog">—Why don&#x27;t you come anymore at night?</p>
+<p>Sofía didn&#x27;t answer.</p>
+<p>Because she had never visited him at night. Never. She came on Saturdays, during the day, forty minutes of road, the soup, the nails, the fridge. Never at quarter past three.</p>
+<p>But her father was speaking to her as to someone who did come. At night. To sit with him.</p>
+<p>And in that second, before he faded away again, she understood everything, and it was not a relief, it was the opposite of a relief.</p>
+<p>The cameras hadn&#x27;t caught anything.</p>
+<p>They had taught it.</p>
+<p>Looking had been letting herself be looked at. Every night she had stayed watching the screen, every morning she had reconstructed the games, every time she had leaned over that board trying to understand who was playing, she had been, without knowing it, revealing herself. Teaching it her face. Her devotion. Her schedule.</p>
+<p>The thing had started with Mateo because it was Mateo her father kept.</p>
+<p>But for months it had been studying her.</p>
+<p>The one who came back. The one who always came back, Saturday after Saturday, the most faithful of all the visitors. For her father, by now, the daughter who came by day and the one who came by night were beginning to be the same person.</p>
+<p>The next face it learned to wear would be hers.</p>
+<p>That night Sofía didn&#x27;t stay to watch the screen.</p>
+<p>She turned off her phone. She forced herself not to watch quarter past three.</p>
+<p>And it served no purpose, because she knew the visitor had come anyway, punctual, gentle, and her father would have played, and laughed with the laugh from before, and would have been, for a while, happy. Happier with the thing than with her.</p>
+<p>And she knew she would go back on Saturday.</p>
+<p>That she would open the photos. That she would lean over the board to read the new game, to see how much it had learned, unable to stop herself, the way you can&#x27;t stop yourself touching a wound.</p>
+<p>That love is also this: returning, even when it doesn&#x27;t serve you. Returning always.</p>
+<p>And that something, in that house, at quarter past three, had understood this better than anyone.</p>
+<p>Sofía would never know if it was her brother, loving her father from wherever it is that you love from after you die.</p>
+<p>Or whether it was something else, something that had found the only mind that could not give it away, and had sat down to learn, with infinite patience, in front of a chess board, how you make someone love you.</p>
+<p>She was never going to know.</p>
+<p>And because she would never know, she was going to go back.</p>
+<p>Which was exactly what they were waiting for from her.</p>
+</article>
+
+<nav class="story-nav">
+  <a href="the-forgiveness.html" class="nav-prev"><span class="nav-label">← Previous</span><span class="nav-title">The Forgiveness</span></a>
+  <span></span>
+</nav>
+
+<div class="series-footer">
+  <div class="series-footer-label">Don't Turn Off the Light</div>
+  <a href=".">Index</a>
+</div>
+
+<footer class="site-footer">
+  <a href="../../index.html">ernestocisneros.art</a>
+</footer>
+
+</body>
+</html>

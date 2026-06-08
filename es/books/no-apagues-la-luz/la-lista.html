@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Lista | No apagues la luz | Ernesto Cisneros Cino</title>
+<meta name="description" content="Un hombre hereda una lista con seis nombres tachados. El séptimo nombre es el suyo.">
+<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ernestocisneros.art/es/books/no-apagues-la-luz/la-lista.html">
+<meta property="og:title" content="La Lista">
+<meta property="og:description" content="Un hombre hereda una lista con seis nombres tachados. El séptimo nombre es el suyo.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La Lista">
+<meta name="twitter:description" content="Un hombre hereda una lista con seis nombres tachados. El séptimo nombre es el suyo.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/la-lista.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-list.html">
+<link rel="canonical" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/la-lista.html">
+
+<link href="../../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-subtle: #f2efe8;
+  --text: #060606;
+  --text-secondary: #2a2929;
+  --text-muted: #6e6e6e;
+  --accent: #151515;
+  --line: #d4cfc5;
+  --line-light: #e8e4dc;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 19px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: all 0.3s; }
+a:hover { text-decoration-color: var(--text); }
+
+.site-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: flex; gap: 0.8rem; }
+.lang-switch a.active { color: var(--text); border-bottom: 1px solid var(--text); }
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.hero-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.35;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  margin: 2.5rem auto;
+  border: none;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+.article p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.article p.dialog {
+  text-align: left;
+  padding-left: 0;
+}
+
+.story-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.story-nav a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.story-nav .nav-prev { text-align: left; }
+.story-nav .nav-next { text-align: right; }
+.nav-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.nav-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.story-nav a:hover .nav-title { color: var(--text); }
+
+.series-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+}
+.series-footer-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.series-footer a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.series-footer a:hover { color: var(--text); }
+
+.site-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.5rem 1.5rem; }
+  .article { padding: 0 1.5rem 2rem; }
+  .story-nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href=".">← Índice</a>
+  <div class="lang-switch">
+    <a href="." class="active">ES</a>
+    <a href="../../../books/dont-turn-off-the-light/the-list.html" class="">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">Libros · No apagues la luz</div>
+  <div class="hero-number">VI</div>
+  <h1 class="hero-title">La Lista</h1>
+  <hr class="hero-rule">
+</header>
+
+<article class="article">
+<p>La primera apareció un jueves, pegada a la nevera con el imán de la pizzería.</p>
+<p>Comprar leche. Llamar a mamá. Pagar la luz antes del 15.</p>
+<p>Daniel la leyó dos veces, con el café en la mano, y lo que le extrañó no fue la lista.</p>
+<p>Fue la letra.</p>
+<p>Era casi la suya. La inclinación, el tamaño, la manera de ligar las letras. Pero él cruzaba los sietes, una manía de toda la vida, una rayita en medio, y los sietes de la lista no estaban cruzados. Detalle mínimo. El único, pero suficiente. Esa lista la había escrito una mano que imitaba la suya muy bien y fallaba en una sola cosa.</p>
+<p>Vivía solo. Nadie tenía llave. La puerta había estado cerrada toda la noche.</p>
+<p>Compró la leche, porque la necesitaba igual. Llamó a su madre, porque hacía días que debía. Pagó la luz el día 14.</p>
+<p>Solo esa noche, en la cama, cayó en la cuenta de que había hecho las tres cosas.</p>
+<p>A la mañana siguiente había otra.</p>
+<p>Misma letra, mismos sietes sin cruzar. Recoger el traje de la tintorería. Cambiar la bombilla del pasillo. Devolverle el taladro a Suárez.</p>
+<p>Cosas suyas. Pendientes suyos, reales, que estaban en su cabeza y en ningún otro sitio.</p>
+<p>Esta vez Daniel decidió probar.</p>
+<p>No iba a recoger el traje. A propósito. Para romper la lista, para demostrarse que no era nada.</p>
+<p>Esa tarde, volviendo del trabajo, se encontró en la acera a la dueña de la tintorería, que cerraba ya, y que al verlo le dijo, ah, menos mal, casi me voy, pásate que te doy el traje, que mañana libro. Y se lo dio. En la mano. Sin que él lo buscara.</p>
+<p>Tachó &quot;recoger el traje&quot; en su cabeza, con un frío nuevo.</p>
+<p>Probó con la bombilla. No la cambió. Esa noche se fundió la del baño y tuvo que cambiar las dos.</p>
+<p>Probó con el taladro. Suárez tocó a su puerta a pedírselo.</p>
+<p>Lo que estaba en la lista pasaba. Con su permiso o sin él. Si él no lo hacía, el mundo se reacomodaba hasta que lo hiciera, por otro camino, sin pedirle opinión.</p>
+<p>La lista no le mandaba.</p>
+<p>La lista sabía.</p>
+<p>El lunes, entre &quot;comprar pan&quot; y &quot;renovar el carnet&quot;, había un renglón nuevo.</p>
+<p>Matar al vecino del 4B.</p>
+<p>Daniel se quedó de pie frente a la nevera mucho rato, con el pan que ya no iba a comprar olvidado en la cabeza.</p>
+<p>El vecino del 4B era el señor Pombo. Setenta y tantos años, viudo, regaba unas plantas en el rellano y le daba los buenos días con una formalidad de otra época. Daniel no le había dicho en su vida más de diez palabras. No le deseaba ningún mal. No le deseaba nada.</p>
+<p>Pero llevaba cinco días aprendiendo que lo que aparecía en esa lista ocurría.</p>
+<p>Y por primera vez la lista decía algo que él, con toda su alma, con cada célula, no iba a permitir.</p>
+<p>Iba a romperla. Esta. La que importaba. Costara lo que costara.</p>
+<p>Decidió proteger al señor Pombo. Pasar el día pendiente de él, sacarlo de cualquier peligro, vigilarlo. Si la lista quería al hombre del 4B muerto, iba a encontrarse a Daniel en medio, entero, vivo, decidido.</p>
+<p>Subió al cuarto piso a media tarde.</p>
+<p>Tocó. Con prisa, con miedo, con demasiada fuerza.</p>
+<p>El señor Pombo abrió en pantuflas, sorprendido.</p>
+<p class="dialog">—¿Daniel? ¿Pasa algo?</p>
+<p class="dialog">—Señor Pombo, tiene que venir conmigo. Tiene que salir de aquí, hoy no puede quedarse, le va a pasar algo, yo.</p>
+<p>Se oyó a sí mismo. Atropellado, sudando, agarrando ya al viejo del brazo para sacarlo del apartamento, para llevarlo a un sitio seguro, lejos de ventanas, lejos del gas, lejos de lo que fuera.</p>
+<p>El señor Pombo se asustó.</p>
+<p>Claro que se asustó. Un vecino al que apenas conocía, fuera de sí, hablándole de muerte, tirándole del brazo hacia la escalera.</p>
+<p class="dialog">—Suélteme. —El viejo se echó atrás—. Suélteme, por favor.</p>
+<p class="dialog">—No, escúcheme, es por su bien, tiene que.</p>
+<p>Pombo tiró del brazo para zafarse, con la fuerza torpe del miedo, justo en el borde del rellano, donde empezaban los escalones de aquel edificio viejo, empinados, de mármol gastado.</p>
+<p>Perdió pie.</p>
+<p>Y Daniel hizo lo único que se puede hacer cuando alguien cae. Se lanzó a sujetarlo.</p>
+<p>Lo agarró. Lo tuvo, un instante, de la camisa y de un hombro.</p>
+<p>Y el peso del viejo, y el envión de Daniel, y la inercia de los dos cuerpos enredados en el sitio peor, hicieron lo que tenían que hacer.</p>
+<p>El que cayó por la escalera no fue Daniel.</p>
+<p>Fue el señor Pombo. Por el tramo entero. Hasta el descansillo de abajo, donde se quedó quieto, en una postura que los vivos no eligen.</p>
+<p>Las manos de Daniel todavía olían a la camisa del viejo.</p>
+<p>Había matado al vecino del 4B.</p>
+<p>Mientras intentaba salvarlo. Con sus dos manos. Exactamente como decía la lista.</p>
+<p>Lo declararon accidente.</p>
+<p>Un anciano, una escalera de mármol, un mal paso. Pasa todos los días. Nadie preguntó por qué Daniel estaba allí, y él no lo dijo, porque ¿qué iba a decir? ¿Que una lista en su nevera, con sus sietes pero no suyos, lo había anunciado?</p>
+<p>La lista, al día siguiente, había crecido.</p>
+<p>Y seguía creciendo. Cada mañana, renglones nuevos. Pequeñas cosas y cosas grandes, mezcladas, todas en aquella letra casi suya. Y todas, todas, se cumplían, no porque él las obedeciera, sino porque cada vez que se plantaba a impedir una, su modo de impedirla era el camino exacto por donde la cosa llegaba.</p>
+<p>Avisar, empujaba. Esquivar, provocaba. Quedarse quieto, también contaba como elegir, y la quietud tenía su propia manera de cumplir el renglón.</p>
+<p>Daniel entendió la arquitectura entera, y era perfecta.</p>
+<p>La lista no necesitaba mandarle nada. No era una orden. Era un espejo de lo que su propia resistencia iba a producir. Le bastaba con escribir la verdad y dejar que él, libre, peleara contra ella. La pelea era el mecanismo. Su voluntad, intacta, lúcida, suya, era la herramienta con la que se cumplía cada línea.</p>
+<p>Nunca supo si la lista leía lo que iba a pasar.</p>
+<p>O si lo escribía, y solo necesitaba que alguien la leyera para que empezara a ser cierto.</p>
+<p>Las dos cosas lo dejaban en el mismo sitio.</p>
+<p>Esta mañana la lista tenía una sola línea.</p>
+<p>Sin verbo.</p>
+<p>Antes le decía qué hacer: comprar, llamar, pagar, matar. Hoy no. Hoy había dejado de importar qué hiciera.</p>
+<p>Solo su nombre.</p>
+<p>Daniel.</p>
+<p>Y, al lado, una hora.</p>
+<p>21:40.</p>
+<p>No dice qué. No hace falta. Ya aprendió que todos los verbos llevan al mismo sitio, que da igual qué elija, que avisar y esquivar y quedarse quieto son tres puertas de la misma habitación. Que si intenta sobrevivir a las 21:40, su modo de intentarlo será, como siempre, el camino. Y que no intentar sobrevivir no está en su mano, porque nadie puede, de verdad, elegir no apartarse de su propia muerte. Las ganas de vivir no son opcionales. Y son, justamente, lo que la lista está esperando usar.</p>
+<p>Son las nueve y media de la noche.</p>
+<p>Daniel está sentado frente a la nevera, mirando su nombre y la hora, con todas las luces encendidas y la puerta cerrada con dos vueltas, sabiendo que cerrar la puerta es una elección, y que dejarla abierta también, y que levantarse es una y no levantarse es otra, y que una de ellas, la que sea, cualquiera, es la que lo lleva.</p>
+<p>Por primera vez en su vida es completamente libre.</p>
+<p>Puede hacer lo que quiera.</p>
+<p>Faltan diez minutos.</p>
+</article>
+
+<nav class="story-nav">
+  <a href="el-pasajero.html" class="nav-prev"><span class="nav-label">← Anterior</span><span class="nav-title">El Pasajero</span></a>
+  <a href="el-silencio.html" class="nav-next"><span class="nav-label">Siguiente →</span><span class="nav-title">El Silencio</span></a>
+</nav>
+
+<div class="series-footer">
+  <div class="series-footer-label">No apagues la luz</div>
+  <a href=".">Índice</a>
+</div>
+
+<footer class="site-footer">
+  <a href="../../index.html">ernestocisneros.art</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Visitante | No apagues la luz | Ernesto Cisneros Cino</title>
+<meta name="description" content="Un anciano recibe la visita de alguien que dice ser él mismo, cuarenta años más joven.">
+<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-visitante.html">
+<meta property="og:title" content="El Visitante">
+<meta property="og:description" content="Un anciano recibe la visita de alguien que dice ser él mismo, cuarenta años más joven.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="El Visitante">
+<meta name="twitter:description" content="Un anciano recibe la visita de alguien que dice ser él mismo, cuarenta años más joven.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-visitante.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-visitor.html">
+<link rel="canonical" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-visitante.html">
+
+<link href="../../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-subtle: #f2efe8;
+  --text: #060606;
+  --text-secondary: #2a2929;
+  --text-muted: #6e6e6e;
+  --accent: #151515;
+  --line: #d4cfc5;
+  --line-light: #e8e4dc;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 19px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: all 0.3s; }
+a:hover { text-decoration-color: var(--text); }
+
+.site-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: flex; gap: 0.8rem; }
+.lang-switch a.active { color: var(--text); border-bottom: 1px solid var(--text); }
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.hero-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.35;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  margin: 2.5rem auto;
+  border: none;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+.article p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.article p.dialog {
+  text-align: left;
+  padding-left: 0;
+}
+
+.story-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.story-nav a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.story-nav .nav-prev { text-align: left; }
+.story-nav .nav-next { text-align: right; }
+.nav-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.nav-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.story-nav a:hover .nav-title { color: var(--text); }
+
+.series-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+}
+.series-footer-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.series-footer a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.series-footer a:hover { color: var(--text); }
+
+.site-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.5rem 1.5rem; }
+  .article { padding: 0 1.5rem 2rem; }
+  .story-nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href=".">← Índice</a>
+  <div class="lang-switch">
+    <a href="." class="active">ES</a>
+    <a href="../../../books/dont-turn-off-the-light/the-visitor.html" class="">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">Libros · No apagues la luz</div>
+  <div class="hero-number">XI</div>
+  <h1 class="hero-title">El Visitante</h1>
+  <hr class="hero-rule">
+</header>
+
+<article class="article">
+<p>Su padre llevaba meses sin saber cómo se llamaba ella.</p>
+<p>Sofía lo había aceptado del modo en que se aceptan estas cosas, que no es de una vez sino mil veces, cada visita una pérdida pequeña y nueva. Manejaba los cuarenta minutos hasta la casa los sábados, le llenaba la nevera, tiraba lo que se había echado a perder, le cortaba las uñas, lo escuchaba contar por tercera vez en una hora la misma historia de un perro que tuvo de niño.</p>
+<p>Aurelio tenía ochenta y un años y una enfermedad que le iba apagando los cuartos de la memoria uno por uno, como quien recorre una casa de noche cerrando puertas.</p>
+<p>A Sofía la había cerrado hacía tiempo.</p>
+<p>A Mateo, no.</p>
+<p class="dialog">—Anoche vino tu hermano —le dijo aquel sábado, contento, mientras ella le preparaba la sopa—. Jugamos. Me ganó otra vez. Siempre fue mejor que yo con los caballos.</p>
+<p>Sofía dejó la cuchara un momento.</p>
+<p>Mateo había muerto hacía siete años.</p>
+<p>Al principio se lo corregía. Con dulzura, pero se lo corregía, porque le parecía cruel dejarlo creer. Después una enfermera le explicó que no, que con esta enfermedad no se corrige, no se discute, no se arrastra al enfermo a un duelo que va a tener que vivir entero cada vez. Que se acompaña y ya.</p>
+<p>Así que ahora solo decía:</p>
+<p class="dialog">—¿Ah, sí? ¿Y cómo está Mateo?</p>
+<p class="dialog">—Bien. —Su padre sonreía con una paz que a ella se le clavaba—. Igual que siempre.</p>
+<p>En la sala, sobre la mesita, estaba el tablero de ajedrez. El de toda la vida, de madera, con un peón negro astillado. Aurelio le había enseñado a jugar a Mateo en ese tablero, de niño, las dos cabezas juntas bajo la lámpara. A ella nunca le interesó tanto. Mateo sí. Mateo se volvió bueno, muy bueno.</p>
+<p>Las piezas estaban a media partida.</p>
+<p>Sofía no recordaba haberlas dejado así.</p>
+<p>La primera vez pensó que las movía él.</p>
+<p>Tenía sentido. Un viejo solo, las manos inquietas, toqueteando las fichas sin saber lo que hacía. Las recogía, las ordenaba en sus casillas, blancas abajo, negras arriba, listas para empezar.</p>
+<p>Al sábado siguiente, otra vez a media partida.</p>
+<p>Y la posición no era un revoltijo de manos torpes. Era una partida de verdad. Las piezas dialogaban: un alfil clavaba un caballo, una torre amenazaba por la columna abierta, los peones avanzaban en cadena. Alguien que sabía jugar había estado ahí.</p>
+<p>Su padre ya no sabía jugar. La enfermedad le había quitado eso entre las primeras cosas. No podía seguir las reglas, no recordaba cómo se movía la dama, se lo había visto intentar y rendirse.</p>
+<p>Pero el tablero amanecía cada sábado un poco más adelante en una partida limpia, coherente, buena.</p>
+<p>Empezó a fotografiarlo. Antes de irse el sábado por la noche, una foto. Al volver el sábado siguiente, otra. Entre una y otra, siete noches, y siempre la partida había avanzado. Cinco, seis jugadas por bando. Como si alguien viniera a mover una vez por noche y se fuera.</p>
+<p>Decidió no esperar al sábado. Instaló cámaras.</p>
+<p>Se dijo que era por la enfermedad. Por si se caía, por si salía a la calle de madrugada, por si dejaba el gas abierto. Eso se dijo. Compró tres, las puso en la sala, en el pasillo, en el cuarto, y las conectó a su teléfono.</p>
+<p>La primera noche se quedó despierta, mirando la pantalla pequeña, el cuarto de su padre en gris, su padre dormido.</p>
+<p>A las tres y cuarto se levantó.</p>
+<p>En el video, Aurelio cruza la sala despacio, en pijama, sin encender la luz, como quien va a un sitio conocido. Se sienta a la mesita. Frente al tablero.</p>
+<p>Y frente a él, en la otra silla, no hay nadie.</p>
+<p>Su padre sonríe. Mueve los labios. Sofía no tenía audio aquella primera noche, así que solo lo veía hablar, asentir, reírse de algo, esa risa entera que ella no le veía hacía años, la risa de antes, la del hombre que fue.</p>
+<p>Mueve una pieza blanca. La adelanta con dos dedos. Y espera.</p>
+<p>Mira a la silla vacía con la atención cariñosa de quien escucha a alguien pensar.</p>
+<p>Y entonces, sin que ninguna mano la toque, una pieza negra se desliza una casilla.</p>
+<p>Sola.</p>
+<p>Su padre asiente, como diciendo buena jugada, hijo, y le toca a él de nuevo.</p>
+<p>Sofía vio el video catorce veces esa madrugada. Ralentizado. Cuadro por cuadro. La pieza negra no temblaba, no saltaba como un truco de montaje. Se movía con suavidad, pensada, igual que la movería una mano que no estaba.</p>
+<p>A las cuatro menos cuarto, Aurelio se levantó, le dio las buenas noches al aire, con ternura, y volvió a la cama.</p>
+<p>Al amanecer no recordaría nada.</p>
+<p>Lo que más tardó en entender Sofía fue lo de las partidas.</p>
+<p>Porque empezó a reconstruirlas. Por la mañana, con las fotos, anotaba las jugadas, rehacía el desarrollo. Sabía lo justo para seguirlas; Mateo le había enseñado de adolescentes, las tardes muertas, aunque ella nunca pasó de mediocre.</p>
+<p>Las primeras partidas, las de las primeras semanas, las jugaba mal el negro. Torpe. Dudaba, perdía piezas tontamente, abría mal. Como alguien que está aprendiendo. Como alguien que recuerda que existe un juego pero no del todo cómo se juega.</p>
+<p>Después fue mejorando.</p>
+<p>Semana a semana, el negro jugaba mejor. Dejó de regalar piezas. Empezó a tender trampas. A sacrificar un peón para abrir una diagonal, esas cosas que no se le ocurren a un principiante.</p>
+<p>Y un sábado Sofía reconoció algo en el tablero que la dejó fría.</p>
+<p>El negro había abierto con la defensa siciliana, variante cerrada, y había maniobrado los caballos por dentro de una manera rara, antigua, incómoda, que ella había visto antes. Que había visto toda su infancia. Era la forma de jugar de Mateo. El estilo que su padre le había metido en la cabeza de niño, bajo aquella lámpara, las manías, los caballos por dentro, el peón de dama temprano.</p>
+<p>El negro ya no jugaba como un desconocido que aprende.</p>
+<p>Jugaba como su hermano.</p>
+<p>El tablero era una transcripción. Noche tras noche, alguien se sentaba frente a su padre y aprendía a ser Mateo, jugada a jugada, y cada semana le salía mejor.</p>
+<p>Lo de las tres y cuarto lo descubrió buscando otra cosa.</p>
+<p>Estaba ordenando los papeles de su padre, los de antes, los que él ya no podría administrar, y entre ellos apareció el sobre del hospital. El informe de Mateo. El de la noche del accidente.</p>
+<p>Hora de defunción: 3:15.</p>
+<p>Sofía se quedó sentada en el suelo con el papel en la mano mucho tiempo.</p>
+<p>Nunca se lo había dicho a su padre. La hora exacta, no. Para cuando Mateo murió, Aurelio ya estaba demasiado lejos, ya cerraba puertas, y ella le ahorró ese dato como se ahorran los detalles que solo sirven para doler. Su padre no sabía a qué hora había muerto su hijo.</p>
+<p>El visitante llegaba a esa hora.</p>
+<p>A esa, y no a otra.</p>
+<p>No buscó explicación. Ya había entendido que el cuento donde estaba metida no tenía explicaciones, solo hechos que no encajaban con estar vivo. Apuntó la hora en su cuaderno, debajo de las jugadas, y no se lo contó a nadie, porque no había a quién, porque ¿quién le iba a creer un tablero?</p>
+<p>La pregunta llegó un mediodía cualquiera.</p>
+<p>De día. Con sol. Sin nada raro en el aire.</p>
+<p>Sofía le estaba abrochando los botones de la camisa a su padre, que miraba por la ventana, ausente, en ninguna parte. Y de pronto Aurelio volvió.</p>
+<p>No es fácil de explicar para quien no ha cuidado a alguien así. Pero a veces, un segundo, vuelven. Los ojos se enfocan, la cara se ordena, y por un instante está ahí el hombre entero, el de antes, mirándote de verdad.</p>
+<p>Su padre la miró de verdad.</p>
+<p>La reconoció. Ella lo supo porque a él se le llenaron los ojos, esa manera que solo tienen los padres.</p>
+<p>Y le preguntó, con una dulzura inmensa, sin reproche, casi agradecido:</p>
+<p class="dialog">—¿Por qué ya no vienes de noche?</p>
+<p>Sofía no respondió.</p>
+<p>Porque ella nunca lo había visitado de noche. Nunca. Venía los sábados, de día, cuarenta minutos de carretera, la sopa, las uñas, la nevera. Jamás a las tres y cuarto.</p>
+<p>Pero su padre le hablaba como a alguien que sí venía. De noche. A sentarse con él.</p>
+<p>Y en ese segundo, antes de que él volviera a apagarse, lo entendió todo, y no fue un alivio, fue lo contrario de un alivio.</p>
+<p>Las cámaras no habían atrapado nada.</p>
+<p>Lo habían enseñado.</p>
+<p>Mirarlo había sido dejarlo mirar. Cada noche que ella se quedó frente a la pantalla, cada mañana que reconstruyó las partidas, cada vez que se inclinó sobre ese tablero tratando de entender quién jugaba, había estado, sin saberlo, mostrándose. Enseñándole su cara. Su devoción. Su horario.</p>
+<p>La cosa había empezado por Mateo porque era a Mateo a quien su padre guardaba.</p>
+<p>Pero llevaba meses estudiándola a ella.</p>
+<p>A la que volvía. A la que siempre volvía, sábado tras sábado, la más fiel de todos los visitantes. Para su padre, ya, la hija que venía de día y el que venía de noche empezaban a ser la misma persona.</p>
+<p>La próxima cara que aprendiera a poner sería la suya.</p>
+<p>Esa noche Sofía no se quedó a mirar la pantalla.</p>
+<p>Apagó el teléfono. Se obligó a no ver las tres y cuarto.</p>
+<p>Y no sirvió de nada, porque sabía que el visitante había venido igual, puntual, amable, y que su padre habría jugado, y se habría reído con la risa de antes, y habría sido, un rato, feliz. Más feliz con la cosa que con ella.</p>
+<p>Y supo que el sábado iba a volver.</p>
+<p>Que iba a abrir las fotos. Que iba a inclinarse sobre el tablero a leer la partida nueva, a ver cuánto había aprendido, sin poder evitarlo, igual que no se puede evitar tocarse una herida.</p>
+<p>Que el amor también es eso: volver, aunque no convenga. Volver siempre.</p>
+<p>Y que algo, en aquella casa, a las tres y cuarto, lo había entendido mejor que nadie.</p>
+<p>Sofía nunca sabría si era su hermano, queriendo a su padre desde donde sea que se quiere después de muerto.</p>
+<p>O si era otra cosa, que había encontrado la única mente que no podía delatarla, y se había sentado a aprender, con paciencia infinita, frente a un tablero, cómo se hace para que te quieran.</p>
+<p>No iba a saberlo nunca.</p>
+<p>Y por no saberlo, iba a volver.</p>
+<p>Que era, exactamente, lo que esperaban de ella.</p>
+</article>
+
+<nav class="story-nav">
+  <a href="el-perdon.html" class="nav-prev"><span class="nav-label">← Anterior</span><span class="nav-title">El Perdón</span></a>
+  <span></span>
+</nav>
+
+<div class="series-footer">
+  <div class="series-footer-label">No apagues la luz</div>
+  <a href=".">Índice</a>
+</div>
+
+<footer class="site-footer">
+  <a href="../../index.html">ernestocisneros.art</a>
+</footer>
+
+</body>
+</html>

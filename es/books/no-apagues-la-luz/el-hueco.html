@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Hueco | No apagues la luz | Ernesto Cisneros Cino</title>
+<meta name="description" content="Una puerta detrás de un armario. Una habitación que Marta no recuerda. Una infancia que no fue como creía.">
+<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-hueco.html">
+<meta property="og:title" content="El Hueco">
+<meta property="og:description" content="Una puerta detrás de un armario. Una habitación que Marta no recuerda. Una infancia que no fue como creía.">
+<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="El Hueco">
+<meta name="twitter:description" content="Una puerta detrás de un armario. Una habitación que Marta no recuerda. Una infancia que no fue como creía.">
+<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+
+<link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-hueco.html">
+<link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/the-hollow.html">
+<link rel="canonical" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/el-hueco.html">
+
+<link href="../../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-subtle: #f2efe8;
+  --text: #060606;
+  --text-secondary: #2a2929;
+  --text-muted: #6e6e6e;
+  --accent: #151515;
+  --line: #d4cfc5;
+  --line-light: #e8e4dc;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 19px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: all 0.3s; }
+a:hover { text-decoration-color: var(--text); }
+
+.site-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: flex; gap: 0.8rem; }
+.lang-switch a.active { color: var(--text); border-bottom: 1px solid var(--text); }
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.hero-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.35;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  margin: 2.5rem auto;
+  border: none;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+.article p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.article p.dialog {
+  text-align: left;
+  padding-left: 0;
+}
+
+.story-nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+.story-nav a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.story-nav .nav-prev { text-align: left; }
+.story-nav .nav-next { text-align: right; }
+.nav-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.nav-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.story-nav a:hover .nav-title { color: var(--text); }
+
+.series-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+}
+.series-footer-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.series-footer a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.series-footer a:hover { color: var(--text); }
+
+.site-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--line-light);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.5rem 1.5rem; }
+  .article { padding: 0 1.5rem 2rem; }
+  .story-nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href=".">← Índice</a>
+  <div class="lang-switch">
+    <a href="." class="active">ES</a>
+    <a href="../../../books/dont-turn-off-the-light/the-hollow.html" class="">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">Libros · No apagues la luz</div>
+  <div class="hero-number">II</div>
+  <h1 class="hero-title">El Hueco</h1>
+  <hr class="hero-rule">
+</header>
+
+<article class="article">
+<p>La casa olía igual.</p>
+<p>Eso fue lo primero, y casi la desarma. Treinta años, y el recibidor seguía oliendo a lo mismo: a humedad de pared vieja, a la cera de los muebles, a algo dulce que Marta nunca había sabido nombrar y que era, sencillamente, el olor de su madre.</p>
+<p>Había vuelto a ayudar a vaciarla.</p>
+<p>Su madre se mudaba a un piso más pequeño, más cómodo, más cerca de todo. La casa se vendía. Había que meter cuarenta años en cajas, decidir qué se guardaba y qué se tiraba, y discutir con cariño sobre platos que nadie había usado desde una boda de los años setenta.</p>
+<p>Marta tenía buena memoria.</p>
+<p>Siempre la había tenido. Era casi un orgullo. Recordaba la grieta del techo del baño con forma de río. El tercer escalón que crujía. El dibujo de los azulejos de la cocina, que había contado de niña tantas veces que aún sabía cuántos eran. La gente le contaba episodios de su propia vida y ella se los corregía, y casi siempre tenía razón.</p>
+<p>Por eso, cuando movieron el armario, no entendió.</p>
+<p>Era el armario de su antiguo cuarto. Un mueble enorme, de roble, que llevaba allí desde antes de que ella naciera. Lo separaron de la pared entre los dos, jadeando, para envolverlo en mantas.</p>
+<p>Y detrás había una puerta.</p>
+<p>Pequeña. Blanca. A la altura de un niño. Con un pestillo sencillo, de los que se abren con dos dedos.</p>
+<p>Marta se quedó mirándola.</p>
+<p>Había dormido en ese cuarto hasta los dieciocho años. El armario había estado siempre pegado a esa pared. Ella lo habría visto. Mil veces. Diez mil veces. Una puerta no se esconde durante una infancia entera.</p>
+<p>No había puerta.</p>
+<p>Nunca hubo una puerta.</p>
+<p class="dialog">—Esa siempre estuvo ahí —dijo su madre.</p>
+<p>Lo dijo desde el pasillo, sin acercarse, sin alarma, con la voz tranquila de quien comenta el tiempo.</p>
+<p class="dialog">—Mamá, aquí no había ninguna puerta.</p>
+<p class="dialog">—Claro que había. —Su madre seguía envolviendo un plato en papel de periódico, sin levantar la vista—. Ahí jugabas tú. Te pasabas las horas metida ahí dentro, ¿no te acuerdas? Escribiendo en la pared con el lápiz. No había manera de sacarte.</p>
+<p>Lo dijo con ternura.</p>
+<p>Como un recuerdo bonito.</p>
+<p>Marta soltó una risa que no le salió bien.</p>
+<p>Su madre se encogió de hombros y volvió a sus platos, sin insistir, sin defenderse. No estaba mintiendo. No discutía. Simplemente recordaba una infancia distinta de la suya, una en la que había una puerta, y un cuarto, y una niña feliz que escribía en las paredes.</p>
+<p>Marta se arrodilló.</p>
+<p>Corrió el pestillo con dos dedos.</p>
+<p>Y abrió.</p>
+<p>Dentro el aire era seco y viejo, aire de muchos años encerrado, que le tocó la cara como una respiración.</p>
+<p>Era un cuarto pequeño.</p>
+<p>Sin ventanas.</p>
+<p>Del tamaño de un armario empotrado, quizá un poco más. Las paredes desnudas, el suelo desnudo. No había nada.</p>
+<p>Nada salvo la escritura.</p>
+<p>Las cuatro paredes, hasta donde llegaba la poca luz que entraba por la puerta, estaban cubiertas de palabras escritas a lápiz. Cientos de veces. Miles. Dos palabras, repetidas hasta llenar cada centímetro.</p>
+<p>NO ABRAS.</p>
+<p>NO ABRAS.</p>
+<p>NO ABRAS.</p>
+<p>Marta entró a gatas, porque de pie no cabía, y siguió las líneas con los ojos.</p>
+<p>Arriba, cerca del techo, las letras eran grandes, redondas, aplicadas. Letra de niña que se esfuerza, que respeta el renglón aunque no haya renglón.</p>
+<p>Más abajo se volvían rápidas. Torcidas. La misma mano, pero con prisa, como si escribir despacio ya no fuera suficiente.</p>
+<p>En el rodapié, en los rincones, las últimas estaban hechas por una mano tan pequeña y tan apurada que apenas se leían. Marcas nerviosas, encogidas, encimadas unas sobre otras.</p>
+<p>Y todas, todas, eran su letra.</p>
+<p>No parecida.</p>
+<p>Suya.</p>
+<p>Esa forma rara de cerrar la A, la que su maestra le había intentado corregir sin éxito. La R que siempre le salía coja. Era su mano. La de antes y la de ahora. La reconocía como se reconoce la propia cara en una foto vieja.</p>
+<p>Sin darse cuenta, hizo lo que hacía de niña cuando tenía miedo.</p>
+<p>Se llevó el lápiz a la boca.</p>
+<p>Y solo entonces, con la madera blanda entre los dientes, cayó en la cuenta.</p>
+<p>No recordaba haber traído un lápiz.</p>
+<p>Marta se quedó muy quieta, a gatas, en aquel cuarto sin aire.</p>
+<p>Y empezó a entender.</p>
+<p>Porque al principio lo había leído como lo leería cualquiera. Una niña asustada que se escribe a sí misma. Un juego raro de una cría sola. La pregunta fácil, la que casi daba ternura: ¿qué clase de niña escribe eso, para sí misma, mil veces?</p>
+<p>Pero el aviso no estaba en pasado.</p>
+<p>No decía &quot;no abrí&quot;. No decía &quot;no abras tú, que vas a venir luego a jugar&quot;.</p>
+<p>Decía NO ABRAS. Ahora. Imperativo. Dirigido a alguien que estuviera de pie, o a gatas, frente a la pared, con la mano en un pestillo.</p>
+<p>Dirigido a una mujer adulta.</p>
+<p>A ella.</p>
+<p>La niña no jugaba. La niña sabía. Sabía que un día, muchos años después, volvería convertida en otra cosa, en alguien grande que ya no la recordaría, y que ese alguien encontraría la puerta y la abriría. Y pasó horas. Cientos de horas. Miles de repeticiones, hasta gastarse los dedos, tratando de cruzar todos esos años para detener este momento exacto.</p>
+<p>Este.</p>
+<p>El de ahora.</p>
+<p>Y ella ya había abierto.</p>
+<p>Estaba dentro. Leyendo el aviso. Demasiado tarde.</p>
+<p>Fue entonces cuando lo vio.</p>
+<p>Abajo, cerca del suelo, entre los cientos de trazos descoloridos por el tiempo, había una línea distinta.</p>
+<p>Más oscura.</p>
+<p>Fresca.</p>
+<p>El grafito todavía brillaba un poco, como se ve el lápiz cuando se ha escrito hace poco, días, semanas a lo sumo.</p>
+<p>Y esa no era letra de niña.</p>
+<p>Era letra de adulta.</p>
+<p>Firme. Grande. Con la A rara y la R coja, pero de pulso adulto.</p>
+<p>Era su letra de hoy.</p>
+<p>NO ABRAS.</p>
+<p>Marta no recordaba haberla escrito.</p>
+<p>Salió de espaldas, sin levantarse, raspándose las rodillas, sin atreverse a darle la espalda a la pared.</p>
+<p>En la cocina, su madre tarareaba.</p>
+<p class="dialog">—¿Encontraste algo bueno ahí dentro? —preguntó, sin volverse.</p>
+<p>Marta no contestó.</p>
+<p>Recogió su bolso. Dijo que se le había hecho tarde, que volvía otro día a seguir con las cajas. Su madre le dio un beso y le dijo que manejara con cuidado, igual que siempre, como si no acabara de pasar nada.</p>
+<p>Manejó las dos horas de vuelta sin encender la radio.</p>
+<p>Y por el camino se fue contando cosas.</p>
+<p>Que su madre estaba mayor. Que la memoria de los viejos inventa, rellena, ablanda. Que de niña uno olvida cuartos enteros, casas enteras. Que el grafito fresco era una tontería, un truco de la luz, una mancha. Que ella tenía buena memoria, la mejor, y que si no recordaba ese cuarto era porque sencillamente no había sido importante.</p>
+<p>Para cuando llegó a su casa, casi se lo creía.</p>
+<p>Casi.</p>
+<p>Pasaron unos días.</p>
+<p>Su apartamento. Su vida. Sus cosas en su sitio. Su nombre, Marta, en el buzón, en las facturas, en la taza que le había regalado alguien y que usaba cada mañana.</p>
+<p>Estaba en la cocina, haciendo la lista de la compra. Leche. Pan. Algo para la cena. Un lápiz en la mano, un papel pegado a la nevera.</p>
+<p>Levantó la vista un momento hacia la ventana.</p>
+<p>Cuando la bajó, la mano había seguido sola.</p>
+<p>Debajo de la leche y el pan, con letra redonda, aplicada, cuidadosa, letra de niña que se esfuerza, el papel decía:</p>
+<p>NO ABRAS.</p>
+<p>NO ABRAS.</p>
+<p>NO ABRAS.</p>
+<p>Marta no recordaba haber escrito eso.</p>
+<p>No recordaba haber bajado el lápiz.</p>
+<p>Y entonces, despacio, como sube el agua fría por las piernas, comprendió lo de la línea fresca.</p>
+<p>La de letra adulta, abajo en la pared, junto al suelo.</p>
+<p>La había escrito ella.</p>
+<p>No de niña.</p>
+<p>Hacía poco. Semanas. En una visita a aquella casa que ya no era capaz de recordar haber hecho.</p>
+<p>Había estado dentro del cuarto antes, ya de grande. Había leído el aviso. Lo había añadido una vez más, con su mano de adulta. Y se había ido. Y lo había olvidado todo, la puerta, el cuarto, el viaje entero, como ahora mismo no recordaba haber escrito en el papel de la nevera.</p>
+<p>Cada regreso borraba el anterior.</p>
+<p>La pared era lo único que llevaba la cuenta.</p>
+<p>Lo único que sabía cuántas veces había entrado ya en ese cuarto, y había vuelto a salir con un poco menos de sí misma.</p>
+<p>Miró el papel pegado a la nevera.</p>
+<p>Miró su propia mano, que aún sostenía el lápiz, y que le pareció, por un instante, más pequeña de lo que debía ser.</p>
+<p>Quiso soltar el lápiz.</p>
+<p>La mano no soltó el lápiz.</p>
+<p>Y Marta, de pie en su cocina, a dos horas de la casa de su madre, supo que ya estaba de camino. Que volvería. Que siempre volvía. Que en algún rincón de aquella pared quedaba todavía un hueco vacío, pequeño, a la altura del suelo.</p>
+<p>Y que ese hueco la estaba esperando para una línea más.</p>
+</article>
+
+<nav class="story-nav">
+  <a href="el-hombre-del-sur.html" class="nav-prev"><span class="nav-label">← Anterior</span><span class="nav-title">El Hombre del Sur</span></a>
+  <a href="el-peso.html" class="nav-next"><span class="nav-label">Siguiente →</span><span class="nav-title">El Peso</span></a>
+</nav>
+
+<div class="series-footer">
+  <div class="series-footer-label">No apagues la luz</div>
+  <a href=".">Índice</a>
+</div>
+
+<footer class="site-footer">
+  <a href="../../index.html">ernestocisneros.art</a>
+</footer>
+
+</body>
+</html>
