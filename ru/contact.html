@@ -328,6 +328,54 @@ a:hover { color: var(--gold-bright); }
   .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
   .submit-btn { width: 100%; }
 }
+/* Beam-edge "Linterna" — luz dorada recorriendo el borde */
+@property --beam-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.beam-edge {
+  position: relative;
+  isolation: isolate;
+  --beam-thickness: 1.5px;
+  --beam-spin: 15s;
+  --beam-fade: 1.8s;
+  --beam-c1: #8b6914;
+  --beam-c2: #d4a030;
+  --beam-c3: #f0c860;
+}
+.beam-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--beam-thickness);
+  background: conic-gradient(from var(--beam-angle),
+      transparent 0deg,
+      transparent 205deg,
+      rgba(139, 105, 20, 0) 230deg,
+      var(--beam-c1) 262deg,
+      var(--beam-c2) 296deg,
+      var(--beam-c3) 312deg,
+      var(--beam-c2) 328deg,
+      var(--beam-c1) 352deg,
+      transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  filter: drop-shadow(0 0 5px rgba(212, 160, 48, 0.45))
+          drop-shadow(0 0 11px rgba(139, 105, 20, 0.35));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.beam-edge > * { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .beam-edge.beam-on::before {
+      animation: beamFade var(--beam-fade) ease-out forwards,
+                 beamSpin var(--beam-spin) linear infinite;
+  }
+}
+@keyframes beamFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes beamSpin { to { --beam-angle: 360deg; } }
+
 .skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
 <link rel="stylesheet" href="../assets/css/nav.css">
 <script type="application/ld+json">
@@ -440,7 +488,7 @@ a:hover { color: var(--gold-bright); }
   <div class="divider"></div>
 
   <section class="content-section">
-    <div class="contact-block">
+    <div class="contact-block beam-edge" data-beam-delay="600">
       <h2 class="contact-title">Давайте Поговорим</h2>
       
       <div class="direct-contact">
@@ -623,6 +671,25 @@ function sendMail(e) {
 <script src="../assets/js/footer-lang.js" defer></script>
 <script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
     <script src="/chat-widget.js" defer></script>
+<script>
+/* Beam-edge trigger — enciende la linterna al hacer scroll */
+(function(){
+  var cards=document.querySelectorAll('.beam-edge');
+  if(!cards.length)return;
+  var light=function(el){
+    var d=parseInt(el.getAttribute('data-beam-delay'),10);
+    if(isNaN(d))d=2000;
+    setTimeout(function(){el.classList.add('beam-on');},d);
+  };
+  if(!('IntersectionObserver' in window)){cards.forEach(light);return;}
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){obs.unobserve(entry.target);light(entry.target);}
+    });
+  },{threshold:0.35});
+  cards.forEach(function(el){obs.observe(el);});
+})();
+</script>
 </body>
 </html>
 
