@@ -207,6 +207,36 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.6</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
 
 
   <ns0:url>
@@ -513,6 +543,36 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.6</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/es/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/es/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/es/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/es/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/es/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
 
 
   <ns0:url>
@@ -705,8 +765,44 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/books/no-apagues-la-luz/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
 
-  
+
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/fr/ideas.html</ns0:loc>
     <ns0:lastmod>2026-04-04</ns0:lastmod>
@@ -855,8 +951,44 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/books/no-apagues-la-luz/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
 
-  
+
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ja/ideas.html</ns0:loc>
     <ns0:lastmod>2026-04-04</ns0:lastmod>
@@ -1005,8 +1137,44 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/books/no-apagues-la-luz/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
 
-  
+
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ru/ideas.html</ns0:loc>
     <ns0:lastmod>2026-04-05</ns0:lastmod>
@@ -1163,8 +1331,44 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/books/no-apagues-la-luz/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
 
-  
+
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/it/ideas.html</ns0:loc>
     <ns0:lastmod>2026-04-05</ns0:lastmod>
@@ -1321,8 +1525,44 @@
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/books/sombras-datos-relampagos/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/books/la-sospecha-razonable/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/books/no-apagues-la-luz/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/books/huella/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/books/la-necesidad-de-creer/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/books/manual-sonidistas/</ns0:loc>
+    <ns0:lastmod>2026-06-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
 
-  
+
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ko/ideas.html</ns0:loc>
     <ns0:lastmod>2026-04-05</ns0:lastmod>

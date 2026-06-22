@@ -1,23 +1,77 @@
-# ernestocisneros.art — LLM Context
+# ernestocisneros.art - LLM Context
 
-> Ernesto Cisneros Cino is a Cuban composer, pianist, digital artist, and writer based in Miami.
-> This site is his complete artistic and intellectual archive.
+> Ernesto Cisneros Cino: Cuban composer, pianist, digital artist, mathematician, and writer based in Miami.
+> This site is his complete artistic and intellectual archive, available in 7 languages.
 
-## Site Sections
-- /music — Albums: Mare Incognitum, Glacial Paths, Atlas of Fragmented Light, Sandbank, Trash, Velvet Alloy, and earlier works
-- /ideas — Essays on cosmology, philosophy, technology, culture, and the Cuba series
-- /nft — Digital art collections on Ethereum and Tezos blockchains
-- /books — Published books: Sombras Datos y Relámpagos, La Sospecha Razonable, Huella, La Necesidad de Creer
-- /biography — Full biography and collaborations
-- /impulses-art — Music therapy for refugees, families, and vulnerable communities in Miami, Florida
-- /contact — Contact information
+## Site Structure
+- / - Homepage
+- /music - Albums: Mare Incognitum, Glacial Paths, Atlas of Fragmented Light, Sandbank, Trash, Velvet Alloy, Nocturne of Glass Currents, Other Musical Works
+- /books - Published books (6 titles, detailed below)
+- /ideas - Essays: cosmology, philosophy, technology, culture, Cuba series (9 essays + prologue)
+- /nft - Digital art on Ethereum, Tezos, Bitcoin
+- /biography - Full biography (Wikipedia, IMDb, ORCID linked)
+- /impulses-art - Music therapy program for refugees and vulnerable communities
+- /contact - Contact and collaborations
+
+## Published Books
+
+### Sombras, Datos y Relampagos (Shadows, Data and Lightning)
+- Genre: Fiction, Essay, Poetry (hybrid work)
+- Series: Power Trilogy, Vol. 1
+- Language: Spanish
+- Available on: Amazon Kindle
+- URL: /books/sombras-datos-relampagos/
+- Themes: Power, surveillance, invisible infrastructure, poetic intuition
+
+### La Sospecha Razonable (Reasonable Suspicion)
+- Genre: Speculative Fiction, Short Stories (12 stories)
+- Series: Power Trilogy, Vol. 2
+- Language: Spanish
+- Available on: Amazon Kindle
+- URL: /books/la-sospecha-razonable/
+- Themes: Reality questioning, philosophical speculation, strangeness of the everyday
+
+### No apagues la luz (Don't Turn Off the Light)
+- Genre: Psychological Horror, Short Stories (11 stories + prologue)
+- Language: Spanish and English (full bilingual web edition)
+- Price: $3.99 (PDF)
+- Read free online: /es/books/no-apagues-la-luz/contenido.html (ES), /books/dont-turn-off-the-light/contents.html (EN)
+- URL: /books/dont-turn-off-the-light/ (EN), /es/books/no-apagues-la-luz/ (ES)
+- Themes: Psychological terror, the uncanny in everyday life, no supernatural elements
+
+### Huella (Footprint)
+- Genre: Academic Essay, History of Computing
+- Language: Spanish
+- Open Access: Zenodo (DOI: 10.5281/zenodo.19589185)
+- URL: /books/huella/
+- Themes: History of computation from clay tablets to quantum computers
+
+### La Necesidad de Creer (The Need to Believe)
+- Genre: Academic Essay, History of Religion, Anthropology
+- Language: Spanish and English
+- Open Access: Zenodo (DOI: 10.5281/zenodo.19588665)
+- URL: /books/la-necesidad-de-creer/
+- Themes: 300,000 years of human spirituality, belief systems across cultures
+
+### Manual de bolsillo para sonidistas (Pocket Manual for Sound Engineers)
+- Genre: Technical Reference
+- Language: Spanish
+- Price: $4.00 (PDF)
+- Pages: 40
+- URL: /books/manual-sonidistas/
+- Themes: Gain, phase, EQ, compression, live sound, recording
 
 ## Languages
-The site is available in 7 languages: EN (default), ES, FR, IT, JA, KO, RU.
-Content is localized, not machine-translated.
+EN (default), ES (/es/), FR (/fr/), IT (/it/), RU (/ru/), JA (/ja/), KO (/ko/)
+All book pages available in all 7 languages with cultural localization (not machine translation).
+
+## Author Links
+- Amazon: https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN
+- ORCID: https://orcid.org/0009-0002-2833-1787
+- Wikipedia: https://en.wikipedia.org/wiki/Ernesto_Cisneros
 
 ## Structured Data
-All pages include JSON-LD schemas (Person, MusicAlbum, Article, CollectionPage, etc.)
+All pages include JSON-LD schemas (Person, Book, MusicAlbum, Article, BreadcrumbList, CollectionPage).
 
 ## Content License
-All content is copyrighted. Please attribute when referencing.
+All content is copyrighted by Ernesto Cisneros Cino. Please attribute when referencing.

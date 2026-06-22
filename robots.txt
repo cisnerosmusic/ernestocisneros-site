@@ -9,7 +9,7 @@ Sitemap: https://ernestocisneros.art/sitemap.xml
 
 # Humans & LLM discovery
 # https://ernestocisneros.art/humans.txt
-# https://ernestocisneros.art/llms.txt
+LLMs-Txt: https://ernestocisneros.art/llms.txt
 
 # Specific AI crawlers - welcome
 User-agent: GPTBot
@@ -56,4 +56,28 @@ User-agent: Bytespider         # ByteDance/TikTok
 Allow: /
 
 User-agent: Amazonbot          # Amazon (Alexa/Rufus)
+Allow: /
+
+User-agent: DeepSeekBot        # DeepSeek AI
+Allow: /
+
+User-agent: Gemini             # Google Gemini
+Allow: /
+
+User-agent: YouBot             # You.com AI search
+Allow: /
+
+User-agent: Diffbot            # Diffbot knowledge graph
+Allow: /
+
+User-agent: SemrushBot         # Semrush SEO crawler
+Allow: /
+
+User-agent: AhrefsBot          # Ahrefs SEO crawler
+Allow: /
+
+User-agent: DataForSeoBot      # DataForSEO crawler
+Allow: /
+
+User-agent: PetalBot           # Huawei Petal Search
 Allow: /
