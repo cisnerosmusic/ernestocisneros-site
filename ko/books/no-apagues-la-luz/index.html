@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ko">
 <head>
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
@@ -11,30 +11,33 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>No apagues la luz | Ernesto Cisneros Cino</title>
-<meta name="description" content="Once cuentos de horror que no necesitan monstruos: solo necesitan que prestes atencion. Leelos gratis en linea o compra el PDF. Por Ernesto Cisneros Cino.">
-<meta name="keywords" content="No apagues la luz, horror, cuentos, Ernesto Cisneros, terror, ficcion, literatura, relatos">
+<meta name="description" content="괴물이 필요 없는 열한 편의 공포 이야기. 일상의 균열에서 스며드는 불안. 스페인어와 영어로 제공.">
+<meta name="keywords" content="No apagues la luz, Ernesto Cisneros, 공포소설, 심리 공포, K-호러, 섬뜩함">
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/apple-touch-icon.png">
 
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://ernestocisneros.art/es/books/no-apagues-la-luz/">
+<meta property="og:url" content="https://ernestocisneros.art/ko/books/no-apagues-la-luz/">
 <meta property="og:title" content="No apagues la luz | Ernesto Cisneros Cino">
-<meta property="og:description" content="Once cuentos de horror que no necesitan monstruos: solo necesitan que prestes atencion.">
+<meta property="og:description" content="괴물이 필요 없는 열한 편의 공포 이야기. 일상의 균열에서 스며드는 불안.">
 <meta property="og:image" content="https://ernestocisneros.art/assets/images/books/no-apagues-la-luz.jpg">
-<meta property="og:locale" content="es_ES">
+<meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="No apagues la luz | Ernesto Cisneros Cino">
-<meta name="twitter:description" content="Once cuentos de horror que no necesitan monstruos: solo necesitan que prestes atencion.">
+<meta name="twitter:description" content="괴물이 필요 없는 열한 편의 공포 이야기. 일상의 균열에서 스며드는 불안.">
 <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/books/no-apagues-la-luz.jpg">
 
 <link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/">
 <link rel="alternate" hreflang="en" href="https://ernestocisneros.art/books/dont-turn-off-the-light/">
+<link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/books/no-apagues-la-luz/">
+<link rel="alternate" hreflang="it" href="https://ernestocisneros.art/it/books/no-apagues-la-luz/">
+<link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/books/no-apagues-la-luz/">
 <link rel="alternate" hreflang="ja" href="https://ernestocisneros.art/ja/books/no-apagues-la-luz/">
 <link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/books/no-apagues-la-luz/">
-<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/books/dont-turn-off-the-light/">
-<link rel="canonical" href="https://ernestocisneros.art/es/books/no-apagues-la-luz/">
+<link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/books.html">
+<link rel="canonical" href="https://ernestocisneros.art/ko/books/no-apagues-la-luz/">
 
 <link href="../../../assets/css/fonts.css" rel="stylesheet">
 
@@ -50,8 +53,8 @@
   --text-primary: #f0e6d6;
   --text-secondary: rgba(215, 195, 155, 0.9);
   --line: rgba(180, 130, 60, 0.15);
-  --font-display: 'Cinzel', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  --font-display: 'Cinzel', 'Noto Serif KR', 'Batang', serif;
+  --font-body: 'Cormorant Garamond', 'Noto Serif KR', 'Batang', serif;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,6 +68,9 @@ body {
   font-size: 18px;
   min-height: 100vh;
   overflow-x: hidden;
+  line-break: strict;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
@@ -149,19 +155,19 @@ a:hover { color: var(--gold-bright); }
 
 .badge {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   font-family: var(--font-display);
   font-size: 0.7rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 1rem;
-  margin-right: 0.5rem;
+  border: 1px solid;
 }
 
 .badge-horror {
-  background: rgba(139, 0, 0, 0.2);
-  border: 1px solid rgba(139, 0, 0, 0.5);
-  color: #e8a0a0;
+  background: rgba(180, 40, 40, 0.15);
+  border-color: rgba(180, 40, 40, 0.5);
+  color: #c45050;
 }
 
 .book-title {
@@ -181,6 +187,19 @@ a:hover { color: var(--gold-bright); }
   margin-bottom: 1.5rem;
 }
 
+.language-note {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
 .book-description {
   color: var(--text-secondary);
   font-size: 1.05rem;
@@ -196,10 +215,12 @@ a:hover { color: var(--gold-bright); }
 
 .book-actions {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 1.5rem;
 }
+
+.book-actions .buy-button { margin-top: 0; }
 
 .buy-button {
   display: inline-block;
@@ -222,8 +243,22 @@ a:hover { color: var(--gold-bright); }
 }
 
 .buy-button-primary {
-  background: var(--gold-faint);
-  border-color: var(--gold);
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #080604;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buy-button-primary:hover {
+  background: var(--gold-bright);
+  color: #080604;
 }
 
 .back-link {
@@ -273,17 +308,17 @@ a:hover { color: var(--gold-bright); }
   "@context": "https://schema.org",
   "@type": "Book",
   "name": "No apagues la luz",
-  "description": "Once cuentos de horror que no necesitan monstruos: solo necesitan que prestes atenci&#243;n.",
+  "description": "괴물이 필요 없는 열한 편의 공포 이야기. 일상의 균열에서 스며드는 불안.",
   "author": {
     "@type": "Person",
     "name": "Ernesto Cisneros Cino",
     "url": "https://ernestocisneros.art"
   },
-  "inLanguage": "es",
-  "genre": "Horror",
+  "inLanguage": ["es", "en"],
+  "genre": ["Horror", "Short Stories"],
   "bookFormat": "https://schema.org/EBook",
   "image": "https://ernestocisneros.art/assets/images/books/no-apagues-la-luz.jpg",
-  "url": "https://ernestocisneros.art/es/books/no-apagues-la-luz/",
+  "url": "https://ernestocisneros.art/ko/books/no-apagues-la-luz/",
   "offers": {
     "@type": "Offer",
     "price": "3.99",
@@ -295,12 +330,12 @@ a:hover { color: var(--gold-bright); }
 </script>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+<a href="#main-content" class="skip-link">메인 콘텐츠로 이동</a>
 <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
 <nav class="nav">
   <div class="nav-container">
-    <a href="../../index.html" class="nav-logo" aria-label="Ernesto Cisneros - Inicio">
+    <a href="../../index.html" class="nav-logo" aria-label="Ernesto Cisneros - 홈">
       <picture>
         <source srcset="../../../assets/images/logo.webp" type="image/webp">
         <img src="../../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
@@ -310,10 +345,10 @@ a:hover { color: var(--gold-bright); }
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-menu">
-      <li><a href="../../index.html" class="nav-item">Inicio</a></li>
-      <li><a href="../../biography.html" class="nav-item">Biograf&#237;a</a></li>
+      <li><a href="../../index.html" class="nav-item">홈</a></li>
+      <li><a href="../../biography.html" class="nav-item">프로필</a></li>
       <li class="nav-dropdown">
-        <a href="../../music.html" class="nav-item">M&#250;sica</a>
+        <a href="../../music.html" class="nav-item">음악</a>
         <div class="nav-dropdown-content">
           <a href="../../../music/nocturne-of-glass-currents.html" class="nav-dropdown-item">Nocturne of Glass Currents</a>
           <a href="../../../music/velvet-alloy.html" class="nav-dropdown-item">Velvet Alloy</a>
@@ -322,7 +357,7 @@ a:hover { color: var(--gold-bright); }
           <a href="../../music/mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
           <a href="../../music/trash.html" class="nav-dropdown-item">Trash</a>
           <a href="../../music/sandbank.html" class="nav-dropdown-item">Sandbank</a>
-          <a href="../../music/other-works.html" class="nav-dropdown-item">Otras Obras Musicales</a>
+          <a href="../../music/other-works.html" class="nav-dropdown-item">기타 음악 작품</a>
         </div>
       </li>
       <li class="nav-dropdown">
@@ -332,13 +367,13 @@ a:hover { color: var(--gold-bright); }
           <a href="../../nft/tez-collection.html" class="nav-dropdown-item">Tez Collection</a>
           <a href="../../nft/marketplaces.html" class="nav-dropdown-item">Marketplaces</a>
           <a href="../../nft/btc-ordinals.html" class="nav-dropdown-item">BTC Ordinals</a>
-          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">Un Regalo de la Comunidad</a>
-          <a href="../../nft/resources.html" class="nav-dropdown-item">Recursos</a>
+          <a href="../../nft/gift-from-community.html" class="nav-dropdown-item">커뮤니티의 선물</a>
+          <a href="../../nft/resources.html" class="nav-dropdown-item">리소스</a>
         </div>
       </li>
-      <li><a href="../../books.html" class="nav-item active">Libros</a></li>
+      <li><a href="../../books.html" class="nav-item active">도서</a></li>
       <li class="nav-dropdown">
-        <a href="../../ideas.html" class="nav-item">Ideas</a>
+        <a href="../../ideas.html" class="nav-item">아이디어</a>
         <div class="nav-dropdown-content">
           <a href="../../ideas/cosmology-physics.html" class="nav-dropdown-item">Cosmology &amp; Physics</a>
           <a href="../../ideas/technology-society.html" class="nav-dropdown-item">Technology &amp; Society</a>
@@ -347,11 +382,21 @@ a:hover { color: var(--gold-bright); }
         </div>
       </li>
       <li><a href="../../impulses-art.html" class="nav-item">Impulses.art</a></li>
-      <li><a href="../../contact.html" class="nav-item">Contacto</a></li>
+      <li><a href="../../contact.html" class="nav-item">연락처</a></li>
       <li class="lang-switcher">
-        <a href="../../../books/dont-turn-off-the-light/" title="English" onclick="localStorage.setItem('lang','en')">&#127482;&#127480;</a>
+        <a href="/books.html" title="English" onclick="localStorage.setItem('lang','en')">&#127482;&#127480;</a>
         <span class="lang-sep">|</span>
-        <a href="." class="active-lang" title="Espa&#241;ol" onclick="localStorage.setItem('lang','es')">&#127466;&#127480;</a>
+        <a href="/es/books/no-apagues-la-luz/" title="Espa&#241;ol" onclick="localStorage.setItem('lang','es')">&#127466;&#127480;</a>
+        <span class="lang-sep">|</span>
+        <a href="/fr/books/no-apagues-la-luz/" title="Fran&#231;ais" onclick="localStorage.setItem('lang','fr')">&#127467;&#127479;</a>
+        <span class="lang-sep">|</span>
+        <a href="/it/books/no-apagues-la-luz/" title="Italiano" onclick="localStorage.setItem('lang','it')">&#127470;&#127481;</a>
+        <span class="lang-sep">|</span>
+        <a href="/ru/books/no-apagues-la-luz/" title="&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;" onclick="localStorage.setItem('lang','ru')">&#127479;&#127482;</a>
+        <span class="lang-sep">|</span>
+        <a href="/ja/books/no-apagues-la-luz/" title="&#26085;&#26412;&#35486;" onclick="localStorage.setItem('lang','ja')">&#127471;&#127477;</a>
+        <span class="lang-sep">|</span>
+        <a href="/ko/books/no-apagues-la-luz/" class="active-lang" title="한국어" onclick="localStorage.setItem('lang','ko')">&#127472;&#127479;</a>
       </li>
     </ul>
   </div>
@@ -360,7 +405,7 @@ a:hover { color: var(--gold-bright); }
 <main class="main-content" id="main-content">
 
   <section class="hero">
-    <div class="hero-section-label">Libros</div>
+    <div class="hero-section-label">도서</div>
     <h1 class="hero-title">No apagues la luz</h1>
     <div class="divider"></div>
   </section>
@@ -370,32 +415,33 @@ a:hover { color: var(--gold-bright); }
       <div class="book-cover">
         <picture>
           <source srcset="../../../assets/images/books/no-apagues-la-luz.webp" type="image/webp">
-          <img src="../../../assets/images/books/no-apagues-la-luz.jpg" alt="No apagues la luz - portada" loading="lazy">
+          <img src="../../../assets/images/books/no-apagues-la-luz.jpg" alt="No apagues la luz" loading="lazy">
         </picture>
       </div>
       <div class="book-info">
-        <span class="badge badge-horror">Horror</span>
-
+        <span class="badge badge-horror">공포</span>
         <h2 class="book-title">No apagues la luz</h2>
-        <p class="book-subtitle">Once cuentos de horror que no necesitan monstruos: solo necesitan que prestes atenci&#243;n.</p>
+        <p class="book-subtitle">공포 소설</p>
+        <div class="language-note">이 책은 스페인어와 영어로 읽으실 수 있습니다</div>
 
         <div class="book-description">
-          <p>Este libro re&#250;ne once relatos donde el horror no viene de lo sobrenatural, sino de lo cotidiano. Un hombre que escucha voces en la est&#225;tica de la radio, una lista que se escribe sola, un pasajero que no deber&#237;a estar en el tren, un silencio que pesa m&#225;s que cualquier grito.</p>
-
-          <p>Cada cuento explora un tipo distinto de miedo: el de perder el control, el de ser observado, el de descubrir que la realidad tiene grietas. No hay sangre gratuita ni efectos baratos. Solo la lenta certeza de que algo no est&#225; bien.</p>
-
-          <p>Puedes leer el libro completo en l&#237;nea, gratis, o adquirir el PDF para leerlo donde prefieras.</p>
+          <p>열한 편의 심리 공포 단편집. 유령도 없고, 괴물도 없다. 공포는 초자연적인 것이 아니라 일상의 균열(일상의 금)에서 태어난다. 라디오 잡음 속에서 목소리를 듣는 남자, 스스로 써 내려가는 목록, 열차에 있을 리 없는 승객, 어떤 비명보다도 무겁게 내려앉는 침묵.</p>
+          <p>한국 공포 전통에서 섬뜩함(seomtteuham)은 화려한 연출이 아니라 분위기에서 힘을 얻는다. <strong>장화홍련</strong>에는 괴물이 없다, 가족의 트라우마가 공포 그 자체다. <strong>기생충</strong>은 계급 구조 자체가 공포를 낳는다. 한강의 <strong>채식주의자</strong>에서는 겉보기에 평범한 환경 속에서 한 인간이 내면부터 서서히 해체되는 과정이 가장 두려운 장면이다. 이 단편들도 같은 정신을 따른다. 무의미한 피도, 값싼 놀라움도 없다. 오직 무언가가 잘못되었다는 느린 확신만이 스며든다.</p>
+          <p>불안(buran)이라는 감정, 이름 붙이기 어려운 불편함이 문학적 힘으로 작용하는 이야기들이다. 통제를 잃는 공포, 관찰당하는 공포, 현실에 균열이 있다는 사실을 발견하는 공포. K-호러가 보여주었듯이, 진정한 공포는 정상성의 틈새에서 피어난다.</p>
+          <p>전체 책을 온라인에서 무료로 읽거나 PDF를 구매할 수 있습니다.</p>
         </div>
 
         <div class="book-actions">
-          <a href="contenido.html" class="buy-button buy-button-primary">Leer en l&#237;nea</a>
-          <a href="https://buy.stripe.com/9B64gz2Nx4zL079fAUgMw02" target="_blank" rel="noopener noreferrer" class="buy-button">Comprar PDF &middot; $3.99</a>
+          <a href="/es/books/no-apagues-la-luz/contenido.html" target="_blank" rel="noopener noreferrer" class="buy-button-primary">스페인어로 온라인 읽기</a>
+          <a href="/books/dont-turn-off-the-light/contents.html" target="_blank" rel="noopener noreferrer" class="buy-button">영어로 온라인 읽기</a>
+          <a href="https://buy.stripe.com/9B64gz2Nx4zL079fAUgMw02" target="_blank" rel="noopener noreferrer" class="buy-button">PDF 스페인어 구매 - $3.99</a>
+          <a href="https://buy.stripe.com/8x2eVd0FpaY98DF88sgMw01" target="_blank" rel="noopener noreferrer" class="buy-button">PDF 영어 구매 - $3.99</a>
         </div>
       </div>
     </div>
   </article>
 
-  <a href="../../books.html" class="back-link">&larr; Volver a Libros</a>
+  <a href="../../books.html" class="back-link">&larr; 도서 목록으로 돌아가기</a>
 
 </main>
 
@@ -410,7 +456,7 @@ a:hover { color: var(--gold-bright); }
     <a href="https://linktr.ee/cisnerosmusic" target="_blank" rel="noopener noreferrer" aria-label="Linktree" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066l-.038-4.632-4.007-.07 2.83-2.884L3.523 4.49l3.32 1.266L9.03.678l2.135 5.123L14.477 4.49l-3.215 2.99 2.83 2.884-4.007.07-.038 4.632h-2.094zm-1.2 1.803h5.494v6.455H6.753z"/></svg></a>
   </div>
   <p class="copyright">&#169; 2020 &#8211; 2026 Ernesto Cisneros Cino</p>
-  <p class="copyright footer-credit" style="margin-top:.55rem;">Desarrollado por <a href="https://index01.net" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">Index01</a></p>
+  <p class="copyright footer-credit" style="margin-top:.55rem;">제작: <a href="https://index01.net" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;">Index01</a></p>
 </footer>
 
 <script>

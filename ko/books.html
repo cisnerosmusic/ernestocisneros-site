@@ -40,8 +40,8 @@
   --text-primary: #f0e6d6;
   --text-secondary: rgba(215, 195, 155, 0.9);
   --line: rgba(180, 130, 60, 0.15);
-  --font-display: 'Cinzel', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  --font-display: 'Cinzel', 'Noto Serif KR', 'Batang', serif;
+  --font-body: 'Cormorant Garamond', 'Noto Serif KR', 'Batang', serif;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,6 +56,9 @@ body {
   font-size: 18px;
   min-height: 100vh;
   overflow-x: hidden;
+  line-break: strict;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
@@ -260,12 +263,116 @@ a:hover { color: var(--gold-bright); }
   margin-bottom: 1rem;
 }
 
+/* Books Grid */
+.books-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.book-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.book-card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 12px rgba(212, 160, 48, 0.06);
+  transform: translateY(-3px);
+}
+
+.book-card-cover {
+  flex-shrink: 0;
+  width: 160px;
+}
+
+.book-card-cover img {
+  width: 100%;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s;
+}
+
+.book-card-cover img:hover {
+  transform: translateY(-3px);
+}
+
+.book-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0;
+}
+
+.book-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.book-card-teaser {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.book-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.book-card-price {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--gold-faint);
+  background: rgba(0,0,0,0.3);
+}
+
+.book-card-price.free {
+  border-color: rgba(48,160,80,0.4);
+  color: #6abf6a;
+}
+
+.book-card-link {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.book-card-link:hover {
+  color: var(--gold-bright);
+}
+
 /* Closing Section */
 .closing {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 3rem 2rem 4rem;
-  border-top: 1px solid var(--gold-faint);
 }
 
 .closing-title {
@@ -319,11 +426,19 @@ a:hover { color: var(--gold-bright); }
 
 /* Responsive */
 @media (max-width: 900px) {
-.book-content {
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book-card-cover {
+    width: 120px;
+  }
+
+  .book-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .book-cover {
     max-width: 250px;
     margin: 0 auto;
@@ -331,8 +446,10 @@ a:hover { color: var(--gold-bright); }
 }
 
 @media (max-width: 600px) {
-  .hero, .book-block, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero, .book-block, .books-grid, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
   .book-title { font-size: 1.5rem; }
+  .book-card { flex-direction: column; }
+  .book-card-cover { width: 100%; max-width: 200px; margin: 0 auto; }
 }
 .skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
 <link rel="stylesheet" href="../assets/css/nav.css">
@@ -492,11 +609,125 @@ a:hover { color: var(--gold-bright); }
 
   <div class="divider"></div>
 
-  <!-- Coming Soon -->
-  <section class="coming-soon-section" style="max-width:700px;margin:0 auto;padding:4rem 2rem 6rem;text-align:center;">
-    <div style="border:1px solid var(--gold-dim);background:var(--bg-card);padding:3rem 2.5rem;border-radius:4px;">
-      <h2 style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.1em;color:var(--gold);margin-bottom:1.5rem;font-weight:400;">곧 준비됩니다</h2>
-      <p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.9;margin-bottom:2rem;">각 도서의 개별 페이지가 곧 준비됩니다. 그동안 <a href="../books.html" target="_blank" rel="noopener noreferrer">영어</a> 또는 <a href="../es/books.html" target="_blank" rel="noopener noreferrer">스페인어</a>로 도서를 탐색할 수 있습니다.</p>
+  <div class="books-grid">
+
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/sombras.webp" type="image/webp">
+          <img src="../assets/images/books/sombras.jpg" alt="Sombras, Datos y Relámpagos" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Sombras, Datos y Relámpagos</h2>
+        <p class="book-card-teaser">한, 데이터, 번개. 세 개의 악장으로 권력의 본질을 묻는 혼합 작품. 민중미술의 저항 정신과 공명한다.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">Amazon Kindle</span>
+          <a href="books/sombras-datos-relampagos/" class="book-card-link">자세히 보기 &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/la-sospecha.webp" type="image/webp">
+          <img src="../assets/images/books/la-sospecha.jpg" alt="La Sospecha Razonable" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">La Sospecha Razonable</h2>
+        <p class="book-card-teaser">김초엽과 한강의 계보에 이어지는 열두 편의 사변적 이야기. 세상은 우리의 확신이 허락하는 것보다 훨씬 기이하다.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">Amazon Kindle</span>
+          <a href="books/la-sospecha-razonable/" class="book-card-link">자세히 보기 &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/no-apagues-la-luz.webp" type="image/webp">
+          <img src="../assets/images/books/no-apagues-la-luz.jpg" alt="No apagues la luz" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">No apagues la luz</h2>
+        <p class="book-card-teaser">괴물이 필요 없는 열한 편의 공포. 일상의 균열에서 스며드는 섬뜩한 불안.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">$3.99</span>
+          <a href="books/no-apagues-la-luz/" class="book-card-link">자세히 보기 &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/huella.webp" type="image/webp">
+          <img src="../assets/images/books/huella.png" alt="Huella" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Huella</h2>
+        <p class="book-card-teaser">점토판에서 양자 컴퓨터까지. 직지와 한글 창제에서 반도체 강국까지, 지식의 궤적과 공명한다.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price free">오픈 액세스</span>
+          <a href="books/huella/" class="book-card-link">자세히 보기 &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/la-necesidad.webp" type="image/webp">
+          <img src="../assets/images/books/la-necesidad.jpg" alt="La Necesidad de Creer" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">La Necesidad de Creer</h2>
+        <p class="book-card-teaser">30만 년에 걸친 인간 영성의 역사. 무속, 불교, 유교, 기독교가 공존하는 한국의 영적 풍경과 공명한다.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price free">오픈 액세스</span>
+          <a href="books/la-necesidad-de-creer/" class="book-card-link">자세히 보기 &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/manual-sonidistas.webp" type="image/webp">
+          <img src="../assets/images/books/manual-sonidistas.jpg" alt="Manual de bolsillo para sonidistas" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Manual de bolsillo para sonidistas</h2>
+        <p class="book-card-teaser">장인의 안내서. 게인, 위상, EQ, 컴프레션. 콘솔 옆에 두는 40페이지.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">$4.00</span>
+          <a href="books/manual-sonidistas/" class="book-card-link">자세히 보기 &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="closing">
+    <h2 class="closing-title">후기</h2>
+    <div class="closing-text">
+      <p>글쓰기는 계획된 길이 아니었다. 그것은 내가 창조하는 모든 것의 자연스러운 연장이 되었다. 음악, 시각 예술, 영상, 문학은 같은 질문을 탐구하기 위한 서로 다른 형식에 불과하다.</p>
+      <p>이 책들은 계속해 나갈 여정의 시작을 보여준다.</p>
+      <p>나는 앞으로도 쓸 것이다(때로는 스페인어로, 때로는 영어로). 내 작품이 이제 글로벌 커뮤니티에 말을 걸고 있기 때문이다. 다양하고 국경 없는 NFT 세계는 이 충동의 결정적 일부이며, 대화, 협업, 그리고 새로운 예술적 영역으로의 문을 열어주었다.</p>
+      <p>아직 이야기되지 않은 이야기가 있고, 탐구해야 할 질문이 있으며, 그것들이 나타날 수 있는 언어가 있다.</p>
+      <p><em>읽어주시고, 귀 기울여주시고, 이 창조적 우주가 계속 확장되는 동안 가까이 있어주셔서 감사합니다.</em></p>
+    </div>
+    <div style="text-align: center;">
+      <a href="https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=e0987e68-bb5a-4cc3-b442-35e0b6cf50c5" target="_blank" rel="noopener noreferrer" class="author-button">Amazon 저자 페이지 방문하기</a>
     </div>
   </section>
 
