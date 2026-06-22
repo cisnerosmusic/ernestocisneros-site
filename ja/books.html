@@ -40,8 +40,8 @@
   --text-primary: #f0e6d6;
   --text-secondary: rgba(215, 195, 155, 0.9);
   --line: rgba(180, 130, 60, 0.15);
-  --font-display: 'Cinzel', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  --font-display: 'Cinzel', 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  --font-body: 'Cormorant Garamond', 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,6 +56,8 @@ body {
   font-size: 18px;
   min-height: 100vh;
   overflow-x: hidden;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 
 a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
