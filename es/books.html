@@ -114,151 +114,101 @@ a:hover { color: var(--gold-bright); }
   margin: 4rem auto;
 }
 
-/* Book Block */
-.book-block {
+/* Book Card Grid */
+.books-grid {
   max-width: 1100px;
-  margin: 0 auto 5rem;
-  padding: 0 2rem;
-}
-
-.book-content {
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 3.5rem;
-  align-items: start;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
 }
 
-.book-cover {
-  position: relative;
-}
-
-.book-cover img {
-  width: 100%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 18px rgba(212, 160, 48, 0.06);
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-
-.book-cover:hover img {
-  transform: translateY(-5px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 24px rgba(212, 160, 48, 0.09);
-}
-
-.book-info {
-  padding-top: 0.5rem;
-}
-
-.book-title {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
-
-.book-subtitle {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  font-style: italic;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.language-note {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
+.book-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.8rem;
   background: var(--bg-card);
   border: 1px solid var(--gold-faint);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.book-card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 12px rgba(212, 160, 48, 0.06);
+  transform: translateY(-3px);
+}
+
+.book-card-cover {
+  flex-shrink: 0;
+  width: 130px;
+}
+
+.book-card-cover img {
+  width: 100%;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.book-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.book-card-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.book-card-teaser {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.book-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.book-card-price {
   font-family: var(--font-display);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--gold-faint);
+  background: rgba(0,0,0,0.3);
 }
 
-.book-description {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.85;
+.book-card-price.free {
+  border-color: rgba(48,160,80,0.4);
+  color: #6abf6a;
 }
 
-.book-description p {
-  margin-bottom: 1.3rem;
-}
-
-.book-description strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.book-description h3 {
+.book-card-link {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   color: var(--gold);
-  margin: 2rem 0 1rem;
-  font-weight: 400;
+  transition: color 0.3s;
+  white-space: nowrap;
 }
 
-.book-description ul {
-  list-style: none;
-  margin-bottom: 1.5rem;
-}
-
-.book-description li {
-  padding-left: 1.5rem;
-  position: relative;
-  margin-bottom: 0.8rem;
-}
-
-.book-description li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.7rem;
-  width: 6px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-
-.buy-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 1rem 2.5rem;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  background: transparent;
-  border: 1px solid var(--gold-dim);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.buy-button:hover {
-  background: var(--gold-faint);
-  border-color: var(--gold);
+.book-card-link:hover {
   color: var(--gold-bright);
-}
-
-/* Upcoming Book */
-.book-upcoming .book-cover img {
-  opacity: 0.85;
-}
-
-.upcoming-badge {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--gold-faint);
-  border: 1px solid var(--gold-dim);
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
 }
 
 /* Closing Section */
@@ -320,97 +270,132 @@ a:hover { color: var(--gold-bright); }
 
 /* Responsive */
 @media (max-width: 900px) {
-.book-content {
+  .books-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .book-cover {
-    max-width: 250px;
-    margin: 0 auto;
+    max-width: 600px;
   }
 }
 
 @media (max-width: 600px) {
-  .hero, .book-block, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .book-title { font-size: 1.5rem; }
+  .hero, .books-grid, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .book-card { padding: 1.2rem; gap: 1rem; }
+  .book-card-cover { width: 100px; }
+  .book-card-title { font-size: 1.05rem; }
 }
 .skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
 <link rel="stylesheet" href="../assets/css/nav.css">
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "Sombras, Datos y Relámpagos",
-    "url": "https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ",
-    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
-    "inLanguage": "es",
-    "bookFormat": "https://schema.org/EBook",
-    "image": "https://ernestocisneros.art/assets/images/books/sombras.jpg",
-    "genre": ["Fiction", "Essay", "Poetry"],
-    "description": "Una obra híbrida estructurada en tres movimientos: Sombras (historias del poder), Datos (ensayos filosóficos sobre infraestructuras invisibles), y Relámpagos (poemas como destellos de intuición)."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "La Sospecha Razonable",
-    "url": "https://www.amazon.com/dp/B0FZ3BCBXR",
-    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
-    "inLanguage": "es",
-    "bookFormat": "https://schema.org/EBook",
-    "image": "https://ernestocisneros.art/assets/images/books/la-sospecha.jpg",
-    "genre": ["Speculative Fiction", "Science Fiction", "Philosophy"],
-    "description": "Doce historias especulativas donde la ciencia, la filosofía y la ficción se intersectan, explorando el poder a través de paisajes desde el antiguo Egipto hasta ecosistemas posthumanos."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "Huella",
-    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art", "identifier": "https://orcid.org/0009-0002-2833-1787"},
-    "inLanguage": "es",
-    "url": "https://doi.org/10.5281/zenodo.19589185",
-    "image": "https://ernestocisneros.art/assets/images/books/huella.png",
-    "description": "Un recorrido por la historia del conocimiento humano, desde las primeras tablillas de arcilla de Mesopotamia hasta las fronteras de la computación cuántica.",
-    "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.19589185"},
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-    "datePublished": "2026-04-15",
-    "publisher": {"@type": "Organization", "name": "Zenodo"}
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "Manual de bolsillo para sonidistas",
-    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
-    "inLanguage": "es",
-    "bookFormat": "https://schema.org/EBook",
-    "image": "https://ernestocisneros.art/assets/images/books/manual-sonidistas.jpg",
-    "genre": ["Sound Engineering", "Audio Reference", "Technical Manual"],
-    "description": "Referencia rápida de 40 páginas sobre sonido en vivo y grabación: ganancia, fase, EQ, compresión, distorsión, reverb y modulación. Explicado claro, con dibujos, y sin academia fría.",
-    "numberOfPages": 40,
-    "about": [
-      {"@type": "Thing", "name": "Sound Engineering"},
-      {"@type": "Thing", "name": "Audio Mixing"},
-      {"@type": "Thing", "name": "Live Sound"}
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Libros de Ernesto Cisneros Cino",
+  "url": "https://ernestocisneros.art/es/books.html",
+  "description": "Libros publicados por Ernesto Cisneros Cino: ensayos de arte, tecnologia y filosofia, ficcion especulativa, horror, y el Manual de bolsillo para sonidistas.",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 6,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Book",
+          "name": "Sombras, Datos y Relampagos",
+          "url": "https://ernestocisneros.art/es/books/sombras-datos-relampagos/",
+          "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+          "inLanguage": "es",
+          "bookFormat": "https://schema.org/EBook",
+          "image": "https://ernestocisneros.art/assets/images/books/sombras.jpg",
+          "genre": ["Fiction", "Essay", "Poetry"],
+          "description": "Ficcion, ensayo y poesia tejidos alrededor de una sola pregunta: Que es el poder?"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Book",
+          "name": "La Sospecha Razonable",
+          "url": "https://ernestocisneros.art/es/books/la-sospecha-razonable/",
+          "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+          "inLanguage": "es",
+          "bookFormat": "https://schema.org/EBook",
+          "image": "https://ernestocisneros.art/assets/images/books/la-sospecha.jpg",
+          "genre": ["Speculative Fiction", "Science Fiction", "Philosophy"],
+          "description": "Doce historias especulativas donde la ciencia, la filosofia y la ficcion se intersectan."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Book",
+          "name": "No apagues la luz",
+          "url": "https://ernestocisneros.art/es/books/no-apagues-la-luz/",
+          "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+          "inLanguage": "es",
+          "bookFormat": "https://schema.org/EBook",
+          "image": "https://ernestocisneros.art/assets/images/books/no-apagues-la-luz.jpg",
+          "genre": ["Horror", "Short Stories"],
+          "description": "Once cuentos de horror que no necesitan monstruos."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Book",
+          "name": "Huella",
+          "url": "https://ernestocisneros.art/es/books/huella/",
+          "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art", "identifier": "https://orcid.org/0009-0002-2833-1787"},
+          "inLanguage": "es",
+          "image": "https://ernestocisneros.art/assets/images/books/huella.png",
+          "description": "La historia del conocimiento humano, desde las tablillas de arcilla hasta la computacion cuantica.",
+          "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.19589185"},
+          "isAccessibleForFree": true,
+          "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "datePublished": "2026-04-15",
+          "publisher": {"@type": "Organization", "name": "Zenodo"}
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Book",
+          "name": "La Necesidad de Creer",
+          "url": "https://ernestocisneros.art/es/books/la-necesidad-de-creer/",
+          "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art", "identifier": "https://orcid.org/0009-0002-2833-1787"},
+          "inLanguage": ["es", "en"],
+          "image": "https://ernestocisneros.art/assets/images/books/la-necesidad.jpg",
+          "description": "300.000 anos de espiritualidad humana. Disponible en espanol e ingles.",
+          "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.19588665"},
+          "isAccessibleForFree": true,
+          "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "datePublished": "2026-04-15",
+          "publisher": {"@type": "Organization", "name": "Zenodo"}
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Book",
+          "name": "Manual de bolsillo para sonidistas",
+          "url": "https://ernestocisneros.art/es/books/manual-sonidistas/",
+          "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"},
+          "inLanguage": "es",
+          "bookFormat": "https://schema.org/EBook",
+          "image": "https://ernestocisneros.art/assets/images/books/manual-sonidistas.jpg",
+          "genre": ["Sound Engineering", "Audio Reference", "Technical Manual"],
+          "description": "Ganancia, fase, EQ, compresion, reverb y mas. 40 paginas al lado de la consola.",
+          "numberOfPages": 40
+        }
+      }
     ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "La Necesidad de Creer",
-    "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art", "identifier": "https://orcid.org/0009-0002-2833-1787"},
-    "inLanguage": ["es", "en"],
-    "url": "https://doi.org/10.5281/zenodo.19588665",
-    "image": "https://ernestocisneros.art/assets/images/books/la-necesidad.jpg",
-    "description": "Un recorrido de 300.000 años por la historia de la espiritualidad humana, desde las cuevas del Paleolítico hasta la inteligencia artificial.",
-    "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.19588665"},
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-    "datePublished": "2026-04-15",
-    "publisher": {"@type": "Organization", "name": "Zenodo"}
   }
-]
+}
 </script>
     <script src="../assets/js/lang-detect.js"></script>
 <!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
@@ -509,214 +494,118 @@ a:hover { color: var(--gold-bright); }
 
   <div class="divider"></div>
 
-  <!-- Book 1: Sombras, Datos y Relámpagos -->
-  <article class="book-block">
-    <div class="book-content">
-      <div class="book-cover">
+  <!-- Book Cards Grid -->
+  <section class="books-grid" aria-label="Libros publicados">
+
+    <!-- Card 1: Sombras, Datos y Relámpagos -->
+    <article class="book-card">
+      <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/sombras.webp" type="image/webp">
           <img src="../assets/images/books/sombras.jpg" alt="Sombras, Datos y Relámpagos" loading="lazy">
         </picture>
       </div>
-      <div class="book-info">
-        <h2 class="book-title">Sombras, Datos y Relámpagos</h2>
-
-        <p class="book-subtitle">Este libro fue escrito en mi idioma nativo, preservando el tono, ritmo y textura emocional que moldeó su voz original.</p>
-        
-        <div class="book-description">
-          <p>Este es mi primer libro, una obra híbrida que se mueve entre ficción, ensayo y poesía, todo tejido alrededor de una sola pregunta: ¿Qué es el poder y cómo habita nuestras vidas?</p>
-
-          <h3>El libro está estructurado en tres movimientos:</h3>
-
-          <ul>
-            <li><strong>Sombras</strong>: Una serie de historias donde el poder toma la forma de memoria, ilusión, violencia, destino, máquinas o silencio. Desde un piano ardiente en un garaje de La Habana, hasta una puerta que solo puede cruzarse con un anillo perdido, hasta la lógica inquietante de un circo que se convierte en gobierno.</li>
-            <li><strong>Datos</strong>: Ensayos filosóficos e históricos sobre las infraestructuras invisibles de la dominación: hábitos políticos, sistemas tecnológicos, la arquitectura de la obediencia, las fuerzas de la naturaleza, la seducción de las simulaciones, y las mitologías que mantienen unidas a las sociedades o las desgarran.</li>
-            <li><strong>Relámpagos</strong>: Poemas escritos como destellos: breves, agudos, viscerales. Son el pulso emocional del libro, heridas que hablan, memorias que se encienden, e intuiciones que aparecen como tormentas repentinas.</li>
-          </ul>
-
-          <p>Este libro fue escrito durante un período de profunda transición, entre países, entre vidas, entre identidades, entrelazando memorias de infancia, exilio, música, filosofía, ciencia, y las sombras de sistemas políticos.</p>
-
-          <p>No es un libro lineal. Es una partitura: una composición hecha de oscuridad, análisis e iluminación.</p>
-
-          <p><em>Su intención no es ofrecer respuestas, sino crear resonancia.</em></p>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Sombras, Datos y Relámpagos</h2>
+        <p class="book-card-teaser">Ficción, ensayo y poesía tejidos alrededor de una sola pregunta: ¿Qué es el poder?</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">Amazon Kindle</span>
+          <a href="books/sombras-datos-relampagos/" class="book-card-link">Ver libro &#8594;</a>
         </div>
-        
-        <a href="https://www.amazon.com/Sombras-Datos-Rel%C3%A1mpagos-penumbra-claridad-ebook/dp/B0FP4N6NLJ?ref_=ast_author_dp&th=1&psc=1" target="_blank" rel="noopener" class="buy-button">Comprar en Amazon</a>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <div class="divider"></div>
-
-  <!-- Book 2: La Sospecha Razonable -->
-  <article class="book-block">
-    <div class="book-content">
-      <div class="book-cover">
+    <!-- Card 2: La Sospecha Razonable -->
+    <article class="book-card">
+      <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/la-sospecha.webp" type="image/webp">
           <img src="../assets/images/books/la-sospecha.jpg" alt="La Sospecha Razonable" loading="lazy">
         </picture>
       </div>
-      <div class="book-info">
-        <h2 class="book-title">La Sospecha Razonable</h2>
-        <p class="book-subtitle">Historias Especulativas del Poder, la Memoria, y lo Desconocido<br>Libro II de la Trilogía del Poder</p>
-        
-        <div class="book-description">
-          <p>La Sospecha Razonable es una colección de doce historias especulativas donde la ciencia, la filosofía y la ficción se intersectan. Cada relato explora un tema central: el poder, cómo emerge, muta, engaña, conecta, y finalmente revela quiénes somos. Es el segundo libro de una trilogía.</p>
-
-          <p>Las historias se mueven a través de paisajes radicalmente diferentes: el antiguo Egipto, supermercados marcianos, laboratorios cuánticos, ciudades digitales bajo vigilancia implacable, ecosistemas posthumanos, y civilizaciones del futuro cercano gobernadas por algoritmos, paradojas, e ideologías frágiles.</p>
-
-          <p>A pesar de estas variaciones, el libro mantiene un único pulso: una sospecha persistente de que el mundo es mucho más extraño que lo que nuestras certezas permiten.</p>
-
-          <h3>Orígenes del libro</h3>
-
-          <p>Este trabajo fue moldeado no solo por la ciencia ficción, sino por los años que pasé dentro de comunidades descentralizadas (DAOs y ecosistemas NFT). Esos espacios, brillantes, caóticos, visionarios, autodestructivos, se convirtieron en laboratorios de gobernanza, conflicto, colaboración y agotamiento.</p>
-
-          <p>El libro también está conectado a mi fascinación por la física cuántica, la cosmología, las máquinas conscientes, y los límites de la memoria humana. Estas historias emergieron de ese cruce: conversaciones de madrugada en espacios NFT, lecturas de artículos de física, eventos astronómicos reales como la llegada del objeto interestelar 3I/ATLAS, y mi propia experiencia como músico que aprendió que el silencio carga tanto significado como el sonido.</p>
+      <div class="book-card-body">
+        <h2 class="book-card-title">La Sospecha Razonable</h2>
+        <p class="book-card-teaser">Doce historias especulativas donde la ciencia, la filosofía y la ficción se intersectan.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">Amazon Kindle</span>
+          <a href="books/la-sospecha-razonable/" class="book-card-link">Ver libro &#8594;</a>
         </div>
-        
-        <a href="https://www.amazon.com/dp/B0FZ3BCBXR" target="_blank" rel="noopener" class="buy-button">Comprar en Amazon</a>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <div class="divider"></div>
+    <!-- Card 3: No apagues la luz -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/no-apagues-la-luz.webp" type="image/webp">
+          <img src="../assets/images/books/no-apagues-la-luz.jpg" alt="No apagues la luz" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">No apagues la luz</h2>
+        <p class="book-card-teaser">Once cuentos de horror que no necesitan monstruos.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">$3.99</span>
+          <a href="books/no-apagues-la-luz/" class="book-card-link">Ver libro &#8594;</a>
+        </div>
+      </div>
+    </article>
 
-  <!-- Book 3: Huella -->
-  <article class="book-block">
-    <div class="book-content">
-      <div class="book-cover">
+    <!-- Card 4: Huella -->
+    <article class="book-card">
+      <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/huella.webp" type="image/webp">
           <img src="../assets/images/books/huella.png" alt="Huella" loading="lazy">
         </picture>
       </div>
-      <div class="book-info">
-        <span class="upcoming-badge" style="background:rgba(48,160,80,0.15);border-color:rgba(48,160,80,0.5);color:#6abf6a;">Acceso Libre</span>
-        <h2 class="book-title">Huella</h2>
-
-        <div class="book-description">
-          <p>Un recorrido por la historia del conocimiento humano, desde las primeras tablillas de arcilla de Mesopotamia hasta las fronteras de la computación cuántica. A través de 23 capítulos organizados en 6 partes, el libro traza cómo la humanidad aprendió a medir, calcular, registrar, transmitir y transformar lo que sabe.</p>
-
-          <p>Integra matemáticas, astronomía, filosofía, tecnología y arte en una narrativa que busca las conexiones invisibles entre disciplinas que la academia suele separar.</p>
-
-          <p><em>Este libro está disponible gratuitamente como publicación de acceso libre en Zenodo.</em></p>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Huella</h2>
+        <p class="book-card-teaser">La historia del conocimiento humano, desde las tablillas de arcilla hasta la computación cuántica.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price free">Acceso libre</span>
+          <a href="books/huella/" class="book-card-link">Ver libro &#8594;</a>
         </div>
-
-        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:1rem;">DOI: <a href="https://doi.org/10.5281/zenodo.19589185">10.5281/zenodo.19589185</a></p>
-
-        <a href="https://doi.org/10.5281/zenodo.19589185" target="_blank" rel="noopener" class="buy-button">Leer en Zenodo</a>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <div class="divider"></div>
-
-  <!-- Book 4: La Necesidad de Creer -->
-  <article class="book-block">
-    <div class="book-content">
-      <div class="book-cover">
+    <!-- Card 5: La Necesidad de Creer -->
+    <article class="book-card">
+      <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/la-necesidad.webp" type="image/webp">
           <img src="../assets/images/books/la-necesidad.jpg" alt="La Necesidad de Creer" loading="lazy">
         </picture>
       </div>
-      <div class="book-info">
-        <span class="upcoming-badge" style="background:rgba(48,160,80,0.15);border-color:rgba(48,160,80,0.5);color:#6abf6a;">Acceso Libre</span>
-        <h2 class="book-title">La Necesidad de Creer</h2>
-        <p class="book-subtitle">Historia de las religiones. Las preguntas que nunca dejamos de hacernos.</p>
-
-        <div class="language-note">Disponible en español e inglés</div>
-
-        <div class="book-description">
-          <p>Un recorrido de 300.000 años por la historia de la espiritualidad humana, desde las cuevas del Paleolítico hasta la inteligencia artificial. A través de 22 capítulos organizados en 8 partes, el libro examina por qué el cerebro humano tiende a producir creencias religiosas, cómo las grandes tradiciones espirituales organizaron el mundo, y qué formas toma la necesidad de creer en una era secular y tecnológica.</p>
-
-          <p>Escrito desde la perspectiva de un ateo que no desprecia lo que observa, integra ciencia cognitiva, historia de las religiones, antropología y reflexión personal. Desde las raíces cognitivas de la creencia (HADD, Teoría de la Mente) pasando por los templos mesopotámicos, la patria portátil del judaísmo, las cosmovisiones mesoamericanas, las tradiciones orales africanas, la solidificación institucional de la fe, las ideologías seculares, la religiosidad digital, y la emergencia de la IA como espejo existencial.</p>
-
-          <p>El prólogo comienza en una pequeña iglesia protestante de Cuba, donde un niño tocaba el piano sin poder decir Amén. El epílogo regresa a esa misma iglesia, décadas después, con la comprensión de que escuchar, sin entrar, también es una forma de participación.</p>
-
-          <p><em>Este libro está disponible gratuitamente como publicación de acceso libre en Zenodo.</em></p>
+      <div class="book-card-body">
+        <h2 class="book-card-title">La Necesidad de Creer</h2>
+        <p class="book-card-teaser">300.000 años de espiritualidad humana. Disponible en español e inglés.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price free">Acceso libre</span>
+          <a href="books/la-necesidad-de-creer/" class="book-card-link">Ver libro &#8594;</a>
         </div>
-
-        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:1rem;">DOI: <a href="https://doi.org/10.5281/zenodo.19588665">10.5281/zenodo.19588665</a></p>
-
-        <a href="https://doi.org/10.5281/zenodo.19588665" target="_blank" rel="noopener" class="buy-button">Leer en Zenodo</a>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <div class="divider"></div>
-
-  <!-- Book 5: No apagues la luz -->
-  <article class="book-block">
-    <div class="book-content">
-      <div class="book-cover">
-        <picture>
-          <source srcset="../assets/images/books/no-apagues-la-luz.webp" type="image/webp">
-          <img src="../assets/images/books/no-apagues-la-luz.jpg" alt="No apagues la luz ,  Ernesto Cisneros Cino" loading="lazy">
-        </picture>
-      </div>
-      <div class="book-info">
-        <span class="upcoming-badge" style="background:rgba(48,160,80,0.15);border-color:rgba(48,160,80,0.5);color:#6abf6a;">Gratis · Leer Online</span>
-        <h2 class="book-title">No apagues la luz</h2>
-        <p class="book-subtitle">Once cuentos de horror que no necesitan monstruos, solo necesitan que pongas atención.</p>
-
-        <div class="language-note">Disponible en español e inglés</div>
-
-        <div class="book-description">
-          <p>Casi todo lo que de verdad asusta espera a que te quedes quieto. No derriba la puerta. No grita. Sabe que no necesita hacerlo. Le basta con que estés solo el tiempo suficiente.</p>
-
-          <p>Los once cuentos de este libro no traen monstruos de afuera. Los que aquí aparecen ya estaban adentro, en los lugares donde uno no mira porque los cree seguros: la cama donde duermes, la mano que escribe por ti, tu propia voz, tu propia cara, la persona que los demás creen que eres, los muertos que amas.</p>
-
-          <p>Desde un fotógrafo que descubre a un hombre sin cambios tras veintidós años, hasta una puerta que no debería existir detrás de un armario de la infancia, hasta un libro que se reescribe con un saber que su autor nunca le dio, cada cuento camina contigo hasta cierta hora y te deja ahí.</p>
-
-          <p><em>El título no es metáfora. Léelos de día, si puedes.</em></p>
-        </div>
-
-        <a href="books/no-apagues-la-luz/" class="buy-button">Leer Online (Español)</a>
-        <a href="https://buy.stripe.com/9B64gz2Nx4zL079fAUgMw02" class="buy-button" target="_blank" rel="noopener noreferrer">Comprar PDF · $3.99</a>
-      </div>
-    </div>
-  </article>
-
-  <!-- Book 6: Manual de bolsillo para sonidistas -->
-  <article class="book-block">
-    <div class="book-content">
-      <div class="book-cover">
+    <!-- Card 6: Manual de bolsillo para sonidistas -->
+    <article class="book-card">
+      <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/manual-sonidistas.webp" type="image/webp">
-          <img src="../assets/images/books/manual-sonidistas.jpg" alt="Manual de bolsillo para sonidistas - Ernesto Cisneros Cino" loading="lazy">
+          <img src="../assets/images/books/manual-sonidistas.jpg" alt="Manual de bolsillo para sonidistas" loading="lazy">
         </picture>
       </div>
-      <div class="book-info">
-        <span class="upcoming-badge" style="background:rgba(212,120,30,0.15);border-color:rgba(212,120,30,0.5);color:#d4782a;">Manual Técnico</span>
-        <h2 class="book-title">Manual de bolsillo para sonidistas</h2>
-        <p class="book-subtitle">Referencia rápida · Sonido en vivo y grabación</p>
-
-        <div class="book-description">
-          <p>Ganancia, fase, EQ, compresión, distorsión, reverb y modulación. Lo que de verdad necesitas saber, explicado claro, con dibujos, y sin academia fría.</p>
-
-          <p>40 páginas diseñadas para tener al lado de la consola. Cada capítulo va directo al grano: qué es, para qué sirve, qué mandos tocas, qué números usar de partida, y los errores que todo el mundo comete. Incluye tablas de referencia rápida, diagramas de señal, y consejos de calle para sonido en vivo y grabación.</p>
-
-          <h3>Contenido</h3>
-
-          <ul>
-            <li><strong>Ganancia y niveles</strong> - Estructura de ganancia, headroom, y por qué el volumen no es lo mismo que la ganancia.</li>
-            <li><strong>Fase y polaridad</strong> - El filtro peine, la regla 3:1, y cómo la fase arruina mezclas sin que te des cuenta.</li>
-            <li><strong>Ecualización</strong> - Gráfico vs. paramétrico, frecuencias por instrumento, y la técnica de barrer para encontrar problemas.</li>
-            <li><strong>Compresores y dinámica</strong> - Tipos (VCA, FET, óptico, valvular, digital), limitador, gate, y valores de partida por instrumento.</li>
-            <li><strong>Distorsión y saturación</strong> - Armónicos pares e impares, la octava fantasma, y cómo usar la saturación como herramienta de mezcla.</li>
-            <li><strong>Reverb</strong> - Predelay, decay, tipos (Room, Hall, Plate, Spring), y cómo usarla en vivo sin que se coma la mezcla.</li>
-            <li><strong>Modulación y delay</strong> - Chorus, flanger, phaser y delay: una sola idea con cuatro caras, explicada de una vez.</li>
-          </ul>
-
-          <p><em>Escrito en español, para sonidistas que trabajan en español.</em></p>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Manual de bolsillo para sonidistas</h2>
+        <p class="book-card-teaser">Ganancia, fase, EQ, compresión, reverb y más. 40 páginas al lado de la consola.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">$4.00</span>
+          <a href="books/manual-sonidistas/" class="book-card-link">Ver libro &#8594;</a>
         </div>
-
-        <a href="https://buy.stripe.com/3cI14ndsb9U5f232O8gMw03" class="buy-button" target="_blank" rel="noopener noreferrer">Comprar PDF · $4.00</a>
       </div>
-    </div>
-  </article>
+    </article>
+
+  </section>
 
   <div class="divider"></div>
 
@@ -737,7 +626,7 @@ a:hover { color: var(--gold-bright); }
     </div>
     
     <div style="text-align: center;">
-      <a href="https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=e0987e68-bb5a-4cc3-b442-35e0b6cf50c5" target="_blank" rel="noopener" class="author-button">Ver Página del Autor en Amazon</a>
+      <a href="https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=e0987e68-bb5a-4cc3-b442-35e0b6cf50c5" target="_blank" rel="noopener noreferrer" class="author-button">Ver Página del Autor en Amazon</a>
     </div>
   </section>
 
@@ -754,7 +643,7 @@ a:hover { color: var(--gold-bright); }
     <a href="https://linktr.ee/cisnerosmusic" target="_blank" rel="noopener noreferrer" aria-label="Linktree" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066l-.038-4.632-4.007-.07 2.83-2.884L3.523 4.49l3.32 1.266L9.03.678l2.135 5.123L14.477 4.49l-3.215 2.99 2.83 2.884-4.007.07-.038 4.632h-2.094zm-1.2 1.803h5.494v6.455H6.753z"/></svg></a>
   </div>
   <p class="copyright">© 2020 – 2026 Ernesto Cisneros Cino</p>
-  <p class="copyright footer-credit" style="margin-top:.55rem;">Desarrollado por <a href="https://index01.net" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">Index01</a></p>
+  <p class="copyright footer-credit" style="margin-top:.55rem;">Desarrollado por <a href="https://index01.net" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;">Index01</a></p>
 </footer>
 
 <script>
