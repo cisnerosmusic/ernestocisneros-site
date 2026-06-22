@@ -318,21 +318,127 @@ a:hover { color: var(--gold-bright); }
 .footer-text { font-size: 0.9rem; color: var(--text-secondary); }
 
 /* Responsive */
+/* Book Cards Grid */
+.books-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.book-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-faint);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.book-card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 12px rgba(212, 160, 48, 0.06);
+  transform: translateY(-3px);
+}
+
+.book-card-cover {
+  flex-shrink: 0;
+  width: 130px;
+}
+
+.book-card-cover img {
+  width: 100%;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.book-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.book-card-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.book-card-teaser {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.book-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.book-card-price {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--gold-faint);
+  background: rgba(0,0,0,0.3);
+}
+
+.book-card-price.free {
+  border-color: rgba(48,160,80,0.4);
+  color: #6abf6a;
+}
+
+.book-card-link {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.book-card-link:hover {
+  color: var(--gold-bright);
+}
+
 @media (max-width: 900px) {
 .book-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .book-cover {
     max-width: 250px;
     margin: 0 auto;
+  }
+
+  .books-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
   }
 }
 
 @media (max-width: 600px) {
   .hero, .book-block, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
   .book-title { font-size: 1.5rem; }
+  .books-grid { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .book-card { padding: 1.2rem; gap: 1rem; }
+  .book-card-cover { width: 100px; }
+  .book-card-title { font-size: 1.05rem; }
 }
 .skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
 <link rel="stylesheet" href="../assets/css/nav.css">
@@ -493,11 +599,139 @@ a:hover { color: var(--gold-bright); }
 
   <div class="divider"></div>
 
-  <!-- Coming Soon -->
-  <section class="coming-soon-section" style="max-width:700px;margin:0 auto;padding:4rem 2rem 6rem;text-align:center;">
-    <div style="border:1px solid var(--gold-dim);background:var(--bg-card);padding:3rem 2.5rem;border-radius:4px;">
-      <h2 style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.1em;color:var(--gold);margin-bottom:1.5rem;font-weight:400;">Bientot disponible</h2>
-      <p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.9;margin-bottom:2rem;">Les pages individuelles des livres arrivent bientot. En attendant, vous pouvez explorer les livres en <a href="../books.html" target="_blank" rel="noopener noreferrer">anglais</a> ou en <a href="../es/books.html" target="_blank" rel="noopener noreferrer">espagnol</a>.</p>
+  <!-- Book Cards Grid -->
+  <section class="books-grid" aria-label="Livres publiés">
+
+    <!-- Card 1: Sombras, Datos y Relámpagos -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/sombras.webp" type="image/webp">
+          <img src="../assets/images/books/sombras.jpg" alt="Sombras, Datos y Relámpagos" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Sombras, Datos y Relámpagos</h2>
+        <p class="book-card-teaser">Fiction, essai et poésie tissés autour d'une seule question : qu'est-ce que le pouvoir ?</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">Amazon Kindle</span>
+          <a href="books/sombras-datos-relampagos/" class="book-card-link">Voir le livre &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: La Sospecha Razonable -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/la-sospecha.webp" type="image/webp">
+          <img src="../assets/images/books/la-sospecha.jpg" alt="La Sospecha Razonable" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">La Sospecha Razonable</h2>
+        <p class="book-card-teaser">Douze histoires spéculatives où la science, la philosophie et la fiction se croisent.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">Amazon Kindle</span>
+          <a href="books/la-sospecha-razonable/" class="book-card-link">Voir le livre &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: No apagues la luz -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/no-apagues-la-luz.webp" type="image/webp">
+          <img src="../assets/images/books/no-apagues-la-luz.jpg" alt="No apagues la luz" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">No apagues la luz</h2>
+        <p class="book-card-teaser">Onze histoires d'horreur qui n'ont pas besoin de monstres.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">$3.99</span>
+          <a href="books/no-apagues-la-luz/" class="book-card-link">Voir le livre &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4: Huella -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/huella.webp" type="image/webp">
+          <img src="../assets/images/books/huella.png" alt="Huella" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Huella</h2>
+        <p class="book-card-teaser">L'histoire du savoir humain, des tablettes d'argile à l'informatique quantique.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price free">Accès libre</span>
+          <a href="books/huella/" class="book-card-link">Voir le livre &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: La Necesidad de Creer -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/la-necesidad.webp" type="image/webp">
+          <img src="../assets/images/books/la-necesidad.jpg" alt="La Necesidad de Creer" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">La Necesidad de Creer</h2>
+        <p class="book-card-teaser">300 000 ans de spiritualité humaine. Disponible en espagnol et en anglais.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price free">Accès libre</span>
+          <a href="books/la-necesidad-de-creer/" class="book-card-link">Voir le livre &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6: Manual de bolsillo para sonidistas -->
+    <article class="book-card">
+      <div class="book-card-cover">
+        <picture>
+          <source srcset="../assets/images/books/manual-sonidistas.webp" type="image/webp">
+          <img src="../assets/images/books/manual-sonidistas.jpg" alt="Manual de bolsillo para sonidistas" loading="lazy">
+        </picture>
+      </div>
+      <div class="book-card-body">
+        <h2 class="book-card-title">Manual de bolsillo para sonidistas</h2>
+        <p class="book-card-teaser">Gain, phase, EQ, compression, reverb et plus. 40 pages à côté de la console.</p>
+        <div class="book-card-meta">
+          <span class="book-card-price">$4.00</span>
+          <a href="books/manual-sonidistas/" class="book-card-link">Voir le livre &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Closing -->
+  <section class="closing">
+    <h2 class="closing-title">Note Finale</h2>
+
+    <div class="closing-text">
+      <p>L'écriture n'a jamais été un chemin planifié, elle est devenue une extension naturelle de tout ce que je crée. La musique, l'art visuel, la vidéo et la littérature sont simplement différentes façons d'explorer les mêmes questions.</p>
+
+      <p>Ces livres marquent le début d'un voyage que j'ai l'intention de poursuivre.</p>
+
+      <p>Je continuerai à écrire (parfois en espagnol, parfois en anglais) parce que mon oeuvre s'adresse désormais à une communauté mondiale. Le monde NFT, divers et sans frontières, a été un moteur décisif de cet élan, ouvrant des portes vers des conversations, des collaborations et de nouveaux territoires artistiques.</p>
+
+      <p>Il y a plus d'histoires à venir, plus de questions à explorer et plus de langues dans lesquelles elles pourraient apparaitre.</p>
+
+      <p><em>Merci de lire, d'écouter et de rester proche tandis que cet univers créatif continue de s'étendre.</em></p>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=e0987e68-bb5a-4cc3-b442-35e0b6cf50c5" target="_blank" rel="noopener noreferrer" class="author-button">Voir la Page Auteur sur Amazon</a>
     </div>
   </section>
 
