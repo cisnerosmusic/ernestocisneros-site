@@ -6,26 +6,356 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=../../music/other-works.html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#06061a">
-<title>Other Works | Ernesto Cisneros</title>
-<meta name="description" content="Redirecting to English version...">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ernestocisneros.art/ja/music/other-works.html">
-<meta property="og:title" content="Other Musical Works | Ernesto Cisneros Cino">
-<meta property="og:description" content="Film scores, television, documentary, ballet, and broadcast compositions by Ernesto Cisneros Cino.">
-<meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Other Musical Works | Ernesto Cisneros Cino">
-<meta name="twitter:description" content="Film scores, television, documentary, ballet, and broadcast compositions by Ernesto Cisneros Cino.">
-<meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" type="image/x-icon" href="../../favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
-<link rel="canonical" href="https://ernestocisneros.art/music/other-works.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" as="style">
+    <link rel="manifest" href="/manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>その他の音楽作品 | Ernesto Cisneros Cino</title>
+<meta name="description" content="エルネスト・シスネロス・シノによる映画、テレビ、ドキュメンタリー、バレエ、放送メディアのための作曲作品。">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernestocisneros.art/ja/music/other-works.html">
+    <meta property="og:title" content="その他の音楽作品 | Ernesto Cisneros Cino">
+    <meta property="og:description" content="エルネスト・シスネロス・シノによる映画、テレビ、ドキュメンタリー、バレエ、放送メディアのための作曲作品。">
+    <meta property="og:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="その他の音楽作品 | Ernesto Cisneros Cino">
+    <meta name="twitter:description" content="エルネスト・シスネロス・シノによる映画、テレビ、ドキュメンタリー、バレエ、放送メディアのための作曲作品。">
+    <meta name="twitter:image" content="https://ernestocisneros.art/assets/images/portrait.jpg">
+<link href="../../assets/css/fonts.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #000000;
+  --bg-dark: #0a0908;
+  --bg-card: rgba(20, 16, 10, 0.35);
+  --gold: #d4a030;
+  --gold-bright: #f0c860;
+  --gold-dim: rgba(212, 160, 48, 0.65);
+  --gold-faint: rgba(212, 160, 48, 0.15);
+  --text-primary: #f0e6d6;
+  --text-secondary: rgba(215, 195, 155, 0.9);
+  --line: rgba(180, 130, 60, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.8;
+  line-break: strict;
+  font-size: 18px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold-bright); }
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 90px;
+}
+
+/* Hero */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.9;
+}
+
+/* Content */
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Divider */
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 3.5rem auto;
+}
+
+/* Category Block */
+.category {
+  margin-bottom: 3.5rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.category-line {
+  flex: 1;
+  height: 1px;
+  background: var(--gold-faint);
+}
+
+.category-note {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+/* Credits List */
+.credits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.credit-item {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.credit-item:last-child {
+  border-bottom: none;
+}
+
+.credit-year {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--gold-dim);
+}
+
+.credit-title {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.credit-role {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.credit-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Prose Block */
+.prose-block {
+  background: var(--bg-card);
+  border-left: 2px solid var(--gold-dim);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+}
+
+.prose-block p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* Interview Links */
+.interview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.interview-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s ease;
+}
+
+.interview-item:last-child {
+  border-bottom: none;
+}
+
+.interview-item:hover {
+  background: var(--gold-faint);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.interview-source {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-dim);
+  white-space: nowrap;
+  min-width: 110px;
+  text-transform: uppercase;
+}
+
+.interview-title {
+  font-size: 1.02rem;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.interview-item:hover .interview-title {
+  color: var(--gold);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold-faint);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gold-faint);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  background: var(--gold-faint);
+}
+
+.footer-social svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.footer-text { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .interview-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .interview-source {
+    min-width: auto;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .credit-item {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .credit-year {
+    font-size: 0.75rem;
+  }
+
+  .credit-role {
+    text-align: left;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .category-title { font-size: 1.1rem; }
+}
+.skip-link{position:absolute;top:-40px;left:0;background:#d4a030;color:#000;padding:8px 16px;z-index:10000;font-size:14px;transition:top 0.3s}.skip-link:focus{top:0}</style>
+<link rel="stylesheet" href="../../assets/css/nav.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "その他の音楽作品 by Ernesto Cisneros Cino",
+  "url": "https://ernestocisneros.art/ja/music/other-works.html",
+  "description": "Film scores, television, documentary, ballet, and broadcast compositions spanning over 30 years.",
+  "author": {"@type": "Person", "name": "Ernesto Cisneros Cino", "url": "https://ernestocisneros.art"}
+}
+</script>
+<!-- CRITICAL SEO: Canonical + hreflang — DO NOT REMOVE -->
+<link rel="canonical" href="https://ernestocisneros.art/ja/music/other-works.html">
+<link rel="author" href="https://ernestocisneros.art/humans.txt" type="text/plain">
 <link rel="alternate" hreflang="en" href="https://ernestocisneros.art/music/other-works.html">
 <link rel="alternate" hreflang="es" href="https://ernestocisneros.art/es/music/other-works.html">
 <link rel="alternate" hreflang="fr" href="https://ernestocisneros.art/fr/music/other-works.html">
@@ -34,80 +364,552 @@
 <link rel="alternate" hreflang="ko" href="https://ernestocisneros.art/ko/music/other-works.html">
 <link rel="alternate" hreflang="ru" href="https://ernestocisneros.art/ru/music/other-works.html">
 <link rel="alternate" hreflang="x-default" href="https://ernestocisneros.art/music/other-works.html">
-<style>
-  :root {
-    --base: #06061a;
-    --gold: rgba(212, 160, 48, 0.78);
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html, body {
-    width: 100%;
-    height: 100%;
-    background-color: var(--base);
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .redirect-container {
-    text-align: center;
-    max-width: 600px;
-  }
-
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-
-  p {
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-  }
-
-  a {
-    color: var(--gold);
-    text-decoration: underline;
-    transition: opacity 0.2s;
-  }
-
-  a:hover {
-    opacity: 0.8;
-  }
-
-  .status {
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    opacity: 0.7;
-  }
-</style>
+<!-- CRITICAL SEO/GEO: Schema loader — DO NOT REMOVE -->
+<script src="../../assets/js/schema-loader.js" data-schema="music-other-works" defer></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "/ja/"}, {"@type": "ListItem", "position": 2, "name": "音楽", "item": "/ja/music/"}, {"@type": "ListItem", "position": 3, "name": "その他の音楽作品"}]}
+</script>
 </head>
 <body>
-<div class="redirect-container">
-  <h1>Other Works | Ernesto Cisneros</h1>
-  <p>英語版にリダイレクトしています...</p>
-  <p>
-    <a href="../../music/other-works.html">
-      Click here to view the page
+<a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+<a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">メインコンテンツへスキップ</a>
+
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo" aria-label="Ernesto Cisneros - Home">
+      <picture>
+        <source srcset="../../assets/images/logo.webp" type="image/webp">
+        <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+      </picture>
     </a>
-  </p>
-  <div class="status">
-    <p>If you are not redirected automatically, please use the link above.</p>
+    <button class="nav-toggle" aria-label="メニュー切替" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-item">ホーム</a></li>
+      <li><a href="../biography.html" class="nav-item">プロフィール</a></li>
+      <li class="nav-dropdown">
+        <a href="../music.html" class="nav-item active">音楽</a>
+        <div class="nav-dropdown-content">
+          <a href="nocturne-of-glass-currents.html" class="nav-dropdown-item">Nocturne of Glass Currents</a>
+
+          <a href="velvet-alloy.html" class="nav-dropdown-item">Velvet Alloy</a>
+
+          <a href="glacial-paths.html" class="nav-dropdown-item">Glacial Paths</a>
+          <a href="atlas-of-fragmented-light.html" class="nav-dropdown-item">Atlas of Fragmented Light</a>
+          <a href="mare-incognitum.html" class="nav-dropdown-item">Mare Incognitum</a>
+          <a href="trash.html" class="nav-dropdown-item">Trash</a>
+        <a href="sandbank.html" class="nav-dropdown-item">Sandbank</a>
+          <a href="other-works.html" class="nav-dropdown-item active">その他の音楽作品</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../nft.html" class="nav-item">NFT</a>
+        <div class="nav-dropdown-content">
+          <a href="../nft/eth-collection.html" class="nav-dropdown-item">ETHコレクション</a>
+          <a href="../nft/tez-collection.html" class="nav-dropdown-item">Tezコレクション</a>
+          <a href="../nft/marketplaces.html" class="nav-dropdown-item">マーケットプレイス</a>
+          <a href="../nft/btc-ordinals.html" class="nav-dropdown-item">BTCオーディナルズ</a>
+          <a href="../nft/gift-from-community.html" class="nav-dropdown-item">コミュニティからの贈り物</a>
+          <a href="../nft/resources.html" class="nav-dropdown-item">リソース</a>
+        </div>
+      </li>
+      <li><a href="../books.html" class="nav-item">書籍</a></li>
+      <li class="nav-dropdown">
+        <a href="../ideas.html" class="nav-item">アイデア</a>
+        <div class="nav-dropdown-content">
+          <a href="../ideas/cosmology-physics.html" class="nav-dropdown-item">宇宙論と物理学</a>
+          <a href="../ideas/technology-society.html" class="nav-dropdown-item">テクノロジーと社会</a>
+          <a href="../ideas/culture-memory-exile.html" class="nav-dropdown-item">文化、記憶と亡命</a>
+          <a href="../ideas/art-poetics-philosophy.html" class="nav-dropdown-item">芸術、詩学と哲学</a>
+        </div>
+      </li>
+      <li><a href="../impulses-art.html" class="nav-item">アートへの衝動</a></li>
+      <li><a href="../contact.html" class="nav-item">お問い合わせ</a></li>
+    </ul>
   </div>
-</div>
+</nav>
+
+<main class="main-content" id="main-content">
+
+  <section class="hero">
+    <span class="hero-subtitle">音楽</span>
+    <h1 class="hero-title">その他の音楽作品</h1>
+    <p class="hero-text">映画、テレビ、ドキュメンタリー、バレエ、演劇、放送メディアのための作曲作品のセレクション。20年以上にわたるプロフェッショナルな仕事を網羅しています。</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="content-section">
+
+    <!-- Film & Documentary -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">映画とドキュメンタリー</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2017</span>
+          <span class="credit-title">Ex-Change <span class="credit-note">(キューバ系アメリカ人ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2015</span>
+          <span class="credit-title">El Bardo Inmortal</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2012</span>
+          <span class="credit-title">A Pesar de Todo <span class="credit-note">(ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2010</span>
+          <span class="credit-title">Casa Vieja</span>
+          <span class="credit-role">音楽制作協力</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2008</span>
+          <span class="credit-title">La Ausencia</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2006</span>
+          <span class="credit-title">Coro de Ciudad <span class="credit-note">(ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">La Gracia de Volver <span class="credit-note">(ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Perfecto Amor Equivocado <span class="credit-note">(キューバ・スペイン共同制作)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Caminos de Revoluci&oacute;n <span class="credit-note">(ドキュメンタリーシリーズ)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Viviendo al L&iacute;mite <span class="credit-note">(ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Bailando Chachach&aacute;</span>
+          <span class="credit-role">音楽制作協力</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">La Naturaleza Secreta de Cuba <span class="credit-note">(ドキュメンタリーシリーズ)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">Pintores Contempor&aacute;neos Cubanos <span class="credit-note">(ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">Dreaming of Julia <span class="credit-note">(アメリカ映画)</span></span>
+          <span class="credit-role">音楽制作協力</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">Suite Habana <span class="credit-note">(キューバ・スペイン共同制作)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2002</span>
+          <span class="credit-title">Aunque est&eacute;s Lejos <span class="credit-note">(キューバ・スペイン共同制作)</span></span>
+          <span class="credit-role">音楽制作協力</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2002</span>
+          <span class="credit-title">Ausencia Presente <span class="credit-note">(ドキュメンタリー)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2001</span>
+          <span class="credit-title">Nada</span>
+          <span class="credit-role">編曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2000</span>
+          <span class="credit-title">Hacerse el Sueco</span>
+          <span class="credit-role">音楽制作協力</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Television Drama -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">テレビドラマ</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <p class="category-note">テレノベラ(連続テレビドラマ)はマイナーなジャンルと見なされることがありますが、膨大な量のオリジナル音楽を必要とします。テーマ曲、トランジション、感情的なキュー、数十話にわたるドラマティックなスコアリングなど。この一連の作品は、私の作曲活動の中で重要な部分を占めています。</p>
+
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2022</span>
+          <span class="credit-title">El Rostro de los D&iacute;as</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2013</span>
+          <span class="credit-title">Playa Eleonora</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2011</span>
+          <span class="credit-title">Con Palabras Propias</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2007</span>
+          <span class="credit-title">Historias de Fuego</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2002</span>
+          <span class="credit-title">Salir de Noche</span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2001</span>
+          <span class="credit-title">Violetas de Agua</span>
+          <span class="credit-role">音楽制作協力</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Television Series -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">テレビシリーズと放送</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2012-18</span>
+          <span class="credit-title">H&aacute;bitat <span class="credit-note">(テレビシリーズ、7シーズン)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2009</span>
+          <span class="credit-title">Flores por Patricia <span class="credit-note">(テレビシリーズ)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">Breves Estaciones <span class="credit-note">(テレビ番組)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">P&aacute;ginas Compartidas <span class="credit-note">(テレビ番組)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">Donde Va La Habana <span class="credit-note">(テレビ番組)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2001</span>
+          <span class="credit-title">Entorno <span class="credit-note">(テレビ番組)</span></span>
+          <span class="credit-role">劇伴音楽作曲</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Broadcast Identity -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">放送アイデンティティとチャンネル音楽</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <p class="category-note">テレビ局やラジオ局のソニック・アイデンティティとして制作されたオリジナル楽曲。視聴者が毎日チャンネルの特徴として耳にする音楽です。</p>
+
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2014</span>
+          <span class="credit-title">国立教育テレビチャンネル</span>
+          <span class="credit-role">テーマ音楽作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2010-15</span>
+          <span class="credit-title">国営通信社</span>
+          <span class="credit-role">チャンネル音楽作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2005</span>
+          <span class="credit-title">ハバナ首都圏テレビチャンネル</span>
+          <span class="credit-role">テーマ音楽作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">国立教育テレビチャンネル(第二ネットワーク)</span>
+          <span class="credit-role">テーマ音楽作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2003</span>
+          <span class="credit-title">国営ラジオ局</span>
+          <span class="credit-role">音楽番組作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2000</span>
+          <span class="credit-title">イベロアメリカ首脳会議(キューバ)</span>
+          <span class="credit-role">プロモーションスポット作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1997</span>
+          <span class="credit-title">Met&aacute;nica <span class="credit-note">(産業イベント)</span></span>
+          <span class="credit-role">プロモーションスポット作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1996</span>
+          <span class="credit-title">キューバ国際放送チャンネル</span>
+          <span class="credit-role">テーマ音楽作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1995</span>
+          <span class="credit-title">国営ラジオ局</span>
+          <span class="credit-role">プロモーションスポット作曲</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Ballet & Theater -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">バレエ、演劇とライブパフォーマンス</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2010</span>
+          <span class="credit-title">B&eacute;same Mucho <span class="credit-note">(ミュージカル、Yoldanceカンパニー)</span></span>
+          <span class="credit-role">作曲・編曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Im&aacute;genes Dal&iacute; <span class="credit-note">(キューバ国立バレエ団のためのバレエ、ラファエル・プラド振付)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">第10回国際電子音響音楽フェスティバル</span>
+          <span class="credit-role">参加者</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">1988-90</span>
+          <span class="credit-title">様々な演劇作品</span>
+          <span class="credit-role">劇伴音楽作曲</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Multimedia -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">マルチメディアとその他のプロジェクト</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="credits-list">
+        <div class="credit-item">
+          <span class="credit-year">2004</span>
+          <span class="credit-title">Patrimonio <span class="credit-note">(インタラクティブマルチメディア、Cubarte Editions出版)</span></span>
+          <span class="credit-role">作曲</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-year">2000</span>
+          <span class="credit-title">シンセサイザープログラミング講座 <span class="credit-note">(メキシコ、アグアスカリエンテス初の講座)</span></span>
+          <span class="credit-role">講師</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- International Touring -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">国際的な活動</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="prose-block">
+        <p>1999年以来、エルネストはイングランド、スペイン、イタリア、ドイツ、フランス、ロシア、韓国、アルゼンチン、ベネズエラ、パナマ、コスタリカ、ニカラグア、メキシコ、アメリカ合衆国、カナダで国際的に演奏・活動し、様々なアーティストと共同制作を行い、作曲活動と並行して教育プロジェクトを展開してきました。</p>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Interviews & Media -->
+    <article class="category">
+      <div class="category-header">
+        <h2 class="category-title">インタビューとメディア</h2>
+        <span class="category-line"></span>
+      </div>
+
+      <div class="interview-list">
+        <a href="https://artistnator.com/la-nota-perfecta-ernesto-cisneros/" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">Artistnator</span>
+          <span class="interview-title">La Nota Perfecta: Ernesto Cisneros</span>
+        </a>
+        <a href="https://www.hypermediamagazine.com/arte/artes-visuales/la-revolucion-digital/ernesto-cisneros-entrevista/" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">Hypermedia</span>
+          <span class="interview-title">M&uacute;sica NFT: la experiencia colaborativa de Ernesto Cisneros</span>
+        </a>
+        <a href="https://www.juventudrebelde.cu/cultura/2020-08-29/los-rostros-de-ernesto-cisneros" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">Juventud Rebelde</span>
+          <span class="interview-title">Los rostros de Ernesto Cisneros</span>
+        </a>
+        <a href="https://nftcuba.art/artist/ernesto-cisneros/" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">NFT Cuba</span>
+          <span class="interview-title">Ernesto Cisneros; Artist Profile</span>
+        </a>
+        <a href="https://medium.com/revista-alma-mater/ernesto-cisneros-supongo-que-muchos-artistas-comenzarán-su-viaje-en-el-mundo-de-los-nfts-63cfd1a4f5dd" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">Alma Mater</span>
+          <span class="interview-title">Ernesto Cisneros y su viaje por el mundo de los NFTs</span>
+        </a>
+        <a href="https://medium.com/@Cubancryptoart/ernesto-cisneros-cino-cryptoart-will-improve-everything-in-cuban-society-1c9c69d51103" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">Cubancryptoart</span>
+          <span class="interview-title">Entrevista a Ernesto Cisneros Cino, pianista y artista digital</span>
+        </a>
+        <a href="https://www.facebook.com/share/p/1DtDSZNzik/" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">Facebook</span>
+          <span class="interview-title">Ernesto Cisneros Cino; Entrevista</span>
+        </a>
+        <a href="https://www.lajiribilla.cu/ernesto-cisneros-yo-quiero-defender-el-arte-con-todas-las-armas-posibles/" target="_blank" rel="noopener noreferrer" class="interview-item">
+          <span class="interview-source">La Jiribilla</span>
+          <span class="interview-title">Yo quiero defender el arte con todas las armas posibles</span>
+        </a>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-social">
+    <a href="https://x.com/ErnestCisneros1" target="_blank" rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/ernestocisnerosmusic" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://github.com/cisnerosmusic" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="https://youtube.com/@ernestocisnerosmusic" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/ernesto-cisneros-cino-58125644" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://gitlab.com/ernestocisneroscino" target="_blank" rel="noopener noreferrer" aria-label="GitLab" style="color:var(--gold);"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 00-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 00-.867 0L1.386 9.452.044 13.587a.924.924 0 00.331 1.023L12 23.054l11.625-8.443a.92.92 0 00.33-1.024"/></svg></a>
+    <a href="https://soundcloud.com/user-891445743-534278806" target="_blank" rel="noopener noreferrer" title="SoundCloud">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M11.56 8.87V17h8.76c1.85 0 3.36-1.5 3.36-3.34 0-1.84-1.51-3.34-3.36-3.34-.37 0-.73.06-1.06.18-.28-2.82-2.67-5.03-5.56-5.03-1.12 0-2.17.33-3.04.9v1.5zM7 9.85v7.15h1.5v-7.5c-.5-.2-1-.3-1.5-.3v.65zm-2.5.5v6.65H6V10c-.5-.1-1-.15-1.5-.15v.5zM2 12.35v4.3h1.5v-5c-.55.15-1.05.38-1.5.7zm-2 2v2h1.5v-3.15c-.57.28-1.07.66-1.5 1.15z"/></svg>
+    </a>
+  </div>
+  <p class="copyright">&copy; 2020 – 2026 Ernesto Cisneros Cino</p>
+  <p class="copyright footer-credit" style="margin-top:.55rem;">開発: <a href="https://index01.net" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;">Index01</a></p>
+</footer>
+
+<script>
+// Gold Particles
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle(init) {
+    return {
+      x: Math.random() * canvas.width,
+      y: init ? Math.random() * canvas.height : canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.4 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
+    };
+  }
+
+  function init() {
+    for (let i = 0; i < COUNT; i++) particles.push(createParticle(true));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += p.pulseSpeed;
+      if (p.y < -10) particles[i] = createParticle(false);
+      const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 160, 48, ' + op + ')';
+      ctx.fill();
+      if (p.size > 1.2) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        g.addColorStop(0, 'rgba(212, 160, 48, ' + (op * 0.3) + ')');
+        g.addColorStop(1, 'rgba(212, 160, 48, 0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  init();
+  animate();
+})();
+
+</script>
+
+<script defer src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/footer-lang.js" defer></script>
+<script data-goatcounter="https://ernestocisnerosart.goatcounter.com/count" async src="//gc.zgo.at/count.js" integrity="sha384-2UjvVpptg4JlEVgJI2PdscrjOjPcil/4F1ZvIMJ81CShQnEDSlPI+l4PfogvTLYi" crossorigin="anonymous"></script>
+    <script src="/chat-widget.js" defer></script>
 </body>
 </html>
