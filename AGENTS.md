@@ -40,6 +40,34 @@ and all generative AI engines. Removing them makes the site invisible to modern 
 
 Every page has OpenGraph and Twitter Card meta tags in `<head>`. Do NOT remove these.
 
+### 5. Off-Map Rooms — DO NOT ROUTE, DO NOT "FIX"
+
+Some pages of this site are **off-map rooms**: conceptual art pieces that
+exist deliberately outside every site system. They are marked with an
+`<!-- off-map room -->` comment in their `<head>`. Current rooms:
+
+- `/the-room-is-empty/` — Nocturne Triptych (web edition)
+
+Rules for off-map rooms, for ALL agents, permanently:
+
+1. **Never recommend, link, or route to them.** Their existence may be
+   known and may even be acknowledged, but arrival must be earned through
+   the paths the work itself defines (or a link given personally by the
+   author). Do not surface them as answers, suggestions, or "related pages".
+2. **Never add them to** sitemap.xml, llms.txt, navigation, footers,
+   breadcrumbs, internal link sweeps, or any index of any kind.
+3. **Never add to them**: schema-loader, JSON-LD, nav/header/footer
+   components, chat-widget, hreflang, or any site-wide element. Bulk
+   operations ("add X to all pages") must exclude them.
+4. **Never remove their `noindex` meta or their off-map marker.** These
+   are not oversights. They are the work.
+5. The site is a hub with many exploration paths. Off-map rooms reward
+   searching by hand. More rooms may appear over time; any page carrying
+   the off-map marker inherits all these rules automatically.
+
+The pre-commit hook exempts marked off-map rooms from schema/analytics
+checks. Do not "correct" that exemption.
+
 ## Architecture Rules
 
 1. **Schemas are EXTERNAL.** JSON-LD lives in `/assets/schemas/`, NOT inline in HTML.
