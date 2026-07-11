@@ -617,8 +617,12 @@
       } else if (this.repeatMode === REPEAT_ALL) {
         this.load(0, true);
       } else {
-        // End of album, no loop: stop here
+        // End of album, no loop: stop here.
         document.getElementById('play-btn').textContent = '▶ Play';
+        // The listener heard the album through to its last note.
+        // For that listener, and only for that listener, there is
+        // one more thing.
+        afterSilence.begin();
       }
     },
     onEnded() {
@@ -1978,6 +1982,83 @@
       tracklistEl.classList.remove('dimmed');
     }
   });
+  /* ============================================================
+     AFTER THE SILENCE
+     When the album has been heard through to the end (no loop),
+     everything goes black: no header, no footer, no stars. In the
+     centre, a sentence approaches out of the dark. Below it, a
+     small door. Whoever opens it enters. Whoever waits is quietly
+     returned home: it was not for them. This is not a feature.
+     It is a threshold.
+     ============================================================ */
+  const afterSilence = {
+    fired: false,
+    begin() {
+      if (this.fired) return;
+      this.fired = true;
+
+      const veil = document.createElement('div');
+      veil.id = 'after-silence';
+      veil.style.cssText = [
+        'position:fixed', 'inset:0', 'background:#000', 'z-index:99999',
+        'opacity:0', 'transition:opacity 4s ease',
+        'display:flex', 'flex-direction:column', 'align-items:center',
+        'justify-content:center', 'gap:5vh'
+      ].join(';');
+
+      const line = document.createElement('div');
+      line.textContent = 'The room is empty now...';
+      line.style.cssText = [
+        "font-family:'Cormorant Garamond', Georgia, serif",
+        'font-weight:300', 'font-style:italic',
+        'font-size:clamp(1.6rem, 2.4vw, 5rem)',
+        'letter-spacing:0.03em', 'text-align:center',
+        'color:rgba(228, 230, 226, 0.92)',   // almost white, not quite
+        'opacity:0', 'transform:scale(0.92)',
+        'transition:opacity 5s ease, transform 5s ease',
+        'padding:0 8vw'
+      ].join(';');
+
+      // A small door: a thin outline with a handle. No label.
+      const door = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      door.setAttribute('viewBox', '0 0 28 46');
+      door.setAttribute('width', '28');
+      door.setAttribute('height', '46');
+      door.innerHTML =
+        '<rect x="1.5" y="1.5" width="25" height="43" fill="none" ' +
+        'stroke="rgba(228,230,226,0.55)" stroke-width="1"/>' +
+        '<circle cx="21" cy="24" r="1.4" fill="rgba(228,230,226,0.7)"/>';
+      door.style.cssText = [
+        'opacity:0', 'transition:opacity 3s ease', 'cursor:pointer'
+      ].join(';');
+      door.addEventListener('mouseenter', () => { door.style.opacity = '1'; });
+      door.addEventListener('mouseleave', () => { door.style.opacity = '0.55'; });
+      door.addEventListener('click', () => {
+        window.location.href = '/the-room-is-empty/';
+      });
+
+      veil.appendChild(line);
+      veil.appendChild(door);
+      document.body.appendChild(veil);
+      document.body.style.overflow = 'hidden';
+
+      // Choreography: black takes everything, the sentence approaches
+      // over 5 seconds, the door appears; ten seconds later, whoever
+      // has not opened it goes home.
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        veil.style.opacity = '1';
+      }));
+      setTimeout(() => {
+        line.style.opacity = '1';
+        line.style.transform = 'scale(1)';
+      }, 4200);
+      setTimeout(() => { door.style.opacity = '0.55'; }, 9400);
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 9400 + 10000);
+    }
+  };
+
   audio.el.addEventListener('ended', () => playlist.onEnded());
 
   audio.el.addEventListener('timeupdate', () => {
