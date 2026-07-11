@@ -38,9 +38,12 @@ fi
 MODIFIED_HTML=$(git diff --cached --name-only --diff-filter=M | grep "\.html$" | grep -v "components/" || true)
 for file in $MODIFIED_HTML; do
     if [ -f "$file" ]; then
-        # the-room-is-empty/ is deliberately outside the SEO/GEO system:
-        # no schema, noindex. On a site built to be the answer, that room
-        # is built not to be one. See the comment in its <head>.
+        # Off-map rooms are deliberately outside every site system:
+        # no schema, no analytics requirement, noindex, no nav. They are
+        # marked with an "off-map room" comment in their <head>. On a
+        # site built to be the answer, these rooms are built not to be
+        # one. Do not "fix" them.
+        if grep -qi "off-map room" "$file"; then continue; fi
         case "$file" in *the-room-is-empty/*) continue ;; esac
         # Block REMOVAL, not absence: many pages (book subpages, guides,
         # some music players) never carried schema-loader or analytics.
