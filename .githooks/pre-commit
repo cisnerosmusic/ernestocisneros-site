@@ -38,13 +38,25 @@ fi
 MODIFIED_HTML=$(git diff --cached --name-only --diff-filter=M | grep "\.html$" | grep -v "components/" || true)
 for file in $MODIFIED_HTML; do
     if [ -f "$file" ]; then
+        # the-room-is-empty/ is deliberately outside the SEO/GEO system:
+        # no schema, noindex. On a site built to be the answer, that room
+        # is built not to be one. See the comment in its <head>.
+        case "$file" in *the-room-is-empty/*) continue ;; esac
+        # Block REMOVAL, not absence: many pages (book subpages, guides,
+        # some music players) never carried schema-loader or analytics.
+        # Only flag a file if the committed HEAD version had the tag and
+        # the staged version lost it.
         if ! grep -q "schema-loader" "$file"; then
-            echo -e "${RED}✗ BLOCKED: $file lost its schema-loader reference!${NC}"
-            ERRORS=$((ERRORS + 1))
+            if git show "HEAD:$file" 2>/dev/null | grep -q "schema-loader"; then
+                echo -e "${RED}✗ BLOCKED: $file lost its schema-loader reference!${NC}"
+                ERRORS=$((ERRORS + 1))
+            fi
         fi
         if ! grep -q "goatcounter" "$file"; then
-            echo -e "${YELLOW}⚠ WARNING: $file lost its GoatCounter analytics tag!${NC}"
-            ERRORS=$((ERRORS + 1))
+            if git show "HEAD:$file" 2>/dev/null | grep -q "goatcounter"; then
+                echo -e "${YELLOW}⚠ WARNING: $file lost its GoatCounter analytics tag!${NC}"
+                ERRORS=$((ERRORS + 1))
+            fi
         fi
     fi
 done
