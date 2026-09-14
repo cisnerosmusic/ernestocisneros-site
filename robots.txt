@@ -9,7 +9,7 @@ Sitemap: https://ernestocisneros.art/sitemap.xml
 
 # Humans & LLM discovery
 # https://ernestocisneros.art/humans.txt
-LLMs-Txt: https://ernestocisneros.art/llms.txt
+# llms.txt: https://ernestocisneros.art/llms.txt
 
 # Specific AI crawlers - welcome
 User-agent: GPTBot
@@ -46,38 +46,50 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-User-agent: ChatGPT-User       # Crawler de fetches activados por usuarios en ChatGPT
+# ChatGPT user-triggered fetches
+User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Meta-ExternalAgent # Meta/Facebook AI
+# Meta/Facebook AI
+User-agent: Meta-ExternalAgent
 Allow: /
 
-User-agent: Bytespider         # ByteDance/TikTok
+# ByteDance/TikTok
+User-agent: Bytespider
 Allow: /
 
-User-agent: Amazonbot          # Amazon (Alexa/Rufus)
+# Amazon (Alexa/Rufus)
+User-agent: Amazonbot
 Allow: /
 
-User-agent: DeepSeekBot        # DeepSeek AI
+# DeepSeek AI
+User-agent: DeepSeekBot
 Allow: /
 
-User-agent: Gemini             # Google Gemini
+# Google Gemini
+User-agent: Gemini
 Allow: /
 
-User-agent: YouBot             # You.com AI search
+# You.com AI search
+User-agent: YouBot
 Allow: /
 
-User-agent: Diffbot            # Diffbot knowledge graph
+# Diffbot knowledge graph
+User-agent: Diffbot
 Allow: /
 
-User-agent: SemrushBot         # Semrush SEO crawler
+# Semrush SEO crawler
+User-agent: SemrushBot
 Allow: /
 
-User-agent: AhrefsBot          # Ahrefs SEO crawler
+# Ahrefs SEO crawler
+User-agent: AhrefsBot
 Allow: /
 
-User-agent: DataForSeoBot      # DataForSEO crawler
+# DataForSEO crawler
+User-agent: DataForSeoBot
 Allow: /
 
-User-agent: PetalBot           # Huawei Petal Search
+# Huawei Petal Search
+User-agent: PetalBot
 Allow: /
