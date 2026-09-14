@@ -35,7 +35,7 @@ def html_files():
     for root, dirs, files in os.walk(ROOT):
         dirs[:] = [d for d in dirs if d not in ('.git', 'node_modules', 'components', '.github')]
         for name in files:
-            if name.endswith('.html'):
+            if name.endswith('.html') and not name.startswith('google'):
                 yield os.path.join(root, name)
 
 

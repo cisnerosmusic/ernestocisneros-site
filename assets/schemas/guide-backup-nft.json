@@ -1,0 +1,14 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://ernestocisneros.art/guide-backup-nft-en.html#article",
+    "headline": "How to Back Up Your NFTs Before Foundation Shuts Down",
+    "description": "Step-by-step guide to back up NFT metadata and files to decentralized storage (IPFS via Filebase) before a marketplace closes.",
+    "url": "https://ernestocisneros.art/guide-backup-nft-en.html",
+    "author": {
+      "@id": "https://ernestocisneros.art/#person"
+    },
+    "inLanguage": "en"
+  }
+]

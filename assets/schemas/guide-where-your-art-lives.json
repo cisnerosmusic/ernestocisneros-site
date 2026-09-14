@@ -1,0 +1,14 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://ernestocisneros.art/guide-where-your-art-lives-en.html#article",
+    "headline": "Where Your Art Lives: Digital Permanence",
+    "description": "NFT infrastructure guide: IPFS, Arweave, on-chain storage and metadata. Where digital art actually lives and how to keep it alive.",
+    "url": "https://ernestocisneros.art/guide-where-your-art-lives-en.html",
+    "author": {
+      "@id": "https://ernestocisneros.art/#person"
+    },
+    "inLanguage": "en"
+  }
+]

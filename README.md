@@ -66,7 +66,7 @@ Static site built with vanilla HTML, CSS, and JavaScript. No frameworks, no buil
 
 The site uses an external JSON-LD schema architecture for search engine and generative AI optimization:
 
-- **29 schema files** in `assets/schemas/` (Person, Book, MusicAlbum, Article, VisualArtwork, Project, etc.) with enhanced JSON-LD Book schema including BreadcrumbList
+- **36 schema files** in `assets/schemas/` (Person, Book, MusicAlbum, Article, VisualArtwork, Project, etc.) with enhanced JSON-LD Book schema including BreadcrumbList
 - **`schema-loader.js` (v2.0.0)**: Fetches and injects schemas at runtime via `data-schema` attributes with language detection
 - **`footer-lang.js`**: Manages multilingual language switching in the footer
 - **`llms.txt`**: LLM discovery file following the emerging 2026 standard

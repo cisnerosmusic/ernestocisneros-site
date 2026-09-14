@@ -1,0 +1,14 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://ernestocisneros.art/guide-smart-contracts-en.html#article",
+    "headline": "Smart Contracts from Alpha to Omega",
+    "description": "Smart contracts guide for crypto artists: EVM, Solana, Tezos, Bitcoin Ordinals, royalties and upgradeability.",
+    "url": "https://ernestocisneros.art/guide-smart-contracts-en.html",
+    "author": {
+      "@id": "https://ernestocisneros.art/#person"
+    },
+    "inLanguage": "en"
+  }
+]

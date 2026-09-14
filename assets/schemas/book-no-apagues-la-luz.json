@@ -1,0 +1,50 @@
+[
+  {
+    "@type": "Book",
+    "@id": "https://ernestocisneros.art/es/books/no-apagues-la-luz/#book",
+    "name": "No apagues la luz",
+    "alternateName": "Don't Turn Off the Light",
+    "headline": "Once cuentos de horror que no necesitan monstruos, solo tu atención",
+    "description": "Once cuentos de horror que no necesitan monstruos: solo necesitan que prestes atención.",
+    "author": {
+      "@type": "Person",
+      "name": "Ernesto Cisneros Cino",
+      "url": "https://ernestocisneros.art",
+      "sameAs": [
+        "https://solpersona.com/@ernestocisneros",
+        "https://www.amazon.com/stores/Ernesto-Cisneros-Cino/author/B0FP5KBFNN",
+        "https://orcid.org/0009-0002-2833-1787",
+        "https://en.wikipedia.org/wiki/Ernesto_Cisneros"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Independent"
+    },
+    "inLanguage": "es",
+    "url": "https://ernestocisneros.art/es/books/no-apagues-la-luz/",
+    "image": "https://ernestocisneros.art/assets/images/books/no-apagues-la-luz.jpg",
+    "bookFormat": "https://schema.org/EBook",
+    "datePublished": "2025",
+    "about": "Psychological horror, everyday fear, domestic anxiety, perception",
+    "genre": [
+      "Psychological Horror",
+      "Short Stories"
+    ],
+    "numberOfPages": "~120",
+    "offers": {
+      "@type": "Offer",
+      "price": "3.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://buy.stripe.com/9B64gz2Nx4zL079fAUgMw02"
+    },
+    "potentialAction": {
+      "@type": "ReadAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://ernestocisneros.art/es/books/no-apagues-la-luz/contenido.html"
+      }
+    }
+  }
+]

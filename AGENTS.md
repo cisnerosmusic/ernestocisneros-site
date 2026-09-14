@@ -17,7 +17,7 @@ The site uses an **external schema architecture** to prevent accidental deletion
 **NEVER delete, move, or rename these:**
 
 - `assets/js/schema-loader.js` (v2.0.0) — Loads JSON-LD schemas into pages at runtime with language detection
-- `assets/schemas/*.json` — All 25 structured data files (Person, Book, MusicAlbum, etc.)
+- `assets/schemas/*.json` — All 36 structured data files (Person, Book, MusicAlbum, etc.)
 - Any `<script>` tag containing `data-schema` or referencing `schema-loader.js` in HTML files
 - Any HTML comment containing `CRITICAL SEO/GEO`
 - `assets/js/footer-lang.js` — Footer language system for multilingual support
@@ -96,7 +96,13 @@ checks. Do not "correct" that exemption.
 
 ## Before Committing
 
-Run this check to verify schema integrity:
+Run the site validator (schemas, inline JSON-LD, sitemap, GoatCounter/schema coverage):
+
+```bash
+python scripts/validate.py
+```
+
+It runs in CI on every push (`.github/workflows/validate.yml`). Legacy manual checks:
 
 ```bash
 # Verify all schema files exist and are valid JSON
@@ -116,7 +122,7 @@ find . -name "*.html" -not -path "./.git/*" -not -path "./components/*" | \
 ## File Inventory (as of April 2026)
 
 - **140+ HTML pages** (7 languages: EN, ES, FR, JA, RU, IT, KO)
-- **25 JSON-LD schema files** in `assets/schemas/`
+- **36 JSON-LD schema files** in `assets/schemas/`
 - **1 schema loader** at `assets/js/schema-loader.js` (v2.0.0 with language detection)
 - **1 footer language system** at `assets/js/footer-lang.js`
 - **1 analytics script** (GoatCounter, inline in every page)
