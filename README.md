@@ -20,7 +20,6 @@ Live at **[ernestocisneros.art](https://ernestocisneros.art)** | ~346 pages acro
 - **Privacy Policy**: Cookie-free analytics disclosure, data handling, and GDPR/CCPA compliance.
 - **NFT Backup Guide**: Step-by-step guide to back up NFTs from Foundation marketplace before shutdown. Available in 14 languages with full SEO, hreflang, and Schema.org structured data.
 - **NFT Resource Guides** (EN + ES): Wallet guide, smart contracts guide, and decentralized storage guide for artists navigating Web3.
-- **AI Chatbot**: Conversational assistant powered by Claude v2 (via Cloudflare Worker with tool calling and analytics), integrated across 240+ non-music pages. Provides contextual answers about the artist's work, music, books, essays, and projects.
 
 ## Multilingual
 
@@ -59,7 +58,6 @@ Static site built with vanilla HTML, CSS, and JavaScript. No frameworks, no buil
 - **Video**: Compressed MP4 (H.264) with autoplay/loop for NFT pieces
 - **Effects**: CSS `@property`-powered animated effects from the Index01 effects library; beam-edge "Linterna" (conic-gradient rotating border light with `mask-composite: exclude`, triggered by `IntersectionObserver`), adapted to site gold palette
 - **PWA**: Progressive Web App support via `manifest.json` with 192px and 512px icons
-- **Chatbot**: AI assistant v2 (`chatbot/worker.js`) backed by Cloudflare Worker using Claude API with tool calling, analytics, and contextual knowledge base. Widget (`chat-widget.js`) integrated across 240+ pages, excluded from music player pages to avoid audio interference
 - **Payments**: Stripe Payment Links for book sales (EN/ES), integrated into Books section
 - **Analytics**: GoatCounter (cookie-free, privacy-respecting) on 249 pages. [Dashboard](https://ernestocisnerosart.goatcounter.com)
 - **Social**: Linktree in footer across all pages, IMDb on biography
@@ -122,7 +120,6 @@ assets/
   nft/compressed/         35 optimized images and videos for NFT sections
   pdf/                    PDFs: 8 cosmology papers, 6 technology papers, 5 essay PDFs
   schemas/                29 JSON-LD structured data files
-chatbot/                  AI chatbot v2 (chat-widget.js, worker.js, system-prompt.txt)
 components/               Reusable header (2.9KB) and footer (7.9KB) HTML
 manifest.json             PWA manifest with app icons
 llms.txt                  LLM discovery file
