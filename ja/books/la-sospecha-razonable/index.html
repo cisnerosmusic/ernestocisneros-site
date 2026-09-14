@@ -384,7 +384,7 @@ a:hover { color: var(--gold-bright); }
     <a href="../../index.html" class="nav-logo" aria-label="Ernesto Cisneros - ホーム">
       <picture>
         <source srcset="../../../assets/images/logo.webp" type="image/webp">
-        <img src="../../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+        <img src="../../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy" width="1024" height="1024">
       </picture>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -460,7 +460,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-cover">
         <picture>
           <source srcset="../../../assets/images/books/la-sospecha.webp" type="image/webp">
-          <img src="../../../assets/images/books/la-sospecha.webp" alt="La Sospecha Razonable" loading="lazy">
+          <img src="../../../assets/images/books/la-sospecha.webp" alt="La Sospecha Razonable" loading="lazy" width="1010" height="1518">
         </picture>
       </div>
       <div class="book-info">
@@ -563,7 +563,7 @@ a:hover { color: var(--gold-bright); }
   window.addEventListener('resize', resize);
   resize();
   init();
-  animate();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate();
 })();
 </script>
 

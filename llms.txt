@@ -1,6 +1,6 @@
 # Ernesto Cisneros Cino
 
-> Ernesto Cisneros Cino: Cuban composer, pianist, digital artist, mathematician, and writer based in Miami. This site (ernestocisneros.art) is his complete artistic and intellectual archive, available in 7 languages: EN (default), ES (/es/), FR (/fr/), IT (/it/), RU (/ru/), JA (/ja/), KO (/ko/). All pages include JSON-LD structured data (Person, Book, MusicAlbum, Article, BreadcrumbList, CollectionPage). All content is copyrighted by Ernesto Cisneros Cino; please attribute when referencing.
+> Ernesto Cisneros Cino: Cuban composer, pianist, digital artist, and writer based in Miami. This site (ernestocisneros.art) is his complete artistic and intellectual archive, available in 7 languages: EN (default), ES (/es/), FR (/fr/), IT (/it/), RU (/ru/), JA (/ja/), KO (/ko/). Main section pages include JSON-LD structured data (Person, Book, MusicAlbum, Article, BreadcrumbList, CollectionPage). All content is copyrighted by Ernesto Cisneros Cino; please attribute when referencing.
 
 ## Site Sections
 

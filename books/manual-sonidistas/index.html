@@ -341,7 +341,7 @@ a:hover { color: var(--gold-bright); }
     <a href="../../index.html" class="nav-logo" aria-label="Ernesto Cisneros - Home">
       <picture>
         <source srcset="../../assets/images/logo.webp" type="image/webp">
-        <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+        <img src="../../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy" width="1024" height="1024">
       </picture>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -408,7 +408,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-cover">
         <picture>
           <source srcset="../../assets/images/books/manual-sonidistas.webp" type="image/webp">
-          <img src="../../assets/images/books/manual-sonidistas.webp" alt="Pocket Manual for Sound Engineers - Ernesto Cisneros Cino" loading="lazy">
+          <img src="../../assets/images/books/manual-sonidistas.webp" alt="Pocket Manual for Sound Engineers - Ernesto Cisneros Cino" loading="lazy" width="2550" height="3301">
         </picture>
       </div>
 
@@ -521,7 +521,7 @@ a:hover { color: var(--gold-bright); }
   window.addEventListener('resize', resize);
   resize();
   init();
-  animate();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate();
 })();
 </script>
 

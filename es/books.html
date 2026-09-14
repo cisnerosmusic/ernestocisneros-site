@@ -416,8 +416,6 @@ a:hover { color: var(--gold-bright); }
 <body>
 <a href="#main-content" class="skip-link">Ir al contenido principal</a>
 
-    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px;background:#d4a030;color:#080604;font-family:Arial,sans-serif;text-decoration:none;font-weight:bold;" onfocus="this.style.position='fixed';this.style.left='10px';this.style.top='10px';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Ir al contenido principal</a>
-
     <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
 <nav class="nav">
@@ -425,7 +423,7 @@ a:hover { color: var(--gold-bright); }
     <a href="index.html" class="nav-logo" aria-label="Ernesto Cisneros - Home">
       <picture>
         <source srcset="../assets/images/logo.webp" type="image/webp">
-        <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy">
+        <img src="../assets/images/logo.png" alt="Ernesto Cisneros Cino" loading="lazy" width="1024" height="1024">
       </picture>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -503,7 +501,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/sombras.webp" type="image/webp">
-          <img src="../assets/images/books/sombras.webp" alt="Sombras, Datos y Relámpagos" loading="lazy">
+          <img src="../assets/images/books/sombras.webp" alt="Sombras, Datos y Relámpagos" loading="lazy" width="444" height="635">
         </picture>
       </div>
       <div class="book-card-body">
@@ -521,7 +519,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/la-sospecha.webp" type="image/webp">
-          <img src="../assets/images/books/la-sospecha.webp" alt="La Sospecha Razonable" loading="lazy">
+          <img src="../assets/images/books/la-sospecha.webp" alt="La Sospecha Razonable" loading="lazy" width="1010" height="1518">
         </picture>
       </div>
       <div class="book-card-body">
@@ -539,7 +537,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/no-apagues-la-luz.webp" type="image/webp">
-          <img src="../assets/images/books/no-apagues-la-luz.webp" alt="No apagues la luz" loading="lazy">
+          <img src="../assets/images/books/no-apagues-la-luz.webp" alt="No apagues la luz" loading="lazy" width="1024" height="1536">
         </picture>
       </div>
       <div class="book-card-body">
@@ -557,7 +555,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/huella.webp" type="image/webp">
-          <img src="../assets/images/books/huella.webp" alt="Huella" loading="lazy">
+          <img src="../assets/images/books/huella.webp" alt="Huella" loading="lazy" width="1250" height="2000">
         </picture>
       </div>
       <div class="book-card-body">
@@ -575,7 +573,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/la-necesidad.webp" type="image/webp">
-          <img src="../assets/images/books/la-necesidad.webp" alt="La Necesidad de Creer" loading="lazy">
+          <img src="../assets/images/books/la-necesidad.webp" alt="La Necesidad de Creer" loading="lazy" width="1656" height="2339">
         </picture>
       </div>
       <div class="book-card-body">
@@ -593,7 +591,7 @@ a:hover { color: var(--gold-bright); }
       <div class="book-card-cover">
         <picture>
           <source srcset="../assets/images/books/manual-sonidistas.webp" type="image/webp">
-          <img src="../assets/images/books/manual-sonidistas.webp" alt="Manual de bolsillo para sonidistas" loading="lazy">
+          <img src="../assets/images/books/manual-sonidistas.webp" alt="Manual de bolsillo para sonidistas" loading="lazy" width="2550" height="3301">
         </picture>
       </div>
       <div class="book-card-body">
@@ -706,7 +704,7 @@ a:hover { color: var(--gold-bright); }
   window.addEventListener('resize', resize);
   resize();
   init();
-  animate();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate();
 })();
 
 </script>
