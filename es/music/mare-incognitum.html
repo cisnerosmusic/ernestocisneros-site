@@ -2100,7 +2100,7 @@ requestAnimationFrame(animate);
   window.addEventListener('resize', gResize);
   gResize();
   initGold();
-  animateGold();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateGold();
 })();
 </script>
 <script defer src="../../assets/js/nav.js"></script>

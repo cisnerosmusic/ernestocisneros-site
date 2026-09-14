@@ -1148,7 +1148,7 @@ window.addEventListener('resize', () => {
 
 resizeCanvas();
 initParticles();
-animateParticles();
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateParticles();
 buildConstellation();
 buildTracklist();
 
@@ -1249,7 +1249,7 @@ document.addEventListener('keydown', (e) => {
   window.addEventListener('resize', gResize);
   gResize();
   initGold();
-  animateGold();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateGold();
 })();
 </script>
 <script defer src="../../assets/js/nav.js"></script>

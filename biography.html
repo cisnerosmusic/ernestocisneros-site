@@ -905,8 +905,7 @@
     window.addEventListener('resize', resizeParticles);
     resizeParticles();
     initParticles();
-    animateParticles();
-
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateParticles();
     // ============================================
     // UNIVERSE OF NODES
     // ============================================

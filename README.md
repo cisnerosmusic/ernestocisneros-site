@@ -2,9 +2,9 @@
 
 **Composer, Pianist, Digital Artist, Mathematician & Writer**
 
-Personal website of Ernesto Cisneros Cino, a Cuban composer, pianist, visual artist, mathematician, and writer based in Miami. This site serves as the central hub for his music, digital art (NFTs), published writings, theoretical research, and social impact projects.
+Personal website of Ernesto Cisneros Cino, a Cuban composer, pianist, digital artist, and writer based in Miami. This site serves as the central hub for his music, digital art (NFTs), published writings, theoretical research, and social impact projects.
 
-Live at **[ernestocisneros.art](https://ernestocisneros.art)** | ~346 pages across 7 full languages (EN, ES, FR, IT, RU, JA, KO) + NFT Backup Guide in 14 languages | PWA-ready
+Live at **[ernestocisneros.art](https://ernestocisneros.art)** | ~346 pages across 7 full languages (EN, ES, FR, IT, RU, JA, KO) + NFT Backup Guide in 14 languages
 
 ---
 
@@ -57,9 +57,9 @@ Static site built with vanilla HTML, CSS, and JavaScript. No frameworks, no buil
 - **3D**: Three.js WebGL visualization on Mare Incognitum album page
 - **Video**: Compressed MP4 (H.264) with autoplay/loop for NFT pieces
 - **Effects**: CSS `@property`-powered animated effects from the Index01 effects library; beam-edge "Linterna" (conic-gradient rotating border light with `mask-composite: exclude`, triggered by `IntersectionObserver`), adapted to site gold palette
-- **PWA**: Progressive Web App support via `manifest.json` with 192px and 512px icons
+- **Web app manifest**: `manifest.json` with 192px and 512px icons (installable; no offline service worker)
 - **Payments**: Stripe Payment Links for book sales (EN/ES), integrated into Books section
-- **Analytics**: GoatCounter (cookie-free, privacy-respecting) on 249 pages. [Dashboard](https://ernestocisnerosart.goatcounter.com)
+- **Analytics**: GoatCounter (cookie-free, privacy-respecting) on all public pages. [Dashboard](https://ernestocisnerosart.goatcounter.com)
 - **Social**: Linktree in footer across all pages, IMDb on biography
 
 ## SEO / GEO Infrastructure
@@ -73,7 +73,7 @@ The site uses an external JSON-LD schema architecture for search engine and gene
 - **`AGENTS.md`**: Protection instructions for AI agents working on this repository
 - **Pre-commit hook** (`.githooks/pre-commit`): Blocks accidental deletion of schemas, analytics, or agent instructions
 - **hreflang + canonical** on all ~346 pages (7 languages + x-default, 14 languages for backup guide), complete hreflang reciprocity across all 7 languages including 42 book subpages
-- **`sitemap.xml`** with 288 URLs covering all languages and translations
+- **`sitemap.xml`** with 323 URLs covering all languages and translations
 - **OG/Twitter tags** on all pages including redirect stubs for consistent social sharing
 - **Accessibility**: `aria-label` on all logo links, semantic heading hierarchy (h1→h2→h3, no skips), `defer` on all scripts, `prefers-reduced-motion` respected on animated effects
 - **`robots.txt`** with explicit permissions for AI crawlers (GPTBot, anthropic-ai, Claude-Web, Google-Extended, DeepSeekBot, Gemini, YouBot, Diffbot, and others)
@@ -119,7 +119,7 @@ assets/
   js/                     7 scripts (nav, lang-detect, schema-loader v2, footer-lang, components, crypto-tracker, main)
   nft/compressed/         35 optimized images and videos for NFT sections
   pdf/                    PDFs: 8 cosmology papers, 6 technology papers, 5 essay PDFs
-  schemas/                29 JSON-LD structured data files
+  schemas/                36 JSON-LD structured data files
 components/               Reusable header (2.9KB) and footer (7.9KB) HTML
 manifest.json             PWA manifest with app icons
 llms.txt                  LLM discovery file
@@ -127,7 +127,7 @@ humans.txt                humans.txt (humanstxt.org format)
 AGENTS.md                 AI agent protection instructions
 .githooks/pre-commit      Schema/analytics protection hook
 robots.txt                Search engine + AI crawler directives
-sitemap.xml               Full multilingual sitemap (288 URLs)
+sitemap.xml               Full multilingual sitemap (323 URLs)
 privacy-policy/           Privacy policy
 404.html                  Custom error page
 ```

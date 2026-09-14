@@ -119,9 +119,9 @@ find . -name "*.html" -not -path "./.git/*" -not -path "./components/*" | \
 # Expected: empty (all pages should have it)
 ```
 
-## File Inventory (as of April 2026)
+## File Inventory (as of September 2026)
 
-- **140+ HTML pages** (7 languages: EN, ES, FR, JA, RU, IT, KO)
+- **~350 HTML pages** (7 languages: EN, ES, FR, JA, RU, IT, KO)
 - **36 JSON-LD schema files** in `assets/schemas/`
 - **1 schema loader** at `assets/js/schema-loader.js` (v2.0.0 with language detection)
 - **1 footer language system** at `assets/js/footer-lang.js`

@@ -48,21 +48,69 @@ for name in sorted(os.listdir(schema_dir)):
         except Exception as e:
             errors.append(f'schema invalido: assets/schemas/{name}: {e}')
 
-# 2 y 4. Paginas
+# 2 y 4-9. Paginas
+CANON = re.compile(r'<link rel="canonical"')
+DSCHEMA = re.compile(r'data-schema="([^"]+)"')
+HREFLANG = re.compile(r'<link rel="alternate" hreflang="[^"]+" href="([^"]+)"')
+IMG = re.compile(r'<img\b[^>]*>')
+DECOR = re.compile(r'^\s*animate(?:Gold|Particles)\(\);\s*$', re.M)
+ANCHOR = re.compile(r'<a\s[^>]*href="([^"#?]+\.html)[#?]?[^"]*"')
+
+def local_exists(url):
+    p = url.replace('https://ernestocisneros.art/', '', 1)
+    if p == '' or p.endswith('/'):
+        p += 'index.html'
+    return os.path.exists(os.path.join(ROOT, p))
+
 missing = []
+broken_links = []
 for path in html_files():
     s = io.open(path, encoding='utf-8').read()
+    r = rel(path)
     for block in LDJSON.findall(s):
         try:
             json.loads(block)
         except Exception as e:
-            errors.append(f'JSON-LD inline invalido en {rel(path)}: {e}')
+            errors.append(f'JSON-LD inline invalido en {r}: {e}')
+    # canonicals duplicados
+    if len(CANON.findall(s)) > 1:
+        errors.append(f'canonical duplicado en {r}')
+    # data-schema debe apuntar a un JSON existente
+    for name in DSCHEMA.findall(s):
+        if name != 'none' and not os.path.exists(
+                os.path.join(schema_dir, name + '.json')):
+            errors.append(f'data-schema "{name}" sin JSON en {r}')
+    # hreflang con destino local existente
+    for url in HREFLANG.findall(s):
+        if url.startswith('https://ernestocisneros.art') and not local_exists(url):
+            errors.append(f'hreflang a destino inexistente en {r}: {url}')
+    # imagenes sin dimensiones (los placeholders dinamicos con src="" se excluyen)
+    for tag in IMG.findall(s):
+        if 'width=' not in tag and 'src=""' not in tag:
+            errors.append(f'img sin width/height en {r}: {tag[:80]}')
+    # bucles decorativos sin respetar prefers-reduced-motion
+    for m in DECOR.finditer(s):
+        errors.append(f'bucle decorativo sin guarda reduced-motion en {r}: {m.group(0).strip()}')
+    # enlaces internos rotos (solo .html locales)
+    base = os.path.dirname(path)
+    for href in ANCHOR.findall(s):
+        if href.startswith(('http:', 'https:', '//', 'mailto:')):
+            if href.startswith('https://ernestocisneros.art') and not local_exists(href):
+                broken_links.append(f'{r} -> {href}')
+            continue
+        target = os.path.normpath(os.path.join(ROOT, href.lstrip('/'))) if href.startswith('/') \
+            else os.path.normpath(os.path.join(base, href))
+        if not os.path.exists(target):
+            broken_links.append(f'{r} -> {href}')
     if '<!-- off-map room -->' in s:
         continue
     has_structured = 'schema-loader' in s or 'application/ld+json' in s
     has_analytics = 'goatcounter' in s
     if not (has_structured and has_analytics):
         missing.append(rel(path))
+
+for b in broken_links:
+    errors.append(f'enlace interno roto: {b}')
 
 # 3. Sitemap
 sitemap = os.path.join(ROOT, 'sitemap.xml')

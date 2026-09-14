@@ -885,7 +885,7 @@
     window.addEventListener('resize', resize);
     resize();
     initParticles();
-    animateParticles();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateParticles();
   </script>
 
 <script defer src="../assets/js/nav.js"></script>
