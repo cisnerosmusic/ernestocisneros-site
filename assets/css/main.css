@@ -614,3 +614,6 @@ textarea:focus-visible,
   }
   html { scroll-behavior: auto !important; }
 }
+
+/* Las dimensiones intrinsecas de <img> nunca deben deformar: el alto siempre se deriva del ancho */
+img { height: auto; }
