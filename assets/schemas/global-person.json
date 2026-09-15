@@ -77,7 +77,11 @@
     "https://theorg.com/org/index01-llc/person/ernesto-cisneros"
   ],
   "email": "ernest@ernestocisneros.art",
-  "knowsLanguage": ["en", "es", "fr"],
+  "knowsLanguage": [
+    "en",
+    "es",
+    "fr"
+  ],
   "hasCredential": {
     "@type": "EducationalOccupationalCredential",
     "name": "800+ musical works composed",
@@ -89,5 +93,27 @@
     "Premio Cubadisco — Banda Sonora (2005), for the Suite Habana album",
     "1er Lugar — Instrumentales por Cuba, Radio Enciclopedia (2022)",
     "People's Choice Digital Art Award — INSTINC D:Art Festival, Singapore (2022), for 'Gente de Mar' with Kevin Oramas"
+  ],
+  "memberOf": [
+    {
+      "@type": "MusicGroup",
+      "name": "Paisaje con Río",
+      "description": "Havana pop-rock band known for socially charged lyrics",
+      "subjectOf": {
+        "@type": "Article",
+        "headline": "Paisaje con Río: pop-rock, memoria, crisis y creación en la Cuba de los 90",
+        "url": "https://www.insularismagazine.com/esp/paisaje-con-rio-pop-rock-memoria-crisis-y-creacion-en-la-cuba-de-los-90",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Insularis Magazine"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Ernesto Cisneros Cino"
+        },
+        "datePublished": "2026-09",
+        "inLanguage": "es"
+      }
+    }
   ]
 }
