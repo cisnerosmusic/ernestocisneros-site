@@ -288,6 +288,12 @@
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
   <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ideas/resilience-valley-viz.html</ns0:loc>
     <ns0:lastmod>2026-04-19</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
@@ -684,6 +690,12 @@
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
   <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/es/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
     <ns0:loc>https://ernestocisneros.art/es/ideas/cuba-riesgo-mecanismo.html</ns0:loc>
     <ns0:lastmod>2026-05-03</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
@@ -969,6 +981,12 @@
     <ns0:priority>0.7</ns0:priority>
   </ns0:url>
   <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/fr/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
     <ns0:loc>https://ernestocisneros.art/fr/ideas/burning-piano.html</ns0:loc>
     <ns0:lastmod>2026-04-06</ns0:lastmod>
     <ns0:changefreq>yearly</ns0:changefreq>
@@ -1204,6 +1222,12 @@
     <ns0:lastmod>2026-04-04</ns0:lastmod>
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ja/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ja/ideas/burning-piano.html</ns0:loc>
@@ -1443,6 +1467,12 @@
     <ns0:priority>0.7</ns0:priority>
   </ns0:url>
   <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ru/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ru/ideas/burning-piano.html</ns0:loc>
     <ns0:lastmod>2026-04-06</ns0:lastmod>
     <ns0:changefreq>yearly</ns0:changefreq>
@@ -1680,6 +1710,12 @@
     <ns0:priority>0.7</ns0:priority>
   </ns0:url>
   <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/it/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
+  </ns0:url>
+  <ns0:url>
     <ns0:loc>https://ernestocisneros.art/it/ideas/burning-piano.html</ns0:loc>
     <ns0:lastmod>2026-04-06</ns0:lastmod>
     <ns0:changefreq>yearly</ns0:changefreq>
@@ -1915,6 +1951,12 @@
     <ns0:lastmod>2026-04-05</ns0:lastmod>
     <ns0:changefreq>yearly</ns0:changefreq>
     <ns0:priority>0.7</ns0:priority>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://ernestocisneros.art/ko/ideas/published-elsewhere.html</ns0:loc>
+    <ns0:lastmod>2026-09-22</ns0:lastmod>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <ns0:priority>0.8</ns0:priority>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://ernestocisneros.art/ko/ideas/burning-piano.html</ns0:loc>

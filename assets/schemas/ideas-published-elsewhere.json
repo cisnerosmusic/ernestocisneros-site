@@ -1,0 +1,87 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ernestocisneros.art/ideas/published-elsewhere.html#page",
+    "name": "Published Elsewhere",
+    "url": "https://ernestocisneros.art/ideas/published-elsewhere.html",
+    "description": "Essays and poems by Ernesto Cisneros Cino published in other magazines and media: Insularis Magazine and CubaNet.",
+    "author": {
+      "@id": "https://ernestocisneros.art/#person"
+    },
+    "isPartOf": {
+      "@id": "https://ernestocisneros.art/#website"
+    },
+    "inLanguage": "en",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Article",
+            "headline": "Paisaje con Río: pop-rock, memoria, crisis y creación en la Cuba de los 90",
+            "url": "https://www.insularismagazine.com/esp/paisaje-con-rio-pop-rock-memoria-crisis-y-creacion-en-la-cuba-de-los-90",
+            "datePublished": "2026-09-14",
+            "inLanguage": "es",
+            "genre": "Essay",
+            "description": "A memoir of Paisaje con Río, the Havana pop-rock band I joined in 1987: how music was made during the crisis of the nineties, with almost nothing and without asking permission.",
+            "author": {
+              "@id": "https://ernestocisneros.art/#person"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Insularis Magazine",
+              "url": "https://www.insularismagazine.com"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Article",
+            "headline": "Calma sin cerrojos y otros poemas",
+            "url": "https://www.insularismagazine.com/esp/calma-sin-cerrojos-y-otros-poemas",
+            "datePublished": "2026-03-11",
+            "inLanguage": "es",
+            "genre": "Poetry",
+            "description": "Five poems (Calma sin cerrojos, Flashes, En el centro del océano, Huella, Bolsillos del sueño) on survival, exile and the homeland one carries in one's pockets.",
+            "author": {
+              "@id": "https://ernestocisneros.art/#person"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Insularis Magazine",
+              "url": "https://www.insularismagazine.com"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Article",
+            "headline": "La indiscutible huella norteamericana en la identidad cubana",
+            "url": "https://www.cubanet.org/la-indiscutible-huella-norteamericana-en-la-identidad-cubana/",
+            "datePublished": "2025-09-18",
+            "inLanguage": "es",
+            "genre": "Essay",
+            "description": "On the undeniable presence of American culture in the shaping of Cuban identity: a bond built over decades of proximity, influence and tension.",
+            "author": {
+              "@id": "https://ernestocisneros.art/#person"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "CubaNet",
+              "url": "https://www.cubanet.org"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

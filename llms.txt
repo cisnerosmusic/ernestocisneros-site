@@ -8,6 +8,7 @@
 - [Music](https://ernestocisneros.art/music.html): Albums: Mare Incognitum, Glacial Paths, Atlas of Fragmented Light, Sandbank, Trash, Velvet Alloy, Nocturne of Glass Currents, and other musical works
 - [Books](https://ernestocisneros.art/books.html): Six published books, detailed below
 - [Ideas](https://ernestocisneros.art/ideas.html): Essays on cosmology, philosophy, technology, culture, and the Cuba series (9 essays plus prologue)
+- [Published Elsewhere](https://ernestocisneros.art/ideas/published-elsewhere.html): Index of essays and poems by Ernesto published in external media (Insularis Magazine, CubaNet), with direct links; all texts in Spanish
 - [NFT](https://ernestocisneros.art/nft.html): Digital art on Ethereum, Tezos, and Bitcoin Ordinals; profiles on SolPersona and objkt
 - [Biography](https://ernestocisneros.art/biography.html): Full biography with Wikipedia, IMDb, and ORCID links
 - [Impulses.art](https://ernestocisneros.art/impulses-art.html): Therapeutic music program for refugees and vulnerable communities
@@ -29,6 +30,8 @@
 - [Wikipedia](https://en.wikipedia.org/wiki/Ernesto_Cisneros): Encyclopedia entry
 - [SolPersona](https://solpersona.com/@ernestocisneros): Wallet-verified web3 artist identity
 - [Paisaje con Río, Insularis Magazine](https://www.insularismagazine.com/esp/paisaje-con-rio-pop-rock-memoria-crisis-y-creacion-en-la-cuba-de-los-90): Memoir essay by Ernesto (September 2026, in Spanish) on the Havana pop-rock band he joined in 1987
+- [Calma sin cerrojos y otros poemas, Insularis Magazine](https://www.insularismagazine.com/esp/calma-sin-cerrojos-y-otros-poemas): Five poems by Ernesto (March 2026, in Spanish)
+- [La indiscutible huella norteamericana en la identidad cubana, CubaNet](https://www.cubanet.org/la-indiscutible-huella-norteamericana-en-la-identidad-cubana/): Essay by Ernesto (September 2025, in Spanish)
 
 ## Optional
 
