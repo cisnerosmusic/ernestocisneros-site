@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.222 · 27 oct 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.224 · 27 oct 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -722,7 +722,7 @@ nodes.map((n,i)=>[n,i]).filter(([n])=>n.t&&n.src!=='g').sort((a,b)=>b[0].d-a[0].
 const tl=document.getElementById('tl'),yrEl=document.getElementById('yr'),playBtn=document.getElementById('play');
 // Períodos de estudio (cursos de septiembre a julio). Fuente: notas de grados y P24-P25 del cuestionario.
 const EDU=[['Primaria',1976.67,1983.55,'preescolar a 6.º grado'],['Secundaria',1983.67,1986.55,'7.º a 9.º grado'],['Preuniversitario',1986.67,1990.55,'10.º a 12.º grado'],
- ['Magisterio, Educación Primaria',1991.67,1992.1,'sin terminar'],['Educación Artística, ISP Enrique José Varona',2000.67,2004.55,'hasta 4.º año'],['Miami Dade College',2024.0,2026.9,'Business English']];
+ ['Magisterio, Educación Primaria',1991.67,1992.1,'sin terminar'],['Educación Artística, ISP Enrique José Varona',2000.67,2004.55,'hasta 4.º año'],['Miami Dade College',2024.17,2025.25,'Business English, mar 2024 a mar 2025']];
 let year=Y0,playing=true;
 playBtn.onclick=()=>{playing=!playing;playBtn.textContent=playing?'PAUSA':'SEGUIR';};
 const totals=new Array(SPAN).fill(0);nodes.forEach(n=>{if(n.src==='v'&&n.si>=0)totals[n.y-Y0]++;});const maxT=Math.max(...totals);
