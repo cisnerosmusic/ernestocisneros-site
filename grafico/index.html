@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.282 · 30 oct 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.284 · 30 oct 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -237,8 +237,6 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
     <div class="ph"><span class="dot"></span><b>Nichos</b> · densidad esfera × lustro</div>
     <div class="scroll">
       <div id="niches"></div>
-      <div class="sect">Faltan en la bóveda · ausencias en rojo</div>
-      <div id="gaps"></div>
       <div class="sect">Lo más enlazado</div>
       <div id="hubs"></div>
     </div>
@@ -711,7 +709,7 @@ pick.forEach(c=>{const s=FEEDS[c.i],b=document.createElement('button');b.type='b
  b.innerHTML=`<span class="nm">${lab}</span><span class="yr">${when}</span><span class="ct">${c.c}</span>${c.top?`<span class="tp">${esc(c.top.t)}</span>`:''}<span class="bar"><i style="width:${c.c/maxC*100}%"></i></span>`;
  b.onclick=()=>{setFocus(c.i);if(c.i!==FHQ){year=c.y+2;playing=false;playBtn.textContent='SEGUIR';}};nichEl.appendChild(b);});
 // faltantes
-const gapEl=document.getElementById('gaps');
+const gapEl=document.getElementById('gaps')||document.createElement('div');  // panel retirado a pedido de Ernesto (30 oct 2026)
 nodes.forEach((n,i)=>{if(n.src!=='g')return;const d=document.createElement('button');d.type='button';d.className='gaprow';d.style.setProperty('--c',SPH[n.si].c);
  d.innerHTML=`<span class="gy">${n.y}</span><span class="gt">${esc(n.t)}</span>`;d.onclick=()=>select(i);gapEl.appendChild(d);});
 nodes.forEach((n,i)=>{if(n.src!=='a')return;const d=document.createElement('button');d.type='button';d.className='gaprow aus';d.style.setProperty('--c','#e0605a');d.innerHTML=`<span class="gy">${n.rg[0]===n.rg[1]?n.rg[0]:n.rg[0]+'–'+String(n.rg[1]).slice(2)}</span><span class="gt">${esc(n.t)}</span>`;d.onclick=()=>select(i);gapEl.appendChild(d);});
