@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.299 · 4 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.301 · 4 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -357,7 +357,7 @@ const MIL={anc:[
  sib:{n:'Meyling Pernut Molina',y:1983,r:'Hermana de Milay · tía de Isabella'}};
 function addF(p,lx,ly,lz,c,lab){const n={src:'f',t:p&&p.n!=='?'?p.n:null,r:p?p.r:'Por investigar',y:p&&p.y,note:p&&p.t,u:!p||!!p.u||p.n==='?',d:0,si:-3,fi:FROOT,fc:c,lab};
  n.p=new THREE.Vector3(lx,ly,lz).applyMatrix4(genG.matrixWorld);n.nm=new THREE.Vector3(0,0,1).applyMatrix3(gNm).normalize();nodes.push(n);return nodes.length-1;}
-const meF=addF({n:'Jotor Ernesto Cisneros Cino',y:1971,r:'Tú',t:'De aquí cuelga la genealogía. El cordón te une a tu nota en el centro del toro.'},0,0,0,'#ffffff','Ernesto');
+const meF=addF({n:'Jotor Ernesto Cisneros Cino',y:1971,r:'Tú',t:'De aquí cuelga la genealogía. Es la misma persona que el Ernesto del centro del toro: el cordón dorado los une, el vínculo más fuerte del gráfico.'},0,0,0,'#ffffff','Ernesto');
 const ancIdx=[];{let prev=[meF];FAM.anc.forEach((gen,k)=>{const n=gen.length,cur=[];ancIdx[k]=cur;gen.forEach((p,i)=>{const a=(165-(i+.5)*150/n)*Math.PI/180,c=i<n/2?'#f3c87a':'#ff9a76';
   const w=p&&p.n!=='?'?p.n.split(' '):[];const lab=w.length?(k>=2?w.slice(0,2).join(' '):w.slice(0,Math.min(w.length,k===0?3:2)).join(' ')):null;
   const idx=addF(p,Math.cos(a)*GR[k+1],Math.sin(a)*GR[k+1],-k*1.1-0.3,c,lab);nodes[idx].gk=k;cur.push(idx);const ch=prev[Math.floor(i/2)];famEdges.push([ch,idx]);(famUp[ch]=famUp[ch]||[]).push(idx);});prev=cur;});}
@@ -673,6 +673,14 @@ const cord=new THREE.CatmullRomCurve3([cA,cA.clone().add(new THREE.Vector3(3,2.5
 {const pts=cord.getPoints(80),C=[];pts.forEach((p,i)=>{const c=new THREE.Color('#3ee0c8').lerp(new THREE.Color('#5aa9ff'),i/80);C.push(c.r*.5,c.g*.5,c.b*.5);});
  const g=new THREE.BufferGeometry().setFromPoints(pts);g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));scene.add(new THREE.Line(g,lineMat()));}
 const cordDots=cloud(new Array(18).fill(0),new Array(18).fill(0).map((_,i)=>i%3===2?1:.75),[3.2,3.2,3.2,3.2,3.2,3.2],[FHQ,FHQ,FHQ,FHQ,FHQ,FHQ]);scene.add(cordDots);
+// cordón del yo: el Ernesto del centro del toro y el Jotor Ernesto Cisneros Cino de Raíces son la misma persona; el vínculo más fuerte del gráfico
+let selfCord=null,selfDots=null;
+if(meV>=0){const sA=nodes[meV].p.clone(),sB=nodes[meF].p.clone(),mid=sA.clone().lerp(sB,.5),up=new THREE.Vector3(0,1,0).multiplyScalar(sA.distanceTo(sB)*.18);
+ selfCord=new THREE.CatmullRomCurve3([sA,sA.clone().lerp(mid,.5).add(up),sB.clone().lerp(mid,.5).add(up),sB]);
+ const tg=new THREE.TubeGeometry(selfCord,160,.16,10,false);
+ scene.add(new THREE.Mesh(tg,new THREE.MeshBasicMaterial({color:0xfff1d0,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false})));
+ scene.add(new THREE.Mesh(new THREE.TubeGeometry(selfCord,160,.55,10,false),new THREE.MeshBasicMaterial({color:0xffc96b,transparent:true,opacity:.16,blending:THREE.AdditiveBlending,depthWrite:false})));
+ selfDots=cloud(new Array(24).fill(0),new Array(24).fill(1),[4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.2],[FROOT,FROOT,FROOT,FROOT,FROOT,FROOT,FROOT,FROOT]);scene.add(selfDots);}
 
 // ---------- adyacencia ----------
 const adj=nodes.map(()=>[]);edges.forEach(([a,b],k)=>{adj[a].push(k);adj[b].push(k);});
@@ -854,6 +862,7 @@ function frame(now){const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
  while(ci<commitF.length&&commitF[ci][0]<=hqT){commitF[ci][1].forEach(f=>A.pulse[NG+f]=1);ci++;}
  for(let k=NG;k<N;k++)if(A.pulse[k]>0.01)A.pulse[k]*=Math.exp(-dt*2.2);else A.pulse[k]=0;pulseAttr.needsUpdate=true;
  {const pa=cordDots.geometry.attributes.position;for(let k=0;k<6;k++){const p=cord.getPoint(((clock*.18)+k/6)%1);pa.setXYZ(k,p.x,p.y,p.z);}pa.needsUpdate=true;}
+ if(selfDots){const pa=selfDots.geometry.attributes.position;for(let k=0;k<8;k++){const t=((clock*.12)+k/8)%1,p=selfCord.getPoint(k%2?t:1-t);pa.setXYZ(k,p.x,p.y,p.z);}pa.needsUpdate=true;}
  acc+=dt;if(acc>.35){acc=0;spawn();}
  controls.update();composer.render();drawOverlay(dt);drawTL();requestAnimationFrame(frame);}
 requestAnimationFrame(frame);
