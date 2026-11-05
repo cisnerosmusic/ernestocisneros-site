@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.303 · 4 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.305 · 4 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -396,6 +396,7 @@ const myF=addF(FAM.desc[1],MC[0],MC[1],MC[2],'#ffd9c2','Milay');famEdges.push([m
 // Isabella: entre las dos familias
 const isaF=addF(FAM.desc[1].kids[0],-14.5,-12,1.2,'#ffffff','Isabella');famEdges.push([meF,isaF]);famEdges.push([myF,isaF]);famUp[isaF]=[meF,myF];
 
+const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=n.mv,cb=Math.cos(b),q=this.R+this.r*cb;n.p=new THREE.Vector3(this.C.x+q*Math.cos(a),this.C.y+this.r*Math.sin(b),this.C.z+q*Math.sin(a));n.nm=new THREE.Vector3(cb*Math.cos(a),Math.sin(b),cb*Math.sin(a));}};
 // red de Miami: los amigos que sostienen la migración
 {const C0=[17.5,-5.5],RR=4.6,col='#f0b429';const V=t=>nodes.findIndex(n=>(n.src==='v'||n.src==='g')&&n.t===t);
  const NET=[
@@ -454,7 +455,8 @@ const isaF=addF(FAM.desc[1].kids[0],-14.5,-12,1.2,'#ffffff','Isabella');famEdges
  // bajo el toro, aparte de las raíces: anillo horizontal propio
  const MC=new THREE.Vector3(-6,-19,6),MR=7.5,up=new THREE.Vector3(0,1,0);
  nodes[hub].p=MC.clone();nodes[hub].nm=up.clone();nodes[hub].miamiHub=1;
- NET.forEach(([n],k)=>{const i=ix[n],a=k/NET.length*6.2832+.3;const rr=MR*(k%2?1.22:.86);nodes[i].p=new THREE.Vector3(MC.x+Math.cos(a)*rr*1.7,MC.y+Math.sin(a)*rr*.55*.953,MC.z-Math.sin(a)*rr*.55*.303);nodes[i].nm=up.clone();});}
+ // toro activo: cada amigo vive sobre la superficie de un toro propio y circula por él (anillo lento, tubo más vivo)
+ NET.forEach(([n],k)=>{const i=ix[n];nodes[i].mu=k/NET.length*6.2832+.3;nodes[i].mv=k*2.39996;nodes[i].mdu=.022+(k%3)*.005;nodes[i].mdv=(k%2?1:-1)*(.12+(k*37%11)/80);MIAMI_T.place(nodes[i]);});}
 
 // cordón a ti y puentes a las notas de la bóveda que nombran a la familia
 const meV=nodes.findIndex(n=>n.src==='v'&&n.t==='Ernesto');if(meV>=0)famEdges.push([meV,meF]);
@@ -630,11 +632,27 @@ function arcGeom(list,alpha){const P=[],C=[],S=12;list.forEach(([a,b])=>{const A
 const lineMat=()=>new THREE.LineBasicMaterial({vertexColors:true,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false});
 const isHub=n=>n.src==='v'&&n.si<0;
 const groups={note:[],hub:[],hq:[],bridge:[],gap:[],fam:[],obj:[],objb:[],xg:[],netx:[]};
+const netIn=[],netOut=[];
 edges.forEach(e=>{const a=nodes[e[0]],b=nodes[e[1]];
+ if((a.mu!==undefined)||(b.mu!==undefined)){(a.net&&b.net?netIn:netOut).push(e);return;}
  if(!!a.net!==!!b.net)groups.netx.push(e);else if(a.src==='x'||b.src==='x')groups.xg.push(e);else if(a.src==='o'&&b.src==='o')groups.obj.push(e);else if(a.src==='o'||b.src==='o')groups.objb.push(e);else if(a.src==='f'||b.src==='f')groups.fam.push(e);else if(a.src==='g'||b.src==='g')groups.gap.push(e);else if((a.src==='h')!==(b.src==='h'))groups.bridge.push(e);
  else if(a.src==='h')groups.hq.push(e);else if(isHub(a)||isHub(b))groups.hub.push(e);else groups.note.push(e);});
 const allEdges=new THREE.Group();
 [['note',.11],['hub',.03],['hq',.07],['bridge',.09],['gap',.35],['fam',.55],['obj',.13],['objb',.3],['xg',.45],['netx',.12]].forEach(([k,al])=>allEdges.add(new THREE.LineSegments(arcGeom(groups[k],al),lineMat())));scene.add(allEdges);
+// Red de Miami: toro activo. Malla del toro, enlaces que se recalculan y amigos que circulan
+const miIdx=nodes.map((n,i)=>n.mu!==undefined?i:-1).filter(i=>i>=0);
+const miG=new THREE.Group();{const T=MIAMI_T,M=new THREE.LineBasicMaterial({color:0xf0b429,transparent:true,opacity:.16,blending:THREE.AdditiveBlending,depthWrite:false});
+ for(let j=0;j<24;j++){const a=j/24*6.2832,P=[];for(let k=0;k<=40;k++){const b=k/40*6.2832,q=T.R+T.r*Math.cos(b);P.push(new THREE.Vector3(q*Math.cos(a),T.r*Math.sin(b),q*Math.sin(a)));}miG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(P),M));}
+ for(let j=0;j<6;j++){const b=j/6*6.2832,q=T.R+T.r*Math.cos(b),P=[];for(let k=0;k<=96;k++){const a=k/96*6.2832;P.push(new THREE.Vector3(q*Math.cos(a),T.r*Math.sin(b),q*Math.sin(a)));}miG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(P),M));}
+ miG.position.copy(T.C);scene.add(miG);}
+const miScan=new THREE.Mesh(new THREE.TorusGeometry(MIAMI_T.r+.25,.035,6,48),new THREE.MeshBasicMaterial({color:0xffd27a,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));
+const miScanG=new THREE.Group();miScan.position.x=MIAMI_T.R;miScanG.add(miScan);miScanG.position.copy(MIAMI_T.C);scene.add(miScanG);
+const miIn=new THREE.LineSegments(arcGeom(netIn,.55),lineMat()),miOut=new THREE.LineSegments(arcGeom(netOut,.12),lineMat());scene.add(miIn,miOut);
+function miStep(dt){miIdx.forEach(i=>{const n=nodes[i];n.mu+=n.mdu*dt;n.mv+=n.mdv*dt;MIAMI_T.place(n);A.pos[i*3]=n.p.x;A.pos[i*3+1]=n.p.y;A.pos[i*3+2]=n.p.z;});
+ ng.attributes.position.needsUpdate=true;
+ [[miIn,netIn,.55],[miOut,netOut,.12]].forEach(([obj,list,al])=>{const g=arcGeom(list,al);obj.geometry.attributes.position.array.set(g.attributes.position.array);obj.geometry.attributes.position.needsUpdate=true;g.dispose();});
+ miScanG.rotation.y-=dt*.35;}
+ng.computeBoundingSphere();
 let hiEdges=null;
 function setHi(list){if(hiEdges){scene.remove(hiEdges);hiEdges.geometry.dispose();hiEdges=null;}if(list&&list.length){hiEdges=new THREE.LineSegments(arcGeom(list,.85),lineMat());scene.add(hiEdges);}}
 
@@ -863,6 +881,7 @@ function frame(now){const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
  for(let k=NG;k<N;k++)if(A.pulse[k]>0.01)A.pulse[k]*=Math.exp(-dt*2.2);else A.pulse[k]=0;pulseAttr.needsUpdate=true;
  {const pa=cordDots.geometry.attributes.position;for(let k=0;k<6;k++){const p=cord.getPoint(((clock*.18)+k/6)%1);pa.setXYZ(k,p.x,p.y,p.z);}pa.needsUpdate=true;}
  if(selfDots){const pa=selfDots.geometry.attributes.position;for(let k=0;k<8;k++){const t=((clock*.12)+k/8)%1,p=selfCord.getPoint(k%2?t:1-t);pa.setXYZ(k,p.x,p.y,p.z);}pa.needsUpdate=true;}
+ if(!reduce)miStep(dt);
  acc+=dt;if(acc>.35){acc=0;spawn();}
  controls.update();composer.render();drawOverlay(dt);drawTL();requestAnimationFrame(frame);}
 requestAnimationFrame(frame);
