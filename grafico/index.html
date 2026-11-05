@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.301 · 4 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.303 · 4 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -544,7 +544,7 @@ XC.forEach(([d,t,txt,rel,srcT])=>{const yf=+d.slice(0,4)+(+d.slice(5,7)-1)/12+(+
 // Enlaces tardíos: entre cualquier tipo de nodo (incluidos x y o), por título exacto
 {const X=t=>nodes.findIndex(n=>n.t===t);[['Mentalist420','Génesis en Foundation: The Bride of the Moon'],['Jansel Lozano «el Flaco»','Hablemos La Red (Jansel Lozano / Hablemos Show)'],['Tecnología para el Arte y la Comunidad (Centro Cultural BOD, Caracas)','Viaje - 2022-07-07 - Venezuela'],['Encuentro NFT en Caracas','Viaje - 2022-07-07 - Venezuela'],['VIS A VIS: encuentro de artistas NFT en Madrid','Viaje - 2023-05-10 - Spain'],['Jota Surreal en NFT NYC y Hacia lo Sublime','Viaje - 2023-05-10 - Spain'],['Viaje a México (marzo de 2014)','Viaje - 2014-03-31 - Mexico'],['Viaje a México (mayo de 2016)','Viaje - 2016-05-18 - Mexico'],['Viaje a México (mayo de 2018)','Viaje - 2018-05-20 - Mexico'],['Mentalist420','Foundation'],['Mentalist420','OpenSea']].forEach(([a,b])=>{const i=X(a),j=X(b);if(i>=0&&j>=0)edges.push([i,j]);});}
 {const dg=new Array(nodes.length).fill(0);edges.forEach(([a,b])=>{dg[a]++;dg[b]++;});nodes.forEach((n,i)=>{if(n.src!=='v')n.d=dg[i];});}
-const col=n=>new THREE.Color(n.src==='x'?'#9ad0ff':n.src==='a'?'#e0605a':n.src==='o'?n.oc:n.src==='f'?(n.u?'#5b6578':n.fc):n.src==='h'?HQS[n.s][1]:n.si<0?'#ffffff':SPH[n.si].c);
+const col=n=>new THREE.Color(n.src==='v'&&n.t==='Ernesto'?'#ffffff':n.src==='x'?'#9ad0ff':n.src==='a'?'#e0605a':n.src==='o'?n.oc:n.src==='f'?(n.u?'#5b6578':n.fc):n.src==='h'?HQS[n.s][1]:n.si<0?'#ffffff':SPH[n.si].c);
 const feedOf=n=>n.fi;
 
 // ---------- cabecera ----------
@@ -597,7 +597,7 @@ function cloud(P,C,S,SP){const N=S.length,g=new THREE.BufferGeometry();
 // notas
 const N=nodes.length;const A={pos:new Float32Array(N*3),col:new Float32Array(N*3),size:new Float32Array(N),year:new Float32Array(N),sph:new Float32Array(N),id:new Float32Array(N),ghost:new Float32Array(N),pulse:new Float32Array(N)};
 nodes.forEach((n,i)=>{A.pos.set([n.p.x,n.p.y,n.p.z],i*3);const c=n.src==='g'?new THREE.Color('#eef3f8').lerp(col(n),.35):col(n);A.col.set([c.r,c.g,c.b],i*3);
- A.size[i]=n.src==='x'?(n.big?9:4.6):n.src==='o'&&n.hito?7:n.src==='v'&&n.big?9:n.src==='a'?7:n.src==='o'?(n.ok==='id'?9:n.ok==='link'?2.6:n.ok==='core'?8:n.ok==='col'?3.5+Math.sqrt(n.n)*.5:n.ok==='art'?1.6+Math.sqrt(n.n)*.75:n.ok==='own'?3:1.7):n.src==='f'?(i===meF?11:n.big?10:n.u?4.5:7.5):n.src==='g'?6.5:n.src==='h'?2.1+Math.sqrt(n.d)*0.55:(n.si<0?5:2.6)+Math.sqrt(n.d)*0.9;
+ A.size[i]=i===meV?11:n.src==='x'?(n.big?9:4.6):n.src==='o'&&n.hito?7:n.src==='v'&&n.big?9:n.src==='a'?7:n.src==='o'?(n.ok==='id'?9:n.ok==='link'?2.6:n.ok==='core'?8:n.ok==='col'?3.5+Math.sqrt(n.n)*.5:n.ok==='art'?1.6+Math.sqrt(n.n)*.75:n.ok==='own'?3:1.7):n.src==='f'?(i===meF?11:n.big?10:n.u?4.5:7.5):n.src==='g'?6.5:n.src==='h'?2.1+Math.sqrt(n.d)*0.55:(n.si<0?5:2.6)+Math.sqrt(n.d)*0.9;
  A.year[i]=n.src==='x'?n.y:n.src==='a'?n.y:n.src==='o'?(n.y||-1):n.src==='f'?(n.y>=1971?n.y:-1):n.src==='h'||n.si<0?-1:n.y;A.sph[i]=n.fi;A.id[i]=i;A.ghost[i]=n.src==='a'||n.src==='g'||(n.src==='f'&&n.u)?1:0;});
 const ng=new THREE.BufferGeometry();ng.setAttribute('position',new THREE.BufferAttribute(A.pos,3));ng.setAttribute('color',new THREE.BufferAttribute(A.col,3));
 ng.setAttribute('aSize',new THREE.BufferAttribute(A.size,1));ng.setAttribute('aYear',new THREE.BufferAttribute(A.year,1));ng.setAttribute('aSph',new THREE.BufferAttribute(A.sph,1));
@@ -826,7 +826,7 @@ function drawOverlay(dt){const ar=app.getBoundingClientRect();if(ov.width!==Math
  {const [px,py,pz]=proj(new THREE.Vector3(0,rh+2.4,0).applyMatrix4(hqG.matrixWorld));if(pz<1&&inS(px,py)){x.fillStyle='#5aa9ff';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('INDEX01 HQ',px,py);
   x.font='10px "IBM Plex Mono",monospace';x.fillStyle='rgba(120,160,215,.9)';x.fillText(fmtD(T0+hqT*(T1-T0)),px,py+13);}}
  if(focus<0||focus===FROOT){x.textAlign='center';x.font='9.5px "IBM Plex Mono",monospace';
-  nodes.forEach(n=>{if(n.src!=='f'||!n.lab||(n.gk>=2&&focus!==FROOT))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){if(n.hija){x.save();x.font=(n.hija<1?'600 11.5px':'600 12.5px')+' "Chakra Petch",sans-serif';x.fillStyle='#ffe6a8';x.globalAlpha=n.hija<1?.85:1;x.shadowColor='#ffd27a';x.shadowBlur=10*n.hija;x.fillText(n.lab,px,py-16);x.restore();}else{x.fillStyle=n.fc;x.globalAlpha=.85;x.fillText(n.lab,px,py-9);}}});x.globalAlpha=1;
+  nodes.forEach(n=>{if(n.src!=='f'||!n.lab||(n.gk>=2&&focus!==FROOT))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){if(n.hija){x.save();x.font=(n.hija<1?'600 11.5px':'600 12.5px')+' "Chakra Petch",sans-serif';x.fillStyle='#ffe6a8';x.globalAlpha=n.hija<1?.85:1;x.shadowColor='#ffd27a';x.shadowBlur=10*n.hija;x.fillText(n.lab,px,py-16);x.restore();}else{x.fillStyle=n.fc;x.globalAlpha=.85;x.fillText(n.lab,px,py-9);}}});if(meV>=0){const [px,py,pz]=proj(nodes[meV].p);if(pz<1&&inS(px,py)){x.save();x.fillStyle='#ffffff';x.globalAlpha=.95;x.shadowColor='#05080d';x.shadowBlur=6;x.fillText('Ernesto',px,py-16);x.restore();}}x.globalAlpha=1;
   const [px,py,pz]=proj(new THREE.Vector3(0,GR[4]+2,-4.6).applyMatrix4(genG.matrixWorld));if(pz<1&&inS(px,py)){x.fillStyle='#ffb48a';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('RAÍCES',px,py);}}
   {const mh=nodes.find(n=>n.miamiHub);if(mh){const [qx,qy,qz]=proj(mh.p.clone().add(new THREE.Vector3(0,-5.2,0)));if(qz<1&&inS(qx,qy)){x.fillStyle='#f0b429';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('RED DE MIAMI',qx,qy);}}}
  if(focus<0||focus===FOBJ){x.textAlign='center';x.font='9.5px "IBM Plex Mono",monospace';nodes.forEach(n=>{if(n.src!=='o'||!n.lab||(focus!==FOBJ&&!(n.ok==='core'||n.top||n.hito)))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){x.fillStyle=n.oc;x.globalAlpha=n.ok==='art'?.6:.9;x.fillText(n.lab,px,py-8);}});x.globalAlpha=1;
@@ -878,7 +878,7 @@ const askBox=document.getElementById('ask'),askIn=document.getElementById('askIn
   askOut=document.getElementById('askOut'),askBody=document.getElementById('askBody'),askState=document.getElementById('askState'),
   askStop=document.getElementById('askStop'),askClose=document.getElementById('askClose');
 const SRC={v:'bóveda',g:'falta en la bóveda',h:'Index01 HQ',f:'genealogía',o:'web3',a:'ausencia',x:'crónica'};
-const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const STOP=new Set(fold('que qué cual cuál cuales como cómo cuando cuándo donde dónde quien quién quienes por para con sin sobre entre desde hasta los las del una uno unos unas este esta estos estas ese esa eso fue era son sus mis mas más muy tiene tenia tuvo hay hubo algo todo todos toda todas cosa cosas sobre ernesto ernestito dime cuentame cuéntame explica explicame háblame hablame mi me yo tu él ella ellos the and que en de la el lo le se al es y o a').split(' '));
 const lab=i=>{const n=nodes[i];if(!n)return null;const t=n.t||(n.src==='f'?'(por investigar)':null);if(!t)return null;
   const s=n.si>=0&&SPH[n.si]?SPH[n.si].n:'';const d=n.ts?String(n.ts).slice(0,10):(n.y||'');
@@ -1014,6 +1014,8 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  [['Cecilia Cisneros Isla',1],['Isabella Cisneros Pernut',1],['Milay Pernut Molina',.7],['Jotor Ernesto Cisneros Cino',.5,1]].forEach(([nm,w,wh],k)=>{const i=nodes.findIndex(n=>n.src==='f'&&n.t===nm);if(i<0)return;if(!wh)nodes[i].hija=w;nodes[i].big=1;
   const m=new THREE.SpriteMaterial({map:wh?texW:tex,transparent:true,depthWrite:false,depthTest:false,blending:THREE.AdditiveBlending,color:0xffffff});
   const sp=new THREE.Sprite(m);sp.position.copy(nodes[i].p);sp.scale.set(5.6,5.6,1);sp.renderOrder=9;scene.add(sp);halos.push([sp,k,w,wh]);});
+ // el Ernesto del centro del toro lleva el mismo halo que el de Raíces: son la misma persona
+ if(meV>=0){const m=new THREE.SpriteMaterial({map:texW,transparent:true,depthWrite:false,depthTest:false,blending:THREE.AdditiveBlending,color:0xffffff});const sp=new THREE.Sprite(m);sp.position.copy(nodes[meV].p);sp.scale.set(5.6,5.6,1);sp.renderOrder=9;scene.add(sp);halos.push([sp,3,.5,1]);}
  const t0=performance.now();(function pulse(){const t=(performance.now()-t0)/1000;halos.forEach(([sp,k,w,wh])=>{const a=Math.sin(t*1.6+k*1.7);const s=(5.6+a*.5)*(wh?.85:(.55+.45*w));sp.scale.set(s,s,1);sp.material.opacity=(.85+a*.15)*(wh?.8:w);});requestAnimationFrame(pulse);})();}
 
 // ---------- sustento: Index01 y UnlimitedWraps, con Rey (los trabajos que hoy mantienen a la familia) ----------
