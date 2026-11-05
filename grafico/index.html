@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.307 · 4 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.309 · 4 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -457,7 +457,7 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
  nodes[hub].p=MC.clone();nodes[hub].nm=up.clone();nodes[hub].miamiHub=1;
  // toro activo: cada amigo vive sobre la superficie de un toro propio y circula por él (anillo lento, tubo más vivo)
  NET.forEach(([n],k)=>{const i=ix[n];nodes[i].mu=k/NET.length*6.2832+.3;nodes[i].mv=k*2.39996;nodes[i].mdu=.022+(k%3)*.005;nodes[i].mdv=(k%2?1:-1)*(.12+(k*37%11)/80);MIAMI_T.place(nodes[i]);});
- ['Rey','Alina','Ernesto Valdés','Ramzy Khalek (el profe)'].forEach(n=>{if(ix[n]!==undefined)nodes[ix[n]].fc='#c6ff1a';});}
+ ['Rey','Alina','Ernesto Valdés','Luis Vega','Ramzy Khalek (el profe)'].forEach(n=>{if(ix[n]!==undefined)nodes[ix[n]].fc='#c6ff1a';});}
 
 // cordón a ti y puentes a las notas de la bóveda que nombran a la familia
 const meV=nodes.findIndex(n=>n.src==='v'&&n.t==='Ernesto');if(meV>=0)famEdges.push([meV,meF]);
@@ -547,7 +547,7 @@ XC.forEach(([d,t,txt,rel,srcT])=>{const yf=+d.slice(0,4)+(+d.slice(5,7)-1)/12+(+
 // Enlaces tardíos: entre cualquier tipo de nodo (incluidos x y o), por título exacto
 {const X=t=>nodes.findIndex(n=>n.t===t);[['Mentalist420','Génesis en Foundation: The Bride of the Moon'],['Jansel Lozano «el Flaco»','Hablemos La Red (Jansel Lozano / Hablemos Show)'],['Tecnología para el Arte y la Comunidad (Centro Cultural BOD, Caracas)','Viaje - 2022-07-07 - Venezuela'],['Encuentro NFT en Caracas','Viaje - 2022-07-07 - Venezuela'],['VIS A VIS: encuentro de artistas NFT en Madrid','Viaje - 2023-05-10 - Spain'],['Jota Surreal en NFT NYC y Hacia lo Sublime','Viaje - 2023-05-10 - Spain'],['Viaje a México (marzo de 2014)','Viaje - 2014-03-31 - Mexico'],['Viaje a México (mayo de 2016)','Viaje - 2016-05-18 - Mexico'],['Viaje a México (mayo de 2018)','Viaje - 2018-05-20 - Mexico'],['Mentalist420','Foundation'],['Mentalist420','OpenSea']].forEach(([a,b])=>{const i=X(a),j=X(b);if(i>=0&&j>=0)edges.push([i,j]);});}
 {const dg=new Array(nodes.length).fill(0);edges.forEach(([a,b])=>{dg[a]++;dg[b]++;});nodes.forEach((n,i)=>{if(n.src!=='v')n.d=dg[i];});}
-const UWC='#c6ff1a',isUW=n=>(n.src==='v'&&n.t==='UnlimitedWraps')||(n.src==='f'&&n.net&&/^(Rey|Alina|Ernesto Valdés|Ramzy Khalek \(el profe\))$/.test(n.t||''));
+const UWC='#c6ff1a',isUW=n=>(n.src==='v'&&n.t==='UnlimitedWraps')||(n.src==='f'&&n.net&&/^(Rey|Alina|Ernesto Valdés|Luis Vega|Ramzy Khalek \(el profe\))$/.test(n.t||''));
 const col=n=>new THREE.Color(isUW(n)?UWC:n.src==='v'&&n.t==='Ernesto'?'#ffffff':n.src==='x'?'#9ad0ff':n.src==='a'?'#e0605a':n.src==='o'?n.oc:n.src==='f'?(n.u?'#5b6578':n.fc):n.src==='h'?HQS[n.s][1]:n.si<0?'#ffffff':SPH[n.si].c);
 const feedOf=n=>n.fi;
 
