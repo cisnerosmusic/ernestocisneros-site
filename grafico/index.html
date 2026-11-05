@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.309 · 4 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.311 · 4 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -647,6 +647,12 @@ const miG=new THREE.Group();{const T=MIAMI_T,M=new THREE.LineBasicMaterial({colo
  for(let j=0;j<24;j++){const a=j/24*6.2832,P=[];for(let k=0;k<=40;k++){const b=k/40*6.2832,q=T.R+T.r*Math.cos(b);P.push(new THREE.Vector3(q*Math.cos(a),T.r*Math.sin(b),q*Math.sin(a)));}miG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(P),M));}
  for(let j=0;j<6;j++){const b=j/6*6.2832,q=T.R+T.r*Math.cos(b),P=[];for(let k=0;k<=96;k++){const a=k/96*6.2832;P.push(new THREE.Vector3(q*Math.cos(a),T.r*Math.sin(b),q*Math.sin(a)));}miG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(P),M));}
  miG.position.copy(T.C);scene.add(miG);}
+// polvo del toro de Miami: misma textura que el toro grande, en capa aparte y en el dorado de la red
+{const T=MIAMI_T,P=[],C=[],S=[],SP=[],base=new THREE.Color('#f0b429').lerp(new THREE.Color('#6b4a12'),.55);
+ for(let i=0;i<11000;i++){const u=rnd()*6.2832,v=rnd()*6.2832,rr=T.r+(rnd()-.5)*0.25,q=T.R+rr*Math.cos(v);
+  P.push(T.C.x+q*Math.cos(u),T.C.y+rr*Math.sin(v),T.C.z+q*Math.sin(u));
+  const cc=base.clone().lerp(new THREE.Color('#ffe08a'),rnd()*.25);C.push(cc.r*.5,cc.g*.5,cc.b*.5);S.push(1.1+rnd()*0.9);SP.push(FROOT);}
+ scene.add(cloud(P,C,S,SP));}
 const miScan=new THREE.Mesh(new THREE.TorusGeometry(MIAMI_T.r+.25,.035,6,48),new THREE.MeshBasicMaterial({color:0xffd27a,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));
 const miScanG=new THREE.Group();miScan.position.x=MIAMI_T.R;miScanG.add(miScan);miScanG.position.copy(MIAMI_T.C);scene.add(miScanG);
 const miIn=new THREE.LineSegments(arcGeom(netIn,.55),lineMat()),miOut=new THREE.LineSegments(arcGeom(netOut,.12),lineMat());scene.add(miIn,miOut);
