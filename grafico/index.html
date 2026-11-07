@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.315 · 7 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.317 · 7 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -449,7 +449,7 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
  L(V('Buena Fe'),Fm('Milay Pernut Molina')); L(V('Dr. Manuel'),Fm('Isabella Cisneros Pernut'));  // se conocieron en un ensayo de Buena Fe (P92)
  ['Milay Pernut Molina','Cecilia Cisneros Isla','Isabella Cisneros Pernut'].forEach(x=>L(V('2021 - Cumpleaños 50 de Ernesto'),Fm(x)));  // foto del cumple 50
  ['Ramón Eduardo Haití','Alain','Antonio López Sánchez (Tony)'].forEach(t=>L(ix['Humberto Ochoa'],V(t)));
- L(ix['Billy y Asha'],nodes.findIndex(n=>n.src==='h'&&/Asha Jewelry/.test(n.t||'')));
+ L(ix['Billy y Asha'],ix['Rey']); L(ix['Billy y Asha'],nodes.findIndex(n=>n.src==='h'&&/Asha Jewelry/.test(n.t||'')));
  // amigos que ya tenían nodo en la bóveda: entran a la red sin duplicarse
  [['Ernesto Romero','También vive en Miami. Se reencontraron para escribir juntos; hay posibles proyectos en el horno.'],['Fito','Rodolfo Torrente Moya, el guitarrista de Paisaje con Río. Viejo amigo; también vive en Miami.'],['Fitingo','También vive en Miami.'],['Alejandro Bonso','Exguitarrista de Buena Fe, también en Miami.'],['Alexis Lamda','Alexis Landa: amigo desde el preuniversitario. También vive en Miami.']].forEach(([t,nt])=>{const i=V(t);L(hub,i);addNote(i,nt);});L(V('Alexis Lamda'),V('1986 - Preuniversitario Enrique Jose Varona (La Vibora)'));
  // bajo el toro, aparte de las raíces: anillo horizontal propio
