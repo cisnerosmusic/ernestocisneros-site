@@ -199,7 +199,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.313 · 4 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.315 · 7 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -454,7 +454,7 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
  [['Ernesto Romero','También vive en Miami. Se reencontraron para escribir juntos; hay posibles proyectos en el horno.'],['Fito','Rodolfo Torrente Moya, el guitarrista de Paisaje con Río. Viejo amigo; también vive en Miami.'],['Fitingo','También vive en Miami.'],['Alejandro Bonso','Exguitarrista de Buena Fe, también en Miami.'],['Alexis Lamda','Alexis Landa: amigo desde el preuniversitario. También vive en Miami.']].forEach(([t,nt])=>{const i=V(t);L(hub,i);addNote(i,nt);});L(V('Alexis Lamda'),V('1986 - Preuniversitario Enrique Jose Varona (La Vibora)'));
  // bajo el toro, aparte de las raíces: anillo horizontal propio
  const MC=new THREE.Vector3(-6,-19,6),MR=7.5,up=new THREE.Vector3(0,1,0);
- nodes[hub].p=MC.clone();nodes[hub].nm=up.clone();nodes[hub].miamiHub=1;
+ nodes[hub].p=MC.clone();nodes[hub].nm=up.clone();nodes[hub].miamiHub=1;nodes[hub].hide=1;
  // toro activo: cada amigo vive sobre la superficie de un toro propio y circula por él (anillo lento, tubo más vivo)
  NET.forEach(([n],k)=>{const i=ix[n];nodes[i].mu=k/NET.length*6.2832+.3;nodes[i].mv=k*2.39996;nodes[i].mdu=.022+(k%3)*.005;nodes[i].mdv=(k%2?1:-1)*(.12+(k*37%11)/80);MIAMI_T.place(nodes[i]);});
  ['Rey','Alina','Ernesto Valdés','Luis Vega','Ramzy Khalek (el profe)'].forEach(n=>{if(ix[n]!==undefined)nodes[ix[n]].fc='#c6ff1a';});}
@@ -601,7 +601,7 @@ function cloud(P,C,S,SP){const N=S.length,g=new THREE.BufferGeometry();
 // notas
 const N=nodes.length;const A={pos:new Float32Array(N*3),col:new Float32Array(N*3),size:new Float32Array(N),year:new Float32Array(N),sph:new Float32Array(N),id:new Float32Array(N),ghost:new Float32Array(N),pulse:new Float32Array(N)};
 nodes.forEach((n,i)=>{A.pos.set([n.p.x,n.p.y,n.p.z],i*3);const c=n.src==='g'?new THREE.Color('#eef3f8').lerp(col(n),.35):col(n);A.col.set([c.r,c.g,c.b],i*3);
- A.size[i]=i===meV?11:n.src==='x'?(n.big?9:4.6):n.src==='o'&&n.hito?7:n.src==='v'&&n.big?9:n.src==='a'?7:n.src==='o'?(n.ok==='id'?9:n.ok==='link'?2.6:n.ok==='core'?8:n.ok==='col'?3.5+Math.sqrt(n.n)*.5:n.ok==='art'?1.6+Math.sqrt(n.n)*.75:n.ok==='own'?3:1.7):n.src==='f'?(i===meF?11:n.big?10:n.u?4.5:7.5):n.src==='g'?6.5:n.src==='h'?2.1+Math.sqrt(n.d)*0.55:(n.si<0?5:2.6)+Math.sqrt(n.d)*0.9;
+ A.size[i]=n.hide?0:i===meV?11:n.src==='x'?(n.big?9:4.6):n.src==='o'&&n.hito?7:n.src==='v'&&n.big?9:n.src==='a'?7:n.src==='o'?(n.ok==='id'?9:n.ok==='link'?2.6:n.ok==='core'?8:n.ok==='col'?3.5+Math.sqrt(n.n)*.5:n.ok==='art'?1.6+Math.sqrt(n.n)*.75:n.ok==='own'?3:1.7):n.src==='f'?(i===meF?11:n.big?10:n.u?4.5:7.5):n.src==='g'?6.5:n.src==='h'?2.1+Math.sqrt(n.d)*0.55:(n.si<0?5:2.6)+Math.sqrt(n.d)*0.9;
  A.year[i]=n.src==='x'?n.y:n.src==='a'?n.y:n.src==='o'?(n.y||-1):n.src==='f'?(n.y>=1971?n.y:-1):n.src==='h'||n.si<0?-1:n.y;A.sph[i]=n.fi;A.id[i]=i;A.ghost[i]=n.src==='a'||n.src==='g'||(n.src==='f'&&n.u)?1:0;});
 const ng=new THREE.BufferGeometry();ng.setAttribute('position',new THREE.BufferAttribute(A.pos,3));ng.setAttribute('color',new THREE.BufferAttribute(A.col,3));
 ng.setAttribute('aSize',new THREE.BufferAttribute(A.size,1));ng.setAttribute('aYear',new THREE.BufferAttribute(A.year,1));ng.setAttribute('aSph',new THREE.BufferAttribute(A.sph,1));
@@ -636,6 +636,7 @@ const isHub=n=>n.src==='v'&&n.si<0;
 const groups={note:[],hub:[],hq:[],bridge:[],gap:[],fam:[],obj:[],objb:[],xg:[],netx:[]};
 const netIn=[],netOut=[];
 edges.forEach(e=>{const a=nodes[e[0]],b=nodes[e[1]];
+ if(a.hide||b.hide)return;
  if((a.mu!==undefined)||(b.mu!==undefined)){(a.net&&b.net?netIn:netOut).push(e);return;}
  if(!!a.net!==!!b.net)groups.netx.push(e);else if(a.src==='x'||b.src==='x')groups.xg.push(e);else if(a.src==='o'&&b.src==='o')groups.obj.push(e);else if(a.src==='o'||b.src==='o')groups.objb.push(e);else if(a.src==='f'||b.src==='f')groups.fam.push(e);else if(a.src==='g'||b.src==='g')groups.gap.push(e);else if((a.src==='h')!==(b.src==='h'))groups.bridge.push(e);
  else if(a.src==='h')groups.hq.push(e);else if(isHub(a)||isHub(b))groups.hub.push(e);else groups.note.push(e);});
@@ -814,7 +815,7 @@ function info(i){const n=nodes[i];
  const s=n.si<0?{n:'Núcleo · MOC',c:'#ffffff'}:SPH[n.si];
  return `<div class="tt">${n.t?esc(n.t):'<span style="color:#6d8099">Nota privada</span>'}</div>${row('Esfera',s.n,s.c)}${n.k?row('Tipo',esc(n.k)):''}${n.cy?row('Composición','desde '+n.cy,'#3ee0c8')+row('A la luz',n.y+', ya en Miami'):row('Año',n.si<0?'transversal':n.y+(n.yi?' (inferido)':''))}${row('Enlaces',n.d)}${n.note?`<div class="path">${esc(n.note)}</div>`:''}`;}
 cv.addEventListener('pointermove',e=>{const rc=cv.getBoundingClientRect();mouse.set((e.clientX-rc.left)/rc.width*2-1,-(e.clientY-rc.top)/rc.height*2+1);
- ray.setFromCamera(mouse,cam);const hit=ray.intersectObject(notePts).filter(h=>focus<0||nodes[h.index].fi===focus||nodes[h.index].fi<0)[0];
+ ray.setFromCamera(mouse,cam);const hit=ray.intersectObject(notePts).filter(h=>!nodes[h.index].hide).filter(h=>focus<0||nodes[h.index].fi===focus||nodes[h.index].fi<0)[0];
  hover=hit?hit.index:-1;cv.style.cursor=hit?'pointer':'grab';
  if(hit){tip.hidden=false;tip.innerHTML=info(hover)+fotRow(hover);tip.style.setProperty('--c','#'+col(nodes[hover]).getHexString());
   const x=e.clientX-rc.left+14,y=e.clientY-rc.top+14;tip.style.left=Math.max(4,Math.min(x,rc.width-290))+'px';tip.style.top=Math.max(4,Math.min(y,rc.height-170))+'px';}else tip.hidden=true;});
@@ -852,7 +853,7 @@ function drawOverlay(dt){const ar=app.getBoundingClientRect();if(ov.width!==Math
  {const [px,py,pz]=proj(new THREE.Vector3(0,rh+2.4,0).applyMatrix4(hqG.matrixWorld));if(pz<1&&inS(px,py)){x.fillStyle='#5aa9ff';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('INDEX01 HQ',px,py);
   x.font='10px "IBM Plex Mono",monospace';x.fillStyle='rgba(120,160,215,.9)';x.fillText(fmtD(T0+hqT*(T1-T0)),px,py+13);}}
  if(focus<0||focus===FROOT){x.textAlign='center';x.font='9.5px "IBM Plex Mono",monospace';
-  nodes.forEach(n=>{if(n.src!=='f'||!n.lab||(n.gk>=2&&focus!==FROOT))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){if(n.hija){x.save();x.font=(n.hija<1?'600 11.5px':'600 12.5px')+' "Chakra Petch",sans-serif';x.fillStyle='#ffe6a8';x.globalAlpha=n.hija<1?.85:1;x.shadowColor='#ffd27a';x.shadowBlur=10*n.hija;x.fillText(n.lab,px,py-16);x.restore();}else{x.fillStyle=n.fc;x.globalAlpha=.85;x.fillText(n.lab,px,py-9);}}});if(meV>=0){const [px,py,pz]=proj(nodes[meV].p);if(pz<1&&inS(px,py)){x.save();x.fillStyle='#ffffff';x.globalAlpha=.95;x.shadowColor='#05080d';x.shadowBlur=6;x.fillText('Ernesto',px,py-16);x.restore();}}x.globalAlpha=1;
+  nodes.forEach(n=>{if(n.src!=='f'||!n.lab||n.hide||(n.gk>=2&&focus!==FROOT))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){if(n.hija){x.save();x.font=(n.hija<1?'600 11.5px':'600 12.5px')+' "Chakra Petch",sans-serif';x.fillStyle='#ffe6a8';x.globalAlpha=n.hija<1?.85:1;x.shadowColor='#ffd27a';x.shadowBlur=10*n.hija;x.fillText(n.lab,px,py-16);x.restore();}else{x.fillStyle=n.fc;x.globalAlpha=.85;x.fillText(n.lab,px,py-9);}}});if(meV>=0){const [px,py,pz]=proj(nodes[meV].p);if(pz<1&&inS(px,py)){x.save();x.fillStyle='#ffffff';x.globalAlpha=.95;x.shadowColor='#05080d';x.shadowBlur=6;x.fillText('Ernesto',px,py-16);x.restore();}}x.globalAlpha=1;
   const [px,py,pz]=proj(new THREE.Vector3(0,GR[4]+2,-4.6).applyMatrix4(genG.matrixWorld));if(pz<1&&inS(px,py)){x.fillStyle='#ffb48a';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('RAÍCES',px,py);}}
   {const mh=nodes.find(n=>n.miamiHub);if(mh){const [qx,qy,qz]=proj(mh.p.clone().add(new THREE.Vector3(0,-5.2,0)));if(qz<1&&inS(qx,qy)){x.fillStyle='#f0b429';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('RED DE MIAMI',qx,qy);}}}
  if(focus<0||focus===FOBJ){x.textAlign='center';x.font='9.5px "IBM Plex Mono",monospace';nodes.forEach(n=>{if(n.src!=='o'||!n.lab||(focus!==FOBJ&&!(n.ok==='core'||n.top||n.hito)))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){x.fillStyle=n.oc;x.globalAlpha=n.ok==='art'?.6:.9;x.fillText(n.lab,px,py-8);}});x.globalAlpha=1;
