@@ -74,6 +74,14 @@ a.home{color:inherit;text-decoration:none}a.home:hover,a.home:focus-visible{text
 .lens.on small{color:#fff}
 #lensList{position:absolute;top:40px;left:10px;z-index:6;width:min(280px,46%);max-height:calc(100% - 140px);overflow-y:auto;background:rgba(6,10,18,.92);border:1px solid var(--line);border-left:2px solid var(--c);border-radius:3px;padding:4px 0}
 #lensList[hidden]{display:none}
+#mapList{position:absolute;top:40px;right:10px;z-index:6;width:min(320px,48%);max-height:calc(100% - 120px);overflow-y:auto;background:rgba(6,10,18,.92);border:1px solid var(--line);border-left:2px solid #9fd2f0;border-radius:3px;padding:4px 0;-webkit-backdrop-filter:blur(14px) brightness(.6);backdrop-filter:blur(14px) brightness(.6)}
+#mapList[hidden]{display:none}
+#mapList h4{margin:8px 10px 4px;font-family:var(--display);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9fd2f0;font-weight:600}
+#mapList .mh{padding:5px 10px 7px;color:var(--dim);font-size:10.5px;border-bottom:1px solid var(--line)}
+#mapList button{display:grid;grid-template-columns:78px 1fr;gap:6px;width:100%;background:none;border:0;color:var(--fg);font:inherit;font-size:11px;text-align:left;padding:3px 10px;cursor:pointer}
+#mapList button i{font-style:normal;color:var(--dim);font-variant-numeric:tabular-nums}
+#mapList button b{font-weight:500;color:#9fd2f0}
+#mapList button:hover,#mapList button:focus-visible,#mapList button.on{background:#0e1726;color:#9fd2f0;outline:none}
 #lensList .lh{padding:5px 10px 7px;color:var(--dim);font-size:10.5px;border-bottom:1px solid var(--line);margin-bottom:3px}
 #lensList .lh b{font-family:var(--display);color:var(--c);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
 #lensList .lh span{display:block;margin-top:2px}
@@ -199,7 +207,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.345 · 9 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.347 · 9 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -222,6 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
     <div id="lineage" hidden></div>
     <div id="lenses" role="toolbar" aria-label="Conexiones"></div>
     <div id="lensList" hidden aria-live="polite"></div>
+    <div id="mapList" hidden aria-live="polite"></div>
     <div id="ask" hidden>
       <div id="askOut" hidden role="region" aria-live="polite" aria-label="Respuesta del gráfico">
         <div class="ah">Pregunta <span id="askQ"></span><button type="button" id="askStop" hidden>Parar</button><button type="button" id="askClose" aria-label="Cerrar respuesta">×</button></div>
@@ -1074,32 +1083,61 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const X=t=>nodes.findIndex(n=>n.t===t);
  const GENTE={'Yutaka Sato':'Japón','Mateo da Silva':'Angola','Lilian Servera':'Israel','Eduardito (amigo de infancia)':'Brasil','Elizabeth Rizo':'Nueva York','Lester (hermano de Benjamin)':'España','Clarita (madre de Benjamin y Lester)':'España','Manolito Oliver':'Cuba','Ramón Eduardo Haití':'Noruega','Fede Bianchi':'Argentina','Gino Battiston':'Argentina','Camila Daniela':'México','Maribel':'España','Mentalist420':'EE. UU.','Jansel Lozano «el Flaco»':'Miami','Nelo Mijangos':'Guatemala'};
  const KW=[[/south korea|corea/i,'Corea del Sur'],[/\bUK\b|londres|reino unido|inglaterra|manchester/i,'Reino Unido'],[/spain|españa|madrid|oviedo|valencia|barcelona/i,'España'],[/france|francia|par[ií]s/i,'Francia'],[/berl[ií]n|alemania|germany/i,'Alemania'],[/venezuela|caracas/i,'Venezuela'],[/m[eé]xico/i,'México'],[/canad[aá]/i,'Canadá'],[/panam[aá]/i,'Panamá'],[/nicaragua/i,'Nicaragua'],[/eeuu|estados unidos|usa\b/i,'EE. UU.'],[/[aá]msterdam|holanda/i,'Países Bajos'],[/italia|italy|roma\b/i,'Italia'],[/portugal|lisboa/i,'Portugal'],[/jap[oó]n|tokio/i,'Japón'],[/ecuador/i,'Ecuador'],[/bolivia/i,'Bolivia']];
- const used=new Set(['Cuba','Miami']),L=[],C=[];
+ const used=new Set(['Cuba','Miami']),LN=[],CN=[],LA=[],CA=[];let L=LN,C=CN;
  const seg=(a,b,c0,c1)=>{L.push(a.x,a.y,a.z,b.x,b.y,b.z);C.push(c0.r,c0.g,c0.b,c1.r,c1.g,c1.b);};
+ const TRIPS=[],PEOPLE=[];
  const tripC=new THREE.Color('#7fd4ff'),genC=new THREE.Color('#ffb36b'),dim=k=>k.clone().multiplyScalar(.18);
  let nT=0,nG=0;
- nodes.forEach((n,i)=>{const t=n.t||'';if(!/viaje/i.test(t)||!n.p)return;const hits=new Set();KW.forEach(([r,c])=>{if(r.test(t))hits.add(c);});hits.forEach(c=>{used.add(c);seg(n.p,P(CT[c][1],CT[c][0]),dim(tripC),tripC.clone().multiplyScalar(.75));nT++;});});
- Object.entries(GENTE).forEach(([t,c])=>{const i=X(t);if(i<0||!nodes[i].p||nodes[i].mu!==undefined)return;used.add(c);seg(nodes[i].p,P(CT[c][1],CT[c][0]),dim(genC),genC.clone().multiplyScalar(.8));nG++;});
+ nodes.forEach((n,i)=>{const t=n.t||'';if(!/viaje/i.test(t)||!n.p)return;const hits=new Set();KW.forEach(([r,c])=>{if(r.test(t))hits.add(c);});if(hits.size){const m=t.match(/(\d{4})-(\d{2})-(\d{2})/)||t.match(/^(\d{4})/);const f=m?(m[2]?m[1]+'-'+m[2]+'-'+m[3]:m[1]):String(n.ts||n.y||'');TRIPS.push({f,t,c:[...hits],i});}hits.forEach(c=>{used.add(c);seg(n.p,P(CT[c][1],CT[c][0]),dim(tripC),tripC.clone().multiplyScalar(.75));nT++;});});
+ Object.entries(GENTE).forEach(([t,c])=>{const i=X(t);if(i<0||!nodes[i].p||nodes[i].mu!==undefined)return;used.add(c);PEOPLE.push({t,c,i});seg(nodes[i].p,P(CT[c][1],CT[c][0]),dim(genC),genC.clone().multiplyScalar(.8));nG++;});
  // la red de Miami y las raíces cubanas
  if(typeof MIAMI_T!=='undefined')seg(MIAMI_T.C,P(CT['Miami'][1],CT['Miami'][0]),new THREE.Color('#f0b429').multiplyScalar(.25),new THREE.Color('#f0b429'));
  if(meF>=0)seg(nodes[meF].p,P(CT['Cuba'][1],CT['Cuba'][0]),new THREE.Color('#ffffff').multiplyScalar(.2),new THREE.Color('#ffffff').multiplyScalar(.8));
  // arcos sobre el mapa: desde La Habana a cada país (viajes y amigos); la migración a Miami en dorado
+ L=LA;C=CA;
  const H=P(CT['Cuba'][1],CT['Cuba'][0]);
  const arc=(c,col,lift)=>{const B=P(CT[c][1],CT[c][0]),d=H.distanceTo(B),M=H.clone().lerp(B,.5).addScaledVector(nrm,Math.max(2,d*lift));const cv=new THREE.QuadraticBezierCurve3(H,M,B).getPoints(40);for(let k=0;k<cv.length-1;k++){const f=.35+.65*Math.sin(Math.PI*k/40);seg(cv[k],cv[k+1],col.clone().multiplyScalar(f),col.clone().multiplyScalar(f));}};
  [...used].filter(c=>c!=='Cuba'&&c!=='Miami').forEach(c=>arc(c,new THREE.Color('#5aa9d6').multiplyScalar(.55),.18));
  arc('Miami',new THREE.Color('#f0b429'),.6);
- const lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(L,3));lg.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
- G.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})));
+ const mkL=(P_,C_)=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P_,3));g.setAttribute('color',new THREE.Float32BufferAttribute(C_,3));const o=new THREE.LineSegments(g,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));G.add(o);return o;};
+ const nodeLinks=mkL(LN,CN);mkL(LA,CA);
+ // resaltado de un país (modo solo mapa)
+ const hl=new THREE.Mesh(new THREE.RingGeometry(2.6,3.2,40),new THREE.MeshBasicMaterial({color:0xffe08a,transparent:true,opacity:.9,depthWrite:false,fog:false,side:THREE.DoubleSide}));hl.lookAt(nrm);hl.visible=false;G.add(hl);
  // marcas y nombres de los países
  {const A=[];used.forEach(c=>{const p=P(CT[c][1],CT[c][0]);A.push(p.x,p.y,p.z);
    const cv=document.createElement('canvas'),x=cv.getContext('2d');cv.width=384;cv.height=56;x.font='700 34px "JetBrains Mono",monospace';x.fillStyle=c==='Cuba'?'#ffffff':c==='Miami'?'#f0b429':'#9fd2f0';x.textAlign='center';x.fillText(c.toUpperCase(),192,40);
    const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,fog:false,opacity:.85}));sp.position.copy(p).addScaledVector(uy,5);sp.scale.set(c==='Cuba'||c==='Miami'?60:48,c==='Cuba'||c==='Miami'?8.8:7,1);G.add(sp);});
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(A,3));
   G.add(new THREE.Points(g,new THREE.PointsMaterial({color:0xcfefff,size:4,sizeAttenuation:true,transparent:true,opacity:.95,depthWrite:false,fog:false})));}
- // botón para mostrar u ocultar el mundo
- const bar=document.getElementById('lenses');if(bar){const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c','#9fd2f0');b.setAttribute('aria-pressed','true');
+ // botones: MUNDO (mostrar u ocultar) y SOLO MAPA (el mapa con sus datos y el cronograma de viajes)
+ const bar=document.getElementById('lenses'),ml=document.getElementById('mapList'),ov=document.getElementById('ov');
+ const esc=x=>String(x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+ TRIPS.sort((a,b)=>a.f.localeCompare(b.f));
+ const byC={};TRIPS.forEach(r=>r.c.forEach(c=>{(byC[c]=byC[c]||{v:0,p:[]}).v++;}));PEOPLE.forEach(r=>{(byC[r.c]=byC[r.c]||{v:0,p:[]}).p.push(r.t);});
+ const paises=Object.keys(byC).sort((a,b)=>(byC[b].v+byC[b].p.length)-(byC[a].v+byC[a].p.length)||a.localeCompare(b));
+ if(ml)ml.innerHTML=`<div class="mh"><b style="color:#9fd2f0;font-family:var(--display);letter-spacing:.06em">SOLO MAPA</b> · ${TRIPS.length} viajes, ${PEOPLE.length} personas, ${paises.length} países<br>Desde La Habana; la migración a Miami en dorado. Pulsa una fila para ir al país.</div>`+
+  `<h4>Cronograma de viajes</h4>`+TRIPS.map(r=>`<button type="button" data-c="${esc(r.c[0])}"><i>${esc(r.f)}</i><span><b>${esc(r.c.join(', '))}</b> · ${esc(r.t.replace(/^\d{4} - |^Viaje - \d{4}-\d{2}-\d{2} - /,''))}</span></button>`).join('')+
+  `<h4>Países</h4>`+paises.map(c=>`<button type="button" data-c="${esc(c)}"><i>${byC[c].v?byC[c].v+' viaje'+(byC[c].v>1?'s':''):''}</i><span><b>${esc(c)}</b>${byC[c].p.length?' · '+esc(byC[c].p.join(', ')):''}</span></button>`).join('');
+ let solo=false,saved=null,fly=null;
+ const goC=c=>{if(!CT[c])return;const p=P(CT[c][1],CT[c][0]);hl.position.copy(p).addScaledVector(nrm,.2);hl.visible=true;const q=p.clone().addScaledVector(ux,28);fly={t0:performance.now(),a:controls.target.clone(),b:q,ca:cam.position.clone(),cb:q.clone().addScaledVector(nrm,175)};};
+ (function tick(){if(fly){const k=Math.min(1,(performance.now()-fly.t0)/900),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;controls.target.lerpVectors(fly.a,fly.b,e);cam.position.lerpVectors(fly.ca,fly.cb,e);controls.update();if(k>=1)fly=null;}
+  if(hl.visible){const s_=1+.25*Math.sin(performance.now()/250);hl.scale.set(s_,s_,s_);}requestAnimationFrame(tick);})();
+ if(ml)ml.addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(!b)return;ml.querySelectorAll('button.on').forEach(x=>x.classList.remove('on'));b.classList.add('on');goC(b.dataset.c);});
+ const setSolo=on=>{solo=on;
+  if(on){saved={pos:cam.position.clone(),tg:controls.target.clone(),rot:controls.autoRotate,maxD:controls.maxDistance,vis:scene.children.map(o=>o.visible)};
+   scene.children.forEach(o=>{if(o!==G)o.visible=false;});G.visible=true;nodeLinks.visible=false;if(ov)ov.style.visibility='hidden';
+   controls.autoRotate=false;controls.maxDistance=600;fly={t0:performance.now(),a:controls.target.clone(),b:CEN.clone().addScaledVector(uy,6).addScaledVector(ux,30),ca:cam.position.clone(),cb:CEN.clone().addScaledVector(uy,6).addScaledVector(ux,30).addScaledVector(nrm,270)};if(ml)ml.hidden=false;}
+  else{scene.children.forEach((o,k)=>{if(saved&&k<saved.vis.length)o.visible=saved.vis[k];});nodeLinks.visible=true;hl.visible=false;if(ov)ov.style.visibility='';if(ml)ml.hidden=true;
+   if(saved){controls.autoRotate=saved.rot;controls.maxDistance=saved.maxD;fly={t0:performance.now(),a:controls.target.clone(),b:saved.tg,ca:cam.position.clone(),cb:saved.pos};}}
+  bS.setAttribute('aria-pressed',String(on));};
+ let bS=null;
+ if(bar){const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c','#9fd2f0');b.setAttribute('aria-pressed','true');
   b.innerHTML=`Mundo <small>${used.size}</small>`;b.title='Mapamundi detrás del gráfico: países de los viajes y de los amigos ('+nT+' viajes, '+nG+' personas). Pulsa para mostrar u ocultar.';
-  b.onclick=()=>{G.visible=!G.visible;b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);}
+  b.onclick=()=>{if(solo)return;G.visible=!G.visible;b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);
+  bS=document.createElement('button');bS.type='button';bS.className='lens';bS.style.setProperty('--c','#ffe08a');bS.setAttribute('aria-pressed','false');
+  bS.innerHTML=`Solo mapa <small>${TRIPS.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
+  bS.onclick=()=>setSolo(!solo);bar.appendChild(bS);
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&solo)setSolo(false);});}
 }
 
 })();
