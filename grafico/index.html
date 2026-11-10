@@ -207,7 +207,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.351 · 9 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.353 · 9 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1096,6 +1096,11 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  if(typeof MIAMI_T!=='undefined')seg(MIAMI_T.C,P(CT['Miami'][1],CT['Miami'][0]),new THREE.Color('#f0b429').multiplyScalar(.25),new THREE.Color('#f0b429'));
  if(meF>=0)seg(nodes[meF].p,P(CT['Cuba'][1],CT['Cuba'][0]),new THREE.Color('#ffffff').multiplyScalar(.2),new THREE.Color('#ffffff').multiplyScalar(.8));
  // arcos sobre el mapa: desde La Habana a cada país (viajes y amigos); la migración a Miami en dorado
+ // cronograma desde la tabla de viajes de Ernesto (fecha, país y nota; la fuente manda)
+ const VIAJES=[["1999-11-12", "México", ""], ["2001-08-03", "Panamá", ""], ["2002-08-13", "México", ""], ["2005-06-21", "Reino Unido", ""], ["2005-06-27", "España", ""], ["2005-07-10", "México", ""], ["2005-08-08", "Venezuela", ""], ["2005-10-24", "Reino Unido", ""], ["2006-04-08", "Reino Unido", ""], ["2006-04-13", "Rusia", ""], ["2006-07-01", "España", ""], ["2006-07-24", "Reino Unido", ""], ["2007-01-27", "España", ""], ["2007-05-15", "Nicaragua", ""], ["2007-06-16", "Francia", ""], ["2007-07-09", "Reino Unido", ""], ["2007-08-20", "Venezuela", ""], ["2007-10-13", "Canadá", ""], ["2008-06-27", "Venezuela", ""], ["2008-07-16", "España", ""], ["2008-09-24", "Canadá", ""], ["2008-10-06", "España", ""], ["2008-11-06", "Venezuela", ""], ["2009-01-25", "México", ""], ["2009-02-11", "Venezuela", ""], ["2009-06-01", "Argentina", ""], ["2009-06-07", "Canadá", ""], ["2009-09-09", "Canadá", ""], ["2009-09-29", "Francia", ""], ["2009-10-11", "México", ""], ["2009-11-03", "España", ""], ["2009-12-24", "EE. UU.", "Miami (2009)"], ["2010-01-10", "Venezuela", ""], ["2010-04-28", "España", ""], ["2010-06-04", "Venezuela", ""], ["2010-07-15", "EE. UU.", "Miami (2010)"], ["2010-07-31", "Venezuela", ""], ["2010-09-07", "Venezuela", ""], ["2010-11-25", "España", ""], ["2011-02-09", "Venezuela", ""], ["2011-06-08", "Venezuela", ""], ["2011-07-13", "España", ""], ["2011-07-20", "Alemania", ""], ["2011-09-20", "España", ""], ["2011-11-30", "Venezuela", ""], ["2012-02-09", "España", ""], ["2012-04-30", "Venezuela", ""], ["2012-08-16", "Italia", ""], ["2013-02-20", "EE. UU.", "Miami y NYC (2013)"], ["2013-08-28", "Corea del Sur", ""], ["2014-03-31", "México", ""], ["2014-09-16", "EE. UU.", "Miami y Orlando (2014)"], ["2015-06-09", "EE. UU.", "Mi cumpleaños en Miami y grabación con Arjona (2015)"], ["2015-11-20", "Venezuela", ""], ["2015-12-15", "EE. UU.", "Washington DC (2015)"], ["2016-01-15", "Ecuador", ""], ["2016-05-18", "México", ""], ["2016-06-24", "EE. UU.", "Gira por Miami, Tampa, Puerto Rico, Houston, NYC (2016)"], ["2016-10-16", "Rep. Dominicana", ""], ["2016-12-08", "Venezuela", ""], ["2016-12-12", "EE. UU.", "Miami y Tampa (2016)"], ["2017-03-02", "Italia", ""], ["2017-05-04", "Canadá", ""], ["2018-09-08", "El Salvador", ""], ["2018-11-06", "Rep. Dominicana", ""], ["2019-03-19", "Guatemala", ""], ["2019-03-23", "Costa Rica", ""], ["2022-07-07", "Venezuela", ""], ["2022-11-19", "México", ""], ["2022-11-21", "Guatemala", ""], ["2022-11-26", "Costa Rica", ""], ["2023-05-10", "España", ""], ["2023-06-12", "Venezuela", ""], ["2023-07-22", "México", ""], ["2023-10-23", "Venezuela", ""], ["2023-11-25", "Venezuela", ""], ["2024", "EE. UU.", "Emigración definitiva: Miami"]];
+ VIAJES.forEach(v=>used.add(v[1]));
+ const TT=VIAJES.map(([f,c,nota],k)=>{const y=f.slice(0,4);const m=TRIPS.find(r=>r.f===f&&r.c.includes(c))||TRIPS.find(r=>r.f.slice(0,4)===y&&r.c.includes(c));
+  const ord=VIAJES.slice(0,k+1).filter(x=>x[1]===c).length;return {f,c:[c],t:(nota?nota:c)+(c==='EE. UU.'&&!nota?'':'')+' · '+ord+'.º a '+c,i:m?m.i:-1};});
  L=LA;C=CA;
  const H=P(CT['Cuba'][1],CT['Cuba'][0]);
  const arc=(c,col,lift)=>{const B=P(CT[c][1],CT[c][0]),d=H.distanceTo(B),M=H.clone().lerp(B,.5).addScaledVector(nrm,Math.max(2,d*lift));const cv=new THREE.QuadraticBezierCurve3(H,M,B).getPoints(40);for(let k=0;k<cv.length-1;k++){const f=.35+.65*Math.sin(Math.PI*k/40);seg(cv[k],cv[k+1],col.clone().multiplyScalar(f),col.clone().multiplyScalar(f));}};
@@ -1114,11 +1119,10 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  // botones: MUNDO (mostrar u ocultar) y SOLO MAPA (el mapa con sus datos y el cronograma de viajes)
  const bar=document.getElementById('lenses'),ml=document.getElementById('mapList'),ov=document.getElementById('ov');
  const esc=x=>String(x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
- TRIPS.sort((a,b)=>a.f.localeCompare(b.f));
- const byC={};TRIPS.forEach(r=>r.c.forEach(c=>{(byC[c]=byC[c]||{v:0,p:[]}).v++;}));PEOPLE.forEach(r=>{(byC[r.c]=byC[r.c]||{v:0,p:[]}).p.push(r.t);});
+ const byC={};TT.forEach(r=>r.c.forEach(c=>{(byC[c]=byC[c]||{v:0,p:[]}).v++;}));PEOPLE.forEach(r=>{(byC[r.c]=byC[r.c]||{v:0,p:[]}).p.push(r.t);});
  const paises=Object.keys(byC).sort((a,b)=>(byC[b].v+byC[b].p.length)-(byC[a].v+byC[a].p.length)||a.localeCompare(b));
- if(ml)ml.innerHTML=`<div class="mh"><b style="color:#9fd2f0;font-family:var(--display);letter-spacing:.06em">SOLO MAPA</b> · ${TRIPS.length} viajes, ${PEOPLE.length} personas, ${paises.length} países<br>Desde La Habana; la migración a Miami en dorado. Pulsa una fila para ir al país.</div>`+
-  `<h4>Cronograma de viajes</h4>`+TRIPS.map(r=>`<button type="button" data-c="${esc(r.c[0])}"><i>${esc(r.f)}</i><span><b>${esc(r.c.join(', '))}</b> · ${esc(r.t.replace(/^\d{4} - |^Viaje - \d{4}-\d{2}-\d{2} - /,''))}</span></button>`).join('')+
+ if(ml)ml.innerHTML=`<div class="mh"><b style="color:#9fd2f0;font-family:var(--display);letter-spacing:.06em">SOLO MAPA</b> · ${TT.length} viajes a ${new Set(VIAJES.map(v=>v[1])).size} países (1999-2024), ${PEOPLE.length} personas<br>Desde La Habana; la migración a Miami en dorado. Pulsa una fila para ir al país.</div>`+
+  `<h4>Cronograma de viajes</h4>`+TT.map(r=>`<button type="button" data-c="${esc(r.c[0])}"><i>${esc(r.f)}</i><span><b>${esc(r.c[0])}</b> · ${esc(r.t.replace(r.c[0]+' · ',''))}</span></button>`).join('')+
   `<h4>Países</h4>`+paises.map(c=>`<button type="button" data-c="${esc(c)}"><i>${byC[c].v?byC[c].v+' viaje'+(byC[c].v>1?'s':''):''}</i><span><b>${esc(c)}</b>${byC[c].p.length?' · '+esc(byC[c].p.join(', ')):''}</span></button>`).join('');
  let solo=false,saved=null,fly=null;
  const goC=c=>{if(!CT[c])return;const p=P(CT[c][1],CT[c][0]);hl.position.copy(p).addScaledVector(nrm,.2);hl.visible=true;const q=p.clone().addScaledVector(ux,28);fly={t0:performance.now(),a:controls.target.clone(),b:q,ca:cam.position.clone(),cb:q.clone().addScaledVector(nrm,175)};};
@@ -1137,7 +1141,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   b.innerHTML=`Mundo <small>${used.size}</small>`;b.title='Mapamundi detrás del gráfico: países de los viajes y de los amigos ('+nT+' viajes, '+nG+' personas). Pulsa para mostrar u ocultar.';
   b.onclick=()=>{if(solo)return;G.visible=!G.visible;b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);
   bS=document.createElement('button');bS.type='button';bS.className='lens';bS.style.setProperty('--c','#ffe08a');bS.setAttribute('aria-pressed','false');
-  bS.innerHTML=`Solo mapa <small>${TRIPS.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
+  bS.innerHTML=`Solo mapa <small>${TT.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
   bS.onclick=()=>setSolo(!solo);bar.appendChild(bS);
   addEventListener('keydown',e=>{if(e.key==='Escape'&&solo)setSolo(false);});}
 }
