@@ -88,6 +88,13 @@ a.home{color:inherit;text-decoration:none}a.home:hover,a.home:focus-visible{text
 #mapList button{display:grid;grid-template-columns:78px 1fr;gap:6px;width:100%;background:none;border:0;color:var(--fg);font:inherit;font-size:11px;text-align:left;padding:3px 10px;cursor:pointer}
 #mapList button i{font-style:normal;color:var(--dim);font-variant-numeric:tabular-nums}
 #mapList button b{font-weight:500;color:#9fd2f0}
+#mapList .tabs{display:flex;gap:4px;padding:6px 10px;border-bottom:1px solid var(--line);position:sticky;top:-4px;background:rgba(6,10,18,.98);z-index:1}
+#mapList .tabs button{display:inline-block;width:auto;padding:3px 9px;border:1px solid var(--line);border-radius:2px;font-family:var(--display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+#mapList .tabs button[aria-pressed=true]{color:#06101a;background:#9fd2f0;border-color:#9fd2f0}
+#mapList button.pais{margin-top:6px;border-top:1px solid var(--line);padding-top:6px}
+#mapList button.pais b{font-family:var(--display);letter-spacing:.06em;text-transform:uppercase;font-size:10.5px}
+#mapList button.per{grid-template-columns:78px 1fr;padding-left:10px}
+#mapList button.per i{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em}
 #mapList button:hover,#mapList button:focus-visible,#mapList button.on{background:#0e1726;color:#9fd2f0;outline:none}
 #lensList .lh{padding:5px 10px 7px;color:var(--dim);font-size:10.5px;border-bottom:1px solid var(--line);margin-bottom:3px}
 #lensList .lh b{font-family:var(--display);color:var(--c);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
@@ -214,7 +221,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.377 · 10 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.379 · 10 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1115,7 +1122,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  [...used].filter(c=>c!=='Cuba'&&c!=='Miami').forEach(c=>arc(c,new THREE.Color('#5aa9d6').multiplyScalar(.55),.18));
  arc('Miami',new THREE.Color('#f0b429'),.6);
  const mkL=(P_,C_)=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P_,3));g.setAttribute('color',new THREE.Float32BufferAttribute(C_,3));const o=new THREE.LineSegments(g,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));G.add(o);return o;};
- const nodeLinks=mkL(LN,CN);mkL(LA,CA);
+ const nodeLinks=mkL(LN,CN),arcLinks=mkL(LA,CA);
  // resaltado de un país (modo solo mapa)
  const hl=new THREE.Mesh(new THREE.RingGeometry(2.6,3.2,40),new THREE.MeshBasicMaterial({color:0xffe08a,transparent:true,opacity:.9,depthWrite:false,fog:false,side:THREE.DoubleSide}));hl.lookAt(nrm);hl.visible=false;G.add(hl);
  // marcas y nombres de los países
@@ -1149,9 +1156,15 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const esc=x=>String(x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
  const byC={};TT.forEach(r=>r.c.forEach(c=>{(byC[c]=byC[c]||{v:0,p:[]}).v++;}));PEOPLE.forEach(r=>{(byC[r.c]=byC[r.c]||{v:0,p:[]}).p.push(r.t);});
  const paises=Object.keys(byC).sort((a,b)=>(byC[b].v+byC[b].p.length)-(byC[a].v+byC[a].p.length)||a.localeCompare(b));
- if(ml)ml.innerHTML=`<div class="mh"><b style="color:#9fd2f0;font-family:var(--display);letter-spacing:.06em">SOLO MAPA</b> · ${TT.length} viajes a ${new Set(VIAJES.map(v=>v[1])).size} países (1999-2024), ${PEOPLE.length} personas<br>Desde La Habana; la migración a Miami en dorado. Pulsa una fila para ir al país.</div>`+
-  `<h4>Cronograma de viajes</h4>`+TT.map(r=>`<button type="button" data-c="${esc(r.c[0])}"><i>${esc(r.f)}</i><span><b>${esc(r.c[0])}</b> · ${esc(r.t.replace(r.c[0]+' · ',''))}</span></button>`).join('')+
-  `<h4>Países</h4>`+paises.map(c=>`<button type="button" data-c="${esc(c)}"><i>${byC[c].v?byC[c].v+' viaje'+(byC[c].v>1?'s':''):''}</i><span><b>${esc(c)}</b>${byC[c].p.length?' · '+esc(byC[c].p.join(', ')):''}</span></button>`).join('');
+ const DISP={'eysarvargas.tez':'Eysar Vargas','TheCreep':'The Creep','AMPARUCHE':'Amparuche','Juan José López (Ojovivo)':'Ojovivo (Juan José López)','Buda Studio (Leonardo M. Scarcia)':'Buda Studio','Lazaro Poey':'Lázaro Poey','Maria Luisa':'María Luisa'},nm=t=>DISP[t]||t;
+ const porPais={};PEOPLE.forEach(r=>{(porPais[r.c]=porPais[r.c]||[]).push(r);});
+ const paisesP=Object.keys(porPais).sort((a,b)=>porPais[b].length-porPais[a].length||a.localeCompare(b));
+ const cab=`<div class="mh"><b style="color:#9fd2f0;font-family:var(--display);letter-spacing:.06em">SOLO MAPA</b> · ${PEOPLE.length} personas en ${paisesP.length} lugares · ${TT.length} viajes a ${new Set(VIAJES.map(v=>v[1])).size} países (1999-2024)<br>Pulsa una fila para ir al lugar.</div><div class="tabs"><button type="button" data-tab="p">Personas</button><button type="button" data-tab="v">Viajes</button><button type="button" data-tab="c">Países</button></div>`;
+ const TAB={p:()=>paisesP.map(c=>{const L_=porPais[c].slice().sort((a,b)=>(a.org-b.org)||nm(a.t).localeCompare(nm(b.t),'es'));return `<button type="button" class="pais" data-c="${esc(c)}"><i>${L_.length}</i><span><b>${esc(c)}</b></span></button>`+L_.map(r=>`<button type="button" class="per" data-c="${esc(c)}"><i>${r.org?'es de':'vive'}</i><span>${esc(nm(r.t))}</span></button>`).join('');}).join(''),
+  v:()=>`<h4>Cronograma de viajes</h4>`+TT.map(r=>`<button type="button" data-c="${esc(r.c[0])}"><i>${esc(r.f)}</i><span><b>${esc(r.c[0])}</b> · ${esc(r.t.replace(r.c[0]+' · ',''))}</span></button>`).join(''),
+  c:()=>`<h4>Países</h4>`+paises.map(c=>`<button type="button" data-c="${esc(c)}"><i>${byC[c].v?byC[c].v+' viaje'+(byC[c].v>1?'s':''):''}</i><span><b>${esc(c)}</b>${byC[c].p.length?' · '+esc(byC[c].p.map(nm).join(', ')):''}</span></button>`).join('')};
+ let tab='p';const pinta=()=>{if(!ml)return;ml.innerHTML=cab+TAB[tab]();ml.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===tab)));};pinta();
+ if(ml)ml.addEventListener('click',e=>{const b=e.target.closest('.tabs button');if(b){tab=b.dataset.tab;pinta();ml.scrollTop=0;}});
  let solo=false,saved=null,fly=null;
  const goC=c=>{if(!CT[c])return;const p=P(CT[c][1],CT[c][0]);hl.position.copy(p).addScaledVector(nrm,.2);hl.visible=true;const q=p.clone().addScaledVector(ux,28);fly={t0:performance.now(),a:controls.target.clone(),b:q,ca:cam.position.clone(),cb:q.clone().addScaledVector(nrm,175)};};
  (function tick(){if(fly){const k=Math.min(1,(performance.now()-fly.t0)/900),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;controls.target.lerpVectors(fly.a,fly.b,e);cam.position.lerpVectors(fly.ca,fly.cb,e);controls.update();if(k>=1)fly=null;}
@@ -1163,10 +1176,10 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const rc_=new THREE.Raycaster();rc_.params.Points.threshold=3;const ms=new THREE.Vector2();
  const pick=e=>{const r=cv.getBoundingClientRect();ms.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);rc_.setFromCamera(ms,cam);const h=MK.obj?rc_.intersectObject(MK.obj)[0]:null;return h?MK.order[h.index]:null;};
  const cardHTML=c=>{const vs=TT.filter(r=>r.c[0]===c),pp=PEOPLE.filter(r=>r.c===c&&!r.org).map(r=>r.t),po=PEOPLE.filter(r=>r.c===c&&r.org).map(r=>r.t);
-  const extra=c==='Cuba'?'<p>El origen: La Habana, Parcelación Moderna. De aquí salen todos los arcos.</p>':c==='Miami'?'<p>Desde 2024, la casa. El arco dorado es la emigración definitiva; aquí vive la Red de Miami.</p>':'';
+  const extra=c==='Cuba'?'<p>El origen: La Habana, Parcelación Moderna.</p>':c==='Miami'?'<p>Desde 2024, la casa. El arco dorado es la emigración definitiva; aquí vive la Red de Miami.</p>':'';
   return `<button type="button" class="x" aria-label="Cerrar">×</button><h5>${esc(c)}</h5>${extra}`+
    (vs.length?`<div class="k">${vs.length} viaje${vs.length>1?'s':''}</div><ul>${vs.map(r=>`<li><i>${esc(r.f)}</i> ${esc(r.t.replace(c+' · ','').replace(/ · \d+\.º a .*$/,''))}</li>`).join('')}</ul>`:'')+
-   (pp.length?`<div class="k">Viven allí</div><ul>${pp.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:'')+(po.length?`<div class="k">Son de allí</div><ul>${po.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:'')+
+   (pp.length?`<div class="k">Viven allí</div><ul>${pp.map(t=>`<li>${esc(nm(t))}</li>`).join('')}</ul>`:'')+(po.length?`<div class="k">Son de allí</div><ul>${po.map(t=>`<li>${esc(nm(t))}</li>`).join('')}</ul>`:'')+
    (!vs.length&&!pp.length&&!po.length&&!extra?'<p>Sin datos asociados todavía.</p>':'');};
  let dn=null;cv.addEventListener('pointerdown',e=>{dn=[e.clientX,e.clientY];});
  cv.addEventListener('pointermove',e=>{if(!solo)return;cv.style.cursor=pick(e)?'pointer':'grab';});
@@ -1177,9 +1190,9 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  card.addEventListener('click',e=>{if(e.target.closest('.x'))card.hidden=true;});
  const setSolo=on=>{solo=on;
   if(on){saved={pos:cam.position.clone(),tg:controls.target.clone(),rot:controls.autoRotate,maxD:controls.maxDistance,vis:scene.children.map(o=>o.visible)};
-   scene.children.forEach(o=>{if(o!==G)o.visible=false;});G.visible=true;nodeLinks.visible=false;if(ov)ov.style.visibility='hidden';window.__soloMapa=true;
+   scene.children.forEach(o=>{if(o!==G)o.visible=false;});G.visible=true;nodeLinks.visible=false;arcLinks.visible=false;if(ov)ov.style.visibility='hidden';window.__soloMapa=true;
    controls.autoRotate=false;controls.maxDistance=600;fly={t0:performance.now(),a:controls.target.clone(),b:CEN.clone().addScaledVector(uy,6).addScaledVector(ux,30),ca:cam.position.clone(),cb:CEN.clone().addScaledVector(uy,6).addScaledVector(ux,30).addScaledVector(nrm,270)};if(ml)ml.hidden=false;}
-  else{scene.children.forEach((o,k)=>{if(saved&&k<saved.vis.length)o.visible=saved.vis[k];});nodeLinks.visible=true;hl.visible=false;if(ov)ov.style.visibility='';window.__soloMapa=false;card.hidden=true;if(ml)ml.hidden=true;
+  else{scene.children.forEach((o,k)=>{if(saved&&k<saved.vis.length)o.visible=saved.vis[k];});nodeLinks.visible=true;arcLinks.visible=true;hl.visible=false;if(ov)ov.style.visibility='';window.__soloMapa=false;card.hidden=true;if(ml)ml.hidden=true;
    if(saved){controls.autoRotate=saved.rot;controls.maxDistance=saved.maxD;fly={t0:performance.now(),a:controls.target.clone(),b:saved.tg,ca:cam.position.clone(),cb:saved.pos};}}
   bS.setAttribute('aria-pressed',String(on));};
  let bS=null;
