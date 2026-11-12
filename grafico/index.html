@@ -226,7 +226,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.445 · 12 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.447 · 12 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -886,7 +886,7 @@ function drawOverlay(dt){const ar=app.getBoundingClientRect();if(ov.width!==Math
  if(focus<0||focus===FOBJ){x.textAlign='center';x.font='9.5px "IBM Plex Mono",monospace';nodes.forEach(n=>{if(n.src!=='o'||!n.lab||(focus!==FOBJ&&!(n.ok==='core'||n.top||n.hito)))return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){x.fillStyle=n.oc;x.globalAlpha=n.ok==='art'?.6:.9;x.fillText(n.lab,px,py-8);}});x.globalAlpha=1;
   const [px,py,pz]=proj(new THREE.Vector3(0,9,0).applyMatrix4(IG.matrixWorld));if(pz<1&&inS(px,py)){x.fillStyle='#ff5fd2';x.font='600 11px "Chakra Petch",sans-serif';x.fillText('WEB3 · CUATRO CADENAS',px,py);}}
  if(focus<0||focus===FX)nodes.forEach(n=>{if(n.src!=='x'||!n.big)return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){x.fillStyle='#9ad0ff';x.textAlign='left';x.font='600 10.5px "Chakra Petch",sans-serif';x.fillText('UNBANNED · Manchester 2023',px+8,py-6);x.textAlign='center';}});
-  if(focus<0){x.save();x.textAlign='center';nodes.forEach(n=>{if(!n.sus)return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){x.font='600 11px "Chakra Petch",sans-serif';const dy=n.t==='UnlimitedWraps'?22:-14,w=x.measureText(n.sus).width;x.globalAlpha=.85;x.fillStyle='rgba(6,10,18,.8)';x.fillRect(px-w/2-5,py+dy-11,w+10,15);const uw=isUW(n);x.strokeStyle=uw?'rgba(198,255,26,.65)':'rgba(95,232,208,.6)';x.strokeRect(px-w/2-5,py+dy-11,w+10,15);x.fillStyle=uw?'#dcff6a':'#8ff2df';x.globalAlpha=1;x.shadowColor=uw?'#a8e000':'#3ee0c8';x.shadowBlur=6;x.fillText(n.sus,px,py+dy);x.shadowBlur=0;}});x.restore();}
+  if(focus<0){x.save();x.textAlign='center';nodes.forEach(n=>{if(!n.sus)return;const [px,py,pz]=proj(n.p);if(pz<1&&inS(px,py)){x.font=n.t==='Rey'?'500 10px "Chakra Petch",sans-serif':'600 11px "Chakra Petch",sans-serif';const dy=n.t==='UnlimitedWraps'?22:-14,w=x.measureText(n.sus).width;x.globalAlpha=.85;x.fillStyle='rgba(6,10,18,.8)';x.fillRect(px-w/2-5,py+dy-11,w+10,15);const uw=isUW(n);x.strokeStyle=uw?'rgba(198,255,26,.65)':'rgba(95,232,208,.6)';x.strokeRect(px-w/2-5,py+dy-11,w+10,15);x.fillStyle=uw?'#dcff6a':'#8ff2df';x.globalAlpha=1;x.shadowColor=uw?'#a8e000':'#3ee0c8';x.shadowBlur=6;x.fillText(n.sus,px,py+dy);x.shadowBlur=0;}});x.restore();}
  threads.forEach(t=>t.t+=dt/t.life);for(let k=threads.length-1;k>=0;k--)if(threads[k].t>=1)threads.splice(k,1);
  x.save();x.beginPath();x.rect(0,0,sr.right-ar.left,ar.height);x.clip();
  const fl=feedsEl.getBoundingClientRect();if(!document.body.classList.contains('solo'))threads.forEach(t=>{const s=FEEDS[t.i],fr=s.el.getBoundingClientRect();if(fr.right>sr.left+4||fr.top+fr.height*.42>fl.bottom||fr.top<fl.top)return;
@@ -1076,6 +1076,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
 // ---------- sustento: Index01 y UnlimitedWraps, con Rey (los trabajos que hoy mantienen a la familia) ----------
 {const S=[['v','Index01','INDEX01'],['v','UnlimitedWraps','UNLIMITEDWRAPS'],['f','Rey','REY']].map(([src,t,lab])=>{const i=nodes.findIndex(n=>n.src===src&&n.t===t&&(src!=='f'||n.net));if(i>=0)nodes[i].sus=lab;return i;}).filter(i=>i>=0);
  const rey=S.find(i=>nodes[i].t==='Rey')??-1;
+ {const mi=nodes.findIndex(n=>n.src==='f'&&n.t==='Milay Pernut Molina');if(mi>=0)nodes[mi].sus='MILAY';}
  const list=edges.filter(([a,b])=>(S.includes(a)||S.includes(b))&&nodes[a].mu===undefined&&nodes[b].mu===undefined);
  const g=arcGeom(list,1),C=g.getAttribute('color'),tc=new THREE.Color('#5fe8d0'),uc=new THREE.Color(UWC);
  list.forEach(([a,b],e)=>{const f=(a===rey||b===rey)?.95:.5,q=(isUW(nodes[a])||isUW(nodes[b]))?uc:tc;for(let k=e*24;k<e*24+24;k++)C.setXYZ(k,q.r*f,q.g*f,q.b*f);});C.needsUpdate=true;
