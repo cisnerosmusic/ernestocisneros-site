@@ -226,7 +226,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.447 · 12 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.449 · 12 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1291,6 +1291,211 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   bS.innerHTML=`Solo mapa <small>${TT.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
   bS.onclick=()=>setSolo(!solo);bar.appendChild(bS);
   addEventListener('keydown',e=>{if(e.key==='Escape'&&solo)setSolo(false);});}
+}
+
+// ---------- Modo COSMOLOGÍA ESTOCÁSTICA · El Valle de Resiliencia ----------
+// Modo nuevo y autocontenido: no toca la cámara, los filtros ni el resto de modos.
+// Valores del modelo tomados del preprint v3.2 (DOI 10.5281/zenodo.17686852): w(z) con A, omega=2.5, delta=0, z_tau=2.0.
+{
+ const RMc=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const LO=1,HI=3,OPT=2;                       // Valle de Resiliencia: 1 < R < 3 (óptimo R = 2)
+ const DEF={tau:2,om:1,A:.02,w:2.5,d:0,zt:2}; // valores del modelo
+ const S=Object.assign({},DEF);
+ const fmt=(x,n=2)=>x.toFixed(n).replace('.',',');
+ const zona=R=>R<LO?-1:R>HI?1:0;
+ const VER=(document.querySelector('.sub .ver')||{}).textContent||'';
+ const st=document.createElement('style');st.textContent=`
+#cosmo{position:fixed;inset:0;z-index:60;background:rgba(6,10,18,.94);backdrop-filter:blur(3px);display:grid;grid-template-rows:auto 1fr;gap:10px;padding:14px 16px;box-sizing:border-box;color:var(--fg);font-family:var(--mono);opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1)}
+#cosmo.vis{opacity:1}
+#cosmo[hidden]{display:none}
+#cosmo .ct{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+#cosmo .ct h2{margin:0;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.04em;color:#fff}
+#cosmo .ct h2 b{color:#c9a8ff;font-weight:600}
+#cosmo .ct .v{color:var(--dim);font-size:11px}
+#cosmo .ct .x{margin-left:auto;background:rgba(6,10,18,.82);border:1px solid #c9a8ff;color:#c9a8ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:12px;cursor:pointer}
+#cosmo .body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"a b p" "a c p";gap:10px;min-height:0}
+#cosmo .z{position:relative;border:1px solid var(--line);border-radius:12px;background:rgba(10,17,29,.7);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+#cosmo .z h3{margin:0;padding:9px 12px 0;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+#cosmo .z h3 i{font-style:normal;color:var(--dim);font-family:var(--mono);font-weight:400;letter-spacing:0;text-transform:none;margin-left:6px}
+#cosmo .z canvas{flex:1;min-height:0;width:100%;display:block;touch-action:none}
+#cosmo .z p{margin:0;padding:6px 12px 10px;font-size:11.5px;line-height:1.5;color:#b7c6d6}
+#cosmo .za{grid-area:a}#cosmo .zb{grid-area:b}#cosmo .zc{grid-area:c}
+#cosmo .za h3{color:#5fe8d0}#cosmo .zb h3{color:#ffe08a}#cosmo .zc h3{color:#c9a8ff}
+#cosmo .msg{margin:6px 12px 0;padding:7px 10px;border-radius:8px;font-size:12px;line-height:1.4;border:1px solid}
+#cosmo .msg.in{color:#5fe8d0;border-color:rgba(95,232,208,.45);background:rgba(95,232,208,.07)}
+#cosmo .msg.out{color:#ff9c7a;border-color:rgba(255,120,90,.45);background:rgba(255,120,90,.07)}
+#cosmo .pn{grid-area:p;border:1px solid var(--line);border-radius:12px;background:rgba(10,17,29,.85);padding:12px;overflow:auto;min-height:0}
+#cosmo .pn h4{margin:0;font-family:var(--display);font-weight:600;font-size:15px;color:#fff;letter-spacing:.03em}
+#cosmo .pn .sb{margin:4px 0 10px;color:var(--dim);font-size:11px;line-height:1.45}
+#cosmo .pn .sec{margin:12px 0 6px;font-family:var(--display);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+#cosmo .sl{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin:6px 0}
+#cosmo .sl label{font-size:11px;color:#cfdbe7}
+#cosmo .sl output{font-size:11px;color:#fff;font-variant-numeric:tabular-nums}
+#cosmo .sl input{grid-column:1/3;width:100%;accent-color:#5fe8d0}
+#cosmo .sl small{grid-column:1/3;color:var(--dim);font-size:10px;line-height:1.35}
+#cosmo .Rbig{display:flex;align-items:baseline;gap:8px;margin:8px 0 4px}
+#cosmo .Rbig b{font-family:var(--display);font-size:34px;font-weight:600;font-variant-numeric:tabular-nums}
+#cosmo .Rbig span{color:var(--dim);font-size:11px}
+#cosmo .ind{display:inline-block;padding:4px 10px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid}
+#cosmo .ind.in{color:#5fe8d0;border-color:#5fe8d0;background:rgba(95,232,208,.1)}
+#cosmo .ind.out{color:#ff9c7a;border-color:#ff9c7a;background:rgba(255,120,90,.1)}
+#cosmo .btn{display:inline-block;margin:10px 6px 0 0;background:rgba(6,10,18,.82);border:1px solid var(--line);color:var(--fg);font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:12px;cursor:pointer;text-decoration:none}
+#cosmo .btn:hover,#cosmo .btn:focus-visible{border-color:#c9a8ff;color:#fff;outline:none}
+#cosmo .txt{font-size:11.5px;line-height:1.55;color:#b7c6d6;margin:6px 0}
+#cosmo .txt b{color:#fff;font-weight:500}
+#cosmoGo{position:absolute;left:50%;transform:translateX(-50%);bottom:62px;z-index:7;background:rgba(6,10,18,.9);border:1px solid #c9a8ff;color:#c9a8ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:14px;cursor:pointer;box-shadow:0 0 14px rgba(201,168,255,.3)}
+#cosmoGo[hidden]{display:none}
+@media (max-width:1100px){#cosmo{display:block;overflow:auto}#cosmo .ct{margin-bottom:10px}#cosmo .body{display:flex;flex-direction:column}#cosmo .za{order:1;min-height:460px}#cosmo .pn{order:2;overflow:visible}#cosmo .zb{order:3;min-height:380px}#cosmo .zc{order:4;min-height:400px}}
+`;document.head.appendChild(st);
+
+ // ---------- estructura ----------
+ const ov=document.createElement('div');ov.id='cosmo';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Cosmología Estocástica · El Valle de Resiliencia');
+ const sl=(id,lab,min,max,step,help)=>`<div class="sl"><label for="${id}">${lab}</label><output id="${id}o"></output><input type="range" id="${id}" min="${min}" max="${max}" step="${step}">${help?`<small>${help}</small>`:''}</div>`;
+ ov.innerHTML=`<div class="ct"><h2>Cosmología Estocástica · <b>El Valle de Resiliencia</b></h2><span class="v">${VER}</span><button type="button" class="x" id="cosmoX">Volver al gráfico (Esc)</button></div>
+<div class="body">
+ <section class="z za"><h3>A · El Valle de Resiliencia <i>arrastra el punto</i></h3><div class="msg in" id="cmMsg"></div><canvas id="cmA" aria-label="Plano de memoria y ritmo con el Valle de Resiliencia"></canvas>
+  <p>Todo sistema que dura en el tiempo necesita recordar… pero no demasiado. Si recuerda muy poco, se desordena. Si recuerda demasiado, se vuelve rígido y no puede cambiar. El Valle de Resiliencia es la zona intermedia donde la vida, los sistemas y quizás el universo mismo encuentran estabilidad.</p></section>
+ <section class="z zb"><h3>B · La energía oscura con memoria <i>w(z)</i></h3><canvas id="cmB" aria-label="Curva de la energía oscura"></canvas>
+  <p>En el modelo más simple, el universo se acelera de forma constante (la línea punteada). En este modelo, la aceleración tiene una pequeña memoria y puede oscilar suavemente con el tiempo. Esas oscilaciones se van apagando hacia el pasado.</p></section>
+ <section class="z zc"><h3>C · El ruido con memoria <i>tres sistemas, el mismo ruido</i></h3><canvas id="cmC" aria-label="Tres trayectorias con distinta memoria"></canvas>
+  <p>El ruido no es solo desorden. Cuando el ruido tiene memoria (recuerda un poco su pasado), pueden aparecer patrones y estabilidad. Esta es una de las ideas centrales: la memoria finita permite que el desorden se organice.</p></section>
+ <aside class="pn">
+  <h4>Cosmología Estocástica</h4>
+  <div class="sb">Una forma de entender cómo la memoria y el azar pueden dar forma al universo.</div>
+  <div class="txt">Piensa en una canción. Si olvidas cada nota en cuanto suena, no puedes seguir la melodía. Si solo recuerdas el primer verso, no puedes cantar los siguientes. Para cantar hay que recordar lo justo.</div>
+  <div class="sec">El valle</div>
+  ${sl('cmTau','τ · tiempo de memoria',-1,1,.005,'Cuánto tiempo recuerda el sistema.')}
+  ${sl('cmOm','Ω · ritmo o frecuencia',-1,1,.005,'Qué tan rápido cambia o vibra el sistema.')}
+  <div class="Rbig"><b id="cmR"></b><span>R = τ × Ω<br>cuánto de su propio ritmo recuerda</span></div>
+  <span class="ind in" id="cmInd"></span>
+  <div class="sec">La curva de la energía oscura</div>
+  ${sl('cmAA','A · amplitud',0,.03,.0005,'Cuánto se aparta del modelo simple. En el artículo, como máximo 0,03.')}
+  ${sl('cmW','ω · oscilaciones',1,5,.05,'Cuántas ondas hace la curva.')}
+  ${sl('cmD','δ · fase',0,6.283,.01,'En qué punto de la onda empieza.')}
+  ${sl('cmZ','memoria de la curva',.3,5,.05,'Cuánto tarda la oscilación en apagarse hacia el pasado.')}
+  <button type="button" class="btn" id="cmReset">Restablecer valores del modelo</button>
+  <div class="sec">La idea en una frase</div>
+  <div class="txt"><b>La memoria finita es una condición necesaria para que algo complejo pueda ser estable y a la vez capaz de cambiar.</b> Ni demasiado poco ni demasiado: en esa zona intermedia las cosas pueden ser estables y al mismo tiempo estar vivas.</div>
+  <a class="btn" href="https://ernestocisneros.art/ideas/cosmology-physics.html" target="_blank" rel="noopener">Leer el artículo completo</a><a class="btn" href="https://doi.org/10.5281/zenodo.17686852" target="_blank" rel="noopener">Preprint v3.2 (DOI)</a>
+ </aside>
+</div>`;
+ document.body.appendChild(ov);
+ const $=id=>document.getElementById(id);
+ const cA=$('cmA'),cB=$('cmB'),cC=$('cmC');
+
+ // ---------- utilidades de lienzo ----------
+ const fit=c=>{const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);const w=Math.max(1,Math.round(r.width*d)),h=Math.max(1,Math.round(r.height*d));if(c.width!==w||c.height!==h){c.width=w;c.height=h;c._d=true;}return [w,h,d];};
+ const FONT=(px,d,wt=400)=>`${wt} ${px*d}px "IBM Plex Mono",monospace`;
+ const L10=Math.log10;
+
+ // ---------- Zona A ----------
+ const MA={l:52,r:14,t:10,b:40};
+ let fieldImg=null,bandImg=null,fieldKey='';
+ const aGeo=()=>{const [w,h,d]=fit(cA);return {w,h,d,x0:MA.l*d,x1:w-MA.r*d,y0:MA.t*d,y1:h-MA.b*d};};
+ const toPix=(g,tau,om)=>[g.x0+(L10(tau)+1)/2*(g.x1-g.x0),g.y1-(L10(om)+1)/2*(g.y1-g.y0)];
+ const fromPix=(g,px,py)=>[Math.pow(10,Math.max(-1,Math.min(1,(px-g.x0)/(g.x1-g.x0)*2-1))),Math.pow(10,Math.max(-1,Math.min(1,(g.y1-py)/(g.y1-g.y0)*2-1)))];
+ const buildField=g=>{const W=Math.round(g.x1-g.x0),H=Math.round(g.y1-g.y0);if(W<2||H<2)return;
+  const mk=band=>{const cv_=document.createElement('canvas');cv_.width=W;cv_.height=H;const x=cv_.getContext('2d'),im=x.createImageData(W,H),D=im.data;
+   for(let j=0;j<H;j++)for(let i=0;i<W;i++){const lr=(i/W*2-1)+((1-j/H)*2-1),k=(j*W+i)*4;let r,gg,b,a;
+    if(lr>0&&lr<L10(HI)){const c=1-Math.abs(lr-L10(OPT))/.32;if(band){r=95;gg=232;b=208;a=Math.max(0,c)*120;}else{r=20+30*c;gg=70+90*c;b=70+80*c;a=200;}}
+    else{if(band){a=0;r=gg=b=0;}else{const dist=lr<=0?-lr:lr-L10(HI),f=Math.max(0,1-dist/1.6);if(lr<=0){r=70*f+12;gg=28*f+12;b=60*f+22;}else{r=95*f+14;gg=40*f+12;b=30*f+16;}a=200;}}
+    D[k]=r;D[k+1]=gg;D[k+2]=b;D[k+3]=a;}
+   x.putImageData(im,0,0);return cv_;};
+  fieldImg=mk(false);bandImg=mk(true);};
+ const drawA=t=>{const g=aGeo(),x=cA.getContext('2d'),d=g.d;const key=g.w+'x'+g.h;if(key!==fieldKey){buildField(g);fieldKey=key;}
+  x.clearRect(0,0,g.w,g.h);if(!fieldImg)return;
+  x.drawImage(fieldImg,g.x0,g.y0);x.globalAlpha=RMc?.55:.4+.3*Math.sin(t/900);x.drawImage(bandImg,g.x0,g.y0);x.globalAlpha=1;
+  // líneas R = 1, 2, 3
+  const line=(R,dash,col,lab)=>{x.save();x.beginPath();let first=true;for(let i=0;i<=60;i++){const lt=-1+i/30,lo=L10(R)-lt;if(lo<-1||lo>1)continue;const [px,py]=toPix(g,Math.pow(10,lt),Math.pow(10,lo));if(first){x.moveTo(px,py);first=false;}else x.lineTo(px,py);}x.setLineDash(dash.map(v=>v*d));x.strokeStyle=col;x.lineWidth=1.2*d;x.stroke();x.restore();
+   const lt=-.45,lo=L10(R)-lt;if(lo>-1&&lo<1){const [px,py]=toPix(g,Math.pow(10,lt),Math.pow(10,lo));x.fillStyle=col;x.font=FONT(10,d);x.fillText(lab,px+4*d,py-4*d);}};
+  line(LO,[],'rgba(95,232,208,.7)','R = 1');line(OPT,[4,4],'rgba(255,255,255,.55)','R = 2 · óptimo');line(HI,[],'rgba(95,232,208,.7)','R = 3');
+  // ejes
+  x.strokeStyle='rgba(109,128,153,.6)';x.lineWidth=d;x.strokeRect(g.x0,g.y0,g.x1-g.x0,g.y1-g.y0);
+  x.fillStyle='#6d8099';x.font=FONT(10,d);x.textAlign='center';
+  [[.1,'0,1'],[1,'1'],[10,'10']].forEach(([v,s])=>{const [px]=toPix(g,v,1);x.fillText(s,px,g.y1+13*d);const [,py]=toPix(g,1,v);x.save();x.textAlign='right';x.fillText(s,g.x0-6*d,py+3*d);x.restore();});
+  x.fillStyle='#cfdbe7';x.font=FONT(11,d);x.fillText('τ · cuánto tiempo recuerda el sistema →',(g.x0+g.x1)/2,g.h-8*d);
+  x.save();x.translate(14*d,(g.y0+g.y1)/2);x.rotate(-Math.PI/2);x.fillText('Ω · qué tan rápido cambia o vibra →',0,0);x.restore();
+  x.textAlign='left';x.font=FONT(11,d,500);
+  x.fillStyle='rgba(200,150,220,.85)';x.fillText('Recuerda muy poco: se desordena',g.x0+8*d,g.y1-10*d);
+  x.fillStyle='rgba(255,160,120,.85)';x.textAlign='right';x.fillText('Recuerda demasiado: se vuelve rígido',g.x1-8*d,g.y0+16*d);
+  // el punto
+  const [px,py]=toPix(g,S.tau,S.om),z=zona(S.tau*S.om),col=z===0?'#5fe8d0':'#ff9c7a';
+  const pr=(RMc?9:9+2*Math.sin(t/300))*d;x.beginPath();x.arc(px,py,pr+6*d,0,7);x.fillStyle=z===0?'rgba(95,232,208,.18)':'rgba(255,120,90,.18)';x.fill();
+  x.beginPath();x.arc(px,py,pr,0,7);x.fillStyle=col;x.fill();x.lineWidth=2*d;x.strokeStyle='#060a12';x.stroke();
+  x.textAlign='left';x.fillStyle='#fff';x.font=FONT(12,d,600);const lab='R = '+fmt(S.tau*S.om);const tw=x.measureText(lab).width;
+  x.fillText(lab,Math.min(px+16*d,g.x1-tw-4*d),Math.max(py-12*d,g.y0+14*d));};
+ // arrastre
+ let drag=false;
+ const setFromEvt=e=>{const g=aGeo(),r=cA.getBoundingClientRect();const [tau,om]=fromPix(g,(e.clientX-r.left)*g.d,(e.clientY-r.top)*g.d);S.tau=tau;S.om=om;sync();};
+ cA.addEventListener('pointerdown',e=>{drag=true;cA.setPointerCapture(e.pointerId);setFromEvt(e);});
+ cA.addEventListener('pointermove',e=>{if(drag)setFromEvt(e);else{const g=aGeo(),r=cA.getBoundingClientRect(),[px,py]=toPix(g,S.tau,S.om),dx=(e.clientX-r.left)*g.d-px,dy=(e.clientY-r.top)*g.d-py;cA.style.cursor=Math.hypot(dx,dy)<18*g.d?'grab':'crosshair';}});
+ addEventListener('pointerup',()=>{drag=false;});
+
+ // ---------- Zona B ----------
+ const ZMAX=2.5,YMIN=-1.045,YMAX=-.955;
+ const wz=z=>-1+S.A*Math.exp(-z/S.zt)*Math.cos(S.w*Math.log(1+z)+S.d);
+ const drawB=()=>{const [w,h,d]=fit(cB),x=cB.getContext('2d');x.clearRect(0,0,w,h);
+  const x0=88*d,x1=w-12*d,y0=10*d,y1=h-34*d,X=z=>x1-(z/ZMAX)*(x1-x0),Y=v=>y1-(v-YMIN)/(YMAX-YMIN)*(y1-y0);
+  x.strokeStyle='rgba(109,128,153,.25)';x.lineWidth=d;for(let v=-1.04;v<=-.959;v+=.02){x.beginPath();x.moveTo(x0,Y(v));x.lineTo(x1,Y(v));x.stroke();}
+  // envolvente (la memoria que se apaga hacia el pasado)
+  x.beginPath();for(let i=0;i<=200;i++){const z=i/200*ZMAX;x.lineTo(X(z),Y(-1+S.A*Math.exp(-z/S.zt)));}for(let i=200;i>=0;i--){const z=i/200*ZMAX;x.lineTo(X(z),Y(-1-S.A*Math.exp(-z/S.zt)));}x.closePath();x.fillStyle='rgba(255,224,138,.07)';x.fill();
+  // modelo simple
+  x.save();x.setLineDash([5*d,5*d]);x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=1.3*d;x.beginPath();x.moveTo(x0,Y(-1));x.lineTo(x1,Y(-1));x.stroke();x.restore();
+  // curva
+  x.beginPath();for(let i=0;i<=400;i++){const z=i/400*ZMAX,v=Math.max(YMIN,Math.min(YMAX,wz(z)));i?x.lineTo(X(z),Y(v)):x.moveTo(X(z),Y(v));}x.strokeStyle='#ffe08a';x.lineWidth=2.2*d;x.shadowColor='rgba(255,224,138,.5)';x.shadowBlur=8*d;x.stroke();x.shadowBlur=0;
+  x.strokeStyle='rgba(109,128,153,.6)';x.lineWidth=d;x.strokeRect(x0,y0,x1-x0,y1-y0);
+  x.font=FONT(10,d);x.fillStyle='rgba(255,255,255,.7)';x.textAlign='left';x.fillText('modelo simple: aceleración constante (w = -1)',x0+6*d,Y(-1)-5*d);
+  x.fillStyle='#6d8099';x.textAlign='right';x.fillText('empuja menos',x0-5*d,y0+10*d);x.fillText('empuja más',x0-5*d,y1-3*d);x.fillText('w = -1',x0-5*d,Y(-1)+3*d);
+  x.textAlign='left';x.fillStyle='#cfdbe7';x.font=FONT(11,d);x.fillText('← más cerca del Big Bang',x0,h-10*d);x.textAlign='right';x.fillText('más cerca de hoy →',x1,h-10*d);
+  };
+
+ // ---------- Zona C: el mismo ruido, tres memorias ----------
+ // Cada sistema recuerda su pasado con un tiempo de memoria τ: dx/dt = (impulso - x)/τ.
+ // El impulso es un ritmo (Ω = 1) mezclado con ruido. R = τΩ: 0,03 (sin memoria), 2 (memoria justa), 25 (demasiada).
+ const LANES=[{R:.03,lab:'Sin memoria · R = 0,03 · copia cada sacudida: caos',col:'#c8a0dc',z:-1},{R:2,lab:'Memoria justa · R = 2 · el ritmo se impone al ruido',col:'#5fe8d0',z:0},{R:25,lab:'Demasiada memoria · R = 25 · tan aferrado al pasado que casi no se mueve',col:'#ff9c7a',z:1}];
+ const N=600,DT=.06;let tSim=0;const hist=LANES.map(()=>new Float32Array(N));LANES.forEach(l=>l.x=0);let head=0;
+ const gauss=()=>{let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+ const step=()=>{tSim+=DT;const drive=Math.sin(tSim)+1.1*gauss();LANES.forEach((l,k)=>{const tau=l.R,a=Math.min(1,DT/tau);l.x+=a*(drive-l.x);hist[k][head]=l.x;});head=(head+1)%N;};
+ for(let i=0;i<N;i++)step();
+ const drawC=()=>{const [w,h,d]=fit(cC),x=cC.getContext('2d');x.clearRect(0,0,w,h);const nL=LANES.length,lh=(h-8*d)/nL,cur=zona(S.tau*S.om);
+  LANES.forEach((l,k)=>{const top=4*d+k*lh,mid=top+lh*.6,amp=lh*.17,act=l.z===cur;
+   x.strokeStyle='rgba(109,128,153,.25)';x.lineWidth=d;x.beginPath();x.moveTo(8*d,mid);x.lineTo(w-8*d,mid);x.stroke();
+   x.beginPath();for(let i=0;i<N;i++){const v=hist[k][(head+i)%N],px=8*d+i/(N-1)*(w-16*d),py=mid-Math.max(-2.2,Math.min(2.2,v))*amp;i?x.lineTo(px,py):x.moveTo(px,py);}
+   x.strokeStyle=l.col;x.globalAlpha=act?1:.55;x.lineWidth=(act?2:1.4)*d;x.stroke();x.globalAlpha=1;
+   x.font=FONT(10.5,d,act?600:400);x.textAlign='left';const tx=(act?'▸ ':'')+l.lab,tw=x.measureText(tx).width;x.fillStyle='rgba(6,10,18,.85)';x.fillRect(6*d,top+1*d,tw+10*d,16*d);x.fillStyle=act?'#fff':l.col;x.fillText(tx,10*d,top+13*d);});};
+
+ // ---------- panel ----------
+ const P={cmTau:['tau',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v)],cmOm:['om',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v)],cmAA:['A',v=>v,v=>v,v=>fmt(v,3)],cmW:['w',v=>v,v=>v,v=>fmt(v)],cmD:['d',v=>v,v=>v,v=>fmt(v)],cmZ:['zt',v=>v,v=>v,v=>fmt(v)]};
+ Object.entries(P).forEach(([id,[k,fromS]])=>{$(id).addEventListener('input',e=>{S[k]=fromS(+e.target.value);sync(id);});});
+ const sync=skip=>{Object.entries(P).forEach(([id,[k,,toS,show]])=>{if(id!==skip)$(id).value=toS(S[k]);$(id+'o').textContent=show(S[k]);});
+  const R=S.tau*S.om,z=zona(R);$('cmR').textContent=fmt(R);$('cmR').style.color=z===0?'#5fe8d0':'#ff9c7a';
+  const ind=$('cmInd'),m=$('cmMsg');ind.className='ind '+(z===0?'in':'out');ind.textContent=z===0?'Dentro del Valle':'Fuera del Valle';
+  m.className='msg '+(z===0?'in':'out');m.textContent=z===0?'Dentro del Valle de Resiliencia: el sistema puede adaptarse y mantenerse estable.':z<0?'Fuera del Valle: recuerda muy poco y se vuelve demasiado caótico.':'Fuera del Valle: recuerda demasiado y se vuelve demasiado rígido.';
+  drawB();if(RMc){drawA(0);drawC();}};
+ $('cmReset').onclick=()=>{Object.assign(S,DEF);sync();};
+
+ // ---------- entrar y salir ----------
+ let on=false,savedRot=null,raf=0,last=0;
+ const loop=t=>{if(!on)return;if(t-last>=DT*1000*.5){step();last=t;}drawA(t);drawC();raf=requestAnimationFrame(loop);};
+ const btn=document.createElement('button');btn.type='button';btn.className='lens';btn.style.setProperty('--c','#c9a8ff');btn.setAttribute('aria-pressed','false');
+ btn.innerHTML='Cosmología <small style="text-transform:none">τΩ</small>';btn.title='Cosmología Estocástica · El Valle de Resiliencia: la memoria justa como condición de la estabilidad. Pulsa otra vez (o Esc) para volver.';
+ const enter=()=>{if(on||window.__soloMapa)return;on=true;window.__cosmo=true;savedRot=controls.autoRotate;controls.autoRotate=false;
+  btn.setAttribute('aria-pressed','true');btn.classList.add('on');go.hidden=true;tip.hidden=true;
+  ov.hidden=false;requestAnimationFrame(()=>{ov.classList.add('vis');fieldKey='';sync();if(RMc){drawA(0);drawC();}else raf=requestAnimationFrame(loop);});$('cosmoX').focus({preventScroll:true});};
+ const exit=()=>{if(!on)return;on=false;window.__cosmo=false;cancelAnimationFrame(raf);ov.classList.remove('vis');
+  setTimeout(()=>{if(!on)ov.hidden=true;},RMc?0:500);controls.autoRotate=savedRot&&!RMc;btn.setAttribute('aria-pressed','false');btn.classList.remove('on');btn.focus({preventScroll:true});};
+ btn.onclick=()=>on?exit():enter();
+ const bar=document.getElementById('lenses');if(bar)bar.appendChild(btn);
+ $('cosmoX').onclick=exit;
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&on){exit();e.stopImmediatePropagation();e.preventDefault();}},true);
+ addEventListener('resize',()=>{if(on){fieldKey='';sync();}});
+
+ // ---------- entrar desde los nodos de la teoría ----------
+ const TEO=/Cosmolog[ií]a Estoc|Memoria Finita|Finite-Memory|Espacio de Hilbert a la Cosmolog|color del ruido|Valle de Resiliencia/i;
+ const go=document.createElement('button');go.type='button';go.id='cosmoGo';go.hidden=true;go.textContent='Explorar en modo Cosmología';go.onclick=enter;
+ const stg=document.getElementById('stage');if(stg)stg.appendChild(go);
+ const _select=select;select=function(i){_select(i);const n=nodes[i];go.hidden=!(n&&n.t&&TEO.test(n.t));};
+ cv.addEventListener('click',()=>{if(hover<0)go.hidden=true;});
 }
 
 })();
