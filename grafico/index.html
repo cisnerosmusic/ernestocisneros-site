@@ -226,7 +226,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.407 · 11 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.409 · 11 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1095,9 +1095,12 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const SC=320/360,LAM=12;
  const P=(lon,lat)=>CEN.clone().addScaledVector(ux,(lon-0)*SC).addScaledVector(uy,(lat-LAM)*SC);
  const G=new THREE.Group();G.renderOrder=-2;scene.add(G);
- {const A=[];LAND.rows.forEach((r,j)=>{for(let c=0;c<r.length;c++){const v=parseInt(r[c],16);for(let b=0;b<4;b++)if(v&(8>>b)){const i=c*4+b;const p=P(-180+i*LAND.st,LAND.lat0+j*LAND.st);A.push(p.x,p.y,p.z);}}});
-  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(A,3));
-  G.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x3d6a8f,size:1.5,sizeAttenuation:true,transparent:true,opacity:.7,depthWrite:false,fog:false})));}
+ // el mapa en 64 piezas (8 × 8 por longitud y latitud) para que pueda aparecer y desaparecer por secciones
+ const TILE=(lon,lat)=>Math.min(7,Math.max(0,Math.floor((lon+180)/45)))*8+Math.min(7,Math.max(0,Math.floor((lat+56)/17)));
+ const TILES=Array.from({length:64},()=>({o:[]}));
+ {const A=Array.from({length:64},()=>[]);LAND.rows.forEach((r,j)=>{for(let c=0;c<r.length;c++){const v=parseInt(r[c],16);for(let b=0;b<4;b++)if(v&(8>>b)){const i=c*4+b,lo=-180+i*LAND.st,la=LAND.lat0+j*LAND.st;const p=P(lo,la);A[TILE(lo,la)].push(p.x,p.y,p.z);}}});
+  A.forEach((a,k)=>{if(!a.length)return;const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(a,3));
+   const o=new THREE.Points(g,new THREE.PointsMaterial({color:0x3d6a8f,size:1.5,sizeAttenuation:true,transparent:true,opacity:.7,depthWrite:false,fog:false}));G.add(o);TILES[k].o.push(o);});}
  const CT={'Cuba':[23.1,-82.4],'Miami':[25.8,-80.2],'Nueva York':[40.7,-74],'EE. UU.':[38.9,-77],'España':[40.4,-3.7],'Reino Unido':[51.5,-.1],'Francia':[48.9,2.35],'Alemania':[52.5,13.4],'Países Bajos':[52.4,4.9],'Venezuela':[10.5,-66.9],'México':[19.4,-99.1],'Canadá':[43.7,-79.4],'Panamá':[9,-79.5],'Nicaragua':[12.1,-86.3],'Corea del Sur':[37.6,127],'Japón':[35.7,139.7],'Angola':[-8.8,13.2],'Israel':[31.8,35.2],'Brasil':[-15.8,-47.9],'Noruega':[60.4,5.3],'Argentina':[-34.6,-58.4],'Guatemala':[14.6,-90.5],'Italia':[41.9,12.5],'Portugal':[38.7,-9.1],'Ecuador':[-.2,-78.5],'Bolivia':[-16.5,-68.1],'Rusia':[55.75,37.6],'Uruguay':[-34.9,-56.2],'Rep. Dominicana':[18.5,-69.9],'Costa Rica':[9.93,-84.08],'El Salvador':[13.7,-89.2],'Orlando':[28.5,-81.4],'Spring Hill':[28.48,-82.53],'Chile':[-33.45,-70.67],'Perú':[-12.05,-77.04],'Colombia':[4.71,-74.07],'Padrón':[42.74,-8.66],'Tampa':[27.95,-82.46],'Ucrania':[50.45,30.52],'Honduras':[14.07,-87.19],'Los Ángeles':[34.05,-118.24],'Islas Canarias':[28.1,-15.4],'Barcelona':[41.39,2.17],'Dubái':[25.2,55.27],'Nueva Jersey':[40.2,-74.6]};
  const X=t=>nodes.findIndex(n=>n.t===t);
  // viajes cuyo título no dice «viaje»
@@ -1150,12 +1153,12 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
     cajas.push([X0+best[0]-w/2,Y0+best[1]-h/2,X0+best[0]+w/2,Y0+best[1]+h/2]);
     const p=P(CT[c][1],CT[c][0]);A.push(p.x,p.y,p.z);
     const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,fog:false,opacity:.92}));
-    sp.position.copy(p).addScaledVector(ux,best[0]).addScaledVector(uy,best[1]);sp.scale.set(w,h,1);G.add(sp);});
-   if(LBL.length){const g_=new THREE.BufferGeometry();g_.setAttribute('position',new THREE.Float32BufferAttribute(LBL,3));G.add(new THREE.LineSegments(g_,new THREE.LineBasicMaterial({color:0x9fd2f0,transparent:true,opacity:.35,depthWrite:false,fog:false})));}
+    sp.position.copy(p).addScaledVector(ux,best[0]).addScaledVector(uy,best[1]);sp.scale.set(w,h,1);G.add(sp);TILES[TILE(CT[c][1],CT[c][0])].o.push(sp);});
+   if(LBL.length){const g_=new THREE.BufferGeometry();g_.setAttribute('position',new THREE.Float32BufferAttribute(LBL,3));MK.lead=new THREE.LineSegments(g_,new THREE.LineBasicMaterial({color:0x9fd2f0,transparent:true,opacity:.35,depthWrite:false,fog:false}));G.add(MK.lead);}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(A,3));
   MK.order=orden.slice();MK.pts=orden.map(c=>P(CT[c][1],CT[c][0]));
   MK.obj=new THREE.Points((()=>{const q=new THREE.BufferGeometry();q.setAttribute('position',new THREE.Float32BufferAttribute(MK.pts.flatMap(p=>[p.x,p.y,p.z]),3));return q;})(),new THREE.PointsMaterial({visible:false}));G.add(MK.obj);
-  G.add(new THREE.Points(g,new THREE.PointsMaterial({color:0xcfefff,size:2.6,sizeAttenuation:true,transparent:true,opacity:.95,depthWrite:false,fog:false})));}
+  G.add(MK.dots=new THREE.Points(g,new THREE.PointsMaterial({color:0xcfefff,size:2.6,sizeAttenuation:true,transparent:true,opacity:.95,depthWrite:false,fog:false})));}
  // botones: MUNDO (mostrar u ocultar) y SOLO MAPA (el mapa con sus datos y el cronograma de viajes)
  const bar=document.getElementById('lenses'),ml=document.getElementById('mapList'),ov=document.getElementById('ov');
  const esc=x=>String(x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
@@ -1264,10 +1267,25 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
     if(t>=2900&&!back.side){back.side=true;if(ov){ov.style.visibility='';css(ov,'1',RM?0:600);}if(lg){lg.style.visibility='';css(lg,'1',RM?0:600);}}
    },()=>{setF(pieces.flatMap(p=>p.f),1);scene.children.forEach((o,k)=>{if(saved&&k<saved.vis.length)o.visible=saved.vis[k];});nodeLinks.geometry.setDrawRange(0,Infinity);arcLinks.geometry.setDrawRange(0,Infinity);
     window.__soloMapa=false;if(saved)controls.autoRotate=saved.rot&&!RM;busy=false;});}};
+ // MUNDO: apagar y encender por secciones. Primero las conexiones gráfico-mapa (una a una), luego el mapa en 64 piezas en orden aleatorio.
+ const setMundo=on=>{if(busy)return;busy=true;
+  const ord=[...Array(64).keys()].sort(()=>Math.random()-.5).filter(k=>TILES[k].o.length);const tf=TILES.map(t=>t.o.flatMap(fadeables));
+  const extra=[MK.dots,MK.lead].filter(Boolean).flatMap(fadeables);const nT_=ord.length;
+  if(!on){run(3300,t=>{
+     const k1=ez(t/900),k2=ez((t-450)/650);nodeLinks.geometry.setDrawRange(0,Math.round(nCnt*(1-k1)/2)*2);arcLinks.geometry.setDrawRange(0,Math.round(aCnt*(1-k2)/2)*2);
+     ord.forEach((k,i)=>{const st=1000+i*(1900/nT_);setF(tf[k],1-ez((t-st)/380));});
+     setF(extra,1-ez((t-2700)/500));
+    },()=>{G.visible=false;TILES.forEach((t,k)=>setF(tf[k],1));setF(extra,1);nodeLinks.geometry.setDrawRange(0,Infinity);arcLinks.geometry.setDrawRange(0,Infinity);busy=false;});}
+  else{TILES.forEach((t,k)=>setF(tf[k],0));setF(extra,0);nodeLinks.geometry.setDrawRange(0,0);arcLinks.geometry.setDrawRange(0,0);G.visible=true;
+   run(3300,t=>{
+     ord.forEach((k,i)=>{const st=i*(1900/nT_);setF(tf[k],ez((t-st)/380));});
+     setF(extra,ez((t-1700)/500));
+     const k1=ez((t-2200)/1000),k2=ez((t-2200)/700);nodeLinks.geometry.setDrawRange(0,Math.round(nCnt*k1/2)*2);arcLinks.geometry.setDrawRange(0,Math.round(aCnt*k2/2)*2);
+    },()=>{nodeLinks.geometry.setDrawRange(0,Infinity);arcLinks.geometry.setDrawRange(0,Infinity);busy=false;});}};
  let bS=null;
  if(bar){const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c','#9fd2f0');b.setAttribute('aria-pressed','true');
   b.innerHTML=`Mundo <small>${used.size}</small>`;b.title='Mapamundi detrás del gráfico: países de los viajes y de los amigos ('+nT+' viajes, '+nG+' personas). Pulsa para mostrar u ocultar.';
-  b.onclick=()=>{if(solo)return;G.visible=!G.visible;b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);
+  b.onclick=()=>{if(solo||busy)return;setMundo(!G.visible);b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);
   bS=document.createElement('button');bS.type='button';bS.className='lens';bS.style.setProperty('--c','#ffe08a');bS.setAttribute('aria-pressed','false');
   bS.innerHTML=`Solo mapa <small>${TT.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
   bS.onclick=()=>setSolo(!solo);bar.appendChild(bS);
