@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.463 · 13 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.465 · 13 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1813,8 +1813,25 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  const st=document.createElement('style');st.textContent=`
 #dao .body{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.92fr) 300px;grid-template-areas:"a b e p" "c d e p"}
 #dao .ze{--zc:#ff6b6b;grid-area:e}
-#dao .ze canvas{flex:0 0 220px}
+#dao .ze canvas{flex:1 1 0;min-height:90px}
 #dao .ze .opts button.on{border-color:#ff6b6b;color:#fff;background:rgba(255,107,107,.14)}#dao .ze #dVel button.on{border-color:#ffe08a;background:rgba(255,224,138,.12)}
+#dao .ta{margin:auto 10px 10px;padding:8px 11px;border:1px solid rgba(201,168,255,.5);border-left:3px solid #c9a8ff;border-radius:9px;background:rgba(201,168,255,.05);font-size:11px;line-height:1.5;color:#d7cfe6}
+#dao .ta b{display:block;color:#c9a8ff;font-family:var(--display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+#dao .ta q{display:block;color:#fff;font-size:12px;quotes:'«' '»';margin-bottom:3px}
+#dao .ta button{margin-top:5px;background:rgba(6,10,18,.8);border:1px solid #c9a8ff;color:#c9a8ff;font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:10px;cursor:pointer}
+#dao .ta button:hover,#dao .ta button:focus-visible{background:rgba(201,168,255,.15);outline:none}
+#dao .taP{position:absolute;inset:0;z-index:3;background:rgba(8,12,22,.97);padding:14px 14px 16px;overflow:auto;font-size:11px;line-height:1.55;color:#cfdbe7;opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+#dao.vis .ze>.taP,#dao .ze>.taP{transition-delay:0s}#dao .taP[hidden]{display:none}#dao .taP.vis{opacity:1;transform:none}
+#dao .taP h5{margin:0 0 4px;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#c9a8ff}
+#dao .taP q{display:block;color:#fff;font-size:13px;quotes:'«' '»';margin:4px 0 8px}
+#dao .taP table{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:10.5px}
+#dao .taP th{text-align:left;font-family:var(--display);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 6px;border-bottom:1px solid var(--line)}
+#dao .taP th:first-child{color:#ffe08a}#dao .taP th:last-child{color:#5fe8d0}
+#dao .taP td{vertical-align:top;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,.06);width:50%}
+#dao .taP ul{margin:4px 0 8px;padding-left:16px}#dao .taP li{margin:3px 0}
+#dao .taP .x{position:absolute;top:10px;right:10px;background:none;border:1px solid var(--line);color:#cfdbe7;border-radius:9px;font-size:10px;padding:2px 8px;cursor:pointer}
+#dao .taP .fin{color:#fff;margin-top:6px}#dao .taP a{color:#c9a8ff}
+@media (prefers-reduced-motion:reduce){#dao .taP{transition:none}}
 #dao .inm{padding:6px 12px 0;font-size:11px;line-height:1.5;color:#cfdbe7}#dao .inm div{margin:3px 0}#dao .inm b{color:#fff;font-weight:500}#dao .inm .k{color:var(--dim)}
 #dao .za{--zc:#ff9c7a}#dao .zb{--zc:#5fe8d0}#dao .zc{--zc:#9fd2f0}#dao .zd{--zc:#c9a8ff;grid-area:d}
 #dao .z h3{color:var(--zc)}
@@ -1844,7 +1861,7 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 #daoGo{position:absolute;left:50%;transform:translateX(-50%);bottom:134px;z-index:7;background:rgba(6,10,18,.9);border:1px solid #7fd6ff;color:#7fd6ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:14px;cursor:pointer;box-shadow:0 0 14px rgba(127,214,255,.3)}
 #daoGo[hidden]{display:none}
 #daoctx{--acc:#7fd6ff}
-@media (max-width:1100px){#dao .zd{order:5;min-height:380px}#dao .zc{min-height:440px}#dao .ze{order:6;min-height:640px}}
+@media (max-width:1100px){#dao .zd{order:5;min-height:380px}#dao .zc{min-height:440px}#dao .ze{order:6;min-height:640px}#dao .ze canvas{flex:0 0 190px}}
 @media (prefers-reduced-motion:reduce){#dao .flow{animation:none}}
 `;document.head.appendChild(st);
 
@@ -1873,7 +1890,25 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
    <div class="k" style="font-size:10px;color:var(--dim);margin-bottom:3px">Velocidad de la amenaza</div><div class="opts" id="dVel" style="margin-bottom:0"><button type="button" data-v="0">Lenta</button><button type="button" data-v="1">Moderada</button><button type="button" data-v="2" class="on">Explosiva</button></div></div>
   <canvas id="dE" aria-label="Puntuación de amenaza y respuesta inflamatoria"></canvas>
   <div class="inm" id="dInm"></div>
-  <p>En una crisis, el sistema puede activar una respuesta inflamatoria temporal: sube el quórum, alarga los plazos y acorta la memoria para reaccionar rápido. No es una dictadura: es un reflejo con rendición de cuentas. La velocidad de la amenaza decide cuánta democracia cabe: en una crisis explosiva pesan más los expertos; en una lenta, la comunidad decide casi en igualdad. Si la inflamación pasa de 30 días, salta un cortacircuitos: revisión forzada y parámetros a la mitad. Al terminar, todo vuelve poco a poco al estado normal y el sistema recalibra sus detectores con lo aprendido.</p></section>
+  <p>En una crisis, el sistema activa una respuesta inflamatoria temporal: sube el quórum, alarga los plazos, acorta la memoria. Es un reflejo con rendición de cuentas, no una dictadura. La velocidad de la amenaza decide cuánta democracia cabe. Si la inflamación pasa de 30 días, salta un cortacircuitos. Después todo vuelve poco a poco a la normalidad mientras los detectores se recalibran.</p>
+  <div class="ta"><b>Principio · Transparencia asimétrica</b><q>El poder debe ser transparente. El ciudadano debe ser privado.</q>El sistema inmunológico observa el poder, no a las personas: cuanto más poder tienes, más visible eres.<br><button type="button" id="taOpen">Qué es visible, qué se protege</button></div>
+  <div class="taP" id="taP" hidden role="region" aria-label="Transparencia asimétrica"><button type="button" class="x" id="taX">Cerrar</button>
+   <h5>Transparencia asimétrica</h5>
+   <q>El poder debe ser transparente. El ciudadano debe ser privado.</q>
+   <div>La transparencia total produce panóptico. La opacidad total produce impunidad. Entre las dos, la DAO elige a quién mira: a quien administra lo común.</div>
+   <table><tr><th>Visible</th><th>Protegido</th></tr>
+    <tr><td>La tesorería y cada gasto</td><td>La identidad de los miembros de C2</td></tr>
+    <tr><td>Los votos de C1, con nombre: quien valida rinde cuentas</td><td>El voto de C2: secreto, comprobable con pruebas de conocimiento cero (soy miembro, voté una sola vez)</td></tr>
+    <tr><td>Los cambios de parámetros, las alertas con su puntaje, las crisis declaradas</td><td>Lo que cada miembro hace fuera de la DAO</td></tr>
+    <tr><td>El registro de accesos de quien opera el sistema</td><td>Los datos personales: bastan credenciales verificables</td></tr></table>
+   <div><b style="color:#ffe08a;font-family:var(--display);font-size:10px;letter-spacing:.08em;text-transform:uppercase">Puntos ciegos · estudio en curso</b></div>
+   <ul><li>En una DAO el poder es líquido. Quien acumula tokens sin cargo formal cruza la frontera entre poder y ciudadano. Esa frontera hay que recalcularla siempre.</li>
+    <li>El voto secreto protege de la compra de votos. Sus pruebas criptográficas piden expertos: riesgo de una élite técnica.</li>
+    <li>Ver no es entender. Un registro público que nadie lee produce ilusión de transparencia.</li>
+    <li>Si se pierde la asimetría, el detector se vuelve vigilancia. Por eso el sistema inmunológico solo lee señales del poder (tesorería, concentración, oráculos), nunca la vida de los miembros.</li>
+    <li>Lo humano no se programa: la captura cultural, el cansancio, la buena fe que se agota.</li></ul>
+   <div class="fin">La tecnología no sustituye virtud política.</div>
+   <div style="margin-top:8px"><a href="https://ernestocisneros.art/assets/pdf/technology/transparencia-asimetrica.pdf" target="_blank" rel="noopener">Leer «Transparencia asimétrica» (PDF) ↗</a></div></div></section>
  <aside class="pn">
   <h4>DAO de Memoria Finita</h4>
   <div class="sb">Por qué colapsaron las organizaciones descentralizadas y cómo podría durar una que sabe olvidar.</div>
@@ -1994,6 +2029,10 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  const resetE=()=>{Object.assign(I,{day:0,S:0,act:{},vel:2,infT:-1,cb:false,rec:-1,recFrom:0,H:[],learned:false});
   ov.querySelectorAll('#dThr button').forEach(b=>b.classList.remove('on'));ov.querySelectorAll('#dVel button').forEach(b=>b.classList.toggle('on',b.dataset.v==='2'));for(let k=0;k<40;k++)stepE(.5);};
  ov.querySelectorAll('#dThr button').forEach(b=>b.onclick=()=>{const m=b.dataset.m;I.act[m]=!I.act[m];b.classList.toggle('on',I.act[m]);if(RMd){I.S=target();stepE(.01);drawE(0);}});
+ const taP=ov.querySelector('#taP');let taOn=false;
+ const taOpen=()=>{taOn=true;taP.hidden=false;taP.scrollTop=0;requestAnimationFrame(()=>taP.classList.add('vis'));ov.querySelector('#taX').focus({preventScroll:true});};
+ const taClose=()=>{if(!taOn)return;taOn=false;taP.classList.remove('vis');setTimeout(()=>{if(!taOn)taP.hidden=true;},RMd?0:450);ov.querySelector('#taOpen').focus({preventScroll:true});};
+ ov.querySelector('#taOpen').onclick=taOpen;ov.querySelector('#taX').onclick=taClose;
  ov.querySelectorAll('#dVel button').forEach(b=>b.onclick=()=>{I.vel=+b.dataset.v;ov.querySelectorAll('#dVel button').forEach(o=>o.classList.toggle('on',o===b));if(RMd)drawE(0);});
  const drawE=t=>{const [w,h,d]=fit(cE),x=cE.getContext('2d');if(on&&!RMd){const dt=Math.min(.05,(t-(lastE||t))/1000)*6;lastE=t;stepE(dt);}
   x.clearRect(0,0,w,h);const x0=12*d,x1=w-12*d,gy=10*d,gh=12*d,SX=v=>x0+v/16*(x1-x0),sv=sev(I.S),[lab,col]=SEVN[sv];
@@ -2066,12 +2105,12 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  const enter=()=>{if(on||window.__soloMapa||window.__cosmo||window.__asim||window.__pqb)return;on=true;window.__dao=true;savedRot=controls.autoRotate;controls.autoRotate=false;
   btn.setAttribute('aria-pressed','true');btn.classList.add('on');goD.hidden=true;tip.hidden=true;
   ov.classList.remove('leaving');ov.hidden=false;requestAnimationFrame(()=>{ov.classList.add('vis');fkey='';syncD();resetD();resetE();lastD=0;lastE=0;if(RMd){drawA(0);drawB(0);drawD(0);drawE(0);}else raf=requestAnimationFrame(loop);});$('daoX').focus({preventScroll:true});};
- const exit=()=>{if(!on)return;ctxClose();on=false;window.__dao=false;cancelAnimationFrame(raf);ov.classList.remove('vis');
+ const exit=()=>{if(!on)return;ctxClose();taOn=false;taP.classList.remove('vis');taP.hidden=true;on=false;window.__dao=false;cancelAnimationFrame(raf);ov.classList.remove('vis');
   ov.classList.add('leaving');setTimeout(()=>{if(!on){ov.hidden=true;ov.classList.remove('leaving');}},RMd?0:1100);controls.autoRotate=savedRot&&!RMd;btn.setAttribute('aria-pressed','false');btn.classList.remove('on');};
  btn.onclick=()=>on?exit():enter();
  const bar=document.getElementById('lenses');if(bar)bar.appendChild(btn);
  $('daoX').onclick=exit;
- addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(ctxOn){ctxClose();e.stopImmediatePropagation();e.preventDefault();}else if(on){exit();e.stopImmediatePropagation();e.preventDefault();}},true);
+ addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(ctxOn){ctxClose();e.stopImmediatePropagation();e.preventDefault();}else if(on&&taOn){taClose();e.stopImmediatePropagation();e.preventDefault();}else if(on){exit();e.stopImmediatePropagation();e.preventDefault();}},true);
  addEventListener('resize',()=>{if(on){fkey='';syncD();}});
 
  // ---------- entrar desde los nodos de gobernanza ----------
