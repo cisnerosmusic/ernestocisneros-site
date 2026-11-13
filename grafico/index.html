@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.461 · 13 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.463 · 13 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1804,14 +1804,18 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 // C muestra la estructura bicameral; D el Ritual de Memoria Finita. Las incoherencias van a la vista.
 {
  const RMd=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const DEFD={tau:6,om:1/3,K:3};             // τ en meses, Ω en ciclos de decisión por mes, ritual cada K meses
+ const DEFD={tau:2,om:1,K:3};             // τ en meses, Ω en ciclos de decisión por mes, ritual cada K meses
  const D=Object.assign({},DEFD);
  const fmt=(x,n=2)=>x.toFixed(n).replace('.',',');
  const L10=Math.log10,LO=1,HI=3,OPT=2;
  const zona=R=>R<LO?-1:R>HI?1:0;
  const VER=(document.querySelector('.sub .ver')||{}).textContent||'';
  const st=document.createElement('style');st.textContent=`
-#dao .body{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px;grid-template-areas:"a b p" "c d p"}
+#dao .body{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.92fr) 300px;grid-template-areas:"a b e p" "c d e p"}
+#dao .ze{--zc:#ff6b6b;grid-area:e}
+#dao .ze canvas{flex:0 0 220px}
+#dao .ze .opts button.on{border-color:#ff6b6b;color:#fff;background:rgba(255,107,107,.14)}#dao .ze #dVel button.on{border-color:#ffe08a;background:rgba(255,224,138,.12)}
+#dao .inm{padding:6px 12px 0;font-size:11px;line-height:1.5;color:#cfdbe7}#dao .inm div{margin:3px 0}#dao .inm b{color:#fff;font-weight:500}#dao .inm .k{color:var(--dim)}
 #dao .za{--zc:#ff9c7a}#dao .zb{--zc:#5fe8d0}#dao .zc{--zc:#9fd2f0}#dao .zd{--zc:#c9a8ff;grid-area:d}
 #dao .z h3{color:var(--zc)}
 #dao .tag{display:inline-block;margin-left:8px;padding:1px 7px;border-radius:9px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;font-weight:500;vertical-align:1px;color:#7fd6ff;border:1px solid rgba(127,214,255,.5)}
@@ -1834,12 +1838,13 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 #dao .nota b{color:#7fd6ff;font-family:var(--display);letter-spacing:.06em;text-transform:uppercase;font-size:10px;display:block;margin-bottom:3px}
 #dao .rd{font-size:11px;color:#b7c6d6;margin:6px 12px 0;line-height:1.45}
 #dao.vis .zd{transition-delay:2.45s}#dao.vis .zd::before{transition-delay:2.7s}#dao.vis .zd>*{transition-delay:2.85s}
-#dao.vis .pn{transition-delay:3.05s}
-#dao.leaving .zd{transition-delay:.04s}
+#dao.vis .ze{transition-delay:3.05s}#dao.vis .ze::before{transition-delay:3.3s}#dao.vis .ze>*{transition-delay:3.45s}
+#dao.vis .pn{transition-delay:3.65s}
+#dao.leaving .ze{transition-delay:0s}#dao.leaving .zd{transition-delay:.04s}
 #daoGo{position:absolute;left:50%;transform:translateX(-50%);bottom:134px;z-index:7;background:rgba(6,10,18,.9);border:1px solid #7fd6ff;color:#7fd6ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:14px;cursor:pointer;box-shadow:0 0 14px rgba(127,214,255,.3)}
 #daoGo[hidden]{display:none}
 #daoctx{--acc:#7fd6ff}
-@media (max-width:1100px){#dao .zd{order:5;min-height:380px}#dao .zc{min-height:440px}}
+@media (max-width:1100px){#dao .zd{order:5;min-height:380px}#dao .zc{min-height:440px}#dao .ze{order:6;min-height:640px}}
 @media (prefers-reduced-motion:reduce){#dao .flow{animation:none}}
 `;document.head.appendChild(st);
 
@@ -1854,19 +1859,26 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  <section class="z zc"><h3>C · Las dos cámaras<span class="tag">hipótesis del autor</span></h3>
   <div class="cam"><div class="opts"><button type="button" data-m="exp">Solo expertos</button><button type="button" data-m="com">Solo comunidad</button><button type="button" data-m="dos" class="on">Las dos</button></div>
   <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid meet" aria-label="Estructura bicameral">
-   <g id="dC1"><rect x="18" y="30" width="150" height="80" rx="12" fill="rgba(255,224,138,.08)" stroke="#ffe08a"/><text x="93" y="60" text-anchor="middle" fill="#ffe08a" font-family="Chakra Petch" font-weight="600" font-size="13">C1 · EXPERTOS</text><text x="93" y="80" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="9.5">rigor · validación</text><text x="93" y="95" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="9.5">incentivos por calidad</text></g>
-   <g id="dC2"><rect x="232" y="30" width="150" height="80" rx="12" fill="rgba(95,232,208,.08)" stroke="#5fe8d0"/><text x="307" y="60" text-anchor="middle" fill="#5fe8d0" font-family="Chakra Petch" font-weight="600" font-size="13">C2 · COMUNIDAD</text><text x="307" y="80" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="9.5">legitimidad · pluralidad</text><text x="307" y="95" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="9.5">sin dinero directo</text></g>
-   <g id="dAr"><path class="flow" d="M170 55 L230 55" stroke="#ffe08a" stroke-width="1.6" fill="none"/><path class="flow" d="M230 85 L170 85" stroke="#5fe8d0" stroke-width="1.6" fill="none"/><text x="200" y="48" text-anchor="middle" fill="#ffe08a" font-family="IBM Plex Mono" font-size="8.5">valida</text><text x="200" y="100" text-anchor="middle" fill="#5fe8d0" font-family="IBM Plex Mono" font-size="8.5">legitima</text></g>
-   <text x="200" y="140" text-anchor="middle" fill="#c9a8ff" font-family="IBM Plex Mono" font-size="9" id="dMem">las reputaciones de ambas decaen con el tiempo (memoria finita)</text>
+   <g id="dC1"><rect x="18" y="30" width="150" height="80" rx="12" fill="rgba(255,224,138,.08)" stroke="#ffe08a"/><text x="93" y="60" text-anchor="middle" fill="#ffe08a" font-family="Chakra Petch" font-weight="600" font-size="13">C1 · EXPERTOS</text><text x="93" y="80" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="8.5">3 a 15 miembros</text><text x="93" y="95" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="8.5">valida · cobra por calidad</text></g>
+   <g id="dC2"><rect x="232" y="30" width="150" height="80" rx="12" fill="rgba(95,232,208,.08)" stroke="#5fe8d0"/><text x="307" y="60" text-anchor="middle" fill="#5fe8d0" font-family="Chakra Petch" font-weight="600" font-size="13">C2 · COMUNIDAD</text><text x="307" y="80" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="8.5">abierta · propone y vota</text><text x="307" y="95" text-anchor="middle" fill="#cfdbe7" font-family="IBM Plex Mono" font-size="8.5">presupuesto · veto con ⅔</text></g>
+   <g id="dAr"><path class="flow" d="M230 55 L170 55" stroke="#5fe8d0" stroke-width="1.6" fill="none"/><path class="flow" d="M170 85 L230 85" stroke="#ffe08a" stroke-width="1.6" fill="none"/><text x="200" y="48" text-anchor="middle" fill="#5fe8d0" font-family="IBM Plex Mono" font-size="8.5">propone</text><text x="200" y="100" text-anchor="middle" fill="#ffe08a" font-family="IBM Plex Mono" font-size="8.5">valida</text></g>
+   <text x="200" y="140" text-anchor="middle" fill="#c9a8ff" font-family="IBM Plex Mono" font-size="9" id="dMem">ritual cada 90 días · reputaciones que decaen · R de ambas cámaras ≈ 2</text>
   </svg><div class="risk" id="dRisk"></div></div>
-  <p>¿Qué sostiene a la Cámara de Comunidad sin dinero? La apuesta es la reputación que se gana participando y decae con el tiempo, la legitimidad y el propio ritual. Es una apuesta, todavía sin prueba.</p></section>
+  <p>¿Qué sostiene a la Cámara de Comunidad sin dinero? En el documento 2.0, su única recompensa es tener voz y voto significativos: propone, fija el presupuesto y puede vetar a los expertos. Es una apuesta, todavía sin prueba.</p></section>
  <section class="z zd"><h3>D · El Ritual de Memoria Finita<span class="tag">hipótesis del autor</span></h3><canvas id="dD" aria-label="Decisiones que pierden peso con el tiempo"></canvas>
   <p>El Ritual es el acto de olvidar de forma deliberada y disciplinada. Cada cierto tiempo, las decisiones viejas pierden peso o se archivan, las reputaciones decaen y los parámetros se recalibran. El registro no se borra (la cadena lo guarda todo); lo que decae es su peso sobre el presente. Sin este olvido estructurado, una organización termina asfixiada por su propio pasado.</p></section>
+ <section class="z ze"><h3>E · El sistema inmunológico<span class="tag">repositorio FMD-DAO · hipótesis</span></h3>
+  <div class="cam" style="flex:0 0 auto"><div class="k" style="font-size:10px;color:var(--dim);margin-bottom:3px">Señales de amenaza (el número es su peso)</div><div class="opts" id="dThr" style="margin-bottom:4px">
+   <button type="button" data-m="part" title="Participación: caída de más del 70 % en 48 horas">Participación · 3</button><button type="button" data-m="gini" title="Fragmentación del consenso: índice de Gini mayor que 0,8">Fragmentación · 2</button><button type="button" data-m="tes" title="Tesorería: salida de más del 30 % en 7 días">Tesorería · 3</button><button type="button" data-m="rep" title="Reputación: un actor con más del 40 % del total en 72 horas">Reputación · 3</button><button type="button" data-m="ora" title="Oráculos: desviación de más de 3σ respecto a su media">Oráculos · 2</button><button type="button" data-m="exp" title="Falla técnica: exploit confirmado o contrato detenido">Exploit · 3</button></div>
+   <div class="k" style="font-size:10px;color:var(--dim);margin-bottom:3px">Velocidad de la amenaza</div><div class="opts" id="dVel" style="margin-bottom:0"><button type="button" data-v="0">Lenta</button><button type="button" data-v="1">Moderada</button><button type="button" data-v="2" class="on">Explosiva</button></div></div>
+  <canvas id="dE" aria-label="Puntuación de amenaza y respuesta inflamatoria"></canvas>
+  <div class="inm" id="dInm"></div>
+  <p>En una crisis, el sistema puede activar una respuesta inflamatoria temporal: sube el quórum, alarga los plazos y acorta la memoria para reaccionar rápido. No es una dictadura: es un reflejo con rendición de cuentas. La velocidad de la amenaza decide cuánta democracia cabe: en una crisis explosiva pesan más los expertos; en una lenta, la comunidad decide casi en igualdad. Si la inflamación pasa de 30 días, salta un cortacircuitos: revisión forzada y parámetros a la mitad. Al terminar, todo vuelve poco a poco al estado normal y el sistema recalibra sus detectores con lo aprendido.</p></section>
  <aside class="pn">
   <h4>DAO de Memoria Finita</h4>
   <div class="sb">Por qué colapsaron las organizaciones descentralizadas y cómo podría durar una que sabe olvidar.</div>
   <div class="txt"><b>Qué es una DAO.</b> Una organización que se gobierna con reglas escritas en código sobre una blockchain. Nadie manda por encima del código: las reglas se ejecutan solas y todos pueden leerlas.</div>
-  <button type="button" class="btn" id="dCtx" style="margin-top:4px;border-color:#7fd6ff;color:#7fd6ff">Leer el contexto: por qué colapsaron</button>
+  <button type="button" class="btn" id="dCtx" style="margin-top:4px;border-color:#7fd6ff;color:#7fd6ff">Leer el contexto: por qué colapsaron</button><a class="btn" href="https://ernestocisneros.art/assets/pdf/IA%20Descentralizada%20y%20Verificable%20%2B%20DAO%20de%20Memoria%20Finita%202.0.pdf" target="_blank" rel="noopener">Documento técnico 2.0 (PDF)</a><a class="btn" href="https://github.com/cisnerosmusic/DAO_de_Memoria_Finita_-FMD-DAO-" target="_blank" rel="noopener">Repositorio FMD-DAO</a>
   <div class="sec">A · El diagnóstico</div>
   <button type="button" class="btn" id="dCrash" style="margin-top:2px">Ilustrar un colapso de mercado</button>
   <div class="sec">B · El valle</div>
@@ -1878,12 +1890,14 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
   ${sl('dK','ritual cada',1,12,1,'Cada cuántos meses se recalibra y se archiva lo que ya casi no pesa.')}
   <button type="button" class="btn" id="dReset">Restablecer valores</button>
   <div class="abierto"><b>Intento honesto · lo que falta resolver</b><ul>
-   <li class="inc"><i>Incoherencia:</i> la Cámara de Expertos premia la calidad con incentivos. Si son económicos, depende del mercado igual que las DAOs que colapsaron. Este es un intento honesto y aquí hay una incoherencia que debemos resolver.</li>
-   <li><i>Pregunta abierta:</i> la Cámara de Comunidad no recibe dinero, pero la apatía de voto existía incluso con dinero. Falta mostrar qué la sostiene.</li>
-   <li><i>Pregunta abierta:</i> ¿quién ejecuta el olvido? Si lo hace el código, el ritual es automático pero ciego. Si lo hacen personas, puede ser capturado.</li>
-   <li><i>Pendiente:</i> cómo se reparte el voto para no repetir la plutocracia de «un token, un voto».</li>
+   <li class="inc"><i>Incoherencia:</i> la Cámara de Expertos cobra según la calidad de sus revisiones, con un presupuesto que vota la comunidad. Si la tesorería cae con el mercado, ese pago cae también: el riesgo de las DAOs que colapsaron se atenúa, pero no desaparece. Este es un intento honesto y aquí hay una incoherencia que debemos resolver.</li>
+   <li><i>Pregunta abierta:</i> la Cámara de Comunidad no recibe dinero; su recompensa es la voz y el voto. La apatía de voto existía incluso con dinero. Falta mostrar que eso basta.</li>
+   <li><i>En parte resuelto:</i> el ritual es periódico (cada 90 días) y en parte automático. Queda por decidir quién vigila los umbrales que lo disparan.</li>
+   <li><i>En camino:</i> el documento 2.0 propone repartir el voto por fases: stake con decaimiento y topes, después voto cuadrático con identidad, al final una persona, un voto. La primera fase reconoce que la plutocracia queda mitigada, no eliminada.</li>
+   <li><i>Sin calibrar:</i> los umbrales y pesos del sistema inmunológico (por ejemplo, una caída de participación de más del 70 % en 48 horas) son decisiones de diseño, todavía no contrastadas. El propio sistema prevé recalibrarlos tras cada crisis.</li>
    <li><i>Sin medir:</i> el valle en organizaciones no está comprobado. Se podría contrastar con datos públicos de gobernanza (Snapshot, Tally): vida media del peso del voto frente a frecuencia de propuestas.</li>
-   <li class="ok"><i>Resuelto:</i> olvidar no contradice la memoria inmutable de la cadena. El registro no se borra; lo que decae es el peso.</li></ul></div>
+   <li class="ok"><i>Resuelto:</i> olvidar no contradice la memoria inmutable de la cadena. El registro no se borra; lo que decae es el peso.</li>
+   <li class="ok"><i>Sin milagros:</i> el documento 2.0 no promete inmunidad total a la captura. Promete resistencia.</li></ul></div>
   <div class="nota"><b>Nota del autor</b>Estas son ideas, no hechos. Son el intento de llevar al plano más estricto de la ciencia intuiciones y conclusiones empíricas propias, con los recursos que tengo a mano. No buscan crear una ley: quieren aportar valor a quien desee desarrollarlas, ampliarlas o refutarlas.</div>
  </aside>
 </div>`;
@@ -1940,7 +1954,7 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  // ---------- Zona C: las dos cámaras ----------
  const RISK={exp:'<b>Solo expertos:</b> riesgo de captura técnica. Deciden pocos, sin legitimidad, lejos de quienes viven las consecuencias.',
   com:'<b>Solo comunidad:</b> riesgo de volatilidad emocional. Decide el ánimo del momento, sin rigor ni validación.',
-  dos:'<b>Las dos en diálogo:</b> los expertos validan con rigor; la comunidad legitima con pluralidad. La memoria finita busca que ninguna reputación acumulada se convierta en poder permanente.'};
+  dos:'<b>Las dos en diálogo:</b> la comunidad propone y vota; los expertos validan o devuelven la propuesta con un informe público. Si los ritmos se separan demasiado (|R<sub>C1</sub> - R<sub>C2</sub>| > 1,5), la cámara más lenta acelera y la más rápida amplía su memoria.'};
  const setCam=m=>{ov.querySelectorAll('.cam .opts button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));$('dC1').style.opacity=m==='com'?.18:1;$('dC2').style.opacity=m==='exp'?.18:1;$('dAr').style.opacity=m==='dos'?1:.12;$('dMem').style.opacity=m==='dos'?1:.25;$('dRisk').innerHTML=RISK[m];};
  ov.querySelectorAll('.cam .opts button').forEach(b=>b.onclick=()=>setCam(b.dataset.m));setCam('dos');
 
@@ -1953,13 +1967,62 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  const drawD=t=>{const [w,h,d]=fit(cD),x=cD.getContext('2d');if(on&&!RMd){const dt=Math.min(.05,(t-(lastD||t))/1000)*1.5;lastD=t;stepD(dt);}
   x.clearRect(0,0,w,h);const x0=14*d,x1=w-14*d,yA=h*.42,yR=h-24*d,X=age=>x1-age/WIN*(x1-x0);
   x.strokeStyle='rgba(109,128,153,.35)';x.lineWidth=d;x.beginPath();x.moveTo(x0,yA);x.lineTo(x1,yA);x.stroke();x.beginPath();x.moveTo(x0,yR);x.lineTo(x1,yR);x.stroke();
-  x.font=FONT(9.5,d);x.fillStyle='#6d8099';x.textAlign='left';x.fillText('decisiones vivas · el tamaño es su peso sobre el presente',x0,16*d);x.fillText('archivo · el registro no se borra',x0,yR-8*d);
+  x.font=FONT(9.5,d);x.fillStyle='#6d8099';x.textAlign='left';x.fillText('decisiones vivas · tamaño = peso actual',x0,16*d);x.fillText('archivo · el registro no se borra',x0,yR-8*d);
   x.textAlign='right';x.fillText('hoy',x1,yA+32*d);x.textAlign='left';x.fillText('hace '+WIN+' meses',x0,yA+32*d);
   DEC.forEach(o=>{const age=tm-o.t;if(age>WIN)return;const wgt=Math.exp(-age/D.tau);x.beginPath();x.arc(X(age),yA,(2+12*wgt)*d,0,7);x.fillStyle=`rgba(201,168,255,${.25+.7*wgt})`;x.fill();});
   ARCH.forEach((o,i)=>{const age=tm-o.t;x.fillStyle='rgba(159,170,190,.55)';x.fillRect(X(Math.min(WIN,age))-1*d,yR-3*d,2*d,6*d);});
   if(sweep>=0){const sx=x0+sweep*(x1-x0);const g=x.createLinearGradient(sx-30*d,0,sx,0);g.addColorStop(0,'rgba(201,168,255,0)');g.addColorStop(1,'rgba(201,168,255,.35)');x.fillStyle=g;x.fillRect(sx-30*d,24*d,30*d,yR-24*d);
    x.font=FONT(10,d,600);x.fillStyle='#c9a8ff';x.textAlign='center';x.fillText('ritual: se archiva lo que ya casi no pesa',(x0+x1)/2,yA-26*d);}
-  x.font=FONT(10,d);x.fillStyle='#cfdbe7';x.textAlign='right';x.fillText(`próximo ritual en ${fmt(Math.max(0,nextRit-tm),1)} meses`,x1,16*d);};
+  x.font=FONT(10,d);x.fillStyle='#cfdbe7';x.textAlign='left';x.fillText(`próximo ritual en ${fmt(Math.max(0,nextRit-tm),1)} meses`,x0,31*d);};
+
+ // ---------- Zona E: el sistema inmunológico (repositorio FMD-DAO: Sistema_Inmunologico.md, ThreatMath.sol) ----------
+ const cE=$('dE');
+ const MET={part:['participación',3],gini:['fragmentación',2],tes:['tesorería',3],rep:['reputación',3],ora:['oráculos',2],exp:['exploit',3]};
+ const VEL=['logarítmica','lineal','exponencial'],VRATE=[.25,2,40];        // velocidad de subida del puntaje (puntos por día) según el régimen elegido
+ const I={day:0,S:0,act:{},vel:2,infT:-1,cb:false,rec:-1,recFrom:0,H:[],learned:false};
+ const sev=S=>S>=10?3:S>=7?2:S>=4?1:0;
+ const SEVN=[['Verde · operación normal','#5fe8d0'],['Amarillo · observación aumentada','#ffe08a'],['Naranja · restricciones leves','#ffb066'],['Rojo · inflamación total','#ff6b6b']];
+ // pesos de las cámaras para cancelar la inflamación: ThreatMath.chamberWeights(severidad, velocidad) → [expertos, comunidad, oráculo]
+ const PESOS=(sv,v)=>sv<=1?[33,33,34]:sv===2?(v===0?[40,40,20]:[50,30,20]):(v===2?[60,10,30]:v===1?[50,20,30]:[45,35,20]);
+ const target=()=>Object.keys(I.act).filter(k=>I.act[k]).reduce((a,k)=>a+MET[k][1],0);
+ const stepE=dt=>{I.day+=dt;const T=target();const r=T>I.S?VRATE[I.vel]:1.2;I.S+=Math.sign(T-I.S)*Math.min(Math.abs(T-I.S),r*dt);
+  const red=sev(I.S)===3;
+  if(red&&I.infT<0){I.infT=I.day;I.cb=false;I.rec=-1;}
+  if(red&&I.day-I.infT>=30)I.cb=true;
+  if(!red&&I.infT>=0){I.rec=I.day;I.recFrom=I.cb?.5:1;I.infT=-1;I.learned=true;}
+  if(!I.H.length||I.day-I.H[I.H.length-1].d>=.5)I.H.push({d:I.day,S:I.S,red});while(I.H.length&&I.day-I.H[0].d>120)I.H.shift();};
+ const resetE=()=>{Object.assign(I,{day:0,S:0,act:{},vel:2,infT:-1,cb:false,rec:-1,recFrom:0,H:[],learned:false});
+  ov.querySelectorAll('#dThr button').forEach(b=>b.classList.remove('on'));ov.querySelectorAll('#dVel button').forEach(b=>b.classList.toggle('on',b.dataset.v==='2'));for(let k=0;k<40;k++)stepE(.5);};
+ ov.querySelectorAll('#dThr button').forEach(b=>b.onclick=()=>{const m=b.dataset.m;I.act[m]=!I.act[m];b.classList.toggle('on',I.act[m]);if(RMd){I.S=target();stepE(.01);drawE(0);}});
+ ov.querySelectorAll('#dVel button').forEach(b=>b.onclick=()=>{I.vel=+b.dataset.v;ov.querySelectorAll('#dVel button').forEach(o=>o.classList.toggle('on',o===b));if(RMd)drawE(0);});
+ const drawE=t=>{const [w,h,d]=fit(cE),x=cE.getContext('2d');if(on&&!RMd){const dt=Math.min(.05,(t-(lastE||t))/1000)*6;lastE=t;stepE(dt);}
+  x.clearRect(0,0,w,h);const x0=12*d,x1=w-12*d,gy=10*d,gh=12*d,SX=v=>x0+v/16*(x1-x0),sv=sev(I.S),[lab,col]=SEVN[sv];
+  [[0,4,'#5fe8d0'],[4,7,'#ffe08a'],[7,10,'#ffb066'],[10,16,'#ff6b6b']].forEach(([a,b,c])=>{x.fillStyle=c;x.globalAlpha=.35;x.fillRect(SX(a),gy,SX(b)-SX(a)-1*d,gh);});x.globalAlpha=1;
+  x.fillStyle='#fff';x.fillRect(SX(I.S)-1.5*d,gy-4*d,3*d,gh+8*d);
+  x.font=FONT(10,d,600);x.fillStyle=col;x.textAlign='left';x.fillText(`amenaza ${fmt(I.S,1)} de 16 · ${lab}`,x0,gy+gh+16*d);
+  const y0=gy+gh+26*d,y1=h-14*d,X=dd=>x1-(I.day-dd)/120*(x1-x0),Y=v=>y1-v/16*(y1-y0);
+  I.H.forEach((p,k)=>{const q=I.H[k+1];if(!q||!p.red)return;x.fillStyle='rgba(255,107,107,.18)';x.fillRect(X(p.d),y0,X(q.d)-X(p.d)+.5,y1-y0);});
+  x.save();x.setLineDash([3*d,4*d]);x.strokeStyle='rgba(255,107,107,.6)';x.lineWidth=d;x.beginPath();x.moveTo(x0,Y(10));x.lineTo(x1,Y(10));x.stroke();x.restore();
+  x.beginPath();I.H.forEach((p,k)=>{k?x.lineTo(X(p.d),Y(p.S)):x.moveTo(X(p.d),Y(p.S));});x.strokeStyle='#fff';x.lineWidth=1.6*d;x.stroke();
+  x.strokeStyle='rgba(109,128,153,.5)';x.lineWidth=d;x.strokeRect(x0,y0,x1-x0,y1-y0);
+  x.font=FONT(9,d);x.fillStyle='rgba(255,107,107,.85)';x.textAlign='left';x.fillText('10 · inflamación',x0+4*d,Y(10)-3*d);
+  x.fillStyle='#6d8099';x.textAlign='right';x.fillText('hoy',x1,h-2*d);x.textAlign='left';x.fillText('hace 120 días',x0,h-2*d);
+  // estado en texto
+  const v=I.vel,P=PESOS(sv,v),L=[];
+  L.push(`<div><span class="k">Estado:</span> <b style="color:${col}">${lab}</b>${I.infT>=0?` · día ${Math.floor(I.day-I.infT)+1} de inflamación`:''}</div>`);
+  L.push(`<div><span class="k">Velocidad:</span> <b>${VEL[v]}</b> · <span class="k">quién decide si se cancela:</span> expertos ${P[0]} % · comunidad ${P[1]} % · oráculo ${P[2]} %</div>`);
+  if(sv===3){if(v===2)L.push('<div><span class="k">Respuesta:</span> quórum <b>40 %</b> (normal 10 %) · plazo antes de ejecutar <b>14 días</b> (normal 48 h) · memoria de la DAO <b>15 días</b> (normal 60)</div>');
+   else L.push(`<div><span class="k">Respuesta:</span> ${v===1?'balanceada, entre la normal y la de crisis explosiva':'parámetros casi normales, con más vigilancia'}</div>`);
+   L.push('<div><span class="k">En crisis:</span> intensidad máxima de voto 3 (no 5) · penalizaciones de reputación × 1,5 · disputas de oráculo en 24 h (no 48 h)</div>');
+   L.push('<div><span class="k">El Valle manda:</span> R se vigila más a menudo. Si la propia respuesta saca al sistema del Valle, se revisan los parámetros de crisis.</div>');
+   if(I.cb)L.push('<div style="color:#ff6b6b"><b>Cortacircuitos:</b> más de 30 días de inflamación. Revisión forzada por los expertos, informe público obligatorio y parámetros inflamatorios a la mitad.</div>');}
+  else if(sv===2)L.push('<div><span class="k">Respuesta:</span> restricciones leves</div>');
+  else if(sv===1)L.push('<div><span class="k">Respuesta:</span> observación aumentada</div>');
+  if(I.rec>=0&&sv<3){const k=Math.exp(-.15*(I.day-I.rec))*I.recFrom;if(k>.03)L.push(`<div><span class="k">Recuperación:</span> los parámetros vuelven al estado normal de forma gradual · queda un ${Math.round(k*100)} % de la respuesta</div>`);}
+  if(I.learned&&sv<3)L.push('<div><span class="k">Aprendizaje:</span> tras cada crisis el sistema recalibra sus detectores. Si fue una falsa alarma, baja el peso de esa señal; si llegó tarde, lo sube.</div>');
+  if(!Object.values(I.act).some(Boolean)&&I.S<.5&&!I.learned)L.push('<div class="k">Enciende señales de amenaza y elige su velocidad para ver la respuesta.</div>');
+  const html=L.join('');if($('dInm')._h!==html){$('dInm').innerHTML=html;$('dInm')._h=html;}};
+ let lastE=0;
 
  // ---------- panel ----------
  const PD={dTau:['tau',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v,1)+' meses'],dOm:['om',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v,2)+' / mes'],dK:['K',v=>v,v=>v,v=>v+(v===1?' mes':' meses')]};
@@ -1970,7 +2033,7 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
   const m=$('dMsg');m.className='msg '+(z===0?'in':'out');m.textContent=z===0?'Dentro del Valle: recuerda lo suficiente para ser coherente y olvida lo suficiente para adaptarse.':z<0?'Fuera del Valle: olvida antes de que llegue la siguiente decisión. No aprende y repite errores.':'Fuera del Valle: arrastra demasiadas decisiones viejas. Se rigidiza y se fosiliza.';
   $('dRd').textContent=`Decide cada ${fmt(1/D.om,1)} meses · una decisión pierde la mitad de su peso en unos ${fmt(D.tau*Math.LN2,1)} meses · recuerda ${fmt(R,1)} ciclos.`;
   if(RMd){drawB(0);drawD(0);}};
- $('dReset').onclick=()=>{Object.assign(D,DEFD);Etarget=1;syncD();resetD();setCam('dos');};
+ $('dReset').onclick=()=>{Object.assign(D,DEFD);Etarget=1;syncD();resetD();resetE();setCam('dos');};
  $('dCrash').onclick=()=>{Etarget=Etarget>.5?.03:1;$('dCrash').textContent=Etarget>.5?'Ilustrar un colapso de mercado':'Restaurar el mercado';if(RMd)drawA(0);};
 
  // ---------- página de contexto (Parte 1, corregida) ----------
@@ -1997,12 +2060,12 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 
  // ---------- entrar y salir ----------
  let on=false,savedRot=null,raf=0;
- const loop=t=>{if(!on)return;drawA(t);drawB(t);drawD(t);raf=requestAnimationFrame(loop);};
+ const loop=t=>{if(!on)return;drawA(t);drawB(t);drawD(t);drawE(t);raf=requestAnimationFrame(loop);};
  const btn=document.createElement('button');btn.type='button';btn.className='lens';btn.style.setProperty('--c','#7fd6ff');btn.setAttribute('aria-pressed','false');
  btn.innerHTML='DAO <small style="text-transform:none">memoria finita</small>';btn.title='DAO de Memoria Finita: por qué colapsaron las DAOs y una organización que sabe olvidar. Pulsa otra vez (o Esc) para volver.';
  const enter=()=>{if(on||window.__soloMapa||window.__cosmo||window.__asim||window.__pqb)return;on=true;window.__dao=true;savedRot=controls.autoRotate;controls.autoRotate=false;
   btn.setAttribute('aria-pressed','true');btn.classList.add('on');goD.hidden=true;tip.hidden=true;
-  ov.classList.remove('leaving');ov.hidden=false;requestAnimationFrame(()=>{ov.classList.add('vis');fkey='';syncD();resetD();lastD=0;if(RMd){drawA(0);drawB(0);drawD(0);}else raf=requestAnimationFrame(loop);});$('daoX').focus({preventScroll:true});};
+  ov.classList.remove('leaving');ov.hidden=false;requestAnimationFrame(()=>{ov.classList.add('vis');fkey='';syncD();resetD();resetE();lastD=0;lastE=0;if(RMd){drawA(0);drawB(0);drawD(0);drawE(0);}else raf=requestAnimationFrame(loop);});$('daoX').focus({preventScroll:true});};
  const exit=()=>{if(!on)return;ctxClose();on=false;window.__dao=false;cancelAnimationFrame(raf);ov.classList.remove('vis');
   ov.classList.add('leaving');setTimeout(()=>{if(!on){ov.hidden=true;ov.classList.remove('leaving');}},RMd?0:1100);controls.autoRotate=savedRot&&!RMd;btn.setAttribute('aria-pressed','false');btn.classList.remove('on');};
  btn.onclick=()=>on?exit():enter();
