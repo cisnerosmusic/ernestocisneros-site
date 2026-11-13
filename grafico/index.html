@@ -74,6 +74,10 @@ a.home{color:inherit;text-decoration:none}a.home:hover,a.home:focus-visible{text
 .lens.on small{color:#fff}
 #lensList{position:absolute;top:40px;left:10px;z-index:6;width:min(280px,46%);max-height:calc(100% - 140px);overflow-y:auto;background:rgba(6,10,18,.92);border:1px solid var(--line);border-left:2px solid var(--c);border-radius:3px;padding:4px 0}
 #lensList[hidden]{display:none}
+#lenses.enmapa .lens:not(.keep){display:none}
+#mapBack{position:absolute;top:10px;right:10px;z-index:8;background:rgba(6,10,18,.88);border:1px solid #ffe08a;color:#ffe08a;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:14px;cursor:pointer;box-shadow:0 0 12px rgba(255,224,138,.25)}
+#mapBack:hover,#mapBack:focus-visible{background:rgba(255,224,138,.15);outline:none}
+#mapBack[hidden]{display:none}
 #mapList{position:absolute;top:40px;right:10px;z-index:6;width:min(320px,48%);max-height:calc(100% - 120px);overflow-y:auto;background:rgba(6,10,18,.92);border:1px solid var(--line);border-left:2px solid #9fd2f0;border-radius:3px;padding:4px 0;-webkit-backdrop-filter:blur(14px) brightness(.6);backdrop-filter:blur(14px) brightness(.6)}
 #mapList[hidden]{display:none}
 #mapCard{position:absolute;z-index:7;width:min(320px,80%);max-height:60%;overflow-y:auto;padding:10px 12px 10px;background:rgba(6,10,18,.95);border:1px solid #9fd2f0;border-radius:3px;font-size:11px;line-height:1.5;color:var(--fg)}
@@ -213,7 +217,7 @@ a.home{color:inherit;text-decoration:none}a.home:hover,a.home:focus-visible{text
   .stats{margin-left:0;gap:16px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* modo solo gráfico (Ctrl+C / Esc) */
+/* modo solo gráfico (F / Esc) */
 body.solo{padding:0;overflow:hidden}
 body.solo .app{display:block;position:fixed;inset:0;height:100vh;min-height:0;gap:0}
 body.solo .app>header,body.solo .feeds,body.solo .side,body.solo .time,body.solo #legend,body.solo #lenses,body.solo #lensList,body.solo #ask,body.solo #lineage,body.solo .stage .ph,body.solo #musBtn,body.solo #libBtn,body.solo #salir,body.solo #mus,body.solo #lib{display:none!important}
@@ -226,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.457 · 12 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.459 · 12 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -258,7 +262,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
       <div class="suggs"><button type="button" class="sugg">¿Qué pasó en 2023?</button><button type="button" class="sugg">¿Quién fue Antonio Cino Escobar?</button><button type="button" class="sugg">¿Qué une a Impulses con Expometro?</button></div>
       <div id="askRow"><input id="askIn" type="text" placeholder="Pregúntale al gráfico…" aria-label="Pregúntale al gráfico" autocomplete="off"><button type="button" id="askBtn">Preguntar</button></div>
     </div>
-    <div class="legend" id="legend">Arrastra para girar, rueda para acercar, barra espaciadora para detener el giro. Ctrl+C deja solo el gráfico a la vista; Esc vuelve. Pasa sobre un punto para leer la nota. Al centro flotan los MOC. Los puntos rojos son ausencias documentadas: lo que se perdió o falta por reunir. A la izquierda, tu genealogía cuelga de ti.</div>
+    <div class="legend" id="legend">Arrastra para girar, rueda para acercar, barra espaciadora para detener el giro. La tecla F deja solo el gráfico a la vista; F o Esc vuelve. Pasa sobre un punto para leer la nota. Al centro flotan los MOC. Los puntos rojos son ausencias documentadas: lo que se perdió o falta por reunir. A la izquierda, tu genealogía cuelga de ti.</div>
   </section>
 
   <aside class="panel side" aria-label="Nichos">
@@ -921,12 +925,13 @@ function frame(now){const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
  acc+=dt;if(acc>.35){acc=0;spawn();}
  controls.update();composer.render();drawOverlay(dt);drawTL();requestAnimationFrame(frame);}
 requestAnimationFrame(frame);
-// Modo solo gráfico: Ctrl+C (sin texto seleccionado) deja solo el toro; Esc vuelve
+// Modo solo gráfico: la tecla F deja solo el toro; F o Esc vuelve
 addEventListener('keydown',e=>{const b=document.body,on=b.classList.contains('solo');
  if(e.key==='Escape'&&on){b.classList.remove('solo');e.stopImmediatePropagation();e.preventDefault();return;}
- if((e.ctrlKey||e.metaKey)&&!e.altKey&&!e.shiftKey&&e.key.toLowerCase()==='c'&&!on){const t=e.target,sel=String(getSelection()||'');
-  if(sel||(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)))return;
-  e.preventDefault();b.classList.add('solo');}},true);
+ if(!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.key.toLowerCase()==='f'){const t=e.target;
+  if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable))return;
+  if(window.__soloMapa||window.__cosmo||window.__asim||window.__pqb)return;
+  e.preventDefault();b.classList.toggle('solo');}},true);
 // ---------- preguntarle al gráfico ----------
 {
 const askBox=document.getElementById('ask'),askIn=document.getElementById('askIn'),askBtn=document.getElementById('askBtn'),
@@ -1047,8 +1052,8 @@ function render(){const tot=actL.size+actF.size;cur=actL.size===1&&!actF.size?[.
   list.style.setProperty('--c',c0);list.hidden=false;list.scrollTop=0;}
 function apply(k){actL.clear();actF.clear();if(k>=0)actL.add(k);render();}
 LS.forEach((L,k)=>{const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c',L.c);b.setAttribute('aria-pressed','false');
-  b.innerHTML=`${esc(L.n)} <small>${L.ids.length}</small>`;b.title=L.d+' (se suma a lo que ya esté encendido)';b.onclick=()=>{actL.has(k)?actL.delete(k):actL.add(k);render();};bar.appendChild(b);});
-FEEDS.forEach((s,i)=>{s.el.onclick=()=>{actF.has(i)?actF.delete(i):actF.add(i);render();};s.el.title='Pulsa para encender; pulsa otra esfera o una lente para sumarlas';});
+  b.innerHTML=`${esc(L.n)} <small>${L.ids.length}</small>`;b.title=L.d+' (se suma a lo que ya esté encendido)';b.onclick=()=>{if(window.__soloMapa)return;actL.has(k)?actL.delete(k):actL.add(k);render();};bar.appendChild(b);});
+FEEDS.forEach((s,i)=>{s.el.onclick=()=>{if(window.__soloMapa)return;actF.has(i)?actF.delete(i):actF.add(i);render();};s.el.title='Pulsa para encender; pulsa otra esfera o una lente para sumarlas';});
 list.addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b)return;const i=+b.dataset.i;const keep=[new Set(actL),new Set(actF)];select(i);
   if(keep[0].size+keep[1].size>1||keep[0].size){actL.clear();actF.clear();keep[0].forEach(k=>actL.add(k));keep[1].forEach(f=>actF.add(f));render();}});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&(actL.size||actF.size)){actL.clear();actF.clear();render();}});
@@ -1219,7 +1224,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   Object.entries(GL).forEach(([c,sp])=>{const v=vis[c];if(!v){sp.visible=false;return;}sp.visible=true;sp.material.opacity=Math.min(1,.25+.75*v.k);sp.material.color.set(v.act?0xfff4d6:0xffc24a);const sc=(3+10*v.k)*v.s;sp.scale.set(sc,sc,1);});
   const now=[...TV].reverse().find(v=>v.t<=tT&&tT<=v.t+v.d);const y=Math.floor(tT),m=Math.floor((tT-y)*12);
   tlb.textContent=MESES[Math.min(11,m)]+' '+y;tsp.textContent=now?(now.c+' · '+now.ord+'.º viaje'+(now===TV[0]?' · la primera salida: un año entero':now.n?' · '+now.n:'')+' ('+now.f+')'):'';drawBar();};
- const tick2=()=>{const n=performance.now(),dt=Math.min(.1,(n-tLast)/1000);tLast=n;if(tOn&&solo){tT+=dt*.4;if(tT>=T1){tT=T1;tOn=false;tpl.textContent='▶';}luz();}requestAnimationFrame(tick2);};tick2();
+ const tick2=()=>{const n=performance.now(),dt=Math.min(.1,(n-tLast)/1000);tLast=n;if(tOn&&solo){tT+=dt*.2;if(tT>=T1){tT=T1;tOn=false;tpl.textContent='▶';}luz();}requestAnimationFrame(tick2);};tick2();
  tpl.onclick=()=>{if(tT>=T1)tT=T0;tOn=!tOn;tpl.textContent=tOn?'❚❚':'▶';tLast=performance.now();};
  tcv.addEventListener('pointerdown',e=>{const go=ev=>{const r=tcv.getBoundingClientRect();tT=Math.max(T0,Math.min(T1,T0+(ev.clientX-r.left)/r.width*(T1-T0)));luz();};go(e);const up=()=>{removeEventListener('pointermove',go);removeEventListener('pointerup',up);};addEventListener('pointermove',go);addEventListener('pointerup',up);});
  // TRANSICIÓN CINEMATOGRÁFICA por secciones (11 nov 2026).
@@ -1234,6 +1239,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const nCnt=nodeLinks.geometry.attributes.position.count,aCnt=arcLinks.geometry.attributes.position.count;
  let pieces=[];
  const setSolo=on=>{if(busy)return;busy=true;solo=on;bS.setAttribute('aria-pressed',String(on));const lg=document.getElementById('legend');
+  bar.classList.toggle('enmapa',on);mb.hidden=!on;
   if(on){saved={pos:cam.position.clone(),tg:controls.target.clone(),rot:controls.autoRotate,maxD:controls.maxDistance,vis:scene.children.map(o=>o.visible)};
    controls.autoRotate=false;window.__soloMapa=true;G.visible=true;
    pieces=scene.children.filter(o=>o!==G&&o.visible&&!o.isLight&&!o.isCamera).reverse().map(o=>({o,f:fadeables(o)}));
@@ -1284,12 +1290,14 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
      const k1=ez((t-2200)/1000),k2=ez((t-2200)/700);nodeLinks.geometry.setDrawRange(0,Math.round(nCnt*k1/2)*2);arcLinks.geometry.setDrawRange(0,Math.round(aCnt*k2/2)*2);
     },()=>{nodeLinks.geometry.setDrawRange(0,Infinity);arcLinks.geometry.setDrawRange(0,Infinity);busy=false;});}};
  let bS=null;
+ const mb=document.createElement('button');mb.type='button';mb.id='mapBack';mb.hidden=true;mb.textContent='← Volver al gráfico (Esc)';mb.onclick=()=>{if(solo)setSolo(false);};{const stg=document.getElementById('stage');if(stg)stg.appendChild(mb);}
  if(bar){const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c','#9fd2f0');b.setAttribute('aria-pressed','true');
   b.innerHTML=`Mundo <small>${used.size}</small>`;b.title='Mapamundi detrás del gráfico: países de los viajes y de los amigos ('+nT+' viajes, '+nG+' personas). Pulsa para mostrar u ocultar.';
   b.onclick=()=>{if(solo||busy)return;setMundo(!G.visible);b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);
   bS=document.createElement('button');bS.type='button';bS.className='lens';bS.style.setProperty('--c','#ffe08a');bS.setAttribute('aria-pressed','false');
   bS.innerHTML=`Solo mapa <small>${TT.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
   bS.onclick=()=>setSolo(!solo);bar.appendChild(bS);
+  bS.classList.add('keep');
   addEventListener('keydown',e=>{if(e.key==='Escape'&&solo)setSolo(false);});}
 }
 
