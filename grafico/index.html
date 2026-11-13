@@ -226,7 +226,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.451 · 12 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.453 · 12 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1305,73 +1305,73 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const zona=R=>R<LO?-1:R>HI?1:0;
  const VER=(document.querySelector('.sub .ver')||{}).textContent||'';
  const st=document.createElement('style');st.textContent=`
-#cosmo{position:fixed;inset:0;z-index:60;background:rgba(6,10,18,.94);backdrop-filter:blur(3px);display:grid;grid-template-rows:auto 1fr;gap:10px;padding:14px 16px;box-sizing:border-box;color:var(--fg);font-family:var(--mono);opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1)}
-#cosmo.vis{opacity:1}
-#cosmo[hidden]{display:none}
-#cosmo .ct{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-#cosmo .ct h2{margin:0;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.04em;color:#fff}
-#cosmo .ct h2 b{color:#c9a8ff;font-weight:600}
-#cosmo .ct .v{color:var(--dim);font-size:11px}
-#cosmo .ct .x{margin-left:auto;background:rgba(6,10,18,.82);border:1px solid #c9a8ff;color:#c9a8ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:12px;cursor:pointer}
-#cosmo .body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"a b p" "a c p";gap:10px;min-height:0}
-#cosmo .z{position:relative;border:1px solid var(--line);border-radius:12px;background:rgba(10,17,29,.7);display:flex;flex-direction:column;min-height:0;overflow:hidden}
-#cosmo .z h3{margin:0;padding:9px 12px 0;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
-#cosmo .z h3 i{font-style:normal;color:var(--dim);font-family:var(--mono);font-weight:400;letter-spacing:0;text-transform:none;margin-left:6px}
-#cosmo .z canvas{flex:1;min-height:0;width:100%;display:block;touch-action:none}
-#cosmo .z p{margin:0;padding:6px 12px 10px;font-size:11.5px;line-height:1.5;color:#b7c6d6}
-#cosmo .za{grid-area:a}#cosmo .zb{grid-area:b}#cosmo .zc{grid-area:c}
+.cmodo{position:fixed;inset:0;z-index:60;background:rgba(6,10,18,.94);backdrop-filter:blur(3px);display:grid;grid-template-rows:auto 1fr;gap:10px;padding:14px 16px;box-sizing:border-box;color:var(--fg);font-family:var(--mono);opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1)}
+.cmodo.vis{opacity:1}
+.cmodo[hidden]{display:none}
+.cmodo .ct{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.cmodo .ct h2{margin:0;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.04em;color:#fff}
+.cmodo .ct h2 b{color:#c9a8ff;font-weight:600}
+.cmodo .ct .v{color:var(--dim);font-size:11px}
+.cmodo .ct .x{margin-left:auto;background:rgba(6,10,18,.82);border:1px solid #c9a8ff;color:#c9a8ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:12px;cursor:pointer}
+.cmodo .body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"a b p" "a c p";gap:10px;min-height:0}
+.cmodo .z{position:relative;border:1px solid var(--line);border-radius:12px;background:rgba(10,17,29,.7);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.cmodo .z h3{margin:0;padding:9px 12px 0;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.cmodo .z h3 i{font-style:normal;color:var(--dim);font-family:var(--mono);font-weight:400;letter-spacing:0;text-transform:none;margin-left:6px}
+.cmodo .z canvas{flex:1;min-height:0;width:100%;display:block;touch-action:none}
+.cmodo .z p{margin:0;padding:6px 12px 10px;font-size:11.5px;line-height:1.5;color:#b7c6d6}
+.cmodo .za{grid-area:a}.cmodo .zb{grid-area:b}.cmodo .zc{grid-area:c}
 /* entrada cinematográfica: fondo, título, valle, curva, ruido y panel, cada uno con su propio gesto */
-#cosmo .za{--zc:#5fe8d0}#cosmo .zb{--zc:#ffe08a}#cosmo .zc{--zc:#c9a8ff}
-#cosmo .ct,#cosmo .z,#cosmo .pn{opacity:0;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
-#cosmo .ct{transform:translateY(-12px)}
-#cosmo .za{transform:translateY(28px) scale(.96)}
-#cosmo .zb{transform:translateX(42px)}
-#cosmo .zc{transform:translateY(42px)}
-#cosmo .pn{transform:translateX(48px)}
-#cosmo .z>*{opacity:0;transition:opacity .8s cubic-bezier(.16,1,.3,1)}
-#cosmo .z::before{content:'';position:absolute;left:0;top:0;width:100%;height:2px;background:var(--zc);box-shadow:0 0 12px var(--zc);transform:scaleX(0);transform-origin:left;opacity:.85;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
-#cosmo.vis .ct,#cosmo.vis .z,#cosmo.vis .pn,#cosmo.vis .z>*{opacity:1;transform:none}
-#cosmo.vis .z::before{transform:scaleX(1)}
-#cosmo.vis .ct{transition-delay:.25s}
-#cosmo.vis .za{transition-delay:.65s}#cosmo.vis .za::before{transition-delay:.9s}#cosmo.vis .za>*{transition-delay:1.05s}
-#cosmo.vis .zb{transition-delay:1.25s}#cosmo.vis .zb::before{transition-delay:1.5s}#cosmo.vis .zb>*{transition-delay:1.65s}
-#cosmo.vis .zc{transition-delay:1.85s}#cosmo.vis .zc::before{transition-delay:2.1s}#cosmo.vis .zc>*{transition-delay:2.25s}
-#cosmo.vis .pn{transition-delay:2.45s}
-#cosmo.leaving{transition:opacity .6s cubic-bezier(.16,1,.3,1) .45s}
-#cosmo.leaving .ct,#cosmo.leaving .z,#cosmo.leaving .pn{transition-duration:.45s,.5s}
-#cosmo.leaving .pn{transition-delay:0s}#cosmo.leaving .zc{transition-delay:.08s}#cosmo.leaving .zb{transition-delay:.16s}#cosmo.leaving .za{transition-delay:.24s}#cosmo.leaving .ct{transition-delay:.3s}
-@media (prefers-reduced-motion:reduce){#cosmo,#cosmo *,#cosmo .z::before{transition:none!important}}
+.cmodo .za{--zc:#5fe8d0}.cmodo .zb{--zc:#ffe08a}.cmodo .zc{--zc:#c9a8ff}
+.cmodo .ct,.cmodo .z,.cmodo .pn{opacity:0;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
+.cmodo .ct{transform:translateY(-12px)}
+.cmodo .za{transform:translateY(28px) scale(.96)}
+.cmodo .zb{transform:translateX(42px)}
+.cmodo .zc{transform:translateY(42px)}
+.cmodo .pn{transform:translateX(48px)}
+.cmodo .z>*{opacity:0;transition:opacity .8s cubic-bezier(.16,1,.3,1)}
+.cmodo .z::before{content:'';position:absolute;left:0;top:0;width:100%;height:2px;background:var(--zc);box-shadow:0 0 12px var(--zc);transform:scaleX(0);transform-origin:left;opacity:.85;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.cmodo.vis .ct,.cmodo.vis .z,.cmodo.vis .pn,.cmodo.vis .z>*{opacity:1;transform:none}
+.cmodo.vis .z::before{transform:scaleX(1)}
+.cmodo.vis .ct{transition-delay:.25s}
+.cmodo.vis .za{transition-delay:.65s}.cmodo.vis .za::before{transition-delay:.9s}.cmodo.vis .za>*{transition-delay:1.05s}
+.cmodo.vis .zb{transition-delay:1.25s}.cmodo.vis .zb::before{transition-delay:1.5s}.cmodo.vis .zb>*{transition-delay:1.65s}
+.cmodo.vis .zc{transition-delay:1.85s}.cmodo.vis .zc::before{transition-delay:2.1s}.cmodo.vis .zc>*{transition-delay:2.25s}
+.cmodo.vis .pn{transition-delay:2.45s}
+.cmodo.leaving{transition:opacity .6s cubic-bezier(.16,1,.3,1) .45s}
+.cmodo.leaving .ct,.cmodo.leaving .z,.cmodo.leaving .pn{transition-duration:.45s,.5s}
+.cmodo.leaving .pn{transition-delay:0s}.cmodo.leaving .zc{transition-delay:.08s}.cmodo.leaving .zb{transition-delay:.16s}.cmodo.leaving .za{transition-delay:.24s}.cmodo.leaving .ct{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){.cmodo,.cmodo *,.cmodo .z::before{transition:none!important}}
 
-#cosmo .za h3{color:#5fe8d0}#cosmo .zb h3{color:#ffe08a}#cosmo .zc h3{color:#c9a8ff}
-#cosmo .msg{margin:6px 12px 0;padding:7px 10px;border-radius:8px;font-size:12px;line-height:1.4;border:1px solid}
-#cosmo .msg.in{color:#5fe8d0;border-color:rgba(95,232,208,.45);background:rgba(95,232,208,.07)}
-#cosmo .msg.out{color:#ff9c7a;border-color:rgba(255,120,90,.45);background:rgba(255,120,90,.07)}
-#cosmo .pn{grid-area:p;border:1px solid var(--line);border-radius:12px;background:rgba(10,17,29,.85);padding:12px;overflow:auto;min-height:0}
-#cosmo .pn h4{margin:0;font-family:var(--display);font-weight:600;font-size:15px;color:#fff;letter-spacing:.03em}
-#cosmo .pn .sb{margin:4px 0 10px;color:var(--dim);font-size:11px;line-height:1.45}
-#cosmo .pn .sec{margin:12px 0 6px;font-family:var(--display);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-#cosmo .sl{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin:6px 0}
-#cosmo .sl label{font-size:11px;color:#cfdbe7}
-#cosmo .sl output{font-size:11px;color:#fff;font-variant-numeric:tabular-nums}
-#cosmo .sl input{grid-column:1/3;width:100%;accent-color:#5fe8d0}
-#cosmo .sl small{grid-column:1/3;color:var(--dim);font-size:10px;line-height:1.35}
-#cosmo .Rbig{display:flex;align-items:baseline;gap:8px;margin:8px 0 4px}
-#cosmo .Rbig b{font-family:var(--display);font-size:34px;font-weight:600;font-variant-numeric:tabular-nums}
-#cosmo .Rbig span{color:var(--dim);font-size:11px}
-#cosmo .ind{display:inline-block;padding:4px 10px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid}
-#cosmo .ind.in{color:#5fe8d0;border-color:#5fe8d0;background:rgba(95,232,208,.1)}
-#cosmo .ind.out{color:#ff9c7a;border-color:#ff9c7a;background:rgba(255,120,90,.1)}
-#cosmo .btn{display:inline-block;margin:10px 6px 0 0;background:rgba(6,10,18,.82);border:1px solid var(--line);color:var(--fg);font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:12px;cursor:pointer;text-decoration:none}
-#cosmo .btn:hover,#cosmo .btn:focus-visible{border-color:#c9a8ff;color:#fff;outline:none}
-#cosmo .txt{font-size:11.5px;line-height:1.55;color:#b7c6d6;margin:6px 0}
-#cosmo .txt b{color:#fff;font-weight:500}
+.cmodo .za h3{color:#5fe8d0}.cmodo .zb h3{color:#ffe08a}.cmodo .zc h3{color:#c9a8ff}
+.cmodo .msg{margin:6px 12px 0;padding:7px 10px;border-radius:8px;font-size:12px;line-height:1.4;border:1px solid}
+.cmodo .msg.in{color:#5fe8d0;border-color:rgba(95,232,208,.45);background:rgba(95,232,208,.07)}
+.cmodo .msg.out{color:#ff9c7a;border-color:rgba(255,120,90,.45);background:rgba(255,120,90,.07)}
+.cmodo .pn{grid-area:p;border:1px solid var(--line);border-radius:12px;background:rgba(10,17,29,.85);padding:12px;overflow:auto;min-height:0}
+.cmodo .pn h4{margin:0;font-family:var(--display);font-weight:600;font-size:15px;color:#fff;letter-spacing:.03em}
+.cmodo .pn .sb{margin:4px 0 10px;color:var(--dim);font-size:11px;line-height:1.45}
+.cmodo .pn .sec{margin:12px 0 6px;font-family:var(--display);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.cmodo .sl{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin:6px 0}
+.cmodo .sl label{font-size:11px;color:#cfdbe7}
+.cmodo .sl output{font-size:11px;color:#fff;font-variant-numeric:tabular-nums}
+.cmodo .sl input{grid-column:1/3;width:100%;accent-color:#5fe8d0}
+.cmodo .sl small{grid-column:1/3;color:var(--dim);font-size:10px;line-height:1.35}
+.cmodo .Rbig{display:flex;align-items:baseline;gap:8px;margin:8px 0 4px}
+.cmodo .Rbig b{font-family:var(--display);font-size:34px;font-weight:600;font-variant-numeric:tabular-nums}
+.cmodo .Rbig span{color:var(--dim);font-size:11px}
+.cmodo .ind{display:inline-block;padding:4px 10px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid}
+.cmodo .ind.in{color:#5fe8d0;border-color:#5fe8d0;background:rgba(95,232,208,.1)}
+.cmodo .ind.out{color:#ff9c7a;border-color:#ff9c7a;background:rgba(255,120,90,.1)}
+.cmodo .btn{display:inline-block;margin:10px 6px 0 0;background:rgba(6,10,18,.82);border:1px solid var(--line);color:var(--fg);font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:12px;cursor:pointer;text-decoration:none}
+.cmodo .btn:hover,.cmodo .btn:focus-visible{border-color:#c9a8ff;color:#fff;outline:none}
+.cmodo .txt{font-size:11.5px;line-height:1.55;color:#b7c6d6;margin:6px 0}
+.cmodo .txt b{color:#fff;font-weight:500}
 #cosmoGo{position:absolute;left:50%;transform:translateX(-50%);bottom:62px;z-index:7;background:rgba(6,10,18,.9);border:1px solid #c9a8ff;color:#c9a8ff;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:14px;cursor:pointer;box-shadow:0 0 14px rgba(201,168,255,.3)}
 #cosmoGo[hidden]{display:none}
-@media (max-width:1100px){#cosmo{display:block;overflow:auto}#cosmo .ct{margin-bottom:10px}#cosmo .body{display:flex;flex-direction:column}#cosmo .za{order:1;min-height:460px}#cosmo .pn{order:2;overflow:visible}#cosmo .zb{order:3;min-height:380px}#cosmo .zc{order:4;min-height:400px}}
+@media (max-width:1100px){.cmodo{display:block;overflow:auto}.cmodo .ct{margin-bottom:10px}.cmodo .body{display:flex;flex-direction:column}.cmodo .za{order:1;min-height:460px}.cmodo .pn{order:2;overflow:visible}.cmodo .zb{order:3;min-height:380px}.cmodo .zc{order:4;min-height:400px}}
 `;document.head.appendChild(st);
 
  // ---------- estructura ----------
- const ov=document.createElement('div');ov.id='cosmo';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Cosmología Estocástica · El Valle de Resiliencia');
+ const ov=document.createElement('div');ov.id='cosmo';ov.className='cmodo';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Cosmología Estocástica · El Valle de Resiliencia');
  const sl=(id,lab,min,max,step,help)=>`<div class="sl"><label for="${id}">${lab}</label><output id="${id}o"></output><input type="range" id="${id}" min="${min}" max="${max}" step="${step}">${help?`<small>${help}</small>`:''}</div>`;
  ov.innerHTML=`<div class="ct"><h2>Cosmología Estocástica · <b>El Valle de Resiliencia</b></h2><span class="v">${VER}</span><button type="button" class="x" id="cosmoX">Volver al gráfico (Esc)</button></div>
 <div class="body">
@@ -1501,7 +1501,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const loop=t=>{if(!on)return;if(t-last>=DT*1000*.5){step();last=t;}drawA(t);drawC();raf=requestAnimationFrame(loop);};
  const btn=document.createElement('button');btn.type='button';btn.className='lens';btn.style.setProperty('--c','#c9a8ff');btn.setAttribute('aria-pressed','false');
  btn.innerHTML='Cosmología <small style="text-transform:none">τΩ</small>';btn.title='Cosmología Estocástica · El Valle de Resiliencia: la memoria justa como condición de la estabilidad. Pulsa otra vez (o Esc) para volver.';
- const enter=()=>{if(on||window.__soloMapa)return;on=true;window.__cosmo=true;savedRot=controls.autoRotate;controls.autoRotate=false;
+ const enter=()=>{if(on||window.__soloMapa||window.__asim)return;on=true;window.__cosmo=true;savedRot=controls.autoRotate;controls.autoRotate=false;
   btn.setAttribute('aria-pressed','true');btn.classList.add('on');go.hidden=true;tip.hidden=true;
   ov.classList.remove('leaving');ov.hidden=false;requestAnimationFrame(()=>{ov.classList.add('vis');fieldKey='';sync();if(RMc){drawA(0);drawC();}else raf=requestAnimationFrame(loop);});$('cosmoX').focus({preventScroll:true});};
  const exit=()=>{if(!on)return;on=false;window.__cosmo=false;cancelAnimationFrame(raf);ov.classList.remove('vis');
@@ -1518,6 +1518,198 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const stg=document.getElementById('stage');if(stg)stg.appendChild(go);
  const _select=select;select=function(i){_select(i);const n=nodes[i];go.hidden=!(n&&n.t&&TEO.test(n.t));};
  cv.addEventListener('click',()=>{if(hover<0)go.hidden=true;});
+}
+
+// ---------- Modo ASIMETRÍA BARIÓNICA · Por qué existe algo en lugar de nada ----------
+// Hermano del modo Cosmología (comparte el estilo .cmodo). Introducción con física establecida (zonas 1 y 2)
+// y desarrollo del Apéndice A de Ernesto (zonas 3 y 4), marcado como hipótesis.
+// Apéndice: https://ernestocisneros.art/assets/pdf/cosmology/apendice-asimetria-barionica.pdf
+{
+ const RMa=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const DEFA={ex:.05,R:1,al:1,k:.3,C:true};
+ const A=Object.assign({},DEFA);
+ const fmt=(x,n=2)=>x.toFixed(n).replace('.',',');
+ const VER=(document.querySelector('.sub .ver')||{}).textContent||'';
+ const st=document.createElement('style');st.textContent=`
+#asim .body{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px;grid-template-areas:"a b p" "c d p"}
+#asim .za{--zc:#ffe08a}#asim .zb{--zc:#9fd2f0}#asim .zc{--zc:#5fe8d0}#asim .zd{--zc:#ff8fb8}
+#asim .zd{grid-area:d}
+#asim .z h3{color:var(--zc)}
+#asim .tag{display:inline-block;margin-left:8px;padding:1px 7px;border-radius:9px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;font-weight:500;vertical-align:1px}
+#asim .tag.ok{color:#9fd2f0;border:1px solid rgba(159,210,240,.5)}
+#asim .tag.hip{color:#ff8fb8;border:1px solid rgba(255,143,184,.55)}
+#asim .zb canvas{flex:0 0 96px}
+#asim .sak{margin:0;padding:4px 12px 0;list-style:none;display:grid;gap:5px}
+#asim .sak li{font-size:11px;line-height:1.4;color:#cfdbe7;border-left:2px solid var(--line);padding-left:8px}
+#asim .sak li b{color:#fff;font-weight:500}
+#asim .sak li span{display:block;color:var(--dim)}
+#asim .sak li.y{border-color:#5fe8d0}#asim .sak li.m{border-color:#ffe08a}#asim .sak li.n{border-color:#ff8fb8}
+#asim .nota{margin:12px 0 4px;padding:9px 10px;border:1px dashed rgba(255,143,184,.5);border-radius:9px;font-size:11px;line-height:1.55;color:#d9c3cf}
+#asim .nota b{color:#ff8fb8;font-family:var(--display);letter-spacing:.06em;text-transform:uppercase;font-size:10px;display:block;margin-bottom:3px}
+#asim .tg{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:11px;color:#cfdbe7;cursor:pointer}
+#asim .tg input{accent-color:#ff8fb8}
+#asim .sl input{accent-color:#ff8fb8}
+#asim.vis .zd{transition-delay:2.45s}#asim.vis .zd::before{transition-delay:2.7s}#asim.vis .zd>*{transition-delay:2.85s}
+#asim.vis .pn{transition-delay:3.05s}
+#asim.leaving .zd{transition-delay:.04s}
+#asimGo{position:absolute;left:50%;transform:translateX(-50%);bottom:98px;z-index:7;background:rgba(6,10,18,.9);border:1px solid #ff8fb8;color:#ff8fb8;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:14px;cursor:pointer;box-shadow:0 0 14px rgba(255,143,184,.3)}
+#asimGo[hidden]{display:none}
+@media (max-width:1100px){#asim .zd{order:5;min-height:380px}#asim .zb{min-height:420px}}
+`;document.head.appendChild(st);
+
+ const ov=document.createElement('div');ov.id='asim';ov.className='cmodo';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Asimetría Bariónica');
+ const sl=(id,lab,min,max,step,help)=>`<div class="sl"><label for="${id}">${lab}</label><output id="${id}o"></output><input type="range" id="${id}" min="${min}" max="${max}" step="${step}">${help?`<small>${help}</small>`:''}</div>`;
+ ov.innerHTML=`<div class="ct"><h2>Asimetría Bariónica · <b style="color:#ff8fb8">Por qué existe algo en lugar de nada</b></h2><span class="v">${VER}</span><button type="button" class="x" id="asimX" style="border-color:#ff8fb8;color:#ff8fb8">Volver al gráfico (Esc)</button></div>
+<div class="body">
+ <section class="z za"><h3>1 · La gran aniquilación<span class="tag ok">física establecida</span></h3><canvas id="asA" aria-label="Materia y antimateria aniquilándose"></canvas>
+  <p>Al principio, la energía solo fabricaba parejas: una partícula y su antipartícula. Cuando se encuentran, se destruyen y se convierten en luz. Con exactamente las mismas cantidades no quedaría nada. Mueve el exceso de materia y mira qué sobrevive. En el universo real el exceso fue de 1 entre mil millones; aquí está exagerado para que se vea.</p></section>
+ <section class="z zb"><h3>2 · Lo que se mide<span class="tag ok">física establecida</span></h3><canvas id="asB" aria-label="Escala de lo esperado frente a lo medido"></canvas>
+  <ul class="sak"><li class="y"><b>1 · Algo que cambie el número de bariones.</b><span>Modelo Estándar: sí, en teoría (procesos llamados esfalerones).</span></li>
+  <li class="m"><b>2 · Que materia y antimateria se comporten distinto (violación de CP).</b><span>Modelo Estándar: sí, pero muy poca. LHCb la vio por primera vez en bariones en 2025.</span></li>
+  <li class="n"><b>3 · Salir del equilibrio.</b><span>Modelo Estándar: no basta. Con un Higgs de 125 GeV el cambio de fase es suave.</span></li></ul>
+  <p>Para que sobre materia hacen falta estas tres condiciones a la vez (Sajárov, 1967). El Modelo Estándar las tiene sobre el papel, pero produce un exceso muchísimo menor que el medido. Falta una pieza: es uno de los grandes problemas abiertos de la física.</p></section>
+ <section class="z zc"><h3>3 · La memoria fabrica la huella<span class="tag hip">hipótesis del autor</span></h3><canvas id="asC" aria-label="Evolución de la asimetría con memoria"></canvas>
+  <p>Una fuente empuja hacia la materia solo durante una ventana de tiempo. El borrado intenta devolverlo todo al equilibrio. La memoria decide quién gana: con poca memoria el borrado deshace la huella al instante; con memoria, la huella sobrevive hasta que la ventana se cierra.</p></section>
+ <section class="z zd"><h3>4 · El mapa de la huella<span class="tag hip">hipótesis del autor</span></h3><canvas id="asD" aria-label="Asimetría final según la memoria"></canvas>
+  <p>Cada punto es la asimetría que queda al cerrarse la ventana. Sin coherencia, la curva solo sube: más memoria, más huella. Con coherencia (quien recuerda demasiado pierde la sincronía entre sus partes) aparece un máximo dentro del valle. Su lugar depende de κ: el valle es una zona aproximada, no un número exacto.</p></section>
+ <aside class="pn">
+  <h4>Asimetría Bariónica</h4>
+  <div class="sb">Por qué el universo debería estar vacío de materia. Por qué no lo está.</div>
+  <div class="txt">Por cada mil millones de partículas de antimateria hubo mil millones y una de materia. Todo lo que existe, las galaxias, la Tierra, tú, viene de ese «y una».</div>
+  <div class="sec">1 · La aniquilación</div>
+  ${sl('asEx','exceso de materia (exagerado)',0,.2,.005,'En el universo real: 0,0000001 %.')}
+  <button type="button" class="btn" id="asBang" style="margin-top:2px">Volver a empezar</button>
+  <div class="sec">3 y 4 · El modelo de memoria</div>
+  ${sl('asR','R = τ × Ω · memoria frente a la ventana',-2,2,.005,'Cuánto recuerda el sistema comparado con lo que dura la ventana.')}
+  ${sl('asAl','α · fuerza del borrado',-1.3,1.3,.005,'Cuánto empuja el sistema de vuelta al equilibrio.')}
+  <div class="Rbig"><b id="asEta"></b><span>η · huella que queda<br>al cerrarse la ventana</span></div>
+  <span class="ind in" id="asReg"></span>
+  <label class="tg"><input type="checkbox" id="asC_on"> Coherencia C(R) · decoherencia por exceso de memoria</label>
+  ${sl('asK','κ · acoplamiento al baño térmico',.05,2,.01,'Parámetro libre: mueve el máximo dentro del valle.')}
+  <button type="button" class="btn" id="asReset">Restablecer valores</button>
+  <div class="nota"><b>Nota del autor</b>Estas son ideas, no hechos. Son el intento de llevar al plano más estricto de la ciencia intuiciones y conclusiones empíricas propias, con los recursos que tengo a mano. No buscan crear una ley: quieren aportar valor a quien desee desarrollarlas, ampliarlas o refutarlas. El borde del conocimiento siempre deja más preguntas que respuestas. Ahí está el disfrute de vivir en él.</div>
+  <a class="btn" href="https://ernestocisneros.art/assets/pdf/cosmology/apendice-asimetria-barionica.pdf" target="_blank" rel="noopener">Leer el apéndice (PDF)</a>
+ </aside>
+</div>`;
+ document.body.appendChild(ov);
+ const $=id=>document.getElementById(id);
+ const fit=c=>{const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);const w=Math.max(1,Math.round(r.width*d)),h=Math.max(1,Math.round(r.height*d));if(c.width!==w||c.height!==h){c.width=w;c.height=h;}return [w,h,d];};
+ const FONT=(px,d,wt=400)=>`${wt} ${px*d}px "IBM Plex Mono",monospace`;
+ const L10=Math.log10;
+
+ // ---------- Zona 1: la gran aniquilación ----------
+ const cA=$('asA');let P=[],FL=[],tBang=0,luz=0,lastA=0;
+ const bang=()=>{const [w,h]=fit(cA),pairs=320,ex=Math.round(pairs*A.ex);P=[];FL=[];luz=0;tBang=performance.now();
+  const add=k=>P.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.8,vy:(Math.random()-.5)*.8,k,a:true});
+  for(let i=0;i<pairs+ex;i++)add(0);for(let i=0;i<pairs;i++)add(1);if(RMa){for(let s=0;s<4000&&P.some(p=>p.a&&p.k);s++)stepA(16,w,h,s*16);FL=[];}};
+ const stepA=(dt,w,h,el)=>{const d=Math.min(2,devicePixelRatio||1),r=Math.min(60,3+el/700)*d,r2=r*r;
+  for(const p of P){if(!p.a)continue;p.vx+=(Math.random()-.5)*.12;p.vy+=(Math.random()-.5)*.12;const sp=Math.hypot(p.vx,p.vy),mx=1.1*d;if(sp>mx){p.vx*=mx/sp;p.vy*=mx/sp;}
+   p.x+=p.vx*dt/16;p.y+=p.vy*dt/16;if(p.x<0||p.x>w){p.vx*=-1;p.x=Math.max(0,Math.min(w,p.x));}if(p.y<0||p.y>h){p.vy*=-1;p.y=Math.max(0,Math.min(h,p.y));}}
+  const M=P.filter(p=>p.a&&!p.k),N=P.filter(p=>p.a&&p.k);
+  for(const q of N){let best=null,bd=r2;for(const p of M){if(!p.a)continue;const dx=p.x-q.x,dy=p.y-q.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;best=p;}}
+   if(best){best.a=false;q.a=false;luz++;FL.push({x:(best.x+q.x)/2,y:(best.y+q.y)/2,t:performance.now()});}}};
+ const drawA=t=>{const [w,h,d]=fit(cA),x=cA.getContext('2d');if(!RMa&&on){const dt=Math.min(50,t-(lastA||t));lastA=t;stepA(dt,w,h,t-tBang);}
+  x.clearRect(0,0,w,h);
+  const now=performance.now();FL=FL.filter(f=>now-f.t<900);for(const f of FL){const k=(now-f.t)/900;x.beginPath();x.arc(f.x,f.y,(2+k*16)*d,0,7);x.strokeStyle=`rgba(220,245,255,${.9*(1-k)})`;x.lineWidth=1.4*d;x.stroke();}
+  for(const p of P){if(!p.a)continue;x.beginPath();x.arc(p.x,p.y,(p.k?2:2.2)*d,0,7);x.fillStyle=p.k?'#c9a8ff':'#ffe08a';x.fill();}
+  const nm=P.filter(p=>p.a&&!p.k).length,na=P.filter(p=>p.a&&p.k).length;
+  x.font=FONT(11,d,500);x.textAlign='left';x.fillStyle='rgba(6,10,18,.8)';x.fillRect(6*d,6*d,430*d,40*d);
+  x.fillStyle='#ffe08a';x.fillText('● materia '+nm,12*d,21*d);x.fillStyle='#c9a8ff';x.fillText('● antimateria '+na,118*d,21*d);x.fillStyle='#dcf5ff';x.fillText('○ destellos de luz '+luz,262*d,21*d);
+  x.font=FONT(10.5,d);x.fillStyle='#cfdbe7';
+  x.fillText(na?'Se están aniquilando…':nm?`Solo sobrevivió el exceso: ${nm} partículas de materia. Con eso se hizo todo.`:'No quedó nada. Solo luz.',12*d,38*d);};
+
+ // ---------- Zona 2: lo que se mide ----------
+ const cB=$('asB');
+ const drawB=()=>{const [w,h,d]=fit(cB),x=cB.getContext('2d');x.clearRect(0,0,w,h);const x0=16*d,x1=w-16*d,y=h*.6,X=e=>x0+(e+20)/20*(x1-x0);
+  x.strokeStyle='rgba(109,128,153,.6)';x.lineWidth=d;x.beginPath();x.moveTo(x0,y);x.lineTo(x1,y);x.stroke();
+  x.font=FONT(9.5,d);x.fillStyle='#6d8099';x.textAlign='center';[-20,-15,-10,-5,0].forEach(e=>{x.beginPath();x.moveTo(X(e),y-3*d);x.lineTo(X(e),y+3*d);x.stroke();x.fillText(e?'10'+String(e).replace('-','⁻').replace(/\d/g,c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[c]):'1',X(e),y+15*d);});
+  const mk=(e,col,lab,up)=>{x.beginPath();x.arc(X(e),y,5*d,0,7);x.fillStyle=col;x.fill();x.font=FONT(10.5,d,500);x.fillStyle=col;x.textAlign=e<-14?'left':'center';x.fillText(lab,e<-14?X(e)-6*d:X(e),up?y-12*d:y+30*d);};
+  mk(-18,'#ff8fb8','equilibrio perfecto: 1 en 10¹⁸',false);mk(-9.22,'#5fe8d0','medido: 6 × 10⁻¹⁰',true);
+  x.save();x.setLineDash([3*d,3*d]);x.strokeStyle='rgba(255,255,255,.4)';x.beginPath();x.moveTo(X(-18)+8*d,y-4*d);x.lineTo(X(-9.22)-8*d,y-4*d);x.stroke();x.restore();
+  x.font=FONT(10,d);x.fillStyle='#cfdbe7';x.textAlign='center';x.fillText('unos 600 millones de veces más materia de la esperada',(X(-18)+X(-9.22))/2,y-26*d);
+  x.fillStyle='#6d8099';x.textAlign='left';x.fillText('bariones por cada fotón',x0,12*d);};
+
+ // ---------- modelo del apéndice ----------
+ const etaT=(R,al)=>{const e1=1/(2*R),dd=4*al-1;let F;
+  if(Math.abs(dd)<1e-9)F=1-Math.exp(-e1)*(1+(1-2*al)/(2*R));
+  else if(dd>0){const s=Math.sqrt(dd),w=s/(2*R);F=1-Math.exp(-e1)*(Math.cos(w)+(1-2*al)/s*Math.sin(w));}
+  else{const s=Math.sqrt(-dd),k=(1-2*al)/s;F=1-.5*((1+k)*Math.exp((-1+s)*e1)+(1-k)*Math.exp((-1-s)*e1));}
+  return R/al*F;};
+ const Cf=R=>A.C?1/(1+A.k*R*R):1;
+ const traj=(R,al)=>{const T=1,tau=R*T,G=al/tau,n0=1200,dt=T/n0;let n=0,m=0;const out=[[0,0,0]];
+  const f=(n,m)=>[-G*m+1,(n-m)/tau];
+  for(let i=0;i<n0;i++){const k1=f(n,m),k2=f(n+dt/2*k1[0],m+dt/2*k1[1]),k3=f(n+dt/2*k2[0],m+dt/2*k2[1]),k4=f(n+dt*k3[0],m+dt*k3[1]);
+   n+=dt/6*(k1[0]+2*k2[0]+2*k3[0]+k4[0]);m+=dt/6*(k1[1]+2*k2[1]+2*k3[1]+k4[1]);if(i%6===5)out.push([(i+1)*dt,n,m]);}return out;};
+
+ // ---------- Zona 3: la memoria fabrica la huella ----------
+ const cC=$('asC');
+ const drawC=()=>{const [w,h,d]=fit(cC),x=cC.getContext('2d');x.clearRect(0,0,w,h);const cc=Cf(A.R),tr=traj(A.R,A.al).map(([t,n,m])=>[t,n*cc,m*cc]);
+  let ymax=Math.max(.3,cc*1.05),ymin=0;tr.forEach(([,n,m])=>{ymax=Math.max(ymax,n*1.08,m*1.08);ymin=Math.min(ymin,n,m);});
+  const x0=44*d,x1=w-12*d,y0=12*d,y1=h-30*d,X=t=>x0+t*(x1-x0),Y=v=>y1-(v-ymin)/(ymax-ymin)*(y1-y0);
+  x.fillStyle='rgba(95,232,208,.06)';x.fillRect(x0,y0,x1-x0,y1-y0);
+  x.save();x.setLineDash([4*d,4*d]);x.strokeStyle='rgba(255,255,255,.35)';x.beginPath();x.moveTo(x0,Y(cc));x.lineTo(x1,Y(cc));x.stroke();x.restore();
+  x.font=FONT(9.5,d);x.fillStyle='rgba(255,255,255,.55)';x.textAlign='left';x.fillText('sin borrado: todo lo que entró',x0+5*d,Y(cc)-4*d);
+  const path=(k,col,wd,dash)=>{x.save();if(dash)x.setLineDash(dash.map(v=>v*d));x.beginPath();tr.forEach((p,i)=>{i?x.lineTo(X(p[0]),Y(p[k])):x.moveTo(X(p[0]),Y(p[k]));});x.strokeStyle=col;x.lineWidth=wd*d;x.stroke();x.restore();};
+  path(2,'rgba(201,168,255,.85)',1.4,[5,4]);path(1,'#5fe8d0',2.2);
+  const last=tr[tr.length-1];x.beginPath();x.arc(X(1),Y(last[1]),5*d,0,7);x.fillStyle='#5fe8d0';x.fill();
+  x.font=FONT(10.5,d,600);x.fillStyle='#fff';x.textAlign='right';x.fillText('η = '+fmt(last[1]),X(1)-9*d,Y(last[1])-8*d);
+  x.strokeStyle='rgba(109,128,153,.6)';x.lineWidth=d;x.strokeRect(x0,y0,x1-x0,y1-y0);
+  x.font=FONT(10,d);x.textAlign='left';x.fillStyle='#5fe8d0';x.fillText('▬ asimetría n',x0+8*d,y0+30*d);x.fillStyle='#c9a8ff';x.fillText('- - memoria activa m',x0+8*d,y0+44*d);
+  x.fillStyle='#cfdbe7';x.textAlign='left';x.fillText('se abre la ventana',x0,h-10*d);x.textAlign='right';x.fillText('se cierra (desacople)',x1,h-10*d);};
+
+ // ---------- Zona 4: el mapa de la huella ----------
+ const cD=$('asD');
+ const drawD=()=>{const [w,h,d]=fit(cD),x=cD.getContext('2d');x.clearRect(0,0,w,h);
+  const x0=40*d,x1=w-12*d,y0=12*d,y1=h-32*d,X=R=>x0+(L10(R)+2)/4*(x1-x0),Y=v=>y1-v/1.08*(y1-y0);
+  // valle aproximado: zona difusa 0,5 a 3,5, núcleo 1 a 3
+  x.fillStyle='rgba(95,232,208,.06)';x.fillRect(X(.5),y0,X(3.5)-X(.5),y1-y0);x.fillStyle='rgba(95,232,208,.08)';x.fillRect(X(1),y0,X(3)-X(1),y1-y0);
+  x.font=FONT(9.5,d);x.fillStyle='rgba(95,232,208,.85)';x.textAlign='center';x.fillText('valle de resiliencia (zona aproximada)',(X(.5)+X(3.5))/2,y0+12*d);
+  const curve=(fn,col,wd,dash)=>{x.save();if(dash)x.setLineDash(dash.map(v=>v*d));x.beginPath();for(let i=0;i<=300;i++){const R=Math.pow(10,-2+i/75),v=fn(R);i?x.lineTo(X(R),Y(v)):x.moveTo(X(R),Y(v));}x.strokeStyle=col;x.lineWidth=wd*d;x.stroke();x.restore();};
+  curve(R=>etaT(R,A.al),A.C?'rgba(255,255,255,.35)':'#ff8fb8',A.C?1.2:2.2,A.C?[5,4]:null);
+  let best=null;if(A.C){curve(R=>etaT(R,A.al)*Cf(R),'#ff8fb8',2.2);let bv=-1;for(let i=0;i<=400;i++){const R=Math.pow(10,-2+i/100),v=etaT(R,A.al)*Cf(R);if(v>bv){bv=v;best=[R,v];}}
+   x.beginPath();x.arc(X(best[0]),Y(best[1]),5*d,0,7);x.fillStyle='#fff';x.fill();x.font=FONT(10,d,600);x.fillStyle='#fff';x.textAlign='center';x.fillText('máxima huella · R ≈ '+fmt(best[0]),X(best[0]),Y(best[1])-10*d);}
+  const v=etaT(A.R,A.al)*Cf(A.R);x.strokeStyle='rgba(95,232,208,.6)';x.lineWidth=d;x.beginPath();x.moveTo(X(A.R),y0);x.lineTo(X(A.R),y1);x.stroke();
+  x.beginPath();x.arc(X(A.R),Y(v),4.5*d,0,7);x.fillStyle='#5fe8d0';x.fill();
+  x.strokeStyle='rgba(109,128,153,.6)';x.strokeRect(x0,y0,x1-x0,y1-y0);
+  x.font=FONT(9.5,d);x.fillStyle='#6d8099';x.textAlign='center';[[.01,'0,01'],[.1,'0,1'],[1,'1'],[10,'10'],[100,'100']].forEach(([r,s])=>x.fillText(s,X(r),y1+13*d));
+  x.textAlign='right';[0,.5,1].forEach(t=>x.fillText(fmt(t,1),x0-5*d,Y(t)+3*d));
+  x.fillStyle='#cfdbe7';x.font=FONT(10.5,d);x.textAlign='center';x.fillText('R · cuánta memoria comparada con la ventana →',(x0+x1)/2,h-6*d);
+  x.textAlign='right';x.fillStyle=A.C?'rgba(255,255,255,.55)':'#ff8fb8';x.font=FONT(9.5,d);x.fillText(A.C?'- - sin coherencia: solo sube':'sin coherencia: la curva solo sube, no hay máximo',x1-8*d,Y(.45));};
+
+ // ---------- panel ----------
+ const PS={asEx:['ex',v=>v,v=>v,v=>fmt(v*100,1)+' %'],asR:['R',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v)],asAl:['al',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v)],asK:['k',v=>v,v=>v,v=>fmt(v)]};
+ Object.entries(PS).forEach(([id,[k,fromS]])=>{$(id).addEventListener('input',e=>{A[k]=fromS(+e.target.value);syncA(id);if(id==='asEx')bang();});});
+ $('asC_on').addEventListener('change',e=>{A.C=e.target.checked;syncA();});
+ const syncA=skip=>{Object.entries(PS).forEach(([id,[k,,toS,show]])=>{if(id!==skip)$(id).value=toS(A[k]);$(id+'o').textContent=show(A[k]);});
+  $('asC_on').checked=A.C;$('asK').disabled=!A.C;
+  const eta=etaT(A.R,A.al)*Cf(A.R);$('asEta').textContent=fmt(eta);$('asEta').style.color='#5fe8d0';
+  const r=$('asReg'),osc=A.al>.25;r.className='ind '+(osc?'in':'out');r.textContent=osc?'Oscilante: la memoria resuena':'Monótono: el borrado domina';
+  drawB();drawC();drawD();if(RMa)drawA(0);};
+ $('asReset').onclick=()=>{Object.assign(A,DEFA);syncA();bang();};
+ $('asBang').onclick=bang;
+
+ // ---------- entrar y salir ----------
+ let on=false,savedRot=null,raf=0;
+ const loop=t=>{if(!on)return;drawA(t);raf=requestAnimationFrame(loop);};
+ const btn=document.createElement('button');btn.type='button';btn.className='lens';btn.style.setProperty('--c','#ff8fb8');btn.setAttribute('aria-pressed','false');
+ btn.innerHTML='Asimetría <small style="text-transform:none">η</small>';btn.title='Asimetría Bariónica: por qué existe algo en lugar de nada. La memoria finita como hipótesis. Pulsa otra vez (o Esc) para volver.';
+ const enter=()=>{if(on||window.__soloMapa||window.__cosmo)return;on=true;window.__asim=true;savedRot=controls.autoRotate;controls.autoRotate=false;
+  btn.setAttribute('aria-pressed','true');btn.classList.add('on');goA.hidden=true;tip.hidden=true;
+  ov.classList.remove('leaving');ov.hidden=false;requestAnimationFrame(()=>{ov.classList.add('vis');syncA();bang();lastA=0;if(RMa)drawA(0);else raf=requestAnimationFrame(loop);});$('asimX').focus({preventScroll:true});};
+ const exit=()=>{if(!on)return;on=false;window.__asim=false;cancelAnimationFrame(raf);ov.classList.remove('vis');
+  ov.classList.add('leaving');setTimeout(()=>{if(!on){ov.hidden=true;ov.classList.remove('leaving');}},RMa?0:1100);controls.autoRotate=savedRot&&!RMa;btn.setAttribute('aria-pressed','false');btn.classList.remove('on');btn.focus({preventScroll:true});};
+ btn.onclick=()=>on?exit():enter();
+ const bar=document.getElementById('lenses');if(bar)bar.appendChild(btn);
+ $('asimX').onclick=exit;
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&on){exit();e.stopImmediatePropagation();e.preventDefault();}},true);
+ addEventListener('resize',()=>{if(on){syncA();bang();}});
+
+ // ---------- entrar desde los nodos ----------
+ const TEOA=/Asimetr[ií]a|Bari[oó]n|S[aá]j?jarov|Sakharov|antimateria/i;
+ const goA=document.createElement('button');goA.type='button';goA.id='asimGo';goA.hidden=true;goA.textContent='Explorar en modo Asimetría';goA.onclick=enter;
+ const stg=document.getElementById('stage');if(stg)stg.appendChild(goA);
+ const _selA=select;select=function(i){_selA(i);const n=nodes[i];goA.hidden=!(n&&n.t&&TEOA.test(n.t));};
+ cv.addEventListener('click',()=>{if(hover<0)goA.hidden=true;});
 }
 
 })();
