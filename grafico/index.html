@@ -226,7 +226,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.453 · 12 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.455 · 12 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1526,7 +1526,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
 // Apéndice: https://ernestocisneros.art/assets/pdf/cosmology/apendice-asimetria-barionica.pdf
 {
  const RMa=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const DEFA={ex:.05,R:1,al:1,k:.3,C:true};
+ const DEFA={ex:.05,R:1,al:1,k:.3,C:true,aft:'no'};
  const A=Object.assign({},DEFA);
  const fmt=(x,n=2)=>x.toFixed(n).replace('.',',');
  const VER=(document.querySelector('.sub .ver')||{}).textContent||'';
@@ -1537,6 +1537,10 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
 #asim .z h3{color:var(--zc)}
 #asim .tag{display:inline-block;margin-left:8px;padding:1px 7px;border-radius:9px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;font-weight:500;vertical-align:1px}
 #asim .tag.ok{color:#9fd2f0;border:1px solid rgba(159,210,240,.5)}
+#asim .tag.cur{color:#ffe08a;border:1px solid rgba(255,224,138,.55);font-size:10.5px;padding:2px 9px}
+#asim .estudio{margin:12px 0 4px;padding:9px 10px;border:1px solid rgba(255,224,138,.45);border-radius:9px;font-size:11px;line-height:1.55;color:#d8d2bd;background:rgba(255,224,138,.04)}
+#asim .estudio b{color:#ffe08a;font-family:var(--display);letter-spacing:.06em;text-transform:uppercase;font-size:10px;display:block;margin-bottom:3px}
+#asim .estudio ul{margin:6px 0;padding-left:16px}#asim .estudio li{margin:3px 0}#asim .estudio i{color:#fff;font-style:normal}
 #asim .tag.hip{color:#ff8fb8;border:1px solid rgba(255,143,184,.55)}
 #asim .zb canvas{flex:0 0 96px}
 #asim .sak{margin:0;padding:4px 12px 0;list-style:none;display:grid;gap:5px}
@@ -1559,7 +1563,7 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
 
  const ov=document.createElement('div');ov.id='asim';ov.className='cmodo';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Asimetría Bariónica');
  const sl=(id,lab,min,max,step,help)=>`<div class="sl"><label for="${id}">${lab}</label><output id="${id}o"></output><input type="range" id="${id}" min="${min}" max="${max}" step="${step}">${help?`<small>${help}</small>`:''}</div>`;
- ov.innerHTML=`<div class="ct"><h2>Asimetría Bariónica · <b style="color:#ff8fb8">Por qué existe algo en lugar de nada</b></h2><span class="v">${VER}</span><button type="button" class="x" id="asimX" style="border-color:#ff8fb8;color:#ff8fb8">Volver al gráfico (Esc)</button></div>
+ ov.innerHTML=`<div class="ct"><h2>Asimetría Bariónica · <b style="color:#ff8fb8">Por qué existe algo en lugar de nada</b></h2><span class="tag cur">estudio en curso</span><span class="v">${VER}</span><button type="button" class="x" id="asimX" style="border-color:#ff8fb8;color:#ff8fb8">Volver al gráfico (Esc)</button></div>
 <div class="body">
  <section class="z za"><h3>1 · La gran aniquilación<span class="tag ok">física establecida</span></h3><canvas id="asA" aria-label="Materia y antimateria aniquilándose"></canvas>
   <p>Al principio, la energía solo fabricaba parejas: una partícula y su antipartícula. Cuando se encuentran, se destruyen y se convierten en luz. Con exactamente las mismas cantidades no quedaría nada. Mueve el exceso de materia y mira qué sobrevive. En el universo real el exceso fue de 1 entre mil millones; aquí está exagerado para que se vea.</p></section>
@@ -1568,10 +1572,10 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   <li class="m"><b>2 · Que materia y antimateria se comporten distinto (violación de CP).</b><span>Modelo Estándar: sí, pero muy poca. LHCb la vio por primera vez en bariones en 2025.</span></li>
   <li class="n"><b>3 · Salir del equilibrio.</b><span>Modelo Estándar: no basta. Con un Higgs de 125 GeV el cambio de fase es suave.</span></li></ul>
   <p>Para que sobre materia hacen falta estas tres condiciones a la vez (Sajárov, 1967). El Modelo Estándar las tiene sobre el papel, pero produce un exceso muchísimo menor que el medido. Falta una pieza: es uno de los grandes problemas abiertos de la física.</p></section>
- <section class="z zc"><h3>3 · La memoria fabrica la huella<span class="tag hip">hipótesis del autor</span></h3><canvas id="asC" aria-label="Evolución de la asimetría con memoria"></canvas>
-  <p>Una fuente empuja hacia la materia solo durante una ventana de tiempo. El borrado intenta devolverlo todo al equilibrio. La memoria decide quién gana: con poca memoria el borrado deshace la huella al instante; con memoria, la huella sobrevive hasta que la ventana se cierra.</p></section>
+ <section class="z zc"><h3>3 · La memoria fabrica la huella<span class="tag hip">hipótesis del autor</span></h3><div style="padding:4px 12px 0;font-size:10.5px"><span style="color:#5fe8d0">▬ asimetría n</span> &nbsp; <span style="color:#c9a8ff">- - memoria activa m</span></div><canvas id="asC" aria-label="Evolución de la asimetría con memoria"></canvas>
+  <p>Una fuente empuja hacia la materia solo durante una ventana de tiempo. El borrado intenta devolverlo todo al equilibrio. La memoria decide quién gana: con poca memoria el borrado deshace la huella al instante; con memoria, la huella sobrevive hasta que la ventana se cierra. Mira también qué pasa después: la huella al cierre solo dura si el lavado se apaga.</p></section>
  <section class="z zd"><h3>4 · El mapa de la huella<span class="tag hip">hipótesis del autor</span></h3><canvas id="asD" aria-label="Asimetría final según la memoria"></canvas>
-  <p>Cada punto es la asimetría que queda al cerrarse la ventana. Sin coherencia, la curva solo sube: más memoria, más huella. Con coherencia (quien recuerda demasiado pierde la sincronía entre sus partes) aparece un máximo dentro del valle. Su lugar depende de κ: el valle es una zona aproximada, no un número exacto.</p></section>
+  <p>Cada punto es la asimetría que queda al cerrarse la ventana. Sin coherencia, la curva solo sube hacia 1 sin llegar nunca (la cota): no hay un máximo intermedio. Con coherencia (quien recuerda demasiado pierde la sincronía entre sus partes) aparece un máximo dentro del valle. Su lugar depende de κ: el valle es una zona aproximada, no un número exacto.</p></section>
  <aside class="pn">
   <h4>Asimetría Bariónica</h4>
   <div class="sb">Por qué el universo debería estar vacío de materia. Por qué no lo está.</div>
@@ -1586,7 +1590,12 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   <span class="ind in" id="asReg"></span>
   <label class="tg"><input type="checkbox" id="asC_on"> Coherencia C(R) · decoherencia por exceso de memoria</label>
   ${sl('asK','κ · acoplamiento al baño térmico',.05,2,.01,'Parámetro libre: mueve el máximo dentro del valle.')}
+  <div class="sec">Después de la ventana</div>
+  <label class="tg"><input type="radio" name="asAft" value="no"> Solo la ventana</label>
+  <label class="tg"><input type="radio" name="asAft" value="sigue"> El lavado sigue encendido</label>
+  <label class="tg"><input type="radio" name="asAft" value="desacople"> Desacople: el lavado se apaga</label>
   <button type="button" class="btn" id="asReset">Restablecer valores</button>
+  <div class="estudio"><b>Estudio en curso · revisión del 12 nov 2026</b>Este modo muestra un trabajo vivo. Una verificación numérica de la versión publicada encontró que, sin un ingrediente extra, la curva de la huella no tiene un máximo intermedio. La revisión de las secciones 6 a 8 lo deja escrito así:<ul><li><i>Cota (16):</i> la huella al cierre nunca supera lo que entró, |η| ≤ 1.</li><li><i>Límite markoviano (18):</i> sin memoria la huella no se anula; vale (1 - e^(-ΓT)) / ΓT.</li><li><i>Serie (19):</i> con mucha memoria, η ≈ 1 - α/(6R²). Se acerca a 1 sin tocarlo.</li><li><i>Corolario 7.6:</i> el modelo base no tiene un máximo interior. El valle aparece solo con la supresión extra (22): es una hipótesis contrastable.</li><li><i>Sección 8.2:</i> la huella al cierre no es la huella que persiste. Para que dure, el lavado tiene que apagarse.</li></ul>Mañana algo podría cambiar: una nueva mirada puede desviar el curso de un estudio. Así funciona la ciencia.</div>
   <div class="nota"><b>Nota del autor</b>Estas son ideas, no hechos. Son el intento de llevar al plano más estricto de la ciencia intuiciones y conclusiones empíricas propias, con los recursos que tengo a mano. No buscan crear una ley: quieren aportar valor a quien desee desarrollarlas, ampliarlas o refutarlas. El borde del conocimiento siempre deja más preguntas que respuestas. Ahí está el disfrute de vivir en él.</div>
   <a class="btn" href="https://ernestocisneros.art/assets/pdf/cosmology/apendice-asimetria-barionica.pdf" target="_blank" rel="noopener">Leer el apéndice (PDF)</a>
  </aside>
@@ -1636,26 +1645,27 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   else{const s=Math.sqrt(-dd),k=(1-2*al)/s;F=1-.5*((1+k)*Math.exp((-1+s)*e1)+(1-k)*Math.exp((-1-s)*e1));}
   return R/al*F;};
  const Cf=R=>A.C?1/(1+A.k*R*R):1;
- const traj=(R,al)=>{const T=1,tau=R*T,G=al/tau,n0=1200,dt=T/n0;let n=0,m=0;const out=[[0,0,0]];
-  const f=(n,m)=>[-G*m+1,(n-m)/tau];
-  for(let i=0;i<n0;i++){const k1=f(n,m),k2=f(n+dt/2*k1[0],m+dt/2*k1[1]),k3=f(n+dt/2*k2[0],m+dt/2*k2[1]),k4=f(n+dt*k3[0],m+dt*k3[1]);
+ const traj=(R,al,aft)=>{const T=1,tau=R*T,G0=al/tau,tEnd=aft==='no'?1:3,n0=1200*tEnd,dt=1/1200;let n=0,m=0;const out=[[0,0,0]];let ti=0;
+  const f=(n,m)=>{const inW=ti<T,G=inW||aft==='sigue'?G0:0;return [-G*m+(inW?1:0),(n-m)/tau];};
+  for(let i=0;i<n0;i++){ti=i*dt;const k1=f(n,m),k2=f(n+dt/2*k1[0],m+dt/2*k1[1]),k3=f(n+dt/2*k2[0],m+dt/2*k2[1]),k4=f(n+dt*k3[0],m+dt*k3[1]);
    n+=dt/6*(k1[0]+2*k2[0]+2*k3[0]+k4[0]);m+=dt/6*(k1[1]+2*k2[1]+2*k3[1]+k4[1]);if(i%6===5)out.push([(i+1)*dt,n,m]);}return out;};
 
  // ---------- Zona 3: la memoria fabrica la huella ----------
  const cC=$('asC');
- const drawC=()=>{const [w,h,d]=fit(cC),x=cC.getContext('2d');x.clearRect(0,0,w,h);const cc=Cf(A.R),tr=traj(A.R,A.al).map(([t,n,m])=>[t,n*cc,m*cc]);
+ const drawC=()=>{const [w,h,d]=fit(cC),x=cC.getContext('2d');x.clearRect(0,0,w,h);const cc=Cf(A.R),tE=A.aft==='no'?1:3,tr=traj(A.R,A.al,A.aft).map(([t,n,m])=>[t,n*cc,m*cc]);
   let ymax=Math.max(.3,cc*1.05),ymin=0;tr.forEach(([,n,m])=>{ymax=Math.max(ymax,n*1.08,m*1.08);ymin=Math.min(ymin,n,m);});
-  const x0=44*d,x1=w-12*d,y0=12*d,y1=h-30*d,X=t=>x0+t*(x1-x0),Y=v=>y1-(v-ymin)/(ymax-ymin)*(y1-y0);
-  x.fillStyle='rgba(95,232,208,.06)';x.fillRect(x0,y0,x1-x0,y1-y0);
+  const x0=44*d,x1=w-12*d,y0=12*d,y1=h-30*d,X=t=>x0+t/tE*(x1-x0),Y=v=>y1-(v-ymin)/(ymax-ymin)*(y1-y0);
+  x.fillStyle='rgba(95,232,208,.06)';x.fillRect(x0,y0,X(1)-x0,y1-y0);if(tE>1){x.strokeStyle='rgba(255,255,255,.4)';x.lineWidth=d;x.beginPath();x.moveTo(X(1),y0);x.lineTo(X(1),y1);x.stroke();}
   x.save();x.setLineDash([4*d,4*d]);x.strokeStyle='rgba(255,255,255,.35)';x.beginPath();x.moveTo(x0,Y(cc));x.lineTo(x1,Y(cc));x.stroke();x.restore();
   x.font=FONT(9.5,d);x.fillStyle='rgba(255,255,255,.55)';x.textAlign='left';x.fillText('sin borrado: todo lo que entró',x0+5*d,Y(cc)-4*d);
   const path=(k,col,wd,dash)=>{x.save();if(dash)x.setLineDash(dash.map(v=>v*d));x.beginPath();tr.forEach((p,i)=>{i?x.lineTo(X(p[0]),Y(p[k])):x.moveTo(X(p[0]),Y(p[k]));});x.strokeStyle=col;x.lineWidth=wd*d;x.stroke();x.restore();};
   path(2,'rgba(201,168,255,.85)',1.4,[5,4]);path(1,'#5fe8d0',2.2);
-  const last=tr[tr.length-1];x.beginPath();x.arc(X(1),Y(last[1]),5*d,0,7);x.fillStyle='#5fe8d0';x.fill();
-  x.font=FONT(10.5,d,600);x.fillStyle='#fff';x.textAlign='right';x.fillText('η = '+fmt(last[1]),X(1)-9*d,Y(last[1])-8*d);
+  const atT=tr[200],fin=tr[tr.length-1];x.beginPath();x.arc(X(1),Y(atT[1]),5*d,0,7);x.fillStyle='#5fe8d0';x.fill();
+  x.font=FONT(10.5,d,600);x.fillStyle='#fff';x.textAlign='right';x.fillText('η = '+fmt(atT[1]),X(1)-9*d,Y(atT[1])-8*d);
+  if(tE>1){x.beginPath();x.arc(X(tE),Y(fin[1]),4*d,0,7);x.fillStyle=A.aft==='sigue'?'#ff9c7a':'#5fe8d0';x.fill();x.fillStyle=A.aft==='sigue'?'#ff9c7a':'#5fe8d0';x.fillText((A.aft==='sigue'?'se borra: ':'queda: ')+fmt(fin[1]),X(tE)-8*d,Y(fin[1])-8*d);}
   x.strokeStyle='rgba(109,128,153,.6)';x.lineWidth=d;x.strokeRect(x0,y0,x1-x0,y1-y0);
-  x.font=FONT(10,d);x.textAlign='left';x.fillStyle='#5fe8d0';x.fillText('▬ asimetría n',x0+8*d,y0+30*d);x.fillStyle='#c9a8ff';x.fillText('- - memoria activa m',x0+8*d,y0+44*d);
-  x.fillStyle='#cfdbe7';x.textAlign='left';x.fillText('se abre la ventana',x0,h-10*d);x.textAlign='right';x.fillText('se cierra (desacople)',x1,h-10*d);};
+  
+  x.fillStyle='#cfdbe7';x.textAlign='left';x.fillText('se abre la ventana',x0,h-10*d);if(tE>1){x.textAlign='center';x.fillText('se cierra',X(1),h-10*d);x.textAlign='right';x.fillStyle=A.aft==='sigue'?'#ff9c7a':'#5fe8d0';x.fillText(A.aft==='sigue'?'el lavado sigue':'desacople',x1,h-10*d);}else{x.textAlign='right';x.fillText('se cierra la ventana',x1,h-10*d);}};
 
  // ---------- Zona 4: el mapa de la huella ----------
  const cD=$('asD');
@@ -1663,7 +1673,8 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
   const x0=40*d,x1=w-12*d,y0=12*d,y1=h-32*d,X=R=>x0+(L10(R)+2)/4*(x1-x0),Y=v=>y1-v/1.08*(y1-y0);
   // valle aproximado: zona difusa 0,5 a 3,5, núcleo 1 a 3
   x.fillStyle='rgba(95,232,208,.06)';x.fillRect(X(.5),y0,X(3.5)-X(.5),y1-y0);x.fillStyle='rgba(95,232,208,.08)';x.fillRect(X(1),y0,X(3)-X(1),y1-y0);
-  x.font=FONT(9.5,d);x.fillStyle='rgba(95,232,208,.85)';x.textAlign='center';x.fillText('valle de resiliencia (zona aproximada)',(X(.5)+X(3.5))/2,y0+12*d);
+  x.font=FONT(9.5,d);x.fillStyle='rgba(95,232,208,.85)';x.textAlign='center';x.fillText('valle de resiliencia (zona aproximada)',(X(.5)+X(3.5))/2,y1-8*d);
+  x.save();x.setLineDash([2*d,4*d]);x.strokeStyle='rgba(255,224,138,.6)';x.beginPath();x.moveTo(x0,Y(1));x.lineTo(x1,Y(1));x.stroke();x.restore();x.font=FONT(9.5,d);x.fillStyle='rgba(255,224,138,.85)';x.textAlign='left';x.fillText('cota |η| ≤ 1: se acerca, nunca la toca',x0+6*d,Y(1)-4*d);
   const curve=(fn,col,wd,dash)=>{x.save();if(dash)x.setLineDash(dash.map(v=>v*d));x.beginPath();for(let i=0;i<=300;i++){const R=Math.pow(10,-2+i/75),v=fn(R);i?x.lineTo(X(R),Y(v)):x.moveTo(X(R),Y(v));}x.strokeStyle=col;x.lineWidth=wd*d;x.stroke();x.restore();};
   curve(R=>etaT(R,A.al),A.C?'rgba(255,255,255,.35)':'#ff8fb8',A.C?1.2:2.2,A.C?[5,4]:null);
   let best=null;if(A.C){curve(R=>etaT(R,A.al)*Cf(R),'#ff8fb8',2.2);let bv=-1;for(let i=0;i<=400;i++){const R=Math.pow(10,-2+i/100),v=etaT(R,A.al)*Cf(R);if(v>bv){bv=v;best=[R,v];}}
@@ -1680,8 +1691,9 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
  const PS={asEx:['ex',v=>v,v=>v,v=>fmt(v*100,1)+' %'],asR:['R',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v)],asAl:['al',v=>Math.pow(10,v),v=>L10(v),v=>fmt(v)],asK:['k',v=>v,v=>v,v=>fmt(v)]};
  Object.entries(PS).forEach(([id,[k,fromS]])=>{$(id).addEventListener('input',e=>{A[k]=fromS(+e.target.value);syncA(id);if(id==='asEx')bang();});});
  $('asC_on').addEventListener('change',e=>{A.C=e.target.checked;syncA();});
+ ov.querySelectorAll('input[name=asAft]').forEach(r=>r.addEventListener('change',e=>{A.aft=e.target.value;syncA();}));
  const syncA=skip=>{Object.entries(PS).forEach(([id,[k,,toS,show]])=>{if(id!==skip)$(id).value=toS(A[k]);$(id+'o').textContent=show(A[k]);});
-  $('asC_on').checked=A.C;$('asK').disabled=!A.C;
+  $('asC_on').checked=A.C;ov.querySelectorAll('input[name=asAft]').forEach(r=>{r.checked=r.value===A.aft;});$('asK').disabled=!A.C;
   const eta=etaT(A.R,A.al)*Cf(A.R);$('asEta').textContent=fmt(eta);$('asEta').style.color='#5fe8d0';
   const r=$('asReg'),osc=A.al>.25;r.className='ind '+(osc?'in':'out');r.textContent=osc?'Oscilante: la memoria resuena':'Monótono: el borrado domina';
   drawB();drawC();drawD();if(RMa)drawA(0);};
