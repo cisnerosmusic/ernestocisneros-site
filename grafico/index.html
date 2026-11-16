@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.510 · 15 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.512 · 16 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -440,7 +440,6 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
   ['Yudeisy Feliz','Como una hermana','Siempre ofrece hasta lo que no tiene. Es una vieja amiga: en los viajes anteriores a Miami, Ernesto siempre se quedó en su casa.'],
   ['Erick, el vikingo','Amigo','Esposo de Yudeisy. Joyero de profesión: un artista que trabaja con las manos, desde lo pequeño hasta la mecánica.'],
   ['Eduardito','Amigo','Primo de Maikel, el baterista de Buena Fe. El gordo. El de AutoSolution Miami. No es el Eduardito de la infancia. Emprendedor, buena gente.'],
-  ['El Pirata','Cliente','Cliente de Index01: el dueño de El Pirata Ranch, cuya web hizo el estudio. Un soñador.'],
   ['Ernesto Valdés','Compañero en UnlimitedWraps','De los nuevos compañeros del taller. Joven, fanático de los autos: esa es su pasión.'],
   ['Luis Vega','Compañero en UnlimitedWraps','De los nuevos compañeros del taller.'],
   ['Ramzy Khalek (el profe)','Compañero en UnlimitedWraps','El profe. Todo un personaje: tuvo una carrera como periodista y se dice que ha sido una gran influencia para el automovilismo latinoamericano. Persona culta y bien educada. Nació en Venezuela, pero su origen es de Oriente Medio.'],
@@ -452,7 +451,6 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
   ['Pedrito','Amigo','Amigo abogado.'],
   ['Calek Urrutia','Amigo de la infancia','Amigo de la infancia.'],
   ['Katia Muñoz','Amiga de la infancia','Amiga de la infancia en La Habana; hoy en Miami. Estudió piano con el maestro Arsenio, como Ernesto.'],
-  ['Billy y Asha','Amigos','Los de Asha Jewelry, la joyería.'],
   ['Patricia Camacho','Amiga','Amiga de la universidad. Parte de la red de Miami.'],
   ['Ñaño','Amigo','Hijo de Lisandra Lozano. Trabaja en AT&T.'],
   ['Giraldo','Amigo','Parte de la red de Miami.'],
@@ -469,7 +467,7 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
  L(ix['Lisandra Lozano'],myF);L(ix['Cintia'],myF);L(ix['Cintia'],V('Cintia (sitio web)'));
  ['UnlimitedWraps','Scudostone','Tesla Boutique Miami'].forEach(t=>L(ix['Rey'],V(t)));L(ix['Rey'],V('Walmart Miami, de cargador a team lead'));
  ['Ernesto Valdés','Luis Vega','Ramzy Khalek (el profe)'].forEach(n=>L(ix[n],V('UnlimitedWraps')));
- L(ix['Eduardito'],V('Auto Solution Miami'));L(ix['Eduardito'],V('Maikel Perez'));L(ix['El Pirata'],V('El Pirata Ranch (web)'));L(ix['Eduardito'],ix['El Pirata']);
+ L(ix['Eduardito'],V('Auto Solution Miami'));L(ix['Eduardito'],V('Maikel Perez'));
  L(hub,V('Llegada a Miami'));
 
  const Fm=t=>nodes.findIndex(n=>n.src==='f'&&!n.net&&n.t&&n.t.startsWith(t));
@@ -482,7 +480,7 @@ const MIAMI_T={C:new THREE.Vector3(-6,-19,6),R:10,r:3.1,place(n){const a=n.mu,b=
  L(V('Buena Fe'),Fm('Milay Pernut Molina')); L(V('Dr. Manuel'),Fm('Isabella Cisneros Pernut'));  // se conocieron en un ensayo de Buena Fe (P92)
  ['Milay Pernut Molina','Cecilia Cisneros Isla','Isabella Cisneros Pernut'].forEach(x=>L(V('2021 - Cumpleaños 50 de Ernesto'),Fm(x)));  // foto del cumple 50
  ['Ramón Eduardo Haití','Alain','Antonio López Sánchez (Tony)'].forEach(t=>L(ix['Humberto Ochoa'],V(t)));
- L(ix['Billy y Asha'],ix['Rey']); L(ix['Billy y Asha'],nodes.findIndex(n=>n.src==='h'&&/Asha Jewelry/.test(n.t||'')));
+
  // amigos que ya tenían nodo en la bóveda: entran a la red sin duplicarse
  [['Ernesto Romero','También vive en Miami. Se reencontraron para escribir juntos; hay posibles proyectos en el horno.'],['Fito','Rodolfo Torrente Moya, el guitarrista de Paisaje con Río. Viejo amigo; también vive en Miami.'],['Fitingo','También vive en Miami.'],['Alejandro Bonso','Exguitarrista de Buena Fe, también en Miami.'],['Alexis Lamda','Alexis Landa: amigo desde el preuniversitario. También vive en Miami.']].forEach(([t,nt])=>{const i=V(t);L(hub,i);addNote(i,nt);});L(V('Alexis Lamda'),V('1986 - Preuniversitario Enrique Jose Varona (La Vibora)'));
  // bajo el toro, aparte de las raíces: anillo horizontal propio
