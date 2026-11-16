@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.519 · 16 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.521 · 16 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -2422,19 +2422,51 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 `;document.head.appendChild(st);
  // por título de nodo: lista de frases
  const BY={};EJ.frases.forEach(f=>f.nodos.forEach(t=>{(BY[t]=BY[t]||[]).push(f);}));
- // el menú «Ejes» agrupa las cuatro lentes (creadas por lens.js desde LENS)
+ // el botón «Ejes» abre primero una página que explica los cuatro ejes; desde ella se entra a cada uno
+ const DEF={sentido:'Experiencia sentida: no solo hechos.',criterio:'Criterio: cómo se juzga, no solo qué se juzgó.',transmision:'Transmisión intencional: qué quiero que atraviese el tiempo.',abierto:'Incompletud asumida: lo que no se resolvió.'};
  const bar=document.getElementById('lenses');
  if(bar){const names=Object.values(EJ.ejes);
-  const bs=[...bar.querySelectorAll(':scope > .lens')].filter(b=>names.some(n=>b.textContent.trim().startsWith(n+' ')));
-  if(bs.length){const wrap=document.createElement('span');wrap.id='ejWrap';
-   const lb=document.createElement('button');lb.type='button';lb.className='lens';lb.style.setProperty('--c','#ffb59e');lb.setAttribute('aria-expanded','false');lb.setAttribute('aria-haspopup','true');
-   lb.innerHTML='Ejes <small style="text-transform:none">4 ▾</small>';lb.title='Lo que no son hechos: lo sentido, el criterio, lo que quiere dejar y lo que no se resolvió. Solo palabras de Ernesto.';
-   const menu=document.createElement('div');menu.id='ejMenu';menu.hidden=true;menu.innerHTML='<div class="lh">Más allá de los hechos</div>';
-   bs.forEach(b=>{menu.appendChild(b);b.addEventListener('click',()=>{menu.hidden=true;lb.setAttribute('aria-expanded','false');});});
-   wrap.appendChild(lb);wrap.appendChild(menu);const lab=document.getElementById('labWrap');lab?bar.insertBefore(wrap,lab):bar.appendChild(wrap);
-   lb.onclick=e=>{e.stopPropagation();menu.hidden=!menu.hidden;lb.setAttribute('aria-expanded',String(!menu.hidden));};
-   addEventListener('click',e=>{if(!menu.hidden&&!wrap.contains(e.target)){menu.hidden=true;lb.setAttribute('aria-expanded','false');}});
-   addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){menu.hidden=true;lb.setAttribute('aria-expanded','false');}});}}
+  const bs={};[...bar.querySelectorAll(':scope > .lens')].forEach(b=>{const k=Object.keys(EJ.ejes).find(k=>b.textContent.trim().startsWith(EJ.ejes[k]+' '));if(k)bs[k]=b;});
+  if(Object.keys(bs).length){const hold=document.createElement('div');hold.id='ejMenu';hold.hidden=true;Object.values(bs).forEach(b=>hold.appendChild(b));
+   const wrap=document.createElement('span');wrap.id='ejWrap';
+   const lb=document.createElement('button');lb.type='button';lb.className='lens';lb.style.setProperty('--c','#ffb59e');lb.setAttribute('aria-haspopup','dialog');
+   lb.innerHTML='Ejes <small style="text-transform:none">4</small>';lb.title='Qué son los cuatro ejes y cómo recorrerlos.';
+   wrap.appendChild(lb);wrap.appendChild(hold);const lab=document.getElementById('labWrap');lab?bar.insertBefore(wrap,lab):bar.appendChild(wrap);
+   const st2=document.createElement('style');st2.textContent=`
+#ejP{--acc:#ffb59e}#ejP p:first-of-type::first-letter{font:inherit;float:none;margin:0;color:inherit}
+#ejP .cita{margin:6px 0 26px;padding:14px 16px;border-left:3px solid var(--acc);background:rgba(255,181,158,.05);border-radius:0 8px 8px 0;font-size:14px;line-height:1.7;color:#fff}
+#ejP .cita small{display:block;margin-top:6px;color:var(--dim);font-size:11px}
+#ejP .ejs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:26px 0}
+#ejP .ej{border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;padding:14px 16px;background:rgba(6,10,18,.6);display:flex;flex-direction:column}
+#ejP .ej h3{margin:0 0 4px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+#ejP .ej .d{font-size:12.5px;color:#cfdbe7;line-height:1.55;margin-bottom:8px}
+#ejP .ej .n{font-size:11px;color:var(--dim);margin-bottom:10px}
+#ejP .ej q{display:block;font-size:12.5px;line-height:1.6;color:#e9e3dc;quotes:none;margin:0 0 10px;flex:1}
+#ejP .ej button{align-self:flex-start;background:rgba(6,10,18,.85);border:1px solid var(--c);color:var(--c);font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:12px;cursor:pointer}
+#ejP .ej button:hover,#ejP .ej button:focus-visible{background:rgba(255,255,255,.08);outline:none}
+#ejP .regla{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);line-height:1.6}
+`;document.head.appendChild(st2);
+   const ov=document.createElement('div');ov.id='ejP';ov.className='lectura';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Los cuatro ejes');
+   const VERe=(document.querySelector('.sub .ver')||{}).textContent||'';
+   const ex=k=>{const L=EJ.frases.filter(f=>f.ejes.includes(k));const f=L.find(f=>f.f.length<170)||L[0];return f?f.f:'';};
+   ov.innerHTML=`<div class="bar"><button type="button" id="ejPX">← Volver al gráfico (Esc)</button><span class="v">${VERe}</span></div><article>
+    <div class="k">El archivo · más allá de los hechos</div><h1>Los cuatro <b>ejes</b></h1><div class="by">Ernesto Cisneros Cino</div>
+    <p>El gráfico responde muy bien a qué pasó, cuándo y con quién. Los ejes son la otra capa: lo que significó, cómo se juzga, qué se quiere dejar y qué quedó abierto. Ernesto los propuso así:</p>
+    <div class="cita">«1. Experiencia sentida (no solo hechos). 2. Criterio (cómo se juzga, no solo qué se juzgó). 3. Transmisión intencional (qué quieres que atraviese el tiempo). 4. Incompletud asumida (lo que no se resolvió). Creo que esto lo haría más humano y más valioso.»<small>Ernesto, 16 de noviembre de 2026</small></div>
+    <p>Cada eje se recorre como una lente: ilumina en el toro solo las notas que tienen esa capa. Al seleccionar una de ellas aparece la tarjeta «en sus palabras». Una frase puede vivir en más de un eje: un significado no tiene por qué ser único.</p>
+    <div class="ejs">${Object.keys(EJ.ejes).map(k=>{const nf=EJ.frases.filter(f=>f.ejes.includes(k)).length;const nn=(bs[k]&&bs[k].querySelector('small')||{}).textContent||'';
+      return `<div class="ej" style="--c:${COL[k]}"><h3>${esc(EJ.ejes[k])}</h3><div class="d">${esc(DEF[k])}</div><div class="n">${nf} frases · ${nn} notas</div><q>${esc(ex(k))}</q><button type="button" data-k="${k}">Recorrer en el gráfico →</button></div>`;}).join('')}</div>
+    <div class="regla"><b style="color:#ffb59e">La regla.</b> En estos cuatro ejes solo entran palabras de Ernesto. Claude puede ordenarlas, proponer dónde van y corregir erratas, nunca escribir lo que él sintió, juzgó o quiere dejar. Los hechos se pueden reconstruir; la experiencia, el criterio y la intención, no. ${esc(EJ.version)}.</div>
+   </article>`;
+   document.body.appendChild(ov);
+   const RMe=matchMedia('(prefers-reduced-motion: reduce)').matches;let on=false,savedRot=null;
+   const open=()=>{if(on||window.__soloMapa||window.__cosmo||window.__asim||window.__dao||window.__osc||window.__pqb||window.__conc)return;on=true;savedRot=controls.autoRotate;controls.autoRotate=false;tip.hidden=true;
+    ov.hidden=false;ov.scrollTop=0;requestAnimationFrame(()=>ov.classList.add('vis'));document.getElementById('ejPX').focus({preventScroll:true});};
+   const close=()=>{if(!on)return;on=false;ov.classList.remove('vis');setTimeout(()=>{if(!on)ov.hidden=true;},RMe?0:700);controls.autoRotate=savedRot&&!RMe;};
+   lb.onclick=open;document.getElementById('ejPX').onclick=close;
+   addEventListener('keydown',e=>{if(e.key==='Escape'&&on){close();e.stopImmediatePropagation();e.preventDefault();}},true);
+   ov.querySelectorAll('.ej button').forEach(b=>b.onclick=()=>{close();const L=bs[b.dataset.k];if(L&&L.getAttribute('aria-pressed')!=='true')L.click();});
+   window.__ejOpen=open;}}
  // la tarjeta de capas al seleccionar un nodo
  const C=document.createElement('div');C.id='ejC';C.hidden=true;C.setAttribute('role','region');C.setAttribute('aria-label','Capas de la nota');
  const stg=document.getElementById('stage')||document.body;stg.appendChild(C);
