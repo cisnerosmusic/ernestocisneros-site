@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.529 · 16 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.531 · 16 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1026,7 +1026,7 @@ const ctr=i=>nodes[i].src==='f'?meF:(meV>=0?meV:meF);
 const actL=new Set(),actF=new Set();let cur=-1;
 const _sf=setFocus;
 setFocus=function(i){actL.clear();actF.clear();if(i>=0)actF.add(i);render();};
-function paintButtons(multi){[...bar.children].forEach((b,j)=>{const on=actL.has(j);b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+const LB=[];function paintButtons(multi){LB.forEach((b,j)=>{const on=actL.has(j);b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
   if(multi)FEEDS.forEach((s,k)=>{s.el.classList.toggle('on',actF.has(k));s.el.classList.toggle('off',!actF.has(k));});}
 function render(){const tot=actL.size+actF.size;cur=actL.size===1&&!actF.size?[...actL][0]:-1;
   if(tot===0||(actF.size===1&&!actL.size)){lensAttr.array.fill(0);lensAttr.needsUpdate=true;U.uLens.value=0;list.hidden=true;paintButtons(false);
@@ -1049,7 +1049,7 @@ function render(){const tot=actL.size+actF.size;cur=actL.size===1&&!actF.size?[.
     (extra>0?`<div class="lx">y ${extra} puntos más sin título</div>`:'');
   list.style.setProperty('--c',c0);list.hidden=false;list.scrollTop=0;}
 function apply(k){actL.clear();actF.clear();if(k>=0)actL.add(k);render();}
-LS.forEach((L,k)=>{const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c',L.c);b.setAttribute('aria-pressed','false');
+LS.forEach((L,k)=>{const b=document.createElement('button');LB[k]=b;b.type='button';b.className='lens';b.style.setProperty('--c',L.c);b.setAttribute('aria-pressed','false');
   b.innerHTML=`${esc(L.n)} <small>${L.ids.length}</small>`;b.title=L.d+' (se suma a lo que ya esté encendido)';b.onclick=()=>{if(window.__soloMapa)return;actL.has(k)?actL.delete(k):actL.add(k);render();};bar.appendChild(b);});
 FEEDS.forEach((s,i)=>{s.el.onclick=()=>{if(window.__soloMapa)return;actF.has(i)?actF.delete(i):actF.add(i);render();};s.el.title='Pulsa para encender; pulsa otra esfera o una lente para sumarlas';});
 list.addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b)return;const i=+b.dataset.i;const keep=[new Set(actL),new Set(actF)];select(i);
@@ -2462,9 +2462,9 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
    const RMe=matchMedia('(prefers-reduced-motion: reduce)').matches;let on=false,savedRot=null;
    const open=()=>{if(on||window.__soloMapa||window.__cosmo||window.__asim||window.__dao||window.__osc||window.__pqb||window.__conc)return;on=true;savedRot=controls.autoRotate;controls.autoRotate=false;tip.hidden=true;
     ov.hidden=false;ov.scrollTop=0;requestAnimationFrame(()=>ov.classList.add('vis'));document.getElementById('ejPX').focus({preventScroll:true});};
-   const close=()=>{if(!on)return;on=false;ov.classList.remove('vis');setTimeout(()=>{if(!on)ov.hidden=true;},RMe?0:700);controls.autoRotate=savedRot&&!RMe;};
+   const close=now=>{if(!on)return;on=false;ov.classList.remove('vis');if(now===true)ov.hidden=true;else setTimeout(()=>{if(!on)ov.hidden=true;},RMe?0:700);controls.autoRotate=savedRot&&!RMe;};
+   window.__ejClose=close;
    lb.onclick=open;document.getElementById('ejPX').onclick=close;
-   addEventListener('keydown',e=>{if(e.key==='Escape'&&on){close();e.stopImmediatePropagation();e.preventDefault();}},true);
    ov.querySelectorAll('.ej button').forEach(b=>b.onclick=()=>{close();const L=bs[b.dataset.k];if(L&&L.getAttribute('aria-pressed')!=='true')L.click();});
    window.__ejOpen=open;}}
  // la tarjeta de capas al seleccionar un nodo
@@ -2479,7 +2479,14 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
   C.hidden=false;C.scrollTop=0;C.querySelector('.x').onclick=()=>{C.hidden=true;};};
  const _selE=select;select=function(i){_selE(i);show(nodes[i]);};
  cv.addEventListener('click',()=>{if(hover<0)C.hidden=true;});
- addEventListener('keydown',e=>{if(e.key==='Escape'&&!C.hidden)C.hidden=true;});
+ // Esc, desde cualquier parte de los ejes, vuelve directo al gráfico: cierra la página, apaga el eje, quita la tarjeta y la selección
+ const ejActivo=()=>!!document.querySelector('#ejMenu .lens[aria-pressed="true"]');
+ addEventListener('keydown',e=>{if(e.key!=='Escape')return;const pg=document.getElementById('ejP');const enPag=pg&&!pg.hidden;
+  if(!(enPag||!C.hidden||ejActivo()))return;
+  e.stopImmediatePropagation();e.preventDefault();
+  if(enPag&&window.__ejClose)window.__ejClose(true);
+  C.hidden=true;try{setFocus(-1);}catch(_){}
+  sel=-1;fotEl.hidden=true;U.uSel.value=-1;hideLine();if(focus<0)setHi(null);tip.hidden=true;},true);
 }
 
 })();
