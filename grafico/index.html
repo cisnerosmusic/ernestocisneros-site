@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.534 · 16 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.536 · 16 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -2377,7 +2377,7 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 // Los días trabajados en Walmart Miami (27 jun 2024 a 27 may 2025), desde fuente/contexto/walmart/dias.md.
 // Se abre desde el nodo «Walmart Miami, de cargador a team lead». Nunca horas ni cifras de dinero.
 {
- const W={"fuente": "Fuente: calendario de Google de Ernesto (cuenta personal), capturas del 16 nov 2026; conteo de Claude sobre las capturas. Se cuentan los días con el evento «Walmart»; no se cuentan «Pago de Walmart» ni «Cobro de Walmart» (días de pago, no turnos). Ernesto: «fue hasta el 27 de mayo... casi un año».", "meses": [{"k": "2024-06", "d": [27, 28, 30]}, {"k": "2024-07", "d": [1, 2, 4, 9, 10, 11, 14, 15, 17, 18, 20, 22, 25, 26, 28, 29, 31]}, {"k": "2024-08", "d": [1, 3, 4, 6, 7, 11, 12, 13, 14, 18, 19, 20, 22, 25, 26, 27, 28]}, {"k": "2024-09", "d": [1, 2, 4, 6, 8, 9, 11, 13, 14, 16, 18, 20, 21, 25, 26, 27, 29]}, {"k": "2024-10", "d": [1, 2, 4, 5, 7, 9, 11, 12, 14, 16, 18, 20, 21, 23, 25, 27, 28, 30]}, {"k": "2024-11", "d": [1, 3, 4, 5, 6, 8, 10, 11, 13, 15, 17, 18, 20, 22, 24, 25, 26, 29]}, {"k": "2024-12", "d": [1, 3, 4, 6, 8, 9, 11, 13, 15, 16, 18, 20, 22, 23, 24, 27, 29, 30]}, {"k": "2025-01", "d": [1, 3, 5, 6, 8, 10, 12, 13, 15, 17, 19, 20, 22, 23, 24, 26, 27, 29, 30, 31]}, {"k": "2025-02", "d": [2, 3, 5, 6, 7, 9, 10, 12, 13, 14, 16, 17, 18, 19, 20, 23, 24, 25, 26]}, {"k": "2025-03", "d": [1, 2, 6, 7, 8, 9, 10, 12, 13, 16, 17, 19, 21, 22, 23, 24, 26, 28, 30, 31]}, {"k": "2025-04", "d": [2, 4, 6, 7, 9, 11, 13, 14, 16, 18, 20, 21, 23, 25, 27, 28, 30]}, {"k": "2025-05", "d": [2, 4, 5, 7, 9, 11, 12, 16, 18, 19, 21, 25, 26, 27]}], "dudosos": [{"f": "2025-05-14", "t": "2025-05-14: el evento dice «Walmart [falt…»; ¿faltó?"}, {"f": "2025-05-20", "t": "2025-05-20: el evento dice «Walmart No…»; ¿no fue?"}], "pend": ["23 de enero de 2025, «Walmart adic…»: ¿turno adicional? (contado como día trabajado).", "17 de junio de 2024, un «Walmart» diez días antes del primero: ¿entrevista, orientación o primer día?"], "maxConc": {"y": "2015", "n": 106}};
+ const W={"fuente": "Fuente: calendario de Google de Ernesto (cuenta personal), capturas del 16 nov 2026; conteo de Claude sobre las capturas. Se cuentan los días con el evento «Walmart»; no se cuentan «Pago de Walmart» ni «Cobro de Walmart» (días de pago, no turnos). Ernesto: «fue hasta el 27 de mayo... casi un año».", "meses": [{"k": "2024-06", "d": [27, 28, 30]}, {"k": "2024-07", "d": [1, 2, 4, 9, 10, 11, 14, 15, 17, 18, 20, 22, 25, 26, 28, 29, 31]}, {"k": "2024-08", "d": [1, 3, 4, 6, 7, 11, 12, 13, 14, 18, 19, 20, 22, 25, 26, 27, 28]}, {"k": "2024-09", "d": [1, 2, 4, 6, 8, 9, 11, 13, 14, 16, 18, 20, 21, 25, 26, 27, 29]}, {"k": "2024-10", "d": [1, 2, 4, 5, 7, 9, 11, 12, 14, 16, 18, 20, 21, 23, 25, 27, 28, 30]}, {"k": "2024-11", "d": [1, 3, 4, 5, 6, 8, 10, 11, 13, 15, 17, 18, 20, 22, 24, 25, 26, 29]}, {"k": "2024-12", "d": [1, 3, 4, 6, 8, 9, 11, 13, 15, 16, 18, 20, 22, 23, 24, 27, 29, 30]}, {"k": "2025-01", "d": [1, 3, 5, 6, 8, 10, 12, 13, 15, 17, 19, 20, 22, 23, 24, 26, 27, 29, 30, 31]}, {"k": "2025-02", "d": [2, 3, 5, 6, 7, 9, 10, 12, 13, 14, 16, 17, 18, 19, 20, 23, 24, 25, 26]}, {"k": "2025-03", "d": [1, 2, 6, 7, 8, 9, 10, 12, 13, 16, 17, 19, 21, 22, 23, 24, 26, 28, 30, 31]}, {"k": "2025-04", "d": [2, 4, 6, 7, 9, 11, 13, 14, 16, 18, 20, 21, 23, 25, 27, 28, 30]}, {"k": "2025-05", "d": [2, 4, 5, 7, 9, 11, 12, 16, 18, 19, 21, 25, 26, 27]}], "marcas": {"2024-06-17": ["c", "La llamada de Walmart"], "2024-06-27": ["e", "Entrenamiento (primer día)"], "2024-06-28": ["e", "Entrenamiento"], "2025-01-23": ["a", "Turno adicional"], "2025-05-14": ["f", "Faltó"], "2025-05-20": ["f", "Faltó"]}, "maxConc": {"y": "2015", "n": 106}};
  const RMw=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const VERw=(document.querySelector('.sub .ver')||{}).textContent||'';
  const escw=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2394,12 +2394,18 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
 #walm .g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 #walm .g span{aspect-ratio:1;border-radius:3px;font-family:var(--mono);font-size:9px;display:flex;align-items:center;justify-content:center;color:#5d6b7a;background:rgba(255,255,255,.03)}
 #walm .g span.h{background:var(--acc);color:#1a1405;font-weight:600}
-#walm .g span.q{outline:1px dashed var(--acc);color:var(--acc)}
+#walm .g span.e{background:transparent;outline:2px solid var(--acc);color:var(--acc)}
+#walm .g span.a{box-shadow:inset 0 0 0 2px #fff}
+#walm .g span.f{outline:1px dashed #8a7a55;color:#8a7a55;text-decoration:line-through}
+#walm .g span.c{outline:1px solid #7fb6ff;color:#7fb6ff}
 #walm .g span.x{visibility:hidden}
 #walm .g i{font-style:normal;font-family:var(--mono);font-size:8.5px;color:var(--dim);text-align:center}
 #walm .ley{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:var(--dim);margin-top:14px}
 #walm .ley em{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:5px;background:var(--acc)}
-#walm .ley em.q{background:none;outline:1px dashed var(--acc)}
+#walm .ley em.e{background:none;outline:2px solid var(--acc)}
+#walm .ley em.a{box-shadow:inset 0 0 0 2px #fff}
+#walm .ley em.f{background:none;outline:1px dashed #8a7a55}
+#walm .ley em.c{background:none;outline:1px solid #7fb6ff}
 #walm .pc{margin-top:26px;padding:12px 14px;border:1px dashed rgba(242,193,78,.45);border-radius:9px;font-size:12px;line-height:1.55;color:#d8d2bd}
 #walm .pc b{color:var(--acc);font-family:var(--display);font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px}
 #walmGo{position:absolute;right:14px;bottom:100px;z-index:5;background:rgba(6,10,18,.88);border:1px solid #f2c14e;color:#f2c14e;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:14px;cursor:pointer}
@@ -2410,21 +2416,22 @@ ${Array.from({length:16},(_,i)=>`.lectura.vis article>*:nth-child(${i+1}){transi
  document.body.appendChild(ov);
  const A=document.getElementById('walmA');
  const total=W.meses.reduce((s,m)=>s+m.d.length,0);
- const dq=W.dudosos.map(x=>x.f);
+ const MK=W.marcas;
  const span=Math.round((Date.UTC(2025,4,27)-Date.UTC(2024,5,27))/864e5)+1;
  const mes=m=>{const[y,mm]=m.k.split('-').map(Number);const first=(new Date(Date.UTC(y,mm-1,1)).getUTCDay()+6)%7;const n=new Date(Date.UTC(y,mm,0)).getUTCDate();
   const set=new Set(m.d);let h='LMMJVSD'.split('').map(c=>`<i>${c}</i>`).join('');
   for(let i=0;i<first;i++)h+='<span class="x"></span>';
-  for(let d=1;d<=n;d++){const k=`${m.k}-${String(d).padStart(2,'0')}`;h+=`<span class="${set.has(d)?'h':dq.includes(k)?'q':''}">${d}</span>`;}
+  for(let d=1;d<=n;d++){const k=`${m.k}-${String(d).padStart(2,'0')}`;const mk=MK[k];h+=`<span class="${set.has(d)?'h':''} ${mk?mk[0]:''}"${mk?` title="${escw(mk[1])}"`:''}>${d}</span>`;}
   return `<div class="m"><b>${MESES[mm-1]} ${y}<small>${m.d.length}</small></b><div class="g">${h}</div></div>`;};
  A.innerHTML=`<div class="k">Miami · empleo</div><h1><b>${total}</b> días en Walmart</h1>
  <div class="by">27 de junio de 2024 a 27 de mayo de 2025 · ${span} días de calendario · casi un año</div>
+ <p class="fte">La llamada llegó el 17 de junio de 2024. Entre los ${total} días: 2 de entrenamiento (27 y 28 de junio) y 1 turno adicional (23 de enero de 2025). Faltó 2 días, el 14 y el 20 de mayo de 2025.</p>
  <p class="fte">${escw(W.fuente)}</p>
  <div class="cita">«Me costó un año de ejercicio de humildad. Walmart fue pasar de ser el maestro Cisneros a ser el que carga dentro del camión; el cambio fue brutal, pero lo enfrenté con una mentalidad de hierro, como si lo hubiera tenido pensado.»</div>
  <p class="fte">Para medir el salto: su año con más conciertos de Buena Fe registrados tuvo ${W.maxConc.n} (${W.maxConc.y}).</p>
  <h2>Mes a mes</h2><div class="cal">${W.meses.map(mes).join('')}</div>
- <div class="ley"><span><em></em>día trabajado</span><span><em class="q"></em>dudoso, no contado</span></div>
- ${(W.dudosos.length||W.pend.length)?`<div class="pc"><b>Por confirmar</b>${W.dudosos.map(x=>escw(x.t)).concat(W.pend.map(escw)).join('<br>')}</div>`:''}`;
+ <div class="ley"><span><em></em>día trabajado</span><span><em class="e"></em>entrenamiento</span><span><em class="a"></em>turno adicional</span><span><em class="f"></em>faltó</span><span><em class="c"></em>la llamada (17 de junio)</span></div>
+ `;
  let on=false,savedRot=null;
  const open=()=>{if(on||window.__soloMapa||window.__cosmo||window.__asim||window.__dao||window.__osc||window.__pqb||window.__conc)return;on=true;window.__walm=true;savedRot=controls.autoRotate;controls.autoRotate=false;tip.hidden=true;goW.hidden=true;
   ov.hidden=false;ov.scrollTop=0;requestAnimationFrame(()=>ov.classList.add('vis'));document.getElementById('walmX').focus({preventScroll:true});};
