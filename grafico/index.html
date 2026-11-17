@@ -230,7 +230,7 @@ body.solo .stage{position:absolute;inset:0;border:0;border-radius:0;box-shadow:n
   <header class="top panel">
     <div>
       <h1>GRÁFICO GENERAL DE CONTEXTO DE <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener" title="ernestocisneros.art"><span>ERNESTO CISNEROS</span></a></h1>
-      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.540 · 16 nov 2026</span></div>
+      <div class="sub">La memoria es la condición de la existencia. · <a class="home" href="https://ernestocisneros.art" target="_blank" rel="noopener">ernestocisneros.art</a> · <span class="ver" title="Versión del gráfico">v1.542 · 16 nov 2026</span></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="k">Nodos</div><div class="v" id="sN">0</div></div>
@@ -1288,15 +1288,21 @@ addEventListener('keydown',e=>{if(e.code!=='Space'&&e.key!==' ')return;const t=e
      const k1=ez((t-2200)/1000),k2=ez((t-2200)/700);nodeLinks.geometry.setDrawRange(0,Math.round(nCnt*k1/2)*2);arcLinks.geometry.setDrawRange(0,Math.round(aCnt*k2/2)*2);
     },()=>{nodeLinks.geometry.setDrawRange(0,Infinity);arcLinks.geometry.setDrawRange(0,Infinity);busy=false;});}};
  let bS=null;
- const mb=document.createElement('button');mb.type='button';mb.id='mapBack';mb.hidden=true;mb.textContent='← Volver al gráfico (Esc)';mb.onclick=()=>{if(solo)setSolo(false);};{const stg=document.getElementById('stage');if(stg)stg.appendChild(mb);}
+ const mb=document.createElement('button');mb.type='button';mb.id='mapBack';mb.hidden=true;mb.textContent='← Volver al gráfico (Esc o M)';mb.onclick=()=>{if(solo)setSolo(false);};{const stg=document.getElementById('stage');if(stg)stg.appendChild(mb);}
  if(bar){const b=document.createElement('button');b.type='button';b.className='lens';b.style.setProperty('--c','#9fd2f0');b.setAttribute('aria-pressed','true');
   b.innerHTML=`Mundo <small>${used.size}</small>`;b.title='Mapamundi detrás del gráfico: países de los viajes y de los amigos ('+nT+' viajes, '+nG+' personas). Pulsa para mostrar u ocultar.';
   b.onclick=()=>{if(solo||busy)return;setMundo(!G.visible);b.setAttribute('aria-pressed',String(G.visible));};bar.appendChild(b);
   bS=document.createElement('button');bS.type='button';bS.className='lens';bS.style.setProperty('--c','#ffe08a');bS.setAttribute('aria-pressed','false');
-  bS.innerHTML=`Solo mapa <small>${TT.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Pulsa otra vez (o Esc) para volver.';
+  bS.innerHTML=`Solo mapa <small>${TT.length}</small>`;bS.title='Deja solo el mapamundi con sus viajes y amigos, y abre el cronograma de viajes. Atajo: tecla M. Pulsa otra vez (M o Esc) para volver.';
   bS.onclick=()=>setSolo(!solo);bar.appendChild(bS);
   bS.classList.add('keep');
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&solo)setSolo(false);});}
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&solo)setSolo(false);});
+  // Tecla M: entra y sale de «Solo mapa», como la F con el modo solo gráfico
+  addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||e.key.toLowerCase()!=='m')return;const t=e.target;
+   if(t&&((t.tagName==='INPUT'&&!/^(range|checkbox|radio|button)$/.test(t.type))||t.tagName==='TEXTAREA'||t.isContentEditable))return;
+   const ejp=document.getElementById('ejP');
+   if(window.__cosmo||window.__asim||window.__pqb||window.__dao||window.__osc||window.__conc||window.__walm||(ejp&&!ejp.hidden))return;
+   e.preventDefault();document.body.classList.remove('solo');setSolo(!solo);});}
 }
 
 // ---------- Modo COSMOLOGÍA ESTOCÁSTICA · El Valle de Resiliencia ----------
